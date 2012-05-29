@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ベクトル">
+      <UniqueIdentifier>{ea949c49-962b-4a34-8817-6b3e20b4d5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="行列">
+      <UniqueIdentifier>{9d7641d3-4449-4587-ad53-a4271cb78ab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="プリミティブ">
+      <UniqueIdentifier>{f193f2dc-59ac-4d00-977e-b3746d1a8c56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="点">
+      <UniqueIdentifier>{b84b5704-5734-491d-aa19-fe2cf4517110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="トレランス">
+      <UniqueIdentifier>{ca1e9e6c-6d2e-4a35-b2dd-2ababb24b1e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="空間">
+      <UniqueIdentifier>{7ce14117-55fa-4be8-8aad-d95714f7417a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Vector2d.cpp">
+      <Filter>ベクトル</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3d.cpp">
+      <Filter>ベクトル</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4d.cpp">
+      <Filter>ベクトル</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix2d.cpp">
+      <Filter>行列</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3d.cpp">
+      <Filter>行列</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4d.cpp">
+      <Filter>行列</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>行列</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Loop.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Primitive.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Square.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>プリミティブ</Filter>
+    </ClCompile>
+    <ClCompile Include="Point2d.cpp">
+      <Filter>点</Filter>
+    </ClCompile>
+    <ClCompile Include="Point3d.cpp">
+      <Filter>点</Filter>
+    </ClCompile>
+    <ClCompile Include="Point4d.cpp">
+      <Filter>点</Filter>
+    </ClCompile>
+    <ClCompile Include="Tolerances.cpp">
+      <Filter>トレランス</Filter>
+    </ClCompile>
+    <ClCompile Include="Space3d.cpp">
+      <Filter>空間</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vector2d.h">
+      <Filter>ベクトル</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3d.h">
+      <Filter>ベクトル</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4d.h">
+      <Filter>ベクトル</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix2d.h">
+      <Filter>行列</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3d.h">
+      <Filter>行列</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4d.h">
+      <Filter>行列</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>行列</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Cylinder.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Loop.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitive.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>プリミティブ</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2d.h">
+      <Filter>点</Filter>
+    </ClInclude>
+    <ClInclude Include="Point3d.h">
+      <Filter>点</Filter>
+    </ClInclude>
+    <ClInclude Include="Point4d.h">
+      <Filter>点</Filter>
+    </ClInclude>
+    <ClInclude Include="Tolerances.h">
+      <Filter>トレランス</Filter>
+    </ClInclude>
+    <ClInclude Include="Space3d.h">
+      <Filter>空間</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

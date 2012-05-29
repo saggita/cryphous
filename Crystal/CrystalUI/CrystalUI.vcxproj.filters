@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="フォーム">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BoundarySettingForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportSettingForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsSettingForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="MainForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSettingForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleObserveForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationSettingForm.h">
+      <Filter>フォーム</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>リソース</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>フォーム</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="CrystalUI.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.ico">
+      <Filter>リソース</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>リソース</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BoundarySettingForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportSettingForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalForceSettingForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicsSettingForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resX">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectSettingForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParticleObserveForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimulationSettingForm.resx">
+      <Filter>リソース</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

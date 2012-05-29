@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="粒子">
+      <UniqueIdentifier>{89bdf7ec-5374-4f38-9036-001d680fc83a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="粒子\マクロ粒子">
+      <UniqueIdentifier>{d9f619e1-48a1-4bbd-98c3-db473185e36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="粒子\マクロ粒子\生成">
+      <UniqueIdentifier>{e28c8d3c-ad5b-4a67-9ce4-ec3211622e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="粒子\布粒子">
+      <UniqueIdentifier>{144fb5c2-8cdd-47d0-bc3b-974eda70355b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="粒子\布粒子\生成">
+      <UniqueIdentifier>{012ebd4f-09af-48f8-a416-da6ccdc5cc42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="物理オブジェクト">
+      <UniqueIdentifier>{9c8d95c0-fa90-49b8-8a52-d9bf02431bcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="物理オブジェクト\生成">
+      <UniqueIdentifier>{68e59b0e-0f21-4c66-8c9e-d2003c845162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="空間">
+      <UniqueIdentifier>{5a01c280-b786-4c3d-a8b7-28de2a27a316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="シミュレーション">
+      <UniqueIdentifier>{a621e9fe-e84a-42fe-8f3b-99c5746838a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="プロファイラ">
+      <UniqueIdentifier>{7823b1af-35fd-4b7d-a444-300735c43ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="インテグレータ">
+      <UniqueIdentifier>{1406f8b2-96ec-44b9-8ff3-0558ea5f2eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="インテグレータ\物理インテグレータ">
+      <UniqueIdentifier>{6fae077e-8171-4a30-8ef2-6f97da076126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="エンフォーサー">
+      <UniqueIdentifier>{3b919a7e-4b36-400d-b751-3d63e3bc3b9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="シミュレーション\物理ソルバ">
+      <UniqueIdentifier>{f8e942f3-9bde-496d-aec8-c702b55dc4dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="シミュレーション\物理ソルバ\カーネル">
+      <UniqueIdentifier>{0bb9aed7-6d81-4fe6-81ce-4061b6c24ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="シミュレーション\物理ソルバ\SPHソルバ">
+      <UniqueIdentifier>{7e185f9f-21cb-4a07-b1fd-502663a958f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="空間\高速近傍探索">
+      <UniqueIdentifier>{bd5e102a-494f-43c8-b590-74c883eca79a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BoundarySolver.cpp">
+      <Filter>シミュレーション\物理ソルバ</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidSolver.cpp">
+      <Filter>シミュレーション\物理ソルバ</Filter>
+    </ClCompile>
+    <ClCompile Include="Kernels.cpp">
+      <Filter>シミュレーション\物理ソルバ\カーネル</Filter>
+    </ClCompile>
+    <ClCompile Include="Kernels2D.cpp">
+      <Filter>シミュレーション\物理ソルバ\カーネル</Filter>
+    </ClCompile>
+    <ClCompile Include="Kernels3D.cpp">
+      <Filter>シミュレーション\物理ソルバ\カーネル</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>粒子\マクロ粒子</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleDerive.cpp">
+      <Filter>粒子\マクロ粒子</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticlePair.cpp">
+      <Filter>粒子\マクロ粒子</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleConditions.cpp">
+      <Filter>粒子\マクロ粒子\生成</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleFactory.cpp">
+      <Filter>粒子\マクロ粒子\生成</Filter>
+    </ClCompile>
+    <ClCompile Include="Spring.cpp">
+      <Filter>粒子\布粒子</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>物理オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObjectCondition.cpp">
+      <Filter>物理オブジェクト\生成</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObjectFactory.cpp">
+      <Filter>物理オブジェクト\生成</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>シミュレーション</Filter>
+    </ClCompile>
+    <ClCompile Include="SimulationSetting.cpp">
+      <Filter>シミュレーション</Filter>
+    </ClCompile>
+    <ClCompile Include="NeighborSearcher.cpp">
+      <Filter>空間\高速近傍探索</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchParticle.cpp">
+      <Filter>空間\高速近傍探索</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchParticleFactory.cpp">
+      <Filter>空間\高速近傍探索</Filter>
+    </ClCompile>
+    <ClCompile Include="Profiler.cpp">
+      <Filter>プロファイラ</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHSolver.cpp">
+      <Filter>シミュレーション\物理ソルバ\SPHソルバ</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalTimeIntegratorBase.cpp">
+      <Filter>インテグレータ\物理インテグレータ</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalTimeIntegrator.cpp">
+      <Filter>インテグレータ\物理インテグレータ</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeIntegratorBase.cpp">
+      <Filter>インテグレータ</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidEnforcer.cpp">
+      <Filter>エンフォーサー</Filter>
+    </ClCompile>
+    <ClCompile Include="EnforcerBase.cpp">
+      <Filter>エンフォーサー</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringParticle.cpp">
+      <Filter>粒子\布粒子</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringParticleFactory.cpp">
+      <Filter>粒子\布粒子\生成</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHPairSolver.cpp">
+      <Filter>シミュレーション\物理ソルバ\SPHソルバ</Filter>
+    </ClCompile>
+    <ClCompile Include="Fluid.cpp">
+      <Filter>物理オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigid.cpp">
+      <Filter>物理オブジェクト</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BoundarySolver.h">
+      <Filter>シミュレーション\物理ソルバ</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidSolver.h">
+      <Filter>シミュレーション\物理ソルバ</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernels.h">
+      <Filter>シミュレーション\物理ソルバ\カーネル</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernels2D.h">
+      <Filter>シミュレーション\物理ソルバ\カーネル</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernels3D.h">
+      <Filter>シミュレーション\物理ソルバ\カーネル</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>粒子\マクロ粒子</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleDerive.h">
+      <Filter>粒子\マクロ粒子</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticlePair.h">
+      <Filter>粒子\マクロ粒子</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleConditions.h">
+      <Filter>粒子\マクロ粒子\生成</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleFactory.h">
+      <Filter>粒子\マクロ粒子\生成</Filter>
+    </ClInclude>
+    <ClInclude Include="Spring.h">
+      <Filter>粒子\布粒子</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>物理オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObjectCondition.h">
+      <Filter>物理オブジェクト\生成</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObjectFactory.h">
+      <Filter>物理オブジェクト\生成</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
+      <Filter>シミュレーション</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationSetting.h">
+      <Filter>シミュレーション</Filter>
+    </ClInclude>
+    <ClInclude Include="NeighborSearcher.h">
+      <Filter>空間\高速近傍探索</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchParticle.h">
+      <Filter>空間\高速近傍探索</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchParticleFactory.h">
+      <Filter>空間\高速近傍探索</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h">
+      <Filter>プロファイラ</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHSolver.h">
+      <Filter>シミュレーション\物理ソルバ\SPHソルバ</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalTimeIntegratorBase.h">
+      <Filter>インテグレータ\物理インテグレータ</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalTimeIntegrator.h">
+      <Filter>インテグレータ\物理インテグレータ</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeIntegratorBase.h">
+      <Filter>インテグレータ</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidEnforcer.h">
+      <Filter>エンフォーサー</Filter>
+    </ClInclude>
+    <ClInclude Include="EnforcerBase.h">
+      <Filter>エンフォーサー</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringParticle.h">
+      <Filter>粒子\布粒子</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringParticleFactory.h">
+      <Filter>粒子\布粒子\生成</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHPairSolver.h">
+      <Filter>シミュレーション\物理ソルバ\SPHソルバ</Filter>
+    </ClInclude>
+    <ClInclude Include="Fluid.h">
+      <Filter>物理オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigid.h">
+      <Filter>物理オブジェクト</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
