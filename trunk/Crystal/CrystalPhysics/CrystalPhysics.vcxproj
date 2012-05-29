@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FE04C2F8-A5A5-4F34-A3FF-BFD09FB044B3}</ProjectGuid>
+    <RootNamespace>CrystalPhysicsLib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath)</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BOOST_PATH);$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BOOST_PATH);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BoundarySolver.cpp" />
+    <ClCompile Include="EnforcerBase.cpp" />
+    <ClCompile Include="PhysicalTimeIntegrator.cpp" />
+    <ClCompile Include="PhysicalTimeIntegratorBase.cpp" />
+    <ClCompile Include="RigidEnforcer.cpp" />
+    <ClCompile Include="SPHPairSolver.cpp" />
+    <ClCompile Include="SPHSolver.cpp" />
+    <ClCompile Include="RigidSolver.cpp" />
+    <ClCompile Include="Kernels.cpp" />
+    <ClCompile Include="Kernels2D.cpp" />
+    <ClCompile Include="Kernels3D.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleDerive.cpp" />
+    <ClCompile Include="ParticlePair.cpp" />
+    <ClCompile Include="ParticleConditions.cpp" />
+    <ClCompile Include="ParticleFactory.cpp" />
+    <ClCompile Include="Spring.cpp" />
+    <ClCompile Include="SpringParticle.cpp" />
+    <ClCompile Include="SpringParticleFactory.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="PhysicsObjectCondition.cpp" />
+    <ClCompile Include="PhysicsObjectFactory.cpp" />
+    <ClCompile Include="Fluid.cpp" />
+    <ClCompile Include="Rigid.cpp" />
+    <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="SimulationSetting.cpp" />
+    <ClCompile Include="NeighborSearcher.cpp" />
+    <ClCompile Include="SearchParticle.cpp" />
+    <ClCompile Include="SearchParticleFactory.cpp" />
+    <ClCompile Include="Profiler.cpp" />
+    <ClCompile Include="TimeIntegratorBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BoundarySolver.h" />
+    <ClInclude Include="EnforcerBase.h" />
+    <ClInclude Include="PhysicalTimeIntegrator.h" />
+    <ClInclude Include="PhysicalTimeIntegratorBase.h" />
+    <ClInclude Include="RigidEnforcer.h" />
+    <ClInclude Include="SPHPairSolver.h" />
+    <ClInclude Include="SPHSolver.h" />
+    <ClInclude Include="RigidSolver.h" />
+    <ClInclude Include="Kernels.h" />
+    <ClInclude Include="Kernels2D.h" />
+    <ClInclude Include="Kernels3D.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleDerive.h" />
+    <ClInclude Include="ParticlePair.h" />
+    <ClInclude Include="ParticleConditions.h" />
+    <ClInclude Include="ParticleFactory.h" />
+    <ClInclude Include="Spring.h" />
+    <ClInclude Include="SpringParticle.h" />
+    <ClInclude Include="SpringParticleFactory.h" />
+    <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="PhysicsObjectCondition.h" />
+    <ClInclude Include="PhysicsObjectFactory.h" />
+    <ClInclude Include="Fluid.h" />
+    <ClInclude Include="Rigid.h" />
+    <ClInclude Include="Simulation.h" />
+    <ClInclude Include="SimulationSetting.h" />
+    <ClInclude Include="NeighborSearcher.h" />
+    <ClInclude Include="SearchParticle.h" />
+    <ClInclude Include="SearchParticleFactory.h" />
+    <ClInclude Include="Profiler.h" />
+    <ClInclude Include="TimeIntegratorBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrystalGeom\CrystalGeom.vcxproj">
+      <Project>{fc36016d-b608-4558-93c3-5e756c5ec792}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
