@@ -10,6 +10,7 @@
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Profiler.h"
+#include "../CrystalPhysics/PhysicsObjectFactory.h"
 
 #include <boost/foreach.hpp>
 
@@ -35,7 +36,7 @@ void Renderer::init()
 	openGLWrapper.SetCurrentRenderingContext();
 }
 
-void Renderer::rendering(const ParticleVector& particles, const int width, const int height)
+void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const int height)
 {
 	Profiler::get()->start("RenderingTotal");
 
@@ -62,21 +63,23 @@ void Renderer::rendering(const ParticleVector& particles, const int width, const
 	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleY ), 0.0f, 1.0f, 0.0f );
 	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleZ ), 0.0f, 0.0f, 1.0f );
 
+	drawBoundaryBox();
+
+	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glDepthMask(GL_FALSE);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glPointSize( (GLfloat)(GraphicsSettings::get()->pointSize) );
 
-	drawBoundaryBox();
-
 	VisualObjects visualObjects;
-	visualObjects.drawParticles(particles);
+	visualObjects.drawParticles( factory->getSortedParticles());
 
 	glDepthMask(GL_TRUE);
 	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
 
-	visualObjects.drawSprings();
+	visualObjects.drawSprings( factory);
 	
 	glFlush();
 	openGLWrapper.EndRendering();

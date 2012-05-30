@@ -14,7 +14,6 @@ using namespace Crystal::Physics;
 
 PhysicsObjectFactoryTest::PhysicsObjectFactoryTest(void)
 {
-	PhysicsObjectFactory::get()->init();
 	createFluidTest();
 	createRigidTest();
 	createRigidTwoWayTest();
@@ -22,36 +21,36 @@ PhysicsObjectFactoryTest::PhysicsObjectFactoryTest(void)
 
 void PhysicsObjectFactoryTest::createFluidTest()
 {
+	PhysicsObjectFactory factory;
 	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid );
-	PhysicsObject* fluid = PhysicsObjectFactory::get()->createPhysicsObject( condition, 1.0);
+	PhysicsObject* fluid = factory.createPhysicsObject( condition, 1.0);
 	BOOST_CHECK( fluid != 0 );
 	BOOST_CHECK_EQUAL( fluid->getID(), 0 );
 	BOOST_CHECK_EQUAL( fluid->getType(), PhysicsObject::Fluid );
 	BOOST_CHECK( !fluid->getParticles().empty() );
 	BOOST_CHECK( fluid->getParticleGrid().empty() );
-	PhysicsObjectFactory::get()->init();
 }
 
 void PhysicsObjectFactoryTest::createRigidTest()
 {
+	PhysicsObjectFactory factory;
 	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Rigid);
-	PhysicsObject* rigid = PhysicsObjectFactory::get()->createPhysicsObject( condition, 1.0);
+	PhysicsObject* rigid = factory.createPhysicsObject( condition, 1.0);
 	BOOST_CHECK( rigid != 0 );
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );
 	BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Rigid );
 	BOOST_CHECK( !rigid->getParticles().empty() );
 	BOOST_CHECK( !rigid->getParticleGrid().empty() );
-	PhysicsObjectFactory::get()->init();
 }
 
 void PhysicsObjectFactoryTest::createRigidTwoWayTest()
 {
+	PhysicsObjectFactory factory;
 	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::RigidTwoWay );
-	PhysicsObject* rigid = PhysicsObjectFactory::get()->createPhysicsObject( condition, 1.0);
+	PhysicsObject* rigid = factory.createPhysicsObject( condition, 1.0);
 	BOOST_CHECK( rigid != 0 );
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );
 	BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Rigid );
 	BOOST_CHECK( !rigid->getParticles().empty() );
 	BOOST_CHECK( !rigid->getParticleGrid().empty() );
-	PhysicsObjectFactory::get()->init();
 }

@@ -4,6 +4,7 @@
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalPhysics/Profiler.h"
 #include "../CrystalPhysics/SimulationSetting.h"
+#include "ApplicationSettings.h"
 
 #include "../CrystalGraphics/Renderer.h"
 
@@ -17,7 +18,7 @@ SimulationCommand::SimulationCommand(void)
 
 void SimulationCommand::refresh()
 {
-	PhysicsObjectFactory::get()->reCreatePhysicsObject( SimulationSetting::get()->effectLength);
+	ApplicationSettings::get()->factory->reCreatePhysicsObject(  SimulationSetting::get()->effectLength);
 	Renderer::get()->init();	
 	Simulation::get()->init();
 	Profiler::get()->init();
@@ -27,7 +28,7 @@ void SimulationCommand::refresh()
 void SimulationCommand::proceed()
 {
 	stopWatch->Start();
-	Simulation::get()->simulate();
+	Simulation::get()->simulate( ApplicationSettings::get()->factory );
 	stopWatch->Stop();
 }
 

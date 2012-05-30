@@ -46,10 +46,10 @@ void VisualObjects::drawParticles(const ParticleVector& particles)
 	assert( glGetError() == GL_NO_ERROR );
 }
 
-void VisualObjects::drawSprings()
+void VisualObjects::drawSprings(PhysicsObjectFactory* factory)
 {
 
-	BOOST_FOREACH( PhysicsObject* object, PhysicsObjectFactory::get()->getPhysicsObjects() ) {
+	BOOST_FOREACH( PhysicsObject* object, factory->getPhysicsObjects() ) {
 		if( object->getType() == PhysicsObject::Fluid || object->getType() == PhysicsObject::Cloth ) {
 			continue;
 		}

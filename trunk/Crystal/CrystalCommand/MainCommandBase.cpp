@@ -6,6 +6,7 @@
 #include "AnimationCommandBase.h"
 #include "ProfileExportCommand.h"
 #include "ProfileInfoCommand.h"
+#include "ApplicationSettings.h"
 
 #include "../CrystalGraphics/Renderer.h"
 #include "../CrystalGraphics/GraphicsSettings.h"
@@ -58,8 +59,7 @@ void MainCommandBase::refreshSimulation()
 
 void MainCommandBase::rendering()
 {
-	const ParticleVector& particles = PhysicsObjectFactory::get()->getSortedParticles();
-	Renderer::get()->rendering( particles, pictureBox->Width, pictureBox->Height );
+	Renderer::get()->rendering( ApplicationSettings::get()->factory, pictureBox->Width, pictureBox->Height );
 }
 
 void MainCommandBase::displayInformation(System::Windows::Forms::ListBox^ listBox){

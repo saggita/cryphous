@@ -3,6 +3,7 @@
 #include "../CrystalPhysics/Profiler.h"
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
+#include "ApplicationSettings.h"
 
 #include "StringMarshaler.h"
 
@@ -21,7 +22,7 @@ void ProfileInfoCommand::display(System::Windows::Forms::ListBox^ listBox)
 	listBox->Items->Add("CrystalUI 1.1");
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
-	listBox->Items->Add("Particles = " + PhysicsObjectFactory::get()->getSortedParticles().size() );
+	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );
 	listBox->Items->Add("Step = " + Simulation::get()->getStep() );
 	listBox->Items->Add("Time = " + Simulation::get()->getSimulationTime() );
 	//listBox->Items->Add("realTime = " + stopWatch->Elapsed );

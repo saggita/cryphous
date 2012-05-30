@@ -4,29 +4,39 @@
 
 namespace Crystal {
 	namespace Physics {
+		class PhysicsObjectFactory;
 		class PhysicsObjectCondition;
 		typedef std::list<PhysicsObjectCondition*> PhysicsObjectConditionList;
 	}
 
 	namespace Command {
 
-/// アプリケーション設定クラス.
 public ref class ApplicationSettings
-{
-public:
-
-	/// コンストラクタ.
+{	
+private:
 	ApplicationSettings(void);
 
-	/// デストラクタ.
 	~ApplicationSettings();
 
-	/// XMLへ書き出す.
+
+	static ApplicationSettings^ instance;
+
+public:
+	static ApplicationSettings^ get() {
+		if( instance == nullptr ) {
+			instance =  gcnew ApplicationSettings();
+		}
+		return instance;
+	}
+
+public:
+
 	System::Xml::XmlDocument^ writeToXML();
 
-	/// XMLから読み込む.
 	bool readFromXML( System::Xml::XmlDocument^ doc );
+
+	Physics::PhysicsObjectFactory* factory;
 };
 
-	}	// namespace Command
-}	// namespace Crystal
+	}
+}

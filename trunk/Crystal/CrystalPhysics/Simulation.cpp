@@ -24,15 +24,13 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-void Simulation::simulate()
+void Simulation::simulate(PhysicsObjectFactory* factory)
 {
 	Profiler::get()->start("SimulationTotal");
 
-	PhysicsObjectFactory* factory = PhysicsObjectFactory::get();
-
 	PhysicsObjectList& physicsObjects = factory->getPhysicsObjects();
 
-	SPHSolver solver( SimulationSetting::get()->effectLength);
+	SPHSolver solver( factory, SimulationSetting::get()->effectLength);
 	solver.calculateInteraction();
 
 	const ParticleVector& particles = factory->getSortedParticles();

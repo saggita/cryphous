@@ -19,9 +19,6 @@ public:
 	void calculateBoundaryDensityTest();
 
 	void calculatePressureForceTest();
-
-private:
-	void createFactory();
 };
 
 #endif

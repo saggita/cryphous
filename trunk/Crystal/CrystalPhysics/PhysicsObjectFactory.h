@@ -18,16 +18,10 @@ namespace Crystal{
 
 class PhysicsObjectFactory : private boost::noncopyable
 {
-private:
+public:
 	PhysicsObjectFactory();
 
 	~PhysicsObjectFactory(void);
-
-public:
-	static PhysicsObjectFactory* get() {
-		static PhysicsObjectFactory factory;
-		return &factory;
-	}
 
 	void init();
 
