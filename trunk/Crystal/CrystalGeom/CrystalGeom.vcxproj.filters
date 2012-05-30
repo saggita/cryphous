@@ -16,9 +16,6 @@
     <Filter Include="トレランス">
       <UniqueIdentifier>{ca1e9e6c-6d2e-4a35-b2dd-2ababb24b1e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="空間">
-      <UniqueIdentifier>{7ce14117-55fa-4be8-8aad-d95714f7417a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector2d.cpp">
@@ -45,25 +42,10 @@
     <ClCompile Include="Box.cpp">
       <Filter>プリミティブ</Filter>
     </ClCompile>
-    <ClCompile Include="Cylinder.cpp">
-      <Filter>プリミティブ</Filter>
-    </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>プリミティブ</Filter>
     </ClCompile>
-    <ClCompile Include="Loop.cpp">
-      <Filter>プリミティブ</Filter>
-    </ClCompile>
     <ClCompile Include="Primitive.cpp">
-      <Filter>プリミティブ</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>プリミティブ</Filter>
-    </ClCompile>
-    <ClCompile Include="Square.cpp">
-      <Filter>プリミティブ</Filter>
-    </ClCompile>
-    <ClCompile Include="Triangle.cpp">
       <Filter>プリミティブ</Filter>
     </ClCompile>
     <ClCompile Include="Point2d.cpp">
@@ -77,9 +59,6 @@
     </ClCompile>
     <ClCompile Include="Tolerances.cpp">
       <Filter>トレランス</Filter>
-    </ClCompile>
-    <ClCompile Include="Space3d.cpp">
-      <Filter>空間</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,25 +86,10 @@
     <ClInclude Include="Box.h">
       <Filter>プリミティブ</Filter>
     </ClInclude>
-    <ClInclude Include="Cylinder.h">
-      <Filter>プリミティブ</Filter>
-    </ClInclude>
     <ClInclude Include="Line.h">
       <Filter>プリミティブ</Filter>
     </ClInclude>
-    <ClInclude Include="Loop.h">
-      <Filter>プリミティブ</Filter>
-    </ClInclude>
     <ClInclude Include="Primitive.h">
-      <Filter>プリミティブ</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>プリミティブ</Filter>
-    </ClInclude>
-    <ClInclude Include="Square.h">
-      <Filter>プリミティブ</Filter>
-    </ClInclude>
-    <ClInclude Include="Triangle.h">
       <Filter>プリミティブ</Filter>
     </ClInclude>
     <ClInclude Include="Point2d.h">
@@ -139,9 +103,6 @@
     </ClInclude>
     <ClInclude Include="Tolerances.h">
       <Filter>トレランス</Filter>
-    </ClInclude>
-    <ClInclude Include="Space3d.h">
-      <Filter>空間</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

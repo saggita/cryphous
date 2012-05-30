@@ -5,7 +5,6 @@
 #include "../CrystalGeom/Box.h"
 #include "../CrystalGeom/Point3d.h"
 #include "../CrystalGeom/Tolerances.h"
-#include "../CrystalGeom/Sphere.h"
 
 using namespace Crystal::Geom;
 
@@ -38,19 +37,5 @@ BoxTest::BoxTest(void)
 	{
 		Box box( Point3d( 10.0, 20.0, 30.0), Point3d( 30.0, 10.0, 10.0 ) );
 		BOOST_CHECK( box.getCenter() == Point3d( 20.0, 15.0, 20.0 ) );
-	}
-
-	{
-		Box box( Point3d( 10.0, 20.0, 30.0), Point3d( 40.0, 40.0, 40.0 ) );
-		Sphere sphere = box.getSphereCircumscribed();
-		BOOST_CHECK( sphere.getCenter() == Point3d(25.0, 30.0, 35.0) );
-		BOOST_CHECK_EQUAL( sphere.getRadius(), 15.0 );
-	}
-
-	{
-		Box box( Point3d( 10.0, 20.0, 30.0), Point3d( 40.0, 40.0, 40.0 ) );
-		Sphere sphere = box.getSphereInscribed();
-		BOOST_CHECK( sphere.getCenter() == Point3d(25.0, 30.0, 35.0) );
-		BOOST_CHECK_EQUAL( sphere.getRadius(), 5.0 );
 	}
 }

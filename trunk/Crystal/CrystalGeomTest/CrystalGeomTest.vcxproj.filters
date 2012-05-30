@@ -16,12 +16,6 @@
     <Filter Include="トレランステスト">
       <UniqueIdentifier>{c18db486-ea8c-497c-9a09-22a87977bb7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="空間テスト">
-      <UniqueIdentifier>{15f9d8a8-717e-4868-81c1-6f3ffbfe1529}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ublasTest">
-      <UniqueIdentifier>{e7f449f8-df40-484f-80cd-5f62ba1590e5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Matrix2dTest.cpp">
@@ -51,16 +45,7 @@
     <ClCompile Include="LineTest.cpp">
       <Filter>プリミティブテスト</Filter>
     </ClCompile>
-    <ClCompile Include="LoopTest.cpp">
-      <Filter>プリミティブテスト</Filter>
-    </ClCompile>
     <ClCompile Include="PrimitiveTest.cpp">
-      <Filter>プリミティブテスト</Filter>
-    </ClCompile>
-    <ClCompile Include="SquareTest.cpp">
-      <Filter>プリミティブテスト</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleTest.cpp">
       <Filter>プリミティブテスト</Filter>
     </ClCompile>
     <ClCompile Include="Vector2dTest.cpp">
@@ -75,16 +60,7 @@
     <ClCompile Include="TolerancesTest.cpp">
       <Filter>トレランステスト</Filter>
     </ClCompile>
-    <ClCompile Include="Space3dTest.cpp">
-      <Filter>空間テスト</Filter>
-    </ClCompile>
-    <ClCompile Include="UblasTest.cpp">
-      <Filter>ublasTest</Filter>
-    </ClCompile>
     <ClCompile Include="CrystalGeomTest.cpp" />
-    <ClCompile Include="SphereTest.cpp">
-      <Filter>プリミティブテスト</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix2dTest.h">
@@ -114,16 +90,7 @@
     <ClInclude Include="LineTest.h">
       <Filter>プリミティブテスト</Filter>
     </ClInclude>
-    <ClInclude Include="LoopTest.h">
-      <Filter>プリミティブテスト</Filter>
-    </ClInclude>
     <ClInclude Include="PrimitiveTest.h">
-      <Filter>プリミティブテスト</Filter>
-    </ClInclude>
-    <ClInclude Include="SquareTest.h">
-      <Filter>プリミティブテスト</Filter>
-    </ClInclude>
-    <ClInclude Include="TriangleTest.h">
       <Filter>プリミティブテスト</Filter>
     </ClInclude>
     <ClInclude Include="Vector2dTest.h">
@@ -137,15 +104,6 @@
     </ClInclude>
     <ClInclude Include="TolerancesTest.h">
       <Filter>トレランステスト</Filter>
-    </ClInclude>
-    <ClInclude Include="Space3dTest.h">
-      <Filter>空間テスト</Filter>
-    </ClInclude>
-    <ClInclude Include="UblasTest.h">
-      <Filter>ublasTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SphereTest.h">
-      <Filter>プリミティブテスト</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

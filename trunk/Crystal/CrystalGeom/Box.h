@@ -51,10 +51,6 @@ public:
 		return getOuterOffset( -offsetLength );
 	}
 
-	Sphere getSphereCircumscribed() const;
-
-	Sphere getSphereInscribed() const;
-
 private:
 	double maxX;
 	double minX;
