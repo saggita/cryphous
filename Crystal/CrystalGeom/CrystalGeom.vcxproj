@@ -74,18 +74,12 @@
     <ClCompile Include="Matrix4d.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Box.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Loop.cpp" />
     <ClCompile Include="Primitive.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Square.cpp" />
-    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Point2d.cpp" />
     <ClCompile Include="Point3d.cpp" />
     <ClCompile Include="Point4d.cpp" />
     <ClCompile Include="Tolerances.cpp" />
-    <ClCompile Include="Space3d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2d.h" />
@@ -96,18 +90,12 @@
     <ClInclude Include="Matrix4d.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Box.h" />
-    <ClInclude Include="Cylinder.h" />
     <ClInclude Include="Line.h" />
-    <ClInclude Include="Loop.h" />
     <ClInclude Include="Primitive.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Square.h" />
-    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Point2d.h" />
     <ClInclude Include="Point3d.h" />
     <ClInclude Include="Point4d.h" />
     <ClInclude Include="Tolerances.h" />
-    <ClInclude Include="Space3d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

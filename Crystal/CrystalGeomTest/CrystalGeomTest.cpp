@@ -15,12 +15,7 @@
 #include "QuaternionTest.h"
 #include "PrimitiveTest.h"
 #include "LineTest.h"
-#include "LoopTest.h"
-#include "TriangleTest.h"
-#include "Space3dTest.h"
-#include "SquareTest.h"
-#include "SphereTest.h"
-#include "UblasTest.h"
+
 
 BOOST_AUTO_TEST_CASE( CrystalGeomTest )
 {
@@ -37,11 +32,4 @@ BOOST_AUTO_TEST_CASE( CrystalGeomTest )
 	Matrix4dTest matrix4dTest;
 	QuaternionTest quaternionTest;
 	PrimitiveTest primitiveTest;
-	LineTest lineTest;
-	LoopTest loopTest;
-	TriangleTest triangleTest;
-	Space3dTest space3dTest;
-	SquareTest squareTest;
-	SphereTest sphereTest;
-	UblasTest ublasTest;
 }

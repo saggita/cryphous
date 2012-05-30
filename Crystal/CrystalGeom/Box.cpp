@@ -1,7 +1,6 @@
 #include "Box.h"
 
 #include "Point3d.h"
-#include "Sphere.h"
 
 #include <algorithm>
 
@@ -75,18 +74,4 @@ Box Box::getOuterOffset(const double offsetLength) const
 	Box box = *this;
 	box.outerOffset( offsetLength );
 	return box;
-}
-
-Sphere Box::getSphereCircumscribed() const
-{
-	Vector3d vector( getMin(), getMax() );
-	const double radius = vector.getMaxElement() * 0.5;
-	return Sphere( getCenter(), radius );
-}
-
-Sphere Box::getSphereInscribed() const
-{
-	Vector3d vector( getMin(), getMax() );
-	const double radius = vector.getMinElement() * 0.5;
-	return Sphere( getCenter(), radius );
 }
