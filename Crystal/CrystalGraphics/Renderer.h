@@ -8,8 +8,7 @@
 
 namespace Crystal{
 	namespace Physics{
-		class Particle;
-		typedef std::vector<Particle*> ParticleVector;
+		class PhysicsObjectFactory;
 	}
 	namespace Graphics{
 		class VisualPrimitiveFactory;
@@ -36,7 +35,7 @@ public:
 
 	void init();
 
-	void rendering(const Physics::ParticleVector& particles, const int width, const int height);
+	void rendering(Physics::PhysicsObjectFactory *factory, const int width, const int height);
 
 protected:
 

@@ -22,16 +22,17 @@ using namespace System::Xml;
 
 ApplicationSettings::ApplicationSettings(void)
 {
+	factory = new PhysicsObjectFactory;
 }
 
 ApplicationSettings::~ApplicationSettings()
 {
+	delete factory;
 }
 
-/// XML‚Ö‘‚«o‚·.
 XmlDocument^ ApplicationSettings::writeToXML()
 {
-	const PhysicsObjectConditionList& conditions = PhysicsObjectFactory::get()->getConditions();
+	const PhysicsObjectConditionList& conditions = factory->getConditions();
 
 	SimulationSetting* simulationSetting = SimulationSetting::get();
 
@@ -103,7 +104,7 @@ XmlDocument^ ApplicationSettings::writeToXML()
 
 bool ApplicationSettings::readFromXML( XmlDocument^ doc )
 {
-	PhysicsObjectFactory::get()->init();
+	factory->init();
 	SimulationSetting* simulationSetting = SimulationSetting::get();
 
 	XmlElement^ root = doc->DocumentElement;
@@ -145,7 +146,7 @@ bool ApplicationSettings::readFromXML( XmlDocument^ doc )
 		PhysicsObjectCondition* condition = 
 			new PhysicsObjectCondition( box, density, divide, pressure, viscosity, (PhysicsObjectCondition::ObjectType)type );
 
-		PhysicsObjectFactory::get()->createPhysicsObject( *condition, SimulationSetting::get()->effectLength );
+		factory->createPhysicsObject( *condition, SimulationSetting::get()->effectLength );
 	}
 	return true;
 }

@@ -41,7 +41,8 @@
 using namespace Crystal::Physics;
 using namespace Crystal::Geom;
 
-SPHSolver::SPHSolver(const double effectLength) :
+SPHSolver::SPHSolver(PhysicsObjectFactory* factory, const double effectLength) :
+factory( factory),
 effectLength( effectLength),
 neighborSearcher( 0),
 sphPairSolver( new SPHPairSolver( effectLength ) )
@@ -56,8 +57,6 @@ SPHSolver::~SPHSolver()
 
 void SPHSolver::calculateInteraction()
 {
-	PhysicsObjectFactory* factory = PhysicsObjectFactory::get();
-
 	PhysicsObjectList& objects = factory->getPhysicsObjects();
 	ParticleVector particles = factory->getSortedParticles();
 	if( particles.empty() ) {
@@ -81,8 +80,13 @@ void SPHSolver::calculateInteraction()
 	calculateDensity();
 
 	Profiler::get()->start(" Sim->interaction");
-	calculatePressureForce();
-	calculateViscosityForce();
+	std::vector<ParticlePair*> pairs = neighborSearcher->getPairs();
+	#pragma omp parallel for
+	//BOOST_FOREACH( ParticlePair* pair, pairs ) {
+	for( int i = 0; i < (int)(pairs.size()); ++i ) {
+		sphPairSolver->calculatePressureForce( pairs[i]);
+		sphPairSolver->calculateViscosityForce( pairs[i]);
+	}
 	Profiler::get()->end(" Sim->interaction");
 
 	calculateBoundaryForce();
@@ -93,7 +97,7 @@ void SPHSolver::createPairs()
 {
 	assert( neighborSearcher == 0 );
 	Profiler::get()->start(" Sim->sorting");
-	const SearchParticleVector& sorted = PhysicsObjectFactory::get()->getSearchParticles(effectLength);
+	const SearchParticleVector& sorted = factory->getSearchParticles(effectLength);
 	Profiler::get()->end(" Sim->sorting");
 
 	Profiler::get()->start(" Sim->search");
@@ -104,23 +108,24 @@ void SPHSolver::createPairs()
 
 void SPHSolver::calculateDensity()
 {
+	Profiler::get()->start(" Sim->density");
 	std::vector<ParticlePair*> pairs = neighborSearcher->getPairs();
 	BOOST_FOREACH( ParticlePair* pair, pairs) {
 		sphPairSolver->calculateBoundaryDensity( pair);
 	}
-	const ParticleVector& particles = PhysicsObjectFactory::get()->getSortedParticles();
+	const ParticleVector& particles = factory->getSortedParticles();
 
 	BOOST_FOREACH( Particle* particle, particles ) {
 		sphPairSolver->calculateDensity( particle );
 	}
 
-	//Profiler::get()->end("density");
+	Profiler::get()->end(" Sim->density");
 }
 
 void SPHSolver::calculateBoundaryForce()
 {
 	Profiler::get()->start(" Sim->boundary");
-	const PhysicsObjectList& objects = PhysicsObjectFactory::get()->getPhysicsObjects();
+	const PhysicsObjectList& objects = factory->getPhysicsObjects();
 	BOOST_FOREACH( PhysicsObject* object, objects ) {
 		const ParticleVector& particles = object->getParticles();
 		Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
@@ -129,24 +134,4 @@ void SPHSolver::calculateBoundaryForce()
 		boundarySolver.calculateForce( SimulationSetting::get()->boundaryBox );
 	}
 	Profiler::get()->end(" Sim->boundary");
-}
-
-void SPHSolver::calculatePressureForce()
-{
-	std::vector<ParticlePair*> pairs = neighborSearcher->getPairs();
-	#pragma omp parallel for
-	//BOOST_FOREACH( ParticlePair* pair, pairs ) {
-	for( int i = 0; i < (int)(pairs.size()); ++i ) {
-		sphPairSolver->calculatePressureForce( pairs[i]);
-	}
-}
-		
-void SPHSolver::calculateViscosityForce()
-{
-	std::vector<ParticlePair*> pairs = neighborSearcher->getPairs();
-	#pragma omp parallel for
-	//BOOST_FOREACH( ParticlePair* pair, pairs ) {
-	for( int i = 0; i < (int)(pairs.size()); ++i ) {
-		sphPairSolver->calculateViscosityForce( pairs[i]);
-	}
 }

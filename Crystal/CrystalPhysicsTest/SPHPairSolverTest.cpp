@@ -19,7 +19,6 @@ using namespace Crystal::Physics;
 
 SPHPairSolverTest::SPHPairSolverTest()
 {
-	createFactory();
 	calculateDensityTest();
 	calculatePressureForceTest();
 	calculateBoundaryDensityTest();
@@ -27,12 +26,16 @@ SPHPairSolverTest::SPHPairSolverTest()
 
 SPHPairSolverTest::~SPHPairSolverTest()
 {
-	PhysicsObjectFactory::get()->init();
 }
 
 void SPHPairSolverTest::calculateDensityTest()
 {
-	const ParticleVector&	particles = PhysicsObjectFactory::get()->getPhysicsObjects().front()->getParticles();
+	PhysicsObjectFactory factory;
+	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
+	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, 1.0);
+
+	const ParticleVector& particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
 
 	SPHPairSolver solver( 1.3 );
@@ -46,7 +49,11 @@ void SPHPairSolverTest::calculateDensityTest()
 
 void SPHPairSolverTest::calculateBoundaryDensityTest()
 {
-	const ParticleVector&	particles = PhysicsObjectFactory::get()->getPhysicsObjects().front()->getParticles();
+	PhysicsObjectFactory factory;
+	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
+	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, 1.0);
+	const ParticleVector&	particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
 
 	SPHPairSolver solver( 1.3 );
@@ -60,21 +67,19 @@ void SPHPairSolverTest::calculateBoundaryDensityTest()
 
 void SPHPairSolverTest::calculatePressureForceTest()
 {
-	const ParticleVector& particles = PhysicsObjectFactory::get()->getPhysicsObjects().front()->getParticles();
+	PhysicsObjectFactory factory;
+	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
+	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, 1.0);
+	const ParticleVector& particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
 
 	SPHPairSolver solver( 1.3 );
+	solver.calculateDensity( &pair );
 	solver.calculatePressureForce( &pair);
 	const Vector3d& forceX = particles.front()->getDerive()->force;
 	const Vector3d& forceY = particles.back()->getDerive()->force;
 	BOOST_CHECK( !forceX.isZero() );
 	BOOST_CHECK( !forceY.isZero() );
 	BOOST_CHECK( forceX == forceY * -1.0 );
-}
-
-void SPHPairSolverTest::createFactory()
-{
-	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
-	PhysicsObject* fluid = PhysicsObjectFactory::get()->createPhysicsObject( conditionFluid, 1.0);
 }

@@ -6,6 +6,8 @@
 #include "../CrystalGeom/Box.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 
+#include "ApplicationSettings.h"
+
 #include <boost/foreach.hpp>
 
 using namespace Crystal::Geom;
@@ -34,7 +36,7 @@ void ObjectSettingCommand::displaySettings()
 {
 	view->Rows->Clear();
 
-	PhysicsObjectConditionList& conditions = PhysicsObjectFactory::get()->getConditions();
+	PhysicsObjectConditionList& conditions = ApplicationSettings::get()->factory->getConditions();
 
 	for( PhysicsObjectConditionList::iterator iter = conditions.begin();
 		iter != conditions.end(); ++iter ) {
@@ -51,12 +53,6 @@ void ObjectSettingCommand::displaySettings()
 			case PhysicsObjectCondition::RigidTwoWay :
 				type = "Rigid";
 				break;
-			/*case PhysicsObjectCondition::Air :
-				type = "Air";
-				break;
-			case PhysicsObjectCondition::Cloth :
-				type = "Cloth";
-				break;*/
 			default:
 				System::Diagnostics::Debug::Assert( false );
 		}
@@ -78,7 +74,7 @@ void ObjectSettingCommand::displaySettings()
 
 void ObjectSettingCommand::saveSettings()
 {
-	PhysicsObjectFactory::get()->init();
+	ApplicationSettings::get()->factory->init();
 
 	for each( DataGridViewRow^ row in view->Rows ) {
 		PhysicsObjectCondition::ObjectType objectType = PhysicsObjectCondition::Fluid;
@@ -92,12 +88,6 @@ void ObjectSettingCommand::saveSettings()
 		else if( row->Cells[0]->Value->ToString() == "Rigid") {
 			objectType = PhysicsObjectCondition::RigidTwoWay;
 		}
-		/*else if( row->Cells[0]->Value->ToString() == "Air") {
-			objectType = PhysicsObjectCondition::Air;
-		}
-		else if( row->Cells[0]->Value->ToString() == "Cloth") {
-			objectType = PhysicsObjectCondition::Cloth;
-		}*/
 		else{
 			Debug::Assert( false );
 		}
@@ -121,7 +111,7 @@ void ObjectSettingCommand::saveSettings()
 			viscosityCoe,
 			objectType
 			);
-		PhysicsObjectFactory::get()->createPhysicsObject( *condition, SimulationSetting::get()->effectLength );
+		ApplicationSettings::get()->factory->createPhysicsObject( *condition, SimulationSetting::get()->effectLength );
 	}
 }
 

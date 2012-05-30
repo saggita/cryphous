@@ -20,8 +20,9 @@ using namespace Crystal::Physics;
 
 BoundarySolverTest::BoundarySolverTest(void)
 {
+	PhysicsObjectFactory factory;
 	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 1.0, 0.0, PhysicsObjectCondition::Fluid );
-	PhysicsObject* object = PhysicsObjectFactory::get()->createPhysicsObject( condition, 1.0 );
+	PhysicsObject* object = factory.createPhysicsObject( condition, 1.0 );
 	Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
 	BoundarySolver solver( object, 1.3 );
 	solver.calculateDensity( Box() );

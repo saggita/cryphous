@@ -26,11 +26,11 @@ bool FileIOCommand::fileOpen()
 
 bool FileIOCommand::fileOpen(String^ path)
 {
-	ApplicationSettings^ applicationSettings = gcnew ApplicationSettings();
+	//ApplicationSettings^ applicationSettings = gcnew ApplicationSettings();
 	XmlDocument^ doc = gcnew XmlDocument();
 	doc->Load( path );
 	fileName = path;
-	return applicationSettings->readFromXML( doc );
+	return ApplicationSettings::get()->readFromXML( doc );
 }
 
 bool FileIOCommand::fileSave()
@@ -46,8 +46,8 @@ bool FileIOCommand::fileSave()
 
 bool FileIOCommand::fileSave(String ^path)
 {
-	ApplicationSettings^ applicationSettings = gcnew ApplicationSettings();
-	applicationSettings->writeToXML()->Save( path );
+	//ApplicationSettings^ applicationSettings = gcnew ApplicationSettings();
+	ApplicationSettings::get()->writeToXML()->Save( path );
 	fileName = path;
 	return true;
 }
