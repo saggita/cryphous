@@ -1,4 +1,5 @@
 #include "BoundarySettingCommand.h"
+#include "ApplicationSettings.h"
 
 #include "../CrystalPhysics/SimulationSetting.h"
 
@@ -19,7 +20,7 @@ void BoundarySettingCommand::displayBoundarySetting(System::Windows::Forms::Data
 {
 	view->Rows->Clear();
 
-	const Box& box = SimulationSetting::get()->boundaryBox;
+	const Box& box = ApplicationSettings::get()->simulationSetting->boundaryBox;
 
 	array<Object^>^ minData = {
 		box.getMinX(), box.getMinY(), box.getMinZ()
@@ -42,6 +43,6 @@ void BoundarySettingCommand::saveBoundarySetting(System::Windows::Forms::DataGri
 	const double maxY = Convert::ToDouble( view->Rows[1]->Cells[1]->Value );
 	const double maxZ = Convert::ToDouble( view->Rows[1]->Cells[2]->Value );
 
-	SimulationSetting::get()->boundaryBox = Box( Crystal::Geom::Point3d( minX, minY, minZ), 
+	 ApplicationSettings::get()->simulationSetting->boundaryBox = Box( Crystal::Geom::Point3d( minX, minY, minZ), 
 		Crystal::Geom::Point3d( maxX, maxY, maxZ) );
 }

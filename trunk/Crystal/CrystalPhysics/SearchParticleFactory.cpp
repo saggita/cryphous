@@ -11,7 +11,7 @@ using namespace Crystal::Physics;
 SearchParticleFactory::SearchParticleFactory(const ParticleVector& particles, const double effectLength)
 {
 	for( size_t i = 0; i < particles.size(); ++i ) {
-		SearchParticle sParticle( particles[i] );
+		SearchParticle sParticle( particles[i], effectLength );
 		searchParticles.push_back( sParticle );
 	}
 	std::sort( searchParticles.begin(), searchParticles.end() );
@@ -20,7 +20,7 @@ SearchParticleFactory::SearchParticleFactory(const ParticleVector& particles, co
 void SearchParticleFactory::addParticles(const ParticleVector& particles, const double effectLength)
 {
 	for( size_t i = 0; i < particles.size(); ++i ) {
-		SearchParticle sParticle( particles[i] );
+		SearchParticle sParticle( particles[i], effectLength );
 		searchParticles.push_back( sParticle );
 	}
 	std::sort( searchParticles.begin(), searchParticles.end() );

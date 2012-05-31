@@ -13,12 +13,13 @@ namespace Crystal{
 		class ParticleFactory;
 		typedef std::vector<Particle*> ParticleVector;
 		class PhysicsObject;
+		class SimulationSetting;
 
 class BoundarySolver
 {
 public:
 
-	BoundarySolver(PhysicsObject* object, const double effectLength );
+	BoundarySolver(PhysicsObject* object, const SimulationSetting& setting );
 
 	void calculateDensity(const Geom::Box& box);
 
@@ -33,7 +34,7 @@ private:
 private:
 	PhysicsObject* object;
 	Particle* virtualParticle;
-	const double effectLength;
+	const SimulationSetting& setting;
 };
 
 	}

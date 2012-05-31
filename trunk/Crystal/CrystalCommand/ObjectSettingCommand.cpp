@@ -111,7 +111,7 @@ void ObjectSettingCommand::saveSettings()
 			viscosityCoe,
 			objectType
 			);
-		ApplicationSettings::get()->factory->createPhysicsObject( *condition, SimulationSetting::get()->effectLength );
+		ApplicationSettings::get()->factory->createPhysicsObject( *condition,  ApplicationSettings::get()->simulationSetting->effectLength );
 	}
 }
 

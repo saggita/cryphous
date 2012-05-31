@@ -18,7 +18,7 @@ SimulationCommand::SimulationCommand(void)
 
 void SimulationCommand::refresh()
 {
-	ApplicationSettings::get()->factory->reCreatePhysicsObject(  SimulationSetting::get()->effectLength);
+	ApplicationSettings::get()->factory->reCreatePhysicsObject( ApplicationSettings::get()->simulationSetting->effectLength);
 	Renderer::get()->init();	
 	Simulation::get()->init();
 	Profiler::get()->init();
@@ -28,7 +28,7 @@ void SimulationCommand::refresh()
 void SimulationCommand::proceed()
 {
 	stopWatch->Start();
-	Simulation::get()->simulate( ApplicationSettings::get()->factory );
+	Simulation::get()->simulate( ApplicationSettings::get()->factory, *(ApplicationSettings::get()->simulationSetting) );
 	stopWatch->Stop();
 }
 

@@ -6,7 +6,7 @@ namespace Crystal {
 	namespace Physics {
 		class PhysicsObjectFactory;
 		class PhysicsObjectCondition;
-		typedef std::list<PhysicsObjectCondition*> PhysicsObjectConditionList;
+		class SimulationSetting;
 	}
 
 	namespace Command {
@@ -17,7 +17,6 @@ private:
 	ApplicationSettings(void);
 
 	~ApplicationSettings();
-
 
 	static ApplicationSettings^ instance;
 
@@ -36,6 +35,8 @@ public:
 	bool readFromXML( System::Xml::XmlDocument^ doc );
 
 	Physics::PhysicsObjectFactory* factory;
+
+	Physics::SimulationSetting* simulationSetting;
 };
 
 	}

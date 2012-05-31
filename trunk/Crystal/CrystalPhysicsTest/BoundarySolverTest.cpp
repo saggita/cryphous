@@ -24,6 +24,8 @@ BoundarySolverTest::BoundarySolverTest(void)
 	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 1.0, 0.0, PhysicsObjectCondition::Fluid );
 	PhysicsObject* object = factory.createPhysicsObject( condition, 1.0 );
 	Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
-	BoundarySolver solver( object, 1.3 );
+	SimulationSetting setting;
+	setting.effectLength = 1.3;
+	BoundarySolver solver( object, setting );
 	solver.calculateDensity( Box() );
 }
