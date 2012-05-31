@@ -20,14 +20,13 @@ public:
 
 	SearchParticle(){};
 
-	SearchParticle(Particle* particle): particle(particle){
-		setGridID( particle->center );
+	SearchParticle(Particle* particle, const double effectLength): particle(particle){
+		setGridID( particle->center, effectLength );
 	}
 
 	~SearchParticle(void){};
 
-	void setGridID(const Geom::Point3d& point) {
-		double effectLength = SimulationSetting::get()->effectLength;
+	void setGridID(const Geom::Point3d& point, const double effectLength) {
 		gridX = static_cast<int>( point.getX() / effectLength );
 		gridY = static_cast<int>( point.getY() / effectLength );
 		gridZ = static_cast<int>( point.getZ() / effectLength );

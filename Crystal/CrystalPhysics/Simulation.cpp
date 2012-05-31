@@ -24,13 +24,13 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-void Simulation::simulate(PhysicsObjectFactory* factory)
+void Simulation::simulate(PhysicsObjectFactory* factory, const SimulationSetting& setting)
 {
 	Profiler::get()->start("SimulationTotal");
 
 	PhysicsObjectList& physicsObjects = factory->getPhysicsObjects();
 
-	SPHSolver solver( factory, SimulationSetting::get()->effectLength);
+	SPHSolver solver( factory, setting);
 	solver.calculateInteraction();
 
 	const ParticleVector& particles = factory->getSortedParticles();
@@ -41,18 +41,18 @@ void Simulation::simulate(PhysicsObjectFactory* factory)
 
 	Profiler::get()->start(" Sim->enforce");
 	BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-		object->enforce( SimulationSetting::get()->timeStep );
+		object->enforce( setting.timeStep );
 	}
 	Profiler::get()->end(" Sim->enforce");
 
 	Profiler::get()->start(" Sim->timeIntegrate");
 	BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-		object->integrateTime( SimulationSetting::get()->timeStep );
+		object->integrateTime( setting.timeStep );
 	}
 	Profiler::get()->end(" Sim->timeIntegrate");
 
 	++step;
-	simulationTime += SimulationSetting::get()->timeStep;
+	simulationTime += setting.timeStep;
 
 	Profiler::get()->end("SimulationTotal");
 }

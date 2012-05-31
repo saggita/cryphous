@@ -1,4 +1,5 @@
 #include "SimulationSettingCommand.h"
+#include "ApplicationSettings.h"
 
 #include "../CrystalPhysics/SimulationSetting.h"
 
@@ -14,7 +15,7 @@ SimulationSettingCommand::SimulationSettingCommand(void)
 
 void SimulationSettingCommand::setTextBox(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength )
 {
-	SimulationSetting* setting = SimulationSetting::get();
+	SimulationSetting* setting = ApplicationSettings::get()->simulationSetting;
 
 	itemAndVariables.Clear();
 	itemAndVariables.Push( gcnew DoubleTextBox( &(setting->timeStep), textBoxTimeStep ) );

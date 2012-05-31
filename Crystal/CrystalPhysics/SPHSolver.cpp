@@ -41,11 +41,11 @@
 using namespace Crystal::Physics;
 using namespace Crystal::Geom;
 
-SPHSolver::SPHSolver(PhysicsObjectFactory* factory, const double effectLength) :
+SPHSolver::SPHSolver(PhysicsObjectFactory* factory, const SimulationSetting& setting) :
 factory( factory),
-effectLength( effectLength),
+setting( setting),
 neighborSearcher( 0),
-sphPairSolver( new SPHPairSolver( effectLength ) )
+sphPairSolver( new SPHPairSolver( setting.effectLength ) )
 {
 }
 
@@ -75,7 +75,7 @@ void SPHSolver::calculateInteraction()
 
 	createPairs();
 		
-	SPHPairSolver solver( effectLength );
+	SPHPairSolver solver( setting.effectLength );
 
 	calculateDensity();
 
@@ -97,11 +97,11 @@ void SPHSolver::createPairs()
 {
 	assert( neighborSearcher == 0 );
 	Profiler::get()->start(" Sim->sorting");
-	const SearchParticleVector& sorted = factory->getSearchParticles(effectLength);
+	const SearchParticleVector& sorted = factory->getSearchParticles( setting.effectLength);
 	Profiler::get()->end(" Sim->sorting");
 
 	Profiler::get()->start(" Sim->search");
-	neighborSearcher = new NeighborSearcher( sorted, effectLength );
+	neighborSearcher = new NeighborSearcher( sorted, setting.effectLength );
 	neighborSearcher->search();
 	Profiler::get()->end(" Sim->search");
 }
@@ -130,8 +130,8 @@ void SPHSolver::calculateBoundaryForce()
 		const ParticleVector& particles = object->getParticles();
 		Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
 		
-		BoundarySolver boundarySolver( object, effectLength );
-		boundarySolver.calculateForce( SimulationSetting::get()->boundaryBox );
+		BoundarySolver boundarySolver( object, setting );
+		boundarySolver.calculateForce( setting.boundaryBox );
 	}
 	Profiler::get()->end(" Sim->boundary");
 }

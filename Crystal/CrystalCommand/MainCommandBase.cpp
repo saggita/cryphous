@@ -59,7 +59,7 @@ void MainCommandBase::refreshSimulation()
 
 void MainCommandBase::rendering()
 {
-	Renderer::get()->rendering( ApplicationSettings::get()->factory, pictureBox->Width, pictureBox->Height );
+	Renderer::get()->rendering( ApplicationSettings::get()->factory, pictureBox->Width, pictureBox->Height, ApplicationSettings::get()->simulationSetting->boundaryBox );
 }
 
 void MainCommandBase::displayInformation(System::Windows::Forms::ListBox^ listBox){

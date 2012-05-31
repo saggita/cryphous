@@ -7,6 +7,9 @@
 #include "Texture.h"
 
 namespace Crystal{
+	namespace Geom{
+		class Box;
+	}
 	namespace Physics{
 		class PhysicsObjectFactory;
 	}
@@ -35,11 +38,11 @@ public:
 
 	void init();
 
-	void rendering(Physics::PhysicsObjectFactory *factory, const int width, const int height);
+	void rendering(Physics::PhysicsObjectFactory *factory, const int width, const int height, const Geom::Box& boundaryBox);
 
 protected:
 
-	void drawBoundaryBox();
+	void drawBoundaryBox(const Geom::Box& box);
 
 private:
 	OpenGLWrapper openGLWrapper;

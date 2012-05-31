@@ -19,15 +19,16 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-BoundarySolver::BoundarySolver(PhysicsObject* object, const double effectLength )
+BoundarySolver::BoundarySolver(PhysicsObject* object, const SimulationSetting& setting)
 : object( object),
 virtualParticle( object->getParticleFactory()->getVirtualParticle()),
-effectLength( effectLength)
+setting( setting)
 {
 }
 
 void BoundarySolver::calculateDensity(const Box& box)
 {
+	const double effectLength = setting.effectLength;
 	BOOST_FOREACH( Particle* particle, object->getParticles() ) {
 		// XŽ²‹«ŠE‚ð”»’è‚·‚é.
 		if( particle->center.getX() > box.getMaxX() + particle->getRadius() - effectLength ) {
@@ -73,8 +74,7 @@ void BoundarySolver::calculateForce(const Box& box)
 		return;
 	}
 
-	SimulationSetting* simulationSetting = SimulationSetting::get();
-	const double timeStep = simulationSetting->timeStep;
+	const double timeStep = setting.timeStep;
 	const Box& innerBox = box.getInnerOffset( object->getParticles().front()->getRadius() );
 
 	BOOST_FOREACH( Particle* particle, object->getParticles() ) {
@@ -120,7 +120,7 @@ void BoundarySolver::calculateDensity(Particle* particle, const Point3d boundary
 	virtualParticle->setParent( particle->getParent() );
 
 	ParticlePair pair( particle, virtualParticle );
-	SPHPairSolver solver( effectLength );
+	SPHPairSolver solver( setting.effectLength );
 	solver.calculateDensity( &pair);
 }
 

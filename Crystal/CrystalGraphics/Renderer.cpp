@@ -36,7 +36,7 @@ void Renderer::init()
 	openGLWrapper.SetCurrentRenderingContext();
 }
 
-void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const int height)
+void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const int height, const Box& boundaryBox)
 {
 	Profiler::get()->start("RenderingTotal");
 
@@ -63,7 +63,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleY ), 0.0f, 1.0f, 0.0f );
 	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleZ ), 0.0f, 0.0f, 1.0f );
 
-	drawBoundaryBox();
+	drawBoundaryBox(boundaryBox);
 
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
@@ -87,13 +87,12 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	Profiler::get()->end("RenderingTotal");
 }
 
-void Renderer::drawBoundaryBox()
+void Renderer::drawBoundaryBox(const Box& box)
 {
 	if( !GraphicsSettings::get()->drawBoundingBox ) {
 		return;
 	}
-	const Box& box = SimulationSetting::get()->boundaryBox;
-
+	
 	glPushMatrix();
 
 	glColor4d( 0.0, 0.0, 0.0, 1.0 );

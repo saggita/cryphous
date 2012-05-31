@@ -6,11 +6,12 @@ namespace Crystal{
 		class NeighborSearcher;
 		class SPHPairSolver;
 		class PhysicsObjectFactory;
+		class SimulationSetting;
 
 class SPHSolver
 {
 public:
-	SPHSolver(PhysicsObjectFactory* factory, const double effectLength);
+	SPHSolver(PhysicsObjectFactory* factory, const SimulationSetting& setting);
 
 	~SPHSolver(void);
 
@@ -23,11 +24,9 @@ private:
 
 	void calculateBoundaryForce();
 
-	double getEffectLength() { return effectLength; }
-
 private:
 	PhysicsObjectFactory* factory;
-	const double effectLength;
+	const SimulationSetting& setting;
 	NeighborSearcher* neighborSearcher;
 	SPHPairSolver* sphPairSolver;
 };

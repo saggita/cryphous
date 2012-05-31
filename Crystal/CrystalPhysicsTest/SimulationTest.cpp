@@ -20,5 +20,7 @@ SimulationTest::SimulationTest(void)
 	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid );
 	PhysicsObjectFactory factory;
 	factory.createPhysicsObject( condition, 1.0 );
-	Simulation::get()->simulate( &factory);
+	SimulationSetting setting;
+	setting.effectLength = 1.3;
+	Simulation::get()->simulate( &factory, setting);
 }

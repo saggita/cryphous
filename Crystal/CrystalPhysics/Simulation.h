@@ -6,6 +6,7 @@
 namespace Crystal{
 	namespace Physics {
 		class PhysicsObjectFactory;
+		class SimulationSetting;
 
 class Simulation : private boost::noncopyable
 {
@@ -26,7 +27,7 @@ public:
 		simulationTime = 0.0;
 	};
 
-	void simulate(PhysicsObjectFactory* factory);
+	void simulate(PhysicsObjectFactory* factory, const SimulationSetting& setting);
 
 	int getStep() const { return step; }
 

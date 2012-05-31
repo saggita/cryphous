@@ -9,15 +9,10 @@ namespace Crystal{
 
 class SimulationSetting : private boost::noncopyable
 {
-private:
-	SimulationSetting(void);
-	~SimulationSetting(){};
-
 public:
-	static SimulationSetting* get(){
-		static SimulationSetting setting;
-		return &setting;
-	}
+	SimulationSetting(void);
+
+	~SimulationSetting(){};
 
 public:
 	double timeStep;
