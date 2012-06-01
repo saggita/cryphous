@@ -24,17 +24,33 @@ using namespace Crystal::Physics;
 
 void NeighborSearcher::search()
 {
-	std::vector<ParticlePairVector> eachPairs(2);
+	std::vector<ParticlePairVector> eachPairs(5);
 	#pragma omp parallel
 	#pragma omp sections
 	{
 		#pragma omp section 
 		{
-			eachPairs[0] = searchX();
+			eachPairs[0] = searchNeighbors(0);
 		}
+
 		#pragma omp section 
 		{
-			eachPairs[1] = searchNeighbors();
+			eachPairs[1] = searchNeighbors(1);
+		}
+
+		#pragma omp section 
+		{
+			eachPairs[2] = searchNeighbors(2);
+		}
+
+		#pragma omp section 
+		{
+			eachPairs[3] = searchNeighbors(3);
+		}
+
+		#pragma omp section 
+		{
+			eachPairs[4] = searchX();
 		}
 	}
 
@@ -43,28 +59,25 @@ void NeighborSearcher::search()
 	}
 }
 
-ParticlePairVector NeighborSearcher::searchNeighbors()
+ParticlePairVector NeighborSearcher::searchNeighbors(const int number)
 {
 	ParticlePairVector eachPairs;
-	std::vector<SearchParticleVector::const_iterator> baseIters(4, searchParticles.begin() );
+	SearchParticleVector::const_iterator baseIter = searchParticles.begin();
 	
 	for( SearchParticleVector::const_iterator iter = searchParticles.begin(); iter != searchParticles.end(); ++iter ) {
-		const std::vector<int>& ids = iter->getForwardIDs();
-		for( size_t i = 0; i < ids.size(); ++i ) {
-			const int baseID = ids[i];
-			while( baseIters[i] != searchParticles.end() && baseIters[i]->getGridID() < baseID ) {
-				++baseIters[i];
-			}
-			SearchParticleVector::const_iterator yIter = baseIters[i];
+		const int baseID = iter->getForwardIDs()[number];
+		while( baseIter != searchParticles.end() && baseIter->getGridID() < baseID ) {
+			++baseIter;
+		}
+		SearchParticleVector::const_iterator yIter = baseIter;
 			
-			const Point3d& centerX = iter->getCenter();
-			while( yIter != searchParticles.end() && yIter->getGridID() <= baseID+2 ) {
-				const Point3d& centerY = yIter->getCenter();
-				if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-					eachPairs.push_back( new ParticlePair( iter->getParticle(), yIter->getParticle() ) );
-				}
-				++yIter;
+		const Point3d& centerX = iter->getCenter();
+		while( yIter != searchParticles.end() && yIter->getGridID() <= baseID+2 ) {
+			const Point3d& centerY = yIter->getCenter();
+			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
+				eachPairs.push_back( new ParticlePair( iter->getParticle(), yIter->getParticle() ) );
 			}
+			++yIter;
 		}
 	}
 	return eachPairs;
