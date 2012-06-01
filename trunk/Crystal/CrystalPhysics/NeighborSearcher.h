@@ -31,7 +31,7 @@ private:
 
 	ParticlePairVector searchX();
 
-	ParticlePairVector searchNeighbors();
+	ParticlePairVector searchNeighbors(const int number);
 
 private:
 	const SearchParticleVector& searchParticles;

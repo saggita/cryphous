@@ -33,11 +33,13 @@ void VisualObjects::drawParticles(const ParticleVector& particles)
 {
 	GraphicsSettings* settings = GraphicsSettings::get();
 
-	glColor4f( 0.1f, 0.1f, 1.0f, settings->pointAlpha / 100.0f );
 	PointSprite::get()->apply();
 	glBegin(GL_POINTS);
 	BOOST_FOREACH( Particle* particle, particles ) {
 		const Point3d& point = particle->center;
+		const float densityRatio = particle->getDensity() / 1000.0f;
+		const float alpha = densityRatio * settings->pointAlpha / 100.0f; 
+		glColor4f( 0.1f, 0.1f, 1.0f, alpha );
 		glVertex3d( point.getX(), point.getY(), point.getZ() );
 	}
 	glEnd();
