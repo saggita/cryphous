@@ -29,9 +29,9 @@ public:
 
 private:
 
-	void searchX();
+	ParticlePairVector searchX();
 
-	void searchNeighbors();
+	ParticlePairVector searchNeighbors();
 
 private:
 	const SearchParticleVector& searchParticles;

@@ -82,7 +82,6 @@ void SPHSolver::calculateInteraction()
 	Profiler::get()->start(" Sim->interaction");
 	std::vector<ParticlePair*> pairs = neighborSearcher->getPairs();
 	#pragma omp parallel for
-	//BOOST_FOREACH( ParticlePair* pair, pairs ) {
 	for( int i = 0; i < (int)(pairs.size()); ++i ) {
 		sphPairSolver->calculatePressureForce( pairs[i]);
 		sphPairSolver->calculateViscosityForce( pairs[i]);
@@ -110,8 +109,10 @@ void SPHSolver::calculateDensity()
 {
 	Profiler::get()->start(" Sim->density");
 	std::vector<ParticlePair*> pairs = neighborSearcher->getPairs();
-	BOOST_FOREACH( ParticlePair* pair, pairs) {
-		sphPairSolver->calculateBoundaryDensity( pair);
+	
+	#pragma omp parallel for
+	for( int i = 0; i < (int)(pairs.size()); ++i ) {
+		sphPairSolver->calculateBoundaryDensity( pairs[i]);
 	}
 	const ParticleVector& particles = factory->getSortedParticles();
 
