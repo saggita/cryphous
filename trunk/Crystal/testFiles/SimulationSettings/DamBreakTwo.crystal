@@ -52,9 +52,9 @@
           <z>0</z>
         </max>
       </box>
-      <density>1000</density>
-      <pressureCoefficient>10000</pressureCoefficient>
-      <viscosityCoefficient>2</viscosityCoefficient>
+      <density>200</density>
+      <pressureCoefficient>2000</pressureCoefficient>
+      <viscosityCoefficient>0.4</viscosityCoefficient>
       <divideLength>0.01</divideLength>
     </object>
   </objects>

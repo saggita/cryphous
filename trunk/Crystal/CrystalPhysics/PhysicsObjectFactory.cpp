@@ -21,6 +21,7 @@
 #include <boost/foreach.hpp>
 
 #include <cassert>
+#include <fstream>
 
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
@@ -121,4 +122,14 @@ PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCond
 		condition.getPressureCoefficient(), condition.getViscosityCoefficient(), condition.getObjectType() ) );
 	createSearchParticles(effectLength);
 	return object;
+}
+
+void PhysicsObjectFactory::writeToFile(const std::string& fileName) const
+{
+	std::ofstream ofs( fileName.c_str() ) ;
+	const ParticleVector& particles = getSortedParticles();
+	ofs << particles.size() << std::endl;
+	BOOST_FOREACH( Particle* particle, particles ){
+		ofs << particle->getParent()->getID() << "," << particle->getID() <<  "," << particle->center.getX() << "," << particle->center.getY() << "," << particle->center.getZ() << std::endl;
+	}
 }

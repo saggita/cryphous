@@ -1,9 +1,11 @@
 #include "ParticleExportCommand.h"
 
 #include "StringMarshaler.h"
-//#include "../CrystalGraphics/VisualParticleFactory.h"
+#include "ApplicationSettings.h"
 
-//using namespace Crystal::Graphics;
+#include "../CrystalPhysics/PhysicsObjectFactory.h"
+
+using namespace Crystal::Physics;
 using namespace Crystal::Command;
 
 using namespace System;
@@ -16,5 +18,5 @@ ExportCommandBase( exportSettingCommand)
 
 void ParticleExportCommand::exportToFile(System::String ^path)
 {
-	//VisualParticleFactory::get()->writeToFile( StringMarshaler::ToStdString( path) );
+	ApplicationSettings::get()->factory->writeToFile( StringMarshaler::ToStdString( path ) );
 }

@@ -36,8 +36,8 @@ public:
 private:
 	GraphicsSettings::GraphicsSettings() :
 		pointSize( 10 ),
-		pointAlpha( 100),
-		bPointSprite( false),
+		pointAlpha( 10),
+		bPointSprite( true),
 		zoom( 5.0),
 		cameraX( 0.0),
 		cameraY( 0.0),

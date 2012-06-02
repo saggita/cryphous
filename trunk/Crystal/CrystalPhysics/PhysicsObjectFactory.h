@@ -41,6 +41,8 @@ public:
 
 	ParticleVector getSortedParticles() const { return searchParticleFactory.getParticles(); }
 
+	void writeToFile(const std::string& fileName) const;
+
 private:
 	int nextID;
 	PhysicsObjectList physicsObjects;

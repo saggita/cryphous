@@ -40,7 +40,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 {
 	Profiler::get()->start("RenderingTotal");
 
-	glClearColor( 0.5f, 0.5f, 0.9f, 1.0f );
+	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
 	openGLWrapper.BeginRendering();
 
 	glEnable(GL_DEPTH_TEST);
