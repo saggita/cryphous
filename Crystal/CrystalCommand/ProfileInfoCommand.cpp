@@ -19,13 +19,12 @@ ProfileInfoCommand::ProfileInfoCommand(void)
 void ProfileInfoCommand::display(System::Windows::Forms::ListBox^ listBox)
 {
 	listBox->Items->Clear();
-	listBox->Items->Add("CrystalUI 1.1");
+	listBox->Items->Add("CrystalUI 1.2");
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
 	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );
 	listBox->Items->Add("Step = " + Simulation::get()->getStep() );
 	listBox->Items->Add("Time = " + Simulation::get()->getSimulationTime() );
-	//listBox->Items->Add("realTime = " + stopWatch->Elapsed );
 	listBox->Items->Add(" ");
 
 	std::map< std::string, double>& strAndTimes = Profiler::get()->getStrAndTimes();

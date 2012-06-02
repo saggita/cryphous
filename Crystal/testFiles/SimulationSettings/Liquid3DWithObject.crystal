@@ -39,7 +39,7 @@
       <divideLength>0.01</divideLength>
     </object>
     <object>
-      <type>2</type>
+      <type>1</type>
       <box>
         <min>
           <x>-0.1</x>

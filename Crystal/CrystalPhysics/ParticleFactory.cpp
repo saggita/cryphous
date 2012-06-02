@@ -26,6 +26,7 @@ ParticleVector& ParticleFactory::createParticles(const ParticleConditions& condi
 		particles.push_back(
 			new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this ) 
 			);
+		particles.back()->getDensity() = conditions.getDensity();
 	}
 	virtualParticle = new Particle( -1, Point3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this );
 	return particles;
@@ -47,12 +48,3 @@ ParticleFactory::~ParticleFactory(void)
 		delete virtualParticle;
 	}
 }
-
-/*Particle* ParticleFactory::createAmbientParticle(const Point3d& center, PhysicsObject* parent)
-{
-	Particle* particle = getVirtualParticle()->createClone( nextID++);
-	particle->center = center;
-	particle->setParent( parent );
-	particles.push_back( particle );
-	return particle;
-}*/
