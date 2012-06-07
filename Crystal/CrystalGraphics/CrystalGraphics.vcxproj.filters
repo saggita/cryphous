@@ -14,9 +14,6 @@
     <Filter Include="OpenGL">
       <UniqueIdentifier>{00a019f8-9f12-4009-a73e-a5f693b729a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="描画オブジェクト">
-      <UniqueIdentifier>{4b724152-8d98-4852-a915-0a8f272e02db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="テクスチャ">
       <UniqueIdentifier>{e0406d82-3781-4206-9377-8bcbc85a88e4}</UniqueIdentifier>
     </Filter>
@@ -33,9 +30,6 @@
     </ClCompile>
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="VisualObjects.cpp">
-      <Filter>描画オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>テクスチャ</Filter>
@@ -63,9 +57,6 @@
     </ClInclude>
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="VisualObjects.h">
-      <Filter>描画オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>テクスチャ</Filter>

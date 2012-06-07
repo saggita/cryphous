@@ -102,8 +102,6 @@
     <ClCompile Include="SPHSolverTest.cpp" />
     <ClCompile Include="ParticleConditionsTest.cpp" />
     <ClCompile Include="ParticleFactoryTest.cpp" />
-    <ClCompile Include="SpringTest.cpp" />
-    <ClCompile Include="SpringParticleFactoryTest.cpp" />
     <ClCompile Include="PhysicsObjectFactoryTest.cpp" />
     <ClCompile Include="NeighborSearcherTest.cpp" />
     <ClCompile Include="SearchParticleFactoryTest.cpp" />
@@ -116,8 +114,6 @@
     <ClInclude Include="SPHSolvertest.h" />
     <ClInclude Include="ParticleConditionsTest.h" />
     <ClInclude Include="ParticleFactoryTest.h" />
-    <ClInclude Include="SpringTest.h" />
-    <ClInclude Include="SpringParticleFactoryTest.h" />
     <ClInclude Include="PhysicsObjectFactoryTest.h" />
     <ClInclude Include="NeighborSearcherTest.h" />
     <ClInclude Include="SearchParticleFactoryTest.h" />

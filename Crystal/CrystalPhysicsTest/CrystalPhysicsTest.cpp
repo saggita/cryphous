@@ -8,8 +8,6 @@
 #include "BoundarySolverTest.h"
 #include "SPHSolverTest.h"
 #include "SimulationTest.h"
-#include "SpringTest.h"
-#include "SpringParticleFactoryTest.h"
 #include "SearchParticleFactoryTest.h"
 #include "NeighborSearcherTest.h"
 
@@ -23,7 +21,5 @@ BOOST_AUTO_TEST_CASE( CrystalPhysicsTest )
 	BoundarySolverTest boundarySolverTest;
 	SPHSolverTest sphSolverTest;
 	SimulationTest simulationTest;
-	SpringTest springTest;
-	SpringParticleFactoryTest springParticleFactoryTest;
 	SearchParticleFactoryTest searchParticleFactoryTest;
 }
