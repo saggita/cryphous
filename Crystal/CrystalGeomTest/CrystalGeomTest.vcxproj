@@ -95,32 +95,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Matrix2dTest.cpp" />
     <ClCompile Include="Matrix3dTest.cpp" />
-    <ClCompile Include="Matrix4dTest.cpp" />
     <ClCompile Include="QuaternionTest.cpp" />
-    <ClCompile Include="Point2dTest.cpp" />
     <ClCompile Include="Point3dTest.cpp" />
-    <ClCompile Include="Point4dTest.cpp" />
     <ClCompile Include="BoxTest.cpp" />
-    <ClCompile Include="Vector2dTest.cpp" />
     <ClCompile Include="Vector3dTest.cpp" />
-    <ClCompile Include="Vector4dTest.cpp" />
     <ClCompile Include="TolerancesTest.cpp" />
     <ClCompile Include="CrystalGeomTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Matrix2dTest.h" />
     <ClInclude Include="Matrix3dTest.h" />
-    <ClInclude Include="Matrix4dTest.h" />
     <ClInclude Include="QuaternionTest.h" />
-    <ClInclude Include="Point2dTest.h" />
     <ClInclude Include="Point3dTest.h" />
-    <ClInclude Include="Point4dTest.h" />
     <ClInclude Include="BoxTest.h" />
-    <ClInclude Include="Vector2dTest.h" />
     <ClInclude Include="Vector3dTest.h" />
-    <ClInclude Include="Vector4dTest.h" />
     <ClInclude Include="TolerancesTest.h" />
   </ItemGroup>
   <ItemGroup>

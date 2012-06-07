@@ -10,87 +10,54 @@
     <Filter Include="Matrix">
       <UniqueIdentifier>{9d7641d3-4449-4587-ad53-a4271cb78ab8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Primitive">
-      <UniqueIdentifier>{f193f2dc-59ac-4d00-977e-b3746d1a8c56}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Tolerance">
       <UniqueIdentifier>{ca1e9e6c-6d2e-4a35-b2dd-2ababb24b1e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Box">
+      <UniqueIdentifier>{f193f2dc-59ac-4d00-977e-b3746d1a8c56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quaternion">
+      <UniqueIdentifier>{90a6a163-ea96-458a-b163-e8324e86acc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vector2d.cpp">
-      <Filter>Vector</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3d.cpp">
       <Filter>Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector4d.cpp">
-      <Filter>Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix2d.cpp">
-      <Filter>Matrix</Filter>
     </ClCompile>
     <ClCompile Include="Matrix3d.cpp">
       <Filter>Matrix</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix4d.cpp">
-      <Filter>Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>Matrix</Filter>
-    </ClCompile>
     <ClCompile Include="Box.cpp">
-      <Filter>Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="Point2d.cpp">
-      <Filter>Point</Filter>
+      <Filter>Box</Filter>
     </ClCompile>
     <ClCompile Include="Point3d.cpp">
-      <Filter>Point</Filter>
-    </ClCompile>
-    <ClCompile Include="Point4d.cpp">
       <Filter>Point</Filter>
     </ClCompile>
     <ClCompile Include="Tolerances.cpp">
       <Filter>Tolerance</Filter>
     </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Quaternion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vector2d.h">
-      <Filter>Vector</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3d.h">
       <Filter>Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4d.h">
-      <Filter>Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix2d.h">
-      <Filter>Matrix</Filter>
     </ClInclude>
     <ClInclude Include="Matrix3d.h">
       <Filter>Matrix</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix4d.h">
-      <Filter>Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>Matrix</Filter>
-    </ClInclude>
     <ClInclude Include="Box.h">
-      <Filter>Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="Point2d.h">
-      <Filter>Point</Filter>
+      <Filter>Box</Filter>
     </ClInclude>
     <ClInclude Include="Point3d.h">
       <Filter>Point</Filter>
     </ClInclude>
-    <ClInclude Include="Point4d.h">
-      <Filter>Point</Filter>
-    </ClInclude>
     <ClInclude Include="Tolerances.h">
       <Filter>Tolerance</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

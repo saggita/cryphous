@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "OpenGLWrapper.h"
-#include "Texture.h"
 
 namespace Crystal{
 	namespace Geom{
@@ -15,8 +14,7 @@ namespace Crystal{
 	}
 	namespace Graphics{
 		class VisualPrimitiveFactory;
-		class Texture;
-
+		
 class Renderer : private boost::noncopyable
 {
 private:

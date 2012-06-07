@@ -12,7 +12,6 @@
 #include "../CrystalGeom/Vector3d.h"
 
 #include "../CrystalPhysics/Particle.h"
-#include "../CrystalPhysics/ParticleDerive.h"
 #include "../CrystalPhysics/ParticleFactory.h"
 
 #include <boost/test/unit_test.hpp>
@@ -32,5 +31,5 @@ SPHSolverTest::SPHSolverTest(void)
 	SPHSolver solver( &factory, setting);
 	solver.calculateInteraction();
 	
-	BOOST_CHECK( fluid->getParticles().front()->getDerive()->force != Vector3d( 0.0, 0.0, 0.0 ) );
+	BOOST_CHECK( fluid->getParticles().front()->force != Vector3d( 0.0, 0.0, 0.0 ) );
 }

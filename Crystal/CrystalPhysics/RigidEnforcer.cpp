@@ -1,7 +1,6 @@
 #include "RigidEnforcer.h"
 
 #include "Particle.h"
-#include "ParticleDerive.h"
 #include "PhysicsObject.h"
 
 #include "../CrystalGeom/Vector3d.h"
@@ -30,41 +29,34 @@ void RigidEnforcer::enforce(PhysicsObject* rigid, const double proceedTime)
 	const Point3d& objectCenter = rigid->getCenter();
 	const Vector3d& velocityAverage = rigid->getAverageVelosity();
 
-	// 粒子の速度ベクトルを同一にする.
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 		particle->velocity = velocityAverage;
 	}
 
-	// 座標系原点に剛体重心を移動する.
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 		particle->center -= objectCenter;
 	}
 	assert( rigid->getCenter() == Point3d( 0.0, 0.0, 0.0 ) );
 
-	Vector3d inertiaMoment( 0.0, 0.0, 0.0 );	// 慣性モーメント.
-	Vector3d torque( 0.0, 0.0, 0.0 );	// トルク.
+	Vector3d inertiaMoment( 0.0, 0.0, 0.0 );
+	Vector3d torque( 0.0, 0.0, 0.0 );
 	
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 		const Point3d& center = particle->center;
 		
-		// 慣性モーメントを求める.
 		Vector3d particleMoment( pow( center.getY(), 2) + pow( center.getZ(), 2),
 			pow( center.getZ(), 2 ) + pow( center.getX(), 2),
 			pow( center.getX(), 2 ) + pow( center.getY(), 2) );
 		inertiaMoment += (particleMoment) * particle->getMass();
 
-		// トルクを求める.
 		const Vector3d diffVector( Point3d( 0.0, 0.0, 0.0), particle->center );
-		const Vector3d& particleTorque = diffVector.getOuterProduct( particle->getDerive()->force * particle->getVolume() );
+		const Vector3d& particleTorque = diffVector.getOuterProduct( particle->force * particle->getVolume() );
 		torque += particleTorque;
 	}
 
-	// 角速度を求める.
 	getAngleVelosity( inertiaMoment , torque, proceedTime );
 
-	// 回転角度を求める.
 	if( Tolerances::isEqualAsDenominator( angleVelosity->getLength() ) ) {
-		// 剛体重心を元に戻す.
 		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 			particle->center += objectCenter;
 		}
@@ -73,7 +65,6 @@ void RigidEnforcer::enforce(PhysicsObject* rigid, const double proceedTime)
 	}
 	const double rotateAngle = angleVelosity->getLength() * proceedTime;
 	if( rotateAngle < 1.0e-5 ) {
-		// 剛体重心を元に戻す.
 		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 			particle->center += objectCenter;
 		}
@@ -81,14 +72,12 @@ void RigidEnforcer::enforce(PhysicsObject* rigid, const double proceedTime)
 		return;
 	}
 
-	// クォータニオンを用いて回転する.
 	Quaternion quaternion( angleVelosity->getNormalized(), rotateAngle );
 	const Matrix3d& rotateMatrix = quaternion.getMatrix();
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 		particle->center.rotate( rotateMatrix );
 	}
 
-	// 剛体重心を元に戻す.
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 		particle->center += objectCenter;
 	}
@@ -99,32 +88,14 @@ void RigidEnforcer::convertToFluidForce(PhysicsObject* rigid)
 {	
 	Vector3d totalForce( 0.0, 0.0, 0.0 );
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-		totalForce += particle->getDerive()->force * particle->getVolume();
+		totalForce += particle->force * particle->getVolume();
 	}
 
 	const double weight =  rigid->getWeight();
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-		particle->getDerive()->force = totalForce / weight * particle->getDensity();
+		particle->force = totalForce / weight * particle->density;
 	}
 }
-
-//void RigidEnforcer::convertToFluidForce()
-//{
-//	const Vector3d force = getForce();
-//	const double weight =  getWeight();
-//	BOOST_FOREACH( Particle* particle, getParticles() ) {
-//		particle->getDerive()->force = force / weight * particle->getDensity();
-//	}
-//}
-//
-//Vector3d RigidEnforcer::getForce() const
-//{
-//	Vector3d totalForce( 0.0, 0.0, 0.0 );
-//	BOOST_FOREACH( Particle* particle, getParticles() ) {
-//		totalForce += particle->getDerive()->force * particle->getVolume();
-//	}
-//	return totalForce;
-//}
 
 double RigidEnforcer::getAngleAccelerationX( double x1,double x2,double x3, const Vector3d& I, const Vector3d& N)
 {
@@ -143,13 +114,13 @@ double RigidEnforcer::getAngleAccelerationZ( double x1, double x2, double x3, co
 
 void RigidEnforcer::getAngleVelosity( const Vector3d& I, const Vector3d& N, const double proceedTime )
 {
-	double x1,x2,x3;	// 未知数
+	double x1,x2,x3;
 	const int innerSteps = 10;
-	double h = proceedTime / innerSteps;	// 刻み幅
+	double h = proceedTime / innerSteps;
 	
 	x1 = angleVelosity->getX();
 	x2 = angleVelosity->getY();
-	x3 = angleVelosity->getZ();	/* 初期値の設定 */
+	x3 = angleVelosity->getZ();
 
 	for( int i = 0; i < innerSteps; i++ ){
 		const double k11 = h * getAngleAccelerationX( x1,x2,x3,I,N);
@@ -165,12 +136,10 @@ void RigidEnforcer::getAngleVelosity( const Vector3d& I, const Vector3d& N, cons
 		const double k24 = h * getAngleAccelerationY( x1 + k13, x2 + k23, x3 + k33,I,N);
 		const double k34 = h * getAngleAccelerationZ( x1 + k13, x2 + k23, x3 + k33,I,N);
 
-		/* 各変数の増分の計算 */
 		const double dx1 = (k11 + 2.0 * k12 + 2.0 * k13 + k14) / 6.0;
 		const double dx2 = (k21 + 2.0 * k22 + 2.0 * k23 + k24) / 6.0;
 		const double dx3 = (k31 + 2.0 * k32 + 2.0 * k33 + k34) / 6.0;
 
-		/* 値の更新 */
 		x1 += dx1;
 		x2 += dx2;
 		x3 += dx3;

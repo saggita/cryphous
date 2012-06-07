@@ -1,7 +1,6 @@
 #include "PhysicalTimeIntegrator.h"
 
 #include "Particle.h"
-#include "ParticleDerive.h"
 #include "PhysicsObject.h"
 
 #include "../CrystalGeom/Vector3d.h"
@@ -24,7 +23,7 @@ void PhysicalTimeIntegrator::integrateTime(const PhysicsObject& object, const do
 {
 	const ParticleVector& particles = object.getParticles();
 	BOOST_FOREACH( Particle* particle, particles ) {
-		Vector3d accelaration = particle->getDerive()->force / particle->getDensity();
+		Vector3d accelaration = particle->force / particle->density;
 		particle->velocity += (accelaration * proceedTime);
 		particle->center += (particle->velocity * proceedTime);
 	}

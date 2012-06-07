@@ -4,8 +4,6 @@
 
 #include "ParticleFactory.h"
 
-#include "ParticleDerive.h"
-
 #include "../CrystalGeom/Point3d.h"
 #include "../CrystalGeom/Vector3d.h"
 
@@ -22,14 +20,12 @@ velocity( Vector3d()),
 radius( radius ),
 density( 0.0 ),
 parent( 0 ),
-particleFactory( particleFactory),
-derive( new ParticleDerive() )
+particleFactory( particleFactory)
 {
 }
 
 Particle::~Particle(void)
 {
-	delete derive;
 }
 
 Particle* Particle::createClone(const int id) const
@@ -39,8 +35,8 @@ Particle* Particle::createClone(const int id) const
 }
 
 void Particle::resetDiffParameters(){
-	this->getDensity() = 0.0;
-	this->derive->init();
+	density = 0.0;
+	force = Vector3d( 0.0, 0.0, 0.0);
 }
 
 double Particle::getPressure() const

@@ -10,7 +10,6 @@
 #include "../CrystalGeom/Vector3d.h"
 
 #include "Particle.h"
-#include "ParticleDerive.h"
 
 #include "SimulationSetting.h"
 
@@ -36,7 +35,7 @@ void Simulation::simulate(PhysicsObjectFactory* factory, const SimulationSetting
 	const ParticleVector& particles = factory->getSortedParticles();
 
 	BOOST_FOREACH( Particle* particle, particles ) {
-		particle->getDerive()->force += Vector3d( 0.0, -9.8 * particle->getDensity(), 0.0 );
+		particle->force += Vector3d( 0.0, -9.8 * particle->density, 0.0 );
 	}
 
 	Profiler::get()->start(" Sim->enforce");

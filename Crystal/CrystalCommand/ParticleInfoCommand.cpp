@@ -23,7 +23,7 @@ void ParticleInfoCommand::display(System::Windows::Forms::DataGridView^ view)
 					particle->getID(),
 					particle->getParent()->getID(),
 					particle->getMass(),
-					particle->getDensity(),
+					particle->density,
 					particle->center.getX(),
 					particle->center.getY(),
 					particle->center.getZ()
