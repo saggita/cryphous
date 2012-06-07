@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __RIGID_H__
+#define __RIGID_H__
 
 #include "PhysicsObject.h"
 #include <list>
@@ -23,3 +24,5 @@ public:
 
 	}
 }
+
+#endif

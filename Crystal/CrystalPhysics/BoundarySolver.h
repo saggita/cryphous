@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __BOUNDARY_SOLVER_H__
+#define __BOUNDARY_SOLVER_H__
 
 #include <vector>
 
@@ -39,3 +40,5 @@ private:
 
 	}
 }
+
+#endif

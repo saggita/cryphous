@@ -74,8 +74,6 @@
     <ClCompile Include="Matrix4d.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Box.cpp" />
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Point2d.cpp" />
     <ClCompile Include="Point3d.cpp" />
     <ClCompile Include="Point4d.cpp" />
@@ -90,8 +88,6 @@
     <ClInclude Include="Matrix4d.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Box.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="Primitive.h" />
     <ClInclude Include="Point2d.h" />
     <ClInclude Include="Point3d.h" />
     <ClInclude Include="Point4d.h" />

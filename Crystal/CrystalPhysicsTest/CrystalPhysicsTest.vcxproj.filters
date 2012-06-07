@@ -1,79 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="物理ソルバテスト">
-      <UniqueIdentifier>{56e056b0-ce35-4d28-b152-c689f42a0bdd}</UniqueIdentifier>
+    <Filter Include="SimulationTest">
+      <UniqueIdentifier>{3644c66a-b28d-474a-ab99-4846f48f674e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="粒子テスト">
-      <UniqueIdentifier>{f40753ce-ad4e-47a8-9c40-640875804751}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="物理オブジェクトテスト">
+    <Filter Include="PhysicsObjectTest">
       <UniqueIdentifier>{d3422abc-d858-4c11-bc48-b41a86d5fffe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="高速近傍探索テスト">
-      <UniqueIdentifier>{45d5bf3f-1a51-44ba-9288-ae6d208218d1}</UniqueIdentifier>
+    <Filter Include="SolverTest">
+      <UniqueIdentifier>{56e056b0-ce35-4d28-b152-c689f42a0bdd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="シミュレーションテスト">
-      <UniqueIdentifier>{3644c66a-b28d-474a-ab99-4846f48f674e}</UniqueIdentifier>
+    <Filter Include="ParticleTest">
+      <UniqueIdentifier>{f40753ce-ad4e-47a8-9c40-640875804751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NeighborSearchTest">
+      <UniqueIdentifier>{45d5bf3f-1a51-44ba-9288-ae6d208218d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoundarySolverTest.cpp">
-      <Filter>物理ソルバテスト</Filter>
+      <Filter>SolverTest</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObjectFactoryTest.cpp">
-      <Filter>物理オブジェクトテスト</Filter>
+      <Filter>PhysicsObjectTest</Filter>
     </ClCompile>
     <ClCompile Include="NeighborSearcherTest.cpp">
-      <Filter>高速近傍探索テスト</Filter>
+      <Filter>NeighborSearchTest</Filter>
     </ClCompile>
     <ClCompile Include="SearchParticleFactoryTest.cpp">
-      <Filter>高速近傍探索テスト</Filter>
+      <Filter>NeighborSearchTest</Filter>
     </ClCompile>
     <ClCompile Include="SimulationTest.cpp">
-      <Filter>シミュレーションテスト</Filter>
+      <Filter>SimulationTest</Filter>
     </ClCompile>
     <ClCompile Include="CrystalPhysicsTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp">
-      <Filter>物理ソルバテスト</Filter>
+      <Filter>SolverTest</Filter>
     </ClCompile>
     <ClCompile Include="SPHPairSolverTest.cpp">
-      <Filter>物理ソルバテスト</Filter>
+      <Filter>SolverTest</Filter>
     </ClCompile>
     <ClCompile Include="ParticleConditionsTest.cpp">
-      <Filter>粒子テスト</Filter>
+      <Filter>ParticleTest</Filter>
     </ClCompile>
     <ClCompile Include="ParticleFactoryTest.cpp">
-      <Filter>粒子テスト</Filter>
+      <Filter>ParticleTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolverTest.h">
-      <Filter>物理ソルバテスト</Filter>
+      <Filter>SolverTest</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObjectFactoryTest.h">
-      <Filter>物理オブジェクトテスト</Filter>
+      <Filter>PhysicsObjectTest</Filter>
     </ClInclude>
     <ClInclude Include="NeighborSearcherTest.h">
-      <Filter>高速近傍探索テスト</Filter>
+      <Filter>NeighborSearchTest</Filter>
     </ClInclude>
     <ClInclude Include="SearchParticleFactoryTest.h">
-      <Filter>高速近傍探索テスト</Filter>
+      <Filter>NeighborSearchTest</Filter>
     </ClInclude>
     <ClInclude Include="SimulationTest.h">
-      <Filter>シミュレーションテスト</Filter>
+      <Filter>SimulationTest</Filter>
     </ClInclude>
     <ClInclude Include="SPHSolvertest.h">
-      <Filter>物理ソルバテスト</Filter>
+      <Filter>SolverTest</Filter>
     </ClInclude>
     <ClInclude Include="SPHPairSolverTest.h">
-      <Filter>物理ソルバテスト</Filter>
+      <Filter>SolverTest</Filter>
     </ClInclude>
     <ClInclude Include="ParticleFactoryTest.h">
-      <Filter>粒子テスト</Filter>
+      <Filter>ParticleTest</Filter>
     </ClInclude>
     <ClInclude Include="ParticleConditionsTest.h">
-      <Filter>粒子テスト</Filter>
+      <Filter>ParticleTest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

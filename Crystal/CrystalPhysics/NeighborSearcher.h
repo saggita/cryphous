@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __NEIGHBOR_SEARCHER_H__
+#define __NEIGHBOR_SEARCHER_H__
 
 #include "ParticlePair.h"
 //#include "SearchParticle.h"
@@ -41,3 +42,5 @@ private:
 
 	}
 }
+
+#endif

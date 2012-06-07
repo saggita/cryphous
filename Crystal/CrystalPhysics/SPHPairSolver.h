@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SPH_PAIR_SOLVER_H__
+#define __SPH_PAIR_SOLVER_H__
 
 namespace Crystal{
 
@@ -43,3 +44,5 @@ private:
 
 	}
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __KERNELS_H__
+#define __KERNELS_H__
 
 namespace Crystal{
 	namespace Geom{
@@ -54,3 +55,5 @@ protected:
 
 	}
 }
+
+#endif

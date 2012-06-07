@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PHYSICS_OBJECT_H__
+#define __PHYSICS_OBJECT_H__
 
 #include <boost/noncopyable.hpp>
 #include <list>
@@ -83,3 +84,4 @@ typedef std::list<PhysicsObject*> PhysicsObjectList;
 
 	}
 }
+#endif

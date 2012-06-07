@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SEARCH_PARTICLE_H__
+#define __SEARCH_PARTICLE_H__
 
 #include "../CrystalGeom/Point3d.h"
 
@@ -88,3 +89,5 @@ typedef std::vector< SearchParticle > SearchParticleVector;
 
 	}
 }
+
+#endif
