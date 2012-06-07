@@ -1,72 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="レンダリング">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="レンダリング\カラー">
-      <UniqueIdentifier>{d00407e3-75a0-4f44-a954-8d5599e72253}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="設定">
-      <UniqueIdentifier>{23c1a604-e070-41f6-95e1-f6c7afbf2e05}</UniqueIdentifier>
-    </Filter>
     <Filter Include="OpenGL">
       <UniqueIdentifier>{00a019f8-9f12-4009-a73e-a5f693b729a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="テクスチャ">
+    <Filter Include="Texture">
       <UniqueIdentifier>{e0406d82-3781-4206-9377-8bcbc85a88e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
-      <Filter>レンダリング</Filter>
-    </ClCompile>
-    <ClCompile Include="Color3d.cpp">
-      <Filter>レンダリング\カラー</Filter>
-    </ClCompile>
-    <ClCompile Include="Color4d.cpp">
-      <Filter>レンダリング\カラー</Filter>
+      <Filter>Rendering</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>テクスチャ</Filter>
+      <Filter>Texture</Filter>
     </ClCompile>
-    <ClCompile Include="PointSprite.cpp" />
     <ClCompile Include="..\External\glee\GLee.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="TextureCreator.cpp">
-      <Filter>テクスチャ</Filter>
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="PointSprite.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Color4d.cpp">
+      <Filter>Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
-      <Filter>レンダリング</Filter>
-    </ClInclude>
-    <ClInclude Include="Color3d.h">
-      <Filter>レンダリング\カラー</Filter>
-    </ClInclude>
-    <ClInclude Include="Color4d.h">
-      <Filter>レンダリング\カラー</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsSettings.h">
-      <Filter>設定</Filter>
+      <Filter>Rendering</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>テクスチャ</Filter>
+      <Filter>Texture</Filter>
     </ClInclude>
-    <ClInclude Include="PointSprite.h" />
     <ClInclude Include="..\External\glee\GLee.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="TextureCreator.h">
-      <Filter>テクスチャ</Filter>
+      <Filter>Texture</Filter>
     </ClInclude>
+    <ClInclude Include="PointSprite.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Color4d.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsSettings.h" />
   </ItemGroup>
 </Project>

@@ -13,8 +13,6 @@
 #include "Matrix3dTest.h"
 #include "Matrix4dTest.h"
 #include "QuaternionTest.h"
-#include "PrimitiveTest.h"
-#include "LineTest.h"
 
 
 BOOST_AUTO_TEST_CASE( CrystalGeomTest )
@@ -31,5 +29,4 @@ BOOST_AUTO_TEST_CASE( CrystalGeomTest )
 	Matrix3dTest matrix3dTest;
 	Matrix4dTest matrix4dTest;
 	QuaternionTest quaternionTest;
-	PrimitiveTest primitiveTest;
 }

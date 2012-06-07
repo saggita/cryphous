@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PARTICLE_DERIVE_H__
+#define __PARTICLE_DERIVE_H__
 
 #include "../CrystalGeom/Vector3d.h"
 
@@ -19,3 +20,5 @@ public:
 };
 	}
 }
+
+#endif

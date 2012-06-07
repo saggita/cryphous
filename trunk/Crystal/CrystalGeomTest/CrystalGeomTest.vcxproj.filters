@@ -1,109 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="行列テスト">
-      <UniqueIdentifier>{31ec03e4-a25b-4b8f-842a-450d2ba5d5c9}</UniqueIdentifier>
+    <Filter Include="ToleranceTest">
+      <UniqueIdentifier>{c18db486-ea8c-497c-9a09-22a87977bb7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="点テスト">
-      <UniqueIdentifier>{8155474b-adea-4008-8955-49388248997a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="プリミティブテスト">
+    <Filter Include="PrimitiveTest">
       <UniqueIdentifier>{a3d48be0-0395-4407-aef9-a447a9cb1e91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ベクトルテスト">
+    <Filter Include="VectorTest">
       <UniqueIdentifier>{de07c5ee-e1c7-4e00-bec4-605dd88bcc5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="トレランステスト">
-      <UniqueIdentifier>{c18db486-ea8c-497c-9a09-22a87977bb7d}</UniqueIdentifier>
+    <Filter Include="PointTest">
+      <UniqueIdentifier>{8155474b-adea-4008-8955-49388248997a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MatrixTest">
+      <UniqueIdentifier>{31ec03e4-a25b-4b8f-842a-450d2ba5d5c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Matrix2dTest.cpp">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClCompile>
     <ClCompile Include="Matrix3dTest.cpp">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4dTest.cpp">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClCompile>
     <ClCompile Include="QuaternionTest.cpp">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClCompile>
     <ClCompile Include="Point2dTest.cpp">
-      <Filter>点テスト</Filter>
+      <Filter>PointTest</Filter>
     </ClCompile>
     <ClCompile Include="Point3dTest.cpp">
-      <Filter>点テスト</Filter>
+      <Filter>PointTest</Filter>
     </ClCompile>
     <ClCompile Include="Point4dTest.cpp">
-      <Filter>点テスト</Filter>
+      <Filter>PointTest</Filter>
     </ClCompile>
     <ClCompile Include="BoxTest.cpp">
-      <Filter>プリミティブテスト</Filter>
-    </ClCompile>
-    <ClCompile Include="LineTest.cpp">
-      <Filter>プリミティブテスト</Filter>
-    </ClCompile>
-    <ClCompile Include="PrimitiveTest.cpp">
-      <Filter>プリミティブテスト</Filter>
+      <Filter>PrimitiveTest</Filter>
     </ClCompile>
     <ClCompile Include="Vector2dTest.cpp">
-      <Filter>ベクトルテスト</Filter>
+      <Filter>VectorTest</Filter>
     </ClCompile>
     <ClCompile Include="Vector3dTest.cpp">
-      <Filter>ベクトルテスト</Filter>
+      <Filter>VectorTest</Filter>
     </ClCompile>
     <ClCompile Include="Vector4dTest.cpp">
-      <Filter>ベクトルテスト</Filter>
+      <Filter>VectorTest</Filter>
     </ClCompile>
     <ClCompile Include="TolerancesTest.cpp">
-      <Filter>トレランステスト</Filter>
+      <Filter>ToleranceTest</Filter>
     </ClCompile>
     <ClCompile Include="CrystalGeomTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix2dTest.h">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClInclude>
     <ClInclude Include="Matrix3dTest.h">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4dTest.h">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClInclude>
     <ClInclude Include="QuaternionTest.h">
-      <Filter>行列テスト</Filter>
+      <Filter>MatrixTest</Filter>
     </ClInclude>
     <ClInclude Include="Point2dTest.h">
-      <Filter>点テスト</Filter>
+      <Filter>PointTest</Filter>
     </ClInclude>
     <ClInclude Include="Point3dTest.h">
-      <Filter>点テスト</Filter>
+      <Filter>PointTest</Filter>
     </ClInclude>
     <ClInclude Include="Point4dTest.h">
-      <Filter>点テスト</Filter>
+      <Filter>PointTest</Filter>
     </ClInclude>
     <ClInclude Include="BoxTest.h">
-      <Filter>プリミティブテスト</Filter>
-    </ClInclude>
-    <ClInclude Include="LineTest.h">
-      <Filter>プリミティブテスト</Filter>
-    </ClInclude>
-    <ClInclude Include="PrimitiveTest.h">
-      <Filter>プリミティブテスト</Filter>
+      <Filter>PrimitiveTest</Filter>
     </ClInclude>
     <ClInclude Include="Vector2dTest.h">
-      <Filter>ベクトルテスト</Filter>
+      <Filter>VectorTest</Filter>
     </ClInclude>
     <ClInclude Include="Vector3dTest.h">
-      <Filter>ベクトルテスト</Filter>
+      <Filter>VectorTest</Filter>
     </ClInclude>
     <ClInclude Include="Vector4dTest.h">
-      <Filter>ベクトルテスト</Filter>
+      <Filter>VectorTest</Filter>
     </ClInclude>
     <ClInclude Include="TolerancesTest.h">
-      <Filter>トレランステスト</Filter>
+      <Filter>ToleranceTest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PROFILER_H__
+#define __PROFILER_H__
 
 #include <boost/timer.hpp>
 
@@ -29,21 +30,20 @@ public:
 
 	void start( const std::string& profileName ) {
 		strAndTimers[profileName].restart();
-		//timer.restart();
 	}
 
 	void end( const std::string& profileName ) {
-		//strAndTimes[profileName] += timer.elapsed();
 		strAndTimes[profileName] += strAndTimers[profileName].elapsed();
 	}
 
 	std::map< std::string, double > getStrAndTimes() const { return strAndTimes; }
 
 private:
-	//boost::timer timer;
 	std::map< std::string, boost::timer > strAndTimers;
 	std::map< std::string, double > strAndTimes;
 };
 
 	}
 }
+
+#endif

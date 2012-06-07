@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __KERNELS_2D_H__
+#define __KERNELS_2D_H__
 
 #include "Kernels.h"
 
@@ -27,3 +28,5 @@ protected:
 
 	}
 }
+
+#endif

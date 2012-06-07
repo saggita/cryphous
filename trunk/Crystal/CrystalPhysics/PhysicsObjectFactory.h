@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PHYSICS_OBJECT_FACTORY_H__
+#define __PHYSICS_OBJECT_FACTORY_H__
 
 #include <boost/noncopyable.hpp>
 #include <list>
@@ -55,3 +56,5 @@ private:
 
 	}
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PARTICLE_H__
+#define __PARTICLE_H__
 
 #include <boost/noncopyable.hpp>
 #include <list>
@@ -74,7 +75,8 @@ private:
 };
 
 typedef std::vector<Particle*> ParticleVector;
-//typedef std::vector<Particle*> ParticleVector;
 	
 	}
 }
+
+#endif

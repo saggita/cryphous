@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PHYSICS_OBJECT_CONDITION_H__
+#define __PHYSICS_OBJECT_CONDITION_H__
 
 #include <boost/noncopyable.hpp>
 #include <list>
@@ -58,3 +59,5 @@ private:
 typedef std::list<PhysicsObjectCondition*> PhysicsObjectConditionList;
 	}
 }
+
+#endif

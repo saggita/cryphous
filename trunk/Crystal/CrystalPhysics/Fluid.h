@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __FLUID_H__
+#define __FLUID_H__
 
 #include "PhysicsObject.h"
 
@@ -17,3 +18,5 @@ public:
 
 	}
 }
+
+#endif

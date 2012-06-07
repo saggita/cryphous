@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __PARTICLE_CONDITIONS_H__
+#define __PARTICLE_CONDITIONS_H__
 
 #include <list>
 
@@ -55,3 +56,5 @@ private:
 
 	}
 }
+
+#endif

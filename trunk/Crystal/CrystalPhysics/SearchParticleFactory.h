@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SEARCH_PARTICLE_FACTORY_H__
+#define __SEARCH_PARTICLE_FACTORY_H__
 
 #include <vector>
 #include "SearchParticle.h"
@@ -32,3 +33,5 @@ private:
 
 	}
 }
+
+#endif
