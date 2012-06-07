@@ -87,9 +87,6 @@
     <ClCompile Include="ParticlePair.cpp" />
     <ClCompile Include="ParticleConditions.cpp" />
     <ClCompile Include="ParticleFactory.cpp" />
-    <ClCompile Include="Spring.cpp" />
-    <ClCompile Include="SpringParticle.cpp" />
-    <ClCompile Include="SpringParticleFactory.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="PhysicsObjectCondition.cpp" />
     <ClCompile Include="PhysicsObjectFactory.cpp" />
@@ -120,9 +117,6 @@
     <ClInclude Include="ParticlePair.h" />
     <ClInclude Include="ParticleConditions.h" />
     <ClInclude Include="ParticleFactory.h" />
-    <ClInclude Include="Spring.h" />
-    <ClInclude Include="SpringParticle.h" />
-    <ClInclude Include="SpringParticleFactory.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="PhysicsObjectCondition.h" />
     <ClInclude Include="PhysicsObjectFactory.h" />

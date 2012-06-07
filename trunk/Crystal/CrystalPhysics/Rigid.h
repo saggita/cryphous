@@ -5,10 +5,7 @@
 
 namespace Crystal{
 	namespace Physics {
-		class SpringParticleFactory;
-		class SpringParticle;
-		typedef std::list<SpringParticle*> SpringParticleList;
-
+		
 class Rigid : public PhysicsObject
 {
 public:
@@ -22,11 +19,6 @@ public:
 	~Rigid();
 
 	virtual Type getType() { return PhysicsObject::Rigid; }
-
-	virtual ParticleGrid getParticleGrid() const;
-
-private:
-	SpringParticleFactory* springParticleFactory;
 };
 
 	}

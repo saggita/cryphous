@@ -5,12 +5,13 @@
 #include "TextureCreator.h"
 #include "GraphicsSettings.h"
 #include "Color4d.h"
-#include "VisualObjects.h"
+#include "PointSprite.h"
 
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Profiler.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
+#include "../CrystalPhysics/PhysicsObject.h"
 
 #include <boost/foreach.hpp>
 
@@ -72,14 +73,29 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 
 	glPointSize( (GLfloat)(GraphicsSettings::get()->pointSize) );
 
-	VisualObjects visualObjects;
-	visualObjects.drawParticles( factory->getSortedParticles());
+	PointSprite::get()->apply();
+	glBegin(GL_POINTS);
+	BOOST_FOREACH( Particle* particle, factory->getSortedParticles() ) {
+		const Point3d& point = particle->center;
+		if( particle->getParent()->getType() == PhysicsObject::Rigid ) {
+			glColor4d( 1.0, 1.0, 1.0, 1.0 );
+			glVertex3d( point.getX(), point.getY(), point.getZ() );
+		}
+		else {
+			const double densityRatio = particle->getDensity() / 1000.0;
+			const double alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0; 
+			glColor4d( 0.1f, 0.1f, 1.0f, alpha );
+			glVertex3d( point.getX(), point.getY(), point.getZ() );
+		}
+	}
+	glEnd();
+	PointSprite::get()->release();
+
+	assert( glGetError() == GL_NO_ERROR );
 
 	glDepthMask(GL_TRUE);
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
-
-	visualObjects.drawSprings( factory);
 	
 	glFlush();
 	openGLWrapper.EndRendering();

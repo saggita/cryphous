@@ -7,15 +7,6 @@
     <Filter Include="粒子テスト">
       <UniqueIdentifier>{f40753ce-ad4e-47a8-9c40-640875804751}</UniqueIdentifier>
     </Filter>
-    <Filter Include="粒子テスト\マクロ粒子テスト">
-      <UniqueIdentifier>{77cf1608-1943-4212-95da-32fe51aefcc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="粒子テスト\布粒子テスト">
-      <UniqueIdentifier>{3c911314-c0a0-48dc-9d1f-88c2f86f445c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="粒子テスト\布粒子テスト\生成テスト">
-      <UniqueIdentifier>{b8e6ccb6-d78c-4bef-9129-a7c78666a842}</UniqueIdentifier>
-    </Filter>
     <Filter Include="物理オブジェクトテスト">
       <UniqueIdentifier>{d3422abc-d858-4c11-bc48-b41a86d5fffe}</UniqueIdentifier>
     </Filter>
@@ -29,15 +20,6 @@
   <ItemGroup>
     <ClCompile Include="BoundarySolverTest.cpp">
       <Filter>物理ソルバテスト</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleConditionsTest.cpp">
-      <Filter>粒子テスト\マクロ粒子テスト</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleFactoryTest.cpp">
-      <Filter>粒子テスト\マクロ粒子テスト</Filter>
-    </ClCompile>
-    <ClCompile Include="SpringTest.cpp">
-      <Filter>粒子テスト\布粒子テスト</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObjectFactoryTest.cpp">
       <Filter>物理オブジェクトテスト</Filter>
@@ -58,22 +40,16 @@
     <ClCompile Include="SPHPairSolverTest.cpp">
       <Filter>物理ソルバテスト</Filter>
     </ClCompile>
-    <ClCompile Include="SpringParticleFactoryTest.cpp">
-      <Filter>粒子テスト\布粒子テスト\生成テスト</Filter>
+    <ClCompile Include="ParticleConditionsTest.cpp">
+      <Filter>粒子テスト</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleFactoryTest.cpp">
+      <Filter>粒子テスト</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolverTest.h">
       <Filter>物理ソルバテスト</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleConditionsTest.h">
-      <Filter>粒子テスト\マクロ粒子テスト</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleFactoryTest.h">
-      <Filter>粒子テスト\マクロ粒子テスト</Filter>
-    </ClInclude>
-    <ClInclude Include="SpringTest.h">
-      <Filter>粒子テスト\布粒子テスト</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObjectFactoryTest.h">
       <Filter>物理オブジェクトテスト</Filter>
@@ -93,8 +69,11 @@
     <ClInclude Include="SPHPairSolverTest.h">
       <Filter>物理ソルバテスト</Filter>
     </ClInclude>
-    <ClInclude Include="SpringParticleFactoryTest.h">
-      <Filter>粒子テスト\布粒子テスト\生成テスト</Filter>
+    <ClInclude Include="ParticleFactoryTest.h">
+      <Filter>粒子テスト</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleConditionsTest.h">
+      <Filter>粒子テスト</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

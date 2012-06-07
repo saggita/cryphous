@@ -4,7 +4,6 @@
 #include <list>
 
 #include "ParticleFactory.h"
-#include "SpringParticleFactory.h"
 
 namespace Crystal{
 
@@ -64,10 +63,6 @@ public:
 	double getViscosityCoefficient() const { return viscosityCoefficient; }
 
 	ParticleFactory* getParticleFactory() const { return particleFactory; }
-
-	//virtual SpringParticleList getSpringParticles() const { return SpringParticleList(); }
-
-	virtual ParticleGrid getParticleGrid() const { return ParticleGrid(); }
 
 private:
 	const int id;
