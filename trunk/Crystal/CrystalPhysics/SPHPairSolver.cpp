@@ -1,7 +1,6 @@
 #include "SPHPairSolver.h"
 
 #include "Particle.h"
-#include "ParticleDerive.h"
 
 #include "ParticlePair.h"
 #include "PhysicsObject.h"
@@ -28,30 +27,17 @@ SPHPairSolver::~SPHPairSolver()
 	delete kernels;
 }
 
-void SPHPairSolver::calculateIntermediateDensity( ParticlePair* pair )
-{
-	const double volume = pair->getParticleX()->getIdealVolume();
-	const double result = volume * kernels->getPoly6Kernel( pair->getDistance() );
-	pair->getParticleX()->getDerive()->intermediateDensity += result;
-	pair->getParticleY()->getDerive()->intermediateDensity += result;
-}
-
-void SPHPairSolver::calculateIntermediateDensity( Particle* particle )
-{
-	particle->getDerive()->intermediateDensity += particle->getIdealVolume() * kernels->getPoly6Kernel( 0.0 );
-}
-
 void SPHPairSolver::calculateDensity( ParticlePair* pair )
 {
 	const double result = kernels->getPoly6Kernel( pair->getDistance() );
-	pair->getParticleX()->getDensity() += result * pair->getParticleY()->getMass(); // / pair->getParticleY()->getDerive()->intermediateDensity;
-	pair->getParticleY()->getDensity() += result * pair->getParticleX()->getMass(); // / pair->getParticleX()->getDerive()->intermediateDensity;
+	pair->getParticleX()->density += result * pair->getParticleY()->getMass();
+	pair->getParticleY()->density += result * pair->getParticleX()->getMass();
 }
 
 void SPHPairSolver::calculateDensity(Particle* particle)
 {
 	const double result = kernels->getPoly6Kernel( 0.0 );
-	particle->getDensity() += result * particle->getMass(); // / particle->getDerive()->intermediateDensity;
+	particle->density += result * particle->getMass();
 }
 
 void SPHPairSolver::calculateBoundaryDensity( ParticlePair* pair )
@@ -60,8 +46,8 @@ void SPHPairSolver::calculateBoundaryDensity( ParticlePair* pair )
 	Particle* particleY = pair->getParticleY();
 
 	const double result = kernels->getPoly6Kernel( pair->getDistance() );
-	particleX->getDensity() += result * particleX->getMass();
-	particleY->getDensity() += result * particleY->getMass();
+	particleX->density += result * particleX->getMass();
+	particleY->density += result * particleY->getMass();
 }
 
 void SPHPairSolver::calculatePressureForce( ParticlePair* pair )
@@ -71,8 +57,8 @@ void SPHPairSolver::calculatePressureForce( ParticlePair* pair )
 
 	const Vector3d pressure = kernels->getSpikyKernelGradient( pair->getDistanceVector() ) *
 		( pressureX + pressureY ) * 0.5;
-	pair->getParticleX()->getDerive()->force += pressure * pair->getParticleY()->getVolume();
-	pair->getParticleY()->getDerive()->force -= pressure * pair->getParticleX()->getVolume();
+	pair->getParticleX()->force += pressure * pair->getParticleY()->getVolume();
+	pair->getParticleY()->force -= pressure * pair->getParticleX()->getVolume();
 }
 
 void SPHPairSolver::calculateSurfaceTension( ParticlePair* pair )
@@ -86,8 +72,8 @@ void SPHPairSolver::calculateSurfaceTension( ParticlePair* pair )
 
 	const double colorLaplacian = kernels->getPoly6KernelLaplacian( pair->getDistance() );
 	const Vector3d tension = colorGradient * colorLaplacian * 1.0e-8;
-	pair->getParticleX()->getDerive()->force -= tension * pair->getParticleY()->getVolume();
-	pair->getParticleY()->getDerive()->force += tension * pair->getParticleX()->getVolume();
+	pair->getParticleX()->force -= tension * pair->getParticleY()->getVolume();
+	pair->getParticleY()->force += tension * pair->getParticleX()->getVolume();
 }
 
 void SPHPairSolver::calculateViscosityForce( ParticlePair* pair )
@@ -97,6 +83,6 @@ void SPHPairSolver::calculateViscosityForce( ParticlePair* pair )
 	const Vector3d diffVector( pair->getParticleX()->velocity, pair->getParticleY()->velocity );
 	const Vector3d viscosity = viscosityCoefficient * diffVector * 
 		kernels->getViscosityKernelLaplacian( pair->getDistance() );
-	pair->getParticleX()->getDerive()->force += viscosity * pair->getParticleY()->getVolume();
-	pair->getParticleY()->getDerive()->force -= viscosity * pair->getParticleX()->getVolume();
+	pair->getParticleX()->force += viscosity * pair->getParticleY()->getVolume();
+	pair->getParticleY()->force -= viscosity * pair->getParticleX()->getVolume();
 }

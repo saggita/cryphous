@@ -82,7 +82,6 @@
     <ClCompile Include="Kernels2D.cpp" />
     <ClCompile Include="Kernels3D.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleDerive.cpp" />
     <ClCompile Include="ParticlePair.cpp" />
     <ClCompile Include="ParticleConditions.cpp" />
     <ClCompile Include="ParticleFactory.cpp" />
@@ -111,7 +110,6 @@
     <ClInclude Include="Kernels2D.h" />
     <ClInclude Include="Kernels3D.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleDerive.h" />
     <ClInclude Include="ParticlePair.h" />
     <ClInclude Include="ParticleConditions.h" />
     <ClInclude Include="ParticleFactory.h" />

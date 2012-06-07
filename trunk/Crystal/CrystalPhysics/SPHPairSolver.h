@@ -8,7 +8,6 @@ namespace Crystal{
 	}
 
 	namespace Physics {
-
 		class Particle;
 		class Kernels;
 		class ParticlePair;
@@ -20,10 +19,6 @@ public:
 	SPHPairSolver(const double effectLength );
 
 	~SPHPairSolver();
-
-	void calculateIntermediateDensity( ParticlePair* pair );
-
-	void calculateIntermediateDensity( Particle* particle );
 
 	void calculateDensity( ParticlePair* pair );
 

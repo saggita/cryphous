@@ -19,9 +19,6 @@
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Texture</Filter>
-    </ClCompile>
     <ClCompile Include="..\External\glee\GLee.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
@@ -41,9 +38,6 @@
     </ClInclude>
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\External\glee\GLee.h">
       <Filter>OpenGL</Filter>

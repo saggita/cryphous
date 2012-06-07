@@ -10,8 +10,6 @@
 #include "SPHPairSolver.h"
 #include "SimulationSetting.h"
 
-#include "ParticleDerive.h"
-
 #include <cmath>
 #include <cassert>
 #include <boost/foreach.hpp>
@@ -81,35 +79,35 @@ void BoundarySolver::calculateForce(const Box& box)
 
 		if( particle->center.getX() > innerBox.getMaxX() ) {
 			const double over = particle->center.getX() - innerBox.getMaxX();
-			const double force = over * particle->getDensity() / timeStep / timeStep; 
-			particle->getDerive()->force -= Vector3d( force, 0.0, 0.0 );
+			const double force = over * particle->density / timeStep / timeStep; 
+			particle->force -= Vector3d( force, 0.0, 0.0 );
 		}
 		else if( particle->center.getX() < innerBox.getMinX() ) {
 			const double over = particle->center.getX() - innerBox.getMinX();
-			const double force = over * particle->getDensity() / timeStep / timeStep;
-			particle->getDerive()->force -= Vector3d( force, 0.0, 0.0 );
+			const double force = over * particle->density / timeStep / timeStep;
+			particle->force -= Vector3d( force, 0.0, 0.0 );
 		}
 
 		if( particle->center.getY() > innerBox.getMaxY() ) {
 			const double over = particle->center.getY() - innerBox.getMaxY();
-			const double force = over * particle->getDensity() / timeStep / timeStep;
-			particle->getDerive()->force -= Vector3d( 0.0, force, 0.0 );
+			const double force = over * particle->density / timeStep / timeStep;
+			particle->force -= Vector3d( 0.0, force, 0.0 );
 		}
 		else if( particle->center.getY() < innerBox.getMinY() ) {
 			const double over = particle->center.getY() - innerBox.getMinY();
-			const double force = over * particle->getDensity() / timeStep / timeStep;
-			particle->getDerive()->force -= Vector3d( 0.0, force, 0.0 );
+			const double force = over * particle->density / timeStep / timeStep;
+			particle->force -= Vector3d( 0.0, force, 0.0 );
 		}
 
 		if( particle->center.getZ() > innerBox.getMaxZ() ) {
 			const double over = particle->center.getZ() - innerBox.getMaxZ();
-			const double force = over * particle->getDensity() / timeStep / timeStep;
-			particle->getDerive()->force -= Vector3d( 0.0, 0.0, force );
+			const double force = over * particle->density / timeStep / timeStep;
+			particle->force -= Vector3d( 0.0, 0.0, force );
 		}
 		else if( particle->center.getZ() < innerBox.getMinZ() ) {
 			const double over = particle->center.getZ() - innerBox.getMinZ();
-			const double force = over * particle->getDensity() / timeStep / timeStep;
-			particle->getDerive()->force -= Vector3d( 0.0, 0.0, force );
+			const double force = over * particle->density / timeStep / timeStep;
+			particle->force -= Vector3d( 0.0, 0.0, force );
 		}
 	}
 }

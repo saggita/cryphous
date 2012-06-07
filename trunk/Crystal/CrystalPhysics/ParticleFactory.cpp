@@ -26,7 +26,7 @@ ParticleVector& ParticleFactory::createParticles(const ParticleConditions& condi
 		particles.push_back(
 			new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this ) 
 			);
-		particles.back()->getDensity() = conditions.getDensity();
+		particles.back()->density = conditions.getDensity();
 	}
 	virtualParticle = new Particle( -1, Point3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this );
 	return particles;

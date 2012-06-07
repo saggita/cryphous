@@ -82,7 +82,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 			glVertex3d( point.getX(), point.getY(), point.getZ() );
 		}
 		else {
-			const double densityRatio = particle->getDensity() / 1000.0;
+			const double densityRatio = particle->density / 1000.0;
 			const double alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0; 
 			glColor4d( 0.1f, 0.1f, 1.0f, alpha );
 			glVertex3d( point.getX(), point.getY(), point.getZ() );

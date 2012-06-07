@@ -4,9 +4,6 @@
     <Filter Include="ToleranceTest">
       <UniqueIdentifier>{c18db486-ea8c-497c-9a09-22a87977bb7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PrimitiveTest">
-      <UniqueIdentifier>{a3d48be0-0395-4407-aef9-a447a9cb1e91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="VectorTest">
       <UniqueIdentifier>{de07c5ee-e1c7-4e00-bec4-605dd88bcc5f}</UniqueIdentifier>
     </Filter>
@@ -16,39 +13,24 @@
     <Filter Include="MatrixTest">
       <UniqueIdentifier>{31ec03e4-a25b-4b8f-842a-450d2ba5d5c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BoxTest">
+      <UniqueIdentifier>{a3d48be0-0395-4407-aef9-a447a9cb1e91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Matrix2dTest.cpp">
-      <Filter>MatrixTest</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix3dTest.cpp">
-      <Filter>MatrixTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix4dTest.cpp">
       <Filter>MatrixTest</Filter>
     </ClCompile>
     <ClCompile Include="QuaternionTest.cpp">
       <Filter>MatrixTest</Filter>
     </ClCompile>
-    <ClCompile Include="Point2dTest.cpp">
-      <Filter>PointTest</Filter>
-    </ClCompile>
     <ClCompile Include="Point3dTest.cpp">
       <Filter>PointTest</Filter>
     </ClCompile>
-    <ClCompile Include="Point4dTest.cpp">
-      <Filter>PointTest</Filter>
-    </ClCompile>
     <ClCompile Include="BoxTest.cpp">
-      <Filter>PrimitiveTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2dTest.cpp">
-      <Filter>VectorTest</Filter>
+      <Filter>BoxTest</Filter>
     </ClCompile>
     <ClCompile Include="Vector3dTest.cpp">
-      <Filter>VectorTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector4dTest.cpp">
       <Filter>VectorTest</Filter>
     </ClCompile>
     <ClCompile Include="TolerancesTest.cpp">
@@ -57,37 +39,19 @@
     <ClCompile Include="CrystalGeomTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Matrix2dTest.h">
-      <Filter>MatrixTest</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix3dTest.h">
-      <Filter>MatrixTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix4dTest.h">
       <Filter>MatrixTest</Filter>
     </ClInclude>
     <ClInclude Include="QuaternionTest.h">
       <Filter>MatrixTest</Filter>
     </ClInclude>
-    <ClInclude Include="Point2dTest.h">
-      <Filter>PointTest</Filter>
-    </ClInclude>
     <ClInclude Include="Point3dTest.h">
       <Filter>PointTest</Filter>
     </ClInclude>
-    <ClInclude Include="Point4dTest.h">
-      <Filter>PointTest</Filter>
-    </ClInclude>
     <ClInclude Include="BoxTest.h">
-      <Filter>PrimitiveTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2dTest.h">
-      <Filter>VectorTest</Filter>
+      <Filter>BoxTest</Filter>
     </ClInclude>
     <ClInclude Include="Vector3dTest.h">
-      <Filter>VectorTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4dTest.h">
       <Filter>VectorTest</Filter>
     </ClInclude>
     <ClInclude Include="TolerancesTest.h">

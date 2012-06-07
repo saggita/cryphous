@@ -4,7 +4,6 @@
 #include "../CrystalPhysics/ParticleFactory.h"
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/ParticlePair.h"
-#include "../CrystalPhysics/ParticleDerive.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/PhysicsObject.h"
 #include "../CrystalPhysics/PhysicsObjectCondition.h"
@@ -40,8 +39,8 @@ void SPHPairSolverTest::calculateDensityTest()
 
 	SPHPairSolver solver( 1.3 );
 	solver.calculateDensity( &pair);
-	const double densityX = particles.front()->getDensity();
-	const double densityY = particles.back()->getDensity();
+	const double densityX = particles.front()->density;
+	const double densityY = particles.back()->density;
 	BOOST_CHECK( densityX != 0.0 );
 	BOOST_CHECK( densityY != 0.0 );
 	BOOST_CHECK_EQUAL( densityX, densityY );
@@ -58,8 +57,8 @@ void SPHPairSolverTest::calculateBoundaryDensityTest()
 
 	SPHPairSolver solver( 1.3 );
 	solver.calculateBoundaryDensity( &pair);
-	const double densityX = particles.front()->getDensity();
-	const double densityY = particles.back()->getDensity();
+	const double densityX = particles.front()->density;
+	const double densityY = particles.back()->density;
 	BOOST_CHECK( densityX != 0.0 );
 	BOOST_CHECK( densityY != 0.0 );
 	BOOST_CHECK_EQUAL( densityX, densityY );
@@ -77,8 +76,8 @@ void SPHPairSolverTest::calculatePressureForceTest()
 	SPHPairSolver solver( 1.3 );
 	solver.calculateDensity( &pair );
 	solver.calculatePressureForce( &pair);
-	const Vector3d& forceX = particles.front()->getDerive()->force;
-	const Vector3d& forceY = particles.back()->getDerive()->force;
+	const Vector3d& forceX = particles.front()->force;
+	const Vector3d& forceY = particles.back()->force;
 	BOOST_CHECK( !forceX.isZero() );
 	BOOST_CHECK( !forceY.isZero() );
 	BOOST_CHECK( forceX == forceY * -1.0 );

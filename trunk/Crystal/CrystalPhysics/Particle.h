@@ -17,8 +17,7 @@ namespace Crystal{
 	namespace Physics{
 		class PhysicsObject;
 		class ParticleFactory;
-		class ParticleDerive;
-
+		
 class Particle : private boost::noncopyable
 {
 protected:
@@ -39,8 +38,6 @@ public:
 
 	double getMass() const { return mass; }
 
-	double& getDensity() { return density; }
-
 	double getVolume() const { return getMass() / density; }
 
 	double getIdealVolume() const;
@@ -55,21 +52,19 @@ public:
 
 	ParticleFactory* getParticleFactory() const { return particleFactory; }
 
-	ParticleDerive* getDerive() { return derive; }
-
 public:
 	Geom::Point3d center;
 	Geom::Vector3d velocity;
+	Geom::Vector3d force;
+	double density;
 
 private:
 	double radius;
-	double density;
 	const int id;
 	PhysicsObject* parent;
 	const double mass;
 
 	ParticleFactory* particleFactory;
-	ParticleDerive* derive;
 
 	friend class ParticleFactory;
 };

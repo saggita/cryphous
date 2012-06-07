@@ -4,7 +4,6 @@
 #include "PhysicsObjectFactory.h"
 #include "PhysicsObject.h"
 
-#include "ParticleDerive.h"
 #include "ParticleFactory.h"
 #include "ParticlePair.h"
 #include "SPHPairSolver.h"
@@ -29,10 +28,6 @@
 #include "PhysicsObjectFactory.h"
 #include "BoundarySolver.h"
 #include "NeighborSearcher.h"
-#include "SPHPairSolver.h"
-#include "PhysicsObject.h"
-#include "SimulationSetting.h"
-#include "ParticleDerive.h"
 #include "../CrystalGeom/Box.h"
 
 #include <cassert>

@@ -127,7 +127,6 @@
     <ClCompile Include="ImportSettingCommand.cpp" />
     <ClCompile Include="ParticleExportCommand.cpp" />
     <ClCompile Include="ParticleInfoCommand.cpp" />
-    <ClCompile Include="ImageMarshaler.cpp" />
     <ClCompile Include="StringMarshaler.cpp" />
     <ClCompile Include="DialogCommand.cpp" />
     <ClCompile Include="ItemAndVariable.cpp" />
@@ -153,7 +152,6 @@
     <ClInclude Include="ImportSettingCommand.h" />
     <ClInclude Include="ParticleExportCommand.h" />
     <ClInclude Include="ParticleInfoCommand.h" />
-    <ClInclude Include="ImageMarshaler.h" />
     <ClInclude Include="StringMarshaler.h" />
     <ClInclude Include="DialogCommand.h" />
     <ClInclude Include="ItemAndVariable.h" />
