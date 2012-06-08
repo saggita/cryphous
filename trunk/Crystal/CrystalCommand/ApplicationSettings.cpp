@@ -9,6 +9,8 @@
 #include "../CrystalGraphics/GraphicsSettings.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/SimulationSetting.h"
+#include "../CrystalPhysics/Simulation.h"
+#include "../CrystalGraphics/Renderer.h"
 
 
 #include <boost/foreach.hpp>
@@ -23,12 +25,16 @@ using namespace System::Xml;
 ApplicationSettings::ApplicationSettings(void)
 {
 	factory = new PhysicsObjectFactory;
+	simulation = new Simulation;
 	simulationSetting = new SimulationSetting;
+	renderer = new Renderer;
 }
 
 ApplicationSettings::~ApplicationSettings()
 {
+	delete renderer;
 	delete simulationSetting;
+	delete simulation;
 	delete factory;
 }
 

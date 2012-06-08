@@ -123,16 +123,16 @@ private:
 		this->panelMainOperation->Controls->Add(this->buttonStart);
 		this->panelMainOperation->Controls->Add(this->buttonNextStep);
 		this->panelMainOperation->Dock = System::Windows::Forms::DockStyle::Right;
-		this->panelMainOperation->Location = System::Drawing::Point(516, 26);
+		this->panelMainOperation->Location = System::Drawing::Point(800, 26);
 		this->panelMainOperation->Name = L"panelMainOperation";
-		this->panelMainOperation->Size = System::Drawing::Size(124, 513);
+		this->panelMainOperation->Size = System::Drawing::Size(124, 450);
 		this->panelMainOperation->TabIndex = 0;
 		// 
 		// buttonParticleInfo
 		// 
 		this->buttonParticleInfo->Location = System::Drawing::Point(0, 221);
 		this->buttonParticleInfo->Name = L"buttonParticleInfo";
-		this->buttonParticleInfo->Size = System::Drawing::Size(121, 23);
+		this->buttonParticleInfo->Size = System::Drawing::Size(124, 23);
 		this->buttonParticleInfo->TabIndex = 6;
 		this->buttonParticleInfo->Text = L"MoreInfo";
 		this->buttonParticleInfo->UseVisualStyleBackColor = true;
@@ -140,9 +140,9 @@ private:
 		// 
 		// buttonViewReset
 		// 
-		this->buttonViewReset->Location = System::Drawing::Point(2, 325);
+		this->buttonViewReset->Location = System::Drawing::Point(0, 328);
 		this->buttonViewReset->Name = L"buttonViewReset";
-		this->buttonViewReset->Size = System::Drawing::Size(121, 23);
+		this->buttonViewReset->Size = System::Drawing::Size(124, 23);
 		this->buttonViewReset->TabIndex = 5;
 		this->buttonViewReset->Text = L"ViewReset";
 		this->buttonViewReset->UseVisualStyleBackColor = true;
@@ -159,9 +159,9 @@ private:
 		// 
 		// buttonSimulationRefresh
 		// 
-		this->buttonSimulationRefresh->Location = System::Drawing::Point(0, 393);
+		this->buttonSimulationRefresh->Location = System::Drawing::Point(0, 357);
 		this->buttonSimulationRefresh->Name = L"buttonSimulationRefresh";
-		this->buttonSimulationRefresh->Size = System::Drawing::Size(121, 23);
+		this->buttonSimulationRefresh->Size = System::Drawing::Size(124, 23);
 		this->buttonSimulationRefresh->TabIndex = 2;
 		this->buttonSimulationRefresh->Text = L"Refresh";
 		this->buttonSimulationRefresh->UseVisualStyleBackColor = true;
@@ -169,9 +169,9 @@ private:
 		// 
 		// buttonStart
 		// 
-		this->buttonStart->Location = System::Drawing::Point(0, 441);
+		this->buttonStart->Location = System::Drawing::Point(0, 386);
 		this->buttonStart->Name = L"buttonStart";
-		this->buttonStart->Size = System::Drawing::Size(121, 23);
+		this->buttonStart->Size = System::Drawing::Size(124, 23);
 		this->buttonStart->TabIndex = 1;
 		this->buttonStart->Text = L"Start";
 		this->buttonStart->UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@ private:
 		// 
 		// buttonNextStep
 		// 
-		this->buttonNextStep->Location = System::Drawing::Point(0, 490);
+		this->buttonNextStep->Location = System::Drawing::Point(0, 415);
 		this->buttonNextStep->Name = L"buttonNextStep";
 		this->buttonNextStep->Size = System::Drawing::Size(124, 23);
 		this->buttonNextStep->TabIndex = 0;
@@ -192,7 +192,7 @@ private:
 		this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 		this->pictureBox1->Location = System::Drawing::Point(0, 26);
 		this->pictureBox1->Name = L"pictureBox1";
-		this->pictureBox1->Size = System::Drawing::Size(516, 513);
+		this->pictureBox1->Size = System::Drawing::Size(800, 450);
 		this->pictureBox1->TabIndex = 1;
 		this->pictureBox1->TabStop = false;
 		this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::pictureBox1_MouseDown);
@@ -210,7 +210,7 @@ private:
 			this->settingsToolStripMenuItem});
 		this->menuStrip1->Location = System::Drawing::Point(0, 0);
 		this->menuStrip1->Name = L"menuStrip1";
-		this->menuStrip1->Size = System::Drawing::Size(640, 26);
+		this->menuStrip1->Size = System::Drawing::Size(924, 26);
 		this->menuStrip1->TabIndex = 2;
 		this->menuStrip1->Text = L"menuStrip1";
 		// 
@@ -299,7 +299,7 @@ private:
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-		this->ClientSize = System::Drawing::Size(640, 539);
+		this->ClientSize = System::Drawing::Size(924, 476);
 		this->Controls->Add(this->pictureBox1);
 		this->Controls->Add(this->panelMainOperation);
 		this->Controls->Add(this->menuStrip1);

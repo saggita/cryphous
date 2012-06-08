@@ -22,5 +22,6 @@ SimulationTest::SimulationTest(void)
 	factory.createPhysicsObject( condition, 1.0 );
 	SimulationSetting setting;
 	setting.effectLength = 1.3;
-	Simulation::get()->simulate( &factory, setting);
+	Simulation simulation;
+	simulation.simulate( &factory, setting);
 }

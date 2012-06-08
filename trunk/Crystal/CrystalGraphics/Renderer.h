@@ -1,7 +1,7 @@
-#pragma once
+#ifndef __RENDERER_H__
+#define __RENDERER_H__
 
 #include <boost/noncopyable.hpp>
-#include <vector>
 
 #include "OpenGLWrapper.h"
 
@@ -13,21 +13,13 @@ namespace Crystal{
 		class PhysicsObjectFactory;
 	}
 	namespace Graphics{
-		class VisualPrimitiveFactory;
-		
+
 class Renderer : private boost::noncopyable
 {
-private:
+public:
 	Renderer();
 
 	~Renderer();
-
-public:
-	
-	static Renderer* get() {
-		static Renderer renderer;
-		return &renderer;
-	}
 
 	void setPictureBox( HWND pictureBoxHandle ) {
 		openGLWrapper.setHandle( pictureBoxHandle );
@@ -48,3 +40,5 @@ private:
 
 	}
 }
+
+#endif
