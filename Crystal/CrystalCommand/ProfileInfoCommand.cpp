@@ -23,8 +23,8 @@ void ProfileInfoCommand::display(System::Windows::Forms::ListBox^ listBox)
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
 	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );
-	listBox->Items->Add("Step = " + Simulation::get()->getStep() );
-	listBox->Items->Add("Time = " + Simulation::get()->getSimulationTime() );
+	listBox->Items->Add("Step = " + ApplicationSettings::get()->simulation->getStep() );
+	listBox->Items->Add("Time = " + ApplicationSettings::get()->simulation->getSimulationTime() );
 	listBox->Items->Add(" ");
 
 	std::map< std::string, double>& strAndTimes = Profiler::get()->getStrAndTimes();

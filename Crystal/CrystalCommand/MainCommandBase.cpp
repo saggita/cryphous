@@ -37,7 +37,7 @@ MainCommandBase::MainCommandBase(System::Windows::Forms::PictureBox^ pictureBox)
 	this->profileInfoCommand = gcnew ProfileInfoCommand();
 	this->pictureBox = pictureBox;
 
-	Renderer::get()->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
+	ApplicationSettings::get()->renderer->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
 }
 
 MainCommandBase::~MainCommandBase(void)
@@ -59,7 +59,7 @@ void MainCommandBase::refreshSimulation()
 
 void MainCommandBase::rendering()
 {
-	Renderer::get()->rendering( ApplicationSettings::get()->factory, pictureBox->Width, pictureBox->Height, ApplicationSettings::get()->simulationSetting->boundaryBox );
+	ApplicationSettings::get()->renderer->rendering( ApplicationSettings::get()->factory, pictureBox->Width, pictureBox->Height, ApplicationSettings::get()->simulationSetting->boundaryBox );
 }
 
 void MainCommandBase::displayInformation(System::Windows::Forms::ListBox^ listBox){

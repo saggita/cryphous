@@ -7,6 +7,10 @@ namespace Crystal {
 		class PhysicsObjectFactory;
 		class PhysicsObjectCondition;
 		class SimulationSetting;
+		class Simulation;
+	}
+	namespace Graphics {
+		class Renderer;
 	}
 
 	namespace Command {
@@ -37,6 +41,10 @@ public:
 	Physics::PhysicsObjectFactory* factory;
 
 	Physics::SimulationSetting* simulationSetting;
+
+	Physics::Simulation* simulation;
+
+	Graphics::Renderer* renderer;
 };
 
 	}
