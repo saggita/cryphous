@@ -13,9 +13,6 @@
     <Filter Include="Simulation\Solver">
       <UniqueIdentifier>{f8e942f3-9bde-496d-aec8-c702b55dc4dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Simulation\Solver\カーネル">
-      <UniqueIdentifier>{0bb9aed7-6d81-4fe6-81ce-4061b6c24ebe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Simulation\Solver\SPHソルバ">
       <UniqueIdentifier>{7e185f9f-21cb-4a07-b1fd-502663a958f7}</UniqueIdentifier>
     </Filter>
@@ -42,18 +39,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BoundarySolver.cpp">
-      <Filter>Simulation\Solver</Filter>
-    </ClCompile>
-    <ClCompile Include="Kernels.cpp">
-      <Filter>Simulation\Solver\カーネル</Filter>
-    </ClCompile>
-    <ClCompile Include="Kernels2D.cpp">
-      <Filter>Simulation\Solver\カーネル</Filter>
-    </ClCompile>
-    <ClCompile Include="Kernels3D.cpp">
-      <Filter>Simulation\Solver\カーネル</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleConditions.cpp">
       <Filter>Particle\生成</Filter>
     </ClCompile>
@@ -120,20 +105,14 @@
     <ClCompile Include="PhysicalTimeIntegratorBase.cpp">
       <Filter>Integrator</Filter>
     </ClCompile>
+    <ClCompile Include="Kernels3D.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundarySolver.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoundarySolver.h">
-      <Filter>Simulation\Solver</Filter>
-    </ClInclude>
-    <ClInclude Include="Kernels.h">
-      <Filter>Simulation\Solver\カーネル</Filter>
-    </ClInclude>
-    <ClInclude Include="Kernels2D.h">
-      <Filter>Simulation\Solver\カーネル</Filter>
-    </ClInclude>
-    <ClInclude Include="Kernels3D.h">
-      <Filter>Simulation\Solver\カーネル</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleConditions.h">
       <Filter>Particle\生成</Filter>
     </ClInclude>
@@ -199,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="PhysicalTimeIntegratorBase.h">
       <Filter>Integrator</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernels3D.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundarySolver.h">
+      <Filter>Simulation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #include "TextureCreator.h"
 
-#include "../CrystalPhysics/Kernels2D.h"
+#include "../CrystalPhysics/Kernels3D.h"
 
 #include <cstdlib>
 #include <cmath>
@@ -32,7 +32,7 @@ void TextureCreator::createTexture(const int size)
 
 	const double effectLength = size * 0.5;
 
-	Kernels2D kernels( effectLength );
+	Kernels3D kernels( effectLength );
 
 	const double max = kernels.getPoly6Kernel( 0.0 );//getViscosityKernelLaplacian( 0.0 );
 	

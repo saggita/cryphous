@@ -78,8 +78,6 @@
     <ClCompile Include="RigidEnforcer.cpp" />
     <ClCompile Include="SPHPairSolver.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
-    <ClCompile Include="Kernels.cpp" />
-    <ClCompile Include="Kernels2D.cpp" />
     <ClCompile Include="Kernels3D.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticlePair.cpp" />
@@ -106,8 +104,6 @@
     <ClInclude Include="RigidEnforcer.h" />
     <ClInclude Include="SPHPairSolver.h" />
     <ClInclude Include="SPHSolver.h" />
-    <ClInclude Include="Kernels.h" />
-    <ClInclude Include="Kernels2D.h" />
     <ClInclude Include="Kernels3D.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticlePair.h" />
