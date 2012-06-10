@@ -38,6 +38,7 @@ private:
 	const SearchParticleVector& searchParticles;
 	const double effectLengthSquared;
 	ParticlePairVector pairs;
+
 };
 
 	}
