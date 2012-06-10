@@ -10,8 +10,10 @@
 #include "ParticleFactory.h"
 #include "PhysicsObject.h"
 #include "PhysicsObjectFactory.h"
+#include "Profiler.h"
 
 #include <algorithm>
+#include <assert.h>
 
 #include "Profiler.h"
 
@@ -25,34 +27,19 @@ using namespace Crystal::Physics;
 void NeighborSearcher::search()
 {
 	std::vector<ParticlePairVector> eachPairs(5);
-	#pragma omp parallel
-	#pragma omp sections
-	{
-		#pragma omp section 
-		{
-			eachPairs[0] = searchNeighbors(0);
-		}
+	
+	
+	Profiler::get()->start("searchY");
+	
+	eachPairs[0] = searchNeighbors(0);
+	eachPairs[1] = searchNeighbors(1);
+	eachPairs[2] = searchNeighbors(2);
+	eachPairs[3] = searchNeighbors(3);
 
-		#pragma omp section 
-		{
-			eachPairs[1] = searchNeighbors(1);
-		}
+	Profiler::get()->end("searchY");
 
-		#pragma omp section 
-		{
-			eachPairs[2] = searchNeighbors(2);
-		}
+	eachPairs[4] = searchX();
 
-		#pragma omp section 
-		{
-			eachPairs[3] = searchNeighbors(3);
-		}
-
-		#pragma omp section 
-		{
-			eachPairs[4] = searchX();
-		}
-	}
 
 	for( size_t i = 0; i < eachPairs.size(); ++i ) {
 		pairs.insert( pairs.end(), eachPairs[i].begin(), eachPairs[i].end() );
@@ -61,45 +48,73 @@ void NeighborSearcher::search()
 
 ParticlePairVector NeighborSearcher::searchNeighbors(const int number)
 {
-	ParticlePairVector eachPairs;
-	SearchParticleVector::const_iterator baseIter = searchParticles.begin();
+	ParticlePairVector eachPair;
+	std::vector<ParticlePairVector> eachPairs( searchParticles.size() );
 	
-	for( SearchParticleVector::const_iterator iter = searchParticles.begin(); iter != searchParticles.end(); ++iter ) {
-		const int baseID = iter->getForwardIDs()[number];
-		while( baseIter != searchParticles.end() && baseIter->getGridID() < baseID ) {
-			++baseIter;
+	Profiler::get()->start("searchStart");
+	std::vector<SearchParticleVector::const_iterator> startIters;
+	SearchParticleVector::const_iterator startIter = searchParticles.begin();
+	for( SearchParticleVector::const_iterator iter = searchParticles.begin(); iter != searchParticles.end(); ++iter) {
+		const int startID = iter->getForwardIDs()[number];
+		while( startIter != searchParticles.end() && startIter->getGridID() < startID ) {
+			++startIter;
 		}
-		SearchParticleVector::const_iterator yIter = baseIter;
+		startIters.push_back( startIter );
+	}
+	assert( searchParticles.size() == startIters.size() );
+	Profiler::get()->end("searchStart");
+
+	#pragma omp parallel for
+	for( int i = 0; i < (int)searchParticles.size(); ++i ) {
+		SearchParticleVector::const_iterator startIter = startIters[i];
+		if( startIter == searchParticles.end() ) {
+			continue;
+		}
+		const int startID = startIter->getGridID();
+		
+		SearchParticleVector::const_iterator yIter = startIter;
 			
-		const Point3d& centerX = iter->getCenter();
-		while( yIter != searchParticles.end() && yIter->getGridID() <= baseID+2 ) {
+		const Point3d& centerX = searchParticles[i].getCenter();
+		Particle* particleX = searchParticles[i].getParticle();
+		while( yIter != searchParticles.end() && yIter->getGridID() <= startID+2 ) {
 			const Point3d& centerY = yIter->getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-				eachPairs.push_back( new ParticlePair( iter->getParticle(), yIter->getParticle() ) );
+				eachPairs[i].push_back( new ParticlePair( particleX, yIter->getParticle() ) );
 			}
 			++yIter;
 		}
 	}
-	return eachPairs;
+	
+	for( size_t i = 0; i < eachPairs.size(); ++i ) {
+		eachPair.insert( eachPair.end(), eachPairs[i].begin(), eachPairs[i].end() );
+	}
+
+	return eachPair;
 }
 
 ParticlePairVector NeighborSearcher::searchX()
 {
-	ParticlePairVector eachPairs;
-	for( SearchParticleVector::const_iterator iter = searchParticles.begin(); iter != searchParticles.end(); ++iter ) {
-		const int gridID = iter->getGridID();
-		const Point3d& centerX = iter->getCenter();
-		SearchParticleVector::const_iterator xIter = iter;
-		++xIter;
-		while( xIter != searchParticles.end() && xIter->getGridID() <= gridID+1 ) {
-			const Point3d& centerY = xIter->getCenter();
+	ParticlePairVector eachPair;
+	std::vector<ParticlePairVector> eachPairs( searchParticles.size() );
+
+	#pragma omp parallel for
+	for( int i = 0; i < (int)searchParticles.size(); ++i ) {
+		const int gridID = searchParticles[i].getGridID();
+		const Point3d& centerX = searchParticles[i].getCenter();
+		size_t searchIndex = i + 1;
+		Particle* particle = searchParticles[i].getParticle();
+		while( searchIndex < searchParticles.size() && searchParticles[searchIndex].getGridID() <= gridID + 1 ) {
+			const Point3d& centerY = searchParticles[searchIndex].getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-				eachPairs.push_back( new ParticlePair( iter->getParticle(), xIter->getParticle() ) );
+				eachPairs[i].push_back( new ParticlePair( particle, searchParticles[searchIndex].getParticle() ) );
 			}
-			++xIter;
+			++searchIndex;
 		}
 	}
-	return eachPairs;
+	for( size_t i = 0; i < eachPairs.size(); ++i ) {
+		eachPair.insert( eachPair.end(), eachPairs[i].begin(), eachPairs[i].end() );
+	}
+	return eachPair;
 }
 
 NeighborSearcher::~NeighborSearcher()
