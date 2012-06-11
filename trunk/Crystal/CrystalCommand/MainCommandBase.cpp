@@ -4,7 +4,6 @@
 #include "GraphicsSettingCommand.h"
 #include "FileIOCommand.h"
 #include "AnimationCommandBase.h"
-#include "ProfileExportCommand.h"
 #include "ProfileInfoCommand.h"
 #include "ApplicationSettings.h"
 
@@ -33,7 +32,6 @@ MainCommandBase::MainCommandBase(System::Windows::Forms::PictureBox^ pictureBox)
 	this->profileExportSettingCommand = gcnew ExportSettingCommand("profiles", "csv");
 	this->graphicsSettingCommand = gcnew GraphicsSettingCommand();
 	this->fileIOCommand = gcnew FileIOCommand();
-	this->profileExportCommand = gcnew ProfileExportCommand( profileExportSettingCommand);
 	this->profileInfoCommand = gcnew ProfileInfoCommand();
 	this->pictureBox = pictureBox;
 
@@ -48,7 +46,6 @@ void MainCommandBase::proceedSimulation()
 {
 	animationCommandBase->proceed();
 	rendering();
-	profileExportCommand->exportToFile( 0 );
 }
 
 void MainCommandBase::refreshSimulation()

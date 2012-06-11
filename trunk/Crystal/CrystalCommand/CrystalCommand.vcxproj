@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CC78BD1A-2C14-4219-915D-1C5320C662FE}</ProjectGuid>
     <RootNamespace>CrystalCommand</RootNamespace>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -111,7 +112,6 @@
     <ClCompile Include="MainCommandBase.cpp" />
     <ClCompile Include="ExportCommandBase.cpp" />
     <ClCompile Include="MainCommand.cpp" />
-    <ClCompile Include="ProfileExportCommand.cpp" />
     <ClCompile Include="ProfileInfoCommand.cpp" />
     <ClCompile Include="BoundarySettingCommand.cpp" />
     <ClCompile Include="ObjectSettingCommand.cpp" />
@@ -136,7 +136,6 @@
     <ClInclude Include="MainCommandBase.h" />
     <ClInclude Include="ExportCommandBase.h" />
     <ClInclude Include="MainCommand.h" />
-    <ClInclude Include="ProfileExportCommand.h" />
     <ClInclude Include="ProfileInfoCommand.h" />
     <ClInclude Include="BoundarySettingCommand.h" />
     <ClInclude Include="ObjectSettingCommand.h" />
