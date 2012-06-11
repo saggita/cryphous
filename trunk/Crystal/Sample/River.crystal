@@ -2,7 +2,7 @@
 <PhysicsObjects>
   <common>
     <timeStep>0.0025</timeStep>
-    <effectLength>0.013</effectLength>
+    <effectLength>0.012</effectLength>
   </common>
   <boundary>
     <box>
