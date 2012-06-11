@@ -60,9 +60,6 @@
     <EmbeddedResource Include="ExportSettingForm.resx">
       <Filter>リソース</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExternalForceSettingForm.resx">
-      <Filter>リソース</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="GraphicsSettingForm.resx">
       <Filter>リソース</Filter>
     </EmbeddedResource>

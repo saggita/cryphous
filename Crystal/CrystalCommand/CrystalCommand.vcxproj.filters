@@ -40,9 +40,6 @@
     <ClCompile Include="ParticleInfoCommand.cpp">
       <Filter>表示</Filter>
     </ClCompile>
-    <ClCompile Include="ProfileExportCommand.cpp">
-      <Filter>ファイルIO</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleExportCommand.cpp">
       <Filter>ファイルIO</Filter>
     </ClCompile>
@@ -110,9 +107,6 @@
     </ClInclude>
     <ClInclude Include="ParticleInfoCommand.h">
       <Filter>表示</Filter>
-    </ClInclude>
-    <ClInclude Include="ProfileExportCommand.h">
-      <Filter>ファイルIO</Filter>
     </ClInclude>
     <ClInclude Include="FileIOCommand.h">
       <Filter>ファイルIO</Filter>

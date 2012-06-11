@@ -47,14 +47,11 @@ public:
 
 	ExportSettingCommand^ getProfileExportSettingCommand() { return profileExportSettingCommand; }
 
-	ProfileExportCommand^ getProfileExportCommand() { return profileExportCommand; }
-
 private:
 	ExportSettingCommand^ exportImagesSettingCommand;
 	GraphicsSettingCommand^ graphicsSettingCommand;
 	FileIOCommand^ fileIOCommand;
 	ExportSettingCommand^ profileExportSettingCommand;
-	ProfileExportCommand^ profileExportCommand;
 	ProfileInfoCommand^ profileInfoCommand;
 	System::Windows::Forms::PictureBox^ pictureBox;
 
