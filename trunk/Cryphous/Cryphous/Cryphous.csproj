@@ -8,8 +8,8 @@
     <ProjectGuid>{488B4858-EE99-4ECF-A293-A89D67612241}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CryphousTest</RootNamespace>
-    <AssemblyName>CryphousTest</AssemblyName>
+    <RootNamespace>Cryphous</RootNamespace>
+    <AssemblyName>Cryphous</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
