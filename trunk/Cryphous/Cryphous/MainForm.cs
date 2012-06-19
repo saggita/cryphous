@@ -100,8 +100,7 @@ namespace Cryphous
 
         private void particleInfoPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
-            poDialog.Show();
+
         }
 
         private void timerSimulation_Tick(object sender, EventArgs e)
@@ -175,6 +174,42 @@ namespace Cryphous
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
+        }
+
+        private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
+            form.Show();
+        }
+
+        private void buttonParticleInfo_Click(object sender, EventArgs e)
+        {
+            ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
+            poDialog.Show();
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+            String path = files[0];
+            
+            if( !mainCommand.getFileIOCommand().fileOpen( path ) ) {
+                MessageBox.Show("Unexpected File Format");
+            }
+        }
+
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            if( e.Data.GetDataPresent( DataFormats.FileDrop ) ) {
+		        e.Effect = System.Windows.Forms.DragDropEffects.All;
+	        }
+        }
+
+        private void particleExportSettingPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ParticleExportSettingForm form = new ParticleExportSettingForm( mainCommand.getParticleExportSettingCommand() );
+	        form.Show();
         }
     }
 }

@@ -39,7 +39,6 @@
             this.simulationSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boundarySettingBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.particleInfoPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -48,6 +47,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonViewReset = new System.Windows.Forms.Button();
+            this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonParticleInfo = new System.Windows.Forms.Button();
+            this.particleExportSettingPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -111,7 +113,8 @@
             this.simulationSettingToolStripMenuItem,
             this.objectSettingToolStripMenuItem,
             this.boundarySettingBToolStripMenuItem,
-            this.particleInfoPToolStripMenuItem});
+            this.graphicsSettingGToolStripMenuItem,
+            this.particleExportSettingPToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
@@ -136,13 +139,6 @@
             this.boundarySettingBToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.boundarySettingBToolStripMenuItem.Text = "BoundarySetting(&B)";
             this.boundarySettingBToolStripMenuItem.Click += new System.EventHandler(this.boundarySettingBToolStripMenuItem_Click);
-            // 
-            // particleInfoPToolStripMenuItem
-            // 
-            this.particleInfoPToolStripMenuItem.Name = "particleInfoPToolStripMenuItem";
-            this.particleInfoPToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.particleInfoPToolStripMenuItem.Text = "ParticleInfo(&P)";
-            this.particleInfoPToolStripMenuItem.Click += new System.EventHandler(this.particleInfoPToolStripMenuItem_Click);
             // 
             // listBoxInformation
             // 
@@ -213,6 +209,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonParticleInfo);
             this.splitContainer1.Panel2.Controls.Add(this.buttonViewReset);
             this.splitContainer1.Panel2.Controls.Add(this.listBoxInformation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRefresh);
@@ -232,6 +229,30 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
+            // graphicsSettingGToolStripMenuItem
+            // 
+            this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
+            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
+            this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
+            // 
+            // buttonParticleInfo
+            // 
+            this.buttonParticleInfo.Location = new System.Drawing.Point(15, 243);
+            this.buttonParticleInfo.Name = "buttonParticleInfo";
+            this.buttonParticleInfo.Size = new System.Drawing.Size(136, 25);
+            this.buttonParticleInfo.TabIndex = 7;
+            this.buttonParticleInfo.Text = "ParticleInfo";
+            this.buttonParticleInfo.UseVisualStyleBackColor = true;
+            this.buttonParticleInfo.Click += new System.EventHandler(this.buttonParticleInfo_Click);
+            // 
+            // particleExportSettingPToolStripMenuItem
+            // 
+            this.particleExportSettingPToolStripMenuItem.Name = "particleExportSettingPToolStripMenuItem";
+            this.particleExportSettingPToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.particleExportSettingPToolStripMenuItem.Text = "ExportSetting(&E)";
+            this.particleExportSettingPToolStripMenuItem.Click += new System.EventHandler(this.particleExportSettingPToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -245,6 +266,8 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -274,9 +297,11 @@
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Timer timerSimulation;
         private System.Windows.Forms.Button buttonNextStep;
-        private System.Windows.Forms.ToolStripMenuItem particleInfoPToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonViewReset;
+        private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
+        private System.Windows.Forms.Button buttonParticleInfo;
+        private System.Windows.Forms.ToolStripMenuItem particleExportSettingPToolStripMenuItem;
     }
 }
