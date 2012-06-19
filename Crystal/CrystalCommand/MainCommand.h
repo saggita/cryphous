@@ -1,11 +1,8 @@
 #pragma once
 
-#include "MainCommandBase.h"
-
 namespace Crystal{
 	namespace Command {
 
-ref class AmbientSettingCommand;
 ref class ExportSettingCommand;
 ref class ChemicalReactingSettingCommand;
 ref class SimulationSettingCommand;
@@ -16,15 +13,17 @@ ref class ImageExportCommand;
 ref class ParticleInfoCommand;
 ref class ParticleExportCommand;
 ref class ProfileInfoCommand;
+ref class GraphicsSettingCommand;
+ref class AnimationCommandBase;
 
-public ref class MainCommand : public MainCommandBase
+public ref class MainCommand
 {
 public:
 	MainCommand(System::Windows::Forms::PictureBox^ pictureBox);
 
 	~MainCommand(void);
 
-	virtual void proceedSimulation() override;
+	void proceedSimulation();
 
 	SimulationSettingCommand^ getSimulationSettingCommand() { return simulationSettingCommand; }
 
@@ -40,6 +39,26 @@ public:
 
 	ParticleExportCommand^ getParticleExportCommand() { return particleExportCommand; }
 
+	void refreshSimulation();
+
+	void rendering();
+
+	void displayInformation(System::Windows::Forms::ListBox^ listBox);
+
+	void rotateX(int angle);
+
+	void rotateY(int angle);
+
+	void rotateZ(int angle);
+
+	void zoom(double zoom);
+
+	void move(double x, double y);
+
+	void viewReset();
+
+	GraphicsSettingCommand^ getGraphicsSettingCommand(){ return graphicsSettingCommand; }
+
 private:
 	SimulationSettingCommand^ simulationSettingCommand;
 	ObjectSettingCommand^ objectSettingCommand;
@@ -48,6 +67,10 @@ private:
 	BoundarySettingCommand^ boundarySettingCommand;
 	ExportSettingCommand^ particleExportSettingCommand;
 	ParticleExportCommand^ particleExportCommand;
+	GraphicsSettingCommand^ graphicsSettingCommand;
+	ProfileInfoCommand^ profileInfoCommand;
+	System::Windows::Forms::PictureBox^ pictureBox;
+	AnimationCommandBase^ animationCommandBase;
 };
 
 	}
