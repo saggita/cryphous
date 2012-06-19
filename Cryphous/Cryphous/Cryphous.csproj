@@ -81,11 +81,23 @@
     <Compile Include="BoundarySettingForm.Designer.cs">
       <DependentUpon>BoundarySettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphicsSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicsSettingForm.Designer.cs">
+      <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParticleExportSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParticleExportSettingForm.Designer.cs">
+      <DependentUpon>ParticleExportSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ParticleObserveDialog.cs">
       <SubType>Form</SubType>
@@ -110,8 +122,14 @@
     <EmbeddedResource Include="BoundarySettingForm.resx">
       <DependentUpon>BoundarySettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GraphicsSettingForm.resx">
+      <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParticleExportSettingForm.resx">
+      <DependentUpon>ParticleExportSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParticleObserveDialog.resx">
       <DependentUpon>ParticleObserveDialog.cs</DependentUpon>

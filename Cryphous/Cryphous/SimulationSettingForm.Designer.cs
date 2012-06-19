@@ -38,7 +38,7 @@
             // 
             // textBoxEffectLength
             // 
-            this.textBoxEffectLength.Location = new System.Drawing.Point(139, 50);
+            this.textBoxEffectLength.Location = new System.Drawing.Point(100, 50);
             this.textBoxEffectLength.Name = "textBoxEffectLength";
             this.textBoxEffectLength.Size = new System.Drawing.Size(100, 19);
             this.textBoxEffectLength.TabIndex = 13;
@@ -46,7 +46,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 50);
+            this.label3.Location = new System.Drawing.Point(12, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 12);
             this.label3.TabIndex = 12;
@@ -55,7 +55,7 @@
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonCancel.Location = new System.Drawing.Point(139, 87);
+            this.buttonCancel.Location = new System.Drawing.Point(105, 87);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 11;
@@ -65,7 +65,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(59, 87);
+            this.buttonOK.Location = new System.Drawing.Point(24, 87);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 10;
@@ -75,7 +75,7 @@
             // 
             // textBoxTimeStep
             // 
-            this.textBoxTimeStep.Location = new System.Drawing.Point(139, 12);
+            this.textBoxTimeStep.Location = new System.Drawing.Point(100, 12);
             this.textBoxTimeStep.Name = "textBoxTimeStep";
             this.textBoxTimeStep.Size = new System.Drawing.Size(100, 19);
             this.textBoxTimeStep.TabIndex = 9;
@@ -83,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 15);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 8;
@@ -93,7 +93,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 121);
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ClientSize = new System.Drawing.Size(212, 117);
             this.Controls.Add(this.textBoxEffectLength);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonCancel);
