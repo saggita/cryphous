@@ -1,10 +1,6 @@
 #include "MainCommand.h"
 
 #include "ExportSettingCommand.h"
-#include "SimulationSettingCommand.h"
-#include "ObjectSettingCommand.h"
-#include "BoundarySettingCommand.h"
-#include "FileIOCommand.h"
 #include "ParticleInfoCommand.h"
 #include "SimulationCommand.h"
 #include "ParticleExportCommand.h"
@@ -33,16 +29,10 @@ using namespace System::Diagnostics;
 
 MainCommand::MainCommand(System::Windows::Forms::PictureBox^ pictureBox)
 {
-	this->simulationSettingCommand = gcnew SimulationSettingCommand();
-	this->objectSettingCommand = gcnew ObjectSettingCommand();
-	this->fileIOCommand = gcnew FileIOCommand();
-	this->particleInfoCommand = gcnew ParticleInfoCommand();
-	this->boundarySettingCommand = gcnew BoundarySettingCommand();
 	this->animationCommandBase = gcnew SimulationCommand();
 	this->particleExportSettingCommand = gcnew ExportSettingCommand("particles", "cparticles");
 	this->particleExportCommand = gcnew ParticleExportCommand( particleExportSettingCommand );
 	this->graphicsSettingCommand = gcnew GraphicsSettingCommand();
-	this->fileIOCommand = gcnew FileIOCommand();
 	this->profileInfoCommand = gcnew ProfileInfoCommand();
 	this->pictureBox = pictureBox;
 
