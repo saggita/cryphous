@@ -194,7 +194,7 @@ namespace Cryphous
 
             String path = files[0];
             
-            if( !mainCommand.getFileIOCommand().fileOpen( path ) ) {
+            if( !fileIOCommand.fileOpen( path ) ) {
                 MessageBox.Show("Unexpected File Format");
             }
         }
