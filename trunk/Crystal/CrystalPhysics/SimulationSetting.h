@@ -11,13 +11,18 @@ namespace Crystal{
 class SimulationSetting : private boost::noncopyable
 {
 public:
-	SimulationSetting(void);
+	SimulationSetting(void) :
+	  timeStep( 0.0025 ),
+	  particleDiameter(1.0)
+	  {};
 
 	~SimulationSetting(){};
 
+	double getEffectLength() const { return particleDiameter * 1.25; }
+
 public:
 	double timeStep;
-	double effectLength;
+	double particleDiameter;
 	Geom::Box boundaryBox;
 };
 

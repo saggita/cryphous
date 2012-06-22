@@ -40,7 +40,7 @@ SPHSolver::SPHSolver(PhysicsObjectFactory* factory, const SimulationSetting& set
 factory( factory),
 setting( setting),
 neighborSearcher( 0),
-sphPairSolver( new SPHPairSolver( setting.effectLength ) )
+sphPairSolver( new SPHPairSolver( setting.getEffectLength() ) )
 {
 }
 
@@ -70,7 +70,7 @@ void SPHSolver::calculateInteraction()
 
 	createPairs();
 		
-	SPHPairSolver solver( setting.effectLength );
+	SPHPairSolver solver( setting.getEffectLength() );
 
 	calculateDensity();
 
@@ -91,11 +91,11 @@ void SPHSolver::createPairs()
 {
 	assert( neighborSearcher == 0 );
 	Profiler::get()->start(" Sim->sorting");
-	const SearchParticleVector& sorted = factory->getSearchParticles( setting.effectLength);
+	const SearchParticleVector& sorted = factory->getSearchParticles( setting.getEffectLength() );
 	Profiler::get()->end(" Sim->sorting");
 
 	Profiler::get()->start(" Sim->search");
-	neighborSearcher = new NeighborSearcher( sorted, setting.effectLength );
+	neighborSearcher = new NeighborSearcher( sorted, setting.getEffectLength() );
 	neighborSearcher->search();
 	Profiler::get()->end(" Sim->search");
 }

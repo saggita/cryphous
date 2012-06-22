@@ -21,7 +21,7 @@ SimulationTest::SimulationTest(void)
 	PhysicsObjectFactory factory;
 	factory.createPhysicsObject( condition, 1.0 );
 	SimulationSetting setting;
-	setting.effectLength = 1.3;
+	setting.particleDiameter = 1.0;
 	Simulation simulation;
 	simulation.simulate( &factory, setting);
 }

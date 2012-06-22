@@ -36,14 +36,14 @@ void ObjectSettingCommand::displaySettings()
 {
 	view->Rows->Clear();
 
-	PhysicsObjectConditionList& conditions = ApplicationSettings::get()->factory->getConditions();
+	std::list<PhysicsObjectCondition>& conditions = *(ApplicationSettings::get()->conditions);
 
-	for( PhysicsObjectConditionList::iterator iter = conditions.begin();
+	for( std::list<PhysicsObjectCondition>::iterator iter = conditions.begin();
 		iter != conditions.end(); ++iter ) {
-		const PhysicsObjectCondition* condition = *(iter);
+		const PhysicsObjectCondition& condition = *(iter);
 		
 		String^ type = "";
-		switch( condition->getObjectType() ) {
+		switch( condition.getObjectType() ) {
 			case PhysicsObjectCondition::Fluid :
 				type = "Fluid";
 				break;
@@ -59,13 +59,13 @@ void ObjectSettingCommand::displaySettings()
 
 		array<Object^>^ rowData = {
 			type,
-			condition->getPressureCoefficient(),
-			condition->getViscosityCoefficient(),
-			condition->getDensity(), 
-			condition->getBox().getMinX(), condition->getBox().getMaxX(),
-			condition->getBox().getMinY(), condition->getBox().getMaxY(),
-			condition->getBox().getMinZ(), condition->getBox().getMaxZ(),
-			condition->getDivideLength()
+			condition.getPressureCoefficient(),
+			condition.getViscosityCoefficient(),
+			condition.getDensity(), 
+			condition.getBox().getMinX(), condition.getBox().getMaxX(),
+			condition.getBox().getMinY(), condition.getBox().getMaxY(),
+			condition.getBox().getMinZ(), condition.getBox().getMaxZ(),
+			condition.getDivideLength()
 		};
 		
 		view->Rows->Add( rowData );
@@ -74,6 +74,7 @@ void ObjectSettingCommand::displaySettings()
 
 void ObjectSettingCommand::saveSettings()
 {
+	ApplicationSettings::get()->conditions->clear();
 	ApplicationSettings::get()->factory->init();
 
 	for each( DataGridViewRow^ row in view->Rows ) {
@@ -111,7 +112,8 @@ void ObjectSettingCommand::saveSettings()
 			viscosityCoe,
 			objectType
 			);
-		ApplicationSettings::get()->factory->createPhysicsObject( *condition,  ApplicationSettings::get()->simulationSetting->effectLength );
+		ApplicationSettings::get()->factory->createPhysicsObject( *condition,  ApplicationSettings::get()->simulationSetting->getEffectLength() );
+		ApplicationSettings::get()->conditions->push_back( *condition );
 	}
 }
 

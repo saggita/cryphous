@@ -19,5 +19,5 @@ void SimulationSettingCommand::setTextBox(System::Windows::Forms::TextBox ^textB
 
 	itemAndVariables.Clear();
 	itemAndVariables.Push( gcnew DoubleTextBox( &(setting->timeStep), textBoxTimeStep ) );
-	itemAndVariables.Push( gcnew DoubleTextBox( &(setting->effectLength), textBoxEffectLength ) );
+	//itemAndVariables.Push( gcnew DoubleTextBox( &(setting->effectLength), textBoxEffectLength ) );
 }
