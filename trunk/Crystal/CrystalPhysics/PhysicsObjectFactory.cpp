@@ -102,13 +102,11 @@ PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCond
 			break;
 		case PhysicsObjectCondition::Rigid :
 			object = new Rigid( nextID++, condition.getDensity(), condition.getPressureCoefficient(), condition.getViscosityCoefficient(), particleFactory, new PhysicalTimeIntegratorBase(),
-				new EnforcerBase(),
-				particleCondition.getXNumber(), particleCondition.getYNumber(), particleCondition.getZNumber() );
+				new EnforcerBase() );
 			break;
 		case PhysicsObjectCondition::RigidTwoWay:
 			object = new Rigid( nextID++, condition.getDensity(), condition.getPressureCoefficient(), condition.getViscosityCoefficient(), particleFactory, new PhysicalTimeIntegrator(),
-				new RigidEnforcer(),
-				particleCondition.getXNumber() , particleCondition.getYNumber(), particleCondition.getZNumber() );
+				new RigidEnforcer() );
 			break;
 		default:
 			assert( false );

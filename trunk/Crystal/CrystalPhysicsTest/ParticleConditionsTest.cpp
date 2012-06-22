@@ -19,19 +19,22 @@ ParticleConditionsTest::ParticleConditionsTest(void)
 void ParticleConditionsTest::getInnerPointsTest()
 {
 	ParticleConditions conditions( Box(Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 1.0, 1.0)), 0.5, 1.0 );
-	const std::list<Point3d>& points = conditions.getInnerPoints();
+	const std::vector<Point3d>& points = conditions.getInnerPoints();
 	BOOST_CHECK_EQUAL( points.size(), 8 );
-	BOOST_CHECK_EQUAL( conditions.getXNumber(), 2 );
-	BOOST_CHECK_EQUAL( conditions.getYNumber(), 2 );
-	BOOST_CHECK_EQUAL( conditions.getZNumber(), 2 );
 }
 
 void ParticleConditionsTest::getInnerPointsEmptyTest()
 {
 	ParticleConditions conditions( Box(Point3d( 0.0, 0.0, 0.0), Point3d( 0.0, 0.0, 0.0)), 0.5, 1.0 );
-	const std::list<Point3d>& points = conditions.getInnerPoints();
+	const std::vector<Point3d>& points = conditions.getInnerPoints();
 	BOOST_CHECK( points.empty() );
-	BOOST_CHECK_EQUAL( conditions.getXNumber(), 0 );
-	BOOST_CHECK_EQUAL( conditions.getYNumber(), 0 );
-	BOOST_CHECK_EQUAL( conditions.getZNumber(), 0 );
+}
+
+void ParticleConditionsTest::getArbitaryPointsTest()
+{
+	std::vector<Point3d> points;
+	points.push_back( Point3d(0.0, 0.0, 0.0) );
+	points.push_back( Point3d(1.0, 1.0, 1.0) );
+	ParticleConditions conditions( points, 0.5, 1.0 );
+	BOOST_CHECK_EQUAL( conditions.getInnerPoints().size(), 2 );
 }

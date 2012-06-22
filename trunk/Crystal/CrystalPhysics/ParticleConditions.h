@@ -1,7 +1,7 @@
 #ifndef __PARTICLE_CONDITIONS_H__
 #define __PARTICLE_CONDITIONS_H__
 
-#include <list>
+#include <vector>
 
 namespace Crystal{
 	namespace Geom{
@@ -15,15 +15,18 @@ class ParticleConditions
 {
 public:
 	ParticleConditions(const Geom::Box& box, const double particleLength, const double density) :
-		box( box),
 		particleLength( particleLength),
-		density( density),
-		xNumber(0), yNumber(0), zNumber(0)
+		density( density)
 		{
-			createInnerPoints();
+			createInnerPoints(box);
 		}
 
-	const Geom::Box& getBox() const { return box; }
+	ParticleConditions(const std::vector<Geom::Point3d>& points, const double particleLength, const double density) :
+		particleLength( particleLength),
+		 density( density),
+		 innerPoints( points)
+		{
+		}
 
 	double getParticleLength() const { return particleLength; }
 
@@ -33,25 +36,15 @@ public:
 
 	double getParticleMass() const { return density * getParticleVolume(); }
 
-	std::list<Geom::Point3d> getInnerPoints() const { return innerPoints; }
-	
-	int getXNumber() const { return xNumber; }
-
-	int getYNumber() const { return yNumber; }
-
-	int getZNumber() const { return zNumber; }
+	std::vector<Geom::Point3d> getInnerPoints() const { return innerPoints; }
 
 protected:
-	void createInnerPoints();
+	void createInnerPoints(const Geom::Box& box);
 
 private:
-	const Geom::Box& box;
 	const double particleLength;
 	const double density;
-	std::list<Geom::Point3d> innerPoints;
-	int xNumber;
-	int yNumber;
-	int zNumber;
+	std::vector<Geom::Point3d> innerPoints;
 };
 
 	}

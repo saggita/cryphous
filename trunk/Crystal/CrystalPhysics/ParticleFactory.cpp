@@ -19,9 +19,9 @@ virtualParticle(0)
 {
 }
 
-ParticleVector& ParticleFactory::createParticles(const ParticleConditions& conditions)
+ParticleVector ParticleFactory::createParticles(const ParticleConditions& conditions)
 {
-	std::list<Point3d>& innerPoints = conditions.getInnerPoints();
+	std::vector<Point3d>& innerPoints = conditions.getInnerPoints();
 	BOOST_FOREACH( Point3d& innerPoint, innerPoints ) {
 		particles.push_back(
 			new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this ) 

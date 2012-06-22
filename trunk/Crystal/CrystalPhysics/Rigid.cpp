@@ -9,8 +9,7 @@ using namespace Crystal::Physics;
 Rigid::Rigid( const int id, const double density, const double gasConstant, const double viscosityCoefficient, 
 			 ParticleFactory* particleFactory,
 			 PhysicalTimeIntegratorBase* physicalTimeIntegratorBase,
-			 EnforcerBase* enforcerBase,
-			 const int xNumber, const int yNumber, const int zNumber ) :
+			 EnforcerBase* enforcerBase ) :
 PhysicsObject( id , density, gasConstant, viscosityCoefficient, particleFactory, physicalTimeIntegratorBase, enforcerBase)
 {
 }
