@@ -65,7 +65,6 @@ void ObjectSettingCommand::displaySettings()
 			condition.getBox().getMinX(), condition.getBox().getMaxX(),
 			condition.getBox().getMinY(), condition.getBox().getMaxY(),
 			condition.getBox().getMinZ(), condition.getBox().getMaxZ(),
-			condition.getDivideLength()
 		};
 		
 		view->Rows->Add( rowData );
@@ -102,17 +101,15 @@ void ObjectSettingCommand::saveSettings()
 		const double maxY = Convert::ToDouble( row->Cells[7]->Value );
 		const double minZ = Convert::ToDouble( row->Cells[8]->Value );
 		const double maxZ = Convert::ToDouble( row->Cells[9]->Value );
-		const double divideLength = Convert::ToDouble( row->Cells[10]->Value );
 
 		PhysicsObjectCondition* condition = new PhysicsObjectCondition(
 			Box( Crystal::Geom::Point3d( minX, minY, minZ), Crystal::Geom::Point3d( maxX, maxY, maxZ ) ),
 			density,
-			divideLength,
 			pressureCoe,
 			viscosityCoe,
 			objectType
 			);
-		ApplicationSettings::get()->factory->createPhysicsObject( *condition,  ApplicationSettings::get()->simulationSetting->getEffectLength() );
+		ApplicationSettings::get()->factory->createPhysicsObject( *condition,  *(ApplicationSettings::get()->simulationSetting) );
 		ApplicationSettings::get()->conditions->push_back( *condition );
 	}
 }
@@ -126,7 +123,6 @@ void ObjectSettingCommand::addObject()
 		0.0, 
 		0.0, 0.0, 0.0,
 		0.0, 0.0, 0.0,
-		0.0,
 	};
 	
 	view->Rows->Add( rowData );

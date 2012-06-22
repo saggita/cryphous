@@ -21,11 +21,11 @@ using namespace Crystal::Physics;
 BoundarySolverTest::BoundarySolverTest(void)
 {
 	PhysicsObjectFactory factory;
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 1.0, 0.0, PhysicsObjectCondition::Fluid );
-	PhysicsObject* object = factory.createPhysicsObject( condition, 1.0 );
-	Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
+	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.0, PhysicsObjectCondition::Fluid );
+	PhysicsObject* object = factory.createPhysicsObject( condition, setting );
+	Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
 	BoundarySolver solver( object, setting );
 	solver.calculateDensity( Box() );
 }

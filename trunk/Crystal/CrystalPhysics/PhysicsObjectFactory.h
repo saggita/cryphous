@@ -15,6 +15,7 @@ namespace Crystal{
 		typedef std::vector<Particle*> ParticleVector;
 		class PhysicsObjectCondition;
 		class ParticleFactory;
+		class SimulationSetting;
 
 class PhysicsObjectFactory : private boost::noncopyable
 {
@@ -25,7 +26,7 @@ public:
 
 	void init();
 
-	PhysicsObject* createPhysicsObject( const PhysicsObjectCondition& condition, const double effectLength );
+	PhysicsObject* createPhysicsObject( const PhysicsObjectCondition& condition, const SimulationSetting& setting );
 
 	PhysicsObjectList getPhysicsObjects() const { return physicsObjects; }
 

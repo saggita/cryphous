@@ -17,11 +17,12 @@ using namespace Crystal::Physics;
 
 SimulationTest::SimulationTest(void)
 {
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid );
-	PhysicsObjectFactory factory;
-	factory.createPhysicsObject( condition, 1.0 );
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
+	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
+	PhysicsObjectFactory factory;
+	factory.createPhysicsObject( condition, setting );
+
 	Simulation simulation;
 	simulation.simulate( &factory, setting);
 }
