@@ -10,7 +10,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-void ParticleConditions::createInnerPoints()
+void ParticleConditions::createInnerPoints(const Box& box)
 {
 	assert( innerPoints.empty() );
 
@@ -22,16 +22,6 @@ void ParticleConditions::createInnerPoints()
 	Point3d min = box.getMin();
 	min += Point3d( particleLength * 0.5, particleLength * 0.5, particleLength * 0.5 );
 	min -= Point3d( margin, margin, margin );
-
-	for( double x = min.getX(); x < max.getX(); x += particleLength ) {
-		this->xNumber++;
-	}
-	for( double y = min.getY(); y < max.getY(); y += particleLength ) {
-		this->yNumber++;
-	}
-	for( double z = min.getZ(); z < max.getZ(); z += particleLength ) {
-		this->zNumber++;
-	}
 
 	for( double x = min.getX(); x < max.getX(); x += particleLength ) {
 		for( double y = min.getY(); y < max.getY(); y += particleLength ) {

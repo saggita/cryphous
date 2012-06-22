@@ -11,7 +11,6 @@ namespace Crystal{
 	namespace Physics{
 		class ParticleConditions;
 		class Particle;
-		class PhysicsObject;
 		typedef std::vector<Particle*> ParticleVector;
 
 class ParticleFactory : private boost::noncopyable
@@ -21,13 +20,11 @@ public:
 
 	~ParticleFactory(void);
 
-	ParticleVector& createParticles(const ParticleConditions& conditions);
+	ParticleVector createParticles(const ParticleConditions& conditions);
 
 	ParticleVector getParticles() const { return particles; }
 
 	Particle* getVirtualParticle() { return virtualParticle; }
-
-	//Particle* createAmbientParticle( const Geom::Point3d& center, PhysicsObject* parent );
 
 private:
 	void destroyVirtualParticle();

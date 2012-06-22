@@ -11,4 +11,6 @@ private:
 	void getInnerPointsTest();
 
 	void getInnerPointsEmptyTest();
+
+	void getArbitaryPointsTest();
 };
