@@ -14,6 +14,7 @@
 #include "PhysicalTimeIntegrator.h"
 #include "EnforcerBase.h"
 #include "RigidEnforcer.h"
+#include "SimulationSetting.h"
 
 #include "../CrystalGeom/Point3d.h"
 #include "../CrystalGeom/Box.h"
@@ -63,9 +64,9 @@ SearchParticleVector PhysicsObjectFactory::getSearchParticles(const double effec
 	return searchParticleFactory.getSearchParticles();
 }
 
-PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCondition &condition, const double effectLength)
+PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCondition &condition, const SimulationSetting& setting)
 {
-	const ParticleConditions particleCondition( condition.getBox(), condition.getDivideLength(), condition.getDensity());
+	const ParticleConditions particleCondition( condition.getBox(), setting.particleDiameter, condition.getDensity());
 	ParticleFactory* particleFactory = new ParticleFactory();
 
 	ParticleVector& particles = particleFactory->createParticles( particleCondition );
@@ -90,7 +91,7 @@ PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCond
 		particle->setParent( object );
 	}
 	physicsObjects.push_back( object );
-	createSearchParticles(effectLength);
+	createSearchParticles( setting.getEffectLength() );
 	return object;
 }
 

@@ -25,8 +25,8 @@ SPHSolverTest::SPHSolverTest(void)
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
 	Box boundaryBox( Point3d( 0.0, 0.0, 0.0), Point3d( 10.0, 1.0, 1.0) );
-	PhysicsObjectCondition condition( boundaryBox, 1000.0, 1.0, 8.0, 0.4, PhysicsObjectCondition::Fluid );
-	PhysicsObject* fluid = factory.createPhysicsObject( condition, 1.0 );
+	PhysicsObjectCondition condition( boundaryBox, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
+	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting );
 	PhysicsObjectList objects( 1, fluid);
 	SPHSolver solver( &factory, setting);
 	solver.calculateInteraction();

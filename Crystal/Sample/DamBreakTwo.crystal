@@ -2,7 +2,7 @@
 <PhysicsObjects>
   <common>
     <timeStep>0.0025</timeStep>
-    <particleDiameter>0.013</particleDiameter>
+    <particleDiameter>0.010</particleDiameter>
   </common>
   <boundary>
     <box>
@@ -36,7 +36,6 @@
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
       <viscosityCoefficient>2</viscosityCoefficient>
-      <divideLength>0.01</divideLength>
     </object>
     <object>
       <type>0</type>
@@ -55,7 +54,6 @@
       <density>100</density>
       <pressureCoefficient>1000</pressureCoefficient>
       <viscosityCoefficient>0.2</viscosityCoefficient>
-      <divideLength>0.01</divideLength>
     </object>
   </objects>
 </PhysicsObjects>

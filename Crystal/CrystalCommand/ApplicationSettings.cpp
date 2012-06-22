@@ -43,7 +43,7 @@ void ApplicationSettings::refresh()
 {
 	factory->init();
 	BOOST_FOREACH(const PhysicsObjectCondition& condition, *conditions ) {
-		factory->createPhysicsObject(condition, simulationSetting->getEffectLength());
+		factory->createPhysicsObject(condition, *simulationSetting);
 	}
 	renderer->init();	
 	simulation->init();
@@ -104,10 +104,6 @@ XmlDocument^ ApplicationSettings::writeToXML()
 			XmlElement^ viscosityCoefficientElement = doc->CreateElement("viscosityCoefficient");
 			viscosityCoefficientElement->AppendChild( doc->CreateTextNode( condition.getViscosityCoefficient().ToString() ) );
 			objectElement->AppendChild( viscosityCoefficientElement );
-
-			XmlElement^ divideLengthElement = doc->CreateElement("divideLength");
-			divideLengthElement->AppendChild( doc->CreateTextNode( condition.getDivideLength().ToString() ) );
-			objectElement->AppendChild( divideLengthElement );
 		}
 	}
 
@@ -151,12 +147,11 @@ bool ApplicationSettings::readFromXML( XmlDocument^ doc )
 		const double density = double::Parse( densityElement->FirstChild->Value );
 		const double pressure = double::Parse( pressureElement->FirstChild->Value );
 		const double viscosity = double::Parse( viscosityElement->FirstChild->Value );
-		const double divide = double::Parse( divideElement->FirstChild->Value );
 
 		PhysicsObjectCondition* condition = 
-			new PhysicsObjectCondition( box, density, divide, pressure, viscosity, (PhysicsObjectCondition::ObjectType)type );
+			new PhysicsObjectCondition( box, density, pressure, viscosity, (PhysicsObjectCondition::ObjectType)type );
 
-		factory->createPhysicsObject( *condition, simulationSetting->particleDiameter );
+		factory->createPhysicsObject( *condition, *simulationSetting );
 		conditions->push_back(*condition);
 	}
 	return true;

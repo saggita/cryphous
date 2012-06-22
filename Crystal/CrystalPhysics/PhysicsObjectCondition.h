@@ -15,7 +15,6 @@ public:
 		Fluid,
 		Rigid,
 		RigidTwoWay,
-		Cloth
 	};
 
 	enum InteractionType{
@@ -23,13 +22,11 @@ public:
 		TwoWay
 	};
 
-	PhysicsObjectCondition( const Geom::Box& box, const double density, const double divideLenth, const double pressureCoefficient, const double viscosityCoefficient, const ObjectType objectType);
+	PhysicsObjectCondition( const Geom::Box& box, const double density, const double pressureCoefficient, const double viscosityCoefficient, const ObjectType objectType);
 
 	const Geom::Box& getBox() const { return box; }
 
 	double getDensity() const { return density; }
-
-	double getDivideLength() const { return divideLength; }
 
 	double getPressureCoefficient() const { return pressureCoefficient; }
 
@@ -46,13 +43,11 @@ public:
 private:
 	const Geom::Box box;
 	double density;
-	double divideLength;
 	double pressureCoefficient;
 	double viscosityCoefficient;
 	ObjectType objectType;
 };
 
-//typedef std::list<PhysicsObjectCondition> PhysicsObjectConditionList;
 	}
 }
 

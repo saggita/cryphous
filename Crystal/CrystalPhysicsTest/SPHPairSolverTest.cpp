@@ -31,8 +31,10 @@ void SPHPairSolverTest::calculateDensityTest()
 {
 	PhysicsObjectFactory factory;
 	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
-	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, 1.0);
+	SimulationSetting setting;
+	setting.particleDiameter = 1.0;
+	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, setting);
 
 	const ParticleVector& particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
@@ -50,8 +52,10 @@ void SPHPairSolverTest::calculateBoundaryDensityTest()
 {
 	PhysicsObjectFactory factory;
 	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
-	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, 1.0);
+	SimulationSetting setting;
+	setting.particleDiameter = 1.0;
+	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, setting);
 	const ParticleVector&	particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
 
@@ -68,8 +72,10 @@ void SPHPairSolverTest::calculatePressureForceTest()
 {
 	PhysicsObjectFactory factory;
 	Box box( Point3d( 0.0, 0.0, 0.0), Point3d( 1.0, 2.0, 1.0 ) );
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 5.0, 0.4, PhysicsObjectCondition::Fluid ); 
-	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, 1.0);
+	SimulationSetting setting;
+	setting.particleDiameter = 1.0;
+	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, setting);
 	const ParticleVector& particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
 
