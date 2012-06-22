@@ -30,14 +30,15 @@ public:
 
 private:
 
-	ParticlePairVector searchX();
+	void searchX(int number, int startIndex, int endIndex);
 
-	ParticlePairVector searchNeighbors(const int number);
+	void searchNeighbors(int number, int startIndex, int endIndex);
 
 private:
 	const SearchParticleVector& searchParticles;
 	const double effectLengthSquared;
 	ParticlePairVector pairs;
+	std::vector<ParticlePairVector> eachPairs;
 
 };
 

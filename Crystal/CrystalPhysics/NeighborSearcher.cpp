@@ -24,33 +24,63 @@ using namespace Crystal::Physics;
 
 void NeighborSearcher::search()
 {
-	std::vector<ParticlePairVector> eachPairs(5);
+	const int threads = 8;
+	eachPairs.resize(threads);
+
+	std::vector<int> divides(threads);
+	for( int i = 0; i < threads; ++i ) {
+		divides[i] = searchParticles.size() / threads * i;
+	}
+
 	#pragma omp parallel
 	#pragma omp sections
 	{
 		#pragma omp section 
 		{
-			eachPairs[0] = searchNeighbors(0);
+			searchX(0, divides[0], divides[1] );
+			searchNeighbors(0, divides[0], divides[1]);
 		}
 
 		#pragma omp section 
 		{
-			eachPairs[1] = searchNeighbors(1);
+			searchX(1, divides[1], divides[2] );
+			searchNeighbors(1, divides[1], divides[2]);
 		}
 
 		#pragma omp section 
 		{
-			eachPairs[2] = searchNeighbors(2);
+			searchX(2, divides[2], divides[3] );
+			searchNeighbors(2, divides[2], divides[3]);
 		}
 
 		#pragma omp section 
 		{
-			eachPairs[3] = searchNeighbors(3);
+			searchX(3, divides[3], divides[4] );
+			searchNeighbors(3, divides[3], divides[4]);
 		}
 
 		#pragma omp section 
 		{
-			eachPairs[4] = searchX();
+			searchX(4, divides[4], divides[5] );
+			searchNeighbors(4, divides[4], divides[5]);
+		}
+
+		#pragma omp section 
+		{
+			searchX(5, divides[5], divides[6] );
+			searchNeighbors(5, divides[5], divides[6]);
+		}
+
+		#pragma omp section 
+		{
+			searchX(6, divides[6], divides[7] );
+			searchNeighbors(6, divides[6], divides[7]);
+		}
+
+		#pragma omp section 
+		{
+			searchX(7, divides[7], searchParticles.size() );
+			searchNeighbors(7, divides[7], searchParticles.size());
 		}
 	}
 
@@ -59,47 +89,54 @@ void NeighborSearcher::search()
 	}
 }
 
-ParticlePairVector NeighborSearcher::searchNeighbors(const int number)
+void NeighborSearcher::searchNeighbors(int number, int startIndex, int endIndex)
 {
-	ParticlePairVector eachPairs;
-	SearchParticleVector::const_iterator baseIter = searchParticles.begin();
-	
-	for( SearchParticleVector::const_iterator iter = searchParticles.begin(); iter != searchParticles.end(); ++iter ) {
-		const int baseID = iter->getForwardIDs()[number];
-		while( baseIter != searchParticles.end() && baseIter->getGridID() < baseID ) {
-			++baseIter;
-		}
-		SearchParticleVector::const_iterator yIter = baseIter;
-			
-		const Point3d& centerX = iter->getCenter();
-		while( yIter != searchParticles.end() && yIter->getGridID() <= baseID+2 ) {
-			const Point3d& centerY = yIter->getCenter();
-			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-				eachPairs.push_back( new ParticlePair( iter->getParticle(), yIter->getParticle() ) );
+	int yIndex[4];// = startIndex;
+	for( int i = 0; i < 4; ++i ) {
+		yIndex[i] = startIndex;
+	}
+	for( int index = startIndex; index < endIndex; ++index ) {
+		const std::vector<int>& ids = searchParticles[index].getForwardIDs();
+		for( size_t i = 0; i < ids.size(); ++i ) {
+			const int baseID = ids[i];
+			while( yIndex[i] < searchParticles.size() && searchParticles[yIndex[i]].getGridID() < baseID ) {
+				++yIndex[i];
 			}
-			++yIter;
+			// std::vector<SearchParticle>::const_iterator yIter = std::lower_bound(searchParticles.begin(), searchParticles.end(), baseID);
+
+			int zIndex = yIndex[i];
+			//std::vector<SearchParticle>::const_iterator zIter = yIter; 
+			const Point3d& centerX = searchParticles[index].getCenter();
+			while( zIndex < searchParticles.size() && searchParticles[zIndex].getGridID() <= baseID+2 ) {
+			//while( zIter != searchParticles.end() && zIter->getGridID() <= baseID+2 ) {
+				const Point3d& centerZ = searchParticles[zIndex].getCenter();
+				//const Point3d& centerZ = zIter->getCenter();
+				if( centerX.getDistanceSquared( centerZ ) < effectLengthSquared ) {
+					//eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(), zIter->getParticle() ) );
+					eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(),searchParticles[zIndex].getParticle() ) );
+				}
+				++zIndex;
+				//++zIter;
+			}
 		}
 	}
-	return eachPairs;
 }
 
-ParticlePairVector NeighborSearcher::searchX()
+void NeighborSearcher::searchX(int number, int startIndex, int endIndex)
 {
-	ParticlePairVector eachPairs;
-	for( SearchParticleVector::const_iterator iter = searchParticles.begin(); iter != searchParticles.end(); ++iter ) {
-		const int gridID = iter->getGridID();
-		const Point3d& centerX = iter->getCenter();
-		SearchParticleVector::const_iterator xIter = iter;
-		++xIter;
-		while( xIter != searchParticles.end() && xIter->getGridID() <= gridID+1 ) {
-			const Point3d& centerY = xIter->getCenter();
+	for( int index = startIndex; index < endIndex; ++index ) {
+		const int gridID = searchParticles[index].getGridID();
+		const Point3d& centerX = searchParticles[index].getCenter();
+		int xIndex = index;
+		++xIndex; // ignore itself.
+		while( xIndex < searchParticles.size() && searchParticles[xIndex].getGridID() <= gridID+1 ) {
+			const Point3d& centerY = searchParticles[xIndex].getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-				eachPairs.push_back( new ParticlePair( iter->getParticle(), xIter->getParticle() ) );
+				eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(), searchParticles[xIndex].getParticle() ) );
 			}
-			++xIter;
+			++xIndex;
 		}
 	}
-	return eachPairs;
 }
 
 NeighborSearcher::~NeighborSearcher()
