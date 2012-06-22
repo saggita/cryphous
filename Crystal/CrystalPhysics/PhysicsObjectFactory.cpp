@@ -38,38 +38,12 @@ PhysicsObjectFactory::~PhysicsObjectFactory(void)
 
 void PhysicsObjectFactory::init()
 {
-	initPhysicsObjects();
-	initConditions();
-}
-
-void PhysicsObjectFactory::initPhysicsObjects()
-{
 	BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
 		delete object->getParticleFactory();
 		delete object;
 	}
 	physicsObjects.clear();
 	this->nextID = 0;
-}
-
-void PhysicsObjectFactory::initConditions()
-{
-	BOOST_FOREACH( PhysicsObjectCondition* condition, conditions ) {
-		delete condition;
-	}
-	conditions.clear();
-}
-
-void PhysicsObjectFactory::reCreatePhysicsObject(const double effectLength)
-{
-	initPhysicsObjects();
-	PhysicsObjectConditionList previousConditions = this->conditions;
-	BOOST_FOREACH( PhysicsObjectCondition* condition, previousConditions ) {
-		createPhysicsObject( *condition, effectLength);
-		conditions.remove( condition);
-		delete condition;
-	}
-	createSearchParticles(effectLength);
 }
 
 void PhysicsObjectFactory::createSearchParticles(const double effectLength)
@@ -116,8 +90,6 @@ PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCond
 		particle->setParent( object );
 	}
 	physicsObjects.push_back( object );
-	conditions.push_back( new PhysicsObjectCondition( condition.getBox(), condition.getDensity(), condition.getDivideLength(),
-		condition.getPressureCoefficient(), condition.getViscosityCoefficient(), condition.getObjectType() ) );
 	createSearchParticles(effectLength);
 	return object;
 }

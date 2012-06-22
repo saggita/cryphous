@@ -1,7 +1,6 @@
 #ifndef __PHYSICS_OBJECT_CONDITION_H__
 #define __PHYSICS_OBJECT_CONDITION_H__
 
-#include <boost/noncopyable.hpp>
 #include <list>
 
 #include "../CrystalGeom/Box.h"
@@ -9,7 +8,7 @@
 namespace Crystal{
 	namespace Physics{
 
-class PhysicsObjectCondition : public boost::noncopyable
+class PhysicsObjectCondition
 {
 public:
 	enum ObjectType{
@@ -44,8 +43,6 @@ public:
 
 	void setViscosityCoefficient(const double viscosityCoefficient) { this->viscosityCoefficient = viscosityCoefficient; }
 
-	InteractionType getChemicalInteractionType() const { return chemicalInteraction; }
-
 private:
 	const Geom::Box box;
 	double density;
@@ -53,10 +50,9 @@ private:
 	double pressureCoefficient;
 	double viscosityCoefficient;
 	ObjectType objectType;
-	InteractionType chemicalInteraction;
 };
 
-typedef std::list<PhysicsObjectCondition*> PhysicsObjectConditionList;
+//typedef std::list<PhysicsObjectCondition> PhysicsObjectConditionList;
 	}
 }
 

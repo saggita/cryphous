@@ -25,7 +25,7 @@ BoundarySolverTest::BoundarySolverTest(void)
 	PhysicsObject* object = factory.createPhysicsObject( condition, 1.0 );
 	Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
 	SimulationSetting setting;
-	setting.effectLength = 1.3;
+	setting.particleDiameter = 1.0;
 	BoundarySolver solver( object, setting );
 	solver.calculateDensity( Box() );
 }

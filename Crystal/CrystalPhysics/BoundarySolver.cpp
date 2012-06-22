@@ -26,9 +26,8 @@ setting( setting)
 
 void BoundarySolver::calculateDensity(const Box& box)
 {
-	const double effectLength = setting.effectLength;
+	const double effectLength = setting.getEffectLength();
 	BOOST_FOREACH( Particle* particle, object->getParticles() ) {
-		// XŽ²‹«ŠE‚ð”»’è‚·‚é.
 		if( particle->center.getX() > box.getMaxX() + particle->getRadius() - effectLength ) {
 			Point3d boundaryPoint = particle->center;
 			boundaryPoint.setX( box.getMaxX() + particle->getRadius() );
@@ -40,7 +39,6 @@ void BoundarySolver::calculateDensity(const Box& box)
 			calculateDensity( particle, boundaryPoint );
 		}
 
-		// YŽ²‹«ŠE‚ð”»’è‚·‚é.
 		if( particle->center.getY() > box.getMaxY() + particle->getRadius() - effectLength ) {
 			Point3d boundaryPoint = particle->center;
 			boundaryPoint.setY( box.getMaxY() + particle->getRadius() );
@@ -52,7 +50,6 @@ void BoundarySolver::calculateDensity(const Box& box)
 			calculateDensity( particle, boundaryPoint );
 		}
 
-		// ZŽ²‹«ŠE‚ð”»’è‚·‚é.
 		if( particle->center.getZ() > box.getMaxZ() + particle->getRadius() - effectLength ) {
 			Point3d boundaryPoint = particle->center;
 			boundaryPoint.setZ( box.getMaxZ() + particle->getRadius() );
@@ -118,7 +115,7 @@ void BoundarySolver::calculateDensity(Particle* particle, const Point3d boundary
 	virtualParticle->setParent( particle->getParent() );
 
 	ParticlePair pair( particle, virtualParticle );
-	SPHPairSolver solver( setting.effectLength );
+	SPHPairSolver solver( setting.getEffectLength() );
 	solver.calculateDensity( &pair);
 }
 

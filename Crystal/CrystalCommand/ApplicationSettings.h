@@ -32,6 +32,8 @@ public:
 		return instance;
 	}
 
+	void refresh();
+
 public:
 
 	System::Xml::XmlDocument^ writeToXML();
@@ -45,6 +47,8 @@ public:
 	Physics::Simulation* simulation;
 
 	Graphics::Renderer* renderer;
+
+	std::list<Physics::PhysicsObjectCondition>* conditions;
 };
 
 	}
