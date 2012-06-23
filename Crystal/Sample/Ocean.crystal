@@ -7,14 +7,14 @@
   <boundary>
     <box>
       <min>
-        <x>-0.5</x>
+        <x>-1</x>
         <y>-0.1</y>
-        <z>-0.5</z>
+        <z>-1</z>
       </min>
       <max>
-        <x>0.5</x>
+        <x>1</x>
         <y>1</y>
-        <z>0.5</z>
+        <z>1</z>
       </max>
     </box>
   </boundary>
@@ -35,7 +35,7 @@
       </box>
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
-      <viscosityCoefficient>4</viscosityCoefficient>
+      <viscosityCoefficient>2</viscosityCoefficient>
     </object>
     <object>
       <type>0</type>
@@ -53,7 +53,25 @@
       </box>
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
-      <viscosityCoefficient>4</viscosityCoefficient>
+      <viscosityCoefficient>2</viscosityCoefficient>
+    </object>
+    <object>
+      <type>0</type>
+      <box>
+        <min>
+          <x>-1</x>
+          <y>-0.1</y>
+          <z>-1</z>
+        </min>
+        <max>
+          <x>-0.7</x>
+          <y>0.2</y>
+          <z>-0.6</z>
+        </max>
+      </box>
+      <density>1000</density>
+      <pressureCoefficient>10000</pressureCoefficient>
+      <viscosityCoefficient>2</viscosityCoefficient>
     </object>
   </objects>
 </PhysicsObjects>
