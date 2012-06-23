@@ -64,7 +64,7 @@ void NeighborSearcher::searchNeighbors(int number, int startIndex, int endIndex)
 			while( zIndex < searchParticles.size() && searchParticles[zIndex].getGridID() <= baseID+2 ) {
 				const Vector3d& centerZ = searchParticles[zIndex].getCenter();
 				if( centerX.getDistanceSquared( centerZ ) < effectLengthSquared ) {
-					eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(),searchParticles[zIndex].getParticle() ) );
+					eachPairs[number].push_back( ParticlePair( searchParticles[index].getParticle(),searchParticles[zIndex].getParticle() ) );
 				}
 				++zIndex;
 			}
@@ -82,16 +82,9 @@ void NeighborSearcher::searchX(int number, int startIndex, int endIndex)
 		while( xIndex < searchParticles.size() && searchParticles[xIndex].getGridID() <= gridID+1 ) {
 			const Vector3d& centerY = searchParticles[xIndex].getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-				eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(), searchParticles[xIndex].getParticle() ) );
+				eachPairs[number].push_back( ParticlePair( searchParticles[index].getParticle(), searchParticles[xIndex].getParticle() ) );
 			}
 			++xIndex;
 		}
-	}
-}
-
-NeighborSearcher::~NeighborSearcher()
-{
-	for( size_t i = 0; i < pairs.size(); ++i ) {
-		delete pairs[i];
 	}
 }

@@ -40,7 +40,7 @@ void SPHPairSolverTest::calculateDensityTest()
 	ParticlePair pair( particles.front(), particles.back() );
 
 	SPHPairSolver solver( 1.3 );
-	solver.calculateDensity( &pair);
+	solver.calculateDensity( pair);
 	const double densityX = particles.front()->density;
 	const double densityY = particles.back()->density;
 	BOOST_CHECK( densityX != 0.0 );
@@ -60,7 +60,7 @@ void SPHPairSolverTest::calculateBoundaryDensityTest()
 	ParticlePair pair( particles.front(), particles.back() );
 
 	SPHPairSolver solver( 1.3 );
-	solver.calculateBoundaryDensity( &pair);
+	solver.calculateBoundaryDensity( pair);
 	const double densityX = particles.front()->density;
 	const double densityY = particles.back()->density;
 	BOOST_CHECK( densityX != 0.0 );
@@ -80,8 +80,8 @@ void SPHPairSolverTest::calculatePressureForceTest()
 	ParticlePair pair( particles.front(), particles.back() );
 
 	SPHPairSolver solver( 1.3 );
-	solver.calculateDensity( &pair );
-	solver.calculatePressureForce( &pair);
+	solver.calculateDensity( pair );
+	solver.calculatePressureForce( pair);
 	const Vector3d& forceX = particles.front()->force;
 	const Vector3d& forceY = particles.back()->force;
 	BOOST_CHECK( !forceX.isZero() );

@@ -11,9 +11,8 @@
 namespace Crystal{
 	namespace Physics{
 		class Particle;
-		class BoundarySolver;
-
-class ParticlePair : private boost::noncopyable
+		
+class ParticlePair
 {
 public:
 
@@ -22,7 +21,6 @@ public:
 	ParticlePair(Particle* particleX, Particle* particleY) :
 	  particleX( particleX),
 		  particleY( particleY)
-//		  distanceVector( particleY->center, particleX->center )
 	{
 	}
 
@@ -42,7 +40,7 @@ private:
 	Particle* particleY;
 };
 
-typedef std::vector<ParticlePair*> ParticlePairVector; 
+typedef std::vector<ParticlePair> ParticlePairVector; 
 	}
 }
 
