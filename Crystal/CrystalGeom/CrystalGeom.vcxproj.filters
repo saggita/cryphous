@@ -1,54 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Vector">
-      <UniqueIdentifier>{ea949c49-962b-4a34-8817-6b3e20b4d5c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Matrix">
-      <UniqueIdentifier>{9d7641d3-4449-4587-ad53-a4271cb78ab8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tolerance">
-      <UniqueIdentifier>{ca1e9e6c-6d2e-4a35-b2dd-2ababb24b1e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Box">
-      <UniqueIdentifier>{f193f2dc-59ac-4d00-977e-b3746d1a8c56}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quaternion">
-      <UniqueIdentifier>{90a6a163-ea96-458a-b163-e8324e86acc4}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="Tolerances.h" />
+    <ClInclude Include="Vector3d.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Matrix3d.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vector3d.cpp">
-      <Filter>Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3d.cpp">
-      <Filter>Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Box</Filter>
-    </ClCompile>
-    <ClCompile Include="Tolerances.cpp">
-      <Filter>Tolerance</Filter>
-    </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>Quaternion</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Vector3d.h">
-      <Filter>Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix3d.h">
-      <Filter>Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Box</Filter>
-    </ClInclude>
-    <ClInclude Include="Tolerances.h">
-      <Filter>Tolerance</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>Quaternion</Filter>
-    </ClInclude>
+    <ClCompile Include="Matrix3d.cpp" />
   </ItemGroup>
 </Project>

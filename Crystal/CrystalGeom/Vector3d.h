@@ -1,13 +1,13 @@
 #ifndef __VECTOR_3D_H__
 #define __VECTOR_3D_H__
 
+#include <cassert>
 #include <cmath>
 #include "Matrix3d.h"
+#include "Tolerances.h"
 
 namespace Crystal{
 	namespace Geom{
-
-class Matrix3d;
 
 class Vector3d
 {
@@ -69,23 +69,30 @@ public:
 		return Vector3d( x * factor, y * factor, z * factor );
 	}
 
-	Vector3d normalize();
-
-	Vector3d getNormalized() const;
-
-	bool isNormalized() const;
-
-	bool equals(const Vector3d& rhs) const;
-
-	bool isZero() const;
-
-	bool operator==(const Vector3d& rhs) const {
-		return equals( rhs );
+	Vector3d normalize() {
+		const double length = getLength();
+		assert( !Tolerances::isEqualAsDenominator( length ) );
+		x /= length;
+		y /= length;
+		z /= length;
+		assert( isNormalized() );
+		return *this;
 	}
 
-	bool operator!=(const Vector3d& rhs) const {
-		return !equals(rhs);
+	Vector3d Vector3d::getNormalized() const {
+		Vector3d vector = *(this);
+		return vector.normalize();
 	}
+
+	bool isNormalized() const { return Tolerances::isEqualAsDistance( getLength(), 1.0 ); }
+
+	bool equals(const Vector3d &rhs) const { return Tolerances::isEqualAsDistance( getDistance( rhs ) ); }
+
+	bool isZero() const { return Tolerances::isEqualAsDistance( getLength() ); }
+
+	bool operator==(const Vector3d& rhs) const { return equals( rhs ); }
+
+	bool operator!=(const Vector3d& rhs) const { return !equals(rhs); }
 
 	Vector3d operator+=(const Vector3d& rhs) {
 		x += rhs.getX();
@@ -145,13 +152,13 @@ public:
 			);
 	}
 
-	Vector3d getMult(const Matrix3d& matrix) const;
-
-	const Vector3d operator*(const Matrix3d& rhs) const;
-
-	double getMaxElement() const;
-
-	double getMinElement() const;
+	Vector3d getMult(const Matrix3d& matrix) const {
+		return Vector3d( x * matrix.x00 + y * matrix.x10 + z * matrix.x20,
+			x * matrix.x01 + y * matrix.x11 + z * matrix.x21,
+			x * matrix.x02 + y * matrix.x12 + z * matrix.x22 );
+	}
+	
+	const Vector3d Vector3d::operator*(const Matrix3d& rhs) const { return getMult( rhs); }
 
 private:
 	double x;

@@ -74,10 +74,4 @@ Vector3dTest::Vector3dTest(void)
 		const Vector3d expected( 14.0, 14.0, 14.0 );
 		BOOST_CHECK( result == expected );
 	}
-
-	{
-		const Vector3d vector( 1.0, 4.0, 9.0 );
-		BOOST_CHECK_EQUAL( vector.getMaxElement(), 9.0 );
-		BOOST_CHECK_EQUAL( vector.getMinElement(), 1.0 );
-	}
 }
