@@ -16,7 +16,7 @@
 #include "RigidEnforcer.h"
 #include "SimulationSetting.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 
 #include <boost/foreach.hpp>

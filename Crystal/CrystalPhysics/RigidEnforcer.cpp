@@ -26,7 +26,7 @@ RigidEnforcer::~RigidEnforcer(void)
 
 void RigidEnforcer::enforce(PhysicsObject* rigid, const double proceedTime)
 {
-	const Point3d& objectCenter = rigid->getCenter();
+	const Vector3d& objectCenter = rigid->getCenter();
 	const Vector3d& velocityAverage = rigid->getAverageVelosity();
 
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
@@ -36,20 +36,20 @@ void RigidEnforcer::enforce(PhysicsObject* rigid, const double proceedTime)
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 		particle->center -= objectCenter;
 	}
-	assert( rigid->getCenter() == Point3d( 0.0, 0.0, 0.0 ) );
+	assert( rigid->getCenter() == Vector3d( 0.0, 0.0, 0.0 ) );
 
 	Vector3d inertiaMoment( 0.0, 0.0, 0.0 );
 	Vector3d torque( 0.0, 0.0, 0.0 );
 	
 	BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-		const Point3d& center = particle->center;
+		const Vector3d& center = particle->center;
 		
 		Vector3d particleMoment( pow( center.getY(), 2) + pow( center.getZ(), 2),
 			pow( center.getZ(), 2 ) + pow( center.getX(), 2),
 			pow( center.getX(), 2 ) + pow( center.getY(), 2) );
 		inertiaMoment += (particleMoment) * particle->getMass();
 
-		const Vector3d diffVector( Point3d( 0.0, 0.0, 0.0), particle->center );
+		const Vector3d diffVector( Vector3d( 0.0, 0.0, 0.0), particle->center );
 		const Vector3d& particleTorque = diffVector.getOuterProduct( particle->force * particle->getVolume() );
 		torque += particleTorque;
 	}

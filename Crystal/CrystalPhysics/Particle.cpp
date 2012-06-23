@@ -4,7 +4,7 @@
 
 #include "ParticleFactory.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Vector3d.h"
 
 #include <cassert>
@@ -12,7 +12,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-Particle::Particle(int id, const Point3d& center, const double mass, const double radius, ParticleFactory* particleFactory) :
+Particle::Particle(int id, const Vector3d& center, const double mass, const double radius, ParticleFactory* particleFactory) :
 id( id),
 center( center),
 mass( mass),

@@ -3,7 +3,7 @@
 #include "XMLWriter.h"
 #include "XMLReader.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 #include "../CrystalPhysics/PhysicsObjectCondition.h"
 #include "../CrystalGraphics/GraphicsSettings.h"

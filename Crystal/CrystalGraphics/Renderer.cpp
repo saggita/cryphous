@@ -76,7 +76,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	PointSprite::get()->apply();
 	glBegin(GL_POINTS);
 	BOOST_FOREACH( Particle* particle, factory->getSortedParticles() ) {
-		const Point3d& point = particle->center;
+		const Vector3d& point = particle->center;
 		if( particle->getParent()->getType() == PhysicsObject::Rigid ) {
 			glColor4d( 1.0, 1.0, 1.0, 1.0 );
 			glVertex3d( point.getX(), point.getY(), point.getZ() );

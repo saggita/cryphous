@@ -1,6 +1,6 @@
 #include "XMLReader.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 
 #include "../CrystalGraphics/Color4d.h"
@@ -30,7 +30,7 @@ Box XMLReader::readBox(System::Xml::XmlElement^ boxElement)
 	const double maxY = double::Parse( maxYElement->FirstChild->Value );
 	const double maxZ = double::Parse( maxZElement->FirstChild->Value );
 
-	return Box( Point3d( minX, minY, minZ), Point3d( maxX, maxY, maxZ ) );
+	return Box( Vector3d( minX, minY, minZ), Vector3d( maxX, maxY, maxZ ) );
 }
 
 Color4d XMLReader::readColor(System::Xml::XmlElement ^colorElement)

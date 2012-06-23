@@ -40,7 +40,7 @@ private:
 	int nextID;
 	PhysicsObjectList physicsObjects;
 	SearchParticleFactory searchParticleFactory;
-	std::vector<Crystal::Geom::Point3d> preparePoints;
+	std::vector<Crystal::Geom::Vector3d> preparePoints;
 
 	void createSearchParticles(const double effectLength);
 };

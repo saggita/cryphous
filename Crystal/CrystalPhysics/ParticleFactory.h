@@ -6,7 +6,7 @@
 
 namespace Crystal{
 	namespace Geom {
-		class Point3d;
+		class Vector3d;
 	}
 	namespace Physics{
 		class ParticleConditions;

@@ -2,7 +2,6 @@
 #include <boost/test/unit_test.hpp>
 
 #include "TolerancesTest.h"
-#include "Point3dTest.h"
 #include "Vector3dTest.h"
 #include "BoxTest.h"
 #include "Matrix3dTest.h"
@@ -12,7 +11,6 @@
 BOOST_AUTO_TEST_CASE( CrystalGeomTest )
 {
 	TolerancesTest tolerancesTest;
-	Point3dTest point3dTest;
 	Vector3dTest vector3dTest;
 	BoxTest boxTest;
 	Matrix3dTest matrix3dTest;

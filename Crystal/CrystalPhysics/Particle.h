@@ -5,12 +5,12 @@
 #include <list>
 #include <vector>
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Vector3d.h"
 
 namespace Crystal{
 	namespace Geom{
-		class Point3d;
+		class Vector3d;
 		class Vector3d;
 	}
 
@@ -22,7 +22,7 @@ class Particle : private boost::noncopyable
 {
 protected:
 
-	Particle(int id, const Geom::Point3d& center, const double mass, const double radius, ParticleFactory* particleFactory);
+	Particle(int id, const Geom::Vector3d& center, const double mass, const double radius, ParticleFactory* particleFactory);
 
 	~Particle(void);
 
@@ -53,7 +53,7 @@ public:
 	ParticleFactory* getParticleFactory() const { return particleFactory; }
 
 public:
-	Geom::Point3d center;
+	Geom::Vector3d center;
 	Geom::Vector3d velocity;
 	Geom::Vector3d force;
 	double density;

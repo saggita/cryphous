@@ -7,9 +7,6 @@
     <Filter Include="VectorTest">
       <UniqueIdentifier>{de07c5ee-e1c7-4e00-bec4-605dd88bcc5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PointTest">
-      <UniqueIdentifier>{8155474b-adea-4008-8955-49388248997a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MatrixTest">
       <UniqueIdentifier>{31ec03e4-a25b-4b8f-842a-450d2ba5d5c9}</UniqueIdentifier>
     </Filter>
@@ -23,9 +20,6 @@
     </ClCompile>
     <ClCompile Include="QuaternionTest.cpp">
       <Filter>MatrixTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Point3dTest.cpp">
-      <Filter>PointTest</Filter>
     </ClCompile>
     <ClCompile Include="BoxTest.cpp">
       <Filter>BoxTest</Filter>
@@ -44,9 +38,6 @@
     </ClInclude>
     <ClInclude Include="QuaternionTest.h">
       <Filter>MatrixTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Point3dTest.h">
-      <Filter>PointTest</Filter>
     </ClInclude>
     <ClInclude Include="BoxTest.h">
       <Filter>BoxTest</Filter>

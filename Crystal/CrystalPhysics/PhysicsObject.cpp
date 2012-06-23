@@ -7,7 +7,7 @@
 #include "PhysicalTimeIntegratorBase.h"
 #include "EnforcerBase.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 
 #include <boost/foreach.hpp>
 #include <cassert>
@@ -40,14 +40,14 @@ void PhysicsObject::enforce(const double proceedTime)
 	enforcerBase->enforce( this, proceedTime );
 }
 
-Point3d PhysicsObject::getCenter() const
+Vector3d PhysicsObject::getCenter() const
 {
 	if( getParticles().empty() ) {
-		return Point3d( 0.0, 0.0, 0.0);
+		return Vector3d( 0.0, 0.0, 0.0);
 	}
 
 	/// ‘S—±Žq‚Í“¯ˆêŽ¿—Ê‚Æ‰¼’è.
-	Point3d center( 0.0, 0.0, 0.0);
+	Vector3d center( 0.0, 0.0, 0.0);
 	BOOST_FOREACH(Particle* particle, getParticles()) {
 		center += particle->center;
 	}

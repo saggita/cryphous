@@ -10,7 +10,7 @@ namespace Crystal{
 
 	namespace Geom{
 		class Vector3d;
-		class Point3d;
+		class Vector3d;
 	}
 
 	namespace Physics{
@@ -51,7 +51,7 @@ public:
 
 	void integrateTime(const double proceedTime );
 
-	Geom::Point3d getCenter() const;
+	Geom::Vector3d getCenter() const;
 
 	Geom::Vector3d getAverageVelosity() const;
 

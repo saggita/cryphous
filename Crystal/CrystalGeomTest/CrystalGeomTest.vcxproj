@@ -98,7 +98,6 @@
   <ItemGroup>
     <ClCompile Include="Matrix3dTest.cpp" />
     <ClCompile Include="QuaternionTest.cpp" />
-    <ClCompile Include="Point3dTest.cpp" />
     <ClCompile Include="BoxTest.cpp" />
     <ClCompile Include="Vector3dTest.cpp" />
     <ClCompile Include="TolerancesTest.cpp" />
@@ -107,7 +106,6 @@
   <ItemGroup>
     <ClInclude Include="Matrix3dTest.h" />
     <ClInclude Include="QuaternionTest.h" />
-    <ClInclude Include="Point3dTest.h" />
     <ClInclude Include="BoxTest.h" />
     <ClInclude Include="Vector3dTest.h" />
     <ClInclude Include="TolerancesTest.h" />

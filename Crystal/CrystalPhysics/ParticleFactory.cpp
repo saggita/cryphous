@@ -3,7 +3,7 @@
 #include "Particle.h"
 #include "ParticleConditions.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Vector3d.h"
 
 #include <boost/foreach.hpp>
@@ -21,14 +21,14 @@ virtualParticle(0)
 
 ParticleVector ParticleFactory::createParticles(const ParticleConditions& conditions)
 {
-	std::vector<Point3d>& innerPoints = conditions.getInnerPoints();
-	BOOST_FOREACH( Point3d& innerPoint, innerPoints ) {
+	std::vector<Vector3d>& innerPoints = conditions.getInnerPoints();
+	BOOST_FOREACH( Vector3d& innerPoint, innerPoints ) {
 		particles.push_back(
 			new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this ) 
 			);
 		particles.back()->density = conditions.getDensity();
 	}
-	virtualParticle = new Particle( -1, Point3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this );
+	virtualParticle = new Particle( -1, Vector3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this );
 	return particles;
 }
 

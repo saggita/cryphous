@@ -5,7 +5,7 @@
 
 namespace Crystal{
 	namespace Geom{
-		class Point3d;
+		class Vector3d;
 		class Box;
 	}
 
@@ -21,7 +21,7 @@ public:
 			createInnerPoints(box);
 		}
 
-	ParticleConditions(const std::vector<Geom::Point3d>& points, const double particleLength, const double density) :
+	ParticleConditions(const std::vector<Geom::Vector3d>& points, const double particleLength, const double density) :
 		particleLength( particleLength),
 		 density( density),
 		 innerPoints( points)
@@ -36,7 +36,7 @@ public:
 
 	double getParticleMass() const { return density * getParticleVolume(); }
 
-	std::vector<Geom::Point3d> getInnerPoints() const { return innerPoints; }
+	std::vector<Geom::Vector3d> getInnerPoints() const { return innerPoints; }
 
 protected:
 	void createInnerPoints(const Geom::Box& box);
@@ -44,7 +44,7 @@ protected:
 private:
 	const double particleLength;
 	const double density;
-	std::vector<Geom::Point3d> innerPoints;
+	std::vector<Geom::Vector3d> innerPoints;
 };
 
 	}

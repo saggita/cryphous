@@ -4,7 +4,7 @@
 namespace Crystal{
 	namespace Geom{
 
-class Point3d;
+class Vector3d;
 class Sphere;
 
 class Box
@@ -13,15 +13,15 @@ public:
 
 	Box();
 
-	Box(const Point3d& pointX, const Point3d& pointY);
+	Box(const Vector3d& pointX, const Vector3d& pointY);
 
 	double getVolume() const;
 
-	Point3d getMax() const;
+	Vector3d getMax() const;
 
-	Point3d getMin() const;
+	Vector3d getMin() const;
 
-	Point3d getCenter() const;
+	Vector3d getCenter() const;
 
 	double getMaxX() const { return maxX; }
 
@@ -35,9 +35,9 @@ public:
 
 	double getMinZ() const { return minZ; }
 
-	bool isInterior(const Point3d& point) const;
+	bool isInterior(const Vector3d& point) const;
 
-	bool isExterior(const Point3d& point) const;
+	bool isExterior(const Vector3d& point) const;
 
 	void outerOffset(const double offsetLength);
 

@@ -1,7 +1,7 @@
 #ifndef __SEARCH_PARTICLE_H__
 #define __SEARCH_PARTICLE_H__
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 
 #include "Particle.h"
 
@@ -27,7 +27,7 @@ public:
 
 	~SearchParticle(void){};
 
-	void setGridID(const Geom::Point3d& point, const double effectLength) {
+	void setGridID(const Geom::Vector3d& point, const double effectLength) {
 		gridX = static_cast<int>( point.getX() / effectLength );
 		gridY = static_cast<int>( point.getY() / effectLength );
 		gridZ = static_cast<int>( point.getZ() / effectLength );
@@ -70,7 +70,7 @@ public:
 		return ids;
 	}
 
-	Geom::Point3d getCenter() const { return particle->center; }
+	Geom::Vector3d getCenter() const { return particle->center; }
 
 private:
 	Particle* particle;
