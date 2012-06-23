@@ -48,9 +48,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 50);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 12);
+            this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 12;
-            this.label3.Text = "EffectLength";
+            this.label3.Text = "ParticleSize";
             // 
             // buttonCancel
             // 

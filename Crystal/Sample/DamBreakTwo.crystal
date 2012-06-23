@@ -2,17 +2,17 @@
 <PhysicsObjects>
   <common>
     <timeStep>0.0025</timeStep>
-    <particleDiameter>0.010</particleDiameter>
+    <particleDiameter>0.01</particleDiameter>
   </common>
   <boundary>
     <box>
       <min>
-        <x>-0.2</x>
+        <x>-0.4</x>
         <y>-0.1</y>
         <z>-0.2</z>
       </min>
       <max>
-        <x>0.2</x>
+        <x>0.4</x>
         <y>1</y>
         <z>0.2</z>
       </max>
@@ -41,19 +41,55 @@
       <type>0</type>
       <box>
         <min>
-          <x>-0.1</x>
+          <x>-0.4</x>
           <y>-0.1</y>
           <z>0</z>
         </min>
         <max>
-          <x>0.1</x>
+          <x>-0.3</x>
           <y>0.4</y>
           <z>0.2</z>
         </max>
       </box>
-      <density>100</density>
-      <pressureCoefficient>1000</pressureCoefficient>
-      <viscosityCoefficient>0.2</viscosityCoefficient>
+      <density>200</density>
+      <pressureCoefficient>2000</pressureCoefficient>
+      <viscosityCoefficient>0.4</viscosityCoefficient>
+    </object>
+    <object>
+      <type>0</type>
+      <box>
+        <min>
+          <x>-0.2</x>
+          <y>-0.1</y>
+          <z>-0.2</z>
+        </min>
+        <max>
+          <x>-0.1</x>
+          <y>0.4</y>
+          <z>0</z>
+        </max>
+      </box>
+      <density>1000</density>
+      <pressureCoefficient>10000</pressureCoefficient>
+      <viscosityCoefficient>2</viscosityCoefficient>
+    </object>
+    <object>
+      <type>0</type>
+      <box>
+        <min>
+          <x>0.3</x>
+          <y>-0.1</y>
+          <z>-0.2</z>
+        </min>
+        <max>
+          <x>0.4</x>
+          <y>0.4</y>
+          <z>0</z>
+        </max>
+      </box>
+      <density>200</density>
+      <pressureCoefficient>2000</pressureCoefficient>
+      <viscosityCoefficient>0.4</viscosityCoefficient>
     </object>
   </objects>
 </PhysicsObjects>

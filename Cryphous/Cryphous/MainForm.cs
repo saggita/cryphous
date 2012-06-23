@@ -90,6 +90,7 @@ namespace Cryphous
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
             mainCommand.proceedSimulation();
+            mainCommand.displayInformation(listBoxInformation);
         }
 
         private void simulationSettingToolStripMenuItem_Click(object sender, EventArgs e)

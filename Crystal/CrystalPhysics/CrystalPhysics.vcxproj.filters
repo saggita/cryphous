@@ -75,17 +75,11 @@
     <ClCompile Include="SPHSolver.cpp">
       <Filter>Simulation\Solver\SPHソルバ</Filter>
     </ClCompile>
-    <ClCompile Include="TimeIntegratorBase.cpp">
-      <Filter>Integrator</Filter>
-    </ClCompile>
     <ClCompile Include="RigidEnforcer.cpp">
       <Filter>Enforcer</Filter>
     </ClCompile>
     <ClCompile Include="EnforcerBase.cpp">
       <Filter>Enforcer</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHPairSolver.cpp">
-      <Filter>Simulation\Solver\SPHソルバ</Filter>
     </ClCompile>
     <ClCompile Include="Fluid.cpp">
       <Filter>PhysicsObject</Filter>
@@ -94,9 +88,6 @@
       <Filter>PhysicsObject</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticlePair.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
     <ClCompile Include="PhysicalTimeIntegrator.cpp">

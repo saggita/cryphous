@@ -19,7 +19,7 @@ ProfileInfoCommand::ProfileInfoCommand(void)
 void ProfileInfoCommand::display(System::Windows::Forms::ListBox^ listBox)
 {
 	listBox->Items->Clear();
-	listBox->Items->Add("CrystalUI 1.2");
+	listBox->Items->Add("(CrystalUI 1.3)");
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
 	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );
