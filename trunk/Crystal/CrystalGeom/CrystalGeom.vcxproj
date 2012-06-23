@@ -67,11 +67,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Vector3d.cpp" />
     <ClCompile Include="Matrix3d.cpp" />
-    <ClCompile Include="Quaternion.cpp" />
-    <ClCompile Include="Box.cpp" />
-    <ClCompile Include="Tolerances.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector3d.h" />
