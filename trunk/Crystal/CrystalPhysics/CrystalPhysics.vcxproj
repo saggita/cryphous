@@ -77,11 +77,9 @@
     <ClCompile Include="PhysicalTimeIntegrator.cpp" />
     <ClCompile Include="PhysicalTimeIntegratorBase.cpp" />
     <ClCompile Include="RigidEnforcer.cpp" />
-    <ClCompile Include="SPHPairSolver.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="Kernels3D.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticlePair.cpp" />
     <ClCompile Include="ParticleConditions.cpp" />
     <ClCompile Include="ParticleFactory.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
@@ -95,7 +93,6 @@
     <ClCompile Include="SearchParticle.cpp" />
     <ClCompile Include="SearchParticleFactory.cpp" />
     <ClCompile Include="Profiler.cpp" />
-    <ClCompile Include="TimeIntegratorBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />

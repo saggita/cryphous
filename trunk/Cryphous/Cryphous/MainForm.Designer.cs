@@ -39,6 +39,8 @@
             this.simulationSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boundarySettingBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.particleExportSettingPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -46,10 +48,8 @@
             this.buttonNextStep = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonViewReset = new System.Windows.Forms.Button();
-            this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonParticleInfo = new System.Windows.Forms.Button();
-            this.particleExportSettingPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonViewReset = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -64,7 +64,7 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(740, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1061, 26);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -140,18 +140,32 @@
             this.boundarySettingBToolStripMenuItem.Text = "BoundarySetting(&B)";
             this.boundarySettingBToolStripMenuItem.Click += new System.EventHandler(this.boundarySettingBToolStripMenuItem_Click);
             // 
+            // graphicsSettingGToolStripMenuItem
+            // 
+            this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
+            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
+            this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
+            // 
+            // particleExportSettingPToolStripMenuItem
+            // 
+            this.particleExportSettingPToolStripMenuItem.Name = "particleExportSettingPToolStripMenuItem";
+            this.particleExportSettingPToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.particleExportSettingPToolStripMenuItem.Text = "ExportSetting(&E)";
+            this.particleExportSettingPToolStripMenuItem.Click += new System.EventHandler(this.particleExportSettingPToolStripMenuItem_Click);
+            // 
             // listBoxInformation
             // 
             this.listBoxInformation.FormattingEnabled = true;
             this.listBoxInformation.ItemHeight = 12;
-            this.listBoxInformation.Location = new System.Drawing.Point(12, 12);
+            this.listBoxInformation.Location = new System.Drawing.Point(30, 0);
             this.listBoxInformation.Name = "listBoxInformation";
             this.listBoxInformation.Size = new System.Drawing.Size(136, 256);
             this.listBoxInformation.TabIndex = 4;
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(15, 338);
+            this.buttonRefresh.Location = new System.Drawing.Point(30, 337);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(136, 25);
             this.buttonRefresh.TabIndex = 2;
@@ -161,7 +175,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(15, 369);
+            this.buttonStart.Location = new System.Drawing.Point(30, 378);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(136, 23);
             this.buttonStart.TabIndex = 1;
@@ -176,7 +190,7 @@
             // 
             // buttonNextStep
             // 
-            this.buttonNextStep.Location = new System.Drawing.Point(15, 398);
+            this.buttonNextStep.Location = new System.Drawing.Point(30, 418);
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(136, 23);
             this.buttonNextStep.TabIndex = 5;
@@ -189,7 +203,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(585, 448);
+            this.pictureBox1.Size = new System.Drawing.Size(886, 453);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -215,30 +229,13 @@
             this.splitContainer1.Panel2.Controls.Add(this.buttonRefresh);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStart);
             this.splitContainer1.Panel2.Controls.Add(this.buttonNextStep);
-            this.splitContainer1.Size = new System.Drawing.Size(740, 448);
-            this.splitContainer1.SplitterDistance = 585;
+            this.splitContainer1.Size = new System.Drawing.Size(1061, 453);
+            this.splitContainer1.SplitterDistance = 886;
             this.splitContainer1.TabIndex = 7;
-            // 
-            // buttonViewReset
-            // 
-            this.buttonViewReset.Location = new System.Drawing.Point(15, 297);
-            this.buttonViewReset.Name = "buttonViewReset";
-            this.buttonViewReset.Size = new System.Drawing.Size(136, 25);
-            this.buttonViewReset.TabIndex = 6;
-            this.buttonViewReset.Text = "ViewReset";
-            this.buttonViewReset.UseVisualStyleBackColor = true;
-            this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
-            // 
-            // graphicsSettingGToolStripMenuItem
-            // 
-            this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
-            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
-            this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
             // 
             // buttonParticleInfo
             // 
-            this.buttonParticleInfo.Location = new System.Drawing.Point(15, 243);
+            this.buttonParticleInfo.Location = new System.Drawing.Point(30, 231);
             this.buttonParticleInfo.Name = "buttonParticleInfo";
             this.buttonParticleInfo.Size = new System.Drawing.Size(136, 25);
             this.buttonParticleInfo.TabIndex = 7;
@@ -246,12 +243,15 @@
             this.buttonParticleInfo.UseVisualStyleBackColor = true;
             this.buttonParticleInfo.Click += new System.EventHandler(this.buttonParticleInfo_Click);
             // 
-            // particleExportSettingPToolStripMenuItem
+            // buttonViewReset
             // 
-            this.particleExportSettingPToolStripMenuItem.Name = "particleExportSettingPToolStripMenuItem";
-            this.particleExportSettingPToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.particleExportSettingPToolStripMenuItem.Text = "ExportSetting(&E)";
-            this.particleExportSettingPToolStripMenuItem.Click += new System.EventHandler(this.particleExportSettingPToolStripMenuItem_Click);
+            this.buttonViewReset.Location = new System.Drawing.Point(30, 294);
+            this.buttonViewReset.Name = "buttonViewReset";
+            this.buttonViewReset.Size = new System.Drawing.Size(136, 25);
+            this.buttonViewReset.TabIndex = 6;
+            this.buttonViewReset.Text = "ViewReset";
+            this.buttonViewReset.UseVisualStyleBackColor = true;
+            this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
             // MainForm
             // 
@@ -259,12 +259,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(740, 474);
+            this.ClientSize = new System.Drawing.Size(1061, 479);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Cryphous";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
