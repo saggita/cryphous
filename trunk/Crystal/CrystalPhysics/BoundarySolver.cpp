@@ -116,7 +116,7 @@ void BoundarySolver::calculateDensity(Particle* particle, const Vector3d boundar
 
 	ParticlePair pair( particle, virtualParticle );
 	SPHPairSolver solver( setting.getEffectLength() );
-	solver.calculateDensity( &pair);
+	solver.calculateDensity( pair);
 }
 
 BoundarySolver::~BoundarySolver(void)

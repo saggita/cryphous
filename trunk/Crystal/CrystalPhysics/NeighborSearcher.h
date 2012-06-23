@@ -2,15 +2,12 @@
 #define __NEIGHBOR_SEARCHER_H__
 
 #include "ParticlePair.h"
-//#include "SearchParticle.h"
+#include "SearchParticle.h"
 
-#include <set>
 #include <vector>
 
 namespace Crystal{
 	namespace Physics{
-		class SearchParticle;
-		typedef std::vector<SearchParticle> SearchParticleVector;
 
 class NeighborSearcher
 {
@@ -21,7 +18,7 @@ public:
 		effectLengthSquared( effectLength * effectLength)
 	{};
 
-	~NeighborSearcher(void);
+	~NeighborSearcher(void){};
 
 	void search();
 
