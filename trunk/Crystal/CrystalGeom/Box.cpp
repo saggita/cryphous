@@ -1,6 +1,6 @@
 #include "Box.h"
 
-#include "Point3d.h"
+#include "Vector3d.h"
 
 #include <algorithm>
 
@@ -16,7 +16,7 @@ minZ( 0.0)
 {
 }
 
-Box::Box(const Point3d& pointX, const Point3d& pointY) :
+Box::Box(const Vector3d& pointX, const Vector3d& pointY) :
 maxX( std::max( pointX.getX(), pointY.getX() ) ),
 minX( std::min( pointX.getX(), pointY.getX() ) ),
 maxY( std::max( pointX.getY(), pointY.getY() ) ),
@@ -26,9 +26,9 @@ minZ( std::min( pointX.getZ(), pointY.getZ() ) )
 {
 }
 
-Point3d Box::getCenter() const
+Vector3d Box::getCenter() const
 {
-	return Point3d( (getMin() + getMax()).scale( 0.5 ) );
+	return Vector3d( (getMin() + getMax()).scale( 0.5 ) );
 }
 
 double Box::getVolume() const
@@ -36,17 +36,17 @@ double Box::getVolume() const
 	return (maxX - minX) * (maxY - minY) * (maxZ - minZ);
 }
 
-Point3d Box::getMax() const
+Vector3d Box::getMax() const
 {
-	return Point3d( maxX, maxY, maxZ );
+	return Vector3d( maxX, maxY, maxZ );
 }
 
-Point3d Box::getMin() const
+Vector3d Box::getMin() const
 {
-	return Point3d( minX, minY, minZ );
+	return Vector3d( minX, minY, minZ );
 }
 
-bool Box::isInterior(const Point3d &point) const
+bool Box::isInterior(const Vector3d &point) const
 {
 	const bool xIsInterior = ( minX < point.getX() && point.getX() < maxX );
 	const bool yIsInterior = ( minY < point.getY() && point.getY() < maxY );
@@ -54,7 +54,7 @@ bool Box::isInterior(const Point3d &point) const
 	return xIsInterior && yIsInterior && zIsInterior;
 }
 
-bool Box::isExterior(const Point3d &point) const
+bool Box::isExterior(const Vector3d &point) const
 {
 	return !isInterior(point);
 }

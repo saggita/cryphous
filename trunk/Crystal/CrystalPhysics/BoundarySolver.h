@@ -5,7 +5,7 @@
 
 namespace Crystal{
 	namespace Geom{
-		class Point3d;
+		class Vector3d;
 		class Box;
 	}
 
@@ -30,7 +30,7 @@ public:
 
 private:
 
-	inline void calculateDensity( Particle* particle, const Geom::Point3d boundaryPoint );
+	inline void calculateDensity( Particle* particle, const Geom::Vector3d boundaryPoint );
 
 private:
 	PhysicsObject* object;

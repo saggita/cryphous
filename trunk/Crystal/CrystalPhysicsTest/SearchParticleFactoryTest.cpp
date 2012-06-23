@@ -28,7 +28,7 @@ SearchParticleFactoryTest::~SearchParticleFactoryTest(void)
 
 void SearchParticleFactoryTest::createSearchParticlesTest()
 {
-	ParticleConditions conditions( Box( Point3d( -10.0, -10.0, -10.0), Point3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
+	ParticleConditions conditions( Box( Vector3d( -10.0, -10.0, -10.0), Vector3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
 	ParticleFactory factory;
 	const ParticleVector& particles = factory.createParticles( conditions );
 	BOOST_CHECK_EQUAL( particles.size() , 1000 );
@@ -39,7 +39,7 @@ void SearchParticleFactoryTest::createSearchParticlesTest()
 
 void SearchParticleFactoryTest::addParticlesTest()
 {
-	ParticleConditions conditions( Box( Point3d( -10.0, -10.0, -10.0), Point3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
+	ParticleConditions conditions( Box( Vector3d( -10.0, -10.0, -10.0), Vector3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
 	ParticleFactory factory;
 	const ParticleVector& particles = factory.createParticles( conditions );
 	SearchParticleFactory searchFactory;
@@ -49,7 +49,7 @@ void SearchParticleFactoryTest::addParticlesTest()
 
 void SearchParticleFactoryTest::removeParticleTest()
 {
-	ParticleConditions conditions( Box( Point3d( -10.0, -10.0, -10.0), Point3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
+	ParticleConditions conditions( Box( Vector3d( -10.0, -10.0, -10.0), Vector3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
 	ParticleFactory factory;
 	const ParticleVector& particles = factory.createParticles( conditions );
 	BOOST_CHECK_EQUAL( particles.size() , 1000 );
@@ -59,7 +59,7 @@ void SearchParticleFactoryTest::removeParticleTest()
 
 void SearchParticleFactoryTest::initTest()
 {
-	ParticleConditions conditions( Box( Point3d( -10.0, -10.0, -10.0), Point3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
+	ParticleConditions conditions( Box( Vector3d( -10.0, -10.0, -10.0), Vector3d( 0.0, 0.0, 0.0)), 1.0, 1000.0); 
 	ParticleFactory factory;
 	const ParticleVector& particles = factory.createParticles( conditions );
 	BOOST_CHECK_EQUAL( particles.size() , 1000 );

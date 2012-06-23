@@ -1,6 +1,5 @@
 #include "Vector3d.h"
 
-#include "Point3d.h"
 #include "Tolerances.h"
 #include "Matrix3d.h"
 
@@ -11,31 +10,6 @@
 
 using namespace Crystal::Geom;
 
-Vector3d::Vector3d(const Point3d& start, const Point3d& end) :
-x( end.getX() - start.getX() ),
-y( end.getY() - start.getY() ),
-z( end.getZ() - start.getZ() )
-{
-}
-
-Vector3d::Vector3d(const Vector3d& start, const Vector3d& end) :
-x( end.getX() - start.getX() ),
-y( end.getY() - start.getY() ),
-z( end.getZ() - start.getZ() )
-{
-}
-
-Vector3d::Vector3d(const Point3d& point) :
-x( point.getX() ),
-y( point.getY() ),
-z( point.getZ() )
-{
-}
-
-double Vector3d::getLength() const
-{
-	return ::sqrt( getLengthSquared() );
-}
 
 Vector3d Vector3d::normalize()
 {
@@ -61,20 +35,12 @@ bool Vector3d::isNormalized() const
 
 bool Vector3d::equals(const Vector3d &rhs) const
 {
-	const Point3d posX( x, y, z );
-	const Point3d posY( rhs.x, rhs.y, rhs.z );
-	return posX.equals( posY );
+	return Tolerances::isEqualAsDistance( getDistance( rhs ) );
 }
 
 bool Vector3d::isZero() const
 {
 	return Tolerances::isEqualAsDistance( getLength() );
-}
-
-void Vector3d::rotate(const Crystal::Geom::Matrix3d &matrix)
-{
-	Point3d point( x, y, z );
-	*this = point.getRotated( matrix );
 }
 
 Vector3d Vector3d::getMult(const Matrix3d& matrix) const

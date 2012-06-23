@@ -2,7 +2,7 @@
 
 #include "Particle.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Vector3d.h"
 
 #include "PhysicalTimeIntegrator.h"

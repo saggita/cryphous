@@ -1,6 +1,6 @@
 #include "BoundarySolver.h"
 
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 
@@ -29,34 +29,34 @@ void BoundarySolver::calculateDensity(const Box& box)
 	const double effectLength = setting.getEffectLength();
 	BOOST_FOREACH( Particle* particle, object->getParticles() ) {
 		if( particle->center.getX() > box.getMaxX() + particle->getRadius() - effectLength ) {
-			Point3d boundaryPoint = particle->center;
+			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setX( box.getMaxX() + particle->getRadius() );
 			calculateDensity( particle, boundaryPoint ); 
 		}
 		else if( particle->center.getX() < box.getMinX() -particle->getRadius() + effectLength ) {
-			Point3d boundaryPoint = particle->center;
+			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setX( box.getMinX() - particle->getRadius() );
 			calculateDensity( particle, boundaryPoint );
 		}
 
 		if( particle->center.getY() > box.getMaxY() + particle->getRadius() - effectLength ) {
-			Point3d boundaryPoint = particle->center;
+			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setY( box.getMaxY() + particle->getRadius() );
 			calculateDensity( particle, boundaryPoint );
 		}
 		else if( particle->center.getY() < box.getMinY() - particle->getRadius() + effectLength ) {
-			Point3d boundaryPoint = particle->center;
+			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setY( box.getMinY() - particle->getRadius() );
 			calculateDensity( particle, boundaryPoint );
 		}
 
 		if( particle->center.getZ() > box.getMaxZ() + particle->getRadius() - effectLength ) {
-			Point3d boundaryPoint = particle->center;
+			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setZ( box.getMaxZ() + particle->getRadius() );
 			calculateDensity( particle, boundaryPoint );
 		}
 		else if( particle->center.getZ() < box.getMinZ() -particle->getRadius() + effectLength ) {
-			Point3d boundaryPoint = particle->center;
+			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setZ( box.getMinZ() - particle->getRadius() );
 			calculateDensity( particle, boundaryPoint );
 		}
@@ -109,7 +109,7 @@ void BoundarySolver::calculateForce(const Box& box)
 	}
 }
 
-void BoundarySolver::calculateDensity(Particle* particle, const Point3d boundaryPoint)
+void BoundarySolver::calculateDensity(Particle* particle, const Vector3d boundaryPoint)
 {
 	virtualParticle->center = boundaryPoint;
 	virtualParticle->setParent( particle->getParent() );

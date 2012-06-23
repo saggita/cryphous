@@ -5,7 +5,7 @@
 #include "Particle.h"
 #include "SimulationSetting.h"
 #include "ParticlePair.h"
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 
 #include "ParticleFactory.h"
 #include "PhysicsObject.h"
@@ -60,9 +60,9 @@ void NeighborSearcher::searchNeighbors(int number, int startIndex, int endIndex)
 			}
 			
 			unsigned int zIndex = yIndex[i];
-			const Point3d& centerX = searchParticles[index].getCenter();
+			const Vector3d& centerX = searchParticles[index].getCenter();
 			while( zIndex < searchParticles.size() && searchParticles[zIndex].getGridID() <= baseID+2 ) {
-				const Point3d& centerZ = searchParticles[zIndex].getCenter();
+				const Vector3d& centerZ = searchParticles[zIndex].getCenter();
 				if( centerX.getDistanceSquared( centerZ ) < effectLengthSquared ) {
 					eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(),searchParticles[zIndex].getParticle() ) );
 				}
@@ -76,11 +76,11 @@ void NeighborSearcher::searchX(int number, int startIndex, int endIndex)
 {
 	for( int index = startIndex; index < endIndex; ++index ) {
 		const int gridID = searchParticles[index].getGridID();
-		const Point3d& centerX = searchParticles[index].getCenter();
+		const Vector3d& centerX = searchParticles[index].getCenter();
 		unsigned int xIndex = index;
 		++xIndex; // ignore itself.
 		while( xIndex < searchParticles.size() && searchParticles[xIndex].getGridID() <= gridID+1 ) {
-			const Point3d& centerY = searchParticles[xIndex].getCenter();
+			const Vector3d& centerY = searchParticles[xIndex].getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
 				eachPairs[number].push_back( new ParticlePair( searchParticles[index].getParticle(), searchParticles[xIndex].getParticle() ) );
 			}

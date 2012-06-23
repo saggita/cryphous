@@ -1,10 +1,12 @@
 #ifndef __VECTOR_3D_H__
 #define __VECTOR_3D_H__
 
+#include <cmath>
+#include "Matrix3d.h"
+
 namespace Crystal{
 	namespace Geom{
 
-class Point3d;
 class Matrix3d;
 
 class Vector3d
@@ -21,11 +23,12 @@ public:
 		{
 		}
 
-	Vector3d(const Point3d& start, const Point3d& end);
-
-	Vector3d(const Vector3d& start, const Vector3d& end);
-
-	Vector3d(const Point3d& point);
+	Vector3d(const Vector3d& start, const Vector3d& end) :
+		x( end.getX() - start.getX() ),
+			y( end.getY() - start.getY() ),
+			z( end.getZ() - start.getZ() )
+		{
+		}
 
 	void setX(const double x){ this->x = x; }
 
@@ -43,7 +46,17 @@ public:
 		return x*x + y*y + z*z;
 	}
 
-	double getLength() const;
+	double getLength() const {
+		return ::sqrt( getLengthSquared() );
+	}
+
+	double getDistance(const Vector3d& rhs) const {;
+		return sqrt( getDistanceSquared(rhs) );
+	}
+
+	double getDistanceSquared( const Vector3d& rhs ) const{
+		return pow( x - rhs.x, 2 ) + pow( y - rhs.y, 2 ) + pow( z - rhs.z, 2 );
+	}
 
 	Vector3d scale(const double factor) {	
 		x *= factor;
@@ -108,9 +121,9 @@ public:
 			x * rhs.getY() - y * rhs.getX() );
 	}
 	
-	void operator*=(const double factor) { scale(factor); }
+	Vector3d operator*=(const double factor) { return scale(factor); }
 
-	void operator/=(const double factor) { scale( 1.0 / factor); }
+	Vector3d operator/=(const double factor) { return scale( 1.0 / factor); }
 
 	Vector3d operator+(const Vector3d& rhs) const {
 		return Vector3d( x + rhs.getX(), y + rhs.getY(), z + rhs.getZ() );
@@ -120,12 +133,16 @@ public:
 		return Vector3d( x - rhs.getX(), y - rhs.getY(), z - rhs.getZ() );
 	}
 
-	void rotate(const Matrix3d& matrix);
+	void rotate(const Matrix3d& matrix) {
+		*(this) = getRotated( matrix );
+	}
 
 	Vector3d getRotated(const Matrix3d& matrix) const {
-		Vector3d rotated( *this );
-		rotated.rotate( matrix );
-		return rotated;
+		return Vector3d( 
+			matrix.x00 * x + matrix.x01 * y + matrix.x02 * z,
+			matrix.x10 * x + matrix.x11 * y + matrix.x12 * z,
+			matrix.x20 * x + matrix.x21 * y + matrix.x22 * z
+			);
 	}
 
 	Vector3d getMult(const Matrix3d& matrix) const;

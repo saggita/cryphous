@@ -71,7 +71,6 @@
     <ClCompile Include="Matrix3d.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Box.cpp" />
-    <ClCompile Include="Point3d.cpp" />
     <ClCompile Include="Tolerances.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +78,6 @@
     <ClInclude Include="Matrix3d.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Box.h" />
-    <ClInclude Include="Point3d.h" />
     <ClInclude Include="Tolerances.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

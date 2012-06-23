@@ -4,7 +4,7 @@
 #include "../CrystalPhysics/SimulationSetting.h"
 
 #include "../CrystalGeom/Box.h"
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
@@ -43,6 +43,6 @@ void BoundarySettingCommand::saveBoundarySetting(System::Windows::Forms::DataGri
 	const double maxY = Convert::ToDouble( view->Rows[1]->Cells[1]->Value );
 	const double maxZ = Convert::ToDouble( view->Rows[1]->Cells[2]->Value );
 
-	 ApplicationSettings::get()->simulationSetting->boundaryBox = Box( Crystal::Geom::Point3d( minX, minY, minZ), 
-		Crystal::Geom::Point3d( maxX, maxY, maxZ) );
+	 ApplicationSettings::get()->simulationSetting->boundaryBox = Box( Crystal::Geom::Vector3d( minX, minY, minZ), 
+		Crystal::Geom::Vector3d( maxX, maxY, maxZ) );
 }

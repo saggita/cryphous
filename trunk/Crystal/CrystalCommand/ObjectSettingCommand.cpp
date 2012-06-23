@@ -2,7 +2,7 @@
 
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/PhysicsObjectCondition.h"
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 
@@ -103,7 +103,7 @@ void ObjectSettingCommand::saveSettings()
 		const double maxZ = Convert::ToDouble( row->Cells[9]->Value );
 
 		PhysicsObjectCondition* condition = new PhysicsObjectCondition(
-			Box( Crystal::Geom::Point3d( minX, minY, minZ), Crystal::Geom::Point3d( maxX, maxY, maxZ ) ),
+			Box( Crystal::Geom::Vector3d( minX, minY, minZ), Crystal::Geom::Vector3d( maxX, maxY, maxZ ) ),
 			density,
 			pressureCoe,
 			viscosityCoe,

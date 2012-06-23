@@ -4,9 +4,6 @@
     <Filter Include="Vector">
       <UniqueIdentifier>{ea949c49-962b-4a34-8817-6b3e20b4d5c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Point">
-      <UniqueIdentifier>{b84b5704-5734-491d-aa19-fe2cf4517110}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Matrix">
       <UniqueIdentifier>{9d7641d3-4449-4587-ad53-a4271cb78ab8}</UniqueIdentifier>
     </Filter>
@@ -30,9 +27,6 @@
     <ClCompile Include="Box.cpp">
       <Filter>Box</Filter>
     </ClCompile>
-    <ClCompile Include="Point3d.cpp">
-      <Filter>Point</Filter>
-    </ClCompile>
     <ClCompile Include="Tolerances.cpp">
       <Filter>Tolerance</Filter>
     </ClCompile>
@@ -49,9 +43,6 @@
     </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>Box</Filter>
-    </ClInclude>
-    <ClInclude Include="Point3d.h">
-      <Filter>Point</Filter>
     </ClInclude>
     <ClInclude Include="Tolerances.h">
       <Filter>Tolerance</Filter>

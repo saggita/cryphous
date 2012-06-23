@@ -6,7 +6,7 @@
 #include "PhysicsObjectFactory.h"
 #include "PhysicsObjectCondition.h"
 #include "../CrystalGeom/Box.h"
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Vector3d.h"
 
 #include "Particle.h"

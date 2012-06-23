@@ -5,7 +5,7 @@
 #include "../CrystalPhysics/PhysicsObjectCondition.h"
 #include "../CrystalPhysics/Fluid.h"
 #include "../CrystalGeom/Box.h"
-#include "../CrystalGeom/Point3d.h"
+#include "../CrystalGeom/Vector3d.h"
 
 #include <boost/test/unit_test.hpp>
 
