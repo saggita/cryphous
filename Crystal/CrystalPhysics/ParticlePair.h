@@ -11,21 +11,19 @@
 namespace Crystal{
 	namespace Physics{
 		class Particle;
-		class SpaceHash;
 		class BoundarySolver;
 
 class ParticlePair : private boost::noncopyable
 {
 public:
 
-	ParticlePair();
+	ParticlePair(){};
 
 	ParticlePair(Particle* particleX, Particle* particleY) :
 	  particleX( particleX),
-		  particleY( particleY),
-		  distanceVector( particleY->center, particleX->center )
+		  particleY( particleY)
+//		  distanceVector( particleY->center, particleX->center )
 	{
-		distance = distanceVector.getLength();
 	}
 
 	~ParticlePair() { };
@@ -35,15 +33,13 @@ public:
 
 	Particle* getParticleY() const { return particleY; }
 
-	Geom::Vector3d getDistanceVector() const { return distanceVector; }
+	Geom::Vector3d getDistanceVector() const { return Geom::Vector3d( particleY->center, particleX->center); }
 
-	double getDistance() const { return distance; }
+	double getDistance() const { return getDistanceVector().getLength(); }
 
 private:
 	Particle* particleX;
 	Particle* particleY;
-	Geom::Vector3d distanceVector;
-	double distance;
 };
 
 typedef std::vector<ParticlePair*> ParticlePairVector; 
