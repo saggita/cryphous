@@ -16,11 +16,3 @@ string StringMarshaler::ToStdString( String ^ s ) {
    Marshal::FreeHGlobal(IntPtr((void*)chars));
    return os;
 }
-
-//void MarshalString ( String ^ s, wstring& os ) {
-//   using namespace Runtime::InteropServices;
-//   const wchar_t* chars = 
-//      (const wchar_t*)(Marshal::StringToHGlobalUni(s)).ToPointer();
-//   os = chars;
-//   Marshal::FreeHGlobal(IntPtr((void*)chars));
-//}
