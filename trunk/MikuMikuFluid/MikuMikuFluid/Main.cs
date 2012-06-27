@@ -75,13 +75,12 @@ namespace MikuMikuFluid
 
             MessageBox.Show(ApplicationForm, positions.Count + " particles inputed."); 
 
-            // TODO mmmformへ粒子データを転送する．
-
             MMFForm mmfform = new MMFForm();
+            mmfform.Positions = positions;
             mmfform.ShowDialog(ApplicationForm);
+            positions = mmfform.Positions;
 
-            // TODO mmfformから粒子データを取得する．
-
+            int index = 0;
             // シミュレーション後の登録．粒子->ボーン.
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
             {
@@ -91,10 +90,11 @@ namespace MikuMikuFluid
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
 
-                    for (long frame = start; frame < end; ++frame)
+                    /*for (long frame = start; frame < end; ++frame)
                     {
                         AddMotionFrame(motionFrames, frame, new Vector3(0.0F, 1.0F * frame, 0.0F));
-                    }
+                    }*/
+                    AddMotionFrame(motionFrames, end, positions[index++]);
                     API.ReplaceAllMotionFrameData(boneIndex, layerIndex, motionFrames);
                 }
             }

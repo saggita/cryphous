@@ -17,7 +17,7 @@ namespace MikuMikuFluid
         {
             if (StartFrame >= EndFrame)
             {
-                MessageBox.Show("StartFrane must be smaller than StartFrame");
+                MessageBox.Show("Invalid Input: StartFrame > EndFrame");
                 return;
             }
             DialogResult = System.Windows.Forms.DialogResult.OK;

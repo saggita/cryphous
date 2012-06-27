@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simulationSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,52 +53,12 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileSToolStripMenuItem,
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(740, 26);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileSToolStripMenuItem
-            // 
-            this.fileSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemOpen,
-            this.toolStripMenuItemSave,
-            this.toolStripMenuItemSaveAs,
-            this.toolStripMenuItemClose});
-            this.fileSToolStripMenuItem.Name = "fileSToolStripMenuItem";
-            this.fileSToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
-            this.fileSToolStripMenuItem.Text = "File(&F)";
-            // 
-            // toolStripMenuItemOpen
-            // 
-            this.toolStripMenuItemOpen.Name = "toolStripMenuItemOpen";
-            this.toolStripMenuItemOpen.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemOpen.Text = "Open(&O)";
-            this.toolStripMenuItemOpen.Click += new System.EventHandler(this.toolStripMenuItemOpen_Click);
-            // 
-            // toolStripMenuItemSave
-            // 
-            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-            this.toolStripMenuItemSave.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemSave.Text = "Save(&S)";
-            this.toolStripMenuItemSave.Click += new System.EventHandler(this.toolStripMenuItemSave_Click);
-            // 
-            // toolStripMenuItemSaveAs
-            // 
-            this.toolStripMenuItemSaveAs.Name = "toolStripMenuItemSaveAs";
-            this.toolStripMenuItemSaveAs.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemSaveAs.Text = "SaveAs(&A)";
-            this.toolStripMenuItemSaveAs.Click += new System.EventHandler(this.toolStripMenuItemSaveAs_Click);
-            // 
-            // toolStripMenuItemClose
-            // 
-            this.toolStripMenuItemClose.Name = "toolStripMenuItemClose";
-            this.toolStripMenuItemClose.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemClose.Text = "Close(&C)";
-            this.toolStripMenuItemClose.Click += new System.EventHandler(this.toolStripMenuItemClose_Click);
             // 
             // settingToolStripMenuItem
             // 
@@ -232,7 +187,7 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
-            // MainForm
+            // MMFForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -242,7 +197,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
-            this.Name = "MainForm";
+            this.Name = "MMFForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
@@ -260,11 +215,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpen;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveAs;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClose;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simulationSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem objectSettingToolStripMenuItem;
