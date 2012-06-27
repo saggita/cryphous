@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
 using Cryphous;
-//using DxMath;
+using DxMath;
 
 namespace MikuMikuFluid
 {
@@ -24,11 +24,18 @@ namespace MikuMikuFluid
         private Point previousPoint;
         private bool isLeftDown;
         private bool isRightDown;
+        private List<Vector3> positions;
         
         public MMFForm()
         {
             InitializeComponent();
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
+        }
+
+        public List<Vector3> Positions
+        {
+            set { positions = value;  }
+            get { return positions; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
