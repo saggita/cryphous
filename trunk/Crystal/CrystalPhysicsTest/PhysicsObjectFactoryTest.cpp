@@ -30,6 +30,7 @@ void PhysicsObjectFactoryTest::createFluidTest()
 	BOOST_CHECK_EQUAL( fluid->getID(), 0 );
 	BOOST_CHECK_EQUAL( fluid->getType(), PhysicsObject::Fluid );
 	BOOST_CHECK( !fluid->getParticles().empty() );
+	BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 }
 
 void PhysicsObjectFactoryTest::createRigidTest()
@@ -43,6 +44,7 @@ void PhysicsObjectFactoryTest::createRigidTest()
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );
 	BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Rigid );
 	BOOST_CHECK( !rigid->getParticles().empty() );
+	BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 }
 
 void PhysicsObjectFactoryTest::createRigidTwoWayTest()
@@ -56,4 +58,5 @@ void PhysicsObjectFactoryTest::createRigidTwoWayTest()
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );
 	BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Rigid );
 	BOOST_CHECK( !rigid->getParticles().empty() );
+	BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 }

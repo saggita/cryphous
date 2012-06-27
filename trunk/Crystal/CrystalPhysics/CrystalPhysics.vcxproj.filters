@@ -22,9 +22,6 @@
     <Filter Include="PhysicsObject">
       <UniqueIdentifier>{9c8d95c0-fa90-49b8-8a52-d9bf02431bcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PhysicsObject\生成">
-      <UniqueIdentifier>{68e59b0e-0f21-4c66-8c9e-d2003c845162}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Space">
       <UniqueIdentifier>{5a01c280-b786-4c3d-a8b7-28de2a27a316}</UniqueIdentifier>
     </Filter>
@@ -34,25 +31,28 @@
     <Filter Include="Particle">
       <UniqueIdentifier>{89bdf7ec-5374-4f38-9036-001d680fc83a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Particle\生成">
+    <Filter Include="Particle\Generation">
       <UniqueIdentifier>{e28c8d3c-ad5b-4a67-9ce4-ec3211622e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysicsObject\Generation">
+      <UniqueIdentifier>{68e59b0e-0f21-4c66-8c9e-d2003c845162}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ParticleConditions.cpp">
-      <Filter>Particle\生成</Filter>
+      <Filter>Particle\Generation</Filter>
     </ClCompile>
     <ClCompile Include="ParticleFactory.cpp">
-      <Filter>Particle\生成</Filter>
+      <Filter>Particle\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObject.cpp">
       <Filter>PhysicsObject</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObjectCondition.cpp">
-      <Filter>PhysicsObject\生成</Filter>
+      <Filter>PhysicsObject\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObjectFactory.cpp">
-      <Filter>PhysicsObject\生成</Filter>
+      <Filter>PhysicsObject\Generation</Filter>
     </ClCompile>
     <ClCompile Include="Simulation.cpp">
       <Filter>Simulation</Filter>
@@ -105,19 +105,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ParticleConditions.h">
-      <Filter>Particle\生成</Filter>
+      <Filter>Particle\Generation</Filter>
     </ClInclude>
     <ClInclude Include="ParticleFactory.h">
-      <Filter>Particle\生成</Filter>
+      <Filter>Particle\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObject.h">
       <Filter>PhysicsObject</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObjectCondition.h">
-      <Filter>PhysicsObject\生成</Filter>
+      <Filter>PhysicsObject\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObjectFactory.h">
-      <Filter>PhysicsObject\生成</Filter>
+      <Filter>PhysicsObject\Generation</Filter>
     </ClInclude>
     <ClInclude Include="Simulation.h">
       <Filter>Simulation</Filter>
