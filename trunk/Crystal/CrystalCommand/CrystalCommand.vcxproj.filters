@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="ColorMarshaler.cpp">
-      <Filter>ユーティリティ\CLIマーシャリング</Filter>
+      <Filter>Utility\C++/CLI</Filter>
     </ClCompile>
     <ClCompile Include="ApplicationSettings.cpp">
       <Filter>設定</Filter>
@@ -14,7 +14,7 @@
       <Filter>コマンド</Filter>
     </ClCompile>
     <ClCompile Include="StringMarshaler.cpp">
-      <Filter>ユーティリティ\CLIマーシャリング</Filter>
+      <Filter>Utility\C++/CLI</Filter>
     </ClCompile>
     <ClCompile Include="XMLReader.cpp">
       <Filter>XML</Filter>
@@ -56,7 +56,7 @@
       <Filter>設定</Filter>
     </ClCompile>
     <ClCompile Include="ItemAndVariable.cpp">
-      <Filter>ユーティリティ</Filter>
+      <Filter>Utility</Filter>
     </ClCompile>
     <ClCompile Include="SimulationCommand.cpp">
       <Filter>コマンド\アニメーションコマンド</Filter>
@@ -64,10 +64,11 @@
     <ClCompile Include="AnimationCommandBase.cpp">
       <Filter>コマンド\アニメーションコマンド</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleMarshaler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColorMarshaler.h">
-      <Filter>ユーティリティ\CLIマーシャリング</Filter>
+      <Filter>Utility\C++/CLI</Filter>
     </ClInclude>
     <ClInclude Include="ApplicationSettings.h">
       <Filter>設定</Filter>
@@ -79,7 +80,7 @@
       <Filter>コマンド</Filter>
     </ClInclude>
     <ClInclude Include="StringMarshaler.h">
-      <Filter>ユーティリティ\CLIマーシャリング</Filter>
+      <Filter>Utility\C++/CLI</Filter>
     </ClInclude>
     <ClInclude Include="XMLReader.h">
       <Filter>XML</Filter>
@@ -121,7 +122,7 @@
       <Filter>設定</Filter>
     </ClInclude>
     <ClInclude Include="ItemAndVariable.h">
-      <Filter>ユーティリティ</Filter>
+      <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="SimulationCommand.h">
       <Filter>コマンド\アニメーションコマンド</Filter>
@@ -129,6 +130,7 @@
     <ClInclude Include="AnimationCommandBase.h">
       <Filter>コマンド\アニメーションコマンド</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleMarshaler.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="コマンド">
@@ -146,17 +148,17 @@
     <Filter Include="ファイルIO">
       <UniqueIdentifier>{7ce4195b-f4b2-4cd8-9435-cf01eb56b5e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ユーティリティ">
-      <UniqueIdentifier>{1dd5df5a-427f-4b2f-b783-8e7a45dae7b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ユーティリティ\CLIマーシャリング">
-      <UniqueIdentifier>{f5020a7c-406a-400a-8f29-914c4d9dc3f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="コマンド\アニメーションコマンド">
       <UniqueIdentifier>{0901ca84-226d-49ce-83d7-4421336c57fb}</UniqueIdentifier>
     </Filter>
     <Filter Include="コマンド\MainCommand">
       <UniqueIdentifier>{c8a0a7a2-49da-4d27-bf39-91d316442d7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{1dd5df5a-427f-4b2f-b783-8e7a45dae7b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\C++/CLI">
+      <UniqueIdentifier>{f5020a7c-406a-400a-8f29-914c4d9dc3f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

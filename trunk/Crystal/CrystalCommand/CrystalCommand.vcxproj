@@ -111,6 +111,7 @@
     <ClCompile Include="ColorMarshaler.cpp" />
     <ClCompile Include="ExportCommandBase.cpp" />
     <ClCompile Include="MainCommand.cpp" />
+    <ClCompile Include="ParticleMarshaler.cpp" />
     <ClCompile Include="ProfileInfoCommand.cpp" />
     <ClCompile Include="BoundarySettingCommand.cpp" />
     <ClCompile Include="ObjectSettingCommand.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="ColorMarshaler.h" />
     <ClInclude Include="ExportCommandBase.h" />
     <ClInclude Include="MainCommand.h" />
+    <ClInclude Include="ParticleMarshaler.h" />
     <ClInclude Include="ProfileInfoCommand.h" />
     <ClInclude Include="BoundarySettingCommand.h" />
     <ClInclude Include="ObjectSettingCommand.h" />
