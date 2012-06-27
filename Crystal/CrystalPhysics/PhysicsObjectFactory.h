@@ -32,6 +32,8 @@ public:
 
 	SearchParticleVector getSearchParticles(const double effectLength);
 
+	ParticleVector getOrderedParticles() const;
+
 	ParticleVector getSortedParticles() const { return searchParticleFactory.getParticles(); }
 
 	void writeToFile(const std::string& fileName) const;
@@ -40,7 +42,6 @@ private:
 	int nextID;
 	PhysicsObjectList physicsObjects;
 	SearchParticleFactory searchParticleFactory;
-	std::vector<Crystal::Geom::Vector3d> preparePoints;
 
 	void createSearchParticles(const double effectLength);
 };

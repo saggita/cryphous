@@ -104,3 +104,13 @@ void PhysicsObjectFactory::writeToFile(const std::string& fileName) const
 		ofs << particle->getParent()->getID() << "," << particle->getID() <<  "," << particle->center.getX() << "," << particle->center.getY() << "," << particle->center.getZ() << std::endl;
 	}
 }
+
+ParticleVector PhysicsObjectFactory::getOrderedParticles() const
+{
+	ParticleVector ordered;
+	BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
+		const ParticleVector& particles = object->getParticles();
+		ordered.insert( ordered.end(), particles.begin(), particles.end() );
+	}
+	return ordered;
+}
