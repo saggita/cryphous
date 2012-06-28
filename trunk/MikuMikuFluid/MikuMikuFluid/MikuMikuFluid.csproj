@@ -35,7 +35,9 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cryphous">
+    <Reference Include="Cryphous, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
       <HintPath>..\..\Cryphous\Cryphous\bin\Release\Cryphous.exe</HintPath>
     </Reference>
     <Reference Include="CrystalCommand, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">

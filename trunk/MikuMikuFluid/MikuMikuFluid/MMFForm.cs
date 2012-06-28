@@ -24,18 +24,13 @@ namespace MikuMikuFluid
         private Point previousPoint;
         private bool isLeftDown;
         private bool isRightDown;
-        private List<Vector3> positions;
+        Main main;
         
-        public MMFForm()
+        public MMFForm(Main main)
         {
             InitializeComponent();
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
-        }
-
-        public List<Vector3> Positions
-        {
-            set { positions = value;  }
-            get { return positions; }
+            this.main = main;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -69,16 +64,6 @@ namespace MikuMikuFluid
             osDialog.Show();
         }
 
-        private void toolStripMenuItemSave_Click(object sender, EventArgs e)
-        {
-            fileIOCommand.fileSaveOverride();
-        }
-
-        private void toolStripMenuItemSaveAs_Click(object sender, EventArgs e)
-        {
-            fileIOCommand.fileSave();
-        }
-
         private void buttonStart_Click(object sender, EventArgs e)
         {
             timerSimulation.Enabled = !timerSimulation.Enabled;
@@ -98,6 +83,8 @@ namespace MikuMikuFluid
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
             mainCommand.proceedSimulation();
+            mainCommand.displayInformation(listBoxInformation);
+            main.BakeToTimeLine(simulationCommand.getStep(), new List<Vector3>());
         }
 
         private void simulationSettingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,6 +103,7 @@ namespace MikuMikuFluid
         {
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
+            main.BakeToTimeLine(simulationCommand.getStep(), new List<Vector3>());
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

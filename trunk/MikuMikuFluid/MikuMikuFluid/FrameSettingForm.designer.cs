@@ -93,6 +93,11 @@
             this.endUpDown.Size = new System.Drawing.Size(81, 19);
             this.endUpDown.TabIndex = 3;
             this.endUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.endUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // hyphonLabel
             // 
@@ -133,6 +138,11 @@
             this.keyFrameIntervalUpDown.Size = new System.Drawing.Size(81, 19);
             this.keyFrameIntervalUpDown.TabIndex = 7;
             this.keyFrameIntervalUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.keyFrameIntervalUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -155,6 +165,11 @@
             this.simulationIntervalUpDown.Size = new System.Drawing.Size(81, 19);
             this.simulationIntervalUpDown.TabIndex = 9;
             this.simulationIntervalUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.simulationIntervalUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
