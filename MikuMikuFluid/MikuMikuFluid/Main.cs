@@ -14,6 +14,12 @@ namespace MikuMikuFluid
 
         public ICommandAPI API { get; set; }
 
+        private FrameSettingForm frameSettingDialog;
+
+        private long keyFrame;
+
+        private List<Vector3> initialPositions;
+
         public string Description
         {
             get { return "MikuMikuFluid"; }
@@ -31,7 +37,7 @@ namespace MikuMikuFluid
 
         public string Text
         {
-            get { return "MikuMikuFluid"; }
+            get { return "";}// "MikuMikuFluid"; }
         }
 
         public string EnglishText
@@ -47,20 +53,27 @@ namespace MikuMikuFluid
                 return;
             }
 
-            FrameSettingForm frameSettingDialog = new FrameSettingForm();
+            frameSettingDialog = new FrameSettingForm();
 
             if (frameSettingDialog.ShowDialog(ApplicationForm) != DialogResult.OK)
             {
                 return;
             }
             
-            long start = frameSettingDialog.StartFrame;
-            long end = frameSettingDialog.EndFrame;
+            keyFrame = frameSettingDialog.StartFrame;
 
-            long keyFrameInterval = frameSettingDialog.KeyFrameInterval;
+            setInitialPositions();
 
-            List<Vector3> positions = new List<Vector3>();
-            // シミュレーション前の登録．ボーン->粒子.
+            MessageBox.Show(ApplicationForm, initialPositions.Count + " particles inputed."); 
+
+            MMFForm mmfform = new MMFForm( this);
+            mmfform.ShowDialog(ApplicationForm);
+        }
+
+        private void setInitialPositions()
+        {
+            initialPositions = new List<Vector3>();
+
             List<Bone> bones = API.GetBones();
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
             {
@@ -69,19 +82,23 @@ namespace MikuMikuFluid
                 for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    positions.Add( motionFrames[0].position );
+                    initialPositions.Add(motionFrames[0].position);
                 }
             }
+        }
 
-            MessageBox.Show(ApplicationForm, positions.Count + " particles inputed."); 
-
-            MMFForm mmfform = new MMFForm();
-            mmfform.Positions = positions;
-            mmfform.ShowDialog(ApplicationForm);
-            positions = mmfform.Positions;
-
+        public void BakeToTimeLine(long frameNumber, List<Vector3> positions)
+        {
+            if ( (frameNumber % frameSettingDialog.SimulationIterval) != 0)
+            {
+                return;
+            }
+            if (frameNumber > frameSettingDialog.EndFrame)
+            {
+                return;
+            }
             int index = 0;
-            // シミュレーション後の登録．粒子->ボーン.
+            List<Bone> bones = API.GetBones();
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
             {
                 Vector3 position = bones[boneIndex].Position;
@@ -89,15 +106,12 @@ namespace MikuMikuFluid
                 for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-
-                    /*for (long frame = start; frame < end; ++frame)
-                    {
-                        AddMotionFrame(motionFrames, frame, new Vector3(0.0F, 1.0F * frame, 0.0F));
-                    }*/
-                    AddMotionFrame(motionFrames, end, positions[index++]);
+                    AddMotionFrame(motionFrames, keyFrame, new Vector3(0.0F, index * 1.0F, 0.0F));
                     API.ReplaceAllMotionFrameData(boneIndex, layerIndex, motionFrames);
+                    index++;
                 }
             }
+            keyFrame += frameSettingDialog.KeyFrameInterval;
         }
 
         private void AddMotionFrame(List<MotionFrameData> motionFrames, long frameNumber, Vector3 position)
