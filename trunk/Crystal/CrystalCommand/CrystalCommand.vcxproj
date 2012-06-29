@@ -108,8 +108,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ColorMarshaler.cpp" />
-    <ClCompile Include="ExportCommandBase.cpp" />
     <ClCompile Include="MainCommand.cpp" />
     <ClCompile Include="ParticleMarshaler.cpp" />
     <ClCompile Include="ProfileInfoCommand.cpp" />
@@ -117,23 +115,14 @@
     <ClCompile Include="ObjectSettingCommand.cpp" />
     <ClCompile Include="SimulationSettingCommand.cpp" />
     <ClCompile Include="GraphicsSettingCommand.cpp" />
-    <ClCompile Include="AnimationCommandBase.cpp" />
     <ClCompile Include="SimulationCommand.cpp" />
     <ClCompile Include="ApplicationSettings.cpp" />
-    <ClCompile Include="XMLReader.cpp" />
-    <ClCompile Include="XMLWriter.cpp" />
-    <ClCompile Include="ExportSettingCommand.cpp" />
-    <ClCompile Include="FileIOCommand.cpp" />
-    <ClCompile Include="ImportSettingCommand.cpp" />
-    <ClCompile Include="ParticleExportCommand.cpp" />
     <ClCompile Include="ParticleInfoCommand.cpp" />
     <ClCompile Include="StringMarshaler.cpp" />
     <ClCompile Include="DialogCommand.cpp" />
     <ClCompile Include="ItemAndVariable.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ColorMarshaler.h" />
-    <ClInclude Include="ExportCommandBase.h" />
     <ClInclude Include="MainCommand.h" />
     <ClInclude Include="ParticleMarshaler.h" />
     <ClInclude Include="ProfileInfoCommand.h" />
@@ -141,15 +130,8 @@
     <ClInclude Include="ObjectSettingCommand.h" />
     <ClInclude Include="SimulationSettingCommand.h" />
     <ClInclude Include="GraphicsSettingCommand.h" />
-    <ClInclude Include="AnimationCommandBase.h" />
     <ClInclude Include="SimulationCommand.h" />
     <ClInclude Include="ApplicationSettings.h" />
-    <ClInclude Include="XMLReader.h" />
-    <ClInclude Include="XMLWriter.h" />
-    <ClInclude Include="ExportSettingCommand.h" />
-    <ClInclude Include="FileIOCommand.h" />
-    <ClInclude Include="ImportSettingCommand.h" />
-    <ClInclude Include="ParticleExportCommand.h" />
     <ClInclude Include="ParticleInfoCommand.h" />
     <ClInclude Include="StringMarshaler.h" />
     <ClInclude Include="DialogCommand.h" />

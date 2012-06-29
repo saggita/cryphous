@@ -13,9 +13,6 @@
     <Filter Include="Simulation\Solver">
       <UniqueIdentifier>{f8e942f3-9bde-496d-aec8-c702b55dc4dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Simulation\Solver\SPHソルバ">
-      <UniqueIdentifier>{7e185f9f-21cb-4a07-b1fd-502663a958f7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Profiler">
       <UniqueIdentifier>{7823b1af-35fd-4b7d-a444-300735c43ce6}</UniqueIdentifier>
     </Filter>
@@ -37,6 +34,9 @@
     <Filter Include="PhysicsObject\Generation">
       <UniqueIdentifier>{68e59b0e-0f21-4c66-8c9e-d2003c845162}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Simulation\Solver\SPHSolver">
+      <UniqueIdentifier>{7e185f9f-21cb-4a07-b1fd-502663a958f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ParticleFactory.cpp">
@@ -49,9 +49,6 @@
       <Filter>PhysicsObject\Generation</Filter>
     </ClCompile>
     <ClCompile Include="Simulation.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="SimulationSetting.cpp">
       <Filter>Simulation</Filter>
     </ClCompile>
     <ClCompile Include="NeighborSearcher.cpp">
@@ -67,7 +64,7 @@
       <Filter>Profiler</Filter>
     </ClCompile>
     <ClCompile Include="SPHSolver.cpp">
-      <Filter>Simulation\Solver\SPHソルバ</Filter>
+      <Filter>Simulation\Solver\SPHSolver</Filter>
     </ClCompile>
     <ClCompile Include="RigidEnforcer.cpp">
       <Filter>Enforcer</Filter>
@@ -129,7 +126,7 @@
       <Filter>Profiler</Filter>
     </ClInclude>
     <ClInclude Include="SPHSolver.h">
-      <Filter>Simulation\Solver\SPHソルバ</Filter>
+      <Filter>Simulation\Solver\SPHSolver</Filter>
     </ClInclude>
     <ClInclude Include="TimeIntegratorBase.h">
       <Filter>Integrator</Filter>
@@ -141,7 +138,7 @@
       <Filter>Enforcer</Filter>
     </ClInclude>
     <ClInclude Include="SPHPairSolver.h">
-      <Filter>Simulation\Solver\SPHソルバ</Filter>
+      <Filter>Simulation\Solver\SPHSolver</Filter>
     </ClInclude>
     <ClInclude Include="Fluid.h">
       <Filter>PhysicsObject</Filter>

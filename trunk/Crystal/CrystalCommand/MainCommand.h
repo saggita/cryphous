@@ -3,13 +3,9 @@
 namespace Crystal{
 	namespace Command {
 
-ref class ExportSettingCommand;
-ref class ChemicalReactingSettingCommand;
-ref class ImageExportCommand;
-ref class ParticleExportCommand;
 ref class ProfileInfoCommand;
 ref class GraphicsSettingCommand;
-ref class AnimationCommandBase;
+ref class SimulationCommand;
 
 public ref class MainCommand
 {
@@ -21,10 +17,6 @@ public:
 	GraphicsSettingCommand^ getGraphicsSettingCommand(){ return graphicsSettingCommand; }
 
 	void proceedSimulation();
-
-	ExportSettingCommand^ getParticleExportSettingCommand() { return particleExportSettingCommand; }
-
-	ParticleExportCommand^ getParticleExportCommand() { return particleExportCommand; }
 
 	void refreshSimulation();
 
@@ -45,12 +37,10 @@ public:
 	void viewReset();
 
 private:
-	ExportSettingCommand^ particleExportSettingCommand;
-	ParticleExportCommand^ particleExportCommand;
 	GraphicsSettingCommand^ graphicsSettingCommand;
 	ProfileInfoCommand^ profileInfoCommand;
 	System::Windows::Forms::PictureBox^ pictureBox;
-	AnimationCommandBase^ animationCommandBase;
+	SimulationCommand^ simulationCommand;
 };
 
 	}

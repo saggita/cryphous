@@ -30,17 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simulationSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boundarySettingBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.particleExportSettingPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.demoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rainRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -50,8 +46,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonParticleInfo = new System.Windows.Forms.Button();
             this.buttonViewReset = new System.Windows.Forms.Button();
-            this.demoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rainRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -62,7 +56,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileSToolStripMenuItem,
             this.settingToolStripMenuItem,
             this.demoDToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -71,53 +64,13 @@
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileSToolStripMenuItem
-            // 
-            this.fileSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemOpen,
-            this.toolStripMenuItemSave,
-            this.toolStripMenuItemSaveAs,
-            this.toolStripMenuItemClose});
-            this.fileSToolStripMenuItem.Name = "fileSToolStripMenuItem";
-            this.fileSToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
-            this.fileSToolStripMenuItem.Text = "File(&F)";
-            // 
-            // toolStripMenuItemOpen
-            // 
-            this.toolStripMenuItemOpen.Name = "toolStripMenuItemOpen";
-            this.toolStripMenuItemOpen.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemOpen.Text = "Open(&O)";
-            this.toolStripMenuItemOpen.Click += new System.EventHandler(this.toolStripMenuItemOpen_Click);
-            // 
-            // toolStripMenuItemSave
-            // 
-            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-            this.toolStripMenuItemSave.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemSave.Text = "Save(&S)";
-            this.toolStripMenuItemSave.Click += new System.EventHandler(this.toolStripMenuItemSave_Click);
-            // 
-            // toolStripMenuItemSaveAs
-            // 
-            this.toolStripMenuItemSaveAs.Name = "toolStripMenuItemSaveAs";
-            this.toolStripMenuItemSaveAs.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemSaveAs.Text = "SaveAs(&A)";
-            this.toolStripMenuItemSaveAs.Click += new System.EventHandler(this.toolStripMenuItemSaveAs_Click);
-            // 
-            // toolStripMenuItemClose
-            // 
-            this.toolStripMenuItemClose.Name = "toolStripMenuItemClose";
-            this.toolStripMenuItemClose.Size = new System.Drawing.Size(137, 22);
-            this.toolStripMenuItemClose.Text = "Close(&C)";
-            this.toolStripMenuItemClose.Click += new System.EventHandler(this.toolStripMenuItemClose_Click);
-            // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.simulationSettingToolStripMenuItem,
             this.objectSettingToolStripMenuItem,
             this.boundarySettingBToolStripMenuItem,
-            this.graphicsSettingGToolStripMenuItem,
-            this.particleExportSettingPToolStripMenuItem});
+            this.graphicsSettingGToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
@@ -150,12 +103,20 @@
             this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
             this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
             // 
-            // particleExportSettingPToolStripMenuItem
+            // demoDToolStripMenuItem
             // 
-            this.particleExportSettingPToolStripMenuItem.Name = "particleExportSettingPToolStripMenuItem";
-            this.particleExportSettingPToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.particleExportSettingPToolStripMenuItem.Text = "ExportSetting(&E)";
-            this.particleExportSettingPToolStripMenuItem.Click += new System.EventHandler(this.particleExportSettingPToolStripMenuItem_Click);
+            this.demoDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rainRToolStripMenuItem});
+            this.demoDToolStripMenuItem.Name = "demoDToolStripMenuItem";
+            this.demoDToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
+            this.demoDToolStripMenuItem.Text = "Demo(&D)";
+            // 
+            // rainRToolStripMenuItem
+            // 
+            this.rainRToolStripMenuItem.Name = "rainRToolStripMenuItem";
+            this.rainRToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.rainRToolStripMenuItem.Text = "Rain(&R)";
+            this.rainRToolStripMenuItem.Click += new System.EventHandler(this.rainRToolStripMenuItem_Click);
             // 
             // listBoxInformation
             // 
@@ -256,24 +217,8 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
-            // demoDToolStripMenuItem
-            // 
-            this.demoDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rainRToolStripMenuItem});
-            this.demoDToolStripMenuItem.Name = "demoDToolStripMenuItem";
-            this.demoDToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
-            this.demoDToolStripMenuItem.Text = "Demo(&D)";
-            // 
-            // rainRToolStripMenuItem
-            // 
-            this.rainRToolStripMenuItem.Name = "rainRToolStripMenuItem";
-            this.rainRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.rainRToolStripMenuItem.Text = "Rain(&R)";
-            this.rainRToolStripMenuItem.Click += new System.EventHandler(this.rainRToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
-            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -284,7 +229,6 @@
             this.Name = "MainForm";
             this.Text = "Cryphous";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
@@ -301,11 +245,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpen;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveAs;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClose;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simulationSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem objectSettingToolStripMenuItem;
@@ -320,7 +259,6 @@
         private System.Windows.Forms.Button buttonViewReset;
         private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
         private System.Windows.Forms.Button buttonParticleInfo;
-        private System.Windows.Forms.ToolStripMenuItem particleExportSettingPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem demoDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rainRToolStripMenuItem;
     }

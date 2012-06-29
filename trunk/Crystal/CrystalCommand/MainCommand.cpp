@@ -1,9 +1,7 @@
 #include "MainCommand.h"
 
-#include "ExportSettingCommand.h"
 #include "ParticleInfoCommand.h"
 #include "SimulationCommand.h"
-#include "ParticleExportCommand.h"
 #include "GraphicsSettingCommand.h"
 #include "ProfileInfoCommand.h"
 #include "ApplicationSettings.h"
@@ -29,9 +27,7 @@ using namespace System::Diagnostics;
 
 MainCommand::MainCommand(System::Windows::Forms::PictureBox^ pictureBox)
 {
-	this->animationCommandBase = gcnew SimulationCommand();
-	this->particleExportSettingCommand = gcnew ExportSettingCommand("particles", "cparticles");
-	this->particleExportCommand = gcnew ParticleExportCommand( particleExportSettingCommand );
+	this->simulationCommand = gcnew SimulationCommand();
 	this->graphicsSettingCommand = gcnew GraphicsSettingCommand();
 	this->profileInfoCommand = gcnew ProfileInfoCommand();
 	this->pictureBox = pictureBox;
@@ -45,14 +41,13 @@ MainCommand::~MainCommand(void)
 
 void MainCommand::proceedSimulation()
 {
-	animationCommandBase->proceed();
+	simulationCommand->proceed();
 	rendering();
-	particleExportCommand->exportToFile( animationCommandBase->getStep() );
 }
 
 void MainCommand::refreshSimulation()
 {
-	animationCommandBase->refresh();
+	simulationCommand->refresh();
 	rendering();
 }
 
