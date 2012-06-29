@@ -69,8 +69,10 @@ void ObjectSettingCommand::displaySettings()
 	}
 }
 
-void ObjectSettingCommand::saveSettings()
+void ObjectSettingCommand::saveSettings(const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
+	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPositions);
+
 	ApplicationSettings::get()->conditions->clear();
 	ApplicationSettings::get()->factory->init();
 	const Box& box = ApplicationSettings::get()->simulationSetting->boundaryBox;
@@ -94,24 +96,9 @@ void ObjectSettingCommand::saveSettings()
 			Debug::Assert( false );
 		}
 
-		const double pressureCoe = Convert::ToDouble( row->Cells[1]->Value );
+		/*const double pressureCoe = Convert::ToDouble( row->Cells[1]->Value );
 		const double viscosityCoe = Convert::ToDouble( row->Cells[2]->Value );
-		const double density = Convert::ToDouble( row->Cells[3]->Value );
-		const double minX = Convert::ToDouble( row->Cells[4]->Value ) + length * 0.5 - margin;
-		const double maxX = Convert::ToDouble( row->Cells[5]->Value ) - length * 0.5 + margin;
-		const double minY = Convert::ToDouble( row->Cells[6]->Value ) + length * 0.5 - margin;
-		const double maxY = Convert::ToDouble( row->Cells[7]->Value ) - length * 0.5 + margin;
-		const double minZ = Convert::ToDouble( row->Cells[8]->Value ) + length * 0.5 - margin;
-		const double maxZ = Convert::ToDouble( row->Cells[9]->Value ) - length * 0.5 + margin;
-
-		std::vector<Vector3d> points;
-		for( double x = minX; x < maxX; x+= length ) {
-			for( double y = minY; y < maxY; y+= length ) {
-				for( double z = minZ; z < maxZ; z += length ) {
-					points.push_back( Vector3d( x, y, z ) );
-				}
-			}
-		}
+		const double density = Convert::ToDouble( row->Cells[3]->Value );*/
 
 		PhysicsObjectCondition* condition = new PhysicsObjectCondition(
 			points,
@@ -150,49 +137,3 @@ void ObjectSettingCommand::deleteObject()
 
 	view->Rows->Remove( row );
 }
-
-//void ObjectSettingCommand::saveSettings(System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
-//{
-//	ApplicationSettings::get()->conditions->clear();
-//	ApplicationSettings::get()->factory->init();
-//
-//	//for each( DataGridViewRow^ row in view->Rows ) {
-//	//	PhysicsObjectCondition::ObjectType objectType = PhysicsObjectCondition::Fluid;
-//	//	Debug::WriteLine( row->Cells[0]->Value->ToString() );
-//	//	if(  row->Cells[0]->Value->ToString() == "Fluid") {
-//	//		objectType = PhysicsObjectCondition::Fluid;
-//	//	}
-//	//	else if( row->Cells[0]->Value->ToString() == "Obstacle" ) {
-//	//		objectType = PhysicsObjectCondition::Rigid;
-//	//	}
-//	//	else if( row->Cells[0]->Value->ToString() == "Rigid") {
-//	//		objectType = PhysicsObjectCondition::RigidTwoWay;
-//	//	}
-//	//	else{
-//	//		Debug::Assert( false );
-//	//	}
-//
-//	//	const double pressureCoe = Convert::ToDouble( row->Cells[1]->Value );
-//	//	const double viscosityCoe = Convert::ToDouble( row->Cells[2]->Value );
-//	//	const double density = Convert::ToDouble( row->Cells[3]->Value );
-//	//	const double minX = Convert::ToDouble( row->Cells[4]->Value );
-//	//	const double maxX = Convert::ToDouble( row->Cells[5]->Value );
-//	//	const double minY = Convert::ToDouble( row->Cells[6]->Value );
-//	//	const double maxY = Convert::ToDouble( row->Cells[7]->Value );
-//	//	const double minZ = Convert::ToDouble( row->Cells[8]->Value );
-//	//	const double maxZ = Convert::ToDouble( row->Cells[9]->Value );
-//
-//
-//	std::vector<Geom::Vector3d> nativePoints = ParticleMarshaler::convertToNative(managedPositions);
-//
-//	/*PhysicsObjectCondition* condition = new PhysicsObjectCondition(
-//			Box( Crystal::Geom::Vector3d( minX, minY, minZ), Crystal::Geom::Vector3d( maxX, maxY, maxZ ) ),
-//			density,
-//			pressureCoe,
-//			viscosityCoe,
-//			objectType
-//			);*/
-//		ApplicationSettings::get()->factory->createPhysicsObject( *condition,  *(ApplicationSettings::get()->simulationSetting) );
-//		ApplicationSettings::get()->conditions->push_back( *condition );
-//	}
-//}
