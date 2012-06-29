@@ -24,8 +24,9 @@ SPHSolverTest::SPHSolverTest(void)
 	PhysicsObjectFactory factory;
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	Box boundaryBox( Vector3d( 0.0, 0.0, 0.0), Vector3d( 10.0, 1.0, 1.0) );
-	PhysicsObjectCondition condition( boundaryBox, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
 	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting );
 	PhysicsObjectList objects( 1, fluid);
 	SPHSolver solver( &factory, setting);

@@ -21,54 +21,18 @@
   <objects>
     <object>
       <type>0</type>
-      <box>
-        <min>
-          <x>0</x>
-          <y>-0.1</y>
-          <z>-0.2</z>
-        </min>
-        <max>
-          <x>0.5</x>
-          <y>0.3</y>
-          <z>0</z>
-        </max>
-      </box>
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
       <viscosityCoefficient>2</viscosityCoefficient>
     </object>
     <object>
       <type>1</type>
-      <box>
-        <min>
-          <x>-0.5</x>
-          <y>-0.1</y>
-          <z>-0.1</z>
-        </min>
-        <max>
-          <x>-0.48</x>
-          <y>0.1</y>
-          <z>0.1</z>
-        </max>
-      </box>
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
       <viscosityCoefficient>2</viscosityCoefficient>
     </object>
     <object>
       <type>2</type>
-      <box>
-        <min>
-          <x>-0.7</x>
-          <y>-0.1</y>
-          <z>-0.1</z>
-        </min>
-        <max>
-          <x>-0.68</x>
-          <y>0.1</y>
-          <z>0.1</z>
-        </max>
-      </box>
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
       <viscosityCoefficient>2</viscosityCoefficient>

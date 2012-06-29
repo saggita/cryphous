@@ -3,7 +3,7 @@
 
 #include "../CrystalPhysics/Simulation.h"
 
-#include "../CrystalGeom/Box.h"
+#include "../CrystalGeom/Vector3d.h"
 
 #include "../CrystalPhysics/PhysicsObject.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
@@ -19,7 +19,9 @@ SimulationTest::SimulationTest(void)
 {
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
+	std::vector<Vector3d> point;
+	point.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition condition( point, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
 	PhysicsObjectFactory factory;
 	factory.createPhysicsObject( condition, setting );
 

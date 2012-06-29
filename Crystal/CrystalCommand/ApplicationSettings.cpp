@@ -89,10 +89,6 @@ XmlDocument^ ApplicationSettings::writeToXML()
 			typeElement->AppendChild( doc->CreateTextNode( ((int)(condition.getObjectType())).ToString() ) );
 			objectElement->AppendChild( typeElement );
 
-			XMLWriter writer( doc );
-			XmlElement^ boxElement = writer.write( condition.getBox() );
-			objectElement->AppendChild( boxElement );
-
 			XmlElement^ densityElement = doc->CreateElement("density");
 			densityElement->AppendChild( doc->CreateTextNode( condition.getDensity().ToString() ) );
 			objectElement->AppendChild( densityElement );
@@ -136,9 +132,7 @@ bool ApplicationSettings::readFromXML( XmlDocument^ doc )
 	XmlElement^ objectElement = (XmlElement^)boundaryElement->NextSibling;
 	for each( XmlElement^ element in objectElement->ChildNodes ) {
 		XmlElement^ typeElement = (XmlElement^)element->FirstChild;
-		XmlElement^ boxElement = (XmlElement^)typeElement->NextSibling;
-		const Box& box = reader.readBox( boxElement );
-		XmlElement^ densityElement = (XmlElement^)boxElement->NextSibling;
+		XmlElement^ densityElement = (XmlElement^)typeElement->NextSibling;
 		XmlElement^ pressureElement = (XmlElement^)densityElement->NextSibling;
 		XmlElement^ viscosityElement = (XmlElement^)pressureElement->NextSibling;
 		XmlElement^ divideElement = (XmlElement^)viscosityElement->NextSibling;
@@ -148,8 +142,9 @@ bool ApplicationSettings::readFromXML( XmlDocument^ doc )
 		const double pressure = double::Parse( pressureElement->FirstChild->Value );
 		const double viscosity = double::Parse( viscosityElement->FirstChild->Value );
 
+		std::vector<Vector3d> points;
 		PhysicsObjectCondition* condition = 
-			new PhysicsObjectCondition( box, density, pressure, viscosity, (PhysicsObjectCondition::ObjectType)type );
+			new PhysicsObjectCondition( points, density, pressure, viscosity, (PhysicsObjectCondition::ObjectType)type );
 
 		factory->createPhysicsObject( *condition, *simulationSetting );
 		conditions->push_back(*condition);

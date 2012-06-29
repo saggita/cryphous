@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ParticleMarshaler.h"
+
 namespace Crystal{
 	namespace Command{
 
@@ -22,6 +24,8 @@ public:
 	void addObject();
 
 	void deleteObject();
+
+	//void saveSettings(System::Collections::Generic::List<ManagedPosition^>^ managedPositions);
 };
 
 	}

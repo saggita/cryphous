@@ -25,7 +25,7 @@ List<ManagedPosition^>^ ParticleMarshaler::convertToManaged(const ParticleVector
 	return managedPositions;
 }
 
-std::vector<Vector3d> convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
+std::vector<Vector3d> ParticleMarshaler::convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Vector3d> nativePositions;
 	

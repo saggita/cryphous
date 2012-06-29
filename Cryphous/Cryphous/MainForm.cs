@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using Crystal.Command;
 //using DxMath;
 
+//using ManagedPosition = List<double>;
+
 namespace Cryphous
 {
     public partial class MainForm : Form
@@ -211,6 +213,19 @@ namespace Cryphous
         {
             ParticleExportSettingForm form = new ParticleExportSettingForm( mainCommand.getParticleExportSettingCommand() );
 	        form.Show();
+        }
+
+        private void rainRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //RainForm form = new RainForm();
+            //form.Show();
+            /*ParticleMarshaler marshaler = new ParticleMarshaler();
+            List<ManagedPosition> positions = new List<ManagedPosition>();
+            ManagedPosition newPos = new ManagedPosition();
+            newPos.Add(0.0);
+            newPos.Add(0.0);
+            newPos.Add(0.0);
+            positions.Add(newPos);*/
         }
     }
 }
