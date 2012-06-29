@@ -1,22 +1,20 @@
 #pragma once
 
-#include "AnimationCommandBase.h"
-
 namespace Crystal{
 	namespace Command{
 
-public ref class SimulationCommand : public AnimationCommandBase
+public ref class SimulationCommand
 {
 public:
 	SimulationCommand(void);
 
 	~SimulationCommand(){};
 
-	virtual void refresh() override;
+	void refresh();
 
-	virtual void proceed() override;
+	void proceed();
 
-	virtual int getStep() override;
+	int getStep();
 };
 
 	}

@@ -73,6 +73,7 @@ void ObjectSettingCommand::saveSettings()
 {
 	ApplicationSettings::get()->conditions->clear();
 	ApplicationSettings::get()->factory->init();
+	const Box& box = ApplicationSettings::get()->simulationSetting->boundaryBox;
 
 	const double length = ApplicationSettings::get()->simulationSetting->particleDiameter;
 	const double margin = 1.0e-12;
@@ -129,10 +130,11 @@ void ObjectSettingCommand::addObject()
 	array<Object^>^ rowData = {
 		"Fluid",
 		10000.0,
-		1000.0,
-		2.0, 
-		0.0, 0.0, 0.0,
-		0.0, 0.0, 0.0,
+		2.0,
+		1000.0, 
+		-0.1, 0.1, 
+		0.0, 0.5,
+		-0.1, 0.1,
 	};
 	
 	view->Rows->Add( rowData );

@@ -36,10 +36,6 @@ public:
 
 public:
 
-	System::Xml::XmlDocument^ writeToXML();
-
-	bool readFromXML( System::Xml::XmlDocument^ doc );
-
 	Physics::PhysicsObjectFactory* factory;
 
 	Physics::SimulationSetting* simulationSetting;

@@ -14,9 +14,8 @@ namespace Cryphous
 {
     public partial class MainForm : Form
     {
-        private SimulationCommand simulationCommand;
+        //private SimulationCommand simulationCommand;
         private BoundarySettingCommand boundarySettingCommand;
-        private FileIOCommand fileIOCommand;
         private ObjectSettingCommand objectSettingCommand;
         private ProfileInfoCommand profileInfoCommand;
         private ParticleInfoCommand particleInfoCommand;
@@ -35,9 +34,7 @@ namespace Cryphous
         private void MainForm_Load(object sender, EventArgs e)
         {
             ApplicationSettings.get();
-            simulationCommand = new SimulationCommand();
             boundarySettingCommand = new BoundarySettingCommand();
-            fileIOCommand = new FileIOCommand();
             objectSettingCommand = new ObjectSettingCommand();
             profileInfoCommand = new ProfileInfoCommand();
             particleInfoCommand = new ParticleInfoCommand();
@@ -52,25 +49,10 @@ namespace Cryphous
             boundarySettingForm.Show();
         }
 
-        private void toolStripMenuItemOpen_Click(object sender, EventArgs e)
-        {
-            fileIOCommand.fileOpen();
-        }
-
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand);
             osDialog.Show();
-        }
-
-        private void toolStripMenuItemSave_Click(object sender, EventArgs e)
-        {
-            fileIOCommand.fileSaveOverride();
-        }
-
-        private void toolStripMenuItemSaveAs_Click(object sender, EventArgs e)
-        {
-            fileIOCommand.fileSave();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -191,28 +173,8 @@ namespace Cryphous
             poDialog.Show();
         }
 
-        private void MainForm_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-
-            String path = files[0];
-            
-            if( !fileIOCommand.fileOpen( path ) ) {
-                MessageBox.Show("Unexpected File Format");
-            }
-        }
-
         private void MainForm_DragEnter(object sender, DragEventArgs e)
         {
-            if( e.Data.GetDataPresent( DataFormats.FileDrop ) ) {
-		        e.Effect = System.Windows.Forms.DragDropEffects.All;
-	        }
-        }
-
-        private void particleExportSettingPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ParticleExportSettingForm form = new ParticleExportSettingForm( mainCommand.getParticleExportSettingCommand() );
-	        form.Show();
         }
 
         private void rainRToolStripMenuItem_Click(object sender, EventArgs e)

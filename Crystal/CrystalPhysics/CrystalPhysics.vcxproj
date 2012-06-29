@@ -85,7 +85,6 @@
     <ClCompile Include="Fluid.cpp" />
     <ClCompile Include="Rigid.cpp" />
     <ClCompile Include="Simulation.cpp" />
-    <ClCompile Include="SimulationSetting.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="SearchParticle.cpp" />
     <ClCompile Include="SearchParticleFactory.cpp" />

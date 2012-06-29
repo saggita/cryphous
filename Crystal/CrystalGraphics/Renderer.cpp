@@ -4,7 +4,6 @@
 
 #include "TextureCreator.h"
 #include "GraphicsSettings.h"
-#include "Color4d.h"
 #include "PointSprite.h"
 
 #include "../CrystalPhysics/Particle.h"
