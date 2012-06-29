@@ -19,13 +19,11 @@ public:
 
 	void displaySettings();
 
-	void saveSettings();
+	void saveSettings(const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPosition);
 
 	void addObject();
 
 	void deleteObject();
-
-	//void saveSettings(System::Collections::Generic::List<ManagedPosition^>^ managedPositions);
 };
 
 	}
