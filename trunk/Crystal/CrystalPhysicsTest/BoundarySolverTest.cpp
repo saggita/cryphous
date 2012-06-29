@@ -23,7 +23,10 @@ BoundarySolverTest::BoundarySolverTest(void)
 	PhysicsObjectFactory factory;
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.0, PhysicsObjectCondition::Fluid );
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d( 0.0, 0.0, 0.0 ));
+	points.push_back( Vector3d( 1.0, 0.0, 0.0 ));
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.0, PhysicsObjectCondition::Fluid );
 	PhysicsObject* object = factory.createPhysicsObject( condition, setting );
 	Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
 	BoundarySolver solver( object, setting );

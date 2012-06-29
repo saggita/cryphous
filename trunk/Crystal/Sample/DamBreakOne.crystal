@@ -21,18 +21,6 @@
   <objects>
     <object>
       <type>0</type>
-      <box>
-        <min>
-          <x>-0.2</x>
-          <y>-0.1</y>
-          <z>-0.2</z>
-        </min>
-        <max>
-          <x>-0.1</x>
-          <y>0.2</y>
-          <z>0.2</z>
-        </max>
-      </box>
       <density>1000</density>
       <pressureCoefficient>10000</pressureCoefficient>
       <viscosityCoefficient>2</viscosityCoefficient>

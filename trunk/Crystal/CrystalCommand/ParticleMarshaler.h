@@ -12,13 +12,12 @@ namespace Crystal{
 	}
 	namespace Command{
 		typedef System::Collections::Generic::List<double> ManagedPosition;
-
 public ref class ParticleMarshaler
 {
 public:
-	System::Collections::Generic::List<ManagedPosition^>^ convertToManaged(const Physics::ParticleVector& nativeParticles);
+	static System::Collections::Generic::List<ManagedPosition^>^ convertToManaged(const Physics::ParticleVector& nativeParticles);
 
-	std::vector<Geom::Vector3d> convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions);
+	static std::vector<Geom::Vector3d> convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions);
 };
 
 	}

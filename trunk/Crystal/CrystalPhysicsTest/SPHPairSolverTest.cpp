@@ -30,10 +30,12 @@ SPHPairSolverTest::~SPHPairSolverTest()
 void SPHPairSolverTest::calculateDensityTest()
 {
 	PhysicsObjectFactory factory;
-	Box box( Vector3d( 0.0, 0.0, 0.0), Vector3d( 1.0, 2.0, 1.0 ) );
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	points.push_back( Vector3d(1.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition conditionFluid( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
 	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, setting);
 
 	const ParticleVector& particles = factory.getPhysicsObjects().front()->getParticles();
@@ -51,10 +53,11 @@ void SPHPairSolverTest::calculateDensityTest()
 void SPHPairSolverTest::calculateBoundaryDensityTest()
 {
 	PhysicsObjectFactory factory;
-	Box box( Vector3d( 0.0, 0.0, 0.0), Vector3d( 1.0, 2.0, 1.0 ) );
-	SimulationSetting setting;
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	points.push_back( Vector3d(1.0, 0.0, 0.0 ) );SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObjectCondition conditionFluid( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
 	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, setting);
 	const ParticleVector&	particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );
@@ -71,10 +74,12 @@ void SPHPairSolverTest::calculateBoundaryDensityTest()
 void SPHPairSolverTest::calculatePressureForceTest()
 {
 	PhysicsObjectFactory factory;
-	Box box( Vector3d( 0.0, 0.0, 0.0), Vector3d( 1.0, 2.0, 1.0 ) );
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	points.push_back( Vector3d(1.0, 0.0, 0.0 ) );
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition conditionFluid( box, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
+	PhysicsObjectCondition conditionFluid( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid ); 
 	PhysicsObject* fluid = factory.createPhysicsObject( conditionFluid, setting);
 	const ParticleVector& particles = factory.getPhysicsObjects().front()->getParticles();
 	ParticlePair pair( particles.front(), particles.back() );

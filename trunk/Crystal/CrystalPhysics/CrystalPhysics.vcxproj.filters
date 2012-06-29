@@ -39,17 +39,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ParticleConditions.cpp">
-      <Filter>Particle\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleFactory.cpp">
       <Filter>Particle\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObject.cpp">
       <Filter>PhysicsObject</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsObjectCondition.cpp">
-      <Filter>PhysicsObject\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObjectFactory.cpp">
       <Filter>PhysicsObject\Generation</Filter>
@@ -95,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="PhysicalTimeIntegratorBase.cpp">
       <Filter>Integrator</Filter>
-    </ClCompile>
-    <ClCompile Include="Kernels3D.cpp">
-      <Filter>Simulation</Filter>
     </ClCompile>
     <ClCompile Include="BoundarySolver.cpp">
       <Filter>Simulation</Filter>

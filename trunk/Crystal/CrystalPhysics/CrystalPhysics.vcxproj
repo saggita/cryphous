@@ -78,12 +78,9 @@
     <ClCompile Include="PhysicalTimeIntegratorBase.cpp" />
     <ClCompile Include="RigidEnforcer.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
-    <ClCompile Include="Kernels3D.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleConditions.cpp" />
     <ClCompile Include="ParticleFactory.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
-    <ClCompile Include="PhysicsObjectCondition.cpp" />
     <ClCompile Include="PhysicsObjectFactory.cpp" />
     <ClCompile Include="Fluid.cpp" />
     <ClCompile Include="Rigid.cpp" />

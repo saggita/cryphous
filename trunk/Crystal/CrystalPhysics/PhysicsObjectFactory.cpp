@@ -66,7 +66,7 @@ SearchParticleVector PhysicsObjectFactory::getSearchParticles(const double effec
 
 PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCondition &condition, const SimulationSetting& setting)
 {
-	const ParticleConditions particleCondition( condition.getBox(), setting.particleDiameter, condition.getDensity());
+	const ParticleConditions particleCondition( condition.getPoints(), setting.particleDiameter, condition.getDensity());
 	ParticleFactory* particleFactory = new ParticleFactory();
 
 	ParticleVector& particles = particleFactory->createParticles( particleCondition );

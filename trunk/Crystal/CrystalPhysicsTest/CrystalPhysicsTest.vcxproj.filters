@@ -40,9 +40,6 @@
     <ClCompile Include="SPHPairSolverTest.cpp">
       <Filter>SolverTest</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleConditionsTest.cpp">
-      <Filter>ParticleTest</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleFactoryTest.cpp">
       <Filter>ParticleTest</Filter>
     </ClCompile>
@@ -70,9 +67,6 @@
       <Filter>SolverTest</Filter>
     </ClInclude>
     <ClInclude Include="ParticleFactoryTest.h">
-      <Filter>ParticleTest</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleConditionsTest.h">
       <Filter>ParticleTest</Filter>
     </ClInclude>
   </ItemGroup>

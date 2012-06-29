@@ -101,7 +101,6 @@
     <ClCompile Include="BoundarySolverTest.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
-    <ClCompile Include="ParticleConditionsTest.cpp" />
     <ClCompile Include="ParticleFactoryTest.cpp" />
     <ClCompile Include="PhysicsObjectFactoryTest.cpp" />
     <ClCompile Include="NeighborSearcherTest.cpp" />
@@ -113,7 +112,6 @@
     <ClInclude Include="BoundarySolverTest.h" />
     <ClInclude Include="SPHPairSolverTest.h" />
     <ClInclude Include="SPHSolvertest.h" />
-    <ClInclude Include="ParticleConditionsTest.h" />
     <ClInclude Include="ParticleFactoryTest.h" />
     <ClInclude Include="PhysicsObjectFactoryTest.h" />
     <ClInclude Include="NeighborSearcherTest.h" />

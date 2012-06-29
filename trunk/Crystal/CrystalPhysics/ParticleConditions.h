@@ -14,12 +14,6 @@ namespace Crystal{
 class ParticleConditions
 {
 public:
-	ParticleConditions(const Geom::Box& box, const double particleLength, const double density) :
-		particleLength( particleLength),
-		density( density)
-		{
-			createInnerPoints(box);
-		}
 
 	ParticleConditions(const std::vector<Geom::Vector3d>& points, const double particleLength, const double density) :
 		particleLength( particleLength),
@@ -44,7 +38,7 @@ protected:
 private:
 	const double particleLength;
 	const double density;
-	std::vector<Geom::Vector3d> innerPoints;
+	const std::vector<Geom::Vector3d> innerPoints;
 };
 
 	}

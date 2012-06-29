@@ -24,7 +24,9 @@ void PhysicsObjectFactoryTest::createFluidTest()
 	PhysicsObjectFactory factory;
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
 	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting);
 	BOOST_CHECK( fluid != 0 );
 	BOOST_CHECK_EQUAL( fluid->getID(), 0 );
@@ -38,7 +40,9 @@ void PhysicsObjectFactoryTest::createRigidTest()
 	PhysicsObjectFactory factory;
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.4, PhysicsObjectCondition::Rigid);
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Rigid);
 	PhysicsObject* rigid = factory.createPhysicsObject( condition, setting);
 	BOOST_CHECK( rigid != 0 );
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );
@@ -52,7 +56,9 @@ void PhysicsObjectFactoryTest::createRigidTwoWayTest()
 	PhysicsObjectFactory factory;
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;
-	PhysicsObjectCondition condition( Box(), 1000.0, 1.0, 0.4, PhysicsObjectCondition::RigidTwoWay );
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::RigidTwoWay );
 	PhysicsObject* rigid = factory.createPhysicsObject( condition, setting);
 	BOOST_CHECK( rigid != 0 );
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );

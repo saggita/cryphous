@@ -1,7 +1,7 @@
 #ifndef __PHYSICS_OBJECT_CONDITION_H__
 #define __PHYSICS_OBJECT_CONDITION_H__
 
-#include <list>
+#include <vector>
 
 #include "../CrystalGeom/Box.h"
 
@@ -22,9 +22,16 @@ public:
 		TwoWay
 	};
 
-	PhysicsObjectCondition( const Geom::Box& box, const double density, const double pressureCoefficient, const double viscosityCoefficient, const ObjectType objectType);
+	PhysicsObjectCondition( const std::vector<Geom::Vector3d>& points, const double density, const double pressureCoefficient, const double viscosityCoefficient, const ObjectType objectType) :
+		points( points), 
+			density( density),
+			pressureCoefficient( pressureCoefficient),
+			viscosityCoefficient( viscosityCoefficient),
+			objectType( objectType)
+		{
+		}
 
-	const Geom::Box& getBox() const { return box; }
+	std::vector<Geom::Vector3d> getPoints() const { return points; }
 
 	double getDensity() const { return density; }
 
@@ -34,14 +41,8 @@ public:
 
 	ObjectType getObjectType() const { return objectType; }
 
-	void setDensity(const double density) { this->density = density; }
-
-	void setPressureCoefficient(const double pressureCoefficient) { this->pressureCoefficient = pressureCoefficient; }
-
-	void setViscosityCoefficient(const double viscosityCoefficient) { this->viscosityCoefficient = viscosityCoefficient; }
-
 private:
-	const Geom::Box box;
+	const std::vector<Geom::Vector3d> points;
 	double density;
 	double pressureCoefficient;
 	double viscosityCoefficient;

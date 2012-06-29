@@ -50,6 +50,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonParticleInfo = new System.Windows.Forms.Button();
             this.buttonViewReset = new System.Windows.Forms.Button();
+            this.demoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rainRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,7 +63,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileSToolStripMenuItem,
-            this.settingToolStripMenuItem});
+            this.settingToolStripMenuItem,
+            this.demoDToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1061, 26);
@@ -253,6 +256,21 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
+            // demoDToolStripMenuItem
+            // 
+            this.demoDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rainRToolStripMenuItem});
+            this.demoDToolStripMenuItem.Name = "demoDToolStripMenuItem";
+            this.demoDToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
+            this.demoDToolStripMenuItem.Text = "Demo(&D)";
+            // 
+            // rainRToolStripMenuItem
+            // 
+            this.rainRToolStripMenuItem.Name = "rainRToolStripMenuItem";
+            this.rainRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rainRToolStripMenuItem.Text = "Rain(&R)";
+            this.rainRToolStripMenuItem.Click += new System.EventHandler(this.rainRToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -303,5 +321,7 @@
         private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
         private System.Windows.Forms.Button buttonParticleInfo;
         private System.Windows.Forms.ToolStripMenuItem particleExportSettingPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem demoDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rainRToolStripMenuItem;
     }
 }
