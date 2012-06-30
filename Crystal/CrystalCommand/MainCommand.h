@@ -14,6 +14,8 @@ public:
 
 	~MainCommand(void);
 
+	SimulationCommand^ getSimulationCommand() { return simulationCommand; }
+
 	GraphicsSettingCommand^ getGraphicsSettingCommand(){ return graphicsSettingCommand; }
 
 	void proceedSimulation();

@@ -83,7 +83,7 @@
             // 
             // endUpDown
             // 
-            this.endUpDown.Location = new System.Drawing.Point(118, 32);
+            this.endUpDown.Location = new System.Drawing.Point(127, 32);
             this.endUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -102,7 +102,7 @@
             // hyphonLabel
             // 
             this.hyphonLabel.AutoSize = true;
-            this.hyphonLabel.Location = new System.Drawing.Point(101, 36);
+            this.hyphonLabel.Location = new System.Drawing.Point(101, 34);
             this.hyphonLabel.Name = "hyphonLabel";
             this.hyphonLabel.Size = new System.Drawing.Size(11, 12);
             this.hyphonLabel.TabIndex = 4;
@@ -120,7 +120,7 @@
             // endLabel
             // 
             this.endLabel.AutoSize = true;
-            this.endLabel.Location = new System.Drawing.Point(116, 14);
+            this.endLabel.Location = new System.Drawing.Point(125, 14);
             this.endLabel.Name = "endLabel";
             this.endLabel.Size = new System.Drawing.Size(60, 12);
             this.endLabel.TabIndex = 6;
@@ -131,6 +131,11 @@
             this.keyFrameIntervalUpDown.Location = new System.Drawing.Point(12, 81);
             this.keyFrameIntervalUpDown.Maximum = new decimal(new int[] {
             9999999,
+            0,
+            0,
+            0});
+            this.keyFrameIntervalUpDown.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -149,15 +154,20 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 12);
+            this.label1.Size = new System.Drawing.Size(106, 12);
             this.label1.TabIndex = 8;
-            this.label1.Text = "KeyFrameInterval";
+            this.label1.Text = "Interval (KeyFrame)";
             // 
             // simulationIntervalUpDown
             // 
-            this.simulationIntervalUpDown.Location = new System.Drawing.Point(118, 81);
+            this.simulationIntervalUpDown.Location = new System.Drawing.Point(127, 83);
             this.simulationIntervalUpDown.Maximum = new decimal(new int[] {
             9999999,
+            0,
+            0,
+            0});
+            this.simulationIntervalUpDown.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -174,11 +184,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(116, 66);
+            this.label2.Location = new System.Drawing.Point(125, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 12);
+            this.label2.Size = new System.Drawing.Size(108, 12);
             this.label2.TabIndex = 10;
-            this.label2.Text = "SimulationInterval";
+            this.label2.Tag = "";
+            this.label2.Text = "Interval (Simulation)";
             // 
             // label3
             // 

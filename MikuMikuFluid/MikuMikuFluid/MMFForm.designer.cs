@@ -31,9 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.simulationSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.boundarySettingBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.particleInfoPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
@@ -43,6 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonViewReset = new System.Windows.Forms.Button();
+            this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -63,39 +62,24 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.simulationSettingToolStripMenuItem,
             this.objectSettingToolStripMenuItem,
-            this.boundarySettingBToolStripMenuItem,
-            this.particleInfoPToolStripMenuItem});
+            this.particleInfoPToolStripMenuItem,
+            this.graphicsSettingGToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
             // 
-            // simulationSettingToolStripMenuItem
-            // 
-            this.simulationSettingToolStripMenuItem.Name = "simulationSettingToolStripMenuItem";
-            this.simulationSettingToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.simulationSettingToolStripMenuItem.Text = "SimulationSetting(&S)";
-            this.simulationSettingToolStripMenuItem.Click += new System.EventHandler(this.simulationSettingToolStripMenuItem_Click);
-            // 
             // objectSettingToolStripMenuItem
             // 
             this.objectSettingToolStripMenuItem.Name = "objectSettingToolStripMenuItem";
-            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.objectSettingToolStripMenuItem.Text = "ObjectSetting(&O)";
             this.objectSettingToolStripMenuItem.Click += new System.EventHandler(this.objectSettingToolStripMenuItem_Click);
-            // 
-            // boundarySettingBToolStripMenuItem
-            // 
-            this.boundarySettingBToolStripMenuItem.Name = "boundarySettingBToolStripMenuItem";
-            this.boundarySettingBToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.boundarySettingBToolStripMenuItem.Text = "BoundarySetting(&B)";
-            this.boundarySettingBToolStripMenuItem.Click += new System.EventHandler(this.boundarySettingBToolStripMenuItem_Click);
             // 
             // particleInfoPToolStripMenuItem
             // 
             this.particleInfoPToolStripMenuItem.Name = "particleInfoPToolStripMenuItem";
-            this.particleInfoPToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.particleInfoPToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.particleInfoPToolStripMenuItem.Text = "ParticleInfo(&P)";
             this.particleInfoPToolStripMenuItem.Click += new System.EventHandler(this.particleInfoPToolStripMenuItem_Click);
             // 
@@ -187,6 +171,13 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
+            // graphicsSettingGToolStripMenuItem
+            // 
+            this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
+            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
+            this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
+            // 
             // MMFForm
             // 
             this.AllowDrop = true;
@@ -216,9 +207,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem simulationSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem objectSettingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem boundarySettingBToolStripMenuItem;
         private System.Windows.Forms.ListBox listBoxInformation;
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button buttonStart;
@@ -228,5 +217,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonViewReset;
+        private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
     }
 }
