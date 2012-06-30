@@ -16,7 +16,7 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
-
+        
         public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand)
         {
             InitializeComponent();
@@ -33,6 +33,7 @@ namespace Cryphous
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
         {
             command.setView(dataGridViewObjectSetting);
+            command.displaySettings();
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
         }
@@ -44,39 +45,60 @@ namespace Cryphous
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            dataGridViewObjectSetting.Rows.Add( "Fluid", 10000.0, 2.0, 1000.0, -0.1, 0.1, 0.0, 0.5, -0.1, 0.1 );
+            double pressureCoe = 10000.0;
+            double viscosityCoe = 2.0;
+            double density = 1000.0;
+            String str = "Fluid";
+            dataGridViewObjectSetting.Rows.Add(str, pressureCoe, viscosityCoe, density);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dataGridViewObjectSetting.CurrentRow;
-            if( row != null ) {
-                dataGridViewObjectSetting.Rows.Remove(row);
-            }
+            dataGridViewObjectSetting.Rows.Clear();
+            command.refresh();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
             bsCommand.saveBoundarySetting(dataGridView1);
             ssCommand.save();
+            command.refresh();
+            Random rand = new Random();
+            foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
+            {
+                double centerX = (rand.NextDouble() -0.5) * 1.5;
+                double centerY = rand.NextDouble() * 0.5 + 0.2;
+                double centerZ = (rand.NextDouble() - 0.5) * 1.5;
+                List<ManagedPosition> positions = /*(rand.Next() % 2 == 0 ) ? createBox(0.1, centerX, centerY, centerZ) :*/
+                    createSphere( 0.1, centerX, centerY, centerZ);
+                command.saveSettings( row.Cells[0].Value.ToString(), Convert.ToDouble( row.Cells[3].Value), Convert.ToDouble( row.Cells[1].Value), Convert.ToDouble( row.Cells[2].Value), positions );
+            }
+            Close();
+        }
 
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private List<ManagedPosition> createSphere(double radius, double centerX, double centerY, double centerZ)
+        {
             List<ManagedPosition> positions = new List<ManagedPosition>();
 
-            double length = Crystal.Command.ApplicationSettings.get().getParticleDiameter();// 0.01;
+            double length = double.Parse( textBoxEffectLength.Text );
             double margin = 1.0e-12;
 
-            double radius = 0.25;
-            
-            double minX = -radius + length * 0.5 - margin;
-            double maxX = radius - length * 0.5 + margin;
-            double minY = 0.0 + length * 0.5 - margin;
-            double maxY = radius * 2.0 - length * 0.5 + margin;
-            double minZ = -radius + length * 0.5 - margin;
-            double maxZ = radius - length * 0.5 + margin;
-
-            double centerX = (minX + maxX) * 0.5;
-            double centerY = (minY + maxY) * 0.5;
-            double centerZ = (minZ + maxZ) * 0.5;
+            double minX = centerX - radius + length * 0.5 - margin;
+            double maxX = centerX + radius - length * 0.5 + margin;
+            double minY = centerY - radius + length * 0.5 - margin;
+            double maxY = centerY + radius - length * 0.5 + margin;
+            double minZ = centerZ - radius + length * 0.5 - margin;
+            double maxZ = centerZ + radius - length * 0.5 + margin;
 
             for (double x = minX; x < maxX; x += length)
             {
@@ -96,28 +118,38 @@ namespace Cryphous
                     }
                 }
             }
+            return positions;
+        }
 
-        	foreach( DataGridViewRow row in dataGridViewObjectSetting.Rows ) {
-                double pressureCoe = Convert.ToDouble( row.Cells[1].Value );
-                double viscosityCoe = Convert.ToDouble( row.Cells[2].Value );
-                double density = Convert.ToDouble( row.Cells[3].Value );
-                String str = row.Cells[0].Value.ToString();
-                command.saveSettings(str, density, pressureCoe, viscosityCoe, positions);
+        private List<ManagedPosition> createBox(double radius, double centerX, double centerY, double centerZ)
+        {
+            List<ManagedPosition> positions = new List<ManagedPosition>();
+
+            double length = double.Parse(textBoxEffectLength.Text);
+            double margin = 1.0e-12;
+
+            double minX = centerX - radius + length * 0.5 - margin;
+            double maxX = centerX + radius - length * 0.5 + margin;
+            double minY = centerY - radius + length * 0.5 - margin;
+            double maxY = centerY + radius - length * 0.5 + margin;
+            double minZ = centerZ - radius + length * 0.5 - margin;
+            double maxZ = centerZ + radius - length * 0.5 + margin;
+
+            for (double x = minX; x < maxX; x += length)
+            {
+                for (double y = minY; y < maxY; y += length)
+                {
+                    for (double z = minZ; z < maxZ; z += length)
+                    {
+                        ManagedPosition position = new ManagedPosition();
+                        position.Add(x);
+                        position.Add(y);
+                        position.Add(z);
+                        positions.Add(position);
+                    }
+                }
             }
-
- 
-            
-            Close();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
+            return positions;
         }
     }
 }
