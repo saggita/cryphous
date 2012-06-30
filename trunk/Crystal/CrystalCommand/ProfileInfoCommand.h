@@ -8,7 +8,7 @@ public ref class ProfileInfoCommand
 public:
 	ProfileInfoCommand();
 
-	void display( System::Windows::Forms::ListBox^ listBox );
+	void display( System::String^ productName, System::Windows::Forms::ListBox^ listBox );
 };
 
 	}

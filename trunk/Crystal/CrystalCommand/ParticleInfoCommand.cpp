@@ -14,7 +14,7 @@ void ParticleInfoCommand::display(System::Windows::Forms::DataGridView^ view)
 {
 	view->Rows->Clear();
 
-	const ParticleVector& particles = ApplicationSettings::get()->factory->getSortedParticles();
+	const ParticleVector& particles = ApplicationSettings::get()->factory->getOrderedParticles();
 	
 	for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
 		Particle* particle = *iter;

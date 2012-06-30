@@ -15,6 +15,10 @@ public:
 
 	~ObjectSettingCommand();
 
+	void displaySettings();
+
+	void refresh();
+
 	void setView(System::Windows::Forms::DataGridView ^view){ this->view = view; }
 
 	void saveSettings(System::String^ type, const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPosition);

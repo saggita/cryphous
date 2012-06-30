@@ -33,15 +33,54 @@ ObjectSettingCommand::~ObjectSettingCommand()
 {
 }
 
+void ObjectSettingCommand::refresh()
+{
+	ApplicationSettings::get()->conditions->clear();
+	ApplicationSettings::get()->factory->init();
+}
+
+void ObjectSettingCommand::displaySettings()
+{
+	view->Rows->Clear();
+
+	std::list<PhysicsObjectCondition>& conditions = *(ApplicationSettings::get()->conditions);
+
+	for( std::list<PhysicsObjectCondition>::iterator iter = conditions.begin();
+		iter != conditions.end(); ++iter ) {
+		const PhysicsObjectCondition& condition = *(iter);
+		
+		String^ type = "";
+		switch( condition.getObjectType() ) {
+			case PhysicsObjectCondition::Fluid :
+				type = "Fluid";
+				break;
+			case PhysicsObjectCondition::Rigid :
+				type = "Obstacle";
+				break;
+			case PhysicsObjectCondition::RigidTwoWay :
+				type = "Rigid";
+				break;
+			default:
+				System::Diagnostics::Debug::Assert( false );
+		}
+
+		array<Object^>^ rowData = {
+			type,
+			condition.getPressureCoefficient(),
+			condition.getViscosityCoefficient(),
+			condition.getDensity()
+		};
+		
+		view->Rows->Add( rowData );
+	}
+}
+
 void ObjectSettingCommand::saveSettings(String^ type, const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPositions);
 
-	ApplicationSettings::get()->conditions->clear();
-	ApplicationSettings::get()->factory->init();
 	const Box& box = ApplicationSettings::get()->simulationSetting->boundaryBox;
 
-	
 	PhysicsObjectCondition::ObjectType objectType = PhysicsObjectCondition::Fluid;
 	if(  type == "Fluid") {
 		objectType = PhysicsObjectCondition::Fluid;
