@@ -36,6 +36,10 @@ public:
 
 public:
 
+	double getParticleDiameter();
+
+	void setParticleDiameter(const double diameter);
+
 	Physics::PhysicsObjectFactory* factory;
 
 	Physics::SimulationSetting* simulationSetting;
@@ -45,6 +49,7 @@ public:
 	Graphics::Renderer* renderer;
 
 	std::list<Physics::PhysicsObjectCondition>* conditions;
+
 };
 
 	}

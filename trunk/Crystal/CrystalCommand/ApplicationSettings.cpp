@@ -45,3 +45,13 @@ void ApplicationSettings::refresh()
 	renderer->init();	
 	simulation->init();
 }
+
+double ApplicationSettings::getParticleDiameter()
+{
+	return simulationSetting->particleDiameter;
+}
+
+void ApplicationSettings::setParticleDiameter(const double diameter)
+{
+	simulationSetting->particleDiameter = diameter;
+}
