@@ -25,12 +25,13 @@ using namespace System::Data;
 using namespace System::Diagnostics;
 
 
-MainCommand::MainCommand(System::Windows::Forms::PictureBox^ pictureBox)
+MainCommand::MainCommand(System::Windows::Forms::PictureBox^ pictureBox, System::String^ productName)
 {
 	this->simulationCommand = gcnew SimulationCommand();
 	this->graphicsSettingCommand = gcnew GraphicsSettingCommand();
 	this->profileInfoCommand = gcnew ProfileInfoCommand();
 	this->pictureBox = pictureBox;
+	this->productName = productName;
 
 	ApplicationSettings::get()->renderer->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
 }
@@ -56,8 +57,8 @@ void MainCommand::rendering()
 	ApplicationSettings::get()->renderer->rendering( ApplicationSettings::get()->factory, pictureBox->Width, pictureBox->Height, ApplicationSettings::get()->simulationSetting->boundaryBox );
 }
 
-void MainCommand::displayInformation(System::Windows::Forms::ListBox^ listBox){
-	profileInfoCommand->display( listBox );
+void MainCommand::displayInformation( System::Windows::Forms::ListBox^ listBox){
+	profileInfoCommand->display( productName, listBox );
 }
 
 void MainCommand::rotateX(int angle)

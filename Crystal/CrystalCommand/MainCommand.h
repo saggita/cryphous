@@ -10,7 +10,7 @@ ref class SimulationCommand;
 public ref class MainCommand
 {
 public:
-	MainCommand(System::Windows::Forms::PictureBox^ pictureBox);
+	MainCommand(System::Windows::Forms::PictureBox^ pictureBox, System::String^ productName);
 
 	~MainCommand(void);
 
@@ -41,6 +41,7 @@ private:
 	ProfileInfoCommand^ profileInfoCommand;
 	System::Windows::Forms::PictureBox^ pictureBox;
 	SimulationCommand^ simulationCommand;
+	System::String^ productName;
 };
 
 	}
