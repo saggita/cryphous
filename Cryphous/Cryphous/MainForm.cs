@@ -14,7 +14,6 @@ namespace Cryphous
 {
     public partial class MainForm : Form
     {
-        //private SimulationCommand simulationCommand;
         private BoundarySettingCommand boundarySettingCommand;
         private ObjectSettingCommand objectSettingCommand;
         private ProfileInfoCommand profileInfoCommand;
@@ -43,15 +42,9 @@ namespace Cryphous
             mainCommand = new MainCommand(pictureBox1);
         }
 
-        private void boundarySettingBToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BoundarySettingForm boundarySettingForm = new BoundarySettingForm( boundarySettingCommand);
-            boundarySettingForm.Show();
-        }
-
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand);
+            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
             osDialog.Show();
         }
 
@@ -75,17 +68,6 @@ namespace Cryphous
         {
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
-        }
-
-        private void simulationSettingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SimulationSettingForm form = new SimulationSettingForm(simulationSettingCommand);
-            form.Show();
-        }
-
-        private void particleInfoPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void timerSimulation_Tick(object sender, EventArgs e)
@@ -171,23 +153,6 @@ namespace Cryphous
         {
             ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
             poDialog.Show();
-        }
-
-        private void MainForm_DragEnter(object sender, DragEventArgs e)
-        {
-        }
-
-        private void rainRToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //RainForm form = new RainForm();
-            //form.Show();
-            /*ParticleMarshaler marshaler = new ParticleMarshaler();
-            List<ManagedPosition> positions = new List<ManagedPosition>();
-            ManagedPosition newPos = new ManagedPosition();
-            newPos.Add(0.0);
-            newPos.Add(0.0);
-            newPos.Add(0.0);
-            positions.Add(newPos);*/
         }
     }
 }

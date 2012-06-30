@@ -17,13 +17,7 @@ public:
 
 	void setView(System::Windows::Forms::DataGridView ^view){ this->view = view; }
 
-	void displaySettings();
-
-	void saveSettings(const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPosition);
-
-	void addObject();
-
-	void deleteObject();
+	void saveSettings(System::String^ type, const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPosition);
 };
 
 	}
