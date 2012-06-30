@@ -13,9 +13,7 @@ namespace MikuMikuFluid
 {
     public partial class MMFForm : Form
     {
-        private SimulationCommand simulationCommand;
         private BoundarySettingCommand boundarySettingCommand;
-        private FileIOCommand fileIOCommand;
         private ObjectSettingCommand objectSettingCommand;
         private ProfileInfoCommand profileInfoCommand;
         private ParticleInfoCommand particleInfoCommand;
@@ -36,31 +34,19 @@ namespace MikuMikuFluid
         private void MainForm_Load(object sender, EventArgs e)
         {
             ApplicationSettings.get();
-            simulationCommand = new SimulationCommand();
             boundarySettingCommand = new BoundarySettingCommand();
-            fileIOCommand = new FileIOCommand();
             objectSettingCommand = new ObjectSettingCommand();
             profileInfoCommand = new ProfileInfoCommand();
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1);
-        }
-
-        private void boundarySettingBToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BoundarySettingForm boundarySettingForm = new BoundarySettingForm(boundarySettingCommand);
-            boundarySettingForm.Show();
-        }
-
-        private void toolStripMenuItemOpen_Click(object sender, EventArgs e)
-        {
-            fileIOCommand.fileOpen();
+            mainCommand = new MainCommand(pictureBox1, "MikuMikuFluid 0.39");
+            objectSettingToolStripMenuItem_Click(sender, e);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand);
+            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, true, main.InitialPositions );
             osDialog.Show();
         }
 
@@ -71,6 +57,7 @@ namespace MikuMikuFluid
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
+            main.initKeyFrame();
             mainCommand.refreshSimulation();
             mainCommand.displayInformation(listBoxInformation);
         }
@@ -82,15 +69,7 @@ namespace MikuMikuFluid
 
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
-            mainCommand.proceedSimulation();
-            mainCommand.displayInformation(listBoxInformation);
-            main.BakeToTimeLine(simulationCommand.getStep(), new List<Vector3>());
-        }
-
-        private void simulationSettingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SimulationSettingForm form = new SimulationSettingForm(simulationSettingCommand);
-            form.Show();
+            timerSimulation_Tick(sender, e);
         }
 
         private void particleInfoPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,7 +82,8 @@ namespace MikuMikuFluid
         {
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
-            main.BakeToTimeLine(simulationCommand.getStep(), new List<Vector3>());
+            List<List<double>> managed = mainCommand.getSimulationCommand().getManagedParticles();
+            main.BakeToTimeLine(mainCommand.getSimulationCommand().getStep(), managed);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -172,6 +152,12 @@ namespace MikuMikuFluid
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
+        }
+
+        private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
+            form.Show();
         }
     }
 }

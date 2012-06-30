@@ -31,3 +31,9 @@ int SimulationCommand::getStep()
 {
 	return ApplicationSettings::get()->simulation->getStep();
 }
+
+System::Collections::Generic::List<ManagedPosition^>^ SimulationCommand::getManagedParticles()
+{
+	const ParticleVector& nativeParticles = ApplicationSettings::get()->factory->getOrderedParticles();
+	return ParticleMarshaler::convertToManaged(nativeParticles);
+}

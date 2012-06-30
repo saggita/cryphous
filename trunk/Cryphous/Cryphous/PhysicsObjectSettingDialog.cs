@@ -16,13 +16,20 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
+        private List<ManagedPosition> initialPositions;
         
-        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand)
+        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, bool isSingleMode = false, List<ManagedPosition> initialPositions = null)
         {
             InitializeComponent();
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
+            this.initialPositions = initialPositions;
+            if (isSingleMode)
+            {
+                this.buttonAdd.Hide();
+                this.buttonClear.Hide();
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -36,6 +43,11 @@ namespace Cryphous
             command.displaySettings();
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
+            
+            if (dataGridViewObjectSetting.Rows.Count == 0)
+            {
+                buttonAdd_Click(sender, e);
+            }
         }
 
         private void dataGridViewObjectSetting_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -64,15 +76,25 @@ namespace Cryphous
             ssCommand.save();
             command.refresh();
             Random rand = new Random();
-            foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
+
+            if (initialPositions == null)
             {
-                double centerX = (rand.NextDouble() -0.5) * 1.5;
-                double centerY = rand.NextDouble() * 0.5 + 0.2;
-                double centerZ = (rand.NextDouble() - 0.5) * 1.5;
-                List<ManagedPosition> positions = /*(rand.Next() % 2 == 0 ) ? createBox(0.1, centerX, centerY, centerZ) :*/
-                    createSphere( 0.1, centerX, centerY, centerZ);
-                command.saveSettings( row.Cells[0].Value.ToString(), Convert.ToDouble( row.Cells[3].Value), Convert.ToDouble( row.Cells[1].Value), Convert.ToDouble( row.Cells[2].Value), positions );
+                foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
+                {
+                    double centerX = (rand.NextDouble() - 0.5) * 1.5;
+                    double centerY = rand.NextDouble() * 0.5 + 0.2;
+                    double centerZ = (rand.NextDouble() - 0.5) * 1.5;
+                    List<ManagedPosition> positions = /*(rand.Next() % 2 == 0 ) ? createBox(0.1, centerX, centerY, centerZ) :*/
+                        createSphere(0.1, centerX, centerY, centerZ);
+                    command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToDouble(row.Cells[3].Value), Convert.ToDouble(row.Cells[1].Value), Convert.ToDouble(row.Cells[2].Value), positions);
+                }
             }
+            else
+            {
+                DataGridViewRow row = dataGridViewObjectSetting.Rows[0];
+                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToDouble(row.Cells[3].Value), Convert.ToDouble(row.Cells[1].Value), Convert.ToDouble(row.Cells[2].Value), initialPositions);
+            }
+
             Close();
         }
 

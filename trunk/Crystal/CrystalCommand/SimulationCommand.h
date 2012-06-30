@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ParticleMarshaler.h"
+
 namespace Crystal{
 	namespace Command{
 
@@ -15,6 +17,8 @@ public:
 	void proceed();
 
 	int getStep();
+
+	System::Collections::Generic::List<ManagedPosition^>^ getManagedParticles();
 };
 
 	}

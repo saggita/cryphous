@@ -6,6 +6,8 @@ using System.Drawing;
 using MikuMikuPlugin;
 using DxMath;
 
+using ManagedPosition = System.Collections.Generic.List<double>;
+
 namespace MikuMikuFluid 
 {
     public class Main : ICommandPlugin
@@ -18,7 +20,17 @@ namespace MikuMikuFluid
 
         private long keyFrame;
 
-        private List<Vector3> initialPositions;
+        public void initKeyFrame()
+        {
+            keyFrame = frameSettingDialog.StartFrame;
+        }
+
+        private List<ManagedPosition> initialPositions;
+
+        public List<ManagedPosition> InitialPositions
+        {
+            get { return initialPositions; }
+        }
 
         public string Description
         {
@@ -59,8 +71,8 @@ namespace MikuMikuFluid
             {
                 return;
             }
-            
-            keyFrame = frameSettingDialog.StartFrame;
+
+            initKeyFrame();
 
             setInitialPositions();
 
@@ -72,22 +84,26 @@ namespace MikuMikuFluid
 
         private void setInitialPositions()
         {
-            initialPositions = new List<Vector3>();
+            initialPositions = new List<ManagedPosition>();
 
             List<Bone> bones = API.GetBones();
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
             {
-                Vector3 position = bones[boneIndex].Position;
+                Vector3 bonePosition = bones[boneIndex].Position;
                 int howManylayer = API.GetMotionLayerCount(boneIndex);
                 for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    initialPositions.Add(motionFrames[0].position);
+                    ManagedPosition pos = new ManagedPosition();
+                    pos.Add( bonePosition.X + motionFrames[0].position.X);
+                    pos.Add( bonePosition.Y + motionFrames[0].position.Y);
+                    pos.Add( bonePosition.Z + motionFrames[0].position.Z);
+                    initialPositions.Add( pos);
                 }
             }
         }
 
-        public void BakeToTimeLine(long frameNumber, List<Vector3> positions)
+        public void BakeToTimeLine(long frameNumber, List<ManagedPosition> bakePositions)
         {
             if ( (frameNumber % frameSettingDialog.SimulationIterval) != 0)
             {
@@ -106,8 +122,14 @@ namespace MikuMikuFluid
                 for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    AddMotionFrame(motionFrames, keyFrame, new Vector3(0.0F, index * 1.0F, 0.0F));
+                    Vector3 pos = new Vector3();
+                    pos.X = (float) bakePositions[index][0] - position[0];
+                    pos.Y = (float) bakePositions[index][1] - position[1];
+                    pos.Z = (float) bakePositions[index][2] - position[2];
+
+                    AddMotionFrame(motionFrames, keyFrame, pos);
                     API.ReplaceAllMotionFrameData(boneIndex, layerIndex, motionFrames);
+
                     index++;
                 }
             }
