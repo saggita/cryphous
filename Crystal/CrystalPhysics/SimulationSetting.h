@@ -14,8 +14,8 @@ class SimulationSetting : private boost::noncopyable
 public:
 	SimulationSetting(void) :
 	  timeStep( 0.0025 ),
-	  particleDiameter(0.01),
-	  boundaryBox( Geom::Vector3d(-1.0, 0.0, -1.0), Geom::Vector3d(1.0, 1.0, 1.0) )
+	  particleDiameter(0.1),
+	  boundaryBox( Geom::Vector3d(-5.0, 0.0, -5.0), Geom::Vector3d(5.0, 5.0, 5.0) )
 	  {};
 
 	~SimulationSetting(){};

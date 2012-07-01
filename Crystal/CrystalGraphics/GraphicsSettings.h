@@ -27,7 +27,7 @@ public:
 	void resetCameraAndAngle(){
 		cameraX = 0.0;
 		cameraY = 0.0;
-		zoom = 5;
+		zoom = 50;
 		angleX = 0;
 		angleY = 0;
 		angleZ = 0;
@@ -38,7 +38,7 @@ private:
 		pointSize( 10 ),
 		pointAlpha( 10),
 		bPointSprite( true),
-		zoom( 5.0),
+		zoom( 50.0),
 		cameraX( 0.0),
 		cameraY( 0.0),
 		angleX( 0),
