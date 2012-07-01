@@ -46,7 +46,7 @@ namespace MikuMikuFluid
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, true, main.InitialPositions );
+            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, main.InitialPositions );
             osDialog.Show();
         }
 
