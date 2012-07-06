@@ -111,7 +111,6 @@ void SPHSolver::calculateDensity()
 	}
 	const ParticleVector& particles = factory->getSortedParticles();
 
-	#pragma omp parallel for
 	for( int i = 0; i < (int)particles.size(); ++i ) {
 		sphPairSolver->calculateDensity( particles[i] );
 	}

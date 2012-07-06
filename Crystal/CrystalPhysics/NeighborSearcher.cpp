@@ -47,12 +47,22 @@ void NeighborSearcher::search()
 void NeighborSearcher::searchNeighbors(int number, SearchParticleVector::const_iterator startIter, SearchParticleVector::const_iterator endIter)
 {
 	std::vector<SearchParticleVector::const_iterator> yIter(4, startIter);
+	std::vector<int> offsetIds;
+	offsetIds.push_back(1023);
+	offsetIds.push_back(1047551);
+	offsetIds.push_back(1048575);
+	offsetIds.push_back(1049599);
+
+	/*for( int i = 0; i < 4; ++i ) {
+		const size_t diff = startIter - searchParticles.begin();
+		if( diff + offsetIds[i] < searchParticles.size() ) {
+			yIter[i] += offsetIds[i];
+		}
+	}*/
 
 	for( SearchParticleVector::const_iterator xIter = startIter; xIter != endIter; ++xIter ) {
-		const std::vector<int>& ids = xIter->getForwardIDs();
-		for( size_t i = 0; i < ids.size(); ++i ) {
-			const int baseID = ids[i];
-			//yIter[i] = std::lower_bound( yIter[i], searchParticles.end(), baseID );
+		for( size_t i = 0; i < offsetIds.size(); ++i ) {
+			const int baseID = xIter->getGridID() + offsetIds[i];
 			while( yIter[i] != searchParticles.end() && ( yIter[i]->getGridID() < baseID ) ) {
 				++yIter[i];
 			}
