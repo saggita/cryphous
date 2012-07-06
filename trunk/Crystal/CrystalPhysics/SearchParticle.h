@@ -32,9 +32,9 @@ public:
 	~SearchParticle(void){};
 
 	void setGridID(const Geom::Vector3d& point, const double effectLength) {
-		gridX = static_cast<int>( point.getX() / effectLength );
-		gridY = static_cast<int>( point.getY() / effectLength );
-		gridZ = static_cast<int>( point.getZ() / effectLength );
+		gridX = static_cast<char>( point.getX() / effectLength );
+		gridY = static_cast<char>( point.getY() / effectLength );
+		gridZ = static_cast<char>( point.getZ() / effectLength );
 
 		gridID = getID( gridX, gridY, gridZ );
 	}
@@ -66,11 +66,11 @@ private:
 	Particle* particle;
 	int gridID;
 
-	int gridX;
-	int gridY;
-	int gridZ;
+	char gridX;
+	char gridY;
+	char gridZ;
 
-	int getID( int idX, int idY, int idZ ) const{
+	int getID( char idX, char idY, char idZ ) const{
 		return (idZ << 20) + (idY << 10) + idX;
 	}
 };
