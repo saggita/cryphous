@@ -27,9 +27,9 @@ public:
 
 private:
 
-	void searchX(int number, int startIndex, int endIndex);
+	void searchX(int number, SearchParticleVector::const_iterator startIter, SearchParticleVector::const_iterator endIter);
 
-	void searchNeighbors(int number, int startIndex, int endIndex);
+	void searchNeighbors(int number, SearchParticleVector::const_iterator startIter, SearchParticleVector::const_iterator endIter);
 
 private:
 	const SearchParticleVector& searchParticles;

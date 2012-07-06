@@ -111,10 +111,11 @@ void SPHSolver::calculateDensity()
 	}
 	const ParticleVector& particles = factory->getSortedParticles();
 
-	BOOST_FOREACH( Particle* particle, particles ) {
-		sphPairSolver->calculateDensity( particle );
+	#pragma omp parallel for
+	for( int i = 0; i < (int)particles.size(); ++i ) {
+		sphPairSolver->calculateDensity( particles[i] );
 	}
-
+	
 	Profiler::get()->end(" Sim->density");
 }
 

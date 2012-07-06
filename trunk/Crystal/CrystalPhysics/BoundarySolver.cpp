@@ -14,6 +14,10 @@
 #include <cassert>
 #include <boost/foreach.hpp>
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
@@ -27,7 +31,11 @@ setting( setting)
 void BoundarySolver::calculateDensity(const Box& box)
 {
 	const double effectLength = setting.getEffectLength();
-	BOOST_FOREACH( Particle* particle, object->getParticles() ) {
+	
+	const ParticleVector& particles = object->getParticles();
+	#pragma omp parallel for
+	for( int i = 0; i < (int)particles.size(); ++i ) {
+		Particle* particle = particles[i];
 		if( particle->center.getX() > box.getMaxX() + particle->getRadius() - effectLength ) {
 			Vector3d boundaryPoint = particle->center;
 			boundaryPoint.setX( box.getMaxX() + particle->getRadius() );
@@ -72,7 +80,10 @@ void BoundarySolver::calculateForce(const Box& box)
 	const double timeStep = setting.timeStep;
 	const Box& innerBox = box.getInnerOffset( object->getParticles().front()->getRadius() );
 
-	BOOST_FOREACH( Particle* particle, object->getParticles() ) {
+	const ParticleVector& particles = object->getParticles();
+	#pragma omp parallel for
+	for( int i = 0; i < (int)particles.size(); ++i ) {
+		Particle* particle = particles[i];
 
 		if( particle->center.getX() > innerBox.getMaxX() ) {
 			const double over = particle->center.getX() - innerBox.getMaxX();

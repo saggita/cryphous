@@ -27,16 +27,16 @@ void NeighborSearcher::search()
 	const int threads = 8; 
 	eachPairs.resize(threads);
 
-	std::vector<int> divides(threads);
+	std::vector<SearchParticleVector::const_iterator> iters;
 	for( int i = 0; i < threads; ++i ) {
-		divides[i] = searchParticles.size() / threads * i;
+		iters.push_back( searchParticles.begin() + i * searchParticles.size() / threads );
 	}
-	divides.push_back( searchParticles.size() );
+	iters.push_back( searchParticles.end() );
 
 #pragma omp parallel for
 	for( int i = 0; i < threads; ++i ) {
-		searchX(i, divides[i], divides[i+1] );
-		searchNeighbors(i, divides[i], divides[i+1] );
+		searchX(i, iters[i], iters[i+1] );
+		searchNeighbors(i, iters[i], iters[i+1] );
 	}
 
 	for( size_t i = 0; i < eachPairs.size(); ++i ) {
@@ -44,47 +44,42 @@ void NeighborSearcher::search()
 	}
 }
 
-void NeighborSearcher::searchNeighbors(int number, int startIndex, int endIndex)
+void NeighborSearcher::searchNeighbors(int number, SearchParticleVector::const_iterator startIter, SearchParticleVector::const_iterator endIter)
 {
-	size_t yIndex[4];
-	for( int i = 0; i < 4; ++i ) {
-		yIndex[i] = startIndex;
-	}
+	std::vector<SearchParticleVector::const_iterator> yIter(4, startIter);
 
-	for( int index = startIndex; index < endIndex; ++index ) {
-		const std::vector<int>& ids = searchParticles[index].getForwardIDs();
+	for( SearchParticleVector::const_iterator xIter = startIter; xIter != endIter; ++xIter ) {
+		const std::vector<int>& ids = xIter->getForwardIDs();
 		for( size_t i = 0; i < ids.size(); ++i ) {
 			const int baseID = ids[i];
-			while( yIndex[i] < searchParticles.size() && searchParticles[yIndex[i]].getGridID() < baseID ) {
-				++yIndex[i];
-			}
-			
-			unsigned int zIndex = yIndex[i];
-			const Vector3d& centerX = searchParticles[index].getCenter();
-			while( zIndex < searchParticles.size() && searchParticles[zIndex].getGridID() <= baseID+2 ) {
-				const Vector3d& centerZ = searchParticles[zIndex].getCenter();
+			yIter[i] = std::lower_bound( yIter[i], searchParticles.end(), baseID );
+			SearchParticleVector::const_iterator secondIter = std::upper_bound( yIter[i], searchParticles.end(), baseID+2 );
+
+			const Vector3d& centerX = xIter->getCenter();
+			for( SearchParticleVector::const_iterator zIter = yIter[i]; zIter != secondIter; ++zIter ) {
+				const Vector3d& centerZ = zIter->getCenter();
 				if( centerX.getDistanceSquared( centerZ ) < effectLengthSquared ) {
-					eachPairs[number].push_back( ParticlePair( searchParticles[index].getParticle(),searchParticles[zIndex].getParticle() ) );
+					eachPairs[number].push_back( ParticlePair( xIter->getParticle(), zIter->getParticle() ) );
 				}
-				++zIndex;
 			}
 		}
 	}
 }
 
-void NeighborSearcher::searchX(int number, int startIndex, int endIndex)
+void NeighborSearcher::searchX(int number, SearchParticleVector::const_iterator startIter, SearchParticleVector::const_iterator endIter)
 {
-	for( int index = startIndex; index < endIndex; ++index ) {
-		const int gridID = searchParticles[index].getGridID();
-		const Vector3d& centerX = searchParticles[index].getCenter();
-		unsigned int xIndex = index;
-		++xIndex; // ignore itself.
-		while( xIndex < searchParticles.size() && searchParticles[xIndex].getGridID() <= gridID+1 ) {
-			const Vector3d& centerY = searchParticles[xIndex].getCenter();
+	for( SearchParticleVector::const_iterator xIter = startIter; xIter != endIter; ++xIter ) {
+		const int gridID = xIter->getGridID();
+		const Vector3d& centerX = xIter->getCenter();
+		SearchParticleVector::const_iterator yIter = xIter;
+		++yIter;// ignore itself.
+		SearchParticleVector::const_iterator endIter = std::upper_bound( yIter, searchParticles.end(), gridID+1 );
+		while( yIter != endIter ) {
+			const Vector3d& centerY = yIter->getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
-				eachPairs[number].push_back( ParticlePair( searchParticles[index].getParticle(), searchParticles[xIndex].getParticle() ) );
+				eachPairs[number].push_back( ParticlePair( xIter->getParticle(), yIter->getParticle() ) );
 			}
-			++xIndex;
+			++yIter;
 		}
 	}
 }

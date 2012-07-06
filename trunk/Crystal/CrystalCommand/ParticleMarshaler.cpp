@@ -21,7 +21,7 @@ List<ManagedPosition^>^ ParticleMarshaler::convertToManaged(const ParticleVector
 		managedPositions->Add( newParticle );
 	}
 
-	assert( managedPositions->Count == mativeParticles.size() );
+	assert( managedPositions->Count == nativeParticles.size() );
 	return managedPositions;
 }
 
@@ -33,6 +33,6 @@ std::vector<Vector3d> ParticleMarshaler::convertToNative(System::Collections::Ge
 		nativePositions.push_back( Vector3d( pos[0], pos[1], pos[2] ) );
 	}
 
-	assert( managedPositions->Count == mativeParticles.size() );
+	assert( managedPositions->Count == nativePositions.size() );
 	return nativePositions;
 }
