@@ -32,10 +32,9 @@ public:
 	~SearchParticle(void){};
 
 	void setGridID(const Geom::Vector3d& point, const double effectLength) {
-		gridX = static_cast<char>( point.getX() / effectLength );
-		gridY = static_cast<char>( point.getY() / effectLength );
-		gridZ = static_cast<char>( point.getZ() / effectLength );
-
+		int gridX = static_cast<int>( point.getX() / effectLength );
+		int gridY = static_cast<int>( point.getY() / effectLength );
+		int gridZ = static_cast<int>( point.getZ() / effectLength );
 		gridID = getID( gridX, gridY, gridZ );
 	}
 
@@ -51,26 +50,13 @@ public:
 
 	int getGridID() const { return gridID; }
 
-	std::vector<int> getForwardIDs() const{
-		std::vector<int> ids(4);
-		ids[0] = getID( gridX-1, gridY+1, gridZ );
-		ids[1] = getID( gridX-1, gridY-1, gridZ+1 );
-		ids[2] = getID( gridX-1, gridY, gridZ+1 );
-		ids[3] = getID( gridX-1, gridY+1, gridZ+1);
-		return ids;
-	}
-
 	Geom::Vector3d getCenter() const { return particle->center; }
 
 private:
 	Particle* particle;
 	int gridID;
 
-	char gridX;
-	char gridY;
-	char gridZ;
-
-	int getID( char idX, char idY, char idZ ) const{
+	int getID( int idX, int idY, int idZ ) const{
 		return (idZ << 20) + (idY << 10) + idX;
 	}
 };
