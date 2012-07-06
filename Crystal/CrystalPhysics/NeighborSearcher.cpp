@@ -52,15 +52,19 @@ void NeighborSearcher::searchNeighbors(int number, SearchParticleVector::const_i
 		const std::vector<int>& ids = xIter->getForwardIDs();
 		for( size_t i = 0; i < ids.size(); ++i ) {
 			const int baseID = ids[i];
-			yIter[i] = std::lower_bound( yIter[i], searchParticles.end(), baseID );
-			SearchParticleVector::const_iterator secondIter = std::upper_bound( yIter[i], searchParticles.end(), baseID+2 );
-
+			//yIter[i] = std::lower_bound( yIter[i], searchParticles.end(), baseID );
+			while( yIter[i] != searchParticles.end() && ( yIter[i]->getGridID() < baseID ) ) {
+				++yIter[i];
+			}
+			
 			const Vector3d& centerX = xIter->getCenter();
-			for( SearchParticleVector::const_iterator zIter = yIter[i]; zIter != secondIter; ++zIter ) {
+			SearchParticleVector::const_iterator zIter = yIter[i];
+			while( zIter != searchParticles.end() && (zIter->getGridID() <= baseID + 2) ) {
 				const Vector3d& centerZ = zIter->getCenter();
 				if( centerX.getDistanceSquared( centerZ ) < effectLengthSquared ) {
 					eachPairs[number].push_back( ParticlePair( xIter->getParticle(), zIter->getParticle() ) );
 				}
+				++zIter;
 			}
 		}
 	}
@@ -73,8 +77,7 @@ void NeighborSearcher::searchX(int number, SearchParticleVector::const_iterator 
 		const Vector3d& centerX = xIter->getCenter();
 		SearchParticleVector::const_iterator yIter = xIter;
 		++yIter;// ignore itself.
-		SearchParticleVector::const_iterator endIter = std::upper_bound( yIter, searchParticles.end(), gridID+1 );
-		while( yIter != endIter ) {
+		while( yIter != searchParticles.end() && (yIter->getGridID() <= gridID + 1) ) {
 			const Vector3d& centerY = yIter->getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
 				eachPairs[number].push_back( ParticlePair( xIter->getParticle(), yIter->getParticle() ) );
