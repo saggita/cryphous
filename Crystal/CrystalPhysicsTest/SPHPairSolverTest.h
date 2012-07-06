@@ -1,5 +1,5 @@
-#ifndef __FLUID_SOLVER_TEST_H_
-#define __FLUID_SOLVER_TEST_H_
+#ifndef __SPH_PAIR_SOLVER_TEST_H_
+#define __SPH_PAIR_SOLVER_TEST_H_
 
 namespace Crystal{
 	namespace Physics{
