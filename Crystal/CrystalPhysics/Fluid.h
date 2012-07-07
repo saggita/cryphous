@@ -16,6 +16,8 @@ public:
 	virtual Type getType() { return PhysicsObject::Fluid; }
 
 	virtual void integrateTime(const double proceedTime);
+
+	virtual void enforce(const double proceedTime){};
 };
 
 	}

@@ -1,32 +1,26 @@
 #ifndef __RIGID_ENFORCER_H__
 #define __RIGID_ENFORCER_H__
 
-#include "EnforcerBase.h"
-
 namespace Crystal{
 	namespace Geom{
 		class Vector3d;
 	}
 	namespace Physics{
-		class RigidTwoWay;
+		class PhysicsObject;
 
-class RigidEnforcer : public EnforcerBase
+class RigidEnforcer
 {
 public:
 	RigidEnforcer();
 
 	~RigidEnforcer(void);
 
-	virtual void enforce(PhysicsObject* rigid, const double proceedTime);
+	void enforce(PhysicsObject* rigid, const double proceedTime);
 
 private:
 	Geom::Vector3d* angleVelosity;
 
 	void RigidEnforcer::convertToFluidForce(PhysicsObject* rigid);
-
-	//void convertToFluidForce();
-
-	//Geom::Vector3d RigidEnforcer::getForce() const;
 
 	double getAngleAccelerationX( double x1,double x2,double x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
 

@@ -73,7 +73,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoundarySolver.cpp" />
-    <ClCompile Include="EnforcerBase.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="RigidEnforcer.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
@@ -91,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />
-    <ClInclude Include="EnforcerBase.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="RigidEnforcer.h" />
     <ClInclude Include="SPHPairSolver.h" />
