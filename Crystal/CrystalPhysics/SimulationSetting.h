@@ -15,7 +15,7 @@ public:
 	SimulationSetting(void) :
 	  timeStep( 0.0075 ),
 	  particleDiameter(0.1),
-	  boundaryBox( Geom::Vector3d(-5.0, 0.0, -5.0), Geom::Vector3d(5.0, 5.0, 5.0) )
+	  boundaryBox( Geom::Vector3d(-10.0, 0.0, -10.0), Geom::Vector3d(10.0, 100.0, 10.0) )
 	  {};
 
 	~SimulationSetting(){};

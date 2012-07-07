@@ -31,6 +31,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewObjectSetting = new System.Windows.Forms.DataGridView();
+            this.headerType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.headerViscosity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.headerDensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shape = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -43,17 +54,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.headerType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.headerViscosity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.headerDensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MinX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaxX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MinY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaxY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MinZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaxZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shape = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.comboBoxExample = new System.Windows.Forms.ComboBox();
+            this.buttonCopy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +100,84 @@
             this.dataGridViewObjectSetting.Size = new System.Drawing.Size(583, 181);
             this.dataGridViewObjectSetting.TabIndex = 1;
             this.dataGridViewObjectSetting.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewObjectSetting_CellContentClick);
+            // 
+            // headerType
+            // 
+            this.headerType.HeaderText = "Type";
+            this.headerType.Items.AddRange(new object[] {
+            "Fluid",
+            "Rigid",
+            "Obstacle"});
+            this.headerType.Name = "headerType";
+            this.headerType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.headerType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // headerPressure
+            // 
+            this.headerPressure.DataPropertyName = "pressureCoefficient";
+            this.headerPressure.HeaderText = "Press";
+            this.headerPressure.Name = "headerPressure";
+            this.headerPressure.ToolTipText = "圧力";
+            this.headerPressure.Width = 50;
+            // 
+            // headerViscosity
+            // 
+            this.headerViscosity.HeaderText = "Visc";
+            this.headerViscosity.Name = "headerViscosity";
+            this.headerViscosity.ToolTipText = "粘性";
+            this.headerViscosity.Width = 50;
+            // 
+            // headerDensity
+            // 
+            this.headerDensity.HeaderText = "Density";
+            this.headerDensity.Name = "headerDensity";
+            this.headerDensity.ToolTipText = "密度";
+            this.headerDensity.Width = 50;
+            // 
+            // MinX
+            // 
+            this.MinX.HeaderText = "MinX";
+            this.MinX.Name = "MinX";
+            this.MinX.Width = 40;
+            // 
+            // MaxX
+            // 
+            this.MaxX.HeaderText = "MaxX";
+            this.MaxX.Name = "MaxX";
+            this.MaxX.Width = 40;
+            // 
+            // MinY
+            // 
+            this.MinY.HeaderText = "MinY";
+            this.MinY.Name = "MinY";
+            this.MinY.Width = 40;
+            // 
+            // MaxY
+            // 
+            this.MaxY.HeaderText = "MaxY";
+            this.MaxY.Name = "MaxY";
+            this.MaxY.Width = 40;
+            // 
+            // MinZ
+            // 
+            this.MinZ.HeaderText = "MinZ";
+            this.MinZ.Name = "MinZ";
+            this.MinZ.Width = 40;
+            // 
+            // MaxZ
+            // 
+            this.MaxZ.HeaderText = "MaxZ";
+            this.MaxZ.Name = "MaxZ";
+            this.MaxZ.Width = 40;
+            // 
+            // Shape
+            // 
+            this.Shape.HeaderText = "Shape";
+            this.Shape.Items.AddRange(new object[] {
+            "Box",
+            "Sphere"});
+            this.Shape.Name = "Shape";
+            this.Shape.Width = 50;
             // 
             // buttonCancel
             // 
@@ -203,83 +285,50 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Object";
             // 
-            // headerType
+            // buttonAdd
             // 
-            this.headerType.HeaderText = "Type";
-            this.headerType.Items.AddRange(new object[] {
-            "Fluid",
-            "Rigid",
-            "Obstacle"});
-            this.headerType.Name = "headerType";
-            this.headerType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.headerType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.buttonAdd.Location = new System.Drawing.Point(311, 209);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 25;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // headerPressure
+            // buttonDelete
             // 
-            this.headerPressure.DataPropertyName = "pressureCoefficient";
-            this.headerPressure.HeaderText = "Press";
-            this.headerPressure.Name = "headerPressure";
-            this.headerPressure.ToolTipText = "圧力";
-            this.headerPressure.Width = 50;
+            this.buttonDelete.Location = new System.Drawing.Point(404, 209);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 26;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // headerViscosity
+            // comboBoxExample
             // 
-            this.headerViscosity.HeaderText = "Visc";
-            this.headerViscosity.Name = "headerViscosity";
-            this.headerViscosity.ToolTipText = "粘性";
-            this.headerViscosity.Width = 50;
+            this.comboBoxExample.FormattingEnabled = true;
+            this.comboBoxExample.Items.AddRange(new object[] {
+            "DamBreak1",
+            "DamBreak2",
+            "Rain",
+            "Crown"});
+            this.comboBoxExample.Location = new System.Drawing.Point(64, 209);
+            this.comboBoxExample.Name = "comboBoxExample";
+            this.comboBoxExample.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxExample.TabIndex = 27;
+            this.comboBoxExample.Text = "Example";
+            this.comboBoxExample.SelectedIndexChanged += new System.EventHandler(this.comboBoxExample_SelectedIndexChanged);
             // 
-            // headerDensity
+            // buttonCopy
             // 
-            this.headerDensity.HeaderText = "Density";
-            this.headerDensity.Name = "headerDensity";
-            this.headerDensity.ToolTipText = "密度";
-            this.headerDensity.Width = 50;
-            // 
-            // MinX
-            // 
-            this.MinX.HeaderText = "MinX";
-            this.MinX.Name = "MinX";
-            this.MinX.Width = 40;
-            // 
-            // MaxX
-            // 
-            this.MaxX.HeaderText = "MaxX";
-            this.MaxX.Name = "MaxX";
-            this.MaxX.Width = 40;
-            // 
-            // MinY
-            // 
-            this.MinY.HeaderText = "MinY";
-            this.MinY.Name = "MinY";
-            this.MinY.Width = 40;
-            // 
-            // MaxY
-            // 
-            this.MaxY.HeaderText = "MaxY";
-            this.MaxY.Name = "MaxY";
-            this.MaxY.Width = 40;
-            // 
-            // MinZ
-            // 
-            this.MinZ.HeaderText = "MinZ";
-            this.MinZ.Name = "MinZ";
-            this.MinZ.Width = 40;
-            // 
-            // MaxZ
-            // 
-            this.MaxZ.HeaderText = "MaxZ";
-            this.MaxZ.Name = "MaxZ";
-            this.MaxZ.Width = 40;
-            // 
-            // Shape
-            // 
-            this.Shape.HeaderText = "Shape";
-            this.Shape.Items.AddRange(new object[] {
-            "Box",
-            "Sphere"});
-            this.Shape.Name = "Shape";
-            this.Shape.Width = 50;
+            this.buttonCopy.Location = new System.Drawing.Point(221, 209);
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.Size = new System.Drawing.Size(75, 23);
+            this.buttonCopy.TabIndex = 28;
+            this.buttonCopy.Text = "Copy";
+            this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
             // PhysicsObjectSettingDialog
             // 
@@ -287,6 +336,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(805, 252);
+            this.Controls.Add(this.buttonCopy);
+            this.Controls.Add(this.comboBoxExample);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxEffectLength);
@@ -335,6 +388,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MinZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxZ;
         private System.Windows.Forms.DataGridViewComboBoxColumn Shape;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.ComboBox comboBoxExample;
+        private System.Windows.Forms.Button buttonCopy;
 
     }
 }
