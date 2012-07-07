@@ -80,6 +80,10 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 			glColor4d( 1.0, 1.0, 1.0, 1.0 );
 			glVertex3d( point.getX(), point.getY(), point.getZ() );
 		}
+		else if( particle->getParent()->getType() == PhysicsObject::Obstacle ) {
+			glColor4d( 0.0, 0.0, 0.0, 1.0 );
+			glVertex3d( point.getX(), point.getY(), point.getZ() );
+		}
 		else {
 			const double densityRatio = particle->density / 1000.0;
 			const double alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0; 

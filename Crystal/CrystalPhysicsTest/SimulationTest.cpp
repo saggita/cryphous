@@ -7,7 +7,6 @@
 
 #include "../CrystalPhysics/PhysicsObject.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
-#include "../CrystalPhysics/PhysicsObjectCondition.h"
 
 #include "../CrystalPhysics/ParticleFactory.h"
 #include "../CrystalPhysics/Particle.h"

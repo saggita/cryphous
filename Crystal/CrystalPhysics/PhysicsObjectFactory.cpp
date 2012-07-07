@@ -2,16 +2,15 @@
 #include "PhysicsObjectFactory.h"
 
 #include "PhysicsObject.h"
-#include "PhysicsObjectCondition.h"
 #include "Fluid.h"
 #include "Rigid.h"
+#include "Obstacle.h"
 
 #include "Particle.h"
 #include "ParticleFactory.h"
 
 #include "ParticleConditions.h"
 
-#include "PhysicalTimeIntegrator.h"
 #include "EnforcerBase.h"
 #include "RigidEnforcer.h"
 #include "SimulationSetting.h"
@@ -55,7 +54,6 @@ void PhysicsObjectFactory::createSearchParticles(const double effectLength)
 		const ParticleVector& particles = object->getParticleFactory()->getParticles();
 		searchParticleFactory.addParticles( particles, effectLength );
 	}
-	//searchParticleFactory = SearchParticleFactory( getParticles(), effectLength );
 }
 
 SearchParticleVector PhysicsObjectFactory::getSearchParticles(const double effectLength)
@@ -66,22 +64,20 @@ SearchParticleVector PhysicsObjectFactory::getSearchParticles(const double effec
 
 PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCondition &condition, const SimulationSetting& setting)
 {
-	const ParticleConditions particleCondition( condition.getPoints(), setting.particleDiameter, condition.getDensity());
+	const ParticleConditions particleCondition( condition.points, setting.particleDiameter, condition.density);
 	ParticleFactory* particleFactory = new ParticleFactory();
 
 	ParticleVector& particles = particleFactory->createParticles( particleCondition );
 	PhysicsObject* object = 0;
-	switch( condition.getObjectType() ) {
+	switch( condition.objectType ) {
 		case PhysicsObjectCondition::Fluid :
-			object = new Fluid( nextID++, condition.getDensity(), condition.getPressureCoefficient(), condition.getViscosityCoefficient(), particleFactory);
+			object = new Fluid( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory);
 			break;
 		case PhysicsObjectCondition::Rigid :
-			object = new Rigid( nextID++, condition.getDensity(), condition.getPressureCoefficient(), condition.getViscosityCoefficient(), particleFactory, new PhysicalTimeIntegratorBase(),
-				new EnforcerBase() );
+			object = new Rigid( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory, new RigidEnforcer() );
 			break;
-		case PhysicsObjectCondition::RigidTwoWay:
-			object = new Rigid( nextID++, condition.getDensity(), condition.getPressureCoefficient(), condition.getViscosityCoefficient(), particleFactory, new PhysicalTimeIntegrator(),
-				new RigidEnforcer() );
+		case PhysicsObjectCondition::Obstacle:
+			object = new Obstacle( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory, new EnforcerBase() );
 			break;
 		default:
 			assert( false );

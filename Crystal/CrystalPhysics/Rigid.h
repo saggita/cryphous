@@ -13,12 +13,13 @@ public:
 	
 	Rigid(const int id, const double density, const double gasConstant, const double viscosityCoefficient,
 		ParticleFactory* particleFactory,
-		PhysicalTimeIntegratorBase* physicalTimeIntegratorBase,
 		EnforcerBase* enforcerBase);
 
 	~Rigid();
 
 	virtual Type getType() { return PhysicsObject::Rigid; }
+
+	virtual void integrateTime(const double proceedTime);
 };
 
 	}

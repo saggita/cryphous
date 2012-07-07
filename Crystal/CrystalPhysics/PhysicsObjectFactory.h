@@ -13,9 +13,32 @@ namespace Crystal{
 		typedef std::list<PhysicsObject*> PhysicsObjectList;
 		class Particle;
 		typedef std::vector<Particle*> ParticleVector;
-		class PhysicsObjectCondition;
 		class ParticleFactory;
 		class SimulationSetting;
+
+struct PhysicsObjectCondition
+{
+	enum ObjectType{
+		Fluid,
+		Rigid,
+		Obstacle,
+	};
+
+	PhysicsObjectCondition( const std::vector<Geom::Vector3d>& points, const double density, const double pressureCoefficient, const double viscosityCoefficient, const ObjectType objectType) :
+		points( points), 
+			density( density),
+			pressureCoefficient( pressureCoefficient),
+			viscosityCoefficient( viscosityCoefficient),
+			objectType( objectType)
+		{
+		}
+
+	const std::vector<Geom::Vector3d> points;
+	double density;
+	double pressureCoefficient;
+	double viscosityCoefficient;
+	ObjectType objectType;
+};
 
 class PhysicsObjectFactory : private boost::noncopyable
 {

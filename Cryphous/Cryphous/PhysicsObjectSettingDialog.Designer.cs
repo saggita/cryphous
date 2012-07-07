@@ -43,10 +43,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.headerDensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.headerViscosity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.headerViscosity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.headerDensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -187,19 +187,16 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Object";
             // 
-            // headerDensity
+            // headerType
             // 
-            this.headerDensity.HeaderText = "Density";
-            this.headerDensity.Name = "headerDensity";
-            this.headerDensity.ToolTipText = "密度";
-            this.headerDensity.Width = 50;
-            // 
-            // headerViscosity
-            // 
-            this.headerViscosity.HeaderText = "Visc";
-            this.headerViscosity.Name = "headerViscosity";
-            this.headerViscosity.ToolTipText = "粘性";
-            this.headerViscosity.Width = 50;
+            this.headerType.HeaderText = "Type";
+            this.headerType.Items.AddRange(new object[] {
+            "Fluid",
+            "Rigid",
+            "Obstacle"});
+            this.headerType.Name = "headerType";
+            this.headerType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.headerType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // headerPressure
             // 
@@ -209,15 +206,19 @@
             this.headerPressure.ToolTipText = "圧力";
             this.headerPressure.Width = 50;
             // 
-            // headerType
+            // headerViscosity
             // 
-            this.headerType.HeaderText = "Type";
-            this.headerType.Items.AddRange(new object[] {
-            "Fluid",
-            "Obstacle"});
-            this.headerType.Name = "headerType";
-            this.headerType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.headerType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.headerViscosity.HeaderText = "Visc";
+            this.headerViscosity.Name = "headerViscosity";
+            this.headerViscosity.ToolTipText = "粘性";
+            this.headerViscosity.Width = 50;
+            // 
+            // headerDensity
+            // 
+            this.headerDensity.HeaderText = "Density";
+            this.headerDensity.Name = "headerDensity";
+            this.headerDensity.ToolTipText = "密度";
+            this.headerDensity.Width = 50;
             // 
             // PhysicsObjectSettingDialog
             // 

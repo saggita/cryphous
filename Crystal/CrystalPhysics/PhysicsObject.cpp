@@ -4,7 +4,6 @@
 
 #include "Particle.h"
 
-#include "PhysicalTimeIntegratorBase.h"
 #include "EnforcerBase.h"
 
 #include "../CrystalGeom/Vector3d.h"
@@ -17,14 +16,12 @@ using namespace Crystal::Physics;
 
 PhysicsObject::PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient,
 							 ParticleFactory* particleFactory,
-							 PhysicalTimeIntegratorBase* physicalTimeIntegratorBase,
 							 EnforcerBase* enforcerBase) :
 id( id),
 density( density),
 gasConstant( gasConstant),
 viscosityCoefficient( viscosityCoefficient),
 particleFactory( particleFactory),
-physicalTimeIntegratorBase( physicalTimeIntegratorBase),
 enforcerBase( enforcerBase)
 {
 }
@@ -32,7 +29,6 @@ enforcerBase( enforcerBase)
 PhysicsObject::~PhysicsObject(void)
 {
 	delete enforcerBase;
-	delete physicalTimeIntegratorBase;
 }
 
 void PhysicsObject::enforce(const double proceedTime)
@@ -70,9 +66,4 @@ double PhysicsObject::getWeight() const
 		weight += particle->getMass();
 	}
 	return weight;
-}
-
-void PhysicsObject::integrateTime(const double proceedTime)
-{
-	physicalTimeIntegratorBase->integrateTime( *this, proceedTime );
 }

@@ -2,7 +2,6 @@
 
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
-#include "../CrystalPhysics/PhysicsObjectCondition.h"
 #include "../CrystalGraphics/GraphicsSettings.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/SimulationSetting.h"
