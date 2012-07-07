@@ -24,7 +24,7 @@ using namespace Crystal::Physics;
 
 void Simulation::simulate(PhysicsObjectFactory* factory, const SimulationSetting& setting)
 {
-	Profiler::get()->start("SimulationTotal");
+	Profiler::get()->start("Simulation->");
 
 	PhysicsObjectList& physicsObjects = factory->getPhysicsObjects();
 
@@ -43,14 +43,14 @@ void Simulation::simulate(PhysicsObjectFactory* factory, const SimulationSetting
 	}
 	Profiler::get()->end(" Sim->enforce");
 
-	Profiler::get()->start(" Sim->timeIntegrate");
+	Profiler::get()->start(" Sim->integrate");
 	BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
 		object->integrateTime( setting.timeStep );
 	}
-	Profiler::get()->end(" Sim->timeIntegrate");
+	Profiler::get()->end(" Sim->integrate");
 
 	++step;
 	simulationTime += setting.timeStep;
 
-	Profiler::get()->end("SimulationTotal");
+	Profiler::get()->end("Simulation->");
 }

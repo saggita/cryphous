@@ -19,10 +19,8 @@ using namespace System::ComponentModel;
 using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
-using namespace System::Drawing;
 using namespace System::Diagnostics;
 using namespace System::IO;
-using namespace System::Xml;
 
 ObjectSettingCommand::ObjectSettingCommand()
 {
@@ -36,42 +34,6 @@ void ObjectSettingCommand::refresh()
 {
 	ApplicationSettings::get()->conditions->clear();
 	ApplicationSettings::get()->factory->init();
-}
-
-void ObjectSettingCommand::displaySettings()
-{
-	view->Rows->Clear();
-
-	std::list<PhysicsObjectCondition>& conditions = *(ApplicationSettings::get()->conditions);
-
-	for( std::list<PhysicsObjectCondition>::iterator iter = conditions.begin();
-		iter != conditions.end(); ++iter ) {
-		const PhysicsObjectCondition& condition = *(iter);
-		
-		String^ type = "";
-		switch( condition.objectType ) {
-			case PhysicsObjectCondition::Fluid :
-				type = "Fluid";
-				break;
-			case PhysicsObjectCondition::Obstacle :
-				type = "Obstacle";
-				break;
-			case PhysicsObjectCondition::Rigid :
-				type = "Rigid";
-				break;
-			default:
-				System::Diagnostics::Debug::Assert( false );
-		}
-
-		array<Object^>^ rowData = {
-			type,
-			condition.pressureCoefficient,
-			condition.viscosityCoefficient,
-			condition.density
-		};
-		
-		view->Rows->Add( rowData );
-	}
 }
 
 void ObjectSettingCommand::saveSettings(String^ type, const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)

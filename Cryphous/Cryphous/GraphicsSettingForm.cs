@@ -50,5 +50,11 @@ namespace Cryphous
                     checkBoxApplyPointSprite,
                     checkBoxBoundingBox);
         }
+
+        private void GraphicsSettingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
     }
 }

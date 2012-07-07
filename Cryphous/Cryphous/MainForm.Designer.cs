@@ -55,7 +55,7 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1061, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(767, 26);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,16 +86,16 @@
             // 
             this.listBoxInformation.FormattingEnabled = true;
             this.listBoxInformation.ItemHeight = 12;
-            this.listBoxInformation.Location = new System.Drawing.Point(30, 0);
+            this.listBoxInformation.Location = new System.Drawing.Point(3, 0);
             this.listBoxInformation.Name = "listBoxInformation";
-            this.listBoxInformation.Size = new System.Drawing.Size(136, 256);
+            this.listBoxInformation.Size = new System.Drawing.Size(120, 256);
             this.listBoxInformation.TabIndex = 4;
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(30, 337);
+            this.buttonRefresh.Location = new System.Drawing.Point(3, 338);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(136, 25);
+            this.buttonRefresh.Size = new System.Drawing.Size(120, 25);
             this.buttonRefresh.TabIndex = 2;
             this.buttonRefresh.Text = "Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
@@ -103,9 +103,9 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(30, 378);
+            this.buttonStart.Location = new System.Drawing.Point(3, 379);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(136, 23);
+            this.buttonStart.Size = new System.Drawing.Size(120, 23);
             this.buttonStart.TabIndex = 1;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -118,9 +118,9 @@
             // 
             // buttonNextStep
             // 
-            this.buttonNextStep.Location = new System.Drawing.Point(30, 418);
+            this.buttonNextStep.Location = new System.Drawing.Point(3, 420);
             this.buttonNextStep.Name = "buttonNextStep";
-            this.buttonNextStep.Size = new System.Drawing.Size(136, 23);
+            this.buttonNextStep.Size = new System.Drawing.Size(120, 23);
             this.buttonNextStep.TabIndex = 5;
             this.buttonNextStep.Text = "NestStep";
             this.buttonNextStep.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(886, 453);
+            this.pictureBox1.Size = new System.Drawing.Size(640, 480);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -157,15 +157,15 @@
             this.splitContainer1.Panel2.Controls.Add(this.buttonRefresh);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStart);
             this.splitContainer1.Panel2.Controls.Add(this.buttonNextStep);
-            this.splitContainer1.Size = new System.Drawing.Size(1061, 453);
-            this.splitContainer1.SplitterDistance = 886;
+            this.splitContainer1.Size = new System.Drawing.Size(767, 480);
+            this.splitContainer1.SplitterDistance = 640;
             this.splitContainer1.TabIndex = 7;
             // 
             // buttonParticleInfo
             // 
-            this.buttonParticleInfo.Location = new System.Drawing.Point(30, 231);
+            this.buttonParticleInfo.Location = new System.Drawing.Point(3, 231);
             this.buttonParticleInfo.Name = "buttonParticleInfo";
-            this.buttonParticleInfo.Size = new System.Drawing.Size(136, 25);
+            this.buttonParticleInfo.Size = new System.Drawing.Size(120, 25);
             this.buttonParticleInfo.TabIndex = 7;
             this.buttonParticleInfo.Text = "ParticleInfo";
             this.buttonParticleInfo.UseVisualStyleBackColor = true;
@@ -173,9 +173,9 @@
             // 
             // buttonViewReset
             // 
-            this.buttonViewReset.Location = new System.Drawing.Point(30, 294);
+            this.buttonViewReset.Location = new System.Drawing.Point(3, 295);
             this.buttonViewReset.Name = "buttonViewReset";
-            this.buttonViewReset.Size = new System.Drawing.Size(136, 25);
+            this.buttonViewReset.Size = new System.Drawing.Size(120, 25);
             this.buttonViewReset.TabIndex = 6;
             this.buttonViewReset.Text = "ViewReset";
             this.buttonViewReset.UseVisualStyleBackColor = true;
@@ -186,7 +186,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1061, 479);
+            this.ClientSize = new System.Drawing.Size(767, 506);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;

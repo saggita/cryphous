@@ -16,15 +16,13 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
-        private List<ManagedPosition> initialPositions;
         
-        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<ManagedPosition> initialPositions = null)
+        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand)
         {
             InitializeComponent();
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
-            this.initialPositions = initialPositions;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -34,15 +32,10 @@ namespace Cryphous
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
         {
-            command.setView(dataGridViewObjectSetting);
-            command.displaySettings();
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
             
-            if (dataGridViewObjectSetting.Rows.Count == 0)
-            {
-                buttonAdd_Click(sender, e);
-            }
+            buttonAdd_Click(sender, e);
         }
 
         private void dataGridViewObjectSetting_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -52,11 +45,7 @@ namespace Cryphous
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            double pressureCoe = 100000.0;
-            double viscosityCoe = 20.0;
-            double density = 1000.0;
-            String str = "Fluid";
-            dataGridViewObjectSetting.Rows.Add(str, pressureCoe, viscosityCoe, density);
+            dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -71,17 +60,38 @@ namespace Cryphous
             ssCommand.save();
             command.refresh();
 
-            List<ManagedPosition> newPositions = (initialPositions == null) ? 
-                createBox(-2.0, 2.0, 0.0, 2.0, -2.0, 2.0 ) : initialPositions;
-            DataGridViewRow row = dataGridViewObjectSetting.Rows[0];
-            command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToDouble(row.Cells[3].Value), Convert.ToDouble(row.Cells[1].Value), Convert.ToDouble(row.Cells[2].Value), newPositions);
+            foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
+            {
+                double minX = Convert.ToDouble(row.Cells[4].Value);
+                double maxX = Convert.ToDouble(row.Cells[5].Value);
+                double minY = Convert.ToDouble(row.Cells[6].Value);
+                double maxY = Convert.ToDouble(row.Cells[7].Value);
+                double minZ = Convert.ToDouble(row.Cells[8].Value);
+                double maxZ = Convert.ToDouble(row.Cells[9].Value);
+                String shape = row.Cells[10].Value.ToString();
+                List<ManagedPosition> positions = new List<ManagedPosition>();
+                if (shape == "Box")
+                {
+                    positions = createPositions(minX, maxX, minY, maxY, minZ, maxZ);
+                }
+                else if (shape == "Sphere")
+                {
+                    positions = createPositions(minX, maxX, minY, maxY, minZ, maxZ);
+                }
+                else
+                {
+                    System.Diagnostics.Debug.Assert(false);
+                }
+
+                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToDouble(row.Cells[3].Value), Convert.ToDouble(row.Cells[1].Value), Convert.ToDouble(row.Cells[2].Value), positions);
+            }
             
-            Close();
+            Hide();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            Hide();
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -89,7 +99,7 @@ namespace Cryphous
 
         }
 
-        private List<ManagedPosition> createBox(double minX, double maxX, double minY, double maxY, double minZ, double maxZ )
+        private List<ManagedPosition> createPositions(double minX, double maxX, double minY, double maxY, double minZ, double maxZ )
         {
             List<ManagedPosition> positions = new List<ManagedPosition>();
 
@@ -118,6 +128,12 @@ namespace Cryphous
                 }
             }
             return positions;
+        }
+
+        private void PhysicsObjectSettingDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

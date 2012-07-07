@@ -6,9 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
-//using DxMath;
-
-//using ManagedPosition = List<double>;
 
 namespace Cryphous
 {
@@ -23,6 +20,9 @@ namespace Cryphous
         private Point previousPoint;
 	    private bool isLeftDown;
         private bool isRightDown;
+
+        private PhysicsObjectSettingDialog osDialog;
+        private GraphicsSettingForm gsDialog;
         
         public MainForm()
         {
@@ -39,12 +39,14 @@ namespace Cryphous
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.0");
+            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.1");
+
+            osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
+            gsDialog = new GraphicsSettingForm(mainCommand);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PhysicsObjectSettingDialog osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
             osDialog.Show();
         }
 
@@ -80,10 +82,10 @@ namespace Cryphous
         {
             switch( e.KeyCode ) {
 	            case Keys.D :
-            		mainCommand.zoom(0.1);
+            		mainCommand.zoom(1.0);
 		            break;
             	case Keys.Z :
-	               	mainCommand.zoom(-0.1);
+	               	mainCommand.zoom(-1.0);
 		        break;
 	        }
         }
@@ -134,7 +136,7 @@ namespace Cryphous
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {
-            double zoom = -e.Delta / 240.0;
+            double zoom = -e.Delta / 24.0;
             mainCommand.zoom(zoom);
         }
 
@@ -145,8 +147,7 @@ namespace Cryphous
 
         private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
-            form.Show();
+            gsDialog.Show();
         }
 
         private void buttonParticleInfo_Click(object sender, EventArgs e)
