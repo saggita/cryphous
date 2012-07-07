@@ -17,17 +17,12 @@ namespace Crystal{
 		class Particle;
 		typedef std::vector<Particle*> ParticleVector;
 		class PhysicsObjectFactory;
-		class SpringParticle;
-		typedef std::list<SpringParticle*> SpringParticleList;
-		class PhysicalTimeIntegratorBase;
-		class EnforcerBase;
 
 
 class PhysicsObject : private boost::noncopyable
 {
 protected:
-	PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient, ParticleFactory* particleFactory,
-		EnforcerBase* enforcerBase);
+	PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient, ParticleFactory* particleFactory);
 
 	virtual ~PhysicsObject(void);
 
@@ -44,7 +39,7 @@ public:
 
 	ParticleVector getParticles() const { return particleFactory->getParticles(); }
 
-	virtual void enforce(const double proceedTime);
+	virtual void enforce(const double proceedTime) = 0;
 
 	virtual void integrateTime(const double proceedTime ) = 0;
 
@@ -68,9 +63,6 @@ private:
 	const double gasConstant;
 	const double viscosityCoefficient;
 	ParticleFactory* particleFactory;
-
-protected:
-	EnforcerBase* enforcerBase;
 	
 	friend PhysicsObjectFactory;
 };

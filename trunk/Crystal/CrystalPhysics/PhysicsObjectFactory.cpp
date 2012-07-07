@@ -11,7 +11,6 @@
 
 #include "ParticleConditions.h"
 
-#include "EnforcerBase.h"
 #include "RigidEnforcer.h"
 #include "SimulationSetting.h"
 
@@ -74,10 +73,10 @@ PhysicsObject* PhysicsObjectFactory::createPhysicsObject(const PhysicsObjectCond
 			object = new Fluid( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory);
 			break;
 		case PhysicsObjectCondition::Rigid :
-			object = new Rigid( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory, new RigidEnforcer() );
+			object = new Rigid( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory );
 			break;
 		case PhysicsObjectCondition::Obstacle:
-			object = new Obstacle( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory, new EnforcerBase() );
+			object = new Obstacle( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory );
 			break;
 		default:
 			assert( false );

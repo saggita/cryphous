@@ -4,8 +4,6 @@
 
 #include "Particle.h"
 
-#include "EnforcerBase.h"
-
 #include "../CrystalGeom/Vector3d.h"
 
 #include <boost/foreach.hpp>
@@ -14,26 +12,17 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-PhysicsObject::PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient,
-							 ParticleFactory* particleFactory,
-							 EnforcerBase* enforcerBase) :
+PhysicsObject::PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient,ParticleFactory* particleFactory) :
 id( id),
 density( density),
 gasConstant( gasConstant),
 viscosityCoefficient( viscosityCoefficient),
-particleFactory( particleFactory),
-enforcerBase( enforcerBase)
+particleFactory( particleFactory)
 {
 }
 
 PhysicsObject::~PhysicsObject(void)
 {
-	delete enforcerBase;
-}
-
-void PhysicsObject::enforce(const double proceedTime)
-{
-	enforcerBase->enforce( this, proceedTime );
 }
 
 Vector3d PhysicsObject::getCenter() const
@@ -42,7 +31,6 @@ Vector3d PhysicsObject::getCenter() const
 		return Vector3d( 0.0, 0.0, 0.0);
 	}
 
-	/// ‘S—±Žq‚Í“¯ˆêŽ¿—Ê‚Æ‰¼’è.
 	Vector3d center( 0.0, 0.0, 0.0);
 	BOOST_FOREACH(Particle* particle, getParticles()) {
 		center += particle->center;

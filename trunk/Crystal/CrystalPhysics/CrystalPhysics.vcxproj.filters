@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Enforcer">
-      <UniqueIdentifier>{3b919a7e-4b36-400d-b751-3d63e3bc3b9b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Simulation">
       <UniqueIdentifier>{a621e9fe-e84a-42fe-8f3b-99c5746838a3}</UniqueIdentifier>
     </Filter>
@@ -19,17 +16,11 @@
     <Filter Include="Space">
       <UniqueIdentifier>{5a01c280-b786-4c3d-a8b7-28de2a27a316}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Space\NeighborSearch">
-      <UniqueIdentifier>{bd5e102a-494f-43c8-b590-74c883eca79a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Particle">
       <UniqueIdentifier>{89bdf7ec-5374-4f38-9036-001d680fc83a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Particle\Generation">
       <UniqueIdentifier>{e28c8d3c-ad5b-4a67-9ce4-ec3211622e2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PhysicsObject\Generation">
-      <UniqueIdentifier>{68e59b0e-0f21-4c66-8c9e-d2003c845162}</UniqueIdentifier>
     </Filter>
     <Filter Include="Simulation\Solver\SPHSolver">
       <UniqueIdentifier>{7e185f9f-21cb-4a07-b1fd-502663a958f7}</UniqueIdentifier>
@@ -42,32 +33,14 @@
     <ClCompile Include="PhysicsObject.cpp">
       <Filter>PhysicsObject</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsObjectFactory.cpp">
-      <Filter>PhysicsObject\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="Simulation.cpp">
       <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="NeighborSearcher.cpp">
-      <Filter>Space\NeighborSearch</Filter>
-    </ClCompile>
-    <ClCompile Include="SearchParticle.cpp">
-      <Filter>Space\NeighborSearch</Filter>
-    </ClCompile>
-    <ClCompile Include="SearchParticleFactory.cpp">
-      <Filter>Space\NeighborSearch</Filter>
     </ClCompile>
     <ClCompile Include="Profiler.cpp">
       <Filter>Profiler</Filter>
     </ClCompile>
     <ClCompile Include="SPHSolver.cpp">
       <Filter>Simulation\Solver\SPHSolver</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidEnforcer.cpp">
-      <Filter>Enforcer</Filter>
-    </ClCompile>
-    <ClCompile Include="EnforcerBase.cpp">
-      <Filter>Enforcer</Filter>
     </ClCompile>
     <ClCompile Include="Fluid.cpp">
       <Filter>PhysicsObject</Filter>
@@ -84,6 +57,21 @@
     <ClCompile Include="Obstacle.cpp">
       <Filter>PhysicsObject</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsObjectFactory.cpp">
+      <Filter>PhysicsObject</Filter>
+    </ClCompile>
+    <ClCompile Include="NeighborSearcher.cpp">
+      <Filter>Space</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchParticle.cpp">
+      <Filter>Space</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchParticleFactory.cpp">
+      <Filter>Space</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidEnforcer.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ParticleConditions.h">
@@ -95,35 +83,17 @@
     <ClInclude Include="PhysicsObject.h">
       <Filter>PhysicsObject</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsObjectFactory.h">
-      <Filter>PhysicsObject\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="Simulation.h">
       <Filter>Simulation</Filter>
     </ClInclude>
     <ClInclude Include="SimulationSetting.h">
       <Filter>Simulation</Filter>
     </ClInclude>
-    <ClInclude Include="NeighborSearcher.h">
-      <Filter>Space\NeighborSearch</Filter>
-    </ClInclude>
-    <ClInclude Include="SearchParticle.h">
-      <Filter>Space\NeighborSearch</Filter>
-    </ClInclude>
-    <ClInclude Include="SearchParticleFactory.h">
-      <Filter>Space\NeighborSearch</Filter>
-    </ClInclude>
     <ClInclude Include="Profiler.h">
       <Filter>Profiler</Filter>
     </ClInclude>
     <ClInclude Include="SPHSolver.h">
       <Filter>Simulation\Solver\SPHSolver</Filter>
-    </ClInclude>
-    <ClInclude Include="RigidEnforcer.h">
-      <Filter>Enforcer</Filter>
-    </ClInclude>
-    <ClInclude Include="EnforcerBase.h">
-      <Filter>Enforcer</Filter>
     </ClInclude>
     <ClInclude Include="SPHPairSolver.h">
       <Filter>Simulation\Solver\SPHSolver</Filter>
@@ -148,6 +118,21 @@
     </ClInclude>
     <ClInclude Include="Obstacle.h">
       <Filter>PhysicsObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObjectFactory.h">
+      <Filter>PhysicsObject</Filter>
+    </ClInclude>
+    <ClInclude Include="NeighborSearcher.h">
+      <Filter>Space</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchParticle.h">
+      <Filter>Space</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchParticleFactory.h">
+      <Filter>Space</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidEnforcer.h">
+      <Filter>Simulation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
