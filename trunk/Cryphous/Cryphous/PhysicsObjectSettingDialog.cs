@@ -195,6 +195,17 @@ namespace Cryphous
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, -3.0, 6.0, 8.0, 3.0, 5.0, "Sphere");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, 3.0, 5.0, 6.0, 8.0, -5.0, -3.0, "Sphere");
             }
+            else if (comboBoxExample.Text == "Wall")
+            {
+                setBoundary(-10.0, 10.0, 0.0, 100.0, -2.0, 2.0);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
+                dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, 2.0, 3.0, 0.0, 1.0, -2.0, 2.0, "Box");
+                dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, -8.0, -7.0, 0.0, 2.0, -2.0, 2.0, "Box");
+            }
+            else
+            {
+                System.Diagnostics.Debug.Assert(false);
+            }
         }
 
         private void buttonCopy_Click(object sender, EventArgs e)
