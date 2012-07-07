@@ -10,9 +10,6 @@
     <ClCompile Include="DialogCommand.cpp">
       <Filter>コマンド</Filter>
     </ClCompile>
-    <ClCompile Include="StringMarshaler.cpp">
-      <Filter>Utility\C++/CLI</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicsSettingCommand.cpp">
       <Filter>設定</Filter>
     </ClCompile>
@@ -48,9 +45,6 @@
     </ClInclude>
     <ClInclude Include="DialogCommand.h">
       <Filter>コマンド</Filter>
-    </ClInclude>
-    <ClInclude Include="StringMarshaler.h">
-      <Filter>Utility\C++/CLI</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsSettingCommand.h">
       <Filter>設定</Filter>
@@ -90,9 +84,6 @@
     </Filter>
     <Filter Include="Utility">
       <UniqueIdentifier>{1dd5df5a-427f-4b2f-b783-8e7a45dae7b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility\C++/CLI">
-      <UniqueIdentifier>{f5020a7c-406a-400a-8f29-914c4d9dc3f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

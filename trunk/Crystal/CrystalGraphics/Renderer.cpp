@@ -38,7 +38,7 @@ void Renderer::init()
 
 void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const int height, const Box& boundaryBox)
 {
-	Profiler::get()->start("RenderingTotal");
+	Profiler::get()->start("Rendering->");
 
 	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
 	openGLWrapper.BeginRendering();
@@ -103,7 +103,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	glFlush();
 	openGLWrapper.EndRendering();
 
-	Profiler::get()->end("RenderingTotal");
+	Profiler::get()->end("Rendering->");
 }
 
 void Renderer::drawBoundaryBox(const Box& box)

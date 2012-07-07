@@ -114,6 +114,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GraphicsSettingForm";
             this.Text = "GraphicsSettingForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraphicsSettingForm_FormClosing);
             this.Load += new System.EventHandler(this.GraphicsSettingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAlphaPower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).EndInit();

@@ -5,8 +5,6 @@
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "ApplicationSettings.h"
 
-#include "StringMarshaler.h"
-
 #include <fstream>
 
 using namespace Crystal::Physics;
@@ -20,7 +18,7 @@ void ProfileInfoCommand::display(System::String^ productName, System::Windows::F
 {
 	listBox->Items->Clear();
 	listBox->Items->Add(productName);
-	listBox->Items->Add("Powered by Crystal 1.4");
+	listBox->Items->Add("Powered by Crystal 1.5");
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
 	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );

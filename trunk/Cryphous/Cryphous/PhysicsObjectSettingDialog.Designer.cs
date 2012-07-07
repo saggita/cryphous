@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewObjectSetting = new System.Windows.Forms.DataGridView();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -47,6 +47,13 @@
             this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerViscosity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerDensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shape = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -54,38 +61,45 @@
             // dataGridViewObjectSetting
             // 
             this.dataGridViewObjectSetting.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewObjectSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewObjectSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewObjectSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewObjectSetting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.headerType,
             this.headerPressure,
             this.headerViscosity,
-            this.headerDensity});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewObjectSetting.DefaultCellStyle = dataGridViewCellStyle2;
+            this.headerDensity,
+            this.MinX,
+            this.MaxX,
+            this.MinY,
+            this.MaxY,
+            this.MinZ,
+            this.MaxZ,
+            this.Shape});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewObjectSetting.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewObjectSetting.Location = new System.Drawing.Point(0, 24);
             this.dataGridViewObjectSetting.Name = "dataGridViewObjectSetting";
             this.dataGridViewObjectSetting.RowTemplate.Height = 21;
-            this.dataGridViewObjectSetting.Size = new System.Drawing.Size(294, 68);
+            this.dataGridViewObjectSetting.Size = new System.Drawing.Size(583, 181);
             this.dataGridViewObjectSetting.TabIndex = 1;
             this.dataGridViewObjectSetting.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewObjectSetting_CellContentClick);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(464, 111);
+            this.buttonCancel.Location = new System.Drawing.Point(698, 209);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 15;
@@ -95,7 +109,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(383, 111);
+            this.buttonOK.Location = new System.Drawing.Point(607, 209);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 14;
@@ -112,7 +126,7 @@
             this.ColumnX,
             this.ColumnY,
             this.ColumnZ});
-            this.dataGridView1.Location = new System.Drawing.Point(330, 24);
+            this.dataGridView1.Location = new System.Drawing.Point(598, 24);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(195, 68);
@@ -139,15 +153,16 @@
             // 
             // textBoxEffectLength
             // 
-            this.textBoxEffectLength.Location = new System.Drawing.Point(266, 113);
+            this.textBoxEffectLength.Location = new System.Drawing.Point(673, 158);
             this.textBoxEffectLength.Name = "textBoxEffectLength";
             this.textBoxEffectLength.Size = new System.Drawing.Size(100, 19);
             this.textBoxEffectLength.TabIndex = 22;
+            this.textBoxEffectLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(186, 116);
+            this.label3.Location = new System.Drawing.Point(589, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 21;
@@ -155,15 +170,16 @@
             // 
             // textBoxTimeStep
             // 
-            this.textBoxTimeStep.Location = new System.Drawing.Point(65, 113);
+            this.textBoxTimeStep.Location = new System.Drawing.Point(673, 123);
             this.textBoxTimeStep.Name = "textBoxTimeStep";
             this.textBoxTimeStep.Size = new System.Drawing.Size(100, 19);
             this.textBoxTimeStep.TabIndex = 20;
+            this.textBoxTimeStep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 116);
+            this.label1.Location = new System.Drawing.Point(589, 126);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 19;
@@ -172,7 +188,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(328, 9);
+            this.label2.Location = new System.Drawing.Point(589, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 23;
@@ -220,12 +236,57 @@
             this.headerDensity.ToolTipText = "密度";
             this.headerDensity.Width = 50;
             // 
+            // MinX
+            // 
+            this.MinX.HeaderText = "MinX";
+            this.MinX.Name = "MinX";
+            this.MinX.Width = 40;
+            // 
+            // MaxX
+            // 
+            this.MaxX.HeaderText = "MaxX";
+            this.MaxX.Name = "MaxX";
+            this.MaxX.Width = 40;
+            // 
+            // MinY
+            // 
+            this.MinY.HeaderText = "MinY";
+            this.MinY.Name = "MinY";
+            this.MinY.Width = 40;
+            // 
+            // MaxY
+            // 
+            this.MaxY.HeaderText = "MaxY";
+            this.MaxY.Name = "MaxY";
+            this.MaxY.Width = 40;
+            // 
+            // MinZ
+            // 
+            this.MinZ.HeaderText = "MinZ";
+            this.MinZ.Name = "MinZ";
+            this.MinZ.Width = 40;
+            // 
+            // MaxZ
+            // 
+            this.MaxZ.HeaderText = "MaxZ";
+            this.MaxZ.Name = "MaxZ";
+            this.MaxZ.Width = 40;
+            // 
+            // Shape
+            // 
+            this.Shape.HeaderText = "Shape";
+            this.Shape.Items.AddRange(new object[] {
+            "Box",
+            "Sphere"});
+            this.Shape.Name = "Shape";
+            this.Shape.Width = 50;
+            // 
             // PhysicsObjectSettingDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(544, 145);
+            this.ClientSize = new System.Drawing.Size(805, 252);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxEffectLength);
@@ -239,6 +300,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PhysicsObjectSettingDialog";
             this.Text = "PhysicsObjectSettingDialog";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PhysicsObjectSettingDialog_FormClosing);
             this.Load += new System.EventHandler(this.PhysicsObjectSettingDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -266,6 +328,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn headerPressure;
         private System.Windows.Forms.DataGridViewTextBoxColumn headerViscosity;
         private System.Windows.Forms.DataGridViewTextBoxColumn headerDensity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxZ;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Shape;
 
     }
 }

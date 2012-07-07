@@ -74,14 +74,14 @@ void SPHSolver::calculateInteraction()
 
 	calculateDensity();
 
-	Profiler::get()->start(" Sim->interaction");
+	Profiler::get()->start(" Sim->force");
 	const std::vector<ParticlePair>& pairs = neighborSearcher->getPairs();
 	#pragma omp parallel for
 	for( int i = 0; i < (int)(pairs.size()); ++i ) {
 		sphPairSolver->calculatePressureForce( pairs[i]);
 		sphPairSolver->calculateViscosityForce( pairs[i]);
 	}
-	Profiler::get()->end(" Sim->interaction");
+	Profiler::get()->end(" Sim->force");
 
 	calculateBoundaryForce();
 }
