@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Physics {
 		class PhysicsObjectFactory;
-		class PhysicsObjectCondition;
+		struct PhysicsObjectCondition;
 		class SimulationSetting;
 		class Simulation;
 	}

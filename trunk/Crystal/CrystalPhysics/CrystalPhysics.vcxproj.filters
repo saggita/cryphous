@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Integrator">
-      <UniqueIdentifier>{1406f8b2-96ec-44b9-8ff3-0558ea5f2eb8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Enforcer">
       <UniqueIdentifier>{3b919a7e-4b36-400d-b751-3d63e3bc3b9b}</UniqueIdentifier>
     </Filter>
@@ -81,14 +78,11 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicalTimeIntegrator.cpp">
-      <Filter>Integrator</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicalTimeIntegratorBase.cpp">
-      <Filter>Integrator</Filter>
-    </ClCompile>
     <ClCompile Include="BoundarySolver.cpp">
       <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>PhysicsObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,9 +94,6 @@
     </ClInclude>
     <ClInclude Include="PhysicsObject.h">
       <Filter>PhysicsObject</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsObjectCondition.h">
-      <Filter>PhysicsObject\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObjectFactory.h">
       <Filter>PhysicsObject\Generation</Filter>
@@ -128,9 +119,6 @@
     <ClInclude Include="SPHSolver.h">
       <Filter>Simulation\Solver\SPHSolver</Filter>
     </ClInclude>
-    <ClInclude Include="TimeIntegratorBase.h">
-      <Filter>Integrator</Filter>
-    </ClInclude>
     <ClInclude Include="RigidEnforcer.h">
       <Filter>Enforcer</Filter>
     </ClInclude>
@@ -152,17 +140,14 @@
     <ClInclude Include="ParticlePair.h">
       <Filter>Particle</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicalTimeIntegrator.h">
-      <Filter>Integrator</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicalTimeIntegratorBase.h">
-      <Filter>Integrator</Filter>
-    </ClInclude>
     <ClInclude Include="Kernels3D.h">
       <Filter>Simulation</Filter>
     </ClInclude>
     <ClInclude Include="BoundarySolver.h">
       <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>PhysicsObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -74,8 +74,7 @@
   <ItemGroup>
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="EnforcerBase.cpp" />
-    <ClCompile Include="PhysicalTimeIntegrator.cpp" />
-    <ClCompile Include="PhysicalTimeIntegratorBase.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="RigidEnforcer.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -93,8 +92,7 @@
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />
     <ClInclude Include="EnforcerBase.h" />
-    <ClInclude Include="PhysicalTimeIntegrator.h" />
-    <ClInclude Include="PhysicalTimeIntegratorBase.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="RigidEnforcer.h" />
     <ClInclude Include="SPHPairSolver.h" />
     <ClInclude Include="SPHSolver.h" />
@@ -104,7 +102,6 @@
     <ClInclude Include="ParticleConditions.h" />
     <ClInclude Include="ParticleFactory.h" />
     <ClInclude Include="PhysicsObject.h" />
-    <ClInclude Include="PhysicsObjectCondition.h" />
     <ClInclude Include="PhysicsObjectFactory.h" />
     <ClInclude Include="Fluid.h" />
     <ClInclude Include="Rigid.h" />
@@ -114,7 +111,6 @@
     <ClInclude Include="SearchParticle.h" />
     <ClInclude Include="SearchParticleFactory.h" />
     <ClInclude Include="Profiler.h" />
-    <ClInclude Include="TimeIntegratorBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrystalGeom\CrystalGeom.vcxproj">

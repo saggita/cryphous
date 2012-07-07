@@ -8,7 +8,6 @@
 #include "../CrystalPhysics/ParticleConditions.h"
 #include "../CrystalPhysics/PhysicsObject.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
-#include "../CrystalPhysics/PhysicsObjectCondition.h"
 
 #include "../CrystalGeom/Box.h"
 #include "../CrystalGeom/Vector3d.h"

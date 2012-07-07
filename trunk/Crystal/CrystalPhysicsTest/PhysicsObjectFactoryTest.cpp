@@ -2,7 +2,6 @@
 #include "PhysicsObjectFactoryTest.h"
 
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
-#include "../CrystalPhysics/PhysicsObjectCondition.h"
 #include "../CrystalPhysics/Fluid.h"
 #include "../CrystalGeom/Box.h"
 #include "../CrystalGeom/Vector3d.h"
@@ -42,11 +41,11 @@ void PhysicsObjectFactoryTest::createRigidTest()
 	setting.particleDiameter = 1.0;
 	std::vector<Vector3d> points;
 	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Rigid);
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Obstacle);
 	PhysicsObject* rigid = factory.createPhysicsObject( condition, setting);
 	BOOST_CHECK( rigid != 0 );
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );
-	BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Rigid );
+	BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Obstacle );
 	BOOST_CHECK( !rigid->getParticles().empty() );
 	BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 }
@@ -58,7 +57,7 @@ void PhysicsObjectFactoryTest::createRigidTwoWayTest()
 	setting.particleDiameter = 1.0;
 	std::vector<Vector3d> points;
 	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::RigidTwoWay );
+	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Rigid );
 	PhysicsObject* rigid = factory.createPhysicsObject( condition, setting);
 	BOOST_CHECK( rigid != 0 );
 	BOOST_CHECK_EQUAL( rigid->getID(), 0 );

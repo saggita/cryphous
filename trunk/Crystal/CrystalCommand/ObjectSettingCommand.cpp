@@ -1,7 +1,6 @@
 #include "ObjectSettingCommand.h"
 
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
-#include "../CrystalPhysics/PhysicsObjectCondition.h"
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 #include "../CrystalPhysics/SimulationSetting.h"
@@ -50,14 +49,14 @@ void ObjectSettingCommand::displaySettings()
 		const PhysicsObjectCondition& condition = *(iter);
 		
 		String^ type = "";
-		switch( condition.getObjectType() ) {
+		switch( condition.objectType ) {
 			case PhysicsObjectCondition::Fluid :
 				type = "Fluid";
 				break;
-			case PhysicsObjectCondition::Rigid :
+			case PhysicsObjectCondition::Obstacle :
 				type = "Obstacle";
 				break;
-			case PhysicsObjectCondition::RigidTwoWay :
+			case PhysicsObjectCondition::Rigid :
 				type = "Rigid";
 				break;
 			default:
@@ -66,9 +65,9 @@ void ObjectSettingCommand::displaySettings()
 
 		array<Object^>^ rowData = {
 			type,
-			condition.getPressureCoefficient(),
-			condition.getViscosityCoefficient(),
-			condition.getDensity()
+			condition.pressureCoefficient,
+			condition.viscosityCoefficient,
+			condition.density
 		};
 		
 		view->Rows->Add( rowData );
@@ -86,10 +85,10 @@ void ObjectSettingCommand::saveSettings(String^ type, const double density, cons
 		objectType = PhysicsObjectCondition::Fluid;
 	}
 	else if( type == "Obstacle" ) {
-		objectType = PhysicsObjectCondition::Rigid;
+		objectType = PhysicsObjectCondition::Obstacle;
 	}
 	else if( type == "Rigid") {
-		objectType = PhysicsObjectCondition::RigidTwoWay;
+		objectType = PhysicsObjectCondition::Rigid;
 	}
 	else{
 		Debug::Assert( false );

@@ -27,7 +27,6 @@ class PhysicsObject : private boost::noncopyable
 {
 protected:
 	PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient, ParticleFactory* particleFactory,
-		PhysicalTimeIntegratorBase* physicalTimeIntegratorBase,
 		EnforcerBase* enforcerBase);
 
 	virtual ~PhysicsObject(void);
@@ -36,9 +35,7 @@ public:
 	enum Type{
 		Fluid,
 		Rigid,
-		RigidTwoWay,
-		Air,
-		Cloth
+		Obstacle,
 	};
 
 	virtual Type getType() = 0;
@@ -49,7 +46,7 @@ public:
 
 	virtual void enforce(const double proceedTime);
 
-	void integrateTime(const double proceedTime );
+	virtual void integrateTime(const double proceedTime ) = 0;
 
 	Geom::Vector3d getCenter() const;
 
@@ -73,7 +70,6 @@ private:
 	ParticleFactory* particleFactory;
 
 protected:
-	PhysicalTimeIntegratorBase* physicalTimeIntegratorBase;
 	EnforcerBase* enforcerBase;
 	
 	friend PhysicsObjectFactory;

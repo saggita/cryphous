@@ -6,7 +6,6 @@
 #include "../CrystalPhysics/ParticlePair.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/PhysicsObject.h"
-#include "../CrystalPhysics/PhysicsObjectCondition.h"
 
 #include "../CrystalGeom/Box.h"
 #include "../CrystalGeom/Vector3d.h"
