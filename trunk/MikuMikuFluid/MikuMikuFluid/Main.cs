@@ -79,7 +79,7 @@ namespace MikuMikuFluid
             MessageBox.Show(ApplicationForm, initialPositions.Count + " particles inputed."); 
 
             MMFForm mmfform = new MMFForm( this);
-            mmfform.ShowDialog(ApplicationForm);
+            mmfform.Show();
         }
 
         private void setInitialPositions()

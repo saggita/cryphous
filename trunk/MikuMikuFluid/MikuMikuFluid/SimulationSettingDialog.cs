@@ -16,7 +16,6 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
-        private Random rand = new Random();
         List<ManagedPosition> initialPositions;
         
         public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<ManagedPosition> initialPositions)
@@ -37,7 +36,8 @@ namespace Cryphous
         {
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
-            
+
+            textBoxEffectLength.Text = (0.5).ToString();   
             buttonAdd_Click(sender, e);
         }
 
@@ -48,7 +48,7 @@ namespace Cryphous
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)

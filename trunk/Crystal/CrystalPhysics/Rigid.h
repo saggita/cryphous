@@ -2,6 +2,7 @@
 #define __RIGID_H__
 
 #include "PhysicsObject.h"
+#include "RigidEnforcer.h"
 #include <list>
 
 namespace Crystal{
@@ -20,6 +21,9 @@ public:
 	virtual void integrateTime(const double proceedTime);
 
 	virtual void enforce(const double proceedTime);
+
+private:
+	RigidEnforcer enforcer;
 };
 
 	}

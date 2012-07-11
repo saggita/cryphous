@@ -58,6 +58,11 @@
             this.startUpDown.Size = new System.Drawing.Size(81, 19);
             this.startUpDown.TabIndex = 0;
             this.startUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.startUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // okButton
             // 
@@ -94,7 +99,7 @@
             this.endUpDown.TabIndex = 3;
             this.endUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.endUpDown.Value = new decimal(new int[] {
-            100,
+            99999,
             0,
             0,
             0});
@@ -144,7 +149,7 @@
             this.keyFrameIntervalUpDown.TabIndex = 7;
             this.keyFrameIntervalUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.keyFrameIntervalUpDown.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});

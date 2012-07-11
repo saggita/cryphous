@@ -40,8 +40,8 @@
             this.buttonNextStep = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonViewReset = new System.Windows.Forms.Button();
             this.buttonParticleInfo = new System.Windows.Forms.Button();
+            this.buttonViewReset = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -86,7 +86,7 @@
             // 
             this.listBoxInformation.FormattingEnabled = true;
             this.listBoxInformation.ItemHeight = 12;
-            this.listBoxInformation.Location = new System.Drawing.Point(12, 12);
+            this.listBoxInformation.Location = new System.Drawing.Point(15, 3);
             this.listBoxInformation.Name = "listBoxInformation";
             this.listBoxInformation.Size = new System.Drawing.Size(136, 256);
             this.listBoxInformation.TabIndex = 4;
@@ -161,6 +161,16 @@
             this.splitContainer1.SplitterDistance = 585;
             this.splitContainer1.TabIndex = 7;
             // 
+            // buttonParticleInfo
+            // 
+            this.buttonParticleInfo.Location = new System.Drawing.Point(15, 234);
+            this.buttonParticleInfo.Name = "buttonParticleInfo";
+            this.buttonParticleInfo.Size = new System.Drawing.Size(136, 25);
+            this.buttonParticleInfo.TabIndex = 7;
+            this.buttonParticleInfo.Text = "ParticleInfo";
+            this.buttonParticleInfo.UseVisualStyleBackColor = true;
+            this.buttonParticleInfo.Click += new System.EventHandler(this.buttonParticleInfo_Click);
+            // 
             // buttonViewReset
             // 
             this.buttonViewReset.Location = new System.Drawing.Point(15, 297);
@@ -170,16 +180,6 @@
             this.buttonViewReset.Text = "ViewReset";
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
-            // 
-            // buttonParticleInfo
-            // 
-            this.buttonParticleInfo.Location = new System.Drawing.Point(12, 243);
-            this.buttonParticleInfo.Name = "buttonParticleInfo";
-            this.buttonParticleInfo.Size = new System.Drawing.Size(136, 25);
-            this.buttonParticleInfo.TabIndex = 7;
-            this.buttonParticleInfo.Text = "ParticleInfo";
-            this.buttonParticleInfo.UseVisualStyleBackColor = true;
-            this.buttonParticleInfo.Click += new System.EventHandler(this.buttonParticleInfo_Click);
             // 
             // MMFForm
             // 
@@ -192,7 +192,7 @@
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.Name = "MMFForm";
-            this.Text = "MainForm";
+            this.Text = "MikuMikuFluid";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
