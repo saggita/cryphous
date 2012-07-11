@@ -29,6 +29,5 @@ void Rigid::integrateTime(const double proceedTime)
 
 void Rigid::enforce(const double proceedTime)
 {
-	RigidEnforcer enforcer;
 	enforcer.enforce( this, proceedTime);
 }

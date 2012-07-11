@@ -122,8 +122,8 @@ namespace MikuMikuFluid
         {
             if (isLeftDown && (e.Button == MouseButtons.Left))
             {
-                double diffX = -(previousPoint.X - e.Location.X) / 1000.0;
-                double diffY = -(previousPoint.Y - e.Location.Y) / 1000.0;
+                double diffX = -(previousPoint.X - e.Location.X) / 100.0;
+                double diffY = -(previousPoint.Y - e.Location.Y) / 100.0;
                 mainCommand.move(diffX, diffY);
                 previousPoint = e.Location;
             }
@@ -145,7 +145,7 @@ namespace MikuMikuFluid
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {
-            double zoom = -e.Delta / 240.0;
+            double zoom = -e.Delta / 120.0;
             mainCommand.zoom(zoom);
         }
 
