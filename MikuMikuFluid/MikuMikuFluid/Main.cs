@@ -6,7 +6,7 @@ using System.Drawing;
 using MikuMikuPlugin;
 using DxMath;
 
-using ManagedPosition = System.Collections.Generic.List<double>;
+//using ManagedPosition = System.Collections.Generic.List<double>;
 
 namespace MikuMikuFluid 
 {
@@ -25,9 +25,9 @@ namespace MikuMikuFluid
             keyFrame = frameSettingDialog.StartFrame;
         }
 
-        private List<ManagedPosition> initialPositions;
+        private List<double[]> initialPositions;
 
-        public List<ManagedPosition> InitialPositions
+        public List<double[]> InitialPositions
         {
             get { return initialPositions; }
         }
@@ -84,7 +84,7 @@ namespace MikuMikuFluid
 
         private void setInitialPositions()
         {
-            initialPositions = new List<ManagedPosition>();
+            initialPositions = new List<double[]>();
 
             List<Bone> bones = API.GetBones();
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
@@ -94,16 +94,16 @@ namespace MikuMikuFluid
                 for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    ManagedPosition pos = new ManagedPosition();
-                    pos.Add( bonePosition.X + motionFrames[0].position.X);
-                    pos.Add( bonePosition.Y + motionFrames[0].position.Y);
-                    pos.Add( bonePosition.Z + motionFrames[0].position.Z);
+                    double[] pos = new double[3];
+                    pos[0] = ( bonePosition.X + motionFrames[0].position.X);
+                    pos[1] = ( bonePosition.Y + motionFrames[0].position.Y);
+                    pos[2] = ( bonePosition.Z + motionFrames[0].position.Z);
                     initialPositions.Add( pos);
                 }
             }
         }
 
-        public void BakeToTimeLine(long frameNumber, List<ManagedPosition> bakePositions)
+        public void BakeToTimeLine(long frameNumber, List<double[]> bakePositions)
         {
             if ( (frameNumber % frameSettingDialog.SimulationIterval) != 0)
             {

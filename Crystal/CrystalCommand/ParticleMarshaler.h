@@ -11,7 +11,7 @@ namespace Crystal{
 		typedef std::vector<Particle*> ParticleVector;
 	}
 	namespace Command{
-		typedef System::Collections::Generic::List<double> ManagedPosition;
+		typedef array< double > ManagedPosition;//System::Collections::Generic::List<double> ManagedPosition;
 public ref class ParticleMarshaler
 {
 public:

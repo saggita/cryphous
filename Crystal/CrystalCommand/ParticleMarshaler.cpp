@@ -14,10 +14,10 @@ List<ManagedPosition^>^ ParticleMarshaler::convertToManaged(const ParticleVector
 {
 	List<ManagedPosition^>^ managedPositions = gcnew List<ManagedPosition^>();
 	for( size_t i = 0; i < nativeParticles.size(); ++i ) {
-		ManagedPosition^ newParticle = gcnew ManagedPosition;
-		newParticle->Add( nativeParticles[i]->center.getX() );
-		newParticle->Add( nativeParticles[i]->center.getY() );
-		newParticle->Add( nativeParticles[i]->center.getZ() );
+		ManagedPosition^ newParticle = gcnew ManagedPosition(3);
+		newParticle[0] = nativeParticles[i]->center.getX();
+		newParticle[1] = nativeParticles[i]->center.getY();
+		newParticle[2] = nativeParticles[i]->center.getZ();
 		managedPositions->Add( newParticle );
 	}
 
