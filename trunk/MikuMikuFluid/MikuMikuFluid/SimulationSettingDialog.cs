@@ -7,8 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
 
-using ManagedPosition = System.Collections.Generic.List<double>;
-
 namespace Cryphous
 {
     public partial class SimulationSettingDialog : Form
@@ -16,9 +14,9 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
-        List<ManagedPosition> initialPositions;
+        List<double[]> initialPositions;
         
-        public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<ManagedPosition> initialPositions)
+        public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<double[]> initialPositions)
         {
             InitializeComponent();
             this.command = command;

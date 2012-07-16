@@ -82,7 +82,7 @@ namespace MikuMikuFluid
         {
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
-            List<List<double>> managed = mainCommand.getSimulationCommand().getManagedParticles();
+            List<double[]> managed = mainCommand.getSimulationCommand().getManagedParticles();
             main.BakeToTimeLine(mainCommand.getSimulationCommand().getStep(), managed);
         }
 

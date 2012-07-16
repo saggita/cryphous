@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
 
-using ManagedPosition = System.Collections.Generic.List<double>;
+//using ManagedPosition = System.Collections.Generic.List<double>;
 
 namespace Cryphous
 {
@@ -71,7 +71,7 @@ namespace Cryphous
                 double minZ = Convert.ToDouble(row.Cells[8].Value);
                 double maxZ = Convert.ToDouble(row.Cells[9].Value);
                 String shape = row.Cells[10].Value.ToString();
-                List<ManagedPosition> positions = new List<ManagedPosition>();
+                List<double[]> positions = new List<double[]>();
                 if (shape == "Box")
                 {
                     positions = createPositions(minX, maxX, minY, maxY, minZ, maxZ, false);
@@ -101,9 +101,9 @@ namespace Cryphous
 
         }
 
-        private List<ManagedPosition> createPositions(double minX, double maxX, double minY, double maxY, double minZ, double maxZ, bool isSphere)
+        private List<double[]> createPositions(double minX, double maxX, double minY, double maxY, double minZ, double maxZ, bool isSphere)
         {
-            List<ManagedPosition> positions = new List<ManagedPosition>();
+            List<double[]> positions = new List<double[]>();
 
             double length = double.Parse(textBoxEffectLength.Text);
             double margin = 1.0e-12;
@@ -131,10 +131,10 @@ namespace Cryphous
                         {
                             continue;
                         }
-                        ManagedPosition position = new ManagedPosition();
-                        position.Add(x);
-                        position.Add(y);
-                        position.Add(z);
+                        double[] position = new double[3];// ManagedPosition();
+                        position[0] = x;
+                        position[1] = y;
+                        position[2] = z;
                         positions.Add(position);
                     }
                 }
