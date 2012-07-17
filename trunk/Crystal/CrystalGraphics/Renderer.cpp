@@ -1,10 +1,10 @@
-#include "../External/glee/GLee.h"
+#include <windows.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 #include "Renderer.h"
 
-#include "TextureCreator.h"
 #include "GraphicsSettings.h"
-#include "PointSprite.h"
 
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/SimulationSetting.h"
@@ -72,7 +72,6 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 
 	glPointSize( (GLfloat)(GraphicsSettings::get()->pointSize) );
 
-	PointSprite::get()->apply();
 	glBegin(GL_POINTS);
 	BOOST_FOREACH( Particle* particle, factory->getSortedParticles() ) {
 		const Vector3d& point = particle->center;
@@ -92,8 +91,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 		}
 	}
 	glEnd();
-	PointSprite::get()->release();
-
+	
 	assert( glGetError() == GL_NO_ERROR );
 
 	glDepthMask(GL_TRUE);
