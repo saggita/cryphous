@@ -13,8 +13,8 @@ BOOST_AUTO_TEST_CASE( VECTOR_3D_TEST )
 {
 	{
 		Vector3d vector( 10.0, 10.0, 10.0 );
-		const double result = vector.getLengthSquared();
-		const double expected = 300.0;
+		const float result = vector.getLengthSquared();
+		const float expected = 300.0;
 		BOOST_CHECK( result == expected );
 	}
 

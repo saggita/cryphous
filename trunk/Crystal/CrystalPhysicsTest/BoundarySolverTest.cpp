@@ -1,8 +1,6 @@
 #define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
-#include "BoundarySolverTest.h"
-
 #include "../CrystalPhysics/BoundarySolver.h"
 
 #include "../CrystalPhysics/ParticleFactory.h"

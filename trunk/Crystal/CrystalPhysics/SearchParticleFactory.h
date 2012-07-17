@@ -15,13 +15,13 @@ public:
 
 	SearchParticleFactory(){};
 
-	SearchParticleFactory(const ParticleVector& particles, const double effectLength);
+	SearchParticleFactory(const ParticleVector& particles, const float effectLength);
 
 	~SearchParticleFactory(void);
 
 	void init();
 
-	void addParticles(const ParticleVector& particles, const double effectLength);
+	void addParticles(const ParticleVector& particles, const float effectLength);
 
 	SearchParticleVector getSearchParticles() const { return searchParticles; }
 

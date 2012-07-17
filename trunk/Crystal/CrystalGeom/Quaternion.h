@@ -16,30 +16,30 @@ public:
 	Quaternion(void) : x( 0.0), y( 0.0), z( 0.0), w( 1.0) 
 	{}
 	
-	Quaternion::Quaternion(const double x, const double y, const double z, const double w) : x( x), y( y), z( z), w( w)
+	Quaternion::Quaternion(const float x, const float y, const float z, const float w) : x( x), y( y), z( z), w( w)
 	{}
 	
-	Quaternion::Quaternion(const Vector3d& axis, const double angle) :
-	x( axis.getX() * sin(angle * 0.5) ), 
-		y( axis.getY() * sin(angle * 0.5) ), 
-		z( axis.getZ() * sin(angle * 0.5) ), 
-		w( cos(angle * 0.5) )
+	Quaternion::Quaternion(const Vector3d& axis, const float angle) :
+	x( axis.getX() * sin(angle * 0.5f) ), 
+		y( axis.getY() * sin(angle * 0.5f) ), 
+		z( axis.getZ() * sin(angle * 0.5f) ), 
+		w( cos(angle * 0.5f) )
 	{
 		assert( axis.isNormalized() );
 	}
 
 	Matrix3d getMatrix() const {
-		const double x00 = ( 1.0 - 2.0 * y * y - 2.0 * z * z );
-		const double x01 = ( 2.0 * x * y - 2.0 * z * w );
-		const double x02 = ( 2.0 * x * z + 2.0 * y * w );
+		const float x00 = ( 1.0f - 2.0f * y * y - 2.0f * z * z );
+		const float x01 = ( 2.0f * x * y - 2.0f * z * w );
+		const float x02 = ( 2.0f * x * z + 2.0f * y * w );
 
-		const double x10 = ( 2.0 * x * y + 2.0 * z * w );
-		const double x11 = ( 1.0 - 2.0 * x * x - 2.0 * z * z );
-		const double x12 = ( 2.0 * y * z - 2.0 * x * w );
+		const float x10 = ( 2.0f * x * y + 2.0f * z * w );
+		const float x11 = ( 1.0f - 2.0f * x * x - 2.0f * z * z );
+		const float x12 = ( 2.0f * y * z - 2.0f * x * w );
 	
-		const double x20 = ( 2.0 * x * z - 2.0 * y * w );
-		const double x21 = ( 2.0 * y * z + 2.0 * x * w );
-		const double x22 = ( 1.0 - 2.0 * x * x - 2.0 * y * y);
+		const float x20 = ( 2.0f * x * z - 2.0f * y * w );
+		const float x21 = ( 2.0f * y * z + 2.0f * x * w );
+		const float x22 = ( 1.0f - 2.0f * x * x - 2.0f * y * y);
 
 		return Matrix3d( x00, x01, x02,
 							x10, x11, x12,
@@ -55,21 +55,21 @@ public:
 		return *(this);
 	}
 
-	double getX() const { return x; }
+	float getX() const { return x; }
 
-	double getY() const { return y; }
+	float getY() const { return y; }
 
-	double getZ() const { return z; }
+	float getZ() const { return z; }
 
-	double getW() const { return w; }
+	float getW() const { return w; }
 
-	double getNorm() const {
+	float getNorm() const {
 		return sqrt( pow( x, 2 ) + pow( y, 2 ) + pow( z, 2 ) + pow( w, 2 ) );
 	}
 
 	Quaternion& normalize()
 	{
-		const double norm = getNorm();
+		const float norm = getNorm();
 		x /= norm;
 		y /= norm;
 		z /= norm;
@@ -81,10 +81,10 @@ public:
 	bool isNormalized() const { return Tolerances::isEqualAsDenominator( getNorm(), 1.0 ); }
 
 private:
-	double x;
-	double y;
-	double z;
-	double w;
+	float x;
+	float y;
+	float z;
+	float w;
 };
 
 	}

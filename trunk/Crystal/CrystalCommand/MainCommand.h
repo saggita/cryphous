@@ -32,9 +32,9 @@ public:
 
 	void rotateZ(int angle);
 
-	void zoom(double zoom);
+	void zoom(float zoom);
 
-	void move(double x, double y);
+	void move(float x, float y);
 
 	void viewReset();
 

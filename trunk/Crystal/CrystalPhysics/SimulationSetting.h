@@ -13,18 +13,18 @@ class SimulationSetting : private boost::noncopyable
 {
 public:
 	SimulationSetting(void) :
-	  timeStep( 0.0075 ),
-	  particleDiameter(0.1),
-	  boundaryBox( Geom::Vector3d(-10.0, 0.0, -10.0), Geom::Vector3d(10.0, 100.0, 10.0) )
+	  timeStep( 0.0075f ),
+	  particleDiameter(0.1f),
+	  boundaryBox( Geom::Vector3d(-10.0f, 0.0f, -10.0f), Geom::Vector3d(10.0f, 100.0f, 10.0f) )
 	  {};
 
 	~SimulationSetting(){};
 
-	double getEffectLength() const { return particleDiameter * 1.25; }
+	float getEffectLength() const { return particleDiameter * 1.25f; }
 
 public:
-	double timeStep;
-	double particleDiameter;
+	float timeStep;
+	float particleDiameter;
 	Geom::Box boundaryBox;
 };
 

@@ -22,7 +22,7 @@ namespace Crystal{
 class PhysicsObject : private boost::noncopyable
 {
 protected:
-	PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient, ParticleFactory* particleFactory);
+	PhysicsObject(const int id, const float density, const float gasConstant, const float viscosityCoefficient, ParticleFactory* particleFactory);
 
 	virtual ~PhysicsObject(void);
 
@@ -39,29 +39,29 @@ public:
 
 	ParticleVector getParticles() const { return particleFactory->getParticles(); }
 
-	virtual void enforce(const double proceedTime) = 0;
+	virtual void enforce(const float proceedTime) = 0;
 
-	virtual void integrateTime(const double proceedTime ) = 0;
+	virtual void integrateTime(const float proceedTime ) = 0;
 
 	Geom::Vector3d getCenter() const;
 
 	Geom::Vector3d getAverageVelosity() const;
 
-	double getWeight() const;
+	float getWeight() const;
 
-	double getDensity() const {return density; }
+	float getDensity() const {return density; }
 
-	double getGasConstant() const { return gasConstant; }
+	float getGasConstant() const { return gasConstant; }
 
-	double getViscosityCoefficient() const { return viscosityCoefficient; }
+	float getViscosityCoefficient() const { return viscosityCoefficient; }
 
 	ParticleFactory* getParticleFactory() const { return particleFactory; }
 
 private:
 	const int id;
-	const double density;
-	const double gasConstant;
-	const double viscosityCoefficient;
+	const float density;
+	const float gasConstant;
+	const float viscosityCoefficient;
 	ParticleFactory* particleFactory;
 	
 	friend PhysicsObjectFactory;

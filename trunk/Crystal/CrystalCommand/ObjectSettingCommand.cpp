@@ -36,7 +36,7 @@ void ObjectSettingCommand::refresh()
 	ApplicationSettings::get()->factory->init();
 }
 
-void ObjectSettingCommand::saveSettings(String^ type, const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
+void ObjectSettingCommand::saveSettings(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPositions);
 

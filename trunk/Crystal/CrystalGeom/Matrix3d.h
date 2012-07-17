@@ -19,9 +19,9 @@ public:
 	{
 	}
 
-	Matrix3d(const double x00, const double x01, const double x02, 
-					   const double x10, const double x11, const double x12, 
-					   const double x20, const double x21, const double x22) :
+	Matrix3d(const float x00, const float x01, const float x02, 
+					   const float x10, const float x11, const float x12, 
+					   const float x20, const float x21, const float x22) :
 	x00( x00), x01( x01), x02( x02),
 	x10( x10), x11( x11), x12( x12),
 	x20( x20), x21( x21), x22( x22)
@@ -69,7 +69,7 @@ public:
 			Tolerances::isEqualAsDenominator( x22, rhs.x22 );
 	}
 	
-	double getDeterminant() const
+	float getDeterminant() const
 	{
 		return x00 * x11 * x22
 			+ x02 * x10 * x21
@@ -81,25 +81,25 @@ public:
 
 	Matrix3d getInverse() const
 	{
-		const double denominator = getDeterminant();
+		const float denominator = getDeterminant();
 		assert( !Tolerances::isEqualAsDenominator( denominator ) );
 	
-		const double i00 = x11 * x22 - x12 * x21;
-		const double i01 = x21 * x02 - x22 * x01;
-		const double i02 = x01 * x12 - x02 * x11;
+		const float i00 = x11 * x22 - x12 * x21;
+		const float i01 = x21 * x02 - x22 * x01;
+		const float i02 = x01 * x12 - x02 * x11;
 
-		const double i10 = x12 * x20 - x10 * x22;
-		const double i11 = x22 * x00 - x20 * x02;
-		const double i12 = x02 * x10 - x00 * x12;
+		const float i10 = x12 * x20 - x10 * x22;
+		const float i11 = x22 * x00 - x20 * x02;
+		const float i12 = x02 * x10 - x00 * x12;
 
-		const double i20 = x10 * x21 - x11 * x20;
-		const double i21 = x20 * x01 - x21 * x00;
-		const double i22 = x00 * x11 - x01 * x10;
+		const float i20 = x10 * x21 - x11 * x20;
+		const float i21 = x20 * x01 - x21 * x00;
+		const float i22 = x00 * x11 - x01 * x10;
 
 		Matrix3d matrix( i00, i01, i02,
 			i10, i11, i12,
 			i20, i21, i22 );
-		matrix.scale( 1.0 / denominator );
+		matrix.scale( 1.0f / denominator );
 		return matrix;
 	}
 
@@ -107,7 +107,7 @@ public:
 
 	Matrix3d getProduct(const Matrix3d& rhs) const;
 
-	void setRotateX(const double angle)
+	void setRotateX(const float angle)
 	{
 		*(this) = Matrix3d(
 			1.0, 0.0, 0.0,
@@ -116,7 +116,7 @@ public:
 			);
 	}
 
-	void setRotateY(const double angle)
+	void setRotateY(const float angle)
 	{
 		*(this) = Matrix3d(
 			cos(angle), 0.0, sin(angle),
@@ -125,7 +125,7 @@ public:
 			);
 	}
 
-	void setRotateZ(const double angle)
+	void setRotateZ(const float angle)
 	{
 		*(this) = Matrix3d(
 			cos(angle), -sin(angle), 0.0,
@@ -134,9 +134,9 @@ public:
 			);
 	}
 
-	Matrix3d scale(const double factor);
+	Matrix3d scale(const float factor);
 
-	Matrix3d getScaled(const double factor) const;
+	Matrix3d getScaled(const float factor) const;
 
 	Matrix3d add(const Matrix3d& rhs) {
 		x00 += rhs.x00;
@@ -178,9 +178,9 @@ public:
 	const Matrix3d operator*=(const Matrix3d& rhs);
 
 public:
-	double x00, x01, x02;
-	double x10, x11, x12;
-	double x20, x21, x22;
+	float x00, x01, x02;
+	float x10, x11, x12;
+	float x20, x21, x22;
 };
 
 	}

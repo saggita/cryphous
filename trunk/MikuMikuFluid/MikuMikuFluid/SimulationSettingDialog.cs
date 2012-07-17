@@ -14,9 +14,9 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
-        List<double[]> initialPositions;
+        List<float[]> initialPositions;
         
-        public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<double[]> initialPositions)
+        public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<float[]> initialPositions)
         {
             InitializeComponent();
             this.command = command;
@@ -65,7 +65,7 @@ namespace Cryphous
             System.Diagnostics.Debug.Assert( dataGridViewObjectSetting.Rows.Count == 1);
             foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
             {
-                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToDouble(row.Cells[3].Value), Convert.ToDouble(row.Cells[1].Value), Convert.ToDouble(row.Cells[2].Value), initialPositions);
+                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), initialPositions);
             }
             
             Hide();

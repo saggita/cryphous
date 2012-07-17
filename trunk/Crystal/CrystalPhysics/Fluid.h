@@ -9,15 +9,15 @@ namespace Crystal{
 class Fluid : public PhysicsObject
 {
 public:
-	Fluid(const int id, const double density, const double gasConstant, const double viscosityCoefficient,ParticleFactory* particleFactory);
+	Fluid(const int id, const float density, const float gasConstant, const float viscosityCoefficient,ParticleFactory* particleFactory);
 
 	virtual ~Fluid(void);
 
 	virtual Type getType() { return PhysicsObject::Fluid; }
 
-	virtual void integrateTime(const double proceedTime);
+	virtual void integrateTime(const float proceedTime);
 
-	virtual void enforce(const double proceedTime){};
+	virtual void enforce(const float proceedTime){};
 };
 
 	}

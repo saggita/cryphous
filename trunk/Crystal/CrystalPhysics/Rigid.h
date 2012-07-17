@@ -12,15 +12,15 @@ class Rigid : public PhysicsObject
 {
 public:
 	
-	Rigid(const int id, const double density, const double gasConstant, const double viscosityCoefficient, ParticleFactory* particleFactory);
+	Rigid(const int id, const float density, const float gasConstant, const float viscosityCoefficient, ParticleFactory* particleFactory);
 
 	~Rigid();
 
 	virtual Type getType() { return PhysicsObject::Rigid; }
 
-	virtual void integrateTime(const double proceedTime);
+	virtual void integrateTime(const float proceedTime);
 
-	virtual void enforce(const double proceedTime);
+	virtual void enforce(const float proceedTime);
 
 private:
 	RigidEnforcer enforcer;

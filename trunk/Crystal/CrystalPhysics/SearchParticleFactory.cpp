@@ -12,12 +12,12 @@
 
 using namespace Crystal::Physics;
 
-SearchParticleFactory::SearchParticleFactory(const ParticleVector& particles, const double effectLength)
+SearchParticleFactory::SearchParticleFactory(const ParticleVector& particles, const float effectLength)
 {
 	addParticles( particles, effectLength );
 }
 
-void SearchParticleFactory::addParticles(const ParticleVector& particles, const double effectLength)
+void SearchParticleFactory::addParticles(const ParticleVector& particles, const float effectLength)
 {
 	for( size_t i = 0; i < particles.size(); ++i ) {
 		searchParticles.push_back( SearchParticle( particles[i], effectLength) );

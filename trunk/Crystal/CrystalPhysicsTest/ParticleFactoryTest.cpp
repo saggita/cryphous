@@ -1,8 +1,6 @@
 #define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
-#include "ParticleFactoryTest.h"
-
 #include "../CrystalPhysics/ParticleFactory.h"
 #include "../CrystalPhysics/ParticleConditions.h"
 

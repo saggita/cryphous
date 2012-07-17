@@ -1,8 +1,6 @@
 #define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
-#include "SearchParticleFactoryTest.h"
-
 #include "../CrystalPhysics/SearchParticleFactory.h"
 #include "../CrystalPhysics/SearchParticle.h"
 
@@ -36,7 +34,7 @@ BOOST_AUTO_TEST_CASE( SEARCH_PARTICLE_FACTORY_TEST )
 		ParticleFactory factory;
 		const ParticleVector& particles = factory.createParticles( conditions );
 		SearchParticleFactory searchFactory;
-		searchFactory.addParticles( particles, 1.0 );
+		searchFactory.addParticles( particles, 1.0f );
 		BOOST_CHECK_EQUAL( searchFactory.getSearchParticles().size(), 1 ); 
 	}
 

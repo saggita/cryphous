@@ -82,10 +82,10 @@ namespace Cryphous
         {
             switch( e.KeyCode ) {
 	            case Keys.D :
-            		mainCommand.zoom(1.0);
+            		mainCommand.zoom(1.0F);
 		            break;
             	case Keys.Z :
-	               	mainCommand.zoom(-1.0);
+	               	mainCommand.zoom(-1.0F);
 		        break;
 	        }
         }
@@ -113,8 +113,8 @@ namespace Cryphous
         {
             if (isLeftDown && (e.Button == MouseButtons.Left))
             {
-                double diffX = -(previousPoint.X - e.Location.X) / 1000.0;
-                double diffY = -(previousPoint.Y - e.Location.Y) / 1000.0;
+                float diffX = -(previousPoint.X - e.Location.X) / 1000.0F;
+                float diffY = -(previousPoint.Y - e.Location.Y) / 1000.0F;
                 mainCommand.move(diffX, diffY);
                 previousPoint = e.Location;
             }
@@ -136,7 +136,7 @@ namespace Cryphous
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {
-            double zoom = -e.Delta / 24.0;
+            float zoom = -e.Delta / 24.0F;
             mainCommand.zoom(zoom);
         }
 

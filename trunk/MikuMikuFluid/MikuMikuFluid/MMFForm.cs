@@ -82,7 +82,7 @@ namespace MikuMikuFluid
         {
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
-            List<double[]> managed = mainCommand.getSimulationCommand().getManagedParticles();
+            List<float[]> managed = mainCommand.getSimulationCommand().getManagedParticles();
             main.BakeToTimeLine(mainCommand.getSimulationCommand().getStep(), managed);
         }
 
@@ -91,10 +91,10 @@ namespace MikuMikuFluid
             switch (e.KeyCode)
             {
                 case Keys.D:
-                    mainCommand.zoom(0.1);
+                    mainCommand.zoom(0.1F);
                     break;
                 case Keys.Z:
-                    mainCommand.zoom(-0.1);
+                    mainCommand.zoom(-0.1F);
                     break;
             }
         }
@@ -122,8 +122,8 @@ namespace MikuMikuFluid
         {
             if (isLeftDown && (e.Button == MouseButtons.Left))
             {
-                double diffX = -(previousPoint.X - e.Location.X) / 100.0;
-                double diffY = -(previousPoint.Y - e.Location.Y) / 100.0;
+                float diffX = -(previousPoint.X - e.Location.X) / 100.0F;
+                float diffY = -(previousPoint.Y - e.Location.Y) / 100.0F;
                 mainCommand.move(diffX, diffY);
                 previousPoint = e.Location;
             }
@@ -145,7 +145,7 @@ namespace MikuMikuFluid
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {
-            double zoom = -e.Delta / 120.0;
+            float zoom = -e.Delta / 120.0F;
             mainCommand.zoom(zoom);
         }
 

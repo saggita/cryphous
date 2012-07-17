@@ -7,8 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
 
-//using ManagedPosition = System.Collections.Generic.List<double>;
-
 namespace Cryphous
 {
     public partial class PhysicsObjectSettingDialog : Form
@@ -64,14 +62,14 @@ namespace Cryphous
 
             foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
             {
-                double minX = Convert.ToDouble(row.Cells[4].Value);
-                double maxX = Convert.ToDouble(row.Cells[5].Value);
-                double minY = Convert.ToDouble(row.Cells[6].Value);
-                double maxY = Convert.ToDouble(row.Cells[7].Value);
-                double minZ = Convert.ToDouble(row.Cells[8].Value);
-                double maxZ = Convert.ToDouble(row.Cells[9].Value);
+                float minX = Convert.ToSingle(row.Cells[4].Value);
+                float maxX = Convert.ToSingle(row.Cells[5].Value);
+                float minY = Convert.ToSingle(row.Cells[6].Value);
+                float maxY = Convert.ToSingle(row.Cells[7].Value);
+                float minZ = Convert.ToSingle(row.Cells[8].Value);
+                float maxZ = Convert.ToSingle(row.Cells[9].Value);
                 String shape = row.Cells[10].Value.ToString();
-                List<double[]> positions = new List<double[]>();
+                List<float[]> positions = new List<float[]>();
                 if (shape == "Box")
                 {
                     positions = createPositions(minX, maxX, minY, maxY, minZ, maxZ, false);
@@ -85,7 +83,7 @@ namespace Cryphous
                     System.Diagnostics.Debug.Assert(false);
                 }
 
-                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToDouble(row.Cells[3].Value), Convert.ToDouble(row.Cells[1].Value), Convert.ToDouble(row.Cells[2].Value), positions);
+                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);
             }
             
             Hide();
@@ -101,37 +99,37 @@ namespace Cryphous
 
         }
 
-        private List<double[]> createPositions(double minX, double maxX, double minY, double maxY, double minZ, double maxZ, bool isSphere)
+        private List<float[]> createPositions(float minX, float maxX, float minY, float maxY, float minZ, float maxZ, bool isSphere)
         {
-            List<double[]> positions = new List<double[]>();
+            List<float[]> positions = new List<float[]>();
 
-            double length = double.Parse(textBoxEffectLength.Text);
-            double margin = 1.0e-12;
+            float length = float.Parse(textBoxEffectLength.Text);
+            float margin = 1.0e-12F;
 
-            minX = minX + length * 0.5 - margin;
-            maxX = maxX - length * 0.5 + margin;
-            minY = minY + length * 0.5 - margin;
-            maxY = maxY - length * 0.5 + margin;
-            minZ = minZ + length * 0.5 - margin;
-            maxZ = maxZ - length * 0.5 + margin;
+            minX = minX + length * 0.5F - margin;
+            maxX = maxX - length * 0.5F + margin;
+            minY = minY + length * 0.5F - margin;
+            maxY = maxY - length * 0.5F + margin;
+            minZ = minZ + length * 0.5F - margin;
+            maxZ = maxZ - length * 0.5F + margin;
 
-            double centerX = (minX + maxX) * 0.5;
-            double centerY = (minY + maxY) * 0.5;
-            double centerZ = (minZ + maxZ) * 0.5;
+            float centerX = (minX + maxX) * 0.5F;
+            float centerY = (minY + maxY) * 0.5F;
+            float centerZ = (minZ + maxZ) * 0.5F;
 
-            double radius = Math.Min(Math.Min(centerX - minX, centerY - minY), centerZ - minZ);
+            float radius = Math.Min(Math.Min(centerX - minX, centerY - minY), centerZ - minZ);
 
-            for (double x = minX; x < maxX; x += length)
+            for (float x = minX; x < maxX; x += length)
             {
-                for (double y = minY; y < maxY; y += length)
+                for (float y = minY; y < maxY; y += length)
                 {
-                    for (double z = minZ; z < maxZ; z += length)
+                    for (float z = minZ; z < maxZ; z += length)
                     {
                         if( isSphere && ( Math.Pow(x - centerX, 2.0) + Math.Pow(y - centerY, 2.0) + Math.Pow(z - centerZ, 2.0) > Math.Pow( radius, 2.0) ) ) 
                         {
                             continue;
                         }
-                        double[] position = new double[3];// ManagedPosition();
+                        float[] position = new float[3];// ManagedPosition();
                         position[0] = x;
                         position[1] = y;
                         position[2] = z;
@@ -148,7 +146,7 @@ namespace Cryphous
             this.Hide();
         }
 
-        private void setBoundary(double minX, double maxX, double minY, double maxY, double minZ, double maxZ)
+        private void setBoundary(float minX, float maxX, float minY, float maxY, float minZ, float maxZ)
         {
             dataGridView1.Rows[0].Cells[0].Value = minX;
             dataGridView1.Rows[0].Cells[1].Value = minY;
@@ -163,21 +161,21 @@ namespace Cryphous
             dataGridViewObjectSetting.Rows.Clear();
             if (comboBoxExample.Text == "DamBreak1")
             {
-                setBoundary(-5.0, 5.0, 0.0, 100.0, -5.0, 5.0);
+                setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
             }
             else if (comboBoxExample.Text == "DamBreak2")
             {
-                setBoundary(-5.0, 5.0, 0.0, 100.0, -5.0, 5.0);
+                setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, -1.0, 0.0, 2.0, -5.0, -1.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 20000.0, 4.0, 200.0, 1.0, 5.0, 0.0, 2.0, 1.0, 5.0, "Box"); 
             }
             else if (comboBoxExample.Text == "Rain")
             {
-                setBoundary(-100.0, 100.0, 0.0, 100.0, -100.0, 100.0);
+                setBoundary(-100.0F, 100.0F, 0.0F, 100.0F, -100.0F, 100.0F);
                 for (int i = 0; i < 30; ++i)
                 {
-                    double radius = 2.0;
+                    float radius = 2.0F;
                     double minX = rand.NextDouble() * 20 - 10;
                     double minY = rand.NextDouble() * 10;
                     double minZ = rand.NextDouble() * 20 - 10;
@@ -187,7 +185,7 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Crown")
             {
-                setBoundary(-5.0, 5.0, 0.0, 100.0, -5.0, 5.0);
+                setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 5.0, 0.0, 1.0, -5.0, 5.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 8.0, 10.0, -1.0, 1.0, "Sphere");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, -3.0, 6.0, 8.0, -5.0, -3.0, "Sphere");
@@ -197,7 +195,7 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Wall")
             {
-                setBoundary(-10.0, 10.0, 0.0, 100.0, -2.0, 2.0);
+                setBoundary(-10.0F, 10.0F, 0.0F, 100.0F, -2.0F, 2.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, 2.0, 3.0, 0.0, 1.0, -2.0, 2.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, -8.0, -7.0, 0.0, 2.0, -2.0, 2.0, "Box");

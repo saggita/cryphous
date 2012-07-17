@@ -12,7 +12,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-PhysicsObject::PhysicsObject(const int id, const double density, const double gasConstant, const double viscosityCoefficient,ParticleFactory* particleFactory) :
+PhysicsObject::PhysicsObject(const int id, const float density, const float gasConstant, const float viscosityCoefficient,ParticleFactory* particleFactory) :
 id( id),
 density( density),
 gasConstant( gasConstant),
@@ -47,9 +47,9 @@ Vector3d PhysicsObject::getAverageVelosity() const
 	return averageVelosity / getParticles().size();
 }
 
-double PhysicsObject::getWeight() const
+float PhysicsObject::getWeight() const
 {
-	double weight = 0.0;
+	float weight = 0.0;
 	BOOST_FOREACH(Particle* particle, getParticles()) {
 		weight += particle->getMass();
 	}

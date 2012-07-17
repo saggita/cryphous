@@ -8,7 +8,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-Rigid::Rigid( const int id, const double density, const double gasConstant, const double viscosityCoefficient, ParticleFactory* particleFactory ) :
+Rigid::Rigid( const int id, const float density, const float gasConstant, const float viscosityCoefficient, ParticleFactory* particleFactory ) :
 PhysicsObject( id , density, gasConstant, viscosityCoefficient, particleFactory)
 {
 }
@@ -17,7 +17,7 @@ Rigid::~Rigid()
 {
 }
 
-void Rigid::integrateTime(const double proceedTime)
+void Rigid::integrateTime(const float proceedTime)
 {
 	const ParticleVector& particles = getParticles();
 	BOOST_FOREACH( Particle* particle, particles ) {
@@ -27,7 +27,7 @@ void Rigid::integrateTime(const double proceedTime)
 	}
 }
 
-void Rigid::enforce(const double proceedTime)
+void Rigid::enforce(const float proceedTime)
 {
 	enforcer.enforce( this, proceedTime);
 }

@@ -22,7 +22,7 @@ class Particle : private boost::noncopyable
 {
 protected:
 
-	Particle(int id, const Geom::Vector3d& center, const double mass, const double radius, ParticleFactory* particleFactory);
+	Particle(int id, const Geom::Vector3d& center, const float mass, const float radius, ParticleFactory* particleFactory);
 
 	~Particle(void);
 
@@ -32,17 +32,17 @@ public:
 
 	void resetDiffParameters();
 
-	double getRadius() const { return radius; }
+	float getRadius() const { return radius; }
 
-	double getDiameter() const { return radius * 2.0; }
+	float getDiameter() const { return radius * 2.0f; }
 
-	double getMass() const { return mass; }
+	float getMass() const { return mass; }
 
-	double getVolume() const { return getMass() / density; }
+	float getVolume() const { return getMass() / density; }
 
-	double getIdealVolume() const;
+	float getIdealVolume() const;
 
-	double getPressure() const;
+	float getPressure() const;
 
 	int getID() const { return id; }
 
@@ -56,13 +56,13 @@ public:
 	Geom::Vector3d center;
 	Geom::Vector3d velocity;
 	Geom::Vector3d force;
-	double density;
+	float density;
 
 private:
-	double radius;
+	float radius;
 	const int id;
 	PhysicsObject* parent;
-	const double mass;
+	const float mass;
 
 	ParticleFactory* particleFactory;
 

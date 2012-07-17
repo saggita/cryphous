@@ -10,19 +10,19 @@ class Tolerances
 {
 public:
 
-	static double getDistanceTolerance() { return 1.0e-9; }
+	static float getDistanceTolerance() { return 1.0e-9f; }
 
-	static double getDenominatorTolerance() { return 1.0e-18; }
+	static float getDenominatorTolerance() { return 1.0e-18f; }
 
-	static bool isEqualAsDistance(double x) { return ::fabs( x ) < getDistanceTolerance(); }
+	static bool isEqualAsDistance(float x) { return ::fabs( x ) < getDistanceTolerance(); }
 
-	static bool isEqualAsDistance(double x, double y) { return ::fabs( x - y ) < getDistanceTolerance(); }
+	static bool isEqualAsDistance(float x, float y) { return ::fabs( x - y ) < getDistanceTolerance(); }
 
-	static bool isEqualAsDenominator(double x) { return ::fabs( x ) < getDenominatorTolerance(); }
+	static bool isEqualAsDenominator(float x) { return ::fabs( x ) < getDenominatorTolerance(); }
 
-	static bool isEqualAsDenominator(double x, double y) { 	return ::fabs( x - y ) < getDenominatorTolerance(); }
+	static bool isEqualAsDenominator(float x, float y) { 	return ::fabs( x - y ) < getDenominatorTolerance(); }
 
-	static double getPI() { return 3.14159265359; }
+	static float getPI() { return 3.14159265359f; }
 };
 
 	}

@@ -34,7 +34,7 @@ void Simulation::simulate(PhysicsObjectFactory* factory, const SimulationSetting
 	const ParticleVector& particles = factory->getSortedParticles();
 
 	BOOST_FOREACH( Particle* particle, particles ) {
-		particle->force += Vector3d( 0.0, -9.8 * particle->density, 0.0 );
+		particle->force += Vector3d( 0.0f, -9.8f * particle->density, 0.0f );
 	}
 
 	Profiler::get()->start(" Sim->enforce");

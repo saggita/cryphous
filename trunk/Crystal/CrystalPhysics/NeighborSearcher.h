@@ -13,7 +13,7 @@ class NeighborSearcher
 {
 public:
 	NeighborSearcher(const SearchParticleVector& searchParticles,
-		const double effectLength):
+		const float effectLength):
 		searchParticles( searchParticles),
 		effectLengthSquared( effectLength * effectLength)
 	{};
@@ -33,7 +33,7 @@ private:
 
 private:
 	const SearchParticleVector& searchParticles;
-	const double effectLengthSquared;
+	const float effectLengthSquared;
 	ParticlePairVector pairs;
 	std::vector<ParticlePairVector> eachPairs;
 

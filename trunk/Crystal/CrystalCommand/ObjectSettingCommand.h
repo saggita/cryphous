@@ -17,7 +17,7 @@ public:
 
 	void refresh();
 
-	void saveSettings(System::String^ type, const double density, const double pressureCoe, const double viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPosition);
+	void saveSettings(System::String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPosition);
 };
 
 	}

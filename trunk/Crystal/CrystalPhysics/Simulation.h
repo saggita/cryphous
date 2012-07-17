@@ -24,11 +24,11 @@ public:
 
 	int getStep() const { return step; }
 
-	double getSimulationTime() const { return simulationTime; }
+	float getSimulationTime() const { return simulationTime; }
 
 private:
 	int step;
-	double simulationTime;
+	float simulationTime;
 };
 
 	}

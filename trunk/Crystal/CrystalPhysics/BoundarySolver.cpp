@@ -30,7 +30,7 @@ setting( setting)
 
 void BoundarySolver::calculateDensity(const Box& box)
 {
-	const double effectLength = setting.getEffectLength();
+	const float effectLength = setting.getEffectLength();
 	
 	const ParticleVector& particles = object->getParticles();
 	#pragma omp parallel for
@@ -77,7 +77,7 @@ void BoundarySolver::calculateForce(const Box& box)
 		return;
 	}
 
-	const double timeStep = setting.timeStep;
+	const float timeStep = setting.timeStep;
 	const Box& innerBox = box.getInnerOffset( object->getParticles().front()->getRadius() );
 
 	const ParticleVector& particles = object->getParticles();
@@ -86,35 +86,35 @@ void BoundarySolver::calculateForce(const Box& box)
 		Particle* particle = particles[i];
 
 		if( particle->center.getX() > innerBox.getMaxX() ) {
-			const double over = particle->center.getX() - innerBox.getMaxX();
-			const double force = over * particle->density / timeStep / timeStep; 
+			const float over = particle->center.getX() - innerBox.getMaxX();
+			const float force = over * particle->density / timeStep / timeStep; 
 			particle->force -= Vector3d( force, 0.0, 0.0 );
 		}
 		else if( particle->center.getX() < innerBox.getMinX() ) {
-			const double over = particle->center.getX() - innerBox.getMinX();
-			const double force = over * particle->density / timeStep / timeStep;
+			const float over = particle->center.getX() - innerBox.getMinX();
+			const float force = over * particle->density / timeStep / timeStep;
 			particle->force -= Vector3d( force, 0.0, 0.0 );
 		}
 
 		if( particle->center.getY() > innerBox.getMaxY() ) {
-			const double over = particle->center.getY() - innerBox.getMaxY();
-			const double force = over * particle->density / timeStep / timeStep;
+			const float over = particle->center.getY() - innerBox.getMaxY();
+			const float force = over * particle->density / timeStep / timeStep;
 			particle->force -= Vector3d( 0.0, force, 0.0 );
 		}
 		else if( particle->center.getY() < innerBox.getMinY() ) {
-			const double over = particle->center.getY() - innerBox.getMinY();
-			const double force = over * particle->density / timeStep / timeStep;
+			const float over = particle->center.getY() - innerBox.getMinY();
+			const float force = over * particle->density / timeStep / timeStep;
 			particle->force -= Vector3d( 0.0, force, 0.0 );
 		}
 
 		if( particle->center.getZ() > innerBox.getMaxZ() ) {
-			const double over = particle->center.getZ() - innerBox.getMaxZ();
-			const double force = over * particle->density / timeStep / timeStep;
+			const float over = particle->center.getZ() - innerBox.getMaxZ();
+			const float force = over * particle->density / timeStep / timeStep;
 			particle->force -= Vector3d( 0.0, 0.0, force );
 		}
 		else if( particle->center.getZ() < innerBox.getMinZ() ) {
-			const double over = particle->center.getZ() - innerBox.getMinZ();
-			const double force = over * particle->density / timeStep / timeStep;
+			const float over = particle->center.getZ() - innerBox.getMinZ();
+			const float force = over * particle->density / timeStep / timeStep;
 			particle->force -= Vector3d( 0.0, 0.0, force );
 		}
 	}
