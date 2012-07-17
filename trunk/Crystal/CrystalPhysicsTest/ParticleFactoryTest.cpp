@@ -1,3 +1,6 @@
+#define BOOST_TEST_NO_LIB
+#include <boost/test/unit_test.hpp>
+
 #include "ParticleFactoryTest.h"
 
 #include "../CrystalPhysics/ParticleFactory.h"
@@ -6,12 +9,10 @@
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 
-#include <boost/test/unit_test.hpp>
-
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-ParticleFactoryTest::ParticleFactoryTest(void)
+BOOST_AUTO_TEST_CASE(PARTICLE_FACTORY_TEST)
 {
 	std::vector<Vector3d> points;
 	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
