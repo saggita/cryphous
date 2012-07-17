@@ -1,5 +1,4 @@
-#include "BoxTest.h"
-
+#define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
 #include "../CrystalGeom/Box.h"
@@ -8,7 +7,7 @@
 
 using namespace Crystal::Geom;
 
-BoxTest::BoxTest(void)
+BOOST_AUTO_TEST_CASE(BOX_TEST)
 {
 	{
 		Box box( Vector3d( 10.0, 20.0, 30.0), Vector3d( 30.0, 20.0, 10.0) );
