@@ -2,7 +2,6 @@
 
 #include <windows.h>
 #include <GL/gl.h>
-#include <GL/glu.h>
 
 namespace Crystal{
 	namespace Graphics {
@@ -22,22 +21,19 @@ private:
 	int SetupPixelFormat( HDC hdc );
 
 private:
-	HWND hWnd;	///< ウィンドウハンドル.
-	HDC hDC;	///< デバイスコンテキストハンドル.
-	HGLRC hGLRC;	///< OpenGLハンドル.
+	HWND hWnd;
+	HDC hDC;
+	HGLRC hGLRC;
 
 public:
-	/// レンダリングコンテキストをカレントに設定する.
 	void SetCurrentRenderingContext() {
 		wglMakeCurrent( hDC, hGLRC );
 	}
 
-	/// 描画を開始する.
 	void BeginRendering() {
 		wglMakeCurrent( hDC, hGLRC );
 	}
 
-	/// 描画を終了する.
 	void EndRendering() {
 		SwapBuffers( hDC );
 		wglMakeCurrent( hDC, 0);
@@ -45,5 +41,5 @@ public:
 
 };
 
-	}	// namespace UI
-}	// namespace Crystal
+	}
+}

@@ -77,19 +77,13 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\External\glee\GLee.cpp" />
-    <ClCompile Include="PointSprite.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
-    <ClCompile Include="TextureCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\External\glee\GLee.h" />
-    <ClInclude Include="PointSprite.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="GraphicsSettings.h" />
     <ClInclude Include="OpenGLWrapper.h" />
-    <ClInclude Include="TextureCreator.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrystalGeom\CrystalGeom.vcxproj">
