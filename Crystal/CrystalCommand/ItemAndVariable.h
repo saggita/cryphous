@@ -64,32 +64,32 @@ private:
 	System::Windows::Forms::TrackBar^ trackBar;
 };
 
-ref class DoubleTextBox : public ItemAndVariable
+ref class FloatTextBox : public ItemAndVariable
 {
 public:
-	DoubleTextBox(double* doublePrecise, System::Windows::Forms::TextBox^ textBox) :
+	FloatTextBox(float* floatPrecise, System::Windows::Forms::TextBox^ textBox) :
 	  ItemAndVariable() {
-		  this->doublePrecise = doublePrecise;
+		  this->floatPrecise = floatPrecise;
 		  this->textBox = textBox;
 		  applyToItem();
 	  }
 
-	  virtual ~DoubleTextBox() {};
+	  virtual ~FloatTextBox() {};
 
 	  virtual void applyToItem() override {
-		  textBox->Text = (*doublePrecise).ToString();
+		  textBox->Text = (*floatPrecise).ToString();
 	  }
 
 	  virtual void applyToVariable() override {
 		  if( textBox->Text == "") {
-			  *doublePrecise = 0.0;
+			  *floatPrecise = 0.0;
 			  return;
 		  }
-		  *doublePrecise = double::Parse( textBox->Text );
+		  *floatPrecise = float::Parse( textBox->Text );
 	  }
 
 private:
-	double* doublePrecise;
+	float* floatPrecise;
 	System::Windows::Forms::TextBox^ textBox;
 };
 

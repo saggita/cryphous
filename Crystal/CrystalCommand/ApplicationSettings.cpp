@@ -45,12 +45,12 @@ void ApplicationSettings::refresh()
 	simulation->init();
 }
 
-double ApplicationSettings::getParticleDiameter()
+float ApplicationSettings::getParticleDiameter()
 {
 	return simulationSetting->particleDiameter;
 }
 
-void ApplicationSettings::setParticleDiameter(const double diameter)
+void ApplicationSettings::setParticleDiameter(const float diameter)
 {
 	simulationSetting->particleDiameter = diameter;
 }

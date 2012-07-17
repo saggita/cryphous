@@ -6,8 +6,6 @@ using System.Drawing;
 using MikuMikuPlugin;
 using DxMath;
 
-//using ManagedPosition = System.Collections.Generic.List<double>;
-
 namespace MikuMikuFluid 
 {
     public class Main : ICommandPlugin
@@ -25,9 +23,9 @@ namespace MikuMikuFluid
             keyFrame = frameSettingDialog.StartFrame;
         }
 
-        private List<double[]> initialPositions;
+        private List<float[]> initialPositions;
 
-        public List<double[]> InitialPositions
+        public List<float[]> InitialPositions
         {
             get { return initialPositions; }
         }
@@ -84,7 +82,7 @@ namespace MikuMikuFluid
 
         private void setInitialPositions()
         {
-            initialPositions = new List<double[]>();
+            initialPositions = new List<float[]>();
 
             List<Bone> bones = API.GetBones();
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
@@ -94,7 +92,7 @@ namespace MikuMikuFluid
                 for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    double[] pos = new double[3];
+                    float[] pos = new float[3];
                     pos[0] = ( bonePosition.X + motionFrames[0].position.X);
                     pos[1] = ( bonePosition.Y + motionFrames[0].position.Y);
                     pos[2] = ( bonePosition.Z + motionFrames[0].position.Z);
@@ -103,7 +101,7 @@ namespace MikuMikuFluid
             }
         }
 
-        public void BakeToTimeLine(long frameNumber, List<double[]> bakePositions)
+        public void BakeToTimeLine(long frameNumber, List<float[]> bakePositions)
         {
             if ( (frameNumber % frameSettingDialog.SimulationIterval) != 0)
             {
@@ -123,9 +121,9 @@ namespace MikuMikuFluid
                 {
                     List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
                     Vector3 pos = new Vector3();
-                    pos.X = (float) bakePositions[index][0] - position[0];
-                    pos.Y = (float) bakePositions[index][1] - position[1];
-                    pos.Z = (float) bakePositions[index][2] - position[2];
+                    pos.X = bakePositions[index][0] - position[0];
+                    pos.Y = bakePositions[index][1] - position[1];
+                    pos.Z = bakePositions[index][2] - position[2];
 
                     AddMotionFrame(motionFrames, keyFrame, pos);
                     API.ReplaceAllMotionFrameData(boneIndex, layerIndex, motionFrames);

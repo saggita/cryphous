@@ -24,7 +24,7 @@ struct PhysicsObjectCondition
 		Obstacle,
 	};
 
-	PhysicsObjectCondition( const std::vector<Geom::Vector3d>& points, const double density, const double pressureCoefficient, const double viscosityCoefficient, const ObjectType objectType) :
+	PhysicsObjectCondition( const std::vector<Geom::Vector3d>& points, const float density, const float pressureCoefficient, const float viscosityCoefficient, const ObjectType objectType) :
 		points( points), 
 			density( density),
 			pressureCoefficient( pressureCoefficient),
@@ -34,9 +34,9 @@ struct PhysicsObjectCondition
 		}
 
 	const std::vector<Geom::Vector3d> points;
-	double density;
-	double pressureCoefficient;
-	double viscosityCoefficient;
+	float density;
+	float pressureCoefficient;
+	float viscosityCoefficient;
 	ObjectType objectType;
 };
 
@@ -53,7 +53,7 @@ public:
 
 	PhysicsObjectList getPhysicsObjects() const { return physicsObjects; }
 
-	SearchParticleVector getSearchParticles(const double effectLength);
+	SearchParticleVector getSearchParticles(const float effectLength);
 
 	ParticleVector getOrderedParticles() const;
 
@@ -66,7 +66,7 @@ private:
 	PhysicsObjectList physicsObjects;
 	SearchParticleFactory searchParticleFactory;
 
-	void createSearchParticles(const double effectLength);
+	void createSearchParticles(const float effectLength);
 };
 
 	}

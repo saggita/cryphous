@@ -36,9 +36,9 @@ public:
 
 public:
 
-	double getParticleDiameter();
+	float getParticleDiameter();
 
-	void setParticleDiameter(const double diameter);
+	void setParticleDiameter(const float diameter);
 
 	Physics::PhysicsObjectFactory* factory;
 

@@ -30,7 +30,7 @@ public:
 		return Vector3d( (getMin() + getMax()).scale( 0.5 ) );
 	}
 	
-	double Box::getVolume() const {
+	float Box::getVolume() const {
 		return (maxX - minX) * (maxY - minY) * (maxZ - minZ);
 	}
 	
@@ -42,17 +42,17 @@ public:
 		return Vector3d( minX, minY, minZ );
 	}
 
-	double getMaxX() const { return maxX; }
+	float getMaxX() const { return maxX; }
 
-	double getMinX() const { return minX; }
+	float getMinX() const { return minX; }
 
-	double getMaxY() const { return maxY; }
+	float getMaxY() const { return maxY; }
 
-	double getMinY() const { return minY; }
+	float getMinY() const { return minY; }
 
-	double getMaxZ() const { return maxZ; }
+	float getMaxZ() const { return maxZ; }
 
-	double getMinZ() const { return minZ; }
+	float getMinZ() const { return minZ; }
 
 	bool isInterior(const Vector3d &point) const {
 		const bool xIsInterior = ( minX < point.getX() && point.getX() < maxX );
@@ -63,7 +63,7 @@ public:
 	
 	bool isExterior(const Vector3d &point) const { return !isInterior(point); }
 	
-	void outerOffset(const double offsetLength) {
+	void outerOffset(const float offsetLength) {
 		minX -= offsetLength;
 		minY -= offsetLength;
 		minZ -= offsetLength;
@@ -72,27 +72,27 @@ public:
 		maxZ += offsetLength;
 	}
 	
-	Box getOuterOffset(const double offsetLength) const {
+	Box getOuterOffset(const float offsetLength) const {
 		Box box = *this;
 		box.outerOffset( offsetLength );
 		return box;
 	}
 
-	void innerOffset(const double offsetLength) {
+	void innerOffset(const float offsetLength) {
 		outerOffset( -offsetLength );
 	}
 
-	Box getInnerOffset(const double offsetLength) const {
+	Box getInnerOffset(const float offsetLength) const {
 		return getOuterOffset( -offsetLength );
 	}
 
 private:
-	double maxX;
-	double minX;
-	double maxY;
-	double minY;
-	double maxZ;
-	double minZ;
+	float maxX;
+	float minX;
+	float maxY;
+	float minY;
+	float maxZ;
+	float minZ;
 };
 
 	}

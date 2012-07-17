@@ -33,7 +33,7 @@ public:
 
 	Geom::Vector3d getDistanceVector() const { return Geom::Vector3d( particleY->center, particleX->center); }
 
-	double getDistance() const { return getDistanceVector().getLength(); }
+	float getDistance() const { return getDistanceVector().getLength(); }
 
 private:
 	Particle* particleX;

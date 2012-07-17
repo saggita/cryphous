@@ -18,6 +18,6 @@ void SimulationSettingCommand::setTextBox(System::Windows::Forms::TextBox ^textB
 	SimulationSetting* setting = ApplicationSettings::get()->simulationSetting;
 
 	itemAndVariables.Clear();
-	itemAndVariables.Push( gcnew DoubleTextBox( &(setting->timeStep), textBoxTimeStep ) );
-	itemAndVariables.Push( gcnew DoubleTextBox( &(setting->particleDiameter), textBoxEffectLength ) );
+	itemAndVariables.Push( gcnew FloatTextBox( &(setting->timeStep), textBoxTimeStep ) );
+	itemAndVariables.Push( gcnew FloatTextBox( &(setting->particleDiameter), textBoxEffectLength ) );
 }

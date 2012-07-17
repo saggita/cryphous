@@ -76,18 +76,18 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	BOOST_FOREACH( Particle* particle, factory->getSortedParticles() ) {
 		const Vector3d& point = particle->center;
 		if( particle->getParent()->getType() == PhysicsObject::Rigid ) {
-			glColor4d( 1.0, 1.0, 1.0, 1.0 );
+			glColor4d( 1.0f, 1.0f, 1.0f, 1.0f );
 			glVertex3d( point.getX(), point.getY(), point.getZ() );
 		}
 		else if( particle->getParent()->getType() == PhysicsObject::Obstacle ) {
-			glColor4d( 0.0, 0.0, 0.0, 1.0 );
+			glColor4d( 0.0f, 0.0f, 0.0f, 1.0f );
 			glVertex3d( point.getX(), point.getY(), point.getZ() );
 		}
 		else {
-			const double densityRatio = particle->density / 1000.0;
-			const double alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0; 
-			glColor4d( 0.1f, 0.1f, 1.0f, alpha );
-			glVertex3d( point.getX(), point.getY(), point.getZ() );
+			const float densityRatio = particle->density / 1000.0f;
+			const float alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0f; 
+			glColor4f( 0.1f, 0.1f, 1.0f, alpha );
+			glVertex3f( point.getX(), point.getY(), point.getZ() );
 		}
 	}
 	glEnd();

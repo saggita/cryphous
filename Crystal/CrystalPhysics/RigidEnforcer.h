@@ -15,20 +15,20 @@ public:
 
 	~RigidEnforcer(void);
 
-	void enforce(PhysicsObject* rigid, const double proceedTime);
+	void enforce(PhysicsObject* rigid, const float proceedTime);
 
 private:
 	Geom::Vector3d* angleVelosity;
 
 	void RigidEnforcer::convertToFluidForce(PhysicsObject* rigid);
 
-	double getAngleAccelerationX( double x1,double x2,double x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
+	float getAngleAccelerationX( float x1,float x2,float x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
 
-	double getAngleAccelerationY( double x1,double x2,double x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
+	float getAngleAccelerationY( float x1,float x2,float x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
 
-	double getAngleAccelerationZ( double x1, double x2, double x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
+	float getAngleAccelerationZ( float x1, float x2, float x3, const Geom::Vector3d& I, const Geom::Vector3d& N);
 
-	void getAngleVelosity( const Geom::Vector3d& I, const Geom::Vector3d& N, const double proceedTime );
+	void getAngleVelosity( const Geom::Vector3d& I, const Geom::Vector3d& N, const float proceedTime );
 };
 
 	}

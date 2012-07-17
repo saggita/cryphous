@@ -11,9 +11,9 @@ public:
 	bool bPointSprite;
 	int pointSize;
 	int pointAlpha;
-	double zoom;
-	double cameraX;
-	double cameraY;
+	float zoom;
+	float cameraX;
+	float cameraY;
 	int angleX;
 	int angleY;
 	int angleZ;
@@ -25,9 +25,9 @@ public:
 	}
 
 	void resetCameraAndAngle(){
-		cameraX = 0.0;
-		cameraY = 0.0;
-		zoom = 50;
+		cameraX = 0.0f;
+		cameraY = 0.0f;
+		zoom = 50.0f;
 		angleX = 0;
 		angleY = 0;
 		angleZ = 0;

@@ -1,8 +1,6 @@
 #define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
-#include "SPHSolverTest.h"
-
 #include "../CrystalPhysics/SPHSolver.h"
 #include "../CrystalPhysics/PhysicsObject.h"
 #include "../CrystalPhysics/SimulationSetting.h"

@@ -13,7 +13,7 @@ namespace Crystal{
 class SPHPairSolver
 {
 public:
-	SPHPairSolver::SPHPairSolver( const double effectLength ) :
+	SPHPairSolver::SPHPairSolver( const float effectLength ) :
 	kernels( effectLength)
 	{
 	}
@@ -24,14 +24,14 @@ public:
 
 	void calculateDensity( const ParticlePair& pair )
 	{
-		const double result = kernels.getPoly6Kernel( pair.getDistance() );
+		const float result = kernels.getPoly6Kernel( pair.getDistance() );
 		pair.getParticleX()->density += result * pair.getParticleY()->getMass();
 		pair.getParticleY()->density += result * pair.getParticleX()->getMass();
 	}
 
 	void calculateDensity(Particle* particle)
 	{
-		const double result = kernels.getPoly6Kernel( 0.0 );
+		const float result = kernels.getPoly6Kernel( 0.0 );
 		particle->density += result * particle->getMass();
 	}
 
@@ -40,26 +40,26 @@ public:
 		Particle* particleX = pair.getParticleX();
 		Particle* particleY = pair.getParticleY();
 
-		const double result = kernels.getPoly6Kernel( pair.getDistance() );
+		const float result = kernels.getPoly6Kernel( pair.getDistance() );
 		particleX->density += result * particleX->getMass();
 		particleY->density += result * particleY->getMass();
 	}
 
 	void calculatePressureForce( const ParticlePair& pair )
 	{
-		const double pressureX = pair.getParticleX()->getPressure();
-		const double pressureY = pair.getParticleY()->getPressure();
+		const float pressureX = pair.getParticleX()->getPressure();
+		const float pressureY = pair.getParticleY()->getPressure();
 
 		const Geom::Vector3d pressure = kernels.getSpikyKernelGradient( pair.getDistanceVector() ) *
-			( pressureX + pressureY ) * 0.5;
+			( pressureX + pressureY ) * 0.5f;
 		pair.getParticleX()->force += pressure * pair.getParticleY()->getVolume();
 		pair.getParticleY()->force -= pressure * pair.getParticleX()->getVolume();
 	}
 
 	void calculateViscosityForce( const ParticlePair& pair )
 	{
-		const double viscosityCoefficient = ( pair.getParticleX()->getParent()->getViscosityCoefficient() + 
-			pair.getParticleY()->getParent()->getViscosityCoefficient() ) * 0.5;
+		const float viscosityCoefficient = ( pair.getParticleX()->getParent()->getViscosityCoefficient() + 
+			pair.getParticleY()->getParent()->getViscosityCoefficient() ) * 0.5f;
 		const Geom::Vector3d diffVector( pair.getParticleX()->velocity, pair.getParticleY()->velocity );
 		const Geom::Vector3d viscosity = viscosityCoefficient * diffVector * 
 			kernels.getViscosityKernelLaplacian( pair.getDistance() );

@@ -12,7 +12,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-Particle::Particle(int id, const Vector3d& center, const double mass, const double radius, ParticleFactory* particleFactory) :
+Particle::Particle(int id, const Vector3d& center, const float mass, const float radius, ParticleFactory* particleFactory) :
 id( id),
 center( center),
 mass( mass),
@@ -39,12 +39,12 @@ void Particle::resetDiffParameters(){
 	force = Vector3d( 0.0, 0.0, 0.0);
 }
 
-double Particle::getPressure() const
+float Particle::getPressure() const
 {
 	return parent->getGasConstant() * ( std::pow( density / parent->getDensity(), 1 ) - 1.0 );
 }
 
-double Particle::getIdealVolume() const
+float Particle::getIdealVolume() const
 {
 	return std::pow( getRadius() * 2.0, 2 );
 }

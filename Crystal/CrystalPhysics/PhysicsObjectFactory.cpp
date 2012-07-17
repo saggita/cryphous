@@ -45,7 +45,7 @@ void PhysicsObjectFactory::init()
 	this->nextID = 0;
 }
 
-void PhysicsObjectFactory::createSearchParticles(const double effectLength)
+void PhysicsObjectFactory::createSearchParticles(const float effectLength)
 {
 	searchParticleFactory = SearchParticleFactory( ParticleVector(), effectLength );
 	ParticleVector particles;
@@ -55,7 +55,7 @@ void PhysicsObjectFactory::createSearchParticles(const double effectLength)
 	}
 }
 
-SearchParticleVector PhysicsObjectFactory::getSearchParticles(const double effectLength)
+SearchParticleVector PhysicsObjectFactory::getSearchParticles(const float effectLength)
 {
 	searchParticleFactory = SearchParticleFactory( getSortedParticles(), effectLength );
 	return searchParticleFactory.getSearchParticles();

@@ -38,7 +38,7 @@ Matrix3d Matrix3d::getProduct(const Matrix3d& rhs) const
 		return matrix.product( rhs);
 }
 
-Matrix3d Matrix3d::scale(const double factor)
+Matrix3d Matrix3d::scale(const float factor)
 {
 	x00 *= factor; x01 *= factor; x02 *= factor;
 	x10 *= factor; x11 *= factor; x12 *= factor;
@@ -46,7 +46,7 @@ Matrix3d Matrix3d::scale(const double factor)
 	return *this;
 }
 
-Matrix3d Matrix3d::getScaled(const double factor) const
+Matrix3d Matrix3d::getScaled(const float factor) const
 {
 	Matrix3d matrix = *this;
 	return matrix.scale( factor);

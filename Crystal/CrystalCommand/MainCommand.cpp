@@ -79,13 +79,13 @@ void MainCommand::rotateZ(int angle)
 	rendering();
 }
 
-void MainCommand::zoom(double zoom)
+void MainCommand::zoom(float zoom)
 {
 	GraphicsSettings::get()->zoom += zoom;
 	rendering();
 }
 
-void MainCommand::move(double x, double y)
+void MainCommand::move(float x, float y)
 {
 	GraphicsSettings::get()->cameraX += x;
 	GraphicsSettings::get()->cameraY += y;

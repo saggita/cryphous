@@ -18,7 +18,7 @@ public:
 	  {
 	  }
 
-	Vector3d(double x, double y, double z) :
+	Vector3d(float x, float y, float z) :
 		x( x), y( y), z( z)
 		{
 		}
@@ -30,47 +30,47 @@ public:
 		{
 		}
 
-	void setX(const double x){ this->x = x; }
+	void setX(const float x){ this->x = x; }
 
-	void setY(const double y){ this->y = y; }
+	void setY(const float y){ this->y = y; }
 
-	void setZ(const double z){ this->z = z; }
+	void setZ(const float z){ this->z = z; }
 
-	double getX() const { return x; }
+	float getX() const { return x; }
 
-	double getY() const { return y; }
+	float getY() const { return y; }
 
-	double getZ() const { return z; }
+	float getZ() const { return z; }
 
-	double getLengthSquared() const {
+	float getLengthSquared() const {
 		return x*x + y*y + z*z;
 	}
 
-	double getLength() const {
+	float getLength() const {
 		return ::sqrt( getLengthSquared() );
 	}
 
-	double getDistance(const Vector3d& rhs) const {;
+	float getDistance(const Vector3d& rhs) const {;
 		return sqrt( getDistanceSquared(rhs) );
 	}
 
-	double getDistanceSquared( const Vector3d& rhs ) const{
+	float getDistanceSquared( const Vector3d& rhs ) const{
 		return pow( x - rhs.x, 2 ) + pow( y - rhs.y, 2 ) + pow( z - rhs.z, 2 );
 	}
 
-	Vector3d scale(const double factor) {	
+	Vector3d scale(const float factor) {	
 		x *= factor;
 		y *= factor;
 		z *= factor;
 		return *this;
 	}
 
-	Vector3d getScaled(const double factor) const {
+	Vector3d getScaled(const float factor) const {
 		return Vector3d( x * factor, y * factor, z * factor );
 	}
 
 	Vector3d normalize() {
-		const double length = getLength();
+		const float length = getLength();
 		assert( !Tolerances::isEqualAsDenominator( length ) );
 		x /= length;
 		y /= length;
@@ -108,17 +108,17 @@ public:
 		return *this;
 	}
 
-	Vector3d operator*(const double factor) const {
+	Vector3d operator*(const float factor) const {
 		Vector3d vector( *this );
 		return vector.scale( factor );
 	}
 
-	Vector3d Vector3d::operator/(const double factor) const {
+	Vector3d Vector3d::operator/(const float factor) const {
 		Vector3d vector( *this );
-		return vector.scale( 1.0 / factor );
+		return vector.scale( 1.0f / factor );
 	}
 
-	double getInnerProduct(const Vector3d& rhs) const {
+	float getInnerProduct(const Vector3d& rhs) const {
 		return x * rhs.getX() + y * rhs.getY() + z * rhs.getZ();
 	}
 
@@ -128,9 +128,9 @@ public:
 			x * rhs.getY() - y * rhs.getX() );
 	}
 	
-	Vector3d operator*=(const double factor) { return scale(factor); }
+	Vector3d operator*=(const float factor) { return scale(factor); }
 
-	Vector3d operator/=(const double factor) { return scale( 1.0 / factor); }
+	Vector3d operator/=(const float factor) { return scale( 1.0f / factor); }
 
 	Vector3d operator+(const Vector3d& rhs) const {
 		return Vector3d( x + rhs.getX(), y + rhs.getY(), z + rhs.getZ() );
@@ -161,14 +161,14 @@ public:
 	const Vector3d Vector3d::operator*(const Matrix3d& rhs) const { return getMult( rhs); }
 
 private:
-	double x;
-	double y;
-	double z;
+	float x;
+	float y;
+	float z;
 };
 
-static Vector3d operator*(double factor, const Vector3d& rhs) { return rhs.getScaled(factor); }
+static Vector3d operator*(float factor, const Vector3d& rhs) { return rhs.getScaled(factor); }
 
-static Vector3d operator/(double factor, const Vector3d& rhs) { return rhs.getScaled( 1.0 / factor ); }
+static Vector3d operator/(float factor, const Vector3d& rhs) { return rhs.getScaled( 1.0f / factor ); }
 
 	}
 }
