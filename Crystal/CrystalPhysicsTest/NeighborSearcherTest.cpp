@@ -1,4 +1,5 @@
-#include "NeighborSearcherTest.h"
+#define BOOST_TEST_NO_LIB
+#include <boost/test/unit_test.hpp>
 
 #include "../CrystalPhysics/NeighborSearcher.h"
 
@@ -8,29 +9,15 @@
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/ParticleFactory.h"
 #include "../CrystalPhysics/ParticleConditions.h"
-
-#include "../CrystalGeom/Box.h"
-
 #include "../CrystalPhysics/SimulationSetting.h"
 
-#include <boost/test/unit_test.hpp>
-#include <boost/timer.hpp>
-
-#include <iostream>
+#include "../CrystalGeom/Box.h"
 
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-NeighborSearcherTest::NeighborSearcherTest(void)
-{
-	searchTest();
-}
 
-NeighborSearcherTest::~NeighborSearcherTest(void)
-{
-}
-
-void NeighborSearcherTest::searchTest()
+BOOST_AUTO_TEST_CASE(NEIGHBOR_SEARCHER_TEST)
 {
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;

@@ -45,9 +45,9 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BOOST_PATH);$(IncludePath)</IncludePath>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BOOST_LIB_PATH);$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BOOST_PATH);$(IncludePath)</IncludePath>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BOOST_LIB_PATH);$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -107,16 +107,6 @@
     <ClCompile Include="SearchParticleFactoryTest.cpp" />
     <ClCompile Include="SimulationTest.cpp" />
     <ClCompile Include="CrystalPhysicsTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BoundarySolverTest.h" />
-    <ClInclude Include="SPHPairSolverTest.h" />
-    <ClInclude Include="SPHSolvertest.h" />
-    <ClInclude Include="ParticleFactoryTest.h" />
-    <ClInclude Include="PhysicsObjectFactoryTest.h" />
-    <ClInclude Include="NeighborSearcherTest.h" />
-    <ClInclude Include="SearchParticleFactoryTest.h" />
-    <ClInclude Include="SimulationTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrystalGeom\CrystalGeom.vcxproj">

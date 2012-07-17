@@ -1,73 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="SimulationTest">
-      <UniqueIdentifier>{3644c66a-b28d-474a-ab99-4846f48f674e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PhysicsObjectTest">
-      <UniqueIdentifier>{d3422abc-d858-4c11-bc48-b41a86d5fffe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SolverTest">
-      <UniqueIdentifier>{56e056b0-ce35-4d28-b152-c689f42a0bdd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ParticleTest">
-      <UniqueIdentifier>{f40753ce-ad4e-47a8-9c40-640875804751}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="NeighborSearchTest">
-      <UniqueIdentifier>{45d5bf3f-1a51-44ba-9288-ae6d208218d1}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BoundarySolverTest.cpp">
-      <Filter>SolverTest</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsObjectFactoryTest.cpp">
-      <Filter>PhysicsObjectTest</Filter>
-    </ClCompile>
-    <ClCompile Include="NeighborSearcherTest.cpp">
-      <Filter>NeighborSearchTest</Filter>
-    </ClCompile>
-    <ClCompile Include="SearchParticleFactoryTest.cpp">
-      <Filter>NeighborSearchTest</Filter>
-    </ClCompile>
-    <ClCompile Include="SimulationTest.cpp">
-      <Filter>SimulationTest</Filter>
-    </ClCompile>
     <ClCompile Include="CrystalPhysicsTest.cpp" />
-    <ClCompile Include="SPHSolverTest.cpp">
-      <Filter>SolverTest</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHPairSolverTest.cpp">
-      <Filter>SolverTest</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleFactoryTest.cpp">
-      <Filter>ParticleTest</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BoundarySolverTest.h">
-      <Filter>SolverTest</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsObjectFactoryTest.h">
-      <Filter>PhysicsObjectTest</Filter>
-    </ClInclude>
-    <ClInclude Include="NeighborSearcherTest.h">
-      <Filter>NeighborSearchTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SearchParticleFactoryTest.h">
-      <Filter>NeighborSearchTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SimulationTest.h">
-      <Filter>SimulationTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHSolvertest.h">
-      <Filter>SolverTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHPairSolverTest.h">
-      <Filter>SolverTest</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleFactoryTest.h">
-      <Filter>ParticleTest</Filter>
-    </ClInclude>
+    <ClCompile Include="NeighborSearcherTest.cpp" />
+    <ClCompile Include="SearchParticleFactoryTest.cpp" />
+    <ClCompile Include="ParticleFactoryTest.cpp" />
+    <ClCompile Include="PhysicsObjectFactoryTest.cpp" />
+    <ClCompile Include="SimulationTest.cpp" />
+    <ClCompile Include="BoundarySolverTest.cpp" />
+    <ClCompile Include="SPHPairSolverTest.cpp" />
+    <ClCompile Include="SPHSolverTest.cpp" />
   </ItemGroup>
 </Project>

@@ -1,3 +1,5 @@
+#define BOOST_TEST_NO_LIB
+#include <boost/test/unit_test.hpp>
 
 #include "SimulationTest.h"
 
@@ -14,7 +16,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-SimulationTest::SimulationTest(void)
+BOOST_AUTO_TEST_CASE(SIMULATION_TEST)
 {
 	SimulationSetting setting;
 	setting.particleDiameter = 1.0;

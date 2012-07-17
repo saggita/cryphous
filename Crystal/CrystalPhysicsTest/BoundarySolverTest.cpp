@@ -1,3 +1,5 @@
+#define BOOST_TEST_NO_LIB
+#include <boost/test/unit_test.hpp>
 
 #include "BoundarySolverTest.h"
 
@@ -12,12 +14,10 @@
 #include "../CrystalGeom/Box.h"
 #include "../CrystalGeom/Vector3d.h"
 
-#include <boost/test/unit_test.hpp>
-
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-BoundarySolverTest::BoundarySolverTest(void)
+BOOST_AUTO_TEST_CASE(BOUNDARY_SOLVER_TEST)
 {
 	PhysicsObjectFactory factory;
 	SimulationSetting setting;
