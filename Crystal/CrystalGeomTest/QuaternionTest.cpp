@@ -1,6 +1,4 @@
-
-#include "QuaternionTest.h"
-
+#define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
 #include "../CrystalGeom/Quaternion.h"
@@ -10,7 +8,7 @@
 
 using namespace Crystal::Geom;
 
-QuaternionTest::QuaternionTest(void)
+BOOST_AUTO_TEST_CASE(QUATERNION_TEST)
 {
 	{
 		Quaternion quaternion;

@@ -1,13 +1,12 @@
-#include "Matrix3dTest.h"
-
-#include <boost/test/unit_test.hpp>
+#define BOOST_TEST_NO_LIB
+#include <boost/test/included/unit_test.hpp>
 
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Matrix3d.h"
 
 using namespace Crystal::Geom;
 
-Matrix3dTest::Matrix3dTest(void)
+BOOST_AUTO_TEST_CASE(MATRIX_3D_TEST)
 {
 	{
 		Matrix3d matrix( 0.0, 0.0, 0.0,

@@ -1,5 +1,4 @@
-#include "Vector3dTest.h"
-
+#define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
 #include "../CrystalGeom/Vector3d.h"
@@ -10,8 +9,7 @@
 
 using namespace Crystal::Geom;
 
-
-Vector3dTest::Vector3dTest(void)
+BOOST_AUTO_TEST_CASE( VECTOR_3D_TEST )
 {
 	{
 		Vector3d vector( 10.0, 10.0, 10.0 );
