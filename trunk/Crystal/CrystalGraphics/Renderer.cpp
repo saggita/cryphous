@@ -98,7 +98,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	
-	glFlush();
+	glFinish();//glFlush();
 	openGLWrapper.EndRendering();
 
 	Profiler::get()->end("Rendering->");

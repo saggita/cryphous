@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -39,7 +38,7 @@ namespace Cryphous
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.1");
+            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.2");
 
             osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
             gsDialog = new GraphicsSettingForm(mainCommand);
@@ -47,7 +46,7 @@ namespace Cryphous
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            osDialog.Show();
+            osDialog.ShowDialog();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -153,7 +152,7 @@ namespace Cryphous
         private void buttonParticleInfo_Click(object sender, EventArgs e)
         {
             ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
-            poDialog.Show();
+            poDialog.ShowDialog();
         }
     }
 }

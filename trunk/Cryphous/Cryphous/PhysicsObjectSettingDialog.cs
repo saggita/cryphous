@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -22,6 +21,7 @@ namespace Cryphous
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
+            dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -34,7 +34,7 @@ namespace Cryphous
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
             
-            buttonAdd_Click(sender, e);
+            //buttonAdd_Click(sender, e);
         }
 
         private void dataGridViewObjectSetting_CellContentClick(object sender, DataGridViewCellEventArgs e)

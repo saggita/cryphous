@@ -23,6 +23,7 @@ namespace Cryphous
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
             this.initialPositions = initialPositions;
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -36,7 +37,7 @@ namespace Cryphous
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
 
             textBoxEffectLength.Text = (0.5).ToString();   
-            buttonAdd_Click(sender, e);
+            //buttonAdd_Click(sender, e);
         }
 
         private void dataGridViewObjectSetting_CellContentClick(object sender, DataGridViewCellEventArgs e)

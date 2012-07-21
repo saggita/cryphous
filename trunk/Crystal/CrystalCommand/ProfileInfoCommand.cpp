@@ -18,7 +18,8 @@ void ProfileInfoCommand::display(System::String^ productName, System::Windows::F
 {
 	listBox->Items->Clear();
 	listBox->Items->Add(productName);
-	listBox->Items->Add("Powered by Crystal 1.5");
+	listBox->Items->Add("Powered by");
+	listBox->Items->Add("Crystal 1.6");
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
 	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );
