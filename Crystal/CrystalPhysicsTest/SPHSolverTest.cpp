@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(SPH_SOLVER_TEST)
 	setting.particleDiameter = 1.0;
 	std::vector<Vector3d> points;
 	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-	PhysicsObjectCondition condition( points, 1000.0, 1.0, 0.4, PhysicsObjectCondition::Fluid );
+	PhysicsObjectCondition condition( points, 1000.0f, 1.0f, 0.4f, PhysicsObjectCondition::Fluid );
 	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting );
 	PhysicsObjectList objects( 1, fluid);
 	SPHSolver solver( &factory, setting);

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.checkBoxBoundingBox = new System.Windows.Forms.CheckBox();
-            this.checkBoxApplyPointSprite = new System.Windows.Forms.CheckBox();
             this.trackBarAlphaPower = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarPointSize = new System.Windows.Forms.TrackBar();
@@ -41,24 +40,13 @@
             // checkBoxBoundingBox
             // 
             this.checkBoxBoundingBox.AutoSize = true;
-            this.checkBoxBoundingBox.Location = new System.Drawing.Point(214, 58);
+            this.checkBoxBoundingBox.Location = new System.Drawing.Point(8, 95);
             this.checkBoxBoundingBox.Name = "checkBoxBoundingBox";
             this.checkBoxBoundingBox.Size = new System.Drawing.Size(91, 16);
             this.checkBoxBoundingBox.TabIndex = 69;
             this.checkBoxBoundingBox.Text = "BoundingBox";
             this.checkBoxBoundingBox.UseVisualStyleBackColor = true;
             this.checkBoxBoundingBox.CheckedChanged += new System.EventHandler(this.checkBoxBoundingBox_CheckedChanged);
-            // 
-            // checkBoxApplyPointSprite
-            // 
-            this.checkBoxApplyPointSprite.AutoSize = true;
-            this.checkBoxApplyPointSprite.Location = new System.Drawing.Point(214, 18);
-            this.checkBoxApplyPointSprite.Name = "checkBoxApplyPointSprite";
-            this.checkBoxApplyPointSprite.Size = new System.Drawing.Size(80, 16);
-            this.checkBoxApplyPointSprite.TabIndex = 68;
-            this.checkBoxApplyPointSprite.Text = "PointSprite";
-            this.checkBoxApplyPointSprite.UseVisualStyleBackColor = true;
-            this.checkBoxApplyPointSprite.CheckedChanged += new System.EventHandler(this.checkBoxApplyPointSprite_CheckedChanged);
             // 
             // trackBarAlphaPower
             // 
@@ -104,9 +92,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(317, 98);
+            this.ClientSize = new System.Drawing.Size(199, 123);
             this.Controls.Add(this.checkBoxBoundingBox);
-            this.Controls.Add(this.checkBoxApplyPointSprite);
             this.Controls.Add(this.trackBarAlphaPower);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.trackBarPointSize);
@@ -126,7 +113,6 @@
         #endregion
 
         private System.Windows.Forms.CheckBox checkBoxBoundingBox;
-        private System.Windows.Forms.CheckBox checkBoxApplyPointSprite;
         private System.Windows.Forms.TrackBar trackBarAlphaPower;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TrackBar trackBarPointSize;

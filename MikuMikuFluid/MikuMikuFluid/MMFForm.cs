@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
 using Cryphous;
-//using DxMath;
 
 namespace MikuMikuFluid
 {
@@ -23,7 +22,9 @@ namespace MikuMikuFluid
         private bool isLeftDown;
         private bool isRightDown;
         Main main;
-        
+        GraphicsSettingForm gsForm;
+        SimulationSettingDialog osForm;
+                    
         public MMFForm(Main main)
         {
             InitializeComponent();
@@ -40,14 +41,15 @@ namespace MikuMikuFluid
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "MikuMikuFluid 1.0");
+            mainCommand = new MainCommand(pictureBox1, "MikuMikuFluid 1.1");
+            gsForm = new GraphicsSettingForm(mainCommand);
+            osForm = new SimulationSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, main.InitialPositions);
             objectSettingToolStripMenuItem_Click(sender, e);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SimulationSettingDialog osDialog = new SimulationSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, main.InitialPositions );
-            osDialog.Show();
+            osForm.ShowDialog();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace MikuMikuFluid
         private void particleInfoPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
-            poDialog.Show();
+            poDialog.ShowDialog();
         }
 
         private void timerSimulation_Tick(object sender, EventArgs e)
@@ -156,8 +158,7 @@ namespace MikuMikuFluid
 
         private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
-            form.Show();
+            gsForm.Show();
         }
 
         private void buttonParticleInfo_Click(object sender, EventArgs e)
