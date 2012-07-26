@@ -35,7 +35,7 @@ Vector3d PhysicsObject::getCenter() const
 	BOOST_FOREACH(Particle* particle, getParticles()) {
 		center += particle->center;
 	}
-	return center /= getParticles().size();
+	return center /= static_cast<float>(getParticles().size());
 }
 
 Vector3d PhysicsObject::getAverageVelosity() const
@@ -44,7 +44,7 @@ Vector3d PhysicsObject::getAverageVelosity() const
 	BOOST_FOREACH( Particle* particle, getParticles() ) {
 		averageVelosity += particle->velocity;
 	}
-	return averageVelosity / getParticles().size();
+	return averageVelosity / static_cast<float>(getParticles().size());
 }
 
 float PhysicsObject::getWeight() const

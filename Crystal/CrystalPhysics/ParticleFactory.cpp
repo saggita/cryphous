@@ -24,11 +24,11 @@ ParticleVector ParticleFactory::createParticles(const ParticleConditions& condit
 	std::vector<Vector3d>& innerPoints = conditions.getInnerPoints();
 	BOOST_FOREACH( Vector3d& innerPoint, innerPoints ) {
 		particles.push_back(
-			new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this ) 
+			new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5f, this ) 
 			);
 		particles.back()->density = conditions.getDensity();
 	}
-	virtualParticle = new Particle( -1, Vector3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5, this );
+	virtualParticle = new Particle( -1, Vector3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5f, this );
 	return particles;
 }
 
