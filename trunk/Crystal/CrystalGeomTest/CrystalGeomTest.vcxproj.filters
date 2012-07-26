@@ -7,5 +7,6 @@
     <ClCompile Include="QuaternionTest.cpp" />
     <ClCompile Include="TolerancesTest.cpp" />
     <ClCompile Include="Vector3dTest.cpp" />
+    <ClCompile Include="Transform3dTest.cpp" />
   </ItemGroup>
 </Project>

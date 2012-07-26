@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalGeom", "CrystalGeom\CrystalGeom.vcxproj", "{FC36016D-B608-4558-93C3-5E756C5EC792}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalGeomTest", "CrystalGeomTest\CrystalGeomTest.vcxproj", "{718484F0-C552-4637-8F31-3FAE0F926E4B}"
 EndProject
 Global
@@ -13,14 +11,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Debug|Win32.ActiveCfg = Debug|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Debug|Win32.Build.0 = Debug|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Debug|x64.ActiveCfg = Debug|x64
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Debug|x64.Build.0 = Debug|x64
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Release|Win32.ActiveCfg = Release|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Release|Win32.Build.0 = Release|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Release|x64.ActiveCfg = Release|x64
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Release|x64.Build.0 = Release|x64
 		{718484F0-C552-4637-8F31-3FAE0F926E4B}.Debug|Win32.ActiveCfg = Debug|Win32
 		{718484F0-C552-4637-8F31-3FAE0F926E4B}.Debug|Win32.Build.0 = Debug|Win32
 		{718484F0-C552-4637-8F31-3FAE0F926E4B}.Debug|x64.ActiveCfg = Debug|x64

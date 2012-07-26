@@ -41,10 +41,10 @@ void Particle::resetDiffParameters(){
 
 float Particle::getPressure() const
 {
-	return parent->getGasConstant() * ( std::pow( density / parent->getDensity(), 1 ) - 1.0 );
+	return parent->getGasConstant() * ( std::pow( density / parent->getDensity(), 1 ) - 1.0f );
 }
 
 float Particle::getIdealVolume() const
 {
-	return std::pow( getRadius() * 2.0, 2 );
+	return std::pow( getRadius() * 2.0f, 2 );
 }

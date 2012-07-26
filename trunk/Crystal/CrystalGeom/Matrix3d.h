@@ -103,12 +103,24 @@ public:
 		return matrix;
 	}
 
-	Matrix3d product(const Matrix3d& rhs);
+	Matrix3d Matrix3d::product(const Matrix3d& rhs) {
+		return *this = getProduct(rhs);
+	}
 
-	Matrix3d getProduct(const Matrix3d& rhs) const;
+	Matrix3d Matrix3d::getProduct(const Matrix3d& rhs) const {
+		return Matrix3d( 
+				x00 * rhs.x00 + x01 * rhs.x10 + x02 * rhs.x20,
+				x00 * rhs.x01 + x01 * rhs.x11 + x02 * rhs.x21,
+				x00 * rhs.x02 + x01 * rhs.x12 + x02 * rhs.x22,
+				x10 * rhs.x00 + x11 * rhs.x10 + x12 * rhs.x20,
+				x10 * rhs.x01 + x11 * rhs.x11 + x12 * rhs.x21,
+				x10 * rhs.x02 + x11 * rhs.x12 + x12 * rhs.x22,
+				x20 * rhs.x00 + x21 * rhs.x10 + x22 * rhs.x20,
+				x20 * rhs.x01 + x21 * rhs.x11 + x22 * rhs.x21,
+				x20 * rhs.x02 + x21 * rhs.x12 + x22 * rhs.x22);
+	}
 
-	void setRotateX(const float angle)
-	{
+	void setRotateX(const float angle) {
 		*(this) = Matrix3d(
 			1.0, 0.0, 0.0,
 			0.0, cos(angle), -sin(angle),
@@ -116,8 +128,7 @@ public:
 			);
 	}
 
-	void setRotateY(const float angle)
-	{
+	void setRotateY(const float angle) {
 		*(this) = Matrix3d(
 			cos(angle), 0.0, sin(angle),
 			0.0, 1.0, 0.0,
@@ -125,8 +136,7 @@ public:
 			);
 	}
 
-	void setRotateZ(const float angle)
-	{
+	void setRotateZ(const float angle) {
 		*(this) = Matrix3d(
 			cos(angle), -sin(angle), 0.0,
 			sin(angle), cos(angle), 0.0,
@@ -134,9 +144,17 @@ public:
 			);
 	}
 
-	Matrix3d scale(const float factor);
+	Matrix3d scale(const float factor) {
+		x00 *= factor; x01 *= factor; x02 *= factor;
+		x10 *= factor; x11 *= factor; x12 *= factor;
+		x20 *= factor; x21 *= factor; x22 *= factor;
+		return *this;
+	}
 
-	Matrix3d getScaled(const float factor) const;
+	Matrix3d Matrix3d::getScaled(const float factor) const {
+		Matrix3d matrix = *this;
+		return matrix.scale( factor);
+	}
 
 	Matrix3d add(const Matrix3d& rhs) {
 		x00 += rhs.x00;
@@ -161,21 +179,17 @@ public:
 
 	bool operator==(const Matrix3d& rhs) const { return this->equals(rhs); }
 
-	Vector3d getMult(const Vector3d& column) const;
+	Matrix3d Matrix3d::operator+(const Matrix3d& rhs) const { return getAdd( rhs); }
 
-	Vector3d operator*(const Vector3d& rhs) const;
+	const Matrix3d Matrix3d::operator+=(const Matrix3d& rhs) { return add( rhs); }
 
-	Matrix3d operator+(const Matrix3d& rhs) const;
-
-	const Matrix3d operator+=(const Matrix3d& rhs);
-
-	Matrix3d operator-(const Matrix3d& rhs) const;
-
-	const Matrix3d operator-=(const Matrix3d& rhs);
-
-	Matrix3d operator*(const Matrix3d& rhs) const;
-
-	const Matrix3d operator*=(const Matrix3d& rhs);
+	Matrix3d operator-(const Matrix3d& rhs) const { return getAdd( rhs.getScaled( -1.0) ); }
+	
+	const Matrix3d Matrix3d::operator-=(const Matrix3d& rhs) { return add( rhs.getScaled( -1.0) ); }
+	
+	Matrix3d Matrix3d::operator*(const Matrix3d& rhs) const { return getProduct( rhs); }
+	
+	const Matrix3d Matrix3d::operator*=(const Matrix3d& rhs) { return product( rhs); }
 
 public:
 	float x00, x01, x02;
