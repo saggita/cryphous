@@ -44,10 +44,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Crystal\Release\CrystalCommand.dll</HintPath>
     </Reference>
-    <Reference Include="DxMath">
+    <Reference Include="DxMath, Version=1.0.4012.33355, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MikuMikuMoving\System\DxMath.dll</HintPath>
     </Reference>
-    <Reference Include="MikuMikuPlugin">
+    <Reference Include="MikuMikuPlugin, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MikuMikuMoving\System\MikuMikuPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -105,7 +107,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cp MikuMikuFluid.dll ..\..\..\..\MikuMikuMoving\Plugins\Command\MikuMikuFluid.dll
+    <PostBuildEvent>cp MikuMikuFluid.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid.dll
 cp Cryphous.exe ..\..\..\..\MikuMikuMoving\System\Cryphous.exe
 cp CrystalCommand.dll ..\..\..\..\MikuMikuMoving\System\CrystalCommand.dll</PostBuildEvent>
   </PropertyGroup>

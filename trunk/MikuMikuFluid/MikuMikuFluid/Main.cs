@@ -12,23 +12,9 @@ namespace MikuMikuFluid
     {
         public IWin32Window ApplicationForm { get; set; }
 
-        public ICommandAPI API { get; set; }
+        public ICommonAPI API { get; set; }
 
-        private FrameSettingForm frameSettingDialog;
-
-        private long keyFrame;
-
-        public void initKeyFrame()
-        {
-            keyFrame = frameSettingDialog.StartFrame;
-        }
-
-        private List<float[]> initialPositions;
-
-        public List<float[]> InitialPositions
-        {
-            get { return initialPositions; }
-        }
+        public Scene Scene { get; set; }
 
         public string Description
         {
@@ -47,22 +33,32 @@ namespace MikuMikuFluid
 
         public string Text
         {
-            get { return "";}// "MikuMikuFluid"; }
+            get { return ""; }// "MikuMikuFluid"; }
         }
 
         public string EnglishText
         {
-            get { return  Text; }
+            get { return Text; }
         }
 
-        public void Run()
-        {
-            if (API.GetActivateObjectType() != ObjectType.Model)
-            {
-                MessageBox.Show(ApplicationForm, "Please select a model.", "Note", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+        private FrameSettingForm frameSettingDialog;
 
+        private long keyFrame;
+
+        public void initKeyFrame()
+        {
+            keyFrame = frameSettingDialog.StartFrame;
+        }
+
+        private List<float[]> initialPositions;
+
+        public List<float[]> InitialPositions
+        {
+            get { return initialPositions; }
+        }
+
+        public void Run(CommandArgs e)
+        {
             frameSettingDialog = new FrameSettingForm();
 
             if (frameSettingDialog.ShowDialog(ApplicationForm) != DialogResult.OK)
@@ -84,20 +80,15 @@ namespace MikuMikuFluid
         {
             initialPositions = new List<float[]>();
 
-            List<Bone> bones = API.GetBones();
+            BoneCollection bones = Scene.ActiveModel.Bones;
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
             {
-                Vector3 bonePosition = bones[boneIndex].Position;
-                int howManylayer = API.GetMotionLayerCount(boneIndex);
-                for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
-                {
-                    List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    float[] pos = new float[3];
-                    pos[0] = ( bonePosition.X + motionFrames[0].position.X);
-                    pos[1] = ( bonePosition.Y + motionFrames[0].position.Y);
-                    pos[2] = ( bonePosition.Z + motionFrames[0].position.Z);
-                    initialPositions.Add( pos);
-                }
+                Vector3 bonePosition = bones[boneIndex].InitialPosition;
+                float[] pos = new float[3];
+                pos[0] = bonePosition.X;
+                pos[1] = bonePosition.Y;
+                pos[2] = bonePosition.Z;
+                initialPositions.Add(pos);
             }
         }
 
@@ -111,42 +102,34 @@ namespace MikuMikuFluid
             {
                 return;
             }
-            int index = 0;
-            List<Bone> bones = API.GetBones();
+            BoneCollection bones = Scene.ActiveModel.Bones;
             for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
             {
-                Vector3 position = bones[boneIndex].Position;
-                int howManylayer = API.GetMotionLayerCount(boneIndex);
-                for (int layerIndex = 0; layerIndex < howManylayer; ++layerIndex)
-                {
-                    List<MotionFrameData> motionFrames = API.GetMotionFrameData(boneIndex, layerIndex);
-                    Vector3 pos = new Vector3();
-                    pos.X = bakePositions[index][0] - position[0];
-                    pos.Y = bakePositions[index][1] - position[1];
-                    pos.Z = bakePositions[index][2] - position[2];
-
-                    AddMotionFrame(motionFrames, keyFrame, pos);
-                    API.ReplaceAllMotionFrameData(boneIndex, layerIndex, motionFrames);
-
-                    index++;
-                }
+                Bone bone = Scene.ActiveModel.Bones[boneIndex];
+                Vector3 vector = new Vector3();
+                vector.X = bakePositions[boneIndex][0] - bone.InitialPosition[0];
+                vector.Y = bakePositions[boneIndex][1] - bone.InitialPosition[1];
+                vector.Z = bakePositions[boneIndex][2] - bone.InitialPosition[2];
+                //bone.CurrentLocalMotion.Move.X = 10.0F;// = vector;
+                //AddMotionFrame();
             }
             keyFrame += frameSettingDialog.KeyFrameInterval;
         }
 
-        private void AddMotionFrame(List<MotionFrameData> motionFrames, long frameNumber, Vector3 position)
-        {
-            int index = motionFrames.FindIndex(delegate(MotionFrameData mdata)
-            {
-                return mdata.frameNumber == frameNumber;
-            });
-            if (index < 0){
-                motionFrames.Add(new MotionFrameData(frameNumber, position, Quaternion.Identity ));
-            }
-            else{
-                motionFrames[index].position = position;
-            }
-        }
+        //private void AddMotionFrame(List<MotionFrameData> motionFrames, long frameNumber, Vector3 position)
+        //{
+        //    SceneFrameCollection sf  Scene.Models[0].Bones[0].
+        //    int index = motionFrames.FindIndex(delegate(MotionFrameData mdata)
+        //    {
+        //        return mdata.frameNumber == frameNumber;
+        //    });
+        //    if (index < 0){
+        //        motionFrames.Add(new MotionFrameData(frameNumber, position, Quaternion.Identity ));
+        //    }
+        //    else{
+        //        motionFrames[index].position = position;
+        //    }
+        //}
 
         public void Dispose()
         {
