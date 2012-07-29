@@ -9,76 +9,53 @@
 
 #include <iostream>
 
+#include "Point2d.h"
+
+#include "ColorBuffer.h"
+#include "NormalBuffer.h"
+
 namespace Crystal{
 	namespace Renderer{
 
-struct Point3d
+class FrameBuffer
 {
 public:
-	Point3d()
+	FrameBuffer(const int xWidth, const int yWidth) :
+	  colors( xWidth, yWidth),
+		normals( xWidth, yWidth)
 	{
 	}
-	Point3d(int x, int y, int z) :
-	x(x), y(y), z(z)
-	{
-	}
-	int x;
-	int y;
-	int z;
-};
 
-class Bitmap
-{
-public:
-	Bitmap(const int xWidth, const int yWidth)
-	{
-		colors.resize( xWidth );
-		normals.resize( xWidth );
-		for( int x = 0; x < xWidth; ++x ) {
-			colors[x].resize( yWidth );
-			normals[x].resize( yWidth );
-			//depths[x].resize( yWidth );
-			for( int y = 0; y < yWidth; ++y ) {
-				colors[x][y] = Color4d( 0, 0, 0, 0 );
-				normals[x][y] = Geom::Vector3d( 0, 0, 0);
-			}
-		}
-	}
+	int getWidth() const { return colors.getWidth(); }
 
-	int getWidth() const { return colors.size(); }
-
-	int getHeight() const { return colors[0].size(); }
+	int getHeight() const { return colors.getHeight(); }
 
 	Color4d getColor(size_t x, size_t y)
 	{
-		return colors[x][y];
+		return colors.getColor(x,y);
 	}
 
 	Geom::Vector3d getNormal(size_t x, size_t y)
 	{
-		return normals[x][y];
+		return normals.getNormal(x,y);
 	}
 
 	void clear(const Color4d& color)
 	{
-		for( size_t x = 0; x < colors.size(); ++x ) {
-			for( size_t y = 0; y < colors[x].size(); ++y ) {
-				colors[x][y] = color;
-			}
-		}
+		colors.clear(color);
 	}
 
-	void setNormal(const Point3d& point, const Geom::Vector3d& normal)
+	void setNormal(const Point2d& point, const Geom::Vector3d& normal)
 	{
-		normals[point.x][point.y] = normal;
+		normals.setNormal( point, normal);
 	}
 
-	void setColor(const Point3d& point, const Color4d& color)
+	void setColor(const Point2d& point, const Color4d& color)
 	{
-		colors[point.x][point.y] += color;
+		colors.setColor(point, color);
 	}
 
-	void drawQuad(const Point3d& center, unsigned int radius, const Color4d& color)
+	/*void drawQuad(const Point3d& center, unsigned int radius, const Color4d& color)
 	{
 		for( unsigned int x = center.x- radius; x <= center.x+radius; ++x ){
 			for( unsigned int y = center.y -radius; y<= center.y+radius; ++y) {
@@ -99,9 +76,9 @@ public:
 				}
 			}
 		}
-	}
+	}*/
 
-	void dump()
+	/*void dump()
 	{
 		for( size_t x = 0; x < colors.size(); ++x ) {
 			for( size_t y = 0; y < colors[x].size(); ++y ) {
@@ -109,12 +86,13 @@ public:
 			}
 			std::cout << std::endl;
 		}
-	}
+	}*/
 
 private:
-	std::vector< std::vector<Color4d> > colors;
+	ColorBuffer colors;
+	NormalBuffer normals;
 	std::vector< std::vector<float> > depths;
-	std::vector< std::vector<Geom::Vector3d> > normals;
+	//std::vector< std::vector<Geom::Vector3d> > normals;
 };
 
 	}

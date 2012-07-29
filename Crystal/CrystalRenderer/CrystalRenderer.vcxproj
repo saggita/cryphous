@@ -77,7 +77,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Color4d.h" />
-    <ClInclude Include="PixelMap.h" />
+    <ClInclude Include="ColorBuffer.h" />
+    <ClInclude Include="NormalBuffer.h" />
+    <ClInclude Include="FrameBuffer.h" />
+    <ClInclude Include="Point2d.h" />
+    <ClInclude Include="PointSprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

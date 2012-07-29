@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalRendererTest.cpp" />
-    <ClCompile Include="PixelMapTest.cpp" />
     <ClCompile Include="Color4dTest.cpp" />
+    <ClCompile Include="FrameBufferTest.cpp" />
   </ItemGroup>
 </Project>
