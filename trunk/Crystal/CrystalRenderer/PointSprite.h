@@ -2,6 +2,7 @@
 #define __POINT_SPRITE_H__
 
 #include "Color4d.h"
+#include "Point2d.h"
 
 #include "ColorBuffer.h"
 
@@ -13,20 +14,18 @@ namespace Crystal{
 class PointSprite
 {
 public:
-	PointSprite(unsigned int radius)
+	PointSprite(unsigned int radius) :
+	  colors( radius * 2, radius * 2)
 	{
-		ColorBuffer colorBuffer( radius * 2, radius * 2 );
-		for( int x = 0; x < colorBuffer.getWidth(), ++x ) {
-			colors.push_back( std::vector<Color4d>() );
-			for( int y = 0; y < colorBuffer.getWidth(); ++y ) {
-				colorsBuffer[x][y].setColor( 0, 0, 0, 255 );
+		ColorBuffer colors( radius * 2, radius * 2 );
+		for( int x = 0; x < colors.getWidth(); ++x ) {
+			for( int y = 0; y < colors.getWidth(); ++y ) {
+				colors.setColor( Point2d(x,y), Color4d( 0, 0, 0, 255 ) );
 			}
 		}
 	}
-	private:
-		ColorBuffer colorBuffer;
-	
-	}
+private:
+	ColorBuffer colors;
 };
 
 	}

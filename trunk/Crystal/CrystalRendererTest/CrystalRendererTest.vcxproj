@@ -77,8 +77,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Color4dTest.cpp" />
+    <ClCompile Include="ColorBufferTest.cpp" />
     <ClCompile Include="CrystalRendererTest.cpp" />
+    <ClCompile Include="DepthBufferTest.cpp" />
     <ClCompile Include="FrameBufferTest.cpp" />
+    <ClCompile Include="NormalBufferTest.cpp" />
+    <ClCompile Include="Point2dTest.cpp" />
+    <ClCompile Include="PointSpriteTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

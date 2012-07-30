@@ -1,3 +1,6 @@
+#ifndef __POINT_2D_H__
+#define __POINT_2D_H__
+
 namespace Crystal{
 	namespace Renderer{
 
@@ -16,3 +19,5 @@ public:
 };
 	}
 }
+
+#endif

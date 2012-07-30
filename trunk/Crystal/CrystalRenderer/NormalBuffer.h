@@ -1,6 +1,7 @@
-#ifndef __DEPTH_BUFFER_H__
-#define __DEPTH_BUFFER_H__
+#ifndef __NORMAL_BUFFER_H__
+#define __NORMAL_BUFFER_H__
 
+#include "Point2d.h"
 #include "../CrystalGeom/Vector3d.h"
 
 #include <vector>

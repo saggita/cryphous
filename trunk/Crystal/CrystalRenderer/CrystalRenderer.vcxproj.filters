@@ -7,5 +7,6 @@
     <ClInclude Include="Point2d.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="NormalBuffer.h" />
+    <ClInclude Include="DepthBuffer.h" />
   </ItemGroup>
 </Project>

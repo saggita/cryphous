@@ -1,6 +1,7 @@
 #ifndef __COLOR_BUFFER_H__
 #define __COLOR_BUFFER_H__
 
+#include "Point2d.h"
 #include "Color4d.h"
 
 #include <vector>

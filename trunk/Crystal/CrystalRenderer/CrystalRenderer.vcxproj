@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="Color4d.h" />
     <ClInclude Include="ColorBuffer.h" />
+    <ClInclude Include="DepthBuffer.h" />
     <ClInclude Include="NormalBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="Point2d.h" />
