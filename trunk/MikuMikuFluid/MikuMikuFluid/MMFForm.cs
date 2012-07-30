@@ -41,7 +41,7 @@ namespace MikuMikuFluid
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "MikuMikuFluid 1.1");
+            mainCommand = new MainCommand(pictureBox1, "MikuMikuFluid 1.1.1");
             gsForm = new GraphicsSettingForm(mainCommand);
             osForm = new SimulationSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, main.InitialPositions);
             objectSettingToolStripMenuItem_Click(sender, e);

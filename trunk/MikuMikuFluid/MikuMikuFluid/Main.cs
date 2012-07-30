@@ -10,9 +10,12 @@ namespace MikuMikuFluid
 {
     public class Main : ICommandPlugin
     {
-        public IWin32Window ApplicationForm { get; set; }
+        public Guid GUID
+        {
+            get { return System.Guid.NewGuid(); }
+        }
 
-        public ICommonAPI API { get; set; }
+        public IWin32Window ApplicationForm { get; set; }
 
         public Scene Scene { get; set; }
 
@@ -110,26 +113,11 @@ namespace MikuMikuFluid
                 vector.X = bakePositions[boneIndex][0] - bone.InitialPosition[0];
                 vector.Y = bakePositions[boneIndex][1] - bone.InitialPosition[1];
                 vector.Z = bakePositions[boneIndex][2] - bone.InitialPosition[2];
-                //bone.CurrentLocalMotion.Move.X = 10.0F;// = vector;
-                //AddMotionFrame();
+                MotionFrameData mfData = new MotionFrameData(keyFrame, vector, Quaternion.Identity);
+                bone.Layers[0].Frames.AddKeyFrame(mfData);
             }
             keyFrame += frameSettingDialog.KeyFrameInterval;
         }
-
-        //private void AddMotionFrame(List<MotionFrameData> motionFrames, long frameNumber, Vector3 position)
-        //{
-        //    SceneFrameCollection sf  Scene.Models[0].Bones[0].
-        //    int index = motionFrames.FindIndex(delegate(MotionFrameData mdata)
-        //    {
-        //        return mdata.frameNumber == frameNumber;
-        //    });
-        //    if (index < 0){
-        //        motionFrames.Add(new MotionFrameData(frameNumber, position, Quaternion.Identity ));
-        //    }
-        //    else{
-        //        motionFrames[index].position = position;
-        //    }
-        //}
 
         public void Dispose()
         {
