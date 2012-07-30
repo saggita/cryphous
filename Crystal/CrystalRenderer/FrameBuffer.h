@@ -1,5 +1,5 @@
-﻿#ifndef __PIXEL_MAP_H__
-#define __PIXEL_MAP_H__
+﻿#ifndef __FRAME_BUFFER_H__
+#define __FRAME_BUFFER_H__
 
 #include "Color4d.h"
 
@@ -12,6 +12,7 @@
 #include "Point2d.h"
 
 #include "ColorBuffer.h"
+#include "DepthBuffer.h"
 #include "NormalBuffer.h"
 
 namespace Crystal{
@@ -22,6 +23,7 @@ class FrameBuffer
 public:
 	FrameBuffer(const int xWidth, const int yWidth) :
 	  colors( xWidth, yWidth),
+		depths( xWidth, yWidth),
 		normals( xWidth, yWidth)
 	{
 	}
@@ -78,21 +80,10 @@ public:
 		}
 	}*/
 
-	/*void dump()
-	{
-		for( size_t x = 0; x < colors.size(); ++x ) {
-			for( size_t y = 0; y < colors[x].size(); ++y ) {
-				std::cout << colors[x][y].red << colors[x][y].green << colors[x][y].blue << " ";
-			}
-			std::cout << std::endl;
-		}
-	}*/
-
 private:
 	ColorBuffer colors;
 	NormalBuffer normals;
-	std::vector< std::vector<float> > depths;
-	//std::vector< std::vector<Geom::Vector3d> > normals;
+	DepthBuffer depths;
 };
 
 	}

@@ -4,5 +4,10 @@
     <ClCompile Include="CrystalRendererTest.cpp" />
     <ClCompile Include="Color4dTest.cpp" />
     <ClCompile Include="FrameBufferTest.cpp" />
+    <ClCompile Include="ColorBufferTest.cpp" />
+    <ClCompile Include="DepthBufferTest.cpp" />
+    <ClCompile Include="NormalBufferTest.cpp" />
+    <ClCompile Include="PointSpriteTest.cpp" />
+    <ClCompile Include="Point2dTest.cpp" />
   </ItemGroup>
 </Project>

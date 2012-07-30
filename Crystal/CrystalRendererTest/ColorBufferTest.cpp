@@ -1,16 +1,15 @@
 #define BOOST_TEST_NO_LIB
 #include <boost/test/unit_test.hpp>
 
-#include "../CrystalRenderer/Color4d.h"
-#include "../CrystalRenderer/FrameBuffer.h"
+#include "../CrystalRenderer/ColorBuffer.h"
 
 using namespace Crystal::Renderer;
 
-BOOST_AUTO_TEST_CASE( FRAME_BUFFER_TEST )
+BOOST_AUTO_TEST_CASE( COLOR_BUFFER_TEST )
 {
 	const int xSize = 256;
 	const int ySize = 256;
-	FrameBuffer buffer( xSize, ySize);
+	ColorBuffer buffer( xSize, ySize);
 	buffer.clear( Color4d(100,100,100, 0));
 	for( int x = 0; x < xSize; ++x ) {
 		for( int y = 0; y < ySize; ++y ) {
