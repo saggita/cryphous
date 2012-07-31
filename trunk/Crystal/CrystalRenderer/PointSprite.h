@@ -3,8 +3,9 @@
 
 #include "Color4d.h"
 #include "Point2d.h"
+#include "../CrystalGeom/Vector3d.h"
 
-#include "ColorBuffer.h"
+#include "FrameBuffer.h"
 
 #include <vector>
 
@@ -14,18 +15,30 @@ namespace Crystal{
 class PointSprite
 {
 public:
-	PointSprite(unsigned int radius) :
-	  colors( radius * 2, radius * 2)
+	PointSprite(unsigned int radius, const Color4d& color) :
+	  buffer( radius * 2, radius * 2)
 	{
-		ColorBuffer colors( radius * 2, radius * 2 );
-		for( int x = 0; x < colors.getWidth(); ++x ) {
-			for( int y = 0; y < colors.getWidth(); ++y ) {
-				colors.setColor( Point2d(x,y), Color4d( 0, 0, 0, 255 ) );
+		for( int x = 0; x < buffer.getWidth(); ++x ) {
+			for( int y = 0; y < buffer.getHeight(); ++y ) {
+				const int diffX = x-radius;
+				const int diffY = y-radius;
+				const unsigned int lengthSquared = diffX * diffX + diffY * diffY;
+				if( lengthSquared > radius * radius ) {
+					continue;
+				}
+				const float depth = std::sqrt( radius * radius - static_cast<float>(lengthSquared) );
+				Geom::Vector3d normal( static_cast<float>(diffX), static_cast<float>(diffY), depth );
+				normal.normalize();
+				buffer.setNormal( Point2d(x,y), normal );
+				buffer.setDepth( Point2d(x,y), depth );
+				buffer.setColor( Point2d(x,y), color );
 			}
 		}
 	}
+
+	const FrameBuffer& getBuffer() const { return buffer; } 
 private:
-	ColorBuffer colors;
+	FrameBuffer buffer;
 };
 
 	}

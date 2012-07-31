@@ -27,7 +27,7 @@ public:
 
 	int getHeight() const { return normals[0].size(); }
 
-	Geom::Vector3d getNormal(unsigned int x, unsigned int y)
+	Geom::Vector3d getNormal(unsigned int x, unsigned int y) const
 	{
 		return normals[x][y];
 	}
