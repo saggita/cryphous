@@ -71,11 +71,9 @@ public:
 
 	Vector3d normalize() {
 		const float length = getLength();
-		assert( !Tolerances::isEqualAsDenominator( length ) );
 		x /= length;
 		y /= length;
 		z /= length;
-		assert( isNormalized() );
 		return *this;
 	}
 

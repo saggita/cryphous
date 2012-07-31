@@ -32,19 +32,14 @@ public:
 
 	int getHeight() const { return colors.getHeight(); }
 
-	Color4d getColor(size_t x, size_t y)
+	void setColor(const Point2d& point, const Color4d& color)
+	{
+		colors.setColor(point, color);
+	}
+
+	Color4d getColor(size_t x, size_t y) const
 	{
 		return colors.getColor(x,y);
-	}
-
-	Geom::Vector3d getNormal(size_t x, size_t y)
-	{
-		return normals.getNormal(x,y);
-	}
-
-	void clear(const Color4d& color)
-	{
-		colors.clear(color);
 	}
 
 	void setNormal(const Point2d& point, const Geom::Vector3d& normal)
@@ -52,9 +47,24 @@ public:
 		normals.setNormal( point, normal);
 	}
 
-	void setColor(const Point2d& point, const Color4d& color)
+	Geom::Vector3d getNormal(size_t x, size_t y) const
 	{
-		colors.setColor(point, color);
+		return normals.getNormal(x,y);
+	}
+
+	void setDepth(const Point2d& point, float depth)
+	{
+		depths.setDepth( point, depth );
+	}
+
+	float getDepth(const Point2d& point) const
+	{
+		return depths.getDepth( point);
+	}
+
+	void clear(const Color4d& color)
+	{
+		colors.clear(color);
 	}
 
 	/*void drawQuad(const Point3d& center, unsigned int radius, const Color4d& color)

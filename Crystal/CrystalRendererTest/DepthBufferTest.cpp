@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE( DEPTH_BUFFER_TEST )
 	buffer.clear( 100.0f );
 	for( int x = 0; x < xSize; ++x ) {
 		for( int y = 0; y < ySize; ++y ) {
-			BOOST_CHECK( buffer.getDepth(x,y) == 100.0f );
+			BOOST_CHECK( buffer.getDepth(Point2d(x,y)) == 100.0f );
 		}
 	}
 }

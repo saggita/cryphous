@@ -10,14 +10,14 @@ public:
 	Color4d()
 	{
 	};
-	Color4d(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = 255) :
+	Color4d(float red, float green, float blue, float alpha = 1.0) :
 	  red(red), green(green), blue(blue), alpha(alpha)
 	{
 	};
-	unsigned char red;
-	unsigned char green;
-	unsigned char blue;
-	unsigned char alpha;
+	float red;
+	float green;
+	float blue;
+	float alpha;
 
 	void operator+=(const Color4d& rhs)
 	{

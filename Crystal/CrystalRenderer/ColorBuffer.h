@@ -18,7 +18,7 @@ public:
 		for( int x = 0; x < xWidth; ++x ) {
 			colors[x].resize( yWidth );
 			for( int y = 0; y < yWidth; ++y ) {
-				colors[x][y] = Color4d( 0, 0, 0, 0 );
+				colors[x][y] = Color4d( 0.0, 0.0, 0.0 );
 			}
 		}
 	}
@@ -27,7 +27,7 @@ public:
 
 	int getHeight() const { return colors[0].size(); }
 
-	Color4d getColor(size_t x, size_t y)
+	Color4d getColor(size_t x, size_t y) const
 	{
 		return colors[x][y];
 	}

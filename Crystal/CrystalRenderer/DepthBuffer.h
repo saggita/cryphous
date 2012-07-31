@@ -31,9 +31,9 @@ public:
 		depths[point.x][point.y] = depth;
 	}
 
-	float getDepth(unsigned int x, unsigned int y)
+	float getDepth(const Point2d& point) const
 	{
-		return depths[x][y];
+		return depths[point.x][point.y];
 	}
 
 	void clear(const float depth)
