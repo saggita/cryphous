@@ -53,9 +53,9 @@ namespace MikuMikuFluid
             keyFrame = frameSettingDialog.StartFrame;
         }
 
-        private List<float[]> initialPositions;
+        private List<List<float[]>> initialPositions;
 
-        public List<float[]> InitialPositions
+        public List<List<float[]>> InitialPositions
         {
             get { return initialPositions; }
         }
@@ -73,7 +73,7 @@ namespace MikuMikuFluid
 
             setInitialPositions();
 
-            MessageBox.Show(ApplicationForm, initialPositions.Count + " particles inputed."); 
+            MessageBox.Show(ApplicationForm, initialPositions.Count + " models inputed."); 
 
             MMFForm mmfform = new MMFForm( this);
             mmfform.Show();
@@ -81,21 +81,26 @@ namespace MikuMikuFluid
 
         private void setInitialPositions()
         {
-            initialPositions = new List<float[]>();
-
-            BoneCollection bones = Scene.ActiveModel.Bones;
-            for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
+            initialPositions = new List<List<float[]>>();
+            ModelCollection models = Scene.Models;
+            for( int modelIndex = 0; modelIndex < Scene.Models.Count; ++modelIndex )
             {
-                Vector3 bonePosition = bones[boneIndex].InitialPosition;
-                float[] pos = new float[3];
-                pos[0] = bonePosition.X;
-                pos[1] = bonePosition.Y;
-                pos[2] = bonePosition.Z;
-                initialPositions.Add(pos);
+                initialPositions.Add( new List<float[]>() );
+                Model model = Scene.Models[modelIndex];
+                BoneCollection bones = model.Bones;
+                for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
+                {
+                    Vector3 bonePosition = bones[boneIndex].InitialPosition;
+                    float[] pos = new float[3];
+                    pos[0] = bonePosition.X;
+                    pos[1] = bonePosition.Y;
+                    pos[2] = bonePosition.Z;
+                    initialPositions[modelIndex].Add(pos);
+                }
             }
         }
 
-        public void BakeToTimeLine(long frameNumber, List<float[]> bakePositions)
+        public void BakeToTimeLine(long frameNumber, List<List<float[]>> bakePositions)
         {
             if ( (frameNumber % frameSettingDialog.SimulationIterval) != 0)
             {
@@ -105,16 +110,21 @@ namespace MikuMikuFluid
             {
                 return;
             }
-            BoneCollection bones = Scene.ActiveModel.Bones;
-            for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
+            ModelCollection models = Scene.Models;
+            for (int modelIndex = 0; modelIndex < Scene.Models.Count; ++modelIndex)
             {
-                Bone bone = Scene.ActiveModel.Bones[boneIndex];
-                Vector3 vector = new Vector3();
-                vector.X = bakePositions[boneIndex][0] - bone.InitialPosition[0];
-                vector.Y = bakePositions[boneIndex][1] - bone.InitialPosition[1];
-                vector.Z = bakePositions[boneIndex][2] - bone.InitialPosition[2];
-                MotionFrameData mfData = new MotionFrameData(keyFrame, vector, Quaternion.Identity);
-                bone.Layers[0].Frames.AddKeyFrame(mfData);
+                Model model = Scene.Models[modelIndex];
+                BoneCollection bones = model.Bones;
+                for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
+                {
+                    Bone bone = bones[boneIndex];
+                    Vector3 vector = new Vector3();
+                    vector.X = bakePositions[modelIndex][boneIndex][0] - bone.InitialPosition[0];
+                    vector.Y = bakePositions[modelIndex][boneIndex][1] - bone.InitialPosition[1];
+                    vector.Z = bakePositions[modelIndex][boneIndex][2] - bone.InitialPosition[2];
+                    MotionFrameData mfData = new MotionFrameData(keyFrame, vector, Quaternion.Identity);
+                    bone.Layers[0].Frames.AddKeyFrame(mfData);
+                }
             }
             keyFrame += frameSettingDialog.KeyFrameInterval;
         }
