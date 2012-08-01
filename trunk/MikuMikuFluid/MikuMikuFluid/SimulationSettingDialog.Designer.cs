@@ -81,7 +81,6 @@
             this.dataGridViewObjectSetting.RowTemplate.Height = 21;
             this.dataGridViewObjectSetting.Size = new System.Drawing.Size(295, 181);
             this.dataGridViewObjectSetting.TabIndex = 1;
-            this.dataGridViewObjectSetting.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewObjectSetting_CellContentClick);
             // 
             // buttonCancel
             // 

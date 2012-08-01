@@ -1,5 +1,6 @@
 #include "SimulationCommand.h"
 
+#include "../CrystalPhysics/PhysicsObject.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalPhysics/Profiler.h"
@@ -8,9 +9,13 @@
 
 #include "../CrystalGraphics/Renderer.h"
 
+#include <boost/foreach.hpp>
+
 using namespace Crystal::Physics;
 using namespace Crystal::Graphics;
 using namespace Crystal::Command;
+
+using namespace System::Collections::Generic;
 
 SimulationCommand::SimulationCommand(void)
 {
@@ -32,8 +37,14 @@ int SimulationCommand::getStep()
 	return ApplicationSettings::get()->simulation->getStep();
 }
 
-System::Collections::Generic::List<ManagedPosition^>^ SimulationCommand::getManagedParticles()
+List<List<ManagedPosition^>^>^ SimulationCommand::getManagedParticles()
 {
-	const ParticleVector& nativeParticles = ApplicationSettings::get()->factory->getOrderedParticles();
-	return ParticleMarshaler::convertToManaged(nativeParticles);
+	List<List<ManagedPosition^>^>^ results = gcnew List<List<ManagedPosition^>^>();
+	PhysicsObjectFactory* factory = ApplicationSettings::get()->factory;
+	int i = 0;
+	BOOST_FOREACH( PhysicsObject* object, factory->getPhysicsObjects() ) {
+		const ParticleVector& nativeParticles = object->getParticles();
+		results->Add( ParticleMarshaler::convertToManaged( nativeParticles) );
+	}
+	return results;
 }

@@ -14,16 +14,19 @@ namespace Cryphous
         private ObjectSettingCommand command;
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
-        List<float[]> initialPositions;
+        List<List<float[]>> initialPositions;
         
-        public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<float[]> initialPositions)
+        public SimulationSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<List<float[]>> initialPositions)
         {
             InitializeComponent();
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
             this.initialPositions = initialPositions;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
+            foreach (List<float[]> positions in initialPositions)
+            {
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -40,33 +43,18 @@ namespace Cryphous
             //buttonAdd_Click(sender, e);
         }
 
-        private void dataGridViewObjectSetting_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            foreach(DataGridViewRow row in dataGridViewObjectSetting.SelectedRows ) {
-                dataGridViewObjectSetting.Rows.Remove( row );
-            }
-        }
-
         private void buttonOK_Click(object sender, EventArgs e)
         {
             bsCommand.saveBoundarySetting(dataGridView1);
             ssCommand.save();
             command.refresh();
 
-            System.Diagnostics.Debug.Assert( dataGridViewObjectSetting.Rows.Count == 1);
-            foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
+            //System.Diagnostics.Debug.Assert( dataGridViewObjectSetting.Rows.Count == 1);
+            //foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
+            for( int rowIndex = 0; rowIndex < dataGridViewObjectSetting.Rows.Count; ++rowIndex )
             {
-                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), initialPositions);
+                DataGridViewRow row = dataGridViewObjectSetting.Rows[rowIndex];
+                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), initialPositions[rowIndex]);
             }
             
             Hide();
