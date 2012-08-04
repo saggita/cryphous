@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Crystal.Command;
+using System.IO;
 
 namespace Cryphous
 {
@@ -154,5 +155,47 @@ namespace Cryphous
             ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
             poDialog.ShowDialog();
         }
+
+        private void boneExportBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<List<float[]>> allParticles = mainCommand.getSimulationCommand().getManagedParticles();
+
+            if (allParticles.Count == 0)
+            {
+                MessageBox.Show("No particles.");
+            }
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Title = "Bone Export Dialog";
+            dialog.FileName = "bones.txt";
+            dialog.Filter = "Text File|*.txt|All Files|*.*";
+
+            if (dialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            
+            int index = 1;
+            using (StreamWriter w = new StreamWriter(dialog.FileName))
+            {
+                foreach (List<float[]> particleGroup in allParticles)
+                {
+                    foreach (float[] particle in particleGroup)
+                    {
+                    
+                            w.WriteLine("ﾎﾞｰﾝ" + index);
+                            w.WriteLine("bone" + index);
+                            w.WriteLine("1");
+                            w.WriteLine("-");
+                            w.WriteLine("-");
+                            w.WriteLine("-1");
+                            w.WriteLine(particle[0] + "," + particle[1] + "," + particle[2]);
+                            w.WriteLine("");
+
+                            ++index;
+                        }
+                    }
+                }
+         }
     }
 }

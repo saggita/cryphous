@@ -21,7 +21,7 @@ namespace Cryphous
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 10.0, -10.0, 10.0, "Box");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,7 +33,8 @@ namespace Cryphous
         {
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
-            
+            textBoxEffectLength.Text = "0.5";
+            setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
             //buttonAdd_Click(sender, e);
         }
 
@@ -44,7 +45,7 @@ namespace Cryphous
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 0.0, 1.0, -1.0, 1.0, "Box");
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 10.0, -10.0, 10.0, "Box");
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -161,17 +162,18 @@ namespace Cryphous
             dataGridViewObjectSetting.Rows.Clear();
             if (comboBoxExample.Text == "DamBreak1")
             {
-                setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
+                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -20.0, 0.0, 0.0, 10.0, -10.0, 10.0, "Box");
             }
             else if (comboBoxExample.Text == "DamBreak2")
             {
-                setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, -1.0, 0.0, 2.0, -5.0, -1.0, "Box");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 20000.0, 4.0, 200.0, 1.0, 5.0, 0.0, 2.0, 1.0, 5.0, "Box"); 
+                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -20.0, -10.0, 0.0, 10.0, -20.0, 0.0, "Box");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 40000.0, 20.0, 200.0, 10.0, 20.0, 0.0, 10.0, 0.0, 20.0, "Box"); 
             }
             else if (comboBoxExample.Text == "Rain")
             {
+                textBoxEffectLength.Text = "0.1";
                 setBoundary(-100.0F, 100.0F, 0.0F, 100.0F, -100.0F, 100.0F);
                 for (int i = 0; i < 30; ++i)
                 {
@@ -185,6 +187,7 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Crown")
             {
+                textBoxEffectLength.Text = "0.1";
                 setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 5.0, 0.0, 1.0, -5.0, 5.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 8.0, 10.0, -1.0, 1.0, "Sphere");
@@ -195,6 +198,7 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Wall")
             {
+                textBoxEffectLength.Text = "0.1";
                 setBoundary(-10.0F, 10.0F, 0.0F, 100.0F, -2.0F, 2.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, 2.0, 3.0, 0.0, 1.0, -2.0, 2.0, "Box");
