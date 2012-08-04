@@ -83,6 +83,8 @@
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="Point2d.h" />
     <ClInclude Include="PointSprite.h" />
+    <ClInclude Include="PointSpriteFactory.h" />
+    <ClInclude Include="PointSpriteRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,11 +27,6 @@ public:
 
 	int getHeight() const { return normals[0].size(); }
 
-	Geom::Vector3d getNormal(unsigned int x, unsigned int y) const
-	{
-		return normals[x][y];
-	}
-
 	void clear(const Geom::Vector3d& normal)
 	{
 		for( size_t x = 0; x < normals.size(); ++x ) {
@@ -39,6 +34,11 @@ public:
 				normals[x][y] = normal;
 			}
 		}
+	}
+
+	Geom::Vector3d getNormal(const Point2d& point) const
+	{
+		return normals[point.x][point.y];
 	}
 
 	void setNormal(const Point2d& point, const Geom::Vector3d& normal)
