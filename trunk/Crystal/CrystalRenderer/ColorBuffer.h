@@ -27,11 +27,6 @@ public:
 
 	int getHeight() const { return colors[0].size(); }
 
-	Color4d getColor(size_t x, size_t y) const
-	{
-		return colors[x][y];
-	}
-
 	void clear(const Color4d& color)
 	{
 		for( size_t x = 0; x < colors.size(); ++x ) {
@@ -41,24 +36,15 @@ public:
 		}
 	}
 
+	Color4d getColor(const Point2d& point) const
+	{
+		return colors[point.x][point.y];
+	}
+
 	void setColor(const Point2d& point, const Color4d& color)
 	{
 		colors[point.x][point.y] = color;
 	}
-
-	/*void drawPoint(const Point3d& center, unsigned int radius, const Color4d& color)
-	{
-		unsigned int radiusSquared = radius * radius;
-		for( unsigned int x = center.x- radius; x <= center.x+radius; ++x ){
-			for( unsigned int y = center.y -radius; y<= center.y+radius; ++y) {
-				const Geom::Vector3d normal( x - center.x, y - center.y, 0);
-				if( normal.getLengthSquared() < radiusSquared ) {
-					setColor( Point3d(x, y, center.z), color );
-					setNormal( Point3d(x, y, center.z), normal );
-				}
-			}
-		}
-	}*/
 
 private:
 	std::vector< std::vector<Color4d> > colors;

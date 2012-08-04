@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_CASE( FRAME_BUFFER_TEST )
 	buffer.clear( Color4d(100,100,100, 0));
 	for( int x = 0; x < xSize; ++x ) {
 		for( int y = 0; y < ySize; ++y ) {
-			BOOST_CHECK( buffer.getColor(x,y) == Color4d( 100, 100, 100, 0 ) );
+			BOOST_CHECK( buffer.getColor(Point2d(x,y)) == Color4d( 100, 100, 100, 0 ) );
 		}
 	}
 }

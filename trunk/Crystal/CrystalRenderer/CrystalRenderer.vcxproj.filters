@@ -8,5 +8,7 @@
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="NormalBuffer.h" />
     <ClInclude Include="DepthBuffer.h" />
+    <ClInclude Include="PointSpriteFactory.h" />
+    <ClInclude Include="PointSpriteRenderer.h" />
   </ItemGroup>
 </Project>

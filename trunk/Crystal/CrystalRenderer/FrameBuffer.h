@@ -37,9 +37,9 @@ public:
 		colors.setColor(point, color);
 	}
 
-	Color4d getColor(size_t x, size_t y) const
+	Color4d getColor(const Point2d& point) const
 	{
-		return colors.getColor(x,y);
+		return colors.getColor( point);
 	}
 
 	void setNormal(const Point2d& point, const Geom::Vector3d& normal)
@@ -47,9 +47,9 @@ public:
 		normals.setNormal( point, normal);
 	}
 
-	Geom::Vector3d getNormal(size_t x, size_t y) const
+	Geom::Vector3d getNormal(const Point2d& point) const
 	{
-		return normals.getNormal(x,y);
+		return normals.getNormal( point);
 	}
 
 	void setDepth(const Point2d& point, float depth)

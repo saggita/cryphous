@@ -9,5 +9,7 @@
     <ClCompile Include="NormalBufferTest.cpp" />
     <ClCompile Include="PointSpriteTest.cpp" />
     <ClCompile Include="Point2dTest.cpp" />
+    <ClCompile Include="PointSpriteFactoryTest.cpp" />
+    <ClCompile Include="PointSpriteRendererTest.cpp" />
   </ItemGroup>
 </Project>

@@ -83,6 +83,8 @@
     <ClCompile Include="FrameBufferTest.cpp" />
     <ClCompile Include="NormalBufferTest.cpp" />
     <ClCompile Include="Point2dTest.cpp" />
+    <ClCompile Include="PointSpriteFactoryTest.cpp" />
+    <ClCompile Include="PointSpriteRendererTest.cpp" />
     <ClCompile Include="PointSpriteTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
