@@ -127,20 +127,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoundarySolver.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="RigidEnforcer.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleFactory.cpp" />
-    <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="PhysicsObjectFactory.cpp" />
-    <ClCompile Include="Fluid.cpp" />
-    <ClCompile Include="Rigid.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
-    <ClCompile Include="SearchParticle.cpp" />
     <ClCompile Include="SearchParticleFactory.cpp" />
-    <ClCompile Include="Profiler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />
