@@ -4,12 +4,6 @@
     <Filter Include="Simulation">
       <UniqueIdentifier>{a621e9fe-e84a-42fe-8f3b-99c5746838a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Simulation\Solver">
-      <UniqueIdentifier>{f8e942f3-9bde-496d-aec8-c702b55dc4dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Profiler">
-      <UniqueIdentifier>{7823b1af-35fd-4b7d-a444-300735c43ce6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PhysicsObject">
       <UniqueIdentifier>{9c8d95c0-fa90-49b8-8a52-d9bf02431bcd}</UniqueIdentifier>
     </Filter>
@@ -19,34 +13,10 @@
     <Filter Include="Particle">
       <UniqueIdentifier>{89bdf7ec-5374-4f38-9036-001d680fc83a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Particle\Generation">
-      <UniqueIdentifier>{e28c8d3c-ad5b-4a67-9ce4-ec3211622e2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Simulation\Solver\SPHSolver">
-      <UniqueIdentifier>{7e185f9f-21cb-4a07-b1fd-502663a958f7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ParticleFactory.cpp">
-      <Filter>Particle\Generation</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp">
-      <Filter>PhysicsObject</Filter>
-    </ClCompile>
     <ClCompile Include="Simulation.cpp">
       <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="Profiler.cpp">
-      <Filter>Profiler</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHSolver.cpp">
-      <Filter>Simulation\Solver\SPHSolver</Filter>
-    </ClCompile>
-    <ClCompile Include="Fluid.cpp">
-      <Filter>PhysicsObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigid.cpp">
-      <Filter>PhysicsObject</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Particle</Filter>
@@ -54,16 +24,10 @@
     <ClCompile Include="BoundarySolver.cpp">
       <Filter>Simulation</Filter>
     </ClCompile>
-    <ClCompile Include="Obstacle.cpp">
-      <Filter>PhysicsObject</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsObjectFactory.cpp">
       <Filter>PhysicsObject</Filter>
     </ClCompile>
     <ClCompile Include="NeighborSearcher.cpp">
-      <Filter>Space</Filter>
-    </ClCompile>
-    <ClCompile Include="SearchParticle.cpp">
       <Filter>Space</Filter>
     </ClCompile>
     <ClCompile Include="SearchParticleFactory.cpp">
@@ -72,14 +36,14 @@
     <ClCompile Include="RigidEnforcer.cpp">
       <Filter>Simulation</Filter>
     </ClCompile>
+    <ClCompile Include="SPHSolver.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleFactory.cpp">
+      <Filter>Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ParticleConditions.h">
-      <Filter>Particle\Generation</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleFactory.h">
-      <Filter>Particle\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="PhysicsObject.h">
       <Filter>PhysicsObject</Filter>
     </ClInclude>
@@ -88,15 +52,6 @@
     </ClInclude>
     <ClInclude Include="SimulationSetting.h">
       <Filter>Simulation</Filter>
-    </ClInclude>
-    <ClInclude Include="Profiler.h">
-      <Filter>Profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHSolver.h">
-      <Filter>Simulation\Solver\SPHSolver</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHPairSolver.h">
-      <Filter>Simulation\Solver\SPHSolver</Filter>
     </ClInclude>
     <ClInclude Include="Fluid.h">
       <Filter>PhysicsObject</Filter>
@@ -133,6 +88,19 @@
     </ClInclude>
     <ClInclude Include="RigidEnforcer.h">
       <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h" />
+    <ClInclude Include="SPHPairSolver.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHSolver.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleConditions.h">
+      <Filter>Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleFactory.h">
+      <Filter>Particle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
