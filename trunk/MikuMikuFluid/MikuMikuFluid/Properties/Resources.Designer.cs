@@ -60,6 +60,13 @@ namespace MikuMikuFluid.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap image {
+            get {
+                object obj = ResourceManager.GetObject("image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap MMF {
             get {
                 object obj = ResourceManager.GetObject("MMF", resourceCulture);

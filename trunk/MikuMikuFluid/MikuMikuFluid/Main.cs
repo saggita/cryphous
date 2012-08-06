@@ -6,7 +6,7 @@ using System.Drawing;
 using MikuMikuPlugin;
 using DxMath;
 
-namespace MikuMikuFluid 
+namespace MikuMikuFluid
 {
     public class Main : ICommandPlugin
     {
@@ -73,9 +73,9 @@ namespace MikuMikuFluid
 
             setInitialPositions();
 
-            MessageBox.Show(ApplicationForm, initialPositions.Count + " models inputed."); 
+            MessageBox.Show(ApplicationForm, initialPositions.Count + " models inputed.");
 
-            MMFForm mmfform = new MMFForm( this);
+            MMFForm mmfform = new MMFForm(this);
             mmfform.Show();
         }
 
@@ -83,9 +83,9 @@ namespace MikuMikuFluid
         {
             initialPositions = new List<List<float[]>>();
             ModelCollection models = Scene.Models;
-            for( int modelIndex = 0; modelIndex < Scene.Models.Count; ++modelIndex )
+            for (int modelIndex = 0; modelIndex < Scene.Models.Count; ++modelIndex)
             {
-                initialPositions.Add( new List<float[]>() );
+                initialPositions.Add(new List<float[]>());
                 Model model = Scene.Models[modelIndex];
                 BoneCollection bones = model.Bones;
                 for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
@@ -102,7 +102,7 @@ namespace MikuMikuFluid
 
         public void BakeToTimeLine(long frameNumber, List<List<float[]>> bakePositions)
         {
-            if ( (frameNumber % frameSettingDialog.SimulationIterval) != 0)
+            if ((frameNumber % frameSettingDialog.SimulationIterval) != 0)
             {
                 return;
             }
