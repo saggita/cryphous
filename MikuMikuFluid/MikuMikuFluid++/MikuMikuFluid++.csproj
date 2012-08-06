@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cryphous">
+      <HintPath>..\..\Cryphous\Cryphous\bin\Release\Cryphous.exe</HintPath>
+    </Reference>
+    <Reference Include="CrystalCommand">
+      <HintPath>..\..\Crystal\Release\CrystalCommand.dll</HintPath>
+    </Reference>
     <Reference Include="DxMath">
       <HintPath>..\..\MikuMikuMoving\System\DxMath.dll</HintPath>
     </Reference>
@@ -46,11 +52,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="MMFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MMFForm.designer.cs">
+      <DependentUpon>MMFForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulationSettingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulationSettingDialog.Designer.cs">
+      <DependentUpon>SimulationSettingDialog.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MMFForm.resx">
+      <DependentUpon>MMFForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimulationSettingDialog.resx">
+      <DependentUpon>SimulationSettingDialog.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cp MikuMikuFluid++.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid++.dll</PostBuildEvent>
+    <PostBuildEvent>cp MikuMikuFluid++.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid++.dll
+cp Cryphous.exe ..\..\..\..\MikuMikuMoving\System\Cryphous.exe
+cp CrystalCommand.dll ..\..\..\..\MikuMikuMoving\System\CrystalCommand.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
