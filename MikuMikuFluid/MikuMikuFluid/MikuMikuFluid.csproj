@@ -102,6 +102,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\MikuMikuMoving_LOGO_2.png" />
     <None Include="MMF.png" />
     <Content Include="MMF_L.png" />
   </ItemGroup>
