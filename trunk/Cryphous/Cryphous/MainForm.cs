@@ -23,11 +23,20 @@ namespace Cryphous
 
         private PhysicsObjectSettingDialog osDialog;
         private GraphicsSettingForm gsDialog;
+
+        private bool isStandAlone;
+        List<List<float[]>> simulatedParticles;
+
+        public List<List<float[]>> SimulatedParticles
+        {
+            get{ return simulatedParticles; }
+        }
         
-        public MainForm()
+        public MainForm(bool isStandAlone)
         {
             InitializeComponent();
-            this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);   
+            this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
+            this.isStandAlone = isStandAlone;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -43,11 +52,16 @@ namespace Cryphous
 
             osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
             gsDialog = new GraphicsSettingForm(mainCommand);
+            objectSettingToolStripMenuItem_Click(sender, e);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             osDialog.ShowDialog();
+            if (!isStandAlone)
+            {
+                simulatedParticles = mainCommand.getSimulationCommand().getManagedParticles();
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -68,14 +82,22 @@ namespace Cryphous
 
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
-            mainCommand.proceedSimulation();
-            mainCommand.displayInformation(listBoxInformation);
+            proceed();
         }
 
         private void timerSimulation_Tick(object sender, EventArgs e)
         {
+            proceed();
+        }
+
+        public void proceed()
+        {
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
+            if (!isStandAlone)
+            {
+                simulatedParticles = mainCommand.getSimulationCommand().getManagedParticles();
+            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -155,47 +177,5 @@ namespace Cryphous
             ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
             poDialog.ShowDialog();
         }
-
-        private void boneExportBToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<List<float[]>> allParticles = mainCommand.getSimulationCommand().getManagedParticles();
-
-            if (allParticles.Count == 0)
-            {
-                MessageBox.Show("No particles.");
-            }
-
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Title = "Bone Export Dialog";
-            dialog.FileName = "bones.txt";
-            dialog.Filter = "Text File|*.txt|All Files|*.*";
-
-            if (dialog.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            
-            int index = 1;
-            using (StreamWriter w = new StreamWriter(dialog.FileName))
-            {
-                foreach (List<float[]> particleGroup in allParticles)
-                {
-                    foreach (float[] particle in particleGroup)
-                    {
-                    
-                            w.WriteLine("ﾎﾞｰﾝ" + index);
-                            w.WriteLine("bone" + index);
-                            w.WriteLine("1");
-                            w.WriteLine("-");
-                            w.WriteLine("-");
-                            w.WriteLine("-1");
-                            w.WriteLine(particle[0] + "," + particle[1] + "," + particle[2]);
-                            w.WriteLine("");
-
-                            ++index;
-                        }
-                    }
-                }
-         }
     }
 }
