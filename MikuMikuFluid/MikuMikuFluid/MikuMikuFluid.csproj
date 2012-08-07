@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DD63EE68-0E5A-4679-9182-485F9CE7F8F1}</ProjectGuid>
+    <ProjectGuid>{7610B05C-6E15-44F8-848C-C7ED745BA3E0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MikuMikuFluid</RootNamespace>
-    <AssemblyName>MikuMikuFluid</AssemblyName>
+    <RootNamespace>MikuMikuFluid__</RootNamespace>
+    <AssemblyName>MikuMikuFluid++</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,25 +31,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cryphous, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <ExecutableExtension>.exe</ExecutableExtension>
+    <Reference Include="Cryphous">
       <HintPath>..\..\Cryphous\Cryphous\bin\Release\Cryphous.exe</HintPath>
     </Reference>
-    <Reference Include="CrystalCommand, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CrystalCommand">
       <HintPath>..\..\Crystal\Release\CrystalCommand.dll</HintPath>
     </Reference>
-    <Reference Include="DxMath, Version=1.0.4012.33355, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DxMath">
       <HintPath>..\..\MikuMikuMoving\System\DxMath.dll</HintPath>
     </Reference>
-    <Reference Include="MikuMikuPlugin, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="MikuMikuPlugin">
       <HintPath>..\..\MikuMikuMoving\System\MikuMikuPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -60,55 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
-    <Compile Include="MMFForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MMFForm.designer.cs">
-      <DependentUpon>MMFForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="FrameSettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrameSettingForm.designer.cs">
-      <DependentUpon>FrameSettingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SimulationSettingDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimulationSettingDialog.designer.cs">
-      <DependentUpon>SimulationSettingDialog.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MMFForm.resx">
-      <DependentUpon>MMFForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrameSettingForm.resx">
-      <DependentUpon>FrameSettingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SimulationSettingDialog.resx">
-      <DependentUpon>SimulationSettingDialog.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MikuMikuMoving_LOGO_2.png" />
-    <None Include="MMF.png" />
-    <Content Include="MMF_L.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cp MikuMikuFluid.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid.dll
+    <PostBuildEvent>cp MikuMikuFluid++.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid++.dll
 cp Cryphous.exe ..\..\..\..\MikuMikuMoving\System\Cryphous.exe
 cp CrystalCommand.dll ..\..\..\..\MikuMikuMoving\System\CrystalCommand.dll</PostBuildEvent>
   </PropertyGroup>

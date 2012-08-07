@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("MikuMikuFluid")]
+[assembly: AssemblyTitle("MikuMikuFluid++")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("MikuMikuFluid")]
+[assembly: AssemblyProduct("MikuMikuFluid++")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
-[assembly: Guid("ad2d937d-ea65-41a5-b4ef-e7f700680809")]
+[assembly: Guid("79a49ee7-3b02-4be1-b308-2a649c0beb43")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //

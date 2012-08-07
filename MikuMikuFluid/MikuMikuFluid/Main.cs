@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
+using System.IO;
 using MikuMikuPlugin;
 using DxMath;
+using Cryphous;
 
 namespace MikuMikuFluid
 {
-    public class Main : ICommandPlugin
+    public class Main : IResidentPlugin
     {
+        private List<ScreenImage_3D> screen3Ds;
+
         public Guid GUID
         {
-            get { return System.Guid.NewGuid(); }
+            get { return new Guid(); }
         }
 
         public IWin32Window ApplicationForm { get; set; }
@@ -26,12 +29,12 @@ namespace MikuMikuFluid
 
         public Image Image
         {
-            get { return Properties.Resources.MMF_L; }
+            get { return null; }
         }
 
         public Image SmallImage
         {
-            get { return Properties.Resources.MMF; }
+            get { return null; }
         }
 
         public string Text
@@ -44,94 +47,78 @@ namespace MikuMikuFluid
             get { return Text; }
         }
 
-        private FrameSettingForm frameSettingDialog;
+        private float currentFrame;
 
-        private long keyFrame;
+        private MainForm mainForm;
 
-        public void initKeyFrame()
+        public void Initialize()
         {
-            keyFrame = frameSettingDialog.StartFrame;
+            screen3Ds = new List<ScreenImage_3D>();
+            Random rand = new Random(0);
+            Bitmap bitmap = new Bitmap(1, 1);
+            Color color = Color.FromArgb(128, Color.Blue);
+            bitmap.SetPixel(0, 0, color);
+            for (int i = 0; i < 20000; ++i)
+            {
+                Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
+                ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
+                screen3Ds.Add(screen3D);
+                screen3D.Size = new Vector2(0.5F, 0.5F);
+                Scene.ScreenObjects.Add(screen3D);
+            }
         }
 
-        private List<List<float[]>> initialPositions;
-
-        public List<List<float[]>> InitialPositions
+        public void Enabled()
         {
-            get { return initialPositions; }
+            Random rand = new Random(0);
+            foreach (ScreenImage_3D screen3D in screen3Ds)
+            {
+                Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
+                screen3D.Position = vector;
+            }
+            mainForm = new MainForm(false);
+            mainForm.Show();
         }
 
-        public void Run(CommandArgs e)
+        public void Update(float Frame, float ElapsedTime)
         {
-            frameSettingDialog = new FrameSettingForm();
-
-            if (frameSettingDialog.ShowDialog(ApplicationForm) != DialogResult.OK)
+            /*if (currentFrame == Frame)
+            {
+                return;
+            }*/
+            mainForm.proceed();
+            List<List<float[]>> simulatedPositions = mainForm.SimulatedParticles;
+            if (simulatedPositions == null)
             {
                 return;
             }
-
-            initKeyFrame();
-
-            setInitialPositions();
-
-            MessageBox.Show(ApplicationForm, initialPositions.Count + " models inputed.");
-
-            MMFForm mmfform = new MMFForm(this);
-            mmfform.Show();
-        }
-
-        private void setInitialPositions()
-        {
-            initialPositions = new List<List<float[]>>();
-            ModelCollection models = Scene.Models;
-            for (int modelIndex = 0; modelIndex < Scene.Models.Count; ++modelIndex)
+          
+            int index = 0;
+            for (int i = 0; i < simulatedPositions.Count; ++i)
             {
-                initialPositions.Add(new List<float[]>());
-                Model model = Scene.Models[modelIndex];
-                BoneCollection bones = model.Bones;
-                for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
+                for (int j = 0; j < simulatedPositions[i].Count; ++j)
                 {
-                    Vector3 bonePosition = bones[boneIndex].InitialPosition;
-                    float[] pos = new float[3];
-                    pos[0] = bonePosition.X;
-                    pos[1] = bonePosition.Y;
-                    pos[2] = bonePosition.Z;
-                    initialPositions[modelIndex].Add(pos);
+                    float x = simulatedPositions[i][j][0];
+                    float y = simulatedPositions[i][j][1];
+                    float z = simulatedPositions[i][j][2];
+                    screen3Ds[index].Position = new Vector3(x, y, z);
+                    ++index;
                 }
             }
+            currentFrame = Frame;
         }
 
-        public void BakeToTimeLine(long frameNumber, List<List<float[]>> bakePositions)
+        public void Disabled()
         {
-            if ((frameNumber % frameSettingDialog.SimulationIterval) != 0)
-            {
-                return;
-            }
-            if (frameNumber > frameSettingDialog.EndFrame)
-            {
-                return;
-            }
-            ModelCollection models = Scene.Models;
-            for (int modelIndex = 0; modelIndex < Scene.Models.Count; ++modelIndex)
-            {
-                Model model = Scene.Models[modelIndex];
-                BoneCollection bones = model.Bones;
-                for (int boneIndex = 0; boneIndex < bones.Count; boneIndex++)
-                {
-                    Bone bone = bones[boneIndex];
-                    Vector3 vector = new Vector3();
-                    vector.X = bakePositions[modelIndex][boneIndex][0] - bone.InitialPosition[0];
-                    vector.Y = bakePositions[modelIndex][boneIndex][1] - bone.InitialPosition[1];
-                    vector.Z = bakePositions[modelIndex][boneIndex][2] - bone.InitialPosition[2];
-                    MotionFrameData mfData = new MotionFrameData(keyFrame, vector, Quaternion.Identity);
-                    bone.Layers[0].Frames.AddKeyFrame(mfData);
-                }
-            }
-            keyFrame += frameSettingDialog.KeyFrameInterval;
+
         }
 
         public void Dispose()
         {
-
+            foreach (ScreenImage_3D screen3D in screen3Ds)
+            {
+                screen3D.Dispose();
+            }
         }
     }
 }

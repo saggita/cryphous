@@ -42,8 +42,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonParticleInfo = new System.Windows.Forms.Button();
             this.buttonViewReset = new System.Windows.Forms.Button();
-            this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.boneExportBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -54,7 +52,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileFToolStripMenuItem,
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -184,21 +181,6 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
-            // fileFToolStripMenuItem
-            // 
-            this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.boneExportBToolStripMenuItem});
-            this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
-            this.fileFToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
-            this.fileFToolStripMenuItem.Text = "File(&F)";
-            // 
-            // boneExportBToolStripMenuItem
-            // 
-            this.boneExportBToolStripMenuItem.Name = "boneExportBToolStripMenuItem";
-            this.boneExportBToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.boneExportBToolStripMenuItem.Text = "BoneExport(&B)";
-            this.boneExportBToolStripMenuItem.Click += new System.EventHandler(this.boneExportBToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -238,7 +220,5 @@
         private System.Windows.Forms.Button buttonViewReset;
         private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
         private System.Windows.Forms.Button buttonParticleInfo;
-        private System.Windows.Forms.ToolStripMenuItem fileFToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem boneExportBToolStripMenuItem;
     }
 }
