@@ -29,12 +29,12 @@ namespace MikuMikuFluid
 
         public Image Image
         {
-            get { return null; }
+            get { return MikuMikuFluid__.Properties.Resources.MMF_L; }
         }
 
         public Image SmallImage
         {
-            get { return null; }
+            get { return MikuMikuFluid__.Properties.Resources.MMF; }
         }
 
         public string Text
@@ -55,15 +55,25 @@ namespace MikuMikuFluid
         {
             screen3Ds = new List<ScreenImage_3D>();
             Random rand = new Random(0);
-            Bitmap bitmap = new Bitmap(1, 1);
+            /*Bitmap bitmap = new Bitmap(1, 1);
             Color color = Color.FromArgb(128, Color.Blue);
-            bitmap.SetPixel(0, 0, color);
+            bitmap.SetPixel(0, 0, color);*/
+            Bitmap bitmap = new Bitmap(MikuMikuFluid__.Properties.Resources.sprite);
+            for (int x = 0; x < bitmap.Width; ++x)
+            {
+                for (int y = 0; y < bitmap.Height; ++y)
+                {
+                    Color color = bitmap.GetPixel( x, y);
+                    color = Color.FromArgb( (byte.MaxValue - color.B) / 4, 0, 0, color.B );
+                    bitmap.SetPixel(x, y, color);
+                }
+            }
             for (int i = 0; i < 20000; ++i)
             {
                 Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
                 ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
                 screen3Ds.Add(screen3D);
-                screen3D.Size = new Vector2(0.5F, 0.5F);
+                screen3D.Size = new Vector2(1.0F, 1.0F);
                 Scene.ScreenObjects.Add(screen3D);
             }
         }
