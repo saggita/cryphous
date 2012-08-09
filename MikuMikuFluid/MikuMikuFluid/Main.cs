@@ -51,6 +51,8 @@ namespace MikuMikuFluid
 
         private MainForm mainForm;
 
+        private const int maxParticles = 25500;
+
         public void Initialize()
         {
             screen3Ds = new List<ScreenImage_3D>();
@@ -68,7 +70,7 @@ namespace MikuMikuFluid
                     bitmap.SetPixel(x, y, color);
                 }
             }
-            for (int i = 0; i < 20000; ++i)
+            for (int i = 0; i < maxParticles; ++i)
             {
                 Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
                 ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
@@ -85,7 +87,7 @@ namespace MikuMikuFluid
                 Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
                 screen3D.Position = vector;
             }
-            mainForm = new MainForm(false);
+            mainForm = new MainForm(false, maxParticles);
             mainForm.Show();
         }
 

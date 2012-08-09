@@ -14,14 +14,16 @@ namespace Cryphous
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
         private Random rand = new Random();
+        private double maxParticles;
         
-        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand)
+        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, int maxParticles = 1000000)
         {
             InitializeComponent();
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 10.0, -10.0, 10.0, "Box");
+            this.maxParticles = maxParticles;
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 10.0, "Box");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,6 +35,7 @@ namespace Cryphous
         {
             bsCommand.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
+
             textBoxEffectLength.Text = "0.5";
             setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
             //buttonAdd_Click(sender, e);
@@ -61,6 +64,7 @@ namespace Cryphous
             ssCommand.save();
             command.refresh();
 
+            int createdCounts = 0;
             foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
             {
                 float minX = Convert.ToSingle(row.Cells[4].Value);
@@ -82,6 +86,12 @@ namespace Cryphous
                 else
                 {
                     System.Diagnostics.Debug.Assert(false);
+                }
+                createdCounts += positions.Count;
+                if (createdCounts >= maxParticles)
+                {
+                    MessageBox.Show("Warning: Over " + maxParticles + " particles are generated.");
+                    return;
                 }
 
                 command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);
@@ -163,15 +173,21 @@ namespace Cryphous
             if (comboBoxExample.Text == "DamBreak1")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -20.0, 0.0, 0.0, 10.0, -10.0, 10.0, "Box");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 10.0, "Box");
             }
             else if (comboBoxExample.Text == "DamBreak2")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -20.0, -10.0, 0.0, 10.0, -20.0, 0.0, "Box");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 40000.0, 20.0, 200.0, 10.0, 20.0, 0.0, 10.0, 0.0, 20.0, "Box"); 
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, "Box"); 
             }
-            else if (comboBoxExample.Text == "Rain")
+            else if (comboBoxExample.Text == "SphereBreak")
+            {
+                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -15.0, 0.0, 0.0, 15.0, -15.0, 0.0, "Sphere");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 15.0, 0.0, 15.0, 0.0, 15.0, "Sphere");
+            }
+            /*else if (comboBoxExample.Text == "Rain")
             {
                 textBoxEffectLength.Text = "0.1";
                 setBoundary(-100.0F, 100.0F, 0.0F, 100.0F, -100.0F, 100.0F);
@@ -182,10 +198,10 @@ namespace Cryphous
                     double minY = rand.NextDouble() * 10;
                     double minZ = rand.NextDouble() * 20 - 10;
 
-                    dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 100.0, 1000.0, minX, minX + radius, minY, minY + radius, minZ, minZ + radius, "Sphere");
+                    dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 200.0, 1000.0, minX, minX + radius, minY, minY + radius, minZ, minZ + radius, "Sphere");
                 }
-            }
-            else if (comboBoxExample.Text == "Crown")
+            }*/
+            /*else if (comboBoxExample.Text == "Crown")
             {
                 textBoxEffectLength.Text = "0.1";
                 setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
@@ -203,7 +219,7 @@ namespace Cryphous
                 dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, 2.0, 3.0, 0.0, 1.0, -2.0, 2.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, -8.0, -7.0, 0.0, 2.0, -2.0, 2.0, "Box");
-            }
+            }*/
             else
             {
                 System.Diagnostics.Debug.Assert(false);
