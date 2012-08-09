@@ -27,16 +27,19 @@ namespace Cryphous
         private bool isStandAlone;
         List<List<float[]>> simulatedParticles;
 
+        private int maxParticles;
+
         public List<List<float[]>> SimulatedParticles
         {
             get{ return simulatedParticles; }
         }
         
-        public MainForm(bool isStandAlone)
+        public MainForm(bool isStandAlone, int maxParticles)
         {
             InitializeComponent();
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
             this.isStandAlone = isStandAlone;
+            this.maxParticles = maxParticles;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -48,9 +51,9 @@ namespace Cryphous
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.2");
+            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.3");
 
-            osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
+            osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, maxParticles);
             gsDialog = new GraphicsSettingForm(mainCommand);
             objectSettingToolStripMenuItem_Click(sender, e);
         }
