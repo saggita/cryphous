@@ -80,7 +80,6 @@ namespace MikuMikuFluid
 
         public void Enabled()
         {
-            Random rand = new Random(0);
             foreach (ScreenImage_3D screen3D in screen3Ds)
             {
                 Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
@@ -92,10 +91,9 @@ namespace MikuMikuFluid
 
         public void Update(float Frame, float ElapsedTime)
         {
-            /*if (currentFrame == Frame)
-            {
-                return;
-            }*/
+            Vector3 angle = Scene.Cameras[0].CurrentMotion.Angle;
+            Quaternion quaternion = Quaternion.RotationYawPitchRoll(-angle.Y, -angle.X, -angle.Z);
+
             mainForm.proceed();
             List<List<float[]>> simulatedPositions = mainForm.SimulatedParticles;
             if (simulatedPositions == null)
@@ -112,6 +110,7 @@ namespace MikuMikuFluid
                     float y = simulatedPositions[i][j][1];
                     float z = simulatedPositions[i][j][2];
                     screen3Ds[index].Position = new Vector3(x, y, z);
+                    screen3Ds[index].Rotation = quaternion;
                     ++index;
                 }
             }
@@ -120,7 +119,7 @@ namespace MikuMikuFluid
 
         public void Disabled()
         {
-
+            mainForm.Close();
         }
 
         public void Dispose()
