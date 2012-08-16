@@ -15,20 +15,20 @@ public:
 	{
 	}
 
-	/*void render(const PointSprite& sprite, const Point2d& center)
+	void render(const PointSprite& sprite, const Point2d& center)
 	{
 		Point2d spritePoint( 0, 0);
 		const int radius = sprite.getRadius();
-		for( int x = center.x - radius; x <= center.x + radius; ++x ) {
-			for( int y = center.y - radius; y <= center.y + radius; ++y ) {
-				const Point2d bufferPoint(x,y);
-				buffer.setColor( point, sprite.getBuffer().getColor( spritePoint ) );
-				spritePoint.y ++
-	
+		Point2d bufferPoint;
+		for( bufferPoint.x = center.x - radius; bufferPoint.x < center.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
+			for( bufferPoint.y = center.y - radius, spritePoint.y = 0; bufferPoint.y < center.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
+				if( buffer.isValidPoint( bufferPoint) ) {
+					const Color4d& spriteColor = sprite.getBuffer().getColor( spritePoint );
+					buffer.setColor( bufferPoint, spriteColor );
+				}
 			}
-				
 		}
-	}*/
+	}
 
 private:
 	FrameBuffer& buffer;

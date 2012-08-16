@@ -10,10 +10,9 @@ BOOST_AUTO_TEST_CASE( DEPTH_BUFFER_TEST )
 	const int xSize = 256;
 	const int ySize = 256;
 	DepthBuffer buffer( xSize, ySize);
-	buffer.clear( 100.0f );
-	for( int x = 0; x < xSize; ++x ) {
-		for( int y = 0; y < ySize; ++y ) {
-			BOOST_CHECK( buffer.getDepth(Point2d(x,y)) == 100.0f );
-		}
-	}
+	const float depth = 100.0f;
+	buffer.clear( depth );
+	BOOST_CHECK( buffer.getDepth(Point2d(0,0)) == depth );
+	BOOST_CHECK( buffer.getDepth(Point2d(100,100)) == depth );
+	BOOST_CHECK( buffer.getDepth(Point2d(255,255)) == depth );
 }

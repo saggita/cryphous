@@ -11,10 +11,17 @@ BOOST_AUTO_TEST_CASE( FRAME_BUFFER_TEST )
 	const int xSize = 256;
 	const int ySize = 256;
 	FrameBuffer buffer( xSize, ySize);
-	buffer.clear( Color4d(100,100,100, 0));
-	for( int x = 0; x < xSize; ++x ) {
-		for( int y = 0; y < ySize; ++y ) {
-			BOOST_CHECK( buffer.getColor(Point2d(x,y)) == Color4d( 100, 100, 100, 0 ) );
-		}
-	}
+	const Color4d color(100, 100, 100, 0 );
+	buffer.clear( color);
+
+	BOOST_CHECK( buffer.getColor(Point2d(0,0)) == color );
+	BOOST_CHECK( buffer.getColor(Point2d(100,100)) == color );
+	BOOST_CHECK( buffer.getColor(Point2d(255,255)) == color );
+	
+	BOOST_CHECK( buffer.isValidPointX( Point2d(0, 100 ) ) );
+	BOOST_CHECK( buffer.isValidPointY( Point2d(0, 100 ) ) );
+	BOOST_CHECK( buffer.isInvalidPointX( Point2d(-1, 100) ) );
+	BOOST_CHECK( buffer.isInvalidPointY( Point2d(100, 512 ) ) );
+	BOOST_CHECK( buffer.isValidPoint( Point2d( 100, 100 ) ) );
+	BOOST_CHECK( buffer.isInvalidPoint( Point2d( 512, 100 ) ) );
 }

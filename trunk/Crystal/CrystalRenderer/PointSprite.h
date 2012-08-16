@@ -16,10 +16,10 @@ class PointSprite
 {
 public:
 	PointSprite(unsigned int radius, const Color4d& color) :
-	  buffer( radius * 2, radius * 2)
+	  buffer( radius * 2 + 1, radius * 2 + 1)
 	{
-		for( int x = 0; x < buffer.getWidth(); ++x ) {
-			for( int y = 0; y < buffer.getHeight(); ++y ) {
+		for( int x = 0; x <= buffer.getWidth(); ++x ) {
+			for( int y = 0; y <= buffer.getHeight(); ++y ) {
 				const int diffX = x-radius;
 				const int diffY = y-radius;
 				const unsigned int lengthSquared = diffX * diffX + diffY * diffY;

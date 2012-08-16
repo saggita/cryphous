@@ -32,63 +32,31 @@ public:
 
 	int getHeight() const { return colors.getHeight(); }
 
-	void setColor(const Point2d& point, const Color4d& color)
-	{
-		colors.setColor(point, color);
-	}
+	void setColor(const Point2d& point, const Color4d& color) { colors.setColor(point, color); }
 
-	Color4d getColor(const Point2d& point) const
-	{
-		return colors.getColor( point);
-	}
+	Color4d getColor(const Point2d& point) const { return colors.getColor( point); }
 
-	void setNormal(const Point2d& point, const Geom::Vector3d& normal)
-	{
-		normals.setNormal( point, normal);
-	}
+	void setNormal(const Point2d& point, const Geom::Vector3d& normal) { normals.setNormal( point, normal); }
 
-	Geom::Vector3d getNormal(const Point2d& point) const
-	{
-		return normals.getNormal( point);
-	}
+	Geom::Vector3d getNormal(const Point2d& point) const { return normals.getNormal( point); }
 
-	void setDepth(const Point2d& point, float depth)
-	{
-		depths.setDepth( point, depth );
-	}
+	void setDepth(const Point2d& point, float depth) { depths.setDepth( point, depth ); }
 
-	float getDepth(const Point2d& point) const
-	{
-		return depths.getDepth( point);
-	}
+	float getDepth(const Point2d& point) const { return depths.getDepth( point); }
 
-	void clear(const Color4d& color)
-	{
-		colors.clear(color);
-	}
+	void clear(const Color4d& color) { colors.clear(color); }
 
-	/*void drawQuad(const Point3d& center, unsigned int radius, const Color4d& color)
-	{
-		for( unsigned int x = center.x- radius; x <= center.x+radius; ++x ){
-			for( unsigned int y = center.y -radius; y<= center.y+radius; ++y) {
-				setColor( Point3d(x, y, center.z), color );
-			}
-		}
-	}
+	bool isValidPointX(const Point2d& point) { return (0 <= point.x) && (point.x < colors.getWidth() ); }
 
-	void drawPoint(const Point3d& center, unsigned int radius, const Color4d& color)
-	{
-		unsigned int radiusSquared = radius * radius;
-		for( unsigned int x = center.x- radius; x <= center.x+radius; ++x ){
-			for( unsigned int y = center.y -radius; y<= center.y+radius; ++y) {
-				const Geom::Vector3d normal( x - center.x, y - center.y, 0);
-				if( normal.getLengthSquared() < radiusSquared ) {
-					setColor( Point3d(x, y, center.z), color );
-					setNormal( Point3d(x, y, center.z), normal );
-				}
-			}
-		}
-	}*/
+	bool isValidPointY(const Point2d& point) { return (0 <= point.y) && (point.y < colors.getHeight() ); }
+
+	bool isInvalidPointX(const Point2d& point) { return !isValidPointX( point ); }
+
+	bool isInvalidPointY(const Point2d& point) { return !isValidPointY( point ); }
+
+	bool isValidPoint(const Point2d& point) { return isValidPointX( point ) && isValidPointY( point ); }
+
+	bool isInvalidPoint(const Point2d& point) { return !isValidPoint( point ); }
 
 private:
 	ColorBuffer colors;

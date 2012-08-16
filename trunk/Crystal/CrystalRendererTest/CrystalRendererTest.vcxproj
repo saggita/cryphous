@@ -87,6 +87,17 @@
     <ClCompile Include="PointSpriteRendererTest.cpp" />
     <ClCompile Include="PointSpriteTest.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CrystalRenderer\Color4d.h" />
+    <ClInclude Include="..\CrystalRenderer\ColorBuffer.h" />
+    <ClInclude Include="..\CrystalRenderer\DepthBuffer.h" />
+    <ClInclude Include="..\CrystalRenderer\FrameBuffer.h" />
+    <ClInclude Include="..\CrystalRenderer\NormalBuffer.h" />
+    <ClInclude Include="..\CrystalRenderer\Point2d.h" />
+    <ClInclude Include="..\CrystalRenderer\PointSprite.h" />
+    <ClInclude Include="..\CrystalRenderer\PointSpriteFactory.h" />
+    <ClInclude Include="..\CrystalRenderer\PointSpriteRenderer.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
