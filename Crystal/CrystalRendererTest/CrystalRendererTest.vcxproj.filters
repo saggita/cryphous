@@ -2,14 +2,75 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalRendererTest.cpp" />
-    <ClCompile Include="Color4dTest.cpp" />
-    <ClCompile Include="FrameBufferTest.cpp" />
-    <ClCompile Include="ColorBufferTest.cpp" />
-    <ClCompile Include="DepthBufferTest.cpp" />
-    <ClCompile Include="NormalBufferTest.cpp" />
-    <ClCompile Include="PointSpriteTest.cpp" />
-    <ClCompile Include="Point2dTest.cpp" />
-    <ClCompile Include="PointSpriteFactoryTest.cpp" />
-    <ClCompile Include="PointSpriteRendererTest.cpp" />
+    <ClCompile Include="ColorBufferTest.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Color4dTest.cpp">
+      <Filter>Color4d</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthBufferTest.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameBufferTest.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBufferTest.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="PointSpriteTest.cpp">
+      <Filter>PointSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="PointSpriteFactoryTest.cpp">
+      <Filter>PointSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="PointSpriteRendererTest.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Point2dTest.cpp">
+      <Filter>PointSprite</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CrystalRenderer\ColorBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\Color4d.h">
+      <Filter>Color4d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\DepthBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\FrameBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\NormalBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\PointSprite.h">
+      <Filter>PointSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\PointSpriteFactory.h">
+      <Filter>PointSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\PointSpriteRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CrystalRenderer\Point2d.h">
+      <Filter>PointSprite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Color4d">
+      <UniqueIdentifier>{86361ede-de0c-48d9-a518-89c244d2843f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buffer">
+      <UniqueIdentifier>{52eeb16a-dde7-47aa-baaf-c9f7295ecd13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PointSprite">
+      <UniqueIdentifier>{e790f227-b562-4232-977e-22bf11fadb07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{9fc72a2a-3d54-45f6-b3fd-3f7908b0436a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

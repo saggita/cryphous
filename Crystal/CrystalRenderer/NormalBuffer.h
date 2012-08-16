@@ -36,15 +36,9 @@ public:
 		}
 	}
 
-	Geom::Vector3d getNormal(const Point2d& point) const
-	{
-		return normals[point.x][point.y];
-	}
+	Geom::Vector3d getNormal(const Point2d& point) const { return normals[point.x][point.y]; }
 
-	void setNormal(const Point2d& point, const Geom::Vector3d& normal)
-	{
-		normals[point.x][point.y] = normal;
-	}
+	void setNormal(const Point2d& point, const Geom::Vector3d& normal) { normals[point.x][point.y] = normal; }
 
 
 private:
