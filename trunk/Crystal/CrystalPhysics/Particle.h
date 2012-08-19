@@ -56,6 +56,7 @@ public:
 	Geom::Vector3d center;
 	Geom::Vector3d velocity;
 	Geom::Vector3d force;
+	Geom::Vector3d normal;
 	float density;
 
 private:
