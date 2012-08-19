@@ -73,20 +73,20 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	glPointSize( (GLfloat)(GraphicsSettings::get()->pointSize) );
 
 	glBegin(GL_POINTS);
-	BOOST_FOREACH( Particle* particle, factory->getSortedParticles() ) {
-		const Vector3d& point = particle->center;
-		if( particle->getParent()->getType() == PhysicsObject::Rigid ) {
+	BOOST_FOREACH( PhysicsObject* object, factory->getPhysicsObjects() ) {
+		if( object->getType() == PhysicsObject::Rigid ) {
 			glColor4d( 1.0f, 1.0f, 1.0f, 1.0f );
-			glVertex3d( point.getX(), point.getY(), point.getZ() );
 		}
-		else if( particle->getParent()->getType() == PhysicsObject::Obstacle ) {
+		else if( object->getType() == PhysicsObject::Obstacle ) {
 			glColor4d( 0.0f, 0.0f, 0.0f, 1.0f );
-			glVertex3d( point.getX(), point.getY(), point.getZ() );
 		}
 		else {
-			const float densityRatio = particle->density / 1000.0f;
+			const float densityRatio = object->getDensity() / 1000.0f;
 			const float alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0f; 
 			glColor4f( 0.1f, 0.1f, 1.0f, alpha );
+		}
+		BOOST_FOREACH( Particle* particle, object->getParticles() ) {
+			const Vector3d& point = particle->center;
 			glVertex3f( point.getX(), point.getY(), point.getZ() );
 		}
 	}
@@ -98,7 +98,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	
-	glFinish();//glFlush();
+	glFlush();
 	openGLWrapper.EndRendering();
 
 	Profiler::get()->end("Rendering->");

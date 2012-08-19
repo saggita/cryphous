@@ -23,7 +23,7 @@ namespace Cryphous
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
             this.maxParticles = maxParticles;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 10.0, "Box");
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -173,7 +173,7 @@ namespace Cryphous
             if (comboBoxExample.Text == "DamBreak1")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 10.0, "Box");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
             }
             else if (comboBoxExample.Text == "DamBreak2")
             {

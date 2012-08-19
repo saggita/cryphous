@@ -51,7 +51,7 @@ namespace MikuMikuFluid
 
         private MainForm mainForm;
 
-        private const int maxParticles = 30000;
+        private const int maxParticles = 26000;
 
         public void Initialize()
         {
@@ -71,7 +71,7 @@ namespace MikuMikuFluid
             }
             for( int i = 0; i < 2; ++i ) {
                 screen3Ds.Add(new List<ScreenImage_3D>());
-                for (int j = 0; j < 15000; ++j)
+                for (int j = 0; j < 13000; ++j)
                 {
                     Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
                     ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
@@ -101,31 +101,39 @@ namespace MikuMikuFluid
             Vector3 angle = Scene.Cameras[0].CurrentMotion.Angle;
             Quaternion quaternion = Quaternion.RotationYawPitchRoll(-angle.Y, -angle.X, -angle.Z);
             // for normal vector rendering
-            /*Vector3 upper = new Vector3(0.0f, 0.0f, 1.0f);
-            Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
-            normal.Normalize();
-            Vector3 axis = Vector3.Cross(upper, normal);
-            float angle = (float)Math.Acos( Vector3.Dot(upper, normal) / ( upper.Length() * normal.Length() )); 
-            Quaternion quaternion = Quaternion.RotationAxis(axis, angle);*/
+            //Vector3 upper = new Vector3(0.0f, 0.0f, 1.0f);
+            
             mainForm.proceed();
-            List<List<float[]>> simulatedPositions = mainForm.SimulatedParticles;
+            List<List<float[]>> simulatedPositions = mainForm.SimulatedPositions;
+            List<List<float[]>> simulatedNormals = mainForm.SimulatedNormals;
             if (simulatedPositions == null)
             {
                 return;
             }
+            System.Diagnostics.Debug.Assert(simulatedPositions.Count == simulatedNormals.Count);
 
             for (int i = 0; i < simulatedPositions.Count; ++i)
             {
-                //Parallel.For(0, simulatedPositions[i].Count, j =>
-                for (int j = 0; j < simulatedPositions[i].Count; ++j)
+                Parallel.For(0, simulatedPositions[i].Count, j =>
+                //for (int j = 0; j < simulatedPositions[i].Count; ++j)
                 {
-                    float x = simulatedPositions[i][j][0];
-                    float y = simulatedPositions[i][j][1];
-                    float z = simulatedPositions[i][j][2];
-                    screen3Ds[i][j].Position = new Vector3(x, y, z);
+                    float posx = simulatedPositions[i][j][0];
+                    float posy = simulatedPositions[i][j][1];
+                    float posz = simulatedPositions[i][j][2];
+                    screen3Ds[i][j].Position = new Vector3(posx, posy, posz);
+                    //float normalx = simulatedNormals[i][j][0];
+                    //float normaly = simulatedNormals[i][j][1];
+                    //float normalz = simulatedNormals[i][j][2];
+                    //Vector3 normal = new Vector3(normalx, normaly, normalz);
+                    //// TODO: ゼロベクトルを除外
+                    //normal.Normalize();
+                    //Vector3 axis = Vector3.Cross(upper, normal);
+                    //float angle = (float)Math.Acos( Vector3.Dot(upper, normal) / ( upper.Length() * normal.Length() )); 
+                    //Quaternion quaternion = Quaternion.RotationAxis(axis, angle);
                     screen3Ds[i][j].Rotation = quaternion;
-                }//);
+                });
             }
+            GC.Collect();
         }
 
         public void Disabled()

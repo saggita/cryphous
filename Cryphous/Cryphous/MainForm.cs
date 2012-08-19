@@ -25,13 +25,19 @@ namespace Cryphous
         private GraphicsSettingForm gsDialog;
 
         private bool isStandAlone;
-        List<List<float[]>> simulatedParticles;
+        List<List<float[]>> simulatedPositions;
+        List<List<float[]>> simulatedNormals;
 
         private int maxParticles;
 
-        public List<List<float[]>> SimulatedParticles
+        public List<List<float[]>> SimulatedPositions
         {
-            get{ return simulatedParticles; }
+            get{ return simulatedPositions; }
+        }
+
+        public List<List<float[]>> SimulatedNormals
+        {
+            get { return simulatedNormals; }
         }
         
         public MainForm(bool isStandAlone, int maxParticles)
@@ -63,7 +69,8 @@ namespace Cryphous
             osDialog.ShowDialog();
             if (!isStandAlone)
             {
-                simulatedParticles = mainCommand.getSimulationCommand().getManagedParticles();
+                simulatedPositions = mainCommand.getSimulationCommand().getManagedPositions();
+                simulatedNormals = mainCommand.getSimulationCommand().getManagedNormals();
             }
         }
 
@@ -99,7 +106,8 @@ namespace Cryphous
             mainCommand.displayInformation(listBoxInformation);
             if (!isStandAlone)
             {
-                simulatedParticles = mainCommand.getSimulationCommand().getManagedParticles();
+                simulatedPositions = mainCommand.getSimulationCommand().getManagedPositions();
+                simulatedNormals = mainCommand.getSimulationCommand().getManagedNormals();
             }
         }
 
