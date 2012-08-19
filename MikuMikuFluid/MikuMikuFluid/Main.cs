@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 using MikuMikuPlugin;
 using DxMath;
 using Cryphous;
@@ -11,7 +13,7 @@ namespace MikuMikuFluid
 {
     public class Main : IResidentPlugin
     {
-        private List<ScreenImage_3D> screen3Ds;
+        private List<List<ScreenImage_3D>> screen3Ds;
 
         public Guid GUID
         {
@@ -47,16 +49,13 @@ namespace MikuMikuFluid
             get { return Text; }
         }
 
-        private float currentFrame;
-
         private MainForm mainForm;
 
-        private const int maxParticles = 25500;
+        private const int maxParticles = 30000;
 
         public void Initialize()
         {
-            screen3Ds = new List<ScreenImage_3D>();
-            Random rand = new Random(0);
+            screen3Ds = new List<List<ScreenImage_3D>>();
             /*Bitmap bitmap = new Bitmap(1, 1);
             Color color = Color.FromArgb(128, Color.Blue);
             bitmap.SetPixel(0, 0, color);*/
@@ -70,22 +69,27 @@ namespace MikuMikuFluid
                     bitmap.SetPixel(x, y, color);
                 }
             }
-            for (int i = 0; i < maxParticles; ++i)
-            {
-                Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
-                ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
-                screen3Ds.Add(screen3D);
-                screen3D.Size = new Vector2(1.0F, 1.0F);
-                Scene.ScreenObjects.Add(screen3D);
+            for( int i = 0; i < 2; ++i ) {
+                screen3Ds.Add(new List<ScreenImage_3D>());
+                for (int j = 0; j < 15000; ++j)
+                {
+                    Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
+                    ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
+                    screen3D.Size = new Vector2(1.0F, 1.0F);
+                    Scene.ScreenObjects.Add(screen3D);
+                    screen3Ds[i].Add(screen3D);
+                }
             }
         }
 
         public void Enabled()
         {
-            foreach (ScreenImage_3D screen3D in screen3Ds)
+            foreach (List<ScreenImage_3D> screens in screen3Ds)
             {
-                Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
-                screen3D.Position = vector;
+                foreach (ScreenImage_3D screen in screens)
+                {
+                    screen.Position = new Vector3(10000.0f, 10000.0f, 10000.0f);
+                }
             }
             mainForm = new MainForm(false, maxParticles);
             mainForm.Show();
@@ -93,30 +97,35 @@ namespace MikuMikuFluid
 
         public void Update(float Frame, float ElapsedTime)
         {
+            // for billboard rendering
             Vector3 angle = Scene.Cameras[0].CurrentMotion.Angle;
             Quaternion quaternion = Quaternion.RotationYawPitchRoll(-angle.Y, -angle.X, -angle.Z);
-
+            // for normal vector rendering
+            /*Vector3 upper = new Vector3(0.0f, 0.0f, 1.0f);
+            Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
+            normal.Normalize();
+            Vector3 axis = Vector3.Cross(upper, normal);
+            float angle = (float)Math.Acos( Vector3.Dot(upper, normal) / ( upper.Length() * normal.Length() )); 
+            Quaternion quaternion = Quaternion.RotationAxis(axis, angle);*/
             mainForm.proceed();
             List<List<float[]>> simulatedPositions = mainForm.SimulatedParticles;
             if (simulatedPositions == null)
             {
                 return;
             }
-          
-            int index = 0;
+
             for (int i = 0; i < simulatedPositions.Count; ++i)
             {
+                //Parallel.For(0, simulatedPositions[i].Count, j =>
                 for (int j = 0; j < simulatedPositions[i].Count; ++j)
                 {
                     float x = simulatedPositions[i][j][0];
                     float y = simulatedPositions[i][j][1];
                     float z = simulatedPositions[i][j][2];
-                    screen3Ds[index].Position = new Vector3(x, y, z);
-                    screen3Ds[index].Rotation = quaternion;
-                    ++index;
-                }
+                    screen3Ds[i][j].Position = new Vector3(x, y, z);
+                    screen3Ds[i][j].Rotation = quaternion;
+                }//);
             }
-            currentFrame = Frame;
         }
 
         public void Disabled()
@@ -126,9 +135,12 @@ namespace MikuMikuFluid
 
         public void Dispose()
         {
-            foreach (ScreenImage_3D screen3D in screen3Ds)
+            foreach (List<ScreenImage_3D> screens in screen3Ds)
             {
-                screen3D.Dispose();
+                foreach (ScreenImage_3D screen in screens)
+                {
+                    screen.Dispose();
+                }
             }
         }
     }

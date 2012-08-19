@@ -2,11 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MikuMikuFluid", "MikuMikuFluid\MikuMikuFluid.csproj", "{7610B05C-6E15-44F8-848C-C7ED745BA3E0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{488B4858-EE99-4ECF-A293-A89D67612241} = {488B4858-EE99-4ECF-A293-A89D67612241}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryphous", "..\Cryphous\Cryphous\Cryphous.csproj", "{488B4858-EE99-4ECF-A293-A89D67612241}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,18 +21,6 @@ Global
 		{7610B05C-6E15-44F8-848C-C7ED745BA3E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7610B05C-6E15-44F8-848C-C7ED745BA3E0}.Release|x64.ActiveCfg = Release|Any CPU
 		{7610B05C-6E15-44F8-848C-C7ED745BA3E0}.Release|x86.ActiveCfg = Release|Any CPU
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Debug|x64.ActiveCfg = Debug|x64
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Debug|x64.Build.0 = Debug|x64
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Debug|x86.ActiveCfg = Debug|x86
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Debug|x86.Build.0 = Debug|x86
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Release|Any CPU.Build.0 = Release|Any CPU
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Release|x64.ActiveCfg = Release|x64
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Release|x64.Build.0 = Release|x64
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Release|x86.ActiveCfg = Release|x86
-		{488B4858-EE99-4ECF-A293-A89D67612241}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
