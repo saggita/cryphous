@@ -46,13 +46,20 @@ namespace Cryphous
             command.getGraphicsSettingCommand().setTrackBar(
                     trackBarPointSize,
                     trackBarAlphaPower,
-                    checkBoxBoundingBox);
+                    checkBoxBoundingBox,
+                    checkBoxSurface);
         }
 
         private void GraphicsSettingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             this.Hide();
+        }
+
+        private void checkBoxSurface_CheckedChanged(object sender, EventArgs e)
+        {
+            command.getGraphicsSettingCommand().save();
+            command.rendering();
         }
     }
 }

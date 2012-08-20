@@ -67,6 +67,19 @@ public:
 		pair.getParticleY()->force -= viscosity * pair.getParticleX()->getVolume();
 	}
 
+	void calculateNormal( const ParticlePair& pair )
+	{
+		const Geom::Vector3d& kernel = kernels.getPoly6KernelGradient( pair.getDistanceVector() );
+		pair.getParticleX()->normal += kernel * pair.getParticleY()->getVolume();
+		pair.getParticleY()->normal -= kernel * pair.getParticleX()->getVolume();
+	}
+
+	void countNeighbors( const ParticlePair& pair )
+	{
+		pair.getParticleX()->neighbors++;
+		pair.getParticleY()->neighbors++;
+	}
+
 private:
 	Kernels3D kernels;
 };

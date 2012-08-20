@@ -23,6 +23,7 @@ BOOST_AUTO_TEST_CASE(SPH_SOLVER_TEST)
 	setting.particleDiameter = 1.0;
 	std::vector<Vector3d> points;
 	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	points.push_back( Vector3d(1.0, 0.0, 0.0 ) );
 	PhysicsObjectCondition condition( points, 1000.0f, 1.0f, 0.4f, PhysicsObjectCondition::Fluid );
 	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting );
 	PhysicsObjectList objects( 1, fluid);
@@ -30,4 +31,9 @@ BOOST_AUTO_TEST_CASE(SPH_SOLVER_TEST)
 	solver.calculateInteraction();
 	
 	BOOST_CHECK( fluid->getParticles().front()->force != Vector3d( 0.0, 0.0, 0.0 ) );
+	//BOOST_CHECK( fluid->getParticles().front()->force == ( -1.0 * fluid->getParticles().back()->force ) );
+	BOOST_CHECK( fluid->getParticles().front()->normal != Vector3d( 0.0, 0.0, 0.0 ) );
+	BOOST_CHECK( fluid->getParticles().front()->normal == (-1.0 * fluid->getParticles().back()->normal) );
+	BOOST_CHECK_EQUAL( fluid->getParticles().front()->neighbors, 1 );
+	BOOST_CHECK_EQUAL( fluid->getParticles().back()->neighbors, 1 );
 }

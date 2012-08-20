@@ -18,7 +18,8 @@ GraphicsSettingCommand::~GraphicsSettingCommand(){
 void GraphicsSettingCommand::setTrackBar(
 		System::Windows::Forms::TrackBar^ trackBarPointSize,
 		System::Windows::Forms::TrackBar^ trackBarAlphaPower,
-		System::Windows::Forms::CheckBox^ checkBoxBoundingBox
+		System::Windows::Forms::CheckBox^ checkBoxBoundingBox,
+		System::Windows::Forms::CheckBox^ doDisplaySurface
 		)
 {
 			itemAndVariables.Clear();
@@ -28,4 +29,5 @@ void GraphicsSettingCommand::setTrackBar(
 			itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointSize), trackBarPointSize) );
 			itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointAlpha), trackBarAlphaPower ) );
 			itemAndVariables.Push( gcnew BoolCheckBox( &(graphicsSettings->drawBoundingBox), checkBoxBoundingBox ) );
+			itemAndVariables.Push( gcnew BoolCheckBox( &(graphicsSettings->doDisplaySurface), doDisplaySurface ) );
 }

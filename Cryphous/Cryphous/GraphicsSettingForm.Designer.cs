@@ -33,6 +33,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarPointSize = new System.Windows.Forms.TrackBar();
             this.labelPointSize = new System.Windows.Forms.Label();
+            this.checkBoxSurface = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAlphaPower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).BeginInit();
             this.SuspendLayout();
@@ -87,12 +88,24 @@
             this.labelPointSize.TabIndex = 64;
             this.labelPointSize.Text = "PointSize";
             // 
+            // checkBoxSurface
+            // 
+            this.checkBoxSurface.AutoSize = true;
+            this.checkBoxSurface.Location = new System.Drawing.Point(105, 95);
+            this.checkBoxSurface.Name = "checkBoxSurface";
+            this.checkBoxSurface.Size = new System.Drawing.Size(63, 16);
+            this.checkBoxSurface.TabIndex = 70;
+            this.checkBoxSurface.Text = "Surface";
+            this.checkBoxSurface.UseVisualStyleBackColor = true;
+            this.checkBoxSurface.CheckedChanged += new System.EventHandler(this.checkBoxSurface_CheckedChanged);
+            // 
             // GraphicsSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(199, 123);
+            this.Controls.Add(this.checkBoxSurface);
             this.Controls.Add(this.checkBoxBoundingBox);
             this.Controls.Add(this.trackBarAlphaPower);
             this.Controls.Add(this.label4);
@@ -117,5 +130,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TrackBar trackBarPointSize;
         private System.Windows.Forms.Label labelPointSize;
+        private System.Windows.Forms.CheckBox checkBoxSurface;
     }
 }
