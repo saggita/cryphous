@@ -1,5 +1,6 @@
 #include "GraphicsSettingCommand.h"
 
+#include "ApplicationSettings.h"
 #include "../CrystalGraphics/GraphicsSettings.h"
 
 using namespace Crystal::Command;
@@ -22,12 +23,12 @@ void GraphicsSettingCommand::setTrackBar(
 		System::Windows::Forms::CheckBox^ doDisplaySurface
 		)
 {
-			itemAndVariables.Clear();
+	itemAndVariables.Clear();
 
-			GraphicsSettings* graphicsSettings = GraphicsSettings::get();
+	GraphicsSettings* graphicsSettings = ApplicationSettings::get()->graphicsSettings;
 
-			itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointSize), trackBarPointSize) );
-			itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointAlpha), trackBarAlphaPower ) );
-			itemAndVariables.Push( gcnew BoolCheckBox( &(graphicsSettings->drawBoundingBox), checkBoxBoundingBox ) );
-			itemAndVariables.Push( gcnew BoolCheckBox( &(graphicsSettings->doDisplaySurface), doDisplaySurface ) );
+	itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointSize), trackBarPointSize) );
+	itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointAlpha), trackBarAlphaPower ) );
+	itemAndVariables.Push( gcnew BoolCheckBox( &(graphicsSettings->drawBoundingBox), checkBoxBoundingBox ) );
+	itemAndVariables.Push( gcnew BoolCheckBox( &(graphicsSettings->doDisplaySurface), doDisplaySurface ) );
 }

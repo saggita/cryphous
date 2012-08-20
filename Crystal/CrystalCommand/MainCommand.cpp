@@ -63,37 +63,37 @@ void MainCommand::displayInformation( System::Windows::Forms::ListBox^ listBox){
 
 void MainCommand::rotateX(int angle)
 {
-	GraphicsSettings::get()->angleX += angle;
+	ApplicationSettings::get()->graphicsSettings->angleX += angle;
 	rendering();
 }
 
 void MainCommand::rotateY(int angle)
 {
-	GraphicsSettings::get()->angleY += angle;
+	ApplicationSettings::get()->graphicsSettings->angleY += angle;
 	rendering();
 }
 
 void MainCommand::rotateZ(int angle)
 {
-	GraphicsSettings::get()->angleZ += angle;
+	ApplicationSettings::get()->graphicsSettings->angleZ += angle;
 	rendering();
 }
 
 void MainCommand::zoom(float zoom)
 {
-	GraphicsSettings::get()->zoom += zoom;
+	ApplicationSettings::get()->graphicsSettings->zoom += zoom;
 	rendering();
 }
 
 void MainCommand::move(float x, float y)
 {
-	GraphicsSettings::get()->cameraX += x;
-	GraphicsSettings::get()->cameraY += y;
+	ApplicationSettings::get()->graphicsSettings->cameraX += x;
+	ApplicationSettings::get()->graphicsSettings->cameraY += y;
 	rendering();
 }
 
 void MainCommand::viewReset()
 {
-	GraphicsSettings::get()->resetCameraAndAngle();
+	ApplicationSettings::get()->graphicsSettings->resetCameraAndAngle();
 	rendering();
 }

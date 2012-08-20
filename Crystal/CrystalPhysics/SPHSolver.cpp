@@ -81,7 +81,6 @@ void SPHSolver::calculateInteraction()
 		sphPairSolver->calculatePressureForce( pairs[i]);
 		sphPairSolver->calculateViscosityForce( pairs[i]);
 		sphPairSolver->calculateNormal( pairs[i]);
-		sphPairSolver->countNeighbors( pairs[i]);
 	}
 	Profiler::get()->end(" Sim->force");
 
