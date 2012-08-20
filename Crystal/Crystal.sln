@@ -5,8 +5,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "CrystalPh
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalCommand", "CrystalCommand\CrystalCommand.vcxproj", "{CC78BD1A-2C14-4219-915D-1C5320C662FE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalGraphics", "CrystalGraphics\CrystalGraphics.vcxproj", "{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,14 +29,6 @@ Global
 		{CC78BD1A-2C14-4219-915D-1C5320C662FE}.Release|Win32.Build.0 = Release|Win32
 		{CC78BD1A-2C14-4219-915D-1C5320C662FE}.Release|x64.ActiveCfg = Release|x64
 		{CC78BD1A-2C14-4219-915D-1C5320C662FE}.Release|x64.Build.0 = Release|x64
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Debug|Win32.Build.0 = Debug|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Debug|x64.ActiveCfg = Debug|x64
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Debug|x64.Build.0 = Debug|x64
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Release|Win32.ActiveCfg = Release|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Release|Win32.Build.0 = Release|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Release|x64.ActiveCfg = Release|x64
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
