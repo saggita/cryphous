@@ -46,7 +46,7 @@ public:
 
 	int getID() const { return id; }
 
-	bool isIsolated() const { return neighbors == 0; }
+	bool isIsolated() const { return normal == Geom::Vector3d(0.0f, 0.0f, 0.0f); }
 
 	void setParent(PhysicsObject* object) { parent = object; }
 
@@ -60,7 +60,6 @@ public:
 	Geom::Vector3d force;
 	Geom::Vector3d normal;
 	float density;
-	int neighbors;
 
 private:
 	float radius;

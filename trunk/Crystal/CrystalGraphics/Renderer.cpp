@@ -23,13 +23,7 @@ using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 using namespace Crystal::Graphics;
 
-Renderer::Renderer()
-{
-}
 
-Renderer::~Renderer()
-{
-}
 
 void Renderer::init()
 {
@@ -57,11 +51,11 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glTranslated( GraphicsSettings::get()->cameraX, GraphicsSettings::get()->cameraY, -0.1 * GraphicsSettings::get()->zoom );
+	glTranslated( settings.cameraX, settings.cameraY, -0.1 * settings.zoom );
 
-	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleX ), 1.0f, 0.0f, 0.0f );
-	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleY ), 0.0f, 1.0f, 0.0f );
-	glRotatef( static_cast<GLfloat>( GraphicsSettings::get()->angleZ ), 0.0f, 0.0f, 1.0f );
+	glRotatef( static_cast<GLfloat>( settings.angleX ), 1.0f, 0.0f, 0.0f );
+	glRotatef( static_cast<GLfloat>( settings.angleY ), 0.0f, 1.0f, 0.0f );
+	glRotatef( static_cast<GLfloat>( settings.angleZ ), 0.0f, 0.0f, 1.0f );
 
 	drawBoundaryBox(boundaryBox);
 
@@ -70,7 +64,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 	glDepthMask(GL_FALSE);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glPointSize( (GLfloat)(GraphicsSettings::get()->pointSize) );
+	glPointSize( (GLfloat)(settings.pointSize) );
 
 	glBegin(GL_POINTS);
 	BOOST_FOREACH( PhysicsObject* object, factory->getPhysicsObjects() ) {
@@ -82,12 +76,12 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 		}
 		else {
 			const float densityRatio = object->getDensity() / 1000.0f;
-			const float alpha = densityRatio * GraphicsSettings::get()->pointAlpha / 100.0f; 
+			const float alpha = densityRatio * settings.pointAlpha / 100.0f; 
 			glColor4f( 0.1f, 0.1f, 1.0f, alpha );
 		}
 		BOOST_FOREACH( Particle* particle, object->getParticles() ) {
 			const Vector3d& normal = particle->normal / object->getDensity(); 
-			if( normal.getLength() < 0.0005 && !particle->isIsolated() && GraphicsSettings::get()->doDisplaySurface ) {
+			if( normal.getLength() < 0.0005 && !particle->isIsolated() && settings.doDisplaySurface ) {
 				continue;
 			}
 			const Vector3d& point = particle->center;
@@ -110,7 +104,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 
 void Renderer::drawBoundaryBox(const Box& box)
 {
-	if( !GraphicsSettings::get()->drawBoundingBox ) {
+	if( !settings.drawBoundingBox ) {
 		return;
 	}
 	

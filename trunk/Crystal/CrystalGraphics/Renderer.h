@@ -4,6 +4,7 @@
 #include <boost/noncopyable.hpp>
 
 #include "OpenGLWrapper.h"
+#include "GraphicsSettings.h"
 
 namespace Crystal{
 	namespace Geom{
@@ -17,9 +18,14 @@ namespace Crystal{
 class Renderer : private boost::noncopyable
 {
 public:
-	Renderer();
+	Renderer(const GraphicsSettings& settings) :
+	  settings(settings)
+	{
+	}
 
-	~Renderer();
+	~Renderer()
+	{
+	}
 
 	void setPictureBox( HWND pictureBoxHandle ) {
 		openGLWrapper.setHandle( pictureBoxHandle );
@@ -36,6 +42,7 @@ protected:
 
 private:
 	OpenGLWrapper openGLWrapper;
+	const GraphicsSettings& settings;
 };
 
 	}

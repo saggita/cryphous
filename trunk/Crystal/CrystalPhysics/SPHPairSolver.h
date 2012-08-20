@@ -74,12 +74,6 @@ public:
 		pair.getParticleY()->normal -= kernel * pair.getParticleX()->getVolume();
 	}
 
-	void countNeighbors( const ParticlePair& pair )
-	{
-		pair.getParticleX()->neighbors++;
-		pair.getParticleY()->neighbors++;
-	}
-
 private:
 	Kernels3D kernels;
 };

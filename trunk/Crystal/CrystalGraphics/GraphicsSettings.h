@@ -19,21 +19,6 @@ public:
 	bool drawBoundingBox;
 	bool doDisplaySurface;
 
-	static GraphicsSettings* get() {
-		static GraphicsSettings settings;
-		return &settings;
-	}
-
-	void resetCameraAndAngle(){
-		cameraX = 0.0f;
-		cameraY = 0.0f;
-		zoom = 50.0f;
-		angleX = 0;
-		angleY = 0;
-		angleZ = 0;
-	}
-
-private:
 	GraphicsSettings::GraphicsSettings() :
 		pointSize( 10 ),
 		pointAlpha( 10),
@@ -49,6 +34,16 @@ private:
 		}
 
 	GraphicsSettings::~GraphicsSettings(){}
+
+	void resetCameraAndAngle(){
+		cameraX = 0.0f;
+		cameraY = 0.0f;
+		zoom = 50.0f;
+		angleX = 0;
+		angleY = 0;
+		angleZ = 0;
+	}
+
 };
 
 	}

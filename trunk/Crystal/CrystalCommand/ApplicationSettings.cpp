@@ -22,12 +22,14 @@ ApplicationSettings::ApplicationSettings(void)
 	factory = new PhysicsObjectFactory;
 	simulation = new Simulation;
 	simulationSetting = new SimulationSetting;
-	renderer = new Renderer;
+	graphicsSettings = new GraphicsSettings;
+	renderer = new Renderer(*graphicsSettings);
 	conditions = new std::list<PhysicsObjectCondition>;
 }
 
 ApplicationSettings::~ApplicationSettings()
 {
+	delete graphicsSettings;
 	delete conditions;
 	delete renderer;
 	delete simulationSetting;

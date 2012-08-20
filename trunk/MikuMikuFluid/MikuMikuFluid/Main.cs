@@ -114,24 +114,26 @@ namespace MikuMikuFluid
 
             for (int i = 0; i < simulatedPositions.Count; ++i)
             {
-                Parallel.For(0, simulatedPositions[i].Count, j =>
-                //for (int j = 0; j < simulatedPositions[i].Count; ++j)
+                //Parallel.For(0, simulatedPositions[i].Count, j =>
+                for (int j = 0; j < simulatedPositions[i].Count; ++j)
                 {
+                    /*float normalx = simulatedNormals[i][j][0];
+                    float normaly = simulatedNormals[i][j][1];
+                    float normalz = simulatedNormals[i][j][2];
+                    Vector3 normal = new Vector3(normalx, normaly, normalz);*/
+                    
                     float posx = simulatedPositions[i][j][0];
                     float posy = simulatedPositions[i][j][1];
                     float posz = simulatedPositions[i][j][2];
                     screen3Ds[i][j].Position = new Vector3(posx, posy, posz);
-                    //float normalx = simulatedNormals[i][j][0];
-                    //float normaly = simulatedNormals[i][j][1];
-                    //float normalz = simulatedNormals[i][j][2];
-                    //Vector3 normal = new Vector3(normalx, normaly, normalz);
+
                     //// TODO: ゼロベクトルを除外
                     //normal.Normalize();
                     //Vector3 axis = Vector3.Cross(upper, normal);
                     //float angle = (float)Math.Acos( Vector3.Dot(upper, normal) / ( upper.Length() * normal.Length() )); 
                     //Quaternion quaternion = Quaternion.RotationAxis(axis, angle);
                     screen3Ds[i][j].Rotation = quaternion;
-                });
+                }//);
             }
             GC.Collect();
         }

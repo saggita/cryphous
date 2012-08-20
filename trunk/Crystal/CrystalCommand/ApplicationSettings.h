@@ -11,6 +11,7 @@ namespace Crystal {
 	}
 	namespace Graphics {
 		class Renderer;
+		class GraphicsSettings;
 	}
 
 	namespace Command {
@@ -41,12 +42,10 @@ public:
 	void setParticleDiameter(const float diameter);
 
 	Physics::PhysicsObjectFactory* factory;
-
 	Physics::SimulationSetting* simulationSetting;
-
 	Physics::Simulation* simulation;
-
 	Graphics::Renderer* renderer;
+	Graphics::GraphicsSettings* graphicsSettings;
 
 	std::list<Physics::PhysicsObjectCondition>* conditions;
 
