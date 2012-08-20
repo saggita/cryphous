@@ -145,10 +145,6 @@
     <ClInclude Include="OpenGLWrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrystalGeom\CrystalGeom.vcxproj">
-      <Project>{fc36016d-b608-4558-93c3-5e756c5ec792}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{fe04c2f8-a5a5-4f34-a3ff-bfd09fb044b3}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

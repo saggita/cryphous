@@ -21,7 +21,8 @@ radius( radius ),
 density( 0.0 ),
 parent( 0 ),
 particleFactory( particleFactory),
-normal(0.0, 0.0, 0.0)
+normal(0.0, 0.0, 0.0),
+neighbors(0)
 {
 }
 
@@ -39,6 +40,7 @@ void Particle::resetDiffParameters(){
 	normal = Vector3d( 0.0f, 0.0f, 0.0f );
 	density = 0.0;
 	force = Vector3d( 0.0f, 0.0f, 0.0f);
+	neighbors = 0;
 }
 
 float Particle::getPressure() const

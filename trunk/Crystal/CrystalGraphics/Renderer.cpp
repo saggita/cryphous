@@ -86,6 +86,10 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 			glColor4f( 0.1f, 0.1f, 1.0f, alpha );
 		}
 		BOOST_FOREACH( Particle* particle, object->getParticles() ) {
+			const Vector3d& normal = particle->normal / object->getDensity(); 
+			if( normal.getLength() < 0.0005 && !particle->isIsolated() && GraphicsSettings::get()->doDisplaySurface ) {
+				continue;
+			}
 			const Vector3d& point = particle->center;
 			glVertex3f( point.getX(), point.getY(), point.getZ() );
 		}

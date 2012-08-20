@@ -17,6 +17,7 @@ public:
 	int angleY;
 	int angleZ;
 	bool drawBoundingBox;
+	bool doDisplaySurface;
 
 	static GraphicsSettings* get() {
 		static GraphicsSettings settings;
@@ -42,7 +43,8 @@ private:
 		angleX( 0),
 		angleY( 0),
 		angleZ( 0),
-		drawBoundingBox( true)
+		drawBoundingBox( true),
+		doDisplaySurface( false)
 		{
 		}
 

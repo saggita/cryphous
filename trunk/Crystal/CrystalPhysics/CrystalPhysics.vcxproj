@@ -158,12 +158,6 @@
     <ClInclude Include="SearchParticleFactory.h" />
     <ClInclude Include="Profiler.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CrystalGeom\CrystalGeom.vcxproj">
-      <Project>{fc36016d-b608-4558-93c3-5e756c5ec792}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
