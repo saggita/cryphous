@@ -136,10 +136,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="OpenGLWrapper.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="GraphicsSettings.h" />
     <ClInclude Include="OpenGLWrapper.h" />
