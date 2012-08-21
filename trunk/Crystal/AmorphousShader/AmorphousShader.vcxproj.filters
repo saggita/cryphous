@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Buffers">
+      <UniqueIdentifier>{24fed2c3-22ba-4873-81ef-18f54c0711dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{c950e722-2b5e-4cc1-b53d-f90393a7d6af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GL">
+      <UniqueIdentifier>{da132e7d-2b86-4c3b-a15b-36e2933607da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{4d2dd8ef-a54d-425c-8717-d8f696ac3b23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PolygonModel">
+      <UniqueIdentifier>{6fce2b2c-ea53-4f48-a053-c2dd02e8c70b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderObject">
+      <UniqueIdentifier>{71432b8c-d6ad-4916-b84d-dc3f993df68a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{76db1ee5-d7ab-47bf-965d-1d94c21155a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{e71d61a6-ea57-4e80-80fe-4d1b53711541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\OnScreen">
+      <UniqueIdentifier>{90a5746a-fa8a-4432-959a-76fc560b4b94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\OffScreen">
+      <UniqueIdentifier>{cd63a1da-8b7f-4dd3-8013-85499fd11eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\RendererBase">
+      <UniqueIdentifier>{6b3ea67e-354c-4dcc-8532-772fd69cedec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FrameBufferObject.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBufferObject.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureObject.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="GLee.cpp">
+      <Filter>GL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSLUtility.cpp">
+      <Filter>GL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSLMatrix.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonModel.cpp">
+      <Filter>PolygonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="FragmentShader.cpp">
+      <Filter>ShaderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryShader.cpp">
+      <Filter>ShaderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>ShaderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderObject.cpp">
+      <Filter>ShaderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp" />
+    <ClCompile Include="ScreenRendererBase.cpp">
+      <Filter>Renderer\RendererBase</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWrapper.cpp">
+      <Filter>GL</Filter>
+    </ClCompile>
+    <ClCompile Include="PBFR.cpp">
+      <Filter>Renderer\OnScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="PointRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="OffScreenRendererBase.cpp">
+      <Filter>Renderer\RendererBase</Filter>
+    </ClCompile>
+    <ClCompile Include="OnScreenRendererBase.cpp">
+      <Filter>Renderer\RendererBase</Filter>
+    </ClCompile>
+    <ClCompile Include="FlameRendererBase.cpp">
+      <Filter>Renderer\OnScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroundRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="BillboardRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="FlameRenderer.cpp">
+      <Filter>Renderer\OnScreen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FrameBufferObject.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBufferObject.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureObject.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="GLee.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSLUtility.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSLMatrix.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonModel.h">
+      <Filter>PolygonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="FragmentShader.h">
+      <Filter>ShaderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryShader.h">
+      <Filter>ShaderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>ShaderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderObject.h">
+      <Filter>ShaderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AmorphousShader.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="ScreenRendererBase.h">
+      <Filter>Renderer\RendererBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWrapper.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="PBFR.h">
+      <Filter>Renderer\OnScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="PointRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="OffScreenRendererBase.h">
+      <Filter>Renderer\RendererBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OnScreenRendererBase.h">
+      <Filter>Renderer\RendererBase</Filter>
+    </ClInclude>
+    <ClInclude Include="FlameRendererBase.h">
+      <Filter>Renderer\OnScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="PBFRSetting.h" />
+    <ClInclude Include="BackGroundRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="BillboardRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="FlameRenderer.h">
+      <Filter>Renderer\OnScreen</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\Compositor.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Compositor.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Compositor.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\lighting.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\lighting.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\lighting.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PointGenerator.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PointGenerator.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PointGenerator.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Billboard.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Billboard.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Billboard.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\BackGround.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\BackGround.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\BackGround.vs">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
