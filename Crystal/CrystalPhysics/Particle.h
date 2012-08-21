@@ -6,11 +6,9 @@
 #include <vector>
 
 #include "../CrystalGeom/Vector3d.h"
-#include "../CrystalGeom/Vector3d.h"
 
 namespace Crystal{
 	namespace Geom{
-		class Vector3d;
 		class Vector3d;
 	}
 
@@ -51,8 +49,6 @@ public:
 	void setParent(PhysicsObject* object) { parent = object; }
 
 	PhysicsObject* getParent() const { return parent; }
-
-	ParticleFactory* getParticleFactory() const { return particleFactory; }
 
 public:
 	Geom::Vector3d center;

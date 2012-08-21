@@ -16,7 +16,10 @@ namespace Crystal{
 class ParticleFactory : private boost::noncopyable
 {
 public:
-	ParticleFactory(void);
+	ParticleFactory(void):
+	nextID(0),
+		virtualParticle(0)
+	{}
 
 	~ParticleFactory(void);
 

@@ -126,15 +126,11 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="RigidEnforcer.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleFactory.cpp" />
-    <ClCompile Include="PhysicsObjectFactory.cpp" />
-    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
-    <ClCompile Include="SearchParticleFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />

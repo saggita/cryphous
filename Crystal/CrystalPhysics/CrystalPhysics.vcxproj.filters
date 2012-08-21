@@ -15,22 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Simulation.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
-    <ClCompile Include="BoundarySolver.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsObjectFactory.cpp">
-      <Filter>PhysicsObject</Filter>
-    </ClCompile>
     <ClCompile Include="NeighborSearcher.cpp">
-      <Filter>Space</Filter>
-    </ClCompile>
-    <ClCompile Include="SearchParticleFactory.cpp">
       <Filter>Space</Filter>
     </ClCompile>
     <ClCompile Include="RigidEnforcer.cpp">
