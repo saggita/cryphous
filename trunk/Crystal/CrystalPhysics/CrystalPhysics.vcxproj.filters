@@ -21,15 +21,6 @@
     <ClCompile Include="NeighborSearcher.cpp">
       <Filter>Space</Filter>
     </ClCompile>
-    <ClCompile Include="RigidEnforcer.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHSolver.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleFactory.cpp">
-      <Filter>Particle</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsObject.h">

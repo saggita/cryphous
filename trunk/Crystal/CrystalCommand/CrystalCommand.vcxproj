@@ -129,6 +129,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <AdditionalDependencies>CrystalPhysics.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -203,10 +204,6 @@
     <ClInclude Include="ItemAndVariable.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrystalGraphics\CrystalGraphics.vcxproj">
-      <Project>{eb62def7-1f68-4c78-937f-7d5f90dd669f}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{fe04c2f8-a5a5-4f34-a3ff-bfd09fb044b3}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
