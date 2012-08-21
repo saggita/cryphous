@@ -3,16 +3,16 @@
 
 #include <vector>
 #include <boost/noncopyable.hpp>
+#include <boost/foreach.hpp>
+
+#include "Particle.h"
+#include "ParticleConditions.h"
+#include "../CrystalGeom/Vector3d.h"
+
 
 namespace Crystal{
-	namespace Geom {
-		class Vector3d;
-	}
 	namespace Physics{
-		class ParticleConditions;
-		class Particle;
-		typedef std::vector<Particle*> ParticleVector;
-
+		
 class ParticleFactory : private boost::noncopyable
 {
 public:
@@ -21,16 +21,40 @@ public:
 		virtualParticle(0)
 	{}
 
-	~ParticleFactory(void);
+	~ParticleFactory(void)
+	{
+		BOOST_FOREACH( Particle* particle, particles ) {
+			delete particle;
+		}
+		if( virtualParticle != 0 ) {
+			delete virtualParticle;
+		}
+	}
 
-	ParticleVector createParticles(const ParticleConditions& conditions);
+	ParticleVector createParticles(const ParticleConditions& conditions)
+	{
+		std::vector<Geom::Vector3d>& innerPoints = conditions.getInnerPoints();
+		BOOST_FOREACH( Geom::Vector3d& innerPoint, innerPoints ) {
+			particles.push_back(
+				new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5f, this ) 
+				);
+			particles.back()->density = conditions.getDensity();
+		}
+		virtualParticle = new Particle( -1, Geom::Vector3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5f, this );
+		return particles;
+	}
 
 	ParticleVector getParticles() const { return particles; }
 
 	Particle* getVirtualParticle() { return virtualParticle; }
 
 private:
-	void destroyVirtualParticle();
+	void destroyVirtualParticle()
+	{
+		assert( virtualParticle != 0 );
+		delete virtualParticle;
+		virtualParticle = 0;
+	}
 
 private:
 	int nextID;

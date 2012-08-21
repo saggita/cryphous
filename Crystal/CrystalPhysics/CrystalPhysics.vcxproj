@@ -126,10 +126,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RigidEnforcer.cpp" />
-    <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleFactory.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
   </ItemGroup>
   <ItemGroup>
