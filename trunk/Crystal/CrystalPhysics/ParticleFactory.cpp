@@ -13,11 +13,7 @@
 using namespace Crystal::Physics;
 using namespace Crystal::Geom;
 
-ParticleFactory::ParticleFactory(void) :
-nextID(0),
-virtualParticle(0)
-{
-}
+
 
 ParticleVector ParticleFactory::createParticles(const ParticleConditions& conditions)
 {
