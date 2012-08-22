@@ -13,7 +13,7 @@ namespace MikuMikuFluid
 {
     public class Main : IResidentPlugin
     {
-        private List<List<ScreenImage_3D>> screen3Ds;
+        private List<ScreenImage_3D> screen3Ds;
 
         public Guid GUID
         {
@@ -51,11 +51,13 @@ namespace MikuMikuFluid
 
         private MainForm mainForm;
 
-        private const int maxParticles = 26000;
+        private MikuMikuFluid__.ParticleSizeDialog dialog;
+
+        private const int maxParticles = 45000;
 
         public void Initialize()
         {
-            screen3Ds = new List<List<ScreenImage_3D>>();
+            screen3Ds = new List<ScreenImage_3D>();
             /*Bitmap bitmap = new Bitmap(1, 1);
             Color color = Color.FromArgb(128, Color.Blue);
             bitmap.SetPixel(0, 0, color);*/
@@ -65,38 +67,35 @@ namespace MikuMikuFluid
                 for (int y = 0; y < bitmap.Height; ++y)
                 {
                     Color color = bitmap.GetPixel( x, y);
-                    color = Color.FromArgb( (byte.MaxValue - color.B) / 4, 0, 0, color.B );
+                    color = Color.FromArgb((byte.MaxValue - color.B) / 4, 0, 0, color.B );
                     bitmap.SetPixel(x, y, color);
                 }
             }
-            for( int i = 0; i < 2; ++i ) {
-                screen3Ds.Add(new List<ScreenImage_3D>());
-                for (int j = 0; j < 13000; ++j)
-                {
-                    Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
-                    ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
-                    screen3D.Size = new Vector2(1.0F, 1.0F);
-                    Scene.ScreenObjects.Add(screen3D);
-                    screen3Ds[i].Add(screen3D);
-                }
+            for( int i = 0; i < maxParticles; ++i ) {
+                Vector3 vector = new Vector3(10000.0f, 10000.0f, 10000.0f);
+                ScreenImage_3D screen3D = new ScreenImage_3D(vector, bitmap);
+                screen3D.Size = new Vector2(1.0F, 1.0F);
+                Scene.ScreenObjects.Add(screen3D);
+                screen3Ds.Add(screen3D);
             }
+            dialog = new MikuMikuFluid__.ParticleSizeDialog();
+            dialog.Show();
         }
 
         public void Enabled()
         {
-            foreach (List<ScreenImage_3D> screens in screen3Ds)
+            foreach (ScreenImage_3D screen in screen3Ds)
             {
-                foreach (ScreenImage_3D screen in screens)
-                {
-                    screen.Position = new Vector3(10000.0f, 10000.0f, 10000.0f);
-                }
+                screen.Position = new Vector3(10000.0f, 10000.0f, 10000.0f);
+                screen.Size = new Vector2(dialog.X, dialog.Y);
+            
             }
-            mainForm = new MainForm(false, maxParticles);
+            mainForm = new MainForm(false);
             mainForm.Show();
         }
 
         public void Update(float Frame, float ElapsedTime)
-        {
+        {   
             // for billboard rendering
             Vector3 angle = Scene.Cameras[0].CurrentMotion.Angle;
             Quaternion quaternion = Quaternion.RotationYawPitchRoll(-angle.Y, -angle.X, -angle.Z);
@@ -104,38 +103,25 @@ namespace MikuMikuFluid
             //Vector3 upper = new Vector3(0.0f, 0.0f, 1.0f);
             
             mainForm.proceed();
-            List<List<float[]>> simulatedPositions = mainForm.SimulatedPositions;
-            List<List<float[]>> simulatedNormals = mainForm.SimulatedNormals;
+            List<float[]> simulatedPositions = mainForm.SimulatedPositions;
+            //List<float[]> simulatedNormals = mainForm.SimulatedNormals;
             if (simulatedPositions == null)
             {
                 return;
             }
-            System.Diagnostics.Debug.Assert(simulatedPositions.Count == simulatedNormals.Count);
-
-            for (int i = 0; i < simulatedPositions.Count; ++i)
+            
+            int screenIndex = 0;
+            for (int i = 0; (i < simulatedPositions.Count) && (screenIndex < screen3Ds.Count); ++i)
             {
-                //Parallel.For(0, simulatedPositions[i].Count, j =>
-                for (int j = 0; j < simulatedPositions[i].Count; ++j)
-                {
-                    /*float normalx = simulatedNormals[i][j][0];
-                    float normaly = simulatedNormals[i][j][1];
-                    float normalz = simulatedNormals[i][j][2];
-                    Vector3 normal = new Vector3(normalx, normaly, normalz);*/
-                    
-                    float posx = simulatedPositions[i][j][0];
-                    float posy = simulatedPositions[i][j][1];
-                    float posz = simulatedPositions[i][j][2];
-                    screen3Ds[i][j].Position = new Vector3(posx, posy, posz);
 
-                    //// TODO: ゼロベクトルを除外
-                    //normal.Normalize();
-                    //Vector3 axis = Vector3.Cross(upper, normal);
-                    //float angle = (float)Math.Acos( Vector3.Dot(upper, normal) / ( upper.Length() * normal.Length() )); 
-                    //Quaternion quaternion = Quaternion.RotationAxis(axis, angle);
-                    screen3Ds[i][j].Rotation = quaternion;
-                }//);
+                float posx = simulatedPositions[i][0];
+                float posy = simulatedPositions[i][1];
+                float posz = simulatedPositions[i][2];
+                screen3Ds[screenIndex].Position = new Vector3(posx, posy, posz);
+                screen3Ds[screenIndex].Rotation = quaternion;
+                ++screenIndex;
             }
-            GC.Collect();
+            //GC.Collect();
         }
 
         public void Disabled()
@@ -145,12 +131,9 @@ namespace MikuMikuFluid
 
         public void Dispose()
         {
-            foreach (List<ScreenImage_3D> screens in screen3Ds)
+            foreach (ScreenImage_3D screen in screen3Ds)
             {
-                foreach (ScreenImage_3D screen in screens)
-                {
-                    screen.Dispose();
-                }
+                screen.Dispose();
             }
         }
     }
