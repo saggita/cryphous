@@ -37,24 +37,16 @@ int SimulationCommand::getStep()
 	return ApplicationSettings::get()->simulation->getStep();
 }
 
-List<List<ManagedPosition^>^>^ SimulationCommand::getManagedPositions()
+List<ManagedPosition^>^ SimulationCommand::getManagedPositions()
 {
-	List<List<ManagedPosition^>^>^ results = gcnew List<List<ManagedPosition^>^>();
 	PhysicsObjectFactory* factory = ApplicationSettings::get()->factory;
-	BOOST_FOREACH( PhysicsObject* object, factory->getPhysicsObjects() ) {
-		const ParticleVector& nativeParticles = object->getParticles();
-		results->Add( ParticleMarshaler::convertToManagedPositions( nativeParticles) );
-	}
-	return results;
+	const ParticleVector& nativeParticles = factory->getOrderedParticles();
+	return ParticleMarshaler::convertToManagedPositions( nativeParticles );
 }
 
-List<List<ManagedVector^>^>^ SimulationCommand::getManagedNormals()
+List<ManagedVector^>^ SimulationCommand::getManagedNormals()
 {
-	List<List<ManagedVector^>^>^ results = gcnew List<List<ManagedVector^>^>();
 	PhysicsObjectFactory* factory = ApplicationSettings::get()->factory;
-	BOOST_FOREACH( PhysicsObject* object, factory->getPhysicsObjects() ) {
-		const ParticleVector& nativeParticles = object->getParticles();
-		results->Add( ParticleMarshaler::convertToManagedNormals( nativeParticles) );
-	}
-	return results;
+	const ParticleVector& nativeParticles = factory->getOrderedParticles();
+	return ParticleMarshaler::convertToManagedNormals( nativeParticles );
 }

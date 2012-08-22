@@ -14,15 +14,13 @@ namespace Cryphous
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
         private Random rand = new Random();
-        private double maxParticles;
         
-        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, int maxParticles = 1000000)
+        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand)
         {
             InitializeComponent();
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
-            this.maxParticles = maxParticles;
             dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
         }
 
@@ -64,7 +62,6 @@ namespace Cryphous
             ssCommand.save();
             command.refresh();
 
-            int createdCounts = 0;
             foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
             {
                 float minX = Convert.ToSingle(row.Cells[4].Value);
@@ -86,12 +83,6 @@ namespace Cryphous
                 else
                 {
                     System.Diagnostics.Debug.Assert(false);
-                }
-                createdCounts += positions.Count;
-                if (createdCounts >= maxParticles)
-                {
-                    MessageBox.Show("Warning: Over " + maxParticles + " particles are generated.");
-                    return;
                 }
 
                 command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);

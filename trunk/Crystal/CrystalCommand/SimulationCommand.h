@@ -18,9 +18,9 @@ public:
 
 	int getStep();
 
-	System::Collections::Generic::List<System::Collections::Generic::List<ManagedPosition^>^>^ getManagedPositions();
+	System::Collections::Generic::List<ManagedPosition^>^ getManagedPositions();
 
-	System::Collections::Generic::List<System::Collections::Generic::List<ManagedVector^>^>^ getManagedNormals();
+	System::Collections::Generic::List<ManagedVector^>^ getManagedNormals();
 };
 
 	}
