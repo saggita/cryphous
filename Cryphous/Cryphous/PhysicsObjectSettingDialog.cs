@@ -14,14 +14,16 @@ namespace Cryphous
         private BoundarySettingCommand bsCommand;
         private SimulationSettingCommand ssCommand;
         private Random rand = new Random();
+        private List<float[]> initialPositions;
         
-        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand)
+        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<float[]> initialPositions)
         {
             InitializeComponent();
             this.command = command;
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
+            this.initialPositions = initialPositions;
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 30.0, 50.0, -10.0, 10.0, "Sphere");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,6 +88,11 @@ namespace Cryphous
                 }
 
                 command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);
+            }
+
+            if (initialPositions != null)
+            {
+                command.saveSettings("Obstacle", 1000.0f, 2000000.0f, 100.0f, initialPositions);
             }
             
             Hide();

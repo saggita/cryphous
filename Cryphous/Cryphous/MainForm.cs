@@ -26,23 +26,21 @@ namespace Cryphous
 
         private bool isStandAlone;
         List<float[]> simulatedPositions;
-        List<float[]> simulatedNormals;
+
+        List<float[]> initialPositions;
 
         public List<float[]> SimulatedPositions
         {
             get{ return simulatedPositions; }
         }
 
-        public List<float[]> SimulatedNormals
-        {
-            get { return simulatedNormals; }
-        }
         
-        public MainForm(bool isStandAlone)
+        public MainForm(bool isStandAlone, List<float[]> initialPositions = null)
         {
             InitializeComponent();
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
             this.isStandAlone = isStandAlone;
+            this.initialPositions = initialPositions;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -56,7 +54,7 @@ namespace Cryphous
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             mainCommand = new MainCommand(pictureBox1, "Cryphous 1.3");
 
-            osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand);
+            osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, initialPositions);
             gsDialog = new GraphicsSettingForm(mainCommand);
         }
 
@@ -66,7 +64,6 @@ namespace Cryphous
             if (!isStandAlone)
             {
                 simulatedPositions = mainCommand.getSimulationCommand().getManagedPositions();
-                simulatedNormals = mainCommand.getSimulationCommand().getManagedNormals();
             }
         }
 
@@ -103,7 +100,6 @@ namespace Cryphous
             if (!isStandAlone)
             {
                 simulatedPositions = mainCommand.getSimulationCommand().getManagedPositions();
-                simulatedNormals = mainCommand.getSimulationCommand().getManagedNormals();
             }
         }
 

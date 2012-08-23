@@ -51,16 +51,13 @@ namespace MikuMikuFluid
 
         private MainForm mainForm;
 
-        private MikuMikuFluid__.ParticleSizeDialog dialog;
+        //private MikuMikuFluid__.ParticleSizeDialog dialog;
 
-        private const int maxParticles = 45000;
+        private const int maxParticles = 35000;
 
         public void Initialize()
         {
             screen3Ds = new List<ScreenImage_3D>();
-            /*Bitmap bitmap = new Bitmap(1, 1);
-            Color color = Color.FromArgb(128, Color.Blue);
-            bitmap.SetPixel(0, 0, color);*/
             Bitmap bitmap = new Bitmap(MikuMikuFluid__.Properties.Resources.sprite);
             for (int x = 0; x < bitmap.Width; ++x)
             {
@@ -78,33 +75,44 @@ namespace MikuMikuFluid
                 Scene.ScreenObjects.Add(screen3D);
                 screen3Ds.Add(screen3D);
             }
-            dialog = new MikuMikuFluid__.ParticleSizeDialog();
-            dialog.Show();
+            //dialog = new MikuMikuFluid__.ParticleSizeDialog();
+            //dialog.Show();
         }
 
         public void Enabled()
         {
+            List<float[]> bonePositions = new List<float[]>();
+            foreach( Model model in Scene.Models ) {
+                foreach (Bone bone in model.Bones)
+                {
+                    float[] pos = new float[3];
+                    pos[0] = bone.InitialPosition.X;
+                    pos[1] = bone.InitialPosition.Y;
+                    pos[2] = bone.InitialPosition.Z;
+                    bonePositions.Add(pos);
+                }
+            }
             foreach (ScreenImage_3D screen in screen3Ds)
             {
                 screen.Position = new Vector3(10000.0f, 10000.0f, 10000.0f);
-                screen.Size = new Vector2(dialog.X, dialog.Y);
-            
+                /*screen.Size = new Vector2(dialog.X, dialog.Y);
+                if (dialog.TextureImage != null)
+                {
+                    screen.Image.Dispose();
+                    screen.Image = dialog.TextureImage;
+                }*/
             }
-            mainForm = new MainForm(false);
+            mainForm = new MainForm(false, bonePositions);
             mainForm.Show();
         }
 
         public void Update(float Frame, float ElapsedTime)
         {   
-            // for billboard rendering
             Vector3 angle = Scene.Cameras[0].CurrentMotion.Angle;
             Quaternion quaternion = Quaternion.RotationYawPitchRoll(-angle.Y, -angle.X, -angle.Z);
-            // for normal vector rendering
-            //Vector3 upper = new Vector3(0.0f, 0.0f, 1.0f);
             
             mainForm.proceed();
             List<float[]> simulatedPositions = mainForm.SimulatedPositions;
-            //List<float[]> simulatedNormals = mainForm.SimulatedNormals;
             if (simulatedPositions == null)
             {
                 return;
@@ -113,7 +121,6 @@ namespace MikuMikuFluid
             int screenIndex = 0;
             for (int i = 0; (i < simulatedPositions.Count) && (screenIndex < screen3Ds.Count); ++i)
             {
-
                 float posx = simulatedPositions[i][0];
                 float posy = simulatedPositions[i][1];
                 float posz = simulatedPositions[i][2];
@@ -121,7 +128,6 @@ namespace MikuMikuFluid
                 screen3Ds[screenIndex].Rotation = quaternion;
                 ++screenIndex;
             }
-            //GC.Collect();
         }
 
         public void Disabled()
