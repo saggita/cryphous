@@ -48,12 +48,12 @@ namespace MikuMikuFluid
         {
             get { return Text; }
         }
-
+        
         private MainForm mainForm;
 
         //private MikuMikuFluid__.ParticleSizeDialog dialog;
 
-        private const int maxParticles = 35000;
+        private const int maxParticles = 30000;
 
         public void Initialize()
         {
