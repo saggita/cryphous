@@ -2,6 +2,7 @@
 
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalPhysics/Particle.h"
+#include "../CrystalPhysics/PhysicsObject.h"
 #include <cassert>
 
 using namespace Crystal::Geom;
@@ -14,6 +15,9 @@ List<ManagedPosition^>^ ParticleMarshaler::convertToManagedPositions(const Parti
 {
 	List<ManagedPosition^>^ managedPositions = gcnew List<ManagedPosition^>();
 	for( size_t i = 0; i < nativeParticles.size(); ++i ) {
+		if( nativeParticles[i]->getParent()->getType() == PhysicsObject::Obstacle ) {
+			continue;
+		}
 		ManagedPosition^ newParticle = gcnew ManagedPosition(3);
 		newParticle[0] = nativeParticles[i]->center.getX();
 		newParticle[1] = nativeParticles[i]->center.getY();

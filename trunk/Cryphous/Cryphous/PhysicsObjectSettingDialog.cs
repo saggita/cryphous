@@ -23,7 +23,7 @@ namespace Cryphous
             this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
             this.initialPositions = initialPositions;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 30.0, 50.0, -10.0, 10.0, "Sphere");
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -92,7 +92,7 @@ namespace Cryphous
 
             if (initialPositions != null)
             {
-                command.saveSettings("Obstacle", 1000.0f, 2000000.0f, 100.0f, initialPositions);
+                command.saveSettings("Obstacle", 10000.0f, 2000000.0f, 1000.0f, initialPositions);
             }
             
             Hide();
@@ -179,45 +179,24 @@ namespace Cryphous
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, "Box"); 
             }
+            else if (comboBoxExample.Text == "DamDrop")
+            {
+                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -5.0, 5.0, 20.0, 60.0, -5.0, 5.0, "Box");
+            }
+            else if (comboBoxExample.Text == "SphereDrop")
+            {
+                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 20.0, 40.0, -10.0, 10.0, "Sphere");
+            }
             else if (comboBoxExample.Text == "SphereBreak")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -15.0, 0.0, 0.0, 15.0, -15.0, 0.0, "Sphere");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 15.0, 0.0, 15.0, 0.0, 15.0, "Sphere");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -15.0, 0.0, 25.0, 40.0, -15.0, 0.0, "Sphere");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 15.0, 30.0, 45.0, 0.0, 15.0, "Sphere");
+                //dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 5.0, 50.0, 65.0, -5.0, 10.0, "Sphere");
+                //         dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -5.0, 5.0, 50.0, 60.0, 0.0, 10.0, "Sphere");
             }
-            /*else if (comboBoxExample.Text == "Rain")
-            {
-                textBoxEffectLength.Text = "0.1";
-                setBoundary(-100.0F, 100.0F, 0.0F, 100.0F, -100.0F, 100.0F);
-                for (int i = 0; i < 30; ++i)
-                {
-                    float radius = 2.0F;
-                    double minX = rand.NextDouble() * 20 - 10;
-                    double minY = rand.NextDouble() * 10;
-                    double minZ = rand.NextDouble() * 20 - 10;
-
-                    dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 200.0, 1000.0, minX, minX + radius, minY, minY + radius, minZ, minZ + radius, "Sphere");
-                }
-            }*/
-            /*else if (comboBoxExample.Text == "Crown")
-            {
-                textBoxEffectLength.Text = "0.1";
-                setBoundary(-5.0F, 5.0F, 0.0F, 100.0F, -5.0F, 5.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 5.0, 0.0, 1.0, -5.0, 5.0, "Box");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -1.0, 1.0, 8.0, 10.0, -1.0, 1.0, "Sphere");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, -3.0, 6.0, 8.0, -5.0, -3.0, "Sphere");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, 3.0, 5.0, 6.0, 8.0, 3.0, 5.0, "Sphere");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, -3.0, 6.0, 8.0, 3.0, 5.0, "Sphere");
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, 3.0, 5.0, 6.0, 8.0, -5.0, -3.0, "Sphere");
-            }
-            else if (comboBoxExample.Text == "Wall")
-            {
-                textBoxEffectLength.Text = "0.1";
-                setBoundary(-10.0F, 10.0F, 0.0F, 100.0F, -2.0F, 2.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 100000.0, 20.0, 1000.0, -5.0, 0.0, 0.0, 2.0, -2.0, 2.0, "Box");
-                dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, 2.0, 3.0, 0.0, 1.0, -2.0, 2.0, "Box");
-                dataGridViewObjectSetting.Rows.Add("Rigid", 100000.0, 20.0, 1000.0, -8.0, -7.0, 0.0, 2.0, -2.0, 2.0, "Box");
-            }*/
             else
             {
                 System.Diagnostics.Debug.Assert(false);
