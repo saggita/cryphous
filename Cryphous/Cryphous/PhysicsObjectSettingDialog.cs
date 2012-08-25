@@ -38,12 +38,6 @@ namespace Cryphous
 
             textBoxEffectLength.Text = "0.5";
             setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-            //buttonAdd_Click(sender, e);
-        }
-
-        private void dataGridViewObjectSetting_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -138,7 +132,7 @@ namespace Cryphous
                         {
                             continue;
                         }
-                        float[] position = new float[3];// ManagedPosition();
+                        float[] position = new float[3];
                         position[0] = x;
                         position[1] = y;
                         position[2] = z;
@@ -187,15 +181,13 @@ namespace Cryphous
             else if (comboBoxExample.Text == "SphereDrop")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 20.0, 40.0, -10.0, 10.0, "Sphere");
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -9.0, 9.0, 20.0, 38.0, -9.0, 9.0, "Sphere");
             }
             else if (comboBoxExample.Text == "SphereBreak")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -15.0, 0.0, 25.0, 40.0, -15.0, 0.0, "Sphere");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 15.0, 30.0, 45.0, 0.0, 15.0, "Sphere");
-                //dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 5.0, 50.0, 65.0, -5.0, 10.0, "Sphere");
-                //         dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -5.0, 5.0, 50.0, 60.0, 0.0, 10.0, "Sphere");
             }
             else
             {

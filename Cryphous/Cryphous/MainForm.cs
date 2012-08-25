@@ -52,7 +52,7 @@ namespace Cryphous
             particleInfoCommand = new ParticleInfoCommand();
             simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.3");
+            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.35");
 
             osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, initialPositions);
             gsDialog = new GraphicsSettingForm(mainCommand);
