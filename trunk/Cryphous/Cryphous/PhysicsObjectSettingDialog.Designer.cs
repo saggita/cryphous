@@ -98,9 +98,7 @@
             this.dataGridViewObjectSetting.Name = "dataGridViewObjectSetting";
             this.dataGridViewObjectSetting.RowTemplate.Height = 21;
             this.dataGridViewObjectSetting.Size = new System.Drawing.Size(583, 181);
-            this.dataGridViewObjectSetting.TabIndex = 1;
-            this.dataGridViewObjectSetting.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewObjectSetting_CellContentClick);
-            // 
+            this.dataGridViewObjectSetting.TabIndex = 1;            // 
             // headerType
             // 
             this.headerType.HeaderText = "Type";
