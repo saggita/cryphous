@@ -4,21 +4,17 @@
 #include <vector>
 
 namespace Crystal{
-	namespace Geom{
-		class Vector3d;
-		class Box;
-	}
-
 	namespace Physics{
 
 class ParticleConditions
 {
 public:
 
-	ParticleConditions(const std::vector<Geom::Vector3d>& points, const float particleLength, const float density) :
+	ParticleConditions(const float particleLength, const float density, const float pressureCoe, const float viscosityCoe) :
 		particleLength( particleLength),
 		 density( density),
-		 innerPoints( points)
+		 pressureCoe( pressureCoe),
+		 viscosityCoe( viscosityCoe)
 		{
 		}
 
@@ -30,15 +26,15 @@ public:
 
 	float getParticleMass() const { return density * getParticleVolume(); }
 
-	std::vector<Geom::Vector3d> getInnerPoints() const { return innerPoints; }
+	float getPressureCoe() const { return pressureCoe; }
 
-protected:
-	void createInnerPoints(const Geom::Box& box);
+	float getViscosityCoe() const { return viscosityCoe; }
 
 private:
 	const float particleLength;
 	const float density;
-	const std::vector<Geom::Vector3d> innerPoints;
+	const float pressureCoe;
+	const float viscosityCoe;
 };
 
 	}

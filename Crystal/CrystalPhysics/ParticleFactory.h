@@ -31,16 +31,13 @@ public:
 		}
 	}
 
-	ParticleVector createParticles(const ParticleConditions& conditions)
+	ParticleVector createParticles(const std::vector<Geom::Vector3d>& points, const ParticleConditions& conditions)
 	{
-		std::vector<Geom::Vector3d>& innerPoints = conditions.getInnerPoints();
-		BOOST_FOREACH( Geom::Vector3d& innerPoint, innerPoints ) {
-			particles.push_back(
-				new Particle( nextID++, innerPoint, conditions.getParticleMass(), conditions.getParticleLength() * 0.5f, this ) 
-				);
+		BOOST_FOREACH( const Geom::Vector3d& point, points ) {
+			particles.push_back( new Particle( nextID++, point, conditions ) );
 			particles.back()->density = conditions.getDensity();
 		}
-		virtualParticle = new Particle( -1, Geom::Vector3d(), conditions.getParticleMass(), conditions.getParticleLength() * 0.5f, this );
+		virtualParticle = new Particle( -1, Geom::Vector3d(), conditions );
 		return particles;
 	}
 

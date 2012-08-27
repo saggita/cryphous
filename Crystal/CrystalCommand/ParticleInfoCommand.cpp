@@ -21,7 +21,7 @@ void ParticleInfoCommand::display(System::Windows::Forms::DataGridView^ view)
 
 		array<Object^>^ rowData = {
 					particle->getID(),
-					particle->getParent()->getID(),
+					//particle->getParent()->getID(),
 					particle->getMass(),
 					particle->density,
 					particle->center.getX(),

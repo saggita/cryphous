@@ -18,9 +18,9 @@ BOOST_AUTO_TEST_CASE( SEARCH_PARTICLE_FACTORY_TEST )
 	{
 		std::vector<Vector3d> points;
 		points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-		ParticleConditions conditions( points, 1.0, 1000.0); 
+		ParticleConditions conditions( 1.0, 1000.0, 1.0, 1.0); 
 		ParticleFactory factory;
-		const ParticleVector& particles = factory.createParticles( conditions );
+		const ParticleVector& particles = factory.createParticles( points, conditions );
 		BOOST_CHECK_EQUAL( particles.size() , 1 );
 		SearchParticleFactory searchFactory( particles, 1.0 );
 		SearchParticleVector& sorted = searchFactory.getSearchParticles();
@@ -30,9 +30,9 @@ BOOST_AUTO_TEST_CASE( SEARCH_PARTICLE_FACTORY_TEST )
 	{
 		std::vector<Vector3d> points;
 		points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-		ParticleConditions conditions( points, 1.0, 1000.0); 
+		ParticleConditions conditions( 1.0, 1000.0, 1.0, 1.0); 
 		ParticleFactory factory;
-		const ParticleVector& particles = factory.createParticles( conditions );
+		const ParticleVector& particles = factory.createParticles( points, conditions );
 		SearchParticleFactory searchFactory;
 		searchFactory.addParticles( particles, 1.0f );
 		BOOST_CHECK_EQUAL( searchFactory.getSearchParticles().size(), 1 ); 
@@ -41,9 +41,9 @@ BOOST_AUTO_TEST_CASE( SEARCH_PARTICLE_FACTORY_TEST )
 	{
 		std::vector<Vector3d> points;
 		points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-		ParticleConditions conditions( points, 1.0, 1000.0); 
+		ParticleConditions conditions( 1.0, 1000.0, 1.0, 1.0); 
 		ParticleFactory factory;
-		const ParticleVector& particles = factory.createParticles( conditions );
+		const ParticleVector& particles = factory.createParticles( points, conditions );
 		BOOST_CHECK_EQUAL( particles.size() , 1 );
 		SearchParticleFactory searchFactory( particles, 1.0 );
 		BOOST_CHECK_EQUAL( searchFactory.getSearchParticles().size(), 1 );
@@ -52,9 +52,9 @@ BOOST_AUTO_TEST_CASE( SEARCH_PARTICLE_FACTORY_TEST )
 	{
 		std::vector<Vector3d> points;
 		points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
-		ParticleConditions conditions( points, 1.0, 1000.0); 
+		ParticleConditions conditions( 1.0, 1000.0, 1.0, 1.0); 
 		ParticleFactory factory;
-		const ParticleVector& particles = factory.createParticles( conditions );
+		const ParticleVector& particles = factory.createParticles( points, conditions );
 		BOOST_CHECK_EQUAL( particles.size() , 1 );
 		SearchParticleFactory searchFactory( particles, 1.0 );
 		SearchParticleVector& sorted = searchFactory.getSearchParticles();
