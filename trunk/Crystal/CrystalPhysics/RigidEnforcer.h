@@ -32,7 +32,7 @@ public:
 		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
 			particle->center -= objectCenter;
 		}
-		assert( rigid->getCenter() == Vector3d( 0.0, 0.0, 0.0 ) );
+		assert( rigid->getCenter() == Geom::Vector3d( 0.0, 0.0, 0.0 ) );
 
 		Geom::Vector3d inertiaMoment( 0.0, 0.0, 0.0 );
 		Geom::Vector3d torque( 0.0, 0.0, 0.0 );

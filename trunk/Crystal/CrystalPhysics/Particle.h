@@ -6,49 +6,52 @@
 #include <vector>
 
 #include "../CrystalGeom/Vector3d.h"
+#include "ParticleConditions.h"
 
 namespace Crystal{
-	namespace Geom{
-		class Vector3d;
-	}
-
 	namespace Physics{
-		class PhysicsObject;
-		class ParticleFactory;
 		
 class Particle : private boost::noncopyable
 {
 protected:
 
-	Particle(int id, const Geom::Vector3d& center, const float mass, const float radius, ParticleFactory* particleFactory);
+	Particle(int id, const Geom::Vector3d& center, const ParticleConditions& condition) :
+		id( id), 
+		center( center), 
+		condition( condition)
+	{
+	}
 
-	~Particle(void);
-
-	Particle* createClone(const int id = -1) const;
+	~Particle(void){};
 
 public:
 
-	void resetDiffParameters();
+	void resetDiffParameters()
+	{
+		normal = Geom::Vector3d( 0.0f, 0.0f, 0.0f );
+		density = 0.0;
+		force = Geom::Vector3d( 0.0f, 0.0f, 0.0f);
+	}
 
-	float getRadius() const { return radius; }
+	float getRadius() const { return condition.getParticleLength() * 0.5f; }
 
-	float getDiameter() const { return radius * 2.0f; }
+	float getDiameter() const { return condition.getParticleLength(); }
 
-	float getMass() const { return mass; }
+	float getMass() const { return condition.getParticleMass(); }
 
 	float getVolume() const { return getMass() / density; }
 
-	float getIdealVolume() const;
+	float getIdealVolume() const { return std::pow( getRadius() * 2.0f, 2 ); }
 
-	float getPressure() const;
+	float getPressure() const { return condition.getPressureCoe() * ( std::pow( density / condition.getDensity(), 1 ) - 1.0f ); }
+
+	ParticleConditions getCondition() const { return condition; }
+
+	//void setCondition(const ParticleConditions& condition) { this->condition = condition; }
 
 	int getID() const { return id; }
 
 	bool isIsolated() const { return normal == Geom::Vector3d(0.0f, 0.0f, 0.0f); }
-
-	void setParent(PhysicsObject* object) { parent = object; }
-
-	PhysicsObject* getParent() const { return parent; }
 
 public:
 	Geom::Vector3d center;
@@ -58,12 +61,8 @@ public:
 	float density;
 
 private:
-	float radius;
 	const int id;
-	PhysicsObject* parent;
-	const float mass;
-
-	ParticleFactory* particleFactory;
+	ParticleConditions condition;
 
 	friend class ParticleFactory;
 };

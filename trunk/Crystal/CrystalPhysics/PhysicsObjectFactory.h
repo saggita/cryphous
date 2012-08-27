@@ -66,10 +66,10 @@ public:
 
 	PhysicsObject* createPhysicsObject( const PhysicsObjectCondition& condition, const SimulationSetting& setting )
 	{
-		const ParticleConditions particleCondition( condition.points, setting.particleDiameter, condition.density);
+		const ParticleConditions particleCondition( setting.particleDiameter, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient);
 		ParticleFactory* particleFactory = new ParticleFactory();
 
-		ParticleVector& particles = particleFactory->createParticles( particleCondition );
+		ParticleVector& particles = particleFactory->createParticles( condition.points, particleCondition );
 		PhysicsObject* object = 0;
 		switch( condition.objectType ) {
 			case PhysicsObjectCondition::Fluid :
@@ -85,9 +85,6 @@ public:
 				assert( false );
 		}
 
-		BOOST_FOREACH( Particle* particle, particles ) {
-			particle->setParent( object );
-		}
 		physicsObjects.push_back( object );
 		createSearchParticles( setting.getEffectLength() );
 		return object;

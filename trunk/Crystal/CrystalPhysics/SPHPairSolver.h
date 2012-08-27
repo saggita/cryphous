@@ -58,8 +58,8 @@ public:
 
 	void calculateViscosityForce( const ParticlePair& pair )
 	{
-		const float viscosityCoefficient = ( pair.getParticleX()->getParent()->getViscosityCoefficient() + 
-			pair.getParticleY()->getParent()->getViscosityCoefficient() ) * 0.5f;
+		const float viscosityCoefficient = ( pair.getParticleX()->getCondition().getViscosityCoe() + 
+			pair.getParticleY()->getCondition().getViscosityCoe() ) * 0.5f;
 		const Geom::Vector3d diffVector( pair.getParticleX()->velocity, pair.getParticleY()->velocity );
 		const Geom::Vector3d viscosity = viscosityCoefficient * diffVector * 
 			kernels.getViscosityKernelLaplacian( pair.getDistance() );

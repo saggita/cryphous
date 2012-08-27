@@ -24,9 +24,9 @@ BOOST_AUTO_TEST_CASE(NEIGHBOR_SEARCHER_TEST)
 	std::vector<Vector3d> points;
 	points.push_back( Vector3d( 0.0, 0.0, 0.0 ));
 	points.push_back( Vector3d( 1.0, 0.0, 0.0 ));
-	ParticleConditions conditions( points, 1.0, 1000.0); 
+	ParticleConditions conditions( 1.0, 1000.0, 1.0, 1.0); 
 	ParticleFactory factory;
-	const ParticleVector& particles = factory.createParticles( conditions );
+	const ParticleVector& particles = factory.createParticles( points, conditions );
 	
 	BOOST_CHECK_EQUAL( particles.size() , 2 );
 	SearchParticleFactory searchFactory( particles, setting.getEffectLength() );

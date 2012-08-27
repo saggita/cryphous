@@ -127,7 +127,7 @@ private:
 	void calculateDensity(Particle* particle, const Geom::Vector3d boundaryPoint)
 	{
 		virtualParticle->center = boundaryPoint;
-		virtualParticle->setParent( particle->getParent() );
+		//virtualParticle->setParent( particle->getParent() );
 		
 		ParticlePair pair( particle, virtualParticle );
 		SPHPairSolver solver( setting.getEffectLength() );
