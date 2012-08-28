@@ -1,7 +1,7 @@
 #ifndef __PHYSICS_OBJECT_FACTORY_H__
 #define __PHYSICS_OBJECT_FACTORY_H__
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 #include <list>
 
 #include "SearchParticleFactory.h"
@@ -41,7 +41,7 @@ struct PhysicsObjectCondition
 	ObjectType objectType;
 };
 
-class PhysicsObjectFactory : private boost::noncopyable
+class PhysicsObjectFactory : private Uncopyable
 {
 public:
 	PhysicsObjectFactory() :nextID( 0)

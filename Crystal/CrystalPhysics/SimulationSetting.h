@@ -4,12 +4,12 @@
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 
 namespace Crystal{
 	namespace Physics{
 
-class SimulationSetting //: private boost::noncopyable
+class SimulationSetting : private Uncopyable
 {
 public:
 	SimulationSetting(void) :

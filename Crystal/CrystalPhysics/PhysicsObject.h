@@ -1,7 +1,7 @@
 #ifndef __PHYSICS_OBJECT_H__
 #define __PHYSICS_OBJECT_H__
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 #include <list>
 
 #include "Particle.h"
@@ -14,7 +14,7 @@ namespace Crystal{
 	namespace Physics{
 		class PhysicsObjectFactory;
 
-class PhysicsObject : private boost::noncopyable
+class PhysicsObject : private Uncopyable
 {
 protected:
 	PhysicsObject(const int id, const float density, const float gasConstant, const float viscosityCoefficient, ParticleFactory* particleFactory) :

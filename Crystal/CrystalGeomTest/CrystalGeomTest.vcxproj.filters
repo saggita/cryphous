@@ -9,4 +9,12 @@
     <ClCompile Include="Vector3dTest.cpp" />
     <ClCompile Include="Transform3dTest.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CrystalGeom\Box.h" />
+    <ClInclude Include="..\CrystalGeom\Matrix3d.h" />
+    <ClInclude Include="..\CrystalGeom\Quaternion.h" />
+    <ClInclude Include="..\CrystalGeom\Tolerances.h" />
+    <ClInclude Include="..\CrystalGeom\Transform3d.h" />
+    <ClInclude Include="..\CrystalGeom\Vector3d.h" />
+  </ItemGroup>
 </Project>

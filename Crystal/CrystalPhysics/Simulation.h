@@ -18,12 +18,12 @@
 #include <cassert>
 #include <cmath>
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 
 namespace Crystal{
 	namespace Physics {
 		
-class Simulation : private boost::noncopyable
+class Simulation : private Uncopyable
 {
 public:
 	Simulation() :step(0), simulationTime(0.0){};

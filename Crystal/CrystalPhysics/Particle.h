@@ -1,7 +1,7 @@
 #ifndef __PARTICLE_H__
 #define __PARTICLE_H__
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 #include <list>
 #include <vector>
 
@@ -11,7 +11,7 @@
 namespace Crystal{
 	namespace Physics{
 		
-class Particle : private boost::noncopyable
+class Particle : private Uncopyable
 {
 protected:
 
