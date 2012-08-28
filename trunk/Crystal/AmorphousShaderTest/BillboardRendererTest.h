@@ -23,5 +23,5 @@ private:
 	Crystal::Shader::FlameRenderer renderer;
 	Crystal::Shader::PBFRSetting setting;
 	std::vector<Crystal::Shader::PolygonModel> solidModels;
-	Crystal::Color::VisualParticleList visualParticles;
+	Crystal::Shader::VisualParticleList visualParticles;
 };

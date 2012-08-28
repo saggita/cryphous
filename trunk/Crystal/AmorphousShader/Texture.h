@@ -5,7 +5,7 @@
 #include <cassert>
 
 namespace Crystal{
-	namespace Color{
+	namespace Shader{
 
 typedef std::vector< unsigned char > Pixels;
 

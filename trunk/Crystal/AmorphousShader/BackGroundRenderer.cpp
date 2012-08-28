@@ -7,7 +7,6 @@
 #include <boost/foreach.hpp>
 
 using namespace Crystal::Geom;
-using namespace Crystal::Color;
 using namespace Crystal::Shader;
 
 BackGroundRenderer::BackGroundRenderer(const int width, const int height, const float& intensity) :

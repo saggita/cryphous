@@ -14,15 +14,15 @@ public:
 	  center( 0.0, 0.0, 0.0),
 		velocity( 0.0, 0.0, 0.0 ),
 		radius(1.0),
-		color(1.0, 1.0, 1.0, 1.0),
+//		color(1.0, 1.0, 1.0, 1.0),
 		age(0)
 	  {};
 
-	 ShaderParticle(  const Geom::Vector3d& center, double radius, const Geom::Vector3d& velocity, const Color::ColorRGBA<>& color, int age ) :
+	 ShaderParticle(  const Geom::Vector3d& center, double radius, const Geom::Vector3d& velocity, int age ) :
 	  center( center),
 		  radius(radius),
 		  velocity( velocity),
-		  color(color),
+//		  color(color),
 		  age(age)
 	 {};
 	  
@@ -32,7 +32,7 @@ public:
 public:
 	Geom::Vector3d center;
 	Geom::Vector3d velocity;
-	Color::ColorRGBA<> color;
+//	Color::ColorRGBA<> color;
 	double radius;
 	int age;
 };

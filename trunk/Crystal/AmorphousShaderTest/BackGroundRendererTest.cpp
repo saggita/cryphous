@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "BackGroundRendererTest.h"
 
-using namespace Crystal::Color;
 using namespace Crystal::Shader;
 
 BackGroundRendererTest::BackGroundRendererTest(const int width, const int height) :

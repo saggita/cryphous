@@ -3,6 +3,7 @@
 
 #include "OffScreenRendererBase.h"
 #include "TextureObject.h"
+#include "VisualParticle.h"
 #include <memory>
 
 namespace Crystal{
@@ -15,7 +16,7 @@ public:
 
 	~BillboardRenderer(void);
 
-	void setVisualParticles(const Crystal::Color::VisualParticleList& visualParticles);
+	void setVisualParticles(const VisualParticleList& visualParticles);
 
 protected:
 	virtual void onRender();

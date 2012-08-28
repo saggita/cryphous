@@ -7,7 +7,8 @@
 #include <memory>
 
 #include "OpenGLWrapper.h"
-#include "../AmorphousColor/VisualParticle.h"
+#include "VisualParticle.h"
+#include "Texture.h"
 #include "OnScreenRendererBase.h"
 #include "PBFRSetting.h"
 #include "BackGroundRenderer.h"
@@ -29,13 +30,13 @@ public:
 		init();
 	}
 
-	void setup(Color::VisualParticleList* visualParticles, std::vector<Crystal::Shader::PolygonModel>* solidModels);
+	void setup(VisualParticleList* visualParticles, std::vector<PolygonModel>* solidModels);
 
 	OpenGLWrapper* getOpenGLWrapper() { return &openGLWrapper; }
 
 	virtual bool isBillboard() = 0;
 
-	void setBackGround(const Crystal::Color::Texture& texture);
+	void setBackGround(const Crystal::Shader::Texture& texture);
 
 protected:
 
@@ -48,7 +49,7 @@ protected:
 	void applyBlur();
 
 protected:
-	Color::VisualParticleList* visualParticles;
+	VisualParticleList* visualParticles;
 	const PBFRSetting& setting;
 	OpenGLWrapper openGLWrapper;
 	BackGroundRenderer backGroundRenderer;

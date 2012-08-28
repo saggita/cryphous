@@ -9,7 +9,6 @@
 #include <boost/foreach.hpp>
 
 using namespace Crystal::Geom;
-using namespace Crystal::Color;
 using namespace Crystal::Shader;
 
 PointRendererTest::PointRendererTest(const int width, const int height, std::vector<Crystal::Shader::PolygonModel>& solidModels) :

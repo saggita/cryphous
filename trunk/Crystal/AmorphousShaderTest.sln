@@ -2,17 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C++ Express 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmorphousShader", "AmorphousShader\AmorphousShader.vcxproj", "{3DB61408-BFAA-4587-A3E3-135662D2C7A1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F} = {EB62DEF7-1F68-4C78-937F-7D5F90DD669F}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmorphousShaderTest", "AmorphousShaderTest\AmorphousShaderTest.vcxproj", "{C320C292-83A3-4FFB-8CC8-45DAC626042B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3DB61408-BFAA-4587-A3E3-135662D2C7A1} = {3DB61408-BFAA-4587-A3E3-135662D2C7A1}
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F} = {EB62DEF7-1F68-4C78-937F-7D5F90DD669F}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmorphousColor", "AmorphousColor\AmorphousColor.vcxproj", "{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +22,6 @@ Global
 		{C320C292-83A3-4FFB-8CC8-45DAC626042B}.Debug|Win32.Build.0 = Debug|Win32
 		{C320C292-83A3-4FFB-8CC8-45DAC626042B}.Release|Win32.ActiveCfg = Release|Win32
 		{C320C292-83A3-4FFB-8CC8-45DAC626042B}.Release|Win32.Build.0 = Release|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Debug|Win32.Build.0 = Debug|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Release|Win32.ActiveCfg = Release|Win32
-		{EB62DEF7-1F68-4C78-937F-7D5F90DD669F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace Crystal{
-	namespace Color {
+	namespace Shader {
 
 class TextureCreator
 {

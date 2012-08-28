@@ -22,6 +22,6 @@ protected:
 private:
 	Crystal::Shader::PBFR renderer;
 	Crystal::Shader::PBFRSetting setting;
-	Crystal::Color::VisualParticleList visualParticles;
+	Crystal::Shader::VisualParticleList visualParticles;
 	std::vector<Crystal::Shader::PolygonModel>& solidModels;
 };

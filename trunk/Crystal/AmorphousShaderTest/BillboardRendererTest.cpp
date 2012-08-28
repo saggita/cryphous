@@ -9,7 +9,6 @@
 #include <boost/foreach.hpp>
 
 using namespace Crystal::Geom;
-using namespace Crystal::Color;
 using namespace Crystal::Shader;
 
 BillboardRendererTest::BillboardRendererTest(const int width, const int height, const std::vector<Crystal::Shader::PolygonModel>& solidModels) :
