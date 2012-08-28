@@ -62,8 +62,9 @@ public:
 
 	float getWeight() const {
 		float weight = 0.0;
-		BOOST_FOREACH(Particle* particle, getParticles()) {
-			weight += particle->getMass();
+		const ParticleVector& particles = getParticles();
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			weight += (*iter)->getMass();
 		}
 		return weight;
 	}
