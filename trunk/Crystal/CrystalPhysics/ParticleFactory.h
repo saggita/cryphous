@@ -2,7 +2,7 @@
 #define __PARTICLE_FACTORY_H__
 
 #include <vector>
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 #include <boost/foreach.hpp>
 
 #include "Particle.h"
@@ -13,7 +13,7 @@
 namespace Crystal{
 	namespace Physics{
 		
-class ParticleFactory : private boost::noncopyable
+class ParticleFactory : private Uncopyable
 {
 public:
 	ParticleFactory(void):

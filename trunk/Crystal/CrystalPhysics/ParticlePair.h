@@ -6,7 +6,7 @@
 #include "../CrystalGeom/Vector3d.h"
 #include "Particle.h"
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 
 namespace Crystal{
 	namespace Physics{
