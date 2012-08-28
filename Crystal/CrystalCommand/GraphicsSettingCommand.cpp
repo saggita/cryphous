@@ -17,7 +17,7 @@ GraphicsSettingCommand::~GraphicsSettingCommand(){
 }
 
 void GraphicsSettingCommand::setTrackBar(
-		System::Windows::Forms::TrackBar^ trackBarPointSize,
+	System::Windows::Forms::TrackBar^ trackBarPointSize,
 		System::Windows::Forms::TrackBar^ trackBarAlphaPower,
 		System::Windows::Forms::CheckBox^ checkBoxBoundingBox,
 		System::Windows::Forms::CheckBox^ doDisplaySurface
