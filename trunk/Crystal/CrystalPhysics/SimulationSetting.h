@@ -9,7 +9,7 @@
 namespace Crystal{
 	namespace Physics{
 
-class SimulationSetting : private boost::noncopyable
+class SimulationSetting //: private boost::noncopyable
 {
 public:
 	SimulationSetting(void) :
