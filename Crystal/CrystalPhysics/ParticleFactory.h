@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "../CrystalUtility/Uncopyable.h"
-#include <boost/foreach.hpp>
 
 #include "Particle.h"
 #include "ParticleConditions.h"
@@ -23,8 +22,8 @@ public:
 
 	~ParticleFactory(void)
 	{
-		BOOST_FOREACH( Particle* particle, particles ) {
-			delete particle;
+		for( ParticleVector::iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			delete (*iter);
 		}
 		if( virtualParticle != 0 ) {
 			delete virtualParticle;
@@ -33,8 +32,8 @@ public:
 
 	ParticleVector createParticles(const std::vector<Geom::Vector3d>& points, const ParticleConditions& conditions)
 	{
-		BOOST_FOREACH( const Geom::Vector3d& point, points ) {
-			particles.push_back( new Particle( nextID++, point, conditions ) );
+		for( std::vector<Geom::Vector3d>::const_iterator iter = points.begin(); iter != points.end(); ++ iter ) {
+			particles.push_back( new Particle( nextID++, *(iter), conditions ) );
 			particles.back()->density = conditions.getDensity();
 		}
 		virtualParticle = new Particle( -1, Geom::Vector3d(), conditions );
