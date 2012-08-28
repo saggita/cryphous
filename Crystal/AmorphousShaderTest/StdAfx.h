@@ -7,8 +7,6 @@
 #include "../CrystalGeom/Tolerances.h"
 #include "../CrystalGeom/Transform3d.h"
 #include "../CrystalGeom/Vector3d.h"
-#include "../AmorphousColor/AmorphousColor.h"
-#include "../AmorphousColor/AmorphousColor.h"
 #include "../AmorphousShader/AmorphousShader.h"
 
 #endif

@@ -4,11 +4,11 @@
 
 #include "ShaderObject.h"
 #include "PolygonModel.h"
+#include "TextureCreator.h"
 
 #include <cassert>
 
 using namespace Crystal::Geom;
-using namespace Crystal::Color;
 using namespace Crystal::Shader;
 
 PolygonRenderer::PolygonRenderer(const int width, const int height, const std::string& polygonFileName,const PBFRSetting& setting) :

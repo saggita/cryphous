@@ -13,7 +13,6 @@
 #include <cstdlib>
 
 using namespace Crystal::Geom;
-using namespace Crystal::Color;
 using namespace Crystal::Shader;
 
 PBFR::PBFR(const int width, const int height, const PBFRSetting& setting) :

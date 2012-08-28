@@ -2,6 +2,8 @@
 
 #include "PointRenderer.h"
 
+#include "TextureCreator.h"
+
 #include <cassert>
 #include <boost/foreach.hpp>
 #include <ctime>
@@ -9,7 +11,6 @@
 
 using namespace Crystal::Geom;
 using namespace Crystal::Shader;
-using namespace Crystal::Color;
 
 PointRenderer::PointRenderer(const int width, const int height, const PBFRSetting& setting) :
 OffScreenRendererBase( width, height),
@@ -34,13 +35,12 @@ void PointRenderer::setVisualParticles(const VisualParticleList& visualParticles
 		}
 		const Vector3d& center = vp.center;
 		const Vector3d& velocity = vp.velocity;
-		const ColorRGBA<>& color = ColorAdaptor::get()->getColorFromCash( vp.temperature );
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
-		colors.push_back( color.getRed());
-		colors.push_back( color.getGreen());
-		colors.push_back( color.getBlue());
+		colors.push_back( 1.0);
+		colors.push_back( 1.0);
+		colors.push_back( 1.0);
 		colors.push_back( (vp.temperature - minTemperature) / ( maxTemperature - minTemperature ) * setting.pointAlpha );
 	}
 }

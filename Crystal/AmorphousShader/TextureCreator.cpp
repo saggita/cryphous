@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "TextureCreator.h"
 
 #include "ImprovedPerlinNoise.h"
@@ -9,8 +8,8 @@
 
 #include "../CrystalPhysics/Kernels3D.h"
 
-using namespace Crystal::Geom;
-using namespace Crystal::Color;
+using namespace Crystal::Physics;
+using namespace Crystal::Shader;
 
 TextureCreator::TextureCreator(void):
 bitmap(0)
@@ -30,7 +29,7 @@ void TextureCreator::createTexture(const int size,const bool addNoise)
 	const int centerX = (int)(size * 0.5);
 	const int centerY = (int)(size * 0.5);
 
-	const double effectLength = size * 0.5;
+	const float effectLength = size * 0.5f;
 
 	Crystal::Physics::Kernels3D kernels( effectLength );
 
@@ -39,8 +38,8 @@ void TextureCreator::createTexture(const int size,const bool addNoise)
 	for( int i = 0; i < size; ++i ) {
 		bmpVec.push_back( std::vector< unsigned char >() );
 		for( int j = 0; j < size; ++j) {
-			const double distSquare = std::pow( i - centerX, 2.0 ) + std::pow( j - centerY, 2.0 );
-			double result = kernels.getPoly6Kernel( std::sqrt( distSquare ) ) / max * 0xff; 
+			const float distSquare = std::pow( i - centerX, 2.0f ) + std::pow( j - centerY, 2.0f );
+			float result = kernels.getPoly6Kernel( std::sqrt( distSquare ) ) / max * 0xff; 
 			if( result < 0.0 ) {
 				result = 0.0;
 			}

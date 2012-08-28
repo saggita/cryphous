@@ -89,6 +89,7 @@
     <ClCompile Include="GLee.cpp" />
     <ClCompile Include="GLSLMatrix.cpp" />
     <ClCompile Include="GLSLUtility.cpp" />
+    <ClCompile Include="ImprovedPerlinNoise.cpp" />
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
@@ -99,10 +100,12 @@
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="SmokeTextureCreator.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextureCreator.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
@@ -120,6 +123,7 @@
     <ClInclude Include="GLee.h" />
     <ClInclude Include="GLSLMatrix.h" />
     <ClInclude Include="GLSLUtility.h" />
+    <ClInclude Include="ImprovedPerlinNoise.h" />
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="OpenGLWrapper.h" />
@@ -131,9 +135,13 @@
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ShaderObject.h" />
+    <ClInclude Include="SmokeTextureCreator.h" />
     <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureCreator.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="VertexShader.h" />
+    <ClInclude Include="VisualParticle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\BackGround.fs" />

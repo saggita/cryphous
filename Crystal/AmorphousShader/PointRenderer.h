@@ -6,7 +6,7 @@
 #include "GLSLMatrix.h"
 #include "ShaderParticle.h"
 #include "PBFRSetting.h"
-#include <memory>
+#include "VisualParticle.h"
 
 namespace Crystal{
 	namespace Shader{
@@ -20,7 +20,7 @@ public:
 
 	void initRepetitionLevel() { repetitionLevel = 0; }
 
-	void setVisualParticles(const Color::VisualParticleList& visualParticles);
+	void setVisualParticles(const VisualParticleList& visualParticles);
 
 	void setShaderParticles(const ShaderParticleList& shaderParticles);
 

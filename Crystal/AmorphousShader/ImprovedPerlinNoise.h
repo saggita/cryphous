@@ -2,7 +2,7 @@
 #define __IMPROVED_PERLIN_NOISE_H__
 
 namespace Crystal{
-	namespace Color{
+	namespace Shader{
 
 class ImprovedPerlinNoise
 {

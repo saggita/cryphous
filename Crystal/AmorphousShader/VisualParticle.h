@@ -6,7 +6,7 @@
 #include "../CrystalGeom/Vector3d.h"
 
 namespace Crystal{
-	namespace Color{
+	namespace Shader{
 
 class VisualParticle
 {
