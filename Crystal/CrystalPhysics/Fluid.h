@@ -6,8 +6,6 @@
 #include "PhysicsObject.h"
 #include "Particle.h"
 
-#include <boost/foreach.hpp>
-
 namespace Crystal{
 	namespace Physics{
 
@@ -25,7 +23,8 @@ public:
 
 	virtual void integrateTime(const float proceedTime) {
 		const ParticleVector& particles = getParticles();
-		BOOST_FOREACH( Particle* particle, particles ) {
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			Particle* particle = *iter;
 			Geom::Vector3d accelaration = particle->force / particle->density;
 			particle->velocity += (accelaration * proceedTime);
 			particle->center += (particle->velocity * proceedTime);

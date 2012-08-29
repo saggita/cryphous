@@ -25,8 +25,9 @@ public:
 
 	virtual void integrateTime(const float proceedTime) {
 		const ParticleVector& particles = getParticles();
-		BOOST_FOREACH( Particle* particle, particles ) {
-			Geom::Vector3d accelaration = particle->force / particle->density;
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			Particle* particle = *(iter);
+			const Geom::Vector3d& accelaration = particle->force / particle->density;
 			particle->velocity += (accelaration * proceedTime);
 			particle->center += (particle->velocity * proceedTime);
 		}

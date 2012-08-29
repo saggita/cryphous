@@ -13,8 +13,6 @@
 #include "SimulationSetting.h"
 #include "Profiler.h"
 
-#include <boost/foreach.hpp>
-
 #include <cassert>
 #include <cmath>
 
@@ -45,20 +43,19 @@ public:
 		solver.calculateInteraction();
 
 		const ParticleVector& particles = factory->getSortedParticles();
-
-		BOOST_FOREACH( Particle* particle, particles ) {
-			particle->force += Geom::Vector3d( 0.0f, -9.8f * particle->density, 0.0f );
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			(*iter)->force += Geom::Vector3d( 0.0f, -9.8f * (*iter)->density, 0.0f );
 		}
 
 		Profiler::get()->start(" Sim->enforce");
-		BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-			object->enforce( setting.timeStep );
+		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+			(*iter)->enforce( setting.timeStep );
 		}
 		Profiler::get()->end(" Sim->enforce");
 
 		Profiler::get()->start(" Sim->integrate");
-		BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-			object->integrateTime( setting.timeStep );
+		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+			(*iter)->integrateTime( setting.timeStep );
 		}
 		Profiler::get()->end(" Sim->integrate");
 

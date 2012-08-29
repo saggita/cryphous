@@ -8,8 +8,6 @@
 #include "ParticleFactory.h"
 #include "../CrystalGeom/Vector3d.h"
 
-#include <boost/foreach.hpp>
-
 namespace Crystal{
 	namespace Physics{
 		class PhysicsObjectFactory;
@@ -46,16 +44,18 @@ public:
 			return Geom::Vector3d( 0.0, 0.0, 0.0);
 		}
 		Geom::Vector3d center( 0.0, 0.0, 0.0);
-		BOOST_FOREACH(Particle* particle, getParticles()) {
-			center += particle->center;
+		const ParticleVector& particles = getParticles();
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			center += (*iter)->center;
 		}
 		return center /= static_cast<float>(getParticles().size());
 	}
 
 	Geom::Vector3d getAverageVelosity() const {
 		Geom::Vector3d averageVelosity( 0.0, 0.0, 0.0 );
-		BOOST_FOREACH( Particle* particle, getParticles() ) {
-			averageVelosity += particle->velocity;
+		const ParticleVector& particles = getParticles();
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			averageVelosity += (*iter)->velocity;
 		}
 		return averageVelosity / static_cast<float>(getParticles().size());
 	}
