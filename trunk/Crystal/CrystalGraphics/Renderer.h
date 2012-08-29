@@ -1,8 +1,6 @@
 #ifndef __RENDERER_H__
 #define __RENDERER_H__
 
-#include <boost/noncopyable.hpp>
-
 #include "OpenGLWrapper.h"
 #include "GraphicsSettings.h"
 
@@ -12,13 +10,12 @@
 
 #include "Renderer.h"
 
+#include "../CrystalUtility/Uncopyable.h"
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Profiler.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/PhysicsObject.h"
-
-#include <boost/foreach.hpp>
 
 #include <cassert>
 #include <cmath>
@@ -27,7 +24,7 @@
 namespace Crystal{
 	namespace Graphics{
 
-class Renderer : private boost::noncopyable
+class Renderer : private Uncopyable
 {
 public:
 	Renderer(const GraphicsSettings& settings) :
@@ -83,7 +80,9 @@ public:
 		glPointSize( (GLfloat)(settings.pointSize) );
 
 		glBegin(GL_POINTS);
-		BOOST_FOREACH( Physics::PhysicsObject* object, factory->getPhysicsObjects() ) {
+		const Physics::PhysicsObjectList& objects = factory->getPhysicsObjects();
+		for( Physics::PhysicsObjectList::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
+			Physics::PhysicsObject* object = (*iter);
 			if( object->getType() == Physics::PhysicsObject::Rigid ) {
 				glColor4d( 1.0f, 1.0f, 1.0f, 1.0f );
 			}
@@ -95,12 +94,13 @@ public:
 				const float alpha = densityRatio * settings.pointAlpha / 100.0f; 
 				glColor4f( 0.1f, 0.1f, 1.0f, alpha );
 			}
-			BOOST_FOREACH( Physics::Particle* particle, object->getParticles() ) {
-				const Geom::Vector3d& normal = particle->normal / object->getDensity(); 
-				if( normal.getLength() < 0.0005 && !particle->isIsolated() && settings.doDisplaySurface ) {
+			const Physics::ParticleVector& particles = object->getParticles();
+			for( size_t i = 0; i < particles.size(); ++i ) {
+				const Geom::Vector3d& normal = particles[i]->normal / object->getDensity(); 
+				if( normal.getLength() < 0.0005 && !particles[i]->isIsolated() && settings.doDisplaySurface ) {
 					continue;
 				}
-				const Geom::Vector3d& point = particle->center;
+				const Geom::Vector3d& point = particles[i]->center;
 				glVertex3f( point.getX(), point.getY(), point.getZ() );
 			}
 		}

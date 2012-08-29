@@ -1,6 +1,3 @@
-// CrystalCommandTest.cpp : メイン プロジェクト ファイルです。
-
-#include "stdafx.h"
 
 using namespace System;
 

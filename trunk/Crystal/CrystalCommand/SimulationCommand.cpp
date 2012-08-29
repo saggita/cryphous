@@ -9,8 +9,6 @@
 
 #include "../CrystalGraphics/Renderer.h"
 
-#include <boost/foreach.hpp>
-
 using namespace Crystal::Physics;
 using namespace Crystal::Graphics;
 using namespace Crystal::Command;
