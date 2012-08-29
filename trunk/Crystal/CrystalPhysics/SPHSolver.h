@@ -40,8 +40,8 @@ public:
 			return;
 		}
 
-		BOOST_FOREACH( Particle *particle, particles ) {
-			particle->resetDiffParameters();
+		for( size_t i = 0; i < particles.size(); ++i ) {
+			particles[i]->resetDiffParameters();
 		}
 
 		particles = factory->getSortedParticles();
@@ -59,7 +59,7 @@ public:
 		Profiler::get()->start(" Sim->force");
 		const std::vector<ParticlePair>& pairs = neighborSearcher->getPairs();
 		#pragma omp parallel for
-		for( int i = 0; i < (int)(pairs.size()); ++i ) {
+		for( int i = 0; i < static_cast<int>(pairs.size()); ++i ) {
 			sphPairSolver->calculatePressureForce( pairs[i]);
 			sphPairSolver->calculateViscosityForce( pairs[i]);
 			sphPairSolver->calculateNormal( pairs[i]);
@@ -105,11 +105,8 @@ private:
 	{
 		Profiler::get()->start(" Sim->boundary");
 		const PhysicsObjectList& objects = factory->getPhysicsObjects();
-		BOOST_FOREACH( PhysicsObject* object, objects ) {
-			const ParticleVector& particles = object->getParticles();
-			Particle* virtualParticle = object->getParticleFactory()->getVirtualParticle();
-		
-			BoundarySolver boundarySolver( object, setting );
+		for( PhysicsObjectList::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
+			BoundarySolver boundarySolver( (*iter), setting );
 			boundarySolver.calculateForce( setting.boundaryBox );
 		}
 		Profiler::get()->end(" Sim->boundary");

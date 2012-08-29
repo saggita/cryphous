@@ -1,7 +1,7 @@
 #ifndef __PROFILER_H__
 #define __PROFILER_H__
 
-#include <boost/timer.hpp>
+#include <ctime>
 
 #include <vector>
 #include <map>
@@ -9,6 +9,25 @@
 
 namespace Crystal{
 	namespace Physics{
+
+class Timer
+{
+ public:
+	 Timer() {
+		 startTime = std::clock(); 
+	 }
+	 
+	 void restart() { 
+		 startTime = std::clock(); 
+	 }
+	 
+	 double getElapsedTime() const {
+		 return double( std::clock() - startTime) / CLOCKS_PER_SEC; 
+	 }
+
+ private:
+	std::clock_t startTime;
+};
 
 class Profiler
 {
@@ -33,13 +52,13 @@ public:
 	}
 
 	void end( const std::string& profileName ) {
-		strAndTimes[profileName] += strAndTimers[profileName].elapsed();
+		strAndTimes[profileName] += strAndTimers[profileName].getElapsedTime();
 	}
 
 	std::map< std::string, double > getStrAndTimes() const { return strAndTimes; }
 
 private:
-	std::map< std::string, boost::timer > strAndTimers;
+	std::map< std::string, Timer > strAndTimers;
 	std::map< std::string, double > strAndTimes;
 };
 

@@ -8,8 +8,6 @@
 #include "PhysicsObject.h"
 #include "Particle.h"
 
-#include <boost/foreach.hpp>
-
 namespace Crystal{
 	namespace Physics{
 
@@ -25,19 +23,21 @@ public:
 		const Geom::Vector3d& objectCenter = rigid->getCenter();
 		const Geom::Vector3d& velocityAverage = rigid->getAverageVelosity();
 
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-			particle->velocity = velocityAverage;
+		const ParticleVector& particles = rigid->getParticles();
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			(*iter)->velocity = velocityAverage;
 		}
 
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-			particle->center -= objectCenter;
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			(*iter)->center -= objectCenter;
 		}
 		assert( rigid->getCenter() == Geom::Vector3d( 0.0, 0.0, 0.0 ) );
 
 		Geom::Vector3d inertiaMoment( 0.0, 0.0, 0.0 );
 		Geom::Vector3d torque( 0.0, 0.0, 0.0 );
 	
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			Particle* particle = (*iter);
 			const Geom::Vector3d& center = particle->center;
 		
 			Geom::Vector3d particleMoment( pow( center.getY(), 2) + pow( center.getZ(), 2),
@@ -53,16 +53,16 @@ public:
 		getAngleVelosity( inertiaMoment , torque, proceedTime );
 
 		if( Geom::Tolerances::isEqualAsDenominator( angleVelosity.getLength() ) ) {
-			BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-				particle->center += objectCenter;
+			for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+				(*iter)->center += objectCenter;
 			}
 			convertToFluidForce( rigid);
 			return;
 		}
 		const float rotateAngle = angleVelosity.getLength() * proceedTime;
 		if( rotateAngle < 1.0e-5 ) {
-			BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-				particle->center += objectCenter;
+			for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+				(*iter)->center += objectCenter;
 			}
 			convertToFluidForce( rigid);
 			return;
@@ -70,12 +70,12 @@ public:
 
 		Geom::Quaternion quaternion( angleVelosity.getNormalized(), rotateAngle );
 		const Geom::Matrix3d& rotateMatrix = quaternion.getMatrix();
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-			particle->center.rotate( rotateMatrix );
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			(*iter)->center.rotate( rotateMatrix );
 		}
 
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-			particle->center += objectCenter;
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			(*iter)->center += objectCenter;
 		}
 		convertToFluidForce( rigid);
 	}
@@ -86,13 +86,14 @@ private:
 	void RigidEnforcer::convertToFluidForce(PhysicsObject* rigid)
 	{	
 		Geom::Vector3d totalForce( 0.0, 0.0, 0.0 );
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-			totalForce += particle->force * particle->getVolume();
+		const ParticleVector& particles = rigid->getParticles();
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			totalForce += (*iter)->force * (*iter)->getVolume();
 		}
 
 		const float weight =  rigid->getWeight();
-		BOOST_FOREACH( Particle* particle, rigid->getParticles() ) {
-			particle->force = totalForce / weight * particle->density;
+		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
+			(*iter)->force = totalForce / weight * (*iter)->density;
 		}
 	}
 

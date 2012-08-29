@@ -55,9 +55,9 @@ public:
 
 	void init()
 	{
-		BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-			delete object->getParticleFactory();
-			delete object;
+		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+			delete (*iter)->getParticleFactory();
+			delete (*iter);
 		}
 		physicsObjects.clear();
 		this->nextID = 0;
@@ -100,8 +100,8 @@ public:
 	ParticleVector getOrderedParticles() const
 	{
 		ParticleVector ordered;
-		BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-			const ParticleVector& particles = object->getParticles();
+		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+			const ParticleVector& particles = (*iter)->getParticles();
 			ordered.insert( ordered.end(), particles.begin(), particles.end() );
 		}
 		return ordered;
@@ -118,8 +118,8 @@ private:
 	{
 		searchParticleFactory = SearchParticleFactory( ParticleVector(), effectLength );
 		ParticleVector particles;
-		BOOST_FOREACH( PhysicsObject* object, physicsObjects ) {
-			const ParticleVector& particles = object->getParticleFactory()->getParticles();
+		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+			const ParticleVector& particles = (*iter)->getParticleFactory()->getParticles();
 			searchParticleFactory.addParticles( particles, effectLength );
 		}
 	}
