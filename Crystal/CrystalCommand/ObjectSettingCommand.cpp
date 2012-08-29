@@ -8,8 +8,6 @@
 #include "ApplicationSettings.h"
 #include "ParticleMarshaler.h"
 
-#include <boost/foreach.hpp>
-
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 using namespace Crystal::Command;

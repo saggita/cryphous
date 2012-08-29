@@ -8,8 +8,6 @@
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalGraphics/Renderer.h"
 
-#include <boost/foreach.hpp>
-
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 using namespace Crystal::Graphics;
@@ -40,8 +38,8 @@ ApplicationSettings::~ApplicationSettings()
 void ApplicationSettings::refresh()
 {
 	factory->init();
-	BOOST_FOREACH(const PhysicsObjectCondition& condition, *conditions ) {
-		factory->createPhysicsObject(condition, *simulationSetting);
+	for( std::list<PhysicsObjectCondition>::iterator iter = conditions->begin(); iter != conditions->end(); ++iter ) {
+		factory->createPhysicsObject((*iter), *simulationSetting);
 	}
 	renderer->init();	
 	simulation->init();

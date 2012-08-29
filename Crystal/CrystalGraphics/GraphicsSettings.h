@@ -1,11 +1,12 @@
-#pragma once
+#ifndef __GRAPHICS_SETTINGS_H__
+#define __GRAPHICS_SETTINGS_H__
 
-#include <boost/noncopyable.hpp>
+#include "../CrystalUtility/Uncopyable.h"
 
 namespace Crystal{
 	namespace Graphics {
 
-class GraphicsSettings : private boost::noncopyable
+class GraphicsSettings : private Uncopyable
 {
 public:
 	int pointSize;
@@ -48,3 +49,5 @@ public:
 
 	}
 }
+
+#endif
