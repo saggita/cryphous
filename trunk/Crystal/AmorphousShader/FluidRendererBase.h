@@ -1,5 +1,5 @@
-#ifndef __FLAME_RENDERER_BASE_H__
-#define __FLAME_RENDERER_BASE_H__
+#ifndef __FLUID_RENDERER_BASE_H__
+#define __FLUID_RENDERER_BASE_H__
 
 #include <boost/noncopyable.hpp>
 #include <vector>
@@ -18,19 +18,19 @@ namespace Crystal{
 		class BackGroundRenderer;
 		class PolygonModel;
 
-class FlameRendererBase : public OnScreenRendererBase
+class FluidRendererBase : public OnScreenRendererBase
 {
 public:
-	FlameRendererBase(const int width, const int height, const PBFRSetting& setting);
+	FluidRendererBase(const int width, const int height, const PBFRSetting& setting);
 
-	virtual ~FlameRendererBase();
+	virtual ~FluidRendererBase();
 
 	void setPictureBox( HWND pictureBoxHandle, const int width, const int height ) {
 		openGLWrapper.setHandle( pictureBoxHandle );
 		init();
 	}
 
-	void setup(VisualParticleList* visualParticles, std::vector<PolygonModel>* solidModels);
+	void setup(VisualParticleVector* visualParticles, std::vector<PolygonModel>* solidModels);
 
 	OpenGLWrapper* getOpenGLWrapper() { return &openGLWrapper; }
 
@@ -46,10 +46,8 @@ protected:
 
 	virtual void onInit() = 0;
 
-	void applyBlur();
-
 protected:
-	VisualParticleList* visualParticles;
+	VisualParticleVector* visualParticles;
 	const PBFRSetting& setting;
 	OpenGLWrapper openGLWrapper;
 	BackGroundRenderer backGroundRenderer;

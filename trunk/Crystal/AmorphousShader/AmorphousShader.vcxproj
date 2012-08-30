@@ -159,15 +159,6 @@
     <None Include="..\Shaders\Compositor.vs">
       <FileType>Document</FileType>
     </None>
-    <None Include="..\Shaders\IntensityOffsetter.fs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.gs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.vs">
-      <FileType>Document</FileType>
-    </None>
     <None Include="..\Shaders\lighting.fs">
       <FileType>Document</FileType>
     </None>

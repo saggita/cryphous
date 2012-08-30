@@ -26,7 +26,7 @@
 #include "OpenGLWrapper.h"
 #include "BillboardRenderer.h"
 #include "BackGroundRenderer.h"
-#include "FlameRenderer.h"
+#include "FluidRenderer.h"
 #include "Camera.h"
 
 #endif

@@ -20,7 +20,7 @@ public:
 
 	void initRepetitionLevel() { repetitionLevel = 0; }
 
-	void setVisualParticles(const VisualParticleList& visualParticles);
+	void setVisualParticles(const VisualParticleVector& visualParticles);
 
 	void setShaderParticles(const ShaderParticleList& shaderParticles);
 

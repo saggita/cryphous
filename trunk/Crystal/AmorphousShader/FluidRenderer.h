@@ -6,7 +6,7 @@
 #include <list>
 #include <memory>
 
-#include "FlameRendererBase.h"
+#include "FluidRendererBase.h"
 
 namespace Crystal{
 	namespace Shader{
@@ -14,12 +14,12 @@ namespace Crystal{
 		class CompositeRenderer;
 		class BackGroundRenderer;
 
-class FlameRenderer : public FlameRendererBase
+class FluidRenderer : public FluidRendererBase
 {
 public:
-	FlameRenderer(const int width, const int height, const PBFRSetting& setting);
+	FluidRenderer(const int width, const int height, const PBFRSetting& setting);
 
-	~FlameRenderer();
+	~FluidRenderer();
 
 	virtual bool isBillboard(){ return true; }
 

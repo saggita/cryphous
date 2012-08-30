@@ -51,7 +51,7 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
-	std::vector<Vertex> vertices;
+	/*std::vector<Vertex> vertices;
 	vertices.push_back( Vertex( 0.0, 0.0, 0.0) );
 	vertices.push_back( Vertex( 1.0, 0.0, 0.0) );
 	vertices.push_back( Vertex( 1.0, 1.0, 0.0) );
@@ -59,14 +59,14 @@ void onInit()
 	std::vector<Face> faces;
 	faces.push_back( Face( 0, 1, 2 ) );
 	
-	std::vector<TextureCoordinate> texCoords;
-	texCoords.push_back( TextureCoordinate( 0.0, 0.0) );
-	texCoords.push_back( TextureCoordinate( 1.0, 0.0) );
-	texCoords.push_back( TextureCoordinate( 1.0, 1.0) );
+	//std::vector<TextureCoordinate> texCoords;
+	//texCoords.push_back( TextureCoordinate( 0.0, 0.0) );
+	//texCoords.push_back( TextureCoordinate( 1.0, 0.0) );
+	//texCoords.push_back( TextureCoordinate( 1.0, 1.0) );
 	
-	solidModels.resize(1);
-	solidModels.front().set( vertices, faces, texCoords );
-
+	//solidModels.resize(1);
+	//solidModels.front().set( vertices, faces, texCoords );
+	*/
 	rendererBase->init();
 }
 
