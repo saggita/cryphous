@@ -20,8 +20,8 @@ protected:
 	virtual void onInit();
 
 private:
-	Crystal::Shader::FlameRenderer renderer;
+	Crystal::Shader::FluidRenderer renderer;
 	Crystal::Shader::PBFRSetting setting;
 	std::vector<Crystal::Shader::PolygonModel> solidModels;
-	Crystal::Shader::VisualParticleList visualParticles;
+	Crystal::Shader::VisualParticleVector visualParticles;
 };

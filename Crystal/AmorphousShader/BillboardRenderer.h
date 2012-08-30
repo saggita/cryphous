@@ -16,7 +16,7 @@ public:
 
 	~BillboardRenderer(void);
 
-	void setVisualParticles(const VisualParticleList& visualParticles);
+	void setVisualParticles(const VisualParticleVector& visualParticles);
 
 protected:
 	virtual void onRender();

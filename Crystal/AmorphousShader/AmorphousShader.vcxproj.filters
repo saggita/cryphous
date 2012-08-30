@@ -200,15 +200,6 @@
     <None Include="..\Shaders\Compositor.vs">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\Shaders\IntensityOffsetter.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.vs">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="..\Shaders\lighting.fs">
       <Filter>Shaders</Filter>
     </None>

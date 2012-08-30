@@ -6,7 +6,7 @@
 #include <list>
 #include <memory>
 
-#include "FlameRendererBase.h"
+#include "FluidRendererBase.h"
 
 namespace Crystal{
 	namespace Shader{
@@ -14,7 +14,7 @@ namespace Crystal{
 		class CompositeRenderer;
 		class BackGroundRenderer;
 
-class PBFR : public FlameRendererBase
+class PBFR : public FluidRendererBase
 {
 public:
 	PBFR(const int width, const int height, const PBFRSetting& setting);

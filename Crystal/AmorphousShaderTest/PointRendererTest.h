@@ -4,6 +4,8 @@
 #include <memory>
 
 #include "../AmorphousShader/ShaderParticle.h"
+#include "../CrystalPhysics/PhysicsObjectFactory.h"
+#include "../CrystalPhysics/Simulation.h"
 
 class PointRendererTest : public Crystal::Shader::OnScreenRendererBase
 {
@@ -22,6 +24,9 @@ protected:
 private:
 	Crystal::Shader::PBFR renderer;
 	Crystal::Shader::PBFRSetting setting;
-	Crystal::Shader::VisualParticleList visualParticles;
+	Crystal::Shader::VisualParticleVector visualParticles;
 	std::vector<Crystal::Shader::PolygonModel>& solidModels;
+	Crystal::Physics::PhysicsObjectFactory factory;
+	Crystal::Physics::Simulation simulation;
+	Crystal::Physics::SimulationSetting ssetting;
 };

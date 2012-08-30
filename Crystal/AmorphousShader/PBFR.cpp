@@ -16,7 +16,7 @@ using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
 PBFR::PBFR(const int width, const int height, const PBFRSetting& setting) :
-FlameRendererBase( width, height, setting )
+FluidRendererBase( width, height, setting )
 {
 	pointRenderer = new PointRenderer( getWidth(), getHeight(), setting);
 	compositeRenderer = new CompositeRenderer( getWidth(), getHeight() );
@@ -77,21 +77,16 @@ void PBFR::onRender()
 	
 	sourceBuffer->getTextureObject().apply(0);
 	
-	float colorOffset[3] = {0.0f, 0.0f, 0.0f};
-	
 	shaderObject.apply();
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
 	shaderObject.setUniformTexture("offScreenTexture", sourceBuffer->getTextureObject());
-	shaderObject.setUniformVector("colorOffset", colorOffset );
 	shaderObject.setUniform("intensityScale", 1.0f);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
 
 	sourceBuffer->getTextureObject().release();
-
-	applyBlur();
 
 	glFlush();
 }
