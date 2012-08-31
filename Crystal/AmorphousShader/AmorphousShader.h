@@ -21,8 +21,6 @@
 #include "PBFR.h"
 #include "PBFRSetting.h"
 #include "OpenGLWrapper.h"
-#include "BillboardRenderer.h"
-#include "FluidRenderer.h"
 #include "Camera.h"
 
 #endif

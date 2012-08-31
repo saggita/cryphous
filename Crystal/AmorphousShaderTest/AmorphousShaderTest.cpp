@@ -5,12 +5,12 @@
 #include <gl/gl.h>
 #include <gl/glu.h>
 
-#include "PointRendererTest.h"
-#include "BillboardRendererTest.h"
+#include "../CrystalPhysics/PhysicsObjectFactory.h"
+#include "../CrystalPhysics/Simulation.h"
 
+using namespace Crystal::Geom;
+using namespace Crystal::Physics;
 using namespace Crystal::Shader;
-
-OnScreenRendererBase* rendererBase;
 
 bool isIdle = true;
 int mButton;
@@ -21,9 +21,17 @@ float distance = 0.0;
 const int width = 512;
 const int height = 512;
 
+Crystal::Shader::PBFR* renderer;
+Crystal::Shader::PBFRSetting setting;
+Crystal::Shader::VisualParticleVector visualParticles;
+Crystal::Physics::PhysicsObjectFactory factory;
+Crystal::Physics::Simulation simulation;
+Crystal::Physics::SimulationSetting ssetting;
+
 void onDisplay()
 {
-	rendererBase->render();
+	renderer->setVisualParticle(visualParticles);
+	renderer->render();
 
 	glutSwapBuffers();
 
@@ -32,8 +40,15 @@ void onDisplay()
 
 void onIdle()
 {
-	rendererBase->idle();
-	glutPostRedisplay();
+	simulation.simulate( &factory, ssetting );
+	const ParticleVector& particles = factory.getOrderedParticles();
+	for( int i = 0; i < particles.size(); ++i ) {
+		visualParticles[i].center = particles[i]->center;
+	}
+	
+	printf("visual particles = %d\n", visualParticles.size() );  
+	renderer->idle();
+	//glutPostRedisplay();
 }
 
 void onInit()
@@ -46,7 +61,27 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
-	rendererBase->init();
+	setting.pointSize = 50.0;
+
+	std::vector<Vector3d> points;
+	for( float x = 0.0; x < 1.0; x+= 0.05 ) {
+		for( float y = 0.0; y < 1.0; y += 0.05 ) {
+			for( float z = 0.0; z < 1.0; z += 0.05 ) {
+				points.push_back( Vector3d(x, y, z ) );
+			}
+		}
+	}
+	PhysicsObjectCondition condition( points, 1000.0, 10000.0, 100.0, PhysicsObjectCondition::Fluid );
+
+	ssetting.boundaryBox = Box( Vector3d( 0.0, 0.0, 0.0), Vector3d( 2.0, 10.0, 1.0 ) );
+	factory.createPhysicsObject( condition, ssetting);
+	
+	visualParticles.resize( points.size() );
+
+	setting.distribute = 0.25;
+	setting.repeatLevel = 100;
+
+	renderer->init();
 }
 
 void onResize(int width, int height)
@@ -71,15 +106,6 @@ void onKeyDown(unsigned char key, int x, int y )
 
 void onSpecialFunc(int key, int x, int y)
 {
-	if( key == GLUT_KEY_RIGHT ) {
-		delete rendererBase;
-		rendererBase = new PointRendererTest(width, height);
-	}
-	else if( key == GLUT_KEY_UP ) {
-		delete rendererBase;
-		rendererBase = new BillboardRendererTest(width, height);
-	}
-	rendererBase->init();
 	onDisplay();
 }
 
@@ -111,7 +137,7 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
-	rendererBase = new BillboardRendererTest(width, height);
+	renderer = new PBFR(width, height, setting);
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
@@ -122,5 +148,5 @@ void main(int argc, char** argv)
 	glutMouseFunc(onMouse);
 	glutMotionFunc(onMotion);
 	glutMainLoop();
-	delete rendererBase;
+	delete renderer;
 }
