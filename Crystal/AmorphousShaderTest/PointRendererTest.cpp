@@ -12,10 +12,9 @@ using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 using namespace Crystal::Shader;
 
-PointRendererTest::PointRendererTest(const int width, const int height, std::vector<Crystal::Shader::PolygonModel>& solidModels) :
+PointRendererTest::PointRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height),
-renderer( width, height, setting ),
-solidModels( solidModels)
+renderer( width, height, setting )
 {
 }
 
@@ -25,7 +24,7 @@ PointRendererTest::~PointRendererTest(void)
 
 void PointRendererTest::onRender()
 {
-	renderer.setup(&visualParticles, &solidModels);
+	renderer.setup(&visualParticles);
 	renderer.render();
 }
 

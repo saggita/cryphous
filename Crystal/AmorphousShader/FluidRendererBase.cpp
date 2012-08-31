@@ -1,7 +1,8 @@
 #include "StdAfx.h"
 
-#include "FlameRendererBase.h"
+#include "FluidRendererBase.h"
 #include "FrameBufferObject.h"
+#include "VisualParticle.h"
 
 #include <boost/foreach.hpp>
 
@@ -12,33 +13,18 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
-FlameRendererBase::FlameRendererBase(const int width, const int height, const PBFRSetting& setting) :
+FluidRendererBase::FluidRendererBase(const int width, const int height, const PBFRSetting& setting) :
 OnScreenRendererBase( width, height ),
-backGroundRenderer( width, height, setting.backGroundIntensity ),
 	setting( setting)
 {
 }
 
-FlameRendererBase::~FlameRendererBase()
+FluidRendererBase::~FluidRendererBase()
 {
 }
 
-void FlameRendererBase::applyBlur()
-{
-	const float accumRatio = setting.blurRatio;
-	glAccum( GL_ACCUM, 1.0f - accumRatio);
-	glAccum( GL_RETURN, 1.1f );
-	glAccum( GL_LOAD, accumRatio );;
-}
-
-void FlameRendererBase::setBackGround(const Texture& texture)
+void FluidRendererBase::setBackGround(const Texture& texture)
 {
 	getOpenGLWrapper()->BeginRendering();
-	backGroundRenderer.setBackGround(new TextureObject( texture.getPixels(), texture.getWidth(), texture.getHeight() ) );
 	getOpenGLWrapper()->EndRendering();
-}
-
-void FlameRendererBase::setup(VisualParticleList* visualParticles, std::vector<Crystal::Shader::PolygonModel>* solidModels) {
-	this->visualParticles = visualParticles;
-	backGroundRenderer.setSolidModels( solidModels );
 }

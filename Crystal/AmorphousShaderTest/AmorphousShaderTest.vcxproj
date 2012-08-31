@@ -79,22 +79,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AmorphousShaderTest.cpp" />
-    <ClCompile Include="BackGroundRendererTest.cpp" />
     <ClCompile Include="BillboardRendererTest.cpp" />
-    <ClCompile Include="DepthRendererTest.cpp" />
     <ClCompile Include="PointRendererTest.cpp" />
-    <ClCompile Include="PolygonRendererTest.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackGroundRendererTest.h" />
     <ClInclude Include="BillboardRendererTest.h" />
-    <ClInclude Include="DepthRendererTest.h" />
     <ClInclude Include="PointRendererTest.h" />
-    <ClInclude Include="PolygonRendererTest.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
