@@ -15,7 +15,8 @@ using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
 PBFR::PBFR(const int width, const int height, const PBFRSetting& setting) :
-FluidRendererBase( width, height, setting )
+OnScreenRendererBase( width, height ),
+setting( setting)
 {
 	pointRenderer = new PointRenderer( getWidth(), getHeight(), setting);
 	compositeRenderer = new CompositeRenderer( getWidth(), getHeight() );
@@ -53,13 +54,16 @@ void PBFR::onRender()
 	FrameBufferObject fbo( getWidth(), getHeight(), false );
 	TextureObject& backgroundTexture = fbo.getTextureObject();
 
-	pointRenderer->setVisualParticles( *visualParticles );
+	pointRenderer->setVisualParticles( visualParticles );
 	
 	pointRenderer->initRepetitionLevel();
 
 	std::auto_ptr<FrameBufferObject> sourceBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );
 	std::auto_ptr<FrameBufferObject> targetBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );
 	std::auto_ptr<FrameBufferObject> temporaryBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );	
+
+	glClearColor( 0.5, 0.0, 0.0, 0.0 );
+	glClear( GL_COLOR_BUFFER_BIT );
 
 	for( int i = 0; i < setting.repeatLevel; ++i ) {
 		pointRenderer->render( *temporaryBuffer );

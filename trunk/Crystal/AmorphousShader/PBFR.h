@@ -6,22 +6,25 @@
 #include <list>
 #include <memory>
 
-#include "FluidRendererBase.h"
+#include "OnScreenRendererBase.h"
+#include "PBFRSetting.h"
+#include "OpenGLWrapper.h"
+#include "VisualParticle.h"
 
 namespace Crystal{
 	namespace Shader{
 		class PointRenderer;
 		class CompositeRenderer;
 		class BackGroundRenderer;
-
-class PBFR : public FluidRendererBase
+		
+class PBFR : public OnScreenRendererBase
 {
 public:
 	PBFR(const int width, const int height, const PBFRSetting& setting);
 
 	~PBFR();
 
-	virtual bool isBillboard(){ return false; }
+	void setVisualParticle( const VisualParticleVector& vps ) { visualParticles = vps; }
 
 protected:
 
@@ -29,11 +32,16 @@ protected:
 
 	virtual void onInit();
 
+	virtual void onIdle() {};
+
 private:
 
 	PointRenderer* pointRenderer;
 	CompositeRenderer* compositeRenderer;
 	std::vector<double> points;
+	PBFRSetting setting;
+	OpenGLWrapper openGLWrapper;
+	VisualParticleVector visualParticles;
 };
 
 	}

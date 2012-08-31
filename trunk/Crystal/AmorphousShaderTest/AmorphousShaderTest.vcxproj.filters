@@ -3,12 +3,8 @@
   <ItemGroup>
     <ClCompile Include="AmorphousShaderTest.cpp" />
     <ClCompile Include="StdAfx.cpp" />
-    <ClCompile Include="BillboardRendererTest.cpp" />
-    <ClCompile Include="PointRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
-    <ClInclude Include="BillboardRendererTest.h" />
-    <ClInclude Include="PointRendererTest.h" />
   </ItemGroup>
 </Project>

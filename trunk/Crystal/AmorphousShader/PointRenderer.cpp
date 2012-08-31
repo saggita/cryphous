@@ -27,17 +27,16 @@ void PointRenderer::setVisualParticles(const VisualParticleVector& visualParticl
 {
 	positions.clear();
 	colors.clear();
-	float maxTemperature = 3000.0f;
-	float minTemperature = 1000.0f;
 	BOOST_FOREACH( const VisualParticle& vp, visualParticles ) {
 		const Vector3d& center = vp.center;
 		const Vector3d& velocity = vp.velocity;
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
+		colors.push_back( 0.5);
+		colors.push_back( 0.5);
 		colors.push_back( 1.0);
-		colors.push_back( 1.0);
-		colors.push_back( 1.0);
+		colors.push_back( 0.5);
 	}
 }
 

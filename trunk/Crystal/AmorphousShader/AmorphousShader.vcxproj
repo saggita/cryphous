@@ -78,10 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BillboardRenderer.cpp" />
     <ClCompile Include="CompositeRenderer.cpp" />
-    <ClCompile Include="FluidRenderer.cpp" />
-    <ClCompile Include="FluidRendererBase.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="GeometryShader.cpp" />
@@ -107,11 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmorphousShader.h" />
-    <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeRenderer.h" />
-    <ClInclude Include="FluidRenderer.h" />
-    <ClInclude Include="FluidRendererBase.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="GeometryShader.h" />
@@ -136,9 +130,6 @@
     <ClInclude Include="VisualParticle.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\Billboard.fs" />
-    <None Include="..\Shaders\Billboard.gs" />
-    <None Include="..\Shaders\Billboard.vs" />
     <None Include="..\Shaders\Compositor.fs">
       <FileType>Document</FileType>
     </None>
