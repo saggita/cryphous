@@ -11,7 +11,6 @@
 #include "Texture.h"
 #include "OnScreenRendererBase.h"
 #include "PBFRSetting.h"
-#include "BackGroundRenderer.h"
 
 namespace Crystal{
 	namespace Shader{
@@ -30,7 +29,7 @@ public:
 		init();
 	}
 
-	void setup(VisualParticleVector* visualParticles, std::vector<PolygonModel>* solidModels);
+	void setup(VisualParticleVector* visualParticles) { this->visualParticles = visualParticles;}
 
 	OpenGLWrapper* getOpenGLWrapper() { return &openGLWrapper; }
 
@@ -50,7 +49,6 @@ protected:
 	VisualParticleVector* visualParticles;
 	const PBFRSetting& setting;
 	OpenGLWrapper openGLWrapper;
-	BackGroundRenderer backGroundRenderer;
 };
 
 	}

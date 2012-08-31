@@ -4,7 +4,6 @@
 #include "OffScreenRendererBase.h"
 #include "TextureObject.h"
 #include "GLSLMatrix.h"
-#include "ShaderParticle.h"
 #include "PBFRSetting.h"
 #include "VisualParticle.h"
 
@@ -21,8 +20,6 @@ public:
 	void initRepetitionLevel() { repetitionLevel = 0; }
 
 	void setVisualParticles(const VisualParticleVector& visualParticles);
-
-	void setShaderParticles(const ShaderParticleList& shaderParticles);
 
 protected:
 	virtual void onRender();

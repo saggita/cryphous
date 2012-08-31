@@ -1,14 +1,11 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-
-#include "../AmorphousShader/ShaderParticle.h"
+#include "../CrystalPhysics/Simulation.h"
 
 class BillboardRendererTest : public Crystal::Shader::OnScreenRendererBase
 {
 public:
-	BillboardRendererTest(const int width, const int height, const std::vector<Crystal::Shader::PolygonModel>& solidModels);
+	BillboardRendererTest(const int width, const int height);
 
 	~BillboardRendererTest(void);
 
@@ -22,6 +19,9 @@ protected:
 private:
 	Crystal::Shader::FluidRenderer renderer;
 	Crystal::Shader::PBFRSetting setting;
-	std::vector<Crystal::Shader::PolygonModel> solidModels;
 	Crystal::Shader::VisualParticleVector visualParticles;
+
+	Crystal::Physics::PhysicsObjectFactory factory;
+	Crystal::Physics::Simulation simulation;
+	Crystal::Physics::SimulationSetting ssetting;
 };

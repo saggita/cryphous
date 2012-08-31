@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 
 #include "BillboardRenderer.h"
-#include "BackGroundRenderer.h"
 
 #include "TextureCreator.h"
 

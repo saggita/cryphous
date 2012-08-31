@@ -78,11 +78,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BackGroundRenderer.cpp" />
     <ClCompile Include="BillboardRenderer.cpp" />
     <ClCompile Include="CompositeRenderer.cpp" />
-    <ClCompile Include="FlameRenderer.cpp" />
-    <ClCompile Include="FlameRendererBase.cpp" />
+    <ClCompile Include="FluidRenderer.cpp" />
+    <ClCompile Include="FluidRendererBase.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="GeometryShader.cpp" />
@@ -95,12 +94,9 @@
     <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PBFR.cpp" />
     <ClCompile Include="PointRenderer.cpp" />
-    <ClCompile Include="PolygonModel.cpp" />
-    <ClCompile Include="PolygonRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
-    <ClCompile Include="SmokeTextureCreator.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -111,12 +107,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmorphousShader.h" />
-    <ClInclude Include="BackGroundRenderer.h" />
     <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeRenderer.h" />
-    <ClInclude Include="FlameRenderer.h" />
-    <ClInclude Include="FlameRendererBase.h" />
+    <ClInclude Include="FluidRenderer.h" />
+    <ClInclude Include="FluidRendererBase.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="GeometryShader.h" />
@@ -130,12 +125,9 @@
     <ClInclude Include="PBFR.h" />
     <ClInclude Include="PBFRSetting.h" />
     <ClInclude Include="PointRenderer.h" />
-    <ClInclude Include="PolygonModel.h" />
-    <ClInclude Include="PolygonRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ShaderObject.h" />
-    <ClInclude Include="SmokeTextureCreator.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureCreator.h" />
@@ -144,9 +136,6 @@
     <ClInclude Include="VisualParticle.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\BackGround.fs" />
-    <None Include="..\Shaders\BackGround.gs" />
-    <None Include="..\Shaders\BackGround.vs" />
     <None Include="..\Shaders\Billboard.fs" />
     <None Include="..\Shaders\Billboard.gs" />
     <None Include="..\Shaders\Billboard.vs" />

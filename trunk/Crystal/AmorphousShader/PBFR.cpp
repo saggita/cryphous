@@ -4,7 +4,6 @@
 #include "PointRenderer.h"
 #include "CompositeRenderer.h"
 #include "FrameBufferObject.h"
-#include "BackGroundRenderer.h"
 
 #include <boost/foreach.hpp>
 
@@ -32,7 +31,6 @@ void PBFR::onInit()
 {
 	openGLWrapper.SetCurrentRenderingContext();
 
-	backGroundRenderer.init();
 	pointRenderer->init();
 	compositeRenderer->init();
 	shaderObject.createShader("IntensityOffsetter");
@@ -53,7 +51,6 @@ void PBFR::onRender()
 	assert( GL_NO_ERROR == glGetError() );
 
 	FrameBufferObject fbo( getWidth(), getHeight(), false );
-	backGroundRenderer.render( fbo );
 	TextureObject& backgroundTexture = fbo.getTextureObject();
 
 	pointRenderer->setVisualParticles( *visualParticles );

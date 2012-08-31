@@ -1,57 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="PointRenderer">
-      <UniqueIdentifier>{f2286e15-d15f-4bfb-8b1d-e0ba4ee992f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PolygonRenderer">
-      <UniqueIdentifier>{32231f8d-cdf3-49dd-9d64-8c3bbbbc94f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BillboardRenderer">
-      <UniqueIdentifier>{00f4a824-0260-4631-b80b-5972faeb2072}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DepthRenderer">
-      <UniqueIdentifier>{b5ee33c4-a9c5-41ef-bc8e-4155df85e1d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BackGroundRendererTest">
-      <UniqueIdentifier>{47eb65c1-7447-4634-8fe6-e318ef0c7b17}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="PointRendererTest.cpp">
-      <Filter>PointRenderer</Filter>
-    </ClCompile>
     <ClCompile Include="AmorphousShaderTest.cpp" />
-    <ClCompile Include="PolygonRendererTest.cpp">
-      <Filter>PolygonRenderer</Filter>
-    </ClCompile>
     <ClCompile Include="StdAfx.cpp" />
-    <ClCompile Include="BillboardRendererTest.cpp">
-      <Filter>BillboardRenderer</Filter>
-    </ClCompile>
-    <ClCompile Include="DepthRendererTest.cpp">
-      <Filter>DepthRenderer</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGroundRendererTest.cpp">
-      <Filter>BackGroundRendererTest</Filter>
-    </ClCompile>
+    <ClCompile Include="BillboardRendererTest.cpp" />
+    <ClCompile Include="PointRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PointRendererTest.h">
-      <Filter>PointRenderer</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonRendererTest.h">
-      <Filter>PolygonRenderer</Filter>
-    </ClInclude>
     <ClInclude Include="StdAfx.h" />
-    <ClInclude Include="BillboardRendererTest.h">
-      <Filter>BillboardRenderer</Filter>
-    </ClInclude>
-    <ClInclude Include="DepthRendererTest.h">
-      <Filter>DepthRenderer</Filter>
-    </ClInclude>
-    <ClInclude Include="BackGroundRendererTest.h">
-      <Filter>BackGroundRendererTest</Filter>
-    </ClInclude>
+    <ClInclude Include="BillboardRendererTest.h" />
+    <ClInclude Include="PointRendererTest.h" />
   </ItemGroup>
 </Project>

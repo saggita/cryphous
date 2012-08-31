@@ -6,15 +6,17 @@
 #include <algorithm>
 #include <stdlib.h>
 
+#include "../CrystalPhysics/PhysicsObjectFactory.h"
+
 #include <boost/foreach.hpp>
 
 using namespace Crystal::Geom;
 using namespace Crystal::Shader;
+using namespace Crystal::Physics;
 
-BillboardRendererTest::BillboardRendererTest(const int width, const int height, const std::vector<Crystal::Shader::PolygonModel>& solidModels) :
+BillboardRendererTest::BillboardRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height),
-renderer( width, height, setting ),
-solidModels( solidModels)
+renderer( width, height, setting )
 {
 }
 
@@ -24,23 +26,16 @@ BillboardRendererTest::~BillboardRendererTest(void)
 
 void BillboardRendererTest::onRender()
 {
-	renderer.setup(&visualParticles, &solidModels);
+	renderer.setup(&visualParticles);
 	renderer.render();
 }
 
 void BillboardRendererTest::onIdle()
 {
-	BOOST_FOREACH( VisualParticle& vp, visualParticles ) {
-		vp.center += vp.velocity * 0.1f;
-		vp.velocity *= 0.98f;
-	}
-	visualParticles.resize(300);
-
-	for( int i = 0; i < 300; ++ i ) {
-		const Vector3d center( 0.0f, 0.0f, 0.0f );
-		const Vector3d velocity( rand() % 500 / 1000.0f - 0.25f, rand() % 900 / 1000.0f + 0.1f, rand() % 500 / 1000.0f -0.25f );
-		const double temperature = rand() % 100 / 1.0f + 2500.0f;
-		visualParticles[i] = VisualParticle( center, 0.1, velocity );
+	simulation.simulate( &factory, ssetting );
+	const ParticleVector& particles = factory.getOrderedParticles();
+	for( int i = 0; i < particles.size(); ++i ) {
+		visualParticles[i].center = particles[i]->center;
 	}
 	
 	printf("visual particles = %d\n", visualParticles.size() ); 
@@ -48,6 +43,18 @@ void BillboardRendererTest::onIdle()
 
 void BillboardRendererTest::onInit()
 {
-	setting.repeatLevel = 10;
+	setting.pointSize = 10.0;
+
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	points.push_back( Vector3d(0.0, 1.0, 0.0 ) );
+	points.push_back( Vector3d(0.0, 2.0, 0.0 ) );
+	PhysicsObjectCondition condition( points, 1000.0, 10000.0, 100.0, PhysicsObjectCondition::Fluid );
+
+	SimulationSetting ssetting;
+	factory.createPhysicsObject( condition, ssetting);
+	
+	visualParticles.resize(  300 );
+
 	renderer.init();
 }

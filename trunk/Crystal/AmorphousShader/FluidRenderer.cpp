@@ -1,10 +1,9 @@
 #include "StdAfx.h"
 
-#include "FlameRenderer.h"
+#include "FluidRenderer.h"
 #include "BillboardRenderer.h"
 #include "CompositeRenderer.h"
 #include "FrameBufferObject.h"
-#include "BackGroundRenderer.h"
 
 #include <boost/foreach.hpp>
 
@@ -15,24 +14,23 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
-FlameRenderer::FlameRenderer(const int width, const int height, const PBFRSetting& setting) :
-FlameRendererBase( width, height, setting )
+FluidRenderer::FluidRenderer(const int width, const int height, const PBFRSetting& setting) :
+FluidRendererBase( width, height, setting )
 {
 	billboardRenderer = new BillboardRenderer( getWidth(), getHeight(), setting.pointSize, setting.pointAlpha);
 	compositeRenderer = new CompositeRenderer( getWidth(), getHeight() );
 }
 
-FlameRenderer::~FlameRenderer()
+FluidRenderer::~FluidRenderer()
 {
 	delete compositeRenderer;
 	delete billboardRenderer;
 }
 
-void FlameRenderer::onInit()
+void FluidRenderer::onInit()
 {
 	openGLWrapper.SetCurrentRenderingContext();
 
-	backGroundRenderer.init();
 	billboardRenderer->init();
 	compositeRenderer->init();
 	shaderObject.createShader("IntensityOffsetter");
@@ -48,26 +46,18 @@ void FlameRenderer::onInit()
 	assert( GL_NO_ERROR == glGetError() );
 }
 
-void FlameRenderer::onRender()
+void FluidRenderer::onRender()
 {
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 	assert( GL_NO_ERROR == glGetError() );
 
-	FrameBufferObject fbo( getWidth(), getHeight(), false );
-	backGroundRenderer.render( fbo );
-	TextureObject& backgroundTexture = fbo.getTextureObject();
-
 	billboardRenderer->setVisualParticles( *visualParticles );
 	std::auto_ptr<FrameBufferObject> sourceBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );
 	billboardRenderer->render( *sourceBuffer );
 
-	std::auto_ptr<FrameBufferObject> targetBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );
-	compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &backgroundTexture);
-	compositeRenderer->render( *targetBuffer );
-	
-	TextureObject& textureObject = targetBuffer->getTextureObject();
+	TextureObject& textureObject = sourceBuffer->getTextureObject();
 	textureObject.apply(0);
 	
 	float colorOffset[3] = {0.0f, 0.0f, 0.0f};
@@ -83,8 +73,5 @@ void FlameRenderer::onRender()
 	shaderObject.release();
 
 	textureObject.release();
-
-	applyBlur();
-
 	//glFlush();
 }

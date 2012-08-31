@@ -4,18 +4,13 @@
 #include <glut.h>
 #include <gl/gl.h>
 #include <gl/glu.h>
-#include <memory>
 
 #include "PointRendererTest.h"
-#include "PolygonRendererTest.h"
 #include "BillboardRendererTest.h"
-#include "DepthRendererTest.h"
-#include "BackGroundRendererTest.h"
 
 using namespace Crystal::Shader;
 
 OnScreenRendererBase* rendererBase;
-std::vector<PolygonModel> solidModels;
 
 bool isIdle = true;
 int mButton;
@@ -51,22 +46,6 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
-	/*std::vector<Vertex> vertices;
-	vertices.push_back( Vertex( 0.0, 0.0, 0.0) );
-	vertices.push_back( Vertex( 1.0, 0.0, 0.0) );
-	vertices.push_back( Vertex( 1.0, 1.0, 0.0) );
-
-	std::vector<Face> faces;
-	faces.push_back( Face( 0, 1, 2 ) );
-	
-	//std::vector<TextureCoordinate> texCoords;
-	//texCoords.push_back( TextureCoordinate( 0.0, 0.0) );
-	//texCoords.push_back( TextureCoordinate( 1.0, 0.0) );
-	//texCoords.push_back( TextureCoordinate( 1.0, 1.0) );
-	
-	//solidModels.resize(1);
-	//solidModels.front().set( vertices, faces, texCoords );
-	*/
 	rendererBase->init();
 }
 
@@ -92,21 +71,13 @@ void onKeyDown(unsigned char key, int x, int y )
 
 void onSpecialFunc(int key, int x, int y)
 {
-	if( key == GLUT_KEY_LEFT ) {
+	if( key == GLUT_KEY_RIGHT ) {
 		delete rendererBase;
-		rendererBase = new PolygonRendererTest(width, height);
-	}
-	else if( key == GLUT_KEY_RIGHT ) {
-		delete rendererBase;
-		rendererBase = new PointRendererTest(width, height, solidModels);
+		rendererBase = new PointRendererTest(width, height);
 	}
 	else if( key == GLUT_KEY_UP ) {
 		delete rendererBase;
-		rendererBase = new BillboardRendererTest(width, height, solidModels);
-	}
-	else if( key == GLUT_KEY_DOWN) {
-		delete rendererBase;
-		rendererBase = new BackGroundRendererTest(width, height );
+		rendererBase = new BillboardRendererTest(width, height);
 	}
 	rendererBase->init();
 	onDisplay();
@@ -140,7 +111,7 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
-	rendererBase = new PolygonRendererTest(width, height);
+	rendererBase = new BillboardRendererTest(width, height);
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
