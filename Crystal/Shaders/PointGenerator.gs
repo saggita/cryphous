@@ -18,8 +18,10 @@ uniform sampler2D noiseTexture;
 uniform int repetitionLevel;
 uniform float particleDiameter;
 out vec4 color;
+out vec3 normal;
+out vec4 lightPos;
  
-void main() {
+void main() {	
   for( int i = 0; i < gl_in.length(); i++){
     int howMany = int(vertex[i].color.a * 1.0);
 	float random = texelFetch2D( noiseTexture, ivec2( int(mod(gl_PrimitiveIDIn, 100)), repetitionLevel ), 0 ).a;
@@ -36,6 +38,9 @@ void main() {
 		gl_PointSize = pointSize / dist;
 		color = vertex[i].color;
 		color.rgb = vertex[i].normal + normalize( noiseVector );
+		normal.xyz = normalize( vertex[i].normal + normalize( noiseVector ) );
+		lightPos = projectionMatrix * modelviewMatrix * vec4( 10.0, 10.0, 10.0, 1.0 );
+
 		EmitVertex();
 	}
 	EndPrimitive();

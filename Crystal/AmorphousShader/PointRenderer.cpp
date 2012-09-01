@@ -39,7 +39,7 @@ void PointRenderer::setVisualParticles(const VisualParticleVector& visualParticl
 		colors.push_back( 0.5);
 		colors.push_back( 0.5);
 		colors.push_back( 1.0);
-		colors.push_back( 0.5);
+		colors.push_back( vp.alpha);
 	}
 }
 
