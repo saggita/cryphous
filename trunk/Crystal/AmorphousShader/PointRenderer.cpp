@@ -29,10 +29,13 @@ void PointRenderer::setVisualParticles(const VisualParticleVector& visualParticl
 	colors.clear();
 	BOOST_FOREACH( const VisualParticle& vp, visualParticles ) {
 		const Vector3d& center = vp.center;
-		const Vector3d& velocity = vp.velocity;
+		const Vector3d& normal = vp.normal;
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
+		normals.push_back( normal.getX() );
+		normals.push_back( normal.getY() );
+		normals.push_back( normal.getZ() );
 		colors.push_back( 0.5);
 		colors.push_back( 0.5);
 		colors.push_back( 1.0);
@@ -65,6 +68,7 @@ void PointRenderer::onRender()
 		shaderObject.setUniformTexture("alphaTexture", *alphaTexture);
 		shaderObject.setVertex( "position", positions ); 
 		shaderObject.setVertexAttrib("color", colors, 4);
+		shaderObject.setVertexAttrib("normal", normals, 3);
 		shaderObject.bindFrag("fragColor");
 		shaderObject.drawPoints( positions.size() / 3 );
 		shaderObject.release();

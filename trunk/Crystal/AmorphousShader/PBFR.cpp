@@ -68,7 +68,7 @@ void PBFR::onRender()
 
 	for( int i = 0; i < setting.repeatLevel; ++i ) {
 		pointRenderer->render();
-		glAccum(GL_ACCUM, 1.0 / setting.repeatLevel);
+		glAccum(GL_ACCUM, 1.0f / setting.repeatLevel);
 	}
 	glAccum(GL_RETURN, 1.0);
 	glClear( GL_ACCUM_BUFFER_BIT );

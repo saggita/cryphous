@@ -31,6 +31,7 @@ private:
 	std::auto_ptr<TextureObject> alphaTexture;
 	std::vector<double> positions;
 	std::vector<double> colors;
+	std::vector<double> normals;
 	const PBFRSetting& setting;
 	int repetitionLevel;
 	
