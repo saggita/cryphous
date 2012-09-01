@@ -30,7 +30,6 @@ Crystal::Physics::SimulationSetting ssetting;
 
 void onDisplay()
 {
-	renderer->setVisualParticle(visualParticles);
 	renderer->render();
 
 	glutSwapBuffers();
@@ -42,13 +41,15 @@ void onIdle()
 {
 	simulation.simulate( &factory, ssetting );
 	const ParticleVector& particles = factory.getOrderedParticles();
-	for( int i = 0; i < particles.size(); ++i ) {
+	for( size_t i = 0; i < particles.size(); ++i ) {
 		visualParticles[i].center = particles[i]->center;
 	}
-	
+	renderer->setVisualParticles(visualParticles);
+
 	printf("visual particles = %d\n", visualParticles.size() );  
-	renderer->idle();
-	//glutPostRedisplay();
+
+	//onDisplay();
+	glutPostRedisplay();
 }
 
 void onInit()
@@ -64,13 +65,14 @@ void onInit()
 	setting.pointSize = 50.0;
 
 	std::vector<Vector3d> points;
-	for( float x = 0.0; x < 1.0; x+= 0.05 ) {
-		for( float y = 0.0; y < 1.0; y += 0.05 ) {
-			for( float z = 0.0; z < 1.0; z += 0.05 ) {
+	/*for( float x = 0.0; x < 1.0; x+= 0.5 ) {
+		for( float y = 0.0; y < 1.0; y += 0.5 ) {
+			for( float z = 0.0; z < 1.0; z += 0.5 ) {
 				points.push_back( Vector3d(x, y, z ) );
 			}
 		}
-	}
+	}*/
+	points.push_back( Vector3d(0.0f, 0.0f, 0.0f) );
 	PhysicsObjectCondition condition( points, 1000.0, 10000.0, 100.0, PhysicsObjectCondition::Fluid );
 
 	ssetting.boundaryBox = Box( Vector3d( 0.0, 0.0, 0.0), Vector3d( 2.0, 10.0, 1.0 ) );

@@ -1,14 +1,14 @@
 #ifndef __COMPOSITE_RENDERER_H__
 #define __COMPOSITE_RENDERER_H__
 
-#include "OffScreenRendererBase.h"
+#include "ScreenRendererBase.h"
 #include "ShaderObject.h"
 #include "GLSLMatrix.h"
 
 namespace Crystal{
 	namespace Shader{
 
-class CompositeRenderer : public OffScreenRendererBase
+class CompositeRenderer : public ScreenRendererBase
 {
 public:
 	CompositeRenderer(const int width, const int height);

@@ -13,7 +13,7 @@ using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
 PointRenderer::PointRenderer(const int width, const int height, const PBFRSetting& setting) :
-OffScreenRendererBase( width, height),
+ScreenRendererBase( width, height),
 	setting( setting),
 	repetitionLevel ( 0)
 {
@@ -43,7 +43,6 @@ void PointRenderer::setVisualParticles(const VisualParticleVector& visualParticl
 void PointRenderer::onRender()
 {
 	assert( repetitionLevel < setting.repeatLevel );
-	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glClear( GL_COLOR_BUFFER_BIT );
 	glEnable(GL_POINT_SPRITE);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE); 
@@ -99,7 +98,6 @@ void PointRenderer::initNoiseTexture()
 
 void PointRenderer::onInit()
 {
-	glClearColor( 0.0, 0.0, 0.0, 1.0 );
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 	repetitionLevel = 0;
