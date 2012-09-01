@@ -156,5 +156,14 @@
     <None Include="..\Shaders\PointGenerator.vs">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\Shaders\IntensityOffsetter.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.vs">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -18,8 +18,8 @@ int xBegin;
 int yBegin;
 float distance = 0.0;
 
-const int width = 512;
-const int height = 512;
+const int width = 756;
+const int height = 756;
 
 Crystal::Shader::PBFR* renderer;
 Crystal::Shader::PBFRSetting setting;
@@ -65,23 +65,25 @@ void onInit()
 	setting.pointSize = 50.0;
 
 	std::vector<Vector3d> points;
-	/*for( float x = 0.0; x < 1.0; x+= 0.5 ) {
-		for( float y = 0.0; y < 1.0; y += 0.5 ) {
-			for( float z = 0.0; z < 1.0; z += 0.5 ) {
+	for( float x = 0.0; x < 2.0; x+= 0.05 ) {
+		for( float y = 0.0; y < 1.0; y += 0.05 ) {
+			for( float z = 0.0; z < 1.0; z += 0.05 ) {
 				points.push_back( Vector3d(x, y, z ) );
 			}
 		}
-	}*/
-	points.push_back( Vector3d(0.0f, 0.0f, 0.0f) );
+	}
+	//points.push_back( Vector3d(0.0f, 0.0f, 0.0f) );
 	PhysicsObjectCondition condition( points, 1000.0, 10000.0, 100.0, PhysicsObjectCondition::Fluid );
 
-	ssetting.boundaryBox = Box( Vector3d( 0.0, 0.0, 0.0), Vector3d( 2.0, 10.0, 1.0 ) );
+	ssetting.boundaryBox = Box( Vector3d( -2.0, 0.0, -2.0), Vector3d( 2.0, 10.0, 2.0 ) );
 	factory.createPhysicsObject( condition, ssetting);
 	
 	visualParticles.resize( points.size() );
 
 	setting.distribute = 0.25;
-	setting.repeatLevel = 100;
+	setting.pointSize = 200.0;
+	setting.pointAlpha = 0.5;
+	setting.repeatLevel = 50;
 
 	renderer->init();
 }

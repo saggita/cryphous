@@ -13,7 +13,7 @@ void main(void)
 	if( alpha < alphaThreshold ) {
 		discard;
 	}
-	fragColor = color / float(maxLevel);
+	fragColor = color; // / float(maxLevel);
 	//if( gl_FragDepth < texture(depthTexture, gl_FragCoord.xy).r ) {
 	//	fragColor = vec4( gl_FragCoord.x, gl_FragCoord.y, 0.0, 1.0 );
 	//}
