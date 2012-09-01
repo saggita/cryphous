@@ -39,7 +39,7 @@ private:
 	PointRenderer* pointRenderer;
 	CompositeRenderer* compositeRenderer;
 	std::vector<double> points;
-	PBFRSetting setting;
+	const PBFRSetting& setting;
 	//OpenGLWrapper openGLWrapper;
 	VisualParticleVector visualParticles;
 };

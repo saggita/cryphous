@@ -52,8 +52,8 @@ void PBFR::onRender()
 {
 	assert( GL_NO_ERROR == glGetError() );
 
-	//FrameBufferObject fbo( getWidth(), getHeight(), false );
-	//TextureObject& backgroundTexture = fbo.getTextureObject();
+	FrameBufferObject fbo( getWidth(), getHeight(), false );
+	TextureObject& backgroundTexture = fbo.getTextureObject();
 
 	pointRenderer->setVisualParticles( visualParticles );
 	
@@ -63,18 +63,25 @@ void PBFR::onRender()
 	std::auto_ptr<FrameBufferObject> targetBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );
 	std::auto_ptr<FrameBufferObject> temporaryBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );	
 
-	glClearColor( 0.5, 0.0, 0.0, 0.0 );
+	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	pointRenderer->render();
-	/*for( int i = 0; i < setting.repeatLevel; ++i ) {
-		pointRenderer->render( *temporaryBuffer );
-		compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &(temporaryBuffer->getTextureObject()) );
-		compositeRenderer->render( *targetBuffer );
-		std::swap( sourceBuffer, targetBuffer );
-	}*/
+	for( int i = 0; i < setting.repeatLevel; ++i ) {
+		pointRenderer->render();
+		glAccum(GL_ACCUM, 1.0 / setting.repeatLevel);
+	}
+	glAccum(GL_RETURN, 1.0);
+	glClear( GL_ACCUM_BUFFER_BIT );
 
-	/*compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &backgroundTexture);
+	//for( int i = 0; i < setting.repeatLevel; ++i ) {
+	//	pointRenderer->render( *temporaryBuffer );
+	//	compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &(temporaryBuffer->getTextureObject()) );
+	//	compositeRenderer->render(); //targetBuffer );
+		//std::swap( sourceBuffer, targetBuffer );
+	//}
+
+	/*
+	compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &backgroundTexture);
 	compositeRenderer->render( *targetBuffer );
 	std::swap( sourceBuffer, targetBuffer );
 	
@@ -89,11 +96,11 @@ void PBFR::onRender()
 	shaderObject.setUniform("intensityScale", 1.0f);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
-	shaderObject.release();*/
+	shaderObject.release();
 
-	sourceBuffer->getTextureObject().release(); 
+	sourceBuffer->getTextureObject().release();
 
-	assert( GLSLUtility::hasNoError() );
+	assert( GLSLUtility::hasNoError() ); */
 
 	//glFlush();
 }
