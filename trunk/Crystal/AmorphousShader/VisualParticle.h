@@ -15,14 +15,16 @@ public:
 	VisualParticle() :
 		 center( Crystal::Geom::Vector3d(0.0f, 0.0f, 0.0f) ),
 		 radius( 1.0),
-		 normal( 0.0, 0.0, 0.0)
+		 normal( 0.0, 0.0, 0.0),
+		 alpha( 1.0)
 		 {
 		 }
 
 	VisualParticle( const Crystal::Geom::Vector3d& center, double radius, const Crystal::Geom::Vector3d& normal) :
 		 center( center),
 		 radius( radius),
-		 normal( normal)
+		 normal( normal),
+		 alpha( alpha)
 		 {
 		 }
 
@@ -32,6 +34,7 @@ public:
 	Crystal::Geom::Vector3d center;
 	Crystal::Geom::Vector3d normal;
 	double radius;
+	double alpha;
 };
 
 typedef std::vector<VisualParticle> VisualParticleVector;
