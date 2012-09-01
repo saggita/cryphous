@@ -43,6 +43,7 @@ void onIdle()
 	const ParticleVector& particles = factory.getOrderedParticles();
 	for( size_t i = 0; i < particles.size(); ++i ) {
 		visualParticles[i].center = particles[i]->center;
+		visualParticles[i].normal = particles[i]->normal.getNormalized();
 	}
 	renderer->setVisualParticles(visualParticles);
 
@@ -65,7 +66,7 @@ void onInit()
 	setting.pointSize = 50.0;
 
 	std::vector<Vector3d> points;
-	for( float x = 0.0; x < 2.0; x+= 0.05 ) {
+	for( float x = 0.0; x < 4.0; x+= 0.05 ) {
 		for( float y = 0.0; y < 1.0; y += 0.05 ) {
 			for( float z = 0.0; z < 1.0; z += 0.05 ) {
 				points.push_back( Vector3d(x, y, z ) );
@@ -75,7 +76,7 @@ void onInit()
 	//points.push_back( Vector3d(0.0f, 0.0f, 0.0f) );
 	PhysicsObjectCondition condition( points, 1000.0, 10000.0, 100.0, PhysicsObjectCondition::Fluid );
 
-	ssetting.boundaryBox = Box( Vector3d( -2.0, 0.0, -2.0), Vector3d( 2.0, 10.0, 2.0 ) );
+	ssetting.boundaryBox = Box( Vector3d( -4.0, 0.0, -2.0), Vector3d( 4.0, 10.0, 2.0 ) );
 	factory.createPhysicsObject( condition, ssetting);
 	
 	visualParticles.resize( points.size() );
@@ -83,7 +84,7 @@ void onInit()
 	setting.distribute = 0.25;
 	setting.pointSize = 200.0;
 	setting.pointAlpha = 0.5;
-	setting.repeatLevel = 50;
+	setting.repeatLevel = 100;
 
 	renderer->init();
 }

@@ -15,14 +15,14 @@ public:
 	VisualParticle() :
 		 center( Crystal::Geom::Vector3d(0.0f, 0.0f, 0.0f) ),
 		 radius( 1.0),
-		 velocity( 0.0, 0.0, 0.0)
+		 normal( 0.0, 0.0, 0.0)
 		 {
 		 }
 
-	VisualParticle( const Crystal::Geom::Vector3d& center, double radius, const Crystal::Geom::Vector3d& velocity) :
+	VisualParticle( const Crystal::Geom::Vector3d& center, double radius, const Crystal::Geom::Vector3d& normal) :
 		 center( center),
 		 radius( radius),
-		 velocity( velocity)
+		 normal( normal)
 		 {
 		 }
 
@@ -30,7 +30,7 @@ public:
 
 public:
 	Crystal::Geom::Vector3d center;
-	Crystal::Geom::Vector3d velocity;
+	Crystal::Geom::Vector3d normal;
 	double radius;
 };
 

@@ -8,6 +8,7 @@ in Vertex
 {
 	vec3 position;
 	vec4 color;
+	vec3 normal;
 } vertex[];
 
 uniform mat4 projectionMatrix;
@@ -34,6 +35,7 @@ void main() {
 		float dist = length(gl_Position);
 		gl_PointSize = pointSize / dist;
 		color = vertex[i].color;
+		color.rgb = vertex[i].normal + normalize( noiseVector );
 		EmitVertex();
 	}
 	EndPrimitive();
