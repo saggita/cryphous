@@ -14,9 +14,13 @@ class ScreenRendererBase
 public:
 	ScreenRendererBase(const int width, const int height);
 
-	~ScreenRendererBase(void);
+	virtual ~ScreenRendererBase(void);
 
 	void init();
+
+	void render();
+
+	void render(const FrameBufferObject& frameBufferObject);
 
 	void move(const float x, const float y, const float z);
 

@@ -1,7 +1,7 @@
 #ifndef __POINT_RENDERER_H__
 #define __POINT_RENDERER_H__
 
-#include "OffScreenRendererBase.h"
+#include "ScreenRendererBase.h"
 #include "TextureObject.h"
 #include "GLSLMatrix.h"
 #include "PBFRSetting.h"
@@ -10,7 +10,7 @@
 namespace Crystal{
 	namespace Shader{
 
-class PointRenderer : public OffScreenRendererBase
+class PointRenderer : public ScreenRendererBase
 {
 public:
 	PointRenderer(const int width, const int height, const PBFRSetting& setting);

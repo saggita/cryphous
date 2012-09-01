@@ -2,6 +2,7 @@
 
 #include "ScreenRendererBase.h"
 #include "Camera.h"
+#include "FrameBufferObject.h"
 
 using namespace Crystal::Shader;
 
@@ -17,7 +18,29 @@ ScreenRendererBase::~ScreenRendererBase(void)
 
 void ScreenRendererBase::init()
 {
+	assert( GL_NO_ERROR == glGetError() );
 	onInit();
+	assert( GL_NO_ERROR == glGetError() );
+}
+
+void ScreenRendererBase::render()
+{
+	assert( GL_NO_ERROR == glGetError() );
+	glViewport( 0, 0, width , getHeight() );
+	assert( GL_NO_ERROR == glGetError() );
+	onRender();
+}
+
+void ScreenRendererBase::render(const FrameBufferObject& frameBufferObject)
+{
+	assert( GL_NO_ERROR == glGetError() );
+	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, frameBufferObject.getID() );
+	glViewport( 0, 0, getWidth(), getHeight() );
+	assert( GL_NO_ERROR == glGetError() );
+	
+	onRender();
+
+	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, 0 );
 }
 
 GLSLMatrix ScreenRendererBase::getModelviewMatrix()

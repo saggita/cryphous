@@ -4,6 +4,7 @@
 #include "PointRenderer.h"
 #include "CompositeRenderer.h"
 #include "FrameBufferObject.h"
+#include "GLSLUtility.h"
 
 #include <boost/foreach.hpp>
 
@@ -15,7 +16,7 @@ using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
 PBFR::PBFR(const int width, const int height, const PBFRSetting& setting) :
-OnScreenRendererBase( width, height ),
+ScreenRendererBase( width, height ),
 setting( setting)
 {
 	pointRenderer = new PointRenderer( getWidth(), getHeight(), setting);
@@ -30,7 +31,7 @@ PBFR::~PBFR()
 
 void PBFR::onInit()
 {
-	openGLWrapper.SetCurrentRenderingContext();
+	//openGLWrapper.SetCurrentRenderingContext();
 
 	pointRenderer->init();
 	compositeRenderer->init();
@@ -51,8 +52,8 @@ void PBFR::onRender()
 {
 	assert( GL_NO_ERROR == glGetError() );
 
-	FrameBufferObject fbo( getWidth(), getHeight(), false );
-	TextureObject& backgroundTexture = fbo.getTextureObject();
+	//FrameBufferObject fbo( getWidth(), getHeight(), false );
+	//TextureObject& backgroundTexture = fbo.getTextureObject();
 
 	pointRenderer->setVisualParticles( visualParticles );
 	
@@ -65,19 +66,22 @@ void PBFR::onRender()
 	glClearColor( 0.5, 0.0, 0.0, 0.0 );
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	for( int i = 0; i < setting.repeatLevel; ++i ) {
+	pointRenderer->render();
+	/*for( int i = 0; i < setting.repeatLevel; ++i ) {
 		pointRenderer->render( *temporaryBuffer );
 		compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &(temporaryBuffer->getTextureObject()) );
 		compositeRenderer->render( *targetBuffer );
 		std::swap( sourceBuffer, targetBuffer );
-	}
+	}*/
 
-	compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &backgroundTexture);
+	/*compositeRenderer->setTextureObject( &(sourceBuffer->getTextureObject()), &backgroundTexture);
 	compositeRenderer->render( *targetBuffer );
 	std::swap( sourceBuffer, targetBuffer );
 	
 	sourceBuffer->getTextureObject().apply(0);
 	
+	assert( GLSLUtility::hasNoError() );
+
 	shaderObject.apply();
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
@@ -85,9 +89,11 @@ void PBFR::onRender()
 	shaderObject.setUniform("intensityScale", 1.0f);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
-	shaderObject.release();
+	shaderObject.release();*/
 
-	sourceBuffer->getTextureObject().release();
+	sourceBuffer->getTextureObject().release(); 
 
-	glFlush();
+	assert( GLSLUtility::hasNoError() );
+
+	//glFlush();
 }

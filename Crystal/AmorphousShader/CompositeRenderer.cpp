@@ -6,14 +6,14 @@
 using namespace Crystal::Shader;
 
 CompositeRenderer::CompositeRenderer(const int width, const int height) :
-OffScreenRendererBase( width, height),
+ScreenRendererBase( width, height),
 texture0( 0),
 texture1( 0)
 {
 }
 
 CompositeRenderer::CompositeRenderer(TextureObject* texture0, TextureObject* texture1 ):
-OffScreenRendererBase( texture0->getWidth(), texture0->getHeight() ),
+ScreenRendererBase( texture0->getWidth(), texture0->getHeight() ),
 texture0( texture0), texture1( texture1)
 {
 	assert( texture0->getWidth() == texture1->getWidth() );

@@ -6,7 +6,7 @@
 #include <list>
 #include <memory>
 
-#include "OnScreenRendererBase.h"
+#include "ScreenRendererBase.h"
 #include "PBFRSetting.h"
 #include "OpenGLWrapper.h"
 #include "VisualParticle.h"
@@ -17,14 +17,14 @@ namespace Crystal{
 		class CompositeRenderer;
 		class BackGroundRenderer;
 		
-class PBFR : public OnScreenRendererBase
+class PBFR : public ScreenRendererBase
 {
 public:
 	PBFR(const int width, const int height, const PBFRSetting& setting);
 
 	~PBFR();
 
-	void setVisualParticle( const VisualParticleVector& vps ) { visualParticles = vps; }
+	void setVisualParticles( const VisualParticleVector& vps ) { visualParticles = vps; }
 
 protected:
 
@@ -40,7 +40,7 @@ private:
 	CompositeRenderer* compositeRenderer;
 	std::vector<double> points;
 	PBFRSetting setting;
-	OpenGLWrapper openGLWrapper;
+	//OpenGLWrapper openGLWrapper;
 	VisualParticleVector visualParticles;
 };
 

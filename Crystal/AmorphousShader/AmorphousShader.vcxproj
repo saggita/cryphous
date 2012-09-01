@@ -86,8 +86,6 @@
     <ClCompile Include="GLSLMatrix.cpp" />
     <ClCompile Include="GLSLUtility.cpp" />
     <ClCompile Include="ImprovedPerlinNoise.cpp" />
-    <ClCompile Include="OffScreenRendererBase.cpp" />
-    <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PBFR.cpp" />
     <ClCompile Include="PointRenderer.cpp" />
@@ -113,8 +111,6 @@
     <ClInclude Include="GLSLMatrix.h" />
     <ClInclude Include="GLSLUtility.h" />
     <ClInclude Include="ImprovedPerlinNoise.h" />
-    <ClInclude Include="OffScreenRendererBase.h" />
-    <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="PBFR.h" />
     <ClInclude Include="PBFRSetting.h" />
