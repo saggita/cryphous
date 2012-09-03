@@ -76,12 +76,12 @@ namespace Cryphous
                     System.Diagnostics.Debug.Assert(false);
                 }
 
-                command.saveSettings(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);
+                command.createPhysicsObject(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);
             }
 
             if (initialPositions != null)
             {
-                command.saveSettings("Obstacle", 10000.0f, 2000000.0f, 1000.0f, initialPositions);
+                command.createPhysicsObject("Obstacle", 10000.0f, 2000000.0f, 1000.0f, initialPositions);
             }
             
             Hide();

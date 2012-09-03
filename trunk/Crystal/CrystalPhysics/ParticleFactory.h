@@ -40,6 +40,18 @@ public:
 		return particles;
 	}
 
+	ParticleVector addParticles(const std::vector<Geom::Vector3d>& points, const std::vector<Geom::Vector3d>& velocities)
+	{
+		assert( virtualParticle );
+		const ParticleConditions& condition = virtualParticle->condition;
+		for( size_t i = 0; i < points.size(); ++i ) {
+			particles.push_back( new Particle( nextID++, points[i], condition) );
+			particles.back()->density = condition.getDensity();
+			particles.back()->velocity = velocities[i];
+		}
+		return particles;
+	}
+
 	ParticleVector getParticles() const { return particles; }
 
 	Particle* getVirtualParticle() { return virtualParticle; }

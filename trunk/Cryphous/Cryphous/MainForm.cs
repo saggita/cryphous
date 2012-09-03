@@ -29,6 +29,8 @@ namespace Cryphous
 
         List<float[]> initialPositions;
 
+        private int timeStep;
+
         public List<float[]> SimulatedPositions
         {
             get{ return simulatedPositions; }
@@ -95,6 +97,31 @@ namespace Cryphous
 
         public void proceed()
         {
+            if( timeStep++ % 5 == 0 )
+            {
+                List<float[]> addPositions = new List<float[]>();
+                float[] position = new float[3];
+                position[0] = 0.0f;
+                position[1] = 10.0f;
+                position[2] = 0.0f;
+                addPositions.Add((float[])position.Clone());
+                position[0] = 5.0f;
+                position[1] = 10.0f;
+                position[2] = 0.0f;
+                addPositions.Add(position);
+
+                List<float[]> addVelocities = new List<float[]>();
+                float[] velocity = new float[3];
+                velocity[0] = 1.0f;
+                velocity[1] = 0.0f;
+                velocity[2] = 1.0f;
+                addVelocities.Add((float[])velocity.Clone());
+                velocity[0] = -5.0f;
+                velocity[1] = 10.0f;
+                velocity[2] = 0.0f;
+                addVelocities.Add(velocity);
+                objectSettingCommand.addParticles(0, addPositions, addVelocities);
+            }
             mainCommand.proceedSimulation();
             mainCommand.displayInformation(listBoxInformation);
             if (!isStandAlone)
