@@ -63,7 +63,7 @@ void PBFR::onRender()
 	std::auto_ptr<FrameBufferObject> targetBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );
 	std::auto_ptr<FrameBufferObject> temporaryBuffer( new FrameBufferObject( getWidth(), getHeight(), false) );	
 
-	glClearColor( 0.0, 0.0, 0.0, 0.0 );
+	glClearColor( 0.2, 0.2, 0.3, 0.0 );
 	glClear( GL_COLOR_BUFFER_BIT );
 
 	for( int i = 0; i < setting.repeatLevel; ++i ) {
