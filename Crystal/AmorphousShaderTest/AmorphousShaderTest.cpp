@@ -64,25 +64,23 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
-	setting.pointSize = 50.0;
-
 	std::vector<Vector3d> points;
-	for( float x = -2.0; x < 2.0; x+= 0.1 ) {
+	for( float x = -4.0; x < 4.0; x+= 0.1 ) {
 		for( float y = 0.0; y < 1.0; y += 0.1 ) {
-			for( float z = 0.0; z < 2.0; z += 0.1 ) {
+			for( float z = -4.0; z < 4.0; z += 0.1 ) {
 				points.push_back( Vector3d(x, y, z ) );
 			}
 		}
 	}
 	//points.push_back( Vector3d(0.0f, 0.0f, 0.0f) );
-	PhysicsObjectCondition condition( points, 1000.0, 10000.0, 100.0, PhysicsObjectCondition::Fluid );
+	PhysicsObjectCondition condition( points, 1000.0, 20000.0, 100.0, PhysicsObjectCondition::Fluid );
 
-	ssetting.boundaryBox = Box( Vector3d( -4.0, 0.0, 0.0), Vector3d( 4.0, 10.0, 2.0 ) );
+	ssetting.boundaryBox = Box( Vector3d( -4.0, 0.0, -4.0), Vector3d( 4.0, 10.0, 4.0 ) );
 	factory.createPhysicsObject( condition, ssetting);
 	
 	visualParticles.resize( points.size() );
 
-	setting.distribute = 0.25;
+	setting.distribute = 0.20;
 	setting.pointSize = 200.0;
 	setting.pointAlpha = 0.5;
 	setting.repeatLevel = 20;
