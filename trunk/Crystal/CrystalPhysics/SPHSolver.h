@@ -7,6 +7,7 @@
 #include "SimulationSetting.h"
 #include "Profiler.h"
 #include "BoundarySolver.h"
+#include "SearchParticleFactory.h"
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -74,7 +75,8 @@ private:
 	{
 		assert( neighborSearcher == 0 );
 		Profiler::get()->start(" Sim->sorting");
-		const SearchParticleVector& sorted = factory->getSearchParticles( setting.getEffectLength() );
+		SearchParticleFactory spFactory( factory->getParticles(), setting.getEffectLength() );
+		const SearchParticleVector& sorted = spFactory.getSearchParticles();
 		Profiler::get()->end(" Sim->sorting");
 
 		Profiler::get()->start(" Sim->search");

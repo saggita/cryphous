@@ -4,7 +4,7 @@
 #include "../CrystalUtility/Uncopyable.h"
 #include <list>
 
-#include "SearchParticleFactory.h"
+#include "SimulationSetting.h"
 #include "PhysicsObject.h"
 #include "ParticleConditions.h"
 #include "Particle.h"
@@ -86,16 +86,10 @@ public:
 		}
 
 		physicsObjects.push_back( object );
-		createSearchParticles( setting.getEffectLength() );
 		return object;
 	}
 
 	PhysicsObjectVector getPhysicsObjects() const { return physicsObjects; }
-
-	SearchParticleVector getSearchParticles(const float effectLength) {
-		searchParticleFactory = SearchParticleFactory( getParticles(), effectLength );
-		return searchParticleFactory.getSearchParticles();
-	}
 
 	ParticleVector getParticles() const
 	{
@@ -110,17 +104,7 @@ public:
 private:
 	int nextID;
 	PhysicsObjectVector physicsObjects;
-	SearchParticleFactory searchParticleFactory;
 
-	void createSearchParticles(const float effectLength)
-	{
-		searchParticleFactory = SearchParticleFactory( ParticleVector(), effectLength );
-		ParticleVector particles;
-		for( PhysicsObjectVector::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
-			const ParticleVector& particles = (*iter)->getParticleFactory()->getParticles();
-			searchParticleFactory.addParticles( particles, effectLength );
-		}
-	}
 };
 
 	}
