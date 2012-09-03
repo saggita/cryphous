@@ -22,7 +22,7 @@ void ProfileInfoCommand::display(System::String^ productName, System::Windows::F
 	listBox->Items->Add("Crystal 1.6");
 	listBox->Items->Add("(c) 2012 Kuroro");
 	listBox->Items->Add(" ");
-	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getSortedParticles().size() );
+	listBox->Items->Add("Particles = " + ApplicationSettings::get()->factory->getParticles().size() );
 	listBox->Items->Add("Step = " + ApplicationSettings::get()->simulation->getStep() );
 	listBox->Items->Add("Time = " + ApplicationSettings::get()->simulation->getSimulationTime() );
 	listBox->Items->Add(" ");

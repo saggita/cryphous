@@ -38,13 +38,13 @@ int SimulationCommand::getStep()
 List<ManagedPosition^>^ SimulationCommand::getManagedPositions()
 {
 	PhysicsObjectFactory* factory = ApplicationSettings::get()->factory;
-	const ParticleVector& nativeParticles = factory->getOrderedParticles();
+	const ParticleVector& nativeParticles = factory->getParticles();
 	return ParticleMarshaler::convertToManagedPositions( nativeParticles );
 }
 
 List<ManagedVector^>^ SimulationCommand::getManagedNormals()
 {
 	PhysicsObjectFactory* factory = ApplicationSettings::get()->factory;
-	const ParticleVector& nativeParticles = factory->getOrderedParticles();
+	const ParticleVector& nativeParticles = factory->getParticles();
 	return ParticleMarshaler::convertToManagedNormals( nativeParticles );
 }

@@ -37,24 +37,24 @@ public:
 	{
 		Profiler::get()->start("Simulation->");
 
-		PhysicsObjectList& physicsObjects = factory->getPhysicsObjects();
+		PhysicsObjectVector& physicsObjects = factory->getPhysicsObjects();
 
 		SPHSolver solver( factory, setting);
 		solver.calculateInteraction();
 
-		const ParticleVector& particles = factory->getSortedParticles();
+		const ParticleVector& particles = factory->getParticles();
 		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
 			(*iter)->force += Geom::Vector3d( 0.0f, -9.8f * (*iter)->density, 0.0f );
 		}
 
 		Profiler::get()->start(" Sim->enforce");
-		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+		for( PhysicsObjectVector::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
 			(*iter)->enforce( setting.timeStep );
 		}
 		Profiler::get()->end(" Sim->enforce");
 
 		Profiler::get()->start(" Sim->integrate");
-		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+		for( PhysicsObjectVector::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
 			(*iter)->integrateTime( setting.timeStep );
 		}
 		Profiler::get()->end(" Sim->integrate");

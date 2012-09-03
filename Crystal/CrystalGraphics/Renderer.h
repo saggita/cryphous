@@ -80,8 +80,8 @@ public:
 		glPointSize( (GLfloat)(settings.pointSize) );
 
 		glBegin(GL_POINTS);
-		const Physics::PhysicsObjectList& objects = factory->getPhysicsObjects();
-		for( Physics::PhysicsObjectList::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
+		const Physics::PhysicsObjectVector& objects = factory->getPhysicsObjects();
+		for( Physics::PhysicsObjectVector::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
 			Physics::PhysicsObject* object = (*iter);
 			if( object->getType() == Physics::PhysicsObject::Rigid ) {
 				glColor4d( 1.0f, 1.0f, 1.0f, 1.0f );
