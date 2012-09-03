@@ -34,8 +34,8 @@ public:
 
 	void calculateInteraction()
 	{
-		PhysicsObjectList& objects = factory->getPhysicsObjects();
-		ParticleVector particles = factory->getSortedParticles();
+		PhysicsObjectVector& objects = factory->getPhysicsObjects();
+		ParticleVector particles = factory->getParticles();
 		if( particles.empty() ) {
 			return;
 		}
@@ -44,7 +44,7 @@ public:
 			particles[i]->resetDiffParameters();
 		}
 
-		particles = factory->getSortedParticles();
+		particles = factory->getParticles();
 
 		if( particles.empty() ) {
 			return;
@@ -92,7 +92,7 @@ private:
 		for( int i = 0; i < (int)(pairs.size()); ++i ) {
 			sphPairSolver->calculateBoundaryDensity( pairs[i]);
 		}
-		const ParticleVector& particles = factory->getSortedParticles();
+		const ParticleVector& particles = factory->getParticles();
 
 		for( int i = 0; i < (int)particles.size(); ++i ) {
 			sphPairSolver->calculateDensity( particles[i] );
@@ -104,8 +104,8 @@ private:
 	void calculateBoundaryForce()
 	{
 		Profiler::get()->start(" Sim->boundary");
-		const PhysicsObjectList& objects = factory->getPhysicsObjects();
-		for( PhysicsObjectList::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
+		const PhysicsObjectVector& objects = factory->getPhysicsObjects();
+		for( PhysicsObjectVector::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
 			BoundarySolver boundarySolver( (*iter), setting );
 			boundarySolver.calculateForce( setting.boundaryBox );
 		}

@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(SPH_SOLVER_TEST)
 	points.push_back( Vector3d(1.0, 0.0, 0.0 ) );
 	PhysicsObjectCondition condition( points, 1000.0f, 1.0f, 0.4f, PhysicsObjectCondition::Fluid );
 	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting );
-	PhysicsObjectList objects( 1, fluid);
+	PhysicsObjectVector objects( 1, fluid);
 	SPHSolver solver( &factory, setting);
 	solver.calculateInteraction();
 	

@@ -55,7 +55,7 @@ public:
 
 	void init()
 	{
-		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+		for( PhysicsObjectVector::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
 			delete (*iter)->getParticleFactory();
 			delete (*iter);
 		}
@@ -90,35 +90,33 @@ public:
 		return object;
 	}
 
-	PhysicsObjectList getPhysicsObjects() const { return physicsObjects; }
+	PhysicsObjectVector getPhysicsObjects() const { return physicsObjects; }
 
 	SearchParticleVector getSearchParticles(const float effectLength) {
-		searchParticleFactory = SearchParticleFactory( getSortedParticles(), effectLength );
+		searchParticleFactory = SearchParticleFactory( getParticles(), effectLength );
 		return searchParticleFactory.getSearchParticles();
 	}
 
-	ParticleVector getOrderedParticles() const
+	ParticleVector getParticles() const
 	{
 		ParticleVector ordered;
-		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+		for( PhysicsObjectVector::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
 			const ParticleVector& particles = (*iter)->getParticles();
 			ordered.insert( ordered.end(), particles.begin(), particles.end() );
 		}
 		return ordered;
 	}
 
-	ParticleVector getSortedParticles() const { return searchParticleFactory.getParticles(); }
-
 private:
 	int nextID;
-	PhysicsObjectList physicsObjects;
+	PhysicsObjectVector physicsObjects;
 	SearchParticleFactory searchParticleFactory;
 
 	void createSearchParticles(const float effectLength)
 	{
 		searchParticleFactory = SearchParticleFactory( ParticleVector(), effectLength );
 		ParticleVector particles;
-		for( PhysicsObjectList::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
+		for( PhysicsObjectVector::const_iterator iter = physicsObjects.begin(); iter != physicsObjects.end(); ++iter ) {
 			const ParticleVector& particles = (*iter)->getParticleFactory()->getParticles();
 			searchParticleFactory.addParticles( particles, effectLength );
 		}

@@ -2,7 +2,7 @@
 #define __PHYSICS_OBJECT_H__
 
 #include "../CrystalUtility/Uncopyable.h"
-#include <list>
+#include <vector>
 
 #include "Particle.h"
 #include "ParticleFactory.h"
@@ -88,7 +88,7 @@ private:
 };
 
 class PhysicsObject;
-typedef std::list<PhysicsObject*> PhysicsObjectList;
+typedef std::vector<PhysicsObject*> PhysicsObjectVector;
 
 	}
 }

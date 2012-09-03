@@ -23,7 +23,6 @@ BOOST_AUTO_TEST_CASE(PHYSICS_OBJECT_FACTORY_TEST)
 		BOOST_CHECK_EQUAL( fluid->getID(), 0 );
 		BOOST_CHECK_EQUAL( fluid->getType(), PhysicsObject::Fluid );
 		BOOST_CHECK( !fluid->getParticles().empty() );
-		BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 	}
 
 	{
@@ -38,7 +37,6 @@ BOOST_AUTO_TEST_CASE(PHYSICS_OBJECT_FACTORY_TEST)
 		BOOST_CHECK_EQUAL( rigid->getID(), 0 );
 		BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Obstacle );
 		BOOST_CHECK( !rigid->getParticles().empty() );
-		BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 	}
 
 	{
@@ -53,6 +51,5 @@ BOOST_AUTO_TEST_CASE(PHYSICS_OBJECT_FACTORY_TEST)
 		BOOST_CHECK_EQUAL( rigid->getID(), 0 );
 		BOOST_CHECK_EQUAL( rigid->getType(), PhysicsObject::Rigid );
 		BOOST_CHECK( !rigid->getParticles().empty() );
-		BOOST_CHECK_EQUAL( factory.getOrderedParticles().size(), factory.getSortedParticles().size() );
 	}
 }
