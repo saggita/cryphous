@@ -2,7 +2,7 @@
 #define __PHYSICS_OBJECT_FACTORY_H__
 
 #include "../CrystalUtility/Uncopyable.h"
-#include <list>
+#include <vector>
 
 #include "SimulationSetting.h"
 #include "PhysicsObject.h"
@@ -87,6 +87,12 @@ public:
 
 		physicsObjects.push_back( object );
 		return object;
+	}
+
+	PhysicsObject* addParticles( const int index, const std::vector<Geom::Vector3d>& points, const std::vector<Geom::Vector3d>& velocities )
+	{
+		physicsObjects[index]->getParticleFactory()->addParticles( points, velocities );
+		return physicsObjects[index];
 	}
 
 	PhysicsObjectVector getPhysicsObjects() const { return physicsObjects; }

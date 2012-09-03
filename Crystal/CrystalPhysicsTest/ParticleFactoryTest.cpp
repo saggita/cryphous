@@ -18,8 +18,15 @@ BOOST_AUTO_TEST_CASE(PARTICLE_FACTORY_TEST)
 	ParticleConditions conditions( 1.0, 1000.0, 1.0, 1.0); 
 	ParticleFactory factory;
 	const ParticleVector& particles = factory.createParticles( points, conditions );
-	BOOST_CHECK( particles.size() == 2 );
+	BOOST_CHECK_EQUAL( particles.size(), 2);
 
 	Particle* virtualParticle = factory.getVirtualParticle();
 	BOOST_CHECK( virtualParticle != 0 );
+
+	std::vector<Vector3d> addPoints;
+	addPoints.push_back( Vector3d(2.0, 0.0, 0.0 ) );
+	std::vector<Vector3d> addVelocities;
+	addVelocities.push_back( Vector3d(0.0, 1.0, 0.0) );
+	const ParticleVector& addedParticles = factory.addParticles( addPoints, addVelocities );
+	BOOST_CHECK_EQUAL( addedParticles.size(), 3);
 }

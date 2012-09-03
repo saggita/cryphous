@@ -34,7 +34,7 @@ void ObjectSettingCommand::refresh()
 	ApplicationSettings::get()->factory->init();
 }
 
-void ObjectSettingCommand::saveSettings(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
+void ObjectSettingCommand::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPositions);
 
@@ -65,3 +65,10 @@ void ObjectSettingCommand::saveSettings(String^ type, const float density, const
 	ApplicationSettings::get()->conditions->push_back( *condition );
 }
 
+void ObjectSettingCommand::addParticles(int index, System::Collections::Generic::List<ManagedPosition^> ^managedPosition, System::Collections::Generic::List<ManagedPosition^> ^managedVelocity)
+{
+	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPosition);
+	std::vector<Geom::Vector3d> velocities = ParticleMarshaler::convertToNative(managedVelocity);
+
+	ApplicationSettings::get()->factory->addParticles(index, points, velocities );
+}
