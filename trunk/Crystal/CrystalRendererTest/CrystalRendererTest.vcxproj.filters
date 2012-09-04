@@ -58,7 +58,7 @@
     <ClInclude Include="..\CrystalRenderer\Point2d.h">
       <Filter>PointSprite</Filter>
     </ClInclude>
-    <ClInclude Include="bitmap.h" />
+    <ClInclude Include="Bitmap.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Color4d">
