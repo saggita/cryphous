@@ -58,6 +58,12 @@ public:
 
 	bool isInvalidPoint(const Point2d& point) { return !isValidPoint( point ); }
 
+	const ColorBuffer& getColorBuffer() const { return colors; } 
+
+	const NormalBuffer& getNormalBuffer() const { return normals; }
+
+	const DepthBuffer& getDepthBuffer() const { return depths; }
+
 private:
 	ColorBuffer colors;
 	NormalBuffer normals;
