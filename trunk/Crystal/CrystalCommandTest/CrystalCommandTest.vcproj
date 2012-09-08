@@ -184,31 +184,15 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\CrystalCommand\ApplicationSettings.cpp"
+			RelativePath="..\CrystalCommand\Command.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\CrystalCommand\ApplicationSettings.h"
-			>
-		</File>
-		<File
-			RelativePath=".\AssemblyInfo.cpp"
+			RelativePath="..\CrystalCommand\Command.h"
 			>
 		</File>
 		<File
 			RelativePath=".\CrystalCommandTest.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\CrystalCommand\ParticleMarshaler.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\CrystalCommand\ParticleMarshaler.h"
-			>
-		</File>
-		<File
-			RelativePath=".\resource.h"
 			>
 		</File>
 	</Files>

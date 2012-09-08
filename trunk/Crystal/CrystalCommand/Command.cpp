@@ -1,4 +1,4 @@
-#include "ApplicationSettings.h"
+#include "Command.h"
 
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
@@ -69,7 +69,7 @@ void Command::setParticleDiameter(const float diameter)
 
 void Command::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
-	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPositions);
+	std::vector<Geom::Vector3d> points = convertToNative(managedPositions);
 
 	const Box& box = simulationSetting->boundaryBox;
 
@@ -100,8 +100,8 @@ void Command::createPhysicsObject(String^ type, const float density, const float
 
 void Command::addParticles(int index, System::Collections::Generic::List<ManagedPosition^> ^managedPosition, System::Collections::Generic::List<ManagedPosition^> ^managedVelocity)
 {
-	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPosition);
-	std::vector<Geom::Vector3d> velocities = ParticleMarshaler::convertToNative(managedVelocity);
+	std::vector<Geom::Vector3d> points = convertToNative(managedPosition);
+	std::vector<Geom::Vector3d> velocities = convertToNative(managedVelocity);
 
 	factory->addParticles(index, points, velocities );
 }
@@ -120,13 +120,13 @@ int Command::getStep()
 List<ManagedPosition^>^ Command::getManagedPositions()
 {
 	const ParticleVector& nativeParticles = factory->getParticles();
-	return ParticleMarshaler::convertToManagedPositions( nativeParticles );
+	return convertToManagedPositions( nativeParticles );
 }
 
 List<ManagedVector^>^ Command::getManagedNormals()
 {
 	const ParticleVector& nativeParticles = factory->getParticles();
-	return ParticleMarshaler::convertToManagedNormals( nativeParticles );
+	return convertToManagedNormals( nativeParticles );
 }
 
 void Command::displayBoundarySetting(System::Windows::Forms::DataGridView^ view)
@@ -253,4 +253,49 @@ void Command::displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxT
 {
 	textBoxTimeStep->Text = (simulationSetting->timeStep).ToString();
 	textBoxEffectLength->Text = (simulationSetting->particleDiameter).ToString();
+}
+
+List<ManagedPosition^>^ Command::convertToManagedPositions(const ParticleVector& nativeParticles)
+{
+	List<ManagedPosition^>^ managedPositions = gcnew List<ManagedPosition^>();
+	for( size_t i = 0; i < nativeParticles.size(); ++i ) {
+		/*if( nativeParticles[i]->getParent()->getType() == PhysicsObject::Obstacle ) {
+			continue;
+		}*/
+		ManagedPosition^ newParticle = gcnew ManagedPosition(3);
+		newParticle[0] = nativeParticles[i]->center.getX();
+		newParticle[1] = nativeParticles[i]->center.getY();
+		newParticle[2] = nativeParticles[i]->center.getZ();
+		managedPositions->Add( newParticle );
+	}
+
+	assert( managedPositions->Count == nativeParticles.size() );
+	return managedPositions;
+}
+
+List<ManagedVector^>^ Command::convertToManagedNormals(const ParticleVector& nativeParticles)
+{
+	List<ManagedVector^>^ managedNormals = gcnew List<ManagedPosition^>();
+	for( size_t i = 0; i < nativeParticles.size(); ++i ) {
+		ManagedPosition^ normal = gcnew ManagedPosition(3);
+		normal[0] = nativeParticles[i]->normal.getX();
+		normal[1] = nativeParticles[i]->normal.getY();
+		normal[2] = nativeParticles[i]->normal.getZ();
+		managedNormals->Add( normal );
+	}
+
+	assert( managedNormals->Count == nativeParticles.size() );
+	return managedNormals;
+}
+
+std::vector<Vector3d> Command::convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
+{
+	std::vector<Vector3d> nativePositions;
+	
+	for each(ManagedPosition^ pos in managedPositions) {
+		nativePositions.push_back( Vector3d( pos[0], pos[1], pos[2] ) );
+	}
+
+	assert( managedPositions->Count == nativePositions.size() );
+	return nativePositions;
 }
