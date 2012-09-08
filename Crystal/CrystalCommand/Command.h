@@ -1,14 +1,19 @@
 #pragma once
 
+#include <vector>
 #include <list>
-#include "ParticleMarshaler.h"
 
 namespace Crystal {
+	namespace Geom{
+		class Vector3d;
+	}
 	namespace Physics {
 		class PhysicsObjectFactory;
 		struct PhysicsObjectCondition;
 		class SimulationSetting;
 		class Simulation;
+		class Particle;
+		typedef std::vector<Particle*> ParticleVector;
 	}
 	namespace Graphics {
 		class Renderer;
@@ -16,6 +21,8 @@ namespace Crystal {
 	}
 
 	namespace Command {
+		typedef array< float > ManagedPosition;
+		typedef array< float > ManagedVector;
 
 public ref class Command
 {	
@@ -79,6 +86,12 @@ private:
 	std::list<Physics::PhysicsObjectCondition>* conditions;
 	System::Windows::Forms::PictureBox^ pictureBox;
 
+private:
+	System::Collections::Generic::List<ManagedPosition^>^ convertToManagedPositions(const Physics::ParticleVector& nativeParticles);
+
+	System::Collections::Generic::List<ManagedVector^>^ convertToManagedNormals(const Physics::ParticleVector& nativeParticles);
+
+	std::vector<Geom::Vector3d> convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions);
 };
 
 	}
