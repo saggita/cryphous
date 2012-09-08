@@ -3,16 +3,9 @@
   <ItemGroup>
     <ClCompile Include="ParticleMarshaler.cpp" />
     <ClCompile Include="ApplicationSettings.cpp" />
-    <ClCompile Include="GraphicsSettingCommand.cpp" />
-    <ClCompile Include="SimulationSettingCommand.cpp" />
-    <ClCompile Include="ItemAndVariable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ParticleMarshaler.h" />
     <ClInclude Include="ApplicationSettings.h" />
-    <ClInclude Include="GraphicsSettingCommand.h" />
-    <ClInclude Include="SimulationSettingCommand.h" />
-    <ClInclude Include="DialogCommand.h" />
-    <ClInclude Include="ItemAndVariable.h" />
   </ItemGroup>
 </Project>

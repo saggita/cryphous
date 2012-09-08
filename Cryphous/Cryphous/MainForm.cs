@@ -11,8 +11,7 @@ namespace Cryphous
 {
     public partial class MainForm : Form
     {
-        private SimulationSettingCommand simulationSettingCommand;
-        private ApplicationSettings mainCommand;
+        private Command mainCommand;
         private Point previousPoint;
 	    private bool isLeftDown;
         private bool isRightDown;
@@ -43,10 +42,9 @@ namespace Cryphous
         private void MainForm_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new ApplicationSettings( pictureBox1 );
-            simulationSettingCommand = new SimulationSettingCommand(mainCommand);
+            mainCommand = new Command( pictureBox1 );
 
-            osDialog = new PhysicsObjectSettingDialog(mainCommand, simulationSettingCommand, initialPositions);
+            osDialog = new PhysicsObjectSettingDialog(mainCommand, initialPositions);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,6 +64,7 @@ namespace Cryphous
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             mainCommand.refresh();
+            mainCommand.rendering();
         }
 
         private void toolStripMenuItemClose_Click(object sender, EventArgs e)

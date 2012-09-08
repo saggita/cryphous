@@ -2,7 +2,6 @@
 
 #include <list>
 #include "ParticleMarshaler.h"
-#include "GraphicsSettingCommand.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -18,12 +17,12 @@ namespace Crystal {
 
 	namespace Command {
 
-public ref class ApplicationSettings
+public ref class Command
 {	
 public:
-	ApplicationSettings(System::Windows::Forms::PictureBox^ pictureBox);
+	Command(System::Windows::Forms::PictureBox^ pictureBox);
 
-	~ApplicationSettings();
+	~Command();
 
 	void refresh();
 
@@ -38,6 +37,8 @@ public:
 	void proceed();
 
 	int getStep();
+
+	void clearConditions();
 
 	System::Collections::Generic::List<ManagedPosition^>^ getManagedPositions();
 
@@ -65,16 +66,17 @@ public:
 
 	void displayProfile(System::Windows::Forms::ListBox^ listBox);
 
+	void setSimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength );
+
+	void displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength );
+
+private:
 	Physics::PhysicsObjectFactory* factory;
 	Physics::SimulationSetting* simulationSetting;
 	Physics::Simulation* simulation;
 	Graphics::Renderer* renderer;
 	Graphics::GraphicsSettings* graphicsSettings;
-
 	std::list<Physics::PhysicsObjectCondition>* conditions;
-
-private:
-	GraphicsSettingCommand^ graphicsSettingCommand;
 	System::Windows::Forms::PictureBox^ pictureBox;
 
 };

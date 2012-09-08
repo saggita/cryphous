@@ -18,9 +18,8 @@ using namespace System::Xml;
 using namespace System::Diagnostics;
 using namespace System::Collections::Generic;
 
-ApplicationSettings::ApplicationSettings(System::Windows::Forms::PictureBox^ pictureBox)
+Command::Command(System::Windows::Forms::PictureBox^ pictureBox)
 {
-	this->graphicsSettingCommand = gcnew GraphicsSettingCommand(this);
 	this->pictureBox = pictureBox;
 
 	factory = new PhysicsObjectFactory;
@@ -32,7 +31,7 @@ ApplicationSettings::ApplicationSettings(System::Windows::Forms::PictureBox^ pic
 	renderer->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
 }
 
-ApplicationSettings::~ApplicationSettings()
+Command::~Command()
 {
 	delete graphicsSettings;
 	delete conditions;
@@ -42,7 +41,12 @@ ApplicationSettings::~ApplicationSettings()
 	delete factory;
 }
 
-void ApplicationSettings::refresh()
+void Command::clearConditions()
+{
+	conditions->clear();
+}
+
+void Command::refresh()
 {
 	factory->init();
 	for( std::list<PhysicsObjectCondition>::iterator iter = conditions->begin(); iter != conditions->end(); ++iter ) {
@@ -53,17 +57,17 @@ void ApplicationSettings::refresh()
 	Profiler::get()->init();
 }
 
-float ApplicationSettings::getParticleDiameter()
+float Command::getParticleDiameter()
 {
 	return simulationSetting->particleDiameter;
 }
 
-void ApplicationSettings::setParticleDiameter(const float diameter)
+void Command::setParticleDiameter(const float diameter)
 {
 	simulationSetting->particleDiameter = diameter;
 }
 
-void ApplicationSettings::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
+void Command::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPositions);
 
@@ -94,7 +98,7 @@ void ApplicationSettings::createPhysicsObject(String^ type, const float density,
 	conditions->push_back( *condition );
 }
 
-void ApplicationSettings::addParticles(int index, System::Collections::Generic::List<ManagedPosition^> ^managedPosition, System::Collections::Generic::List<ManagedPosition^> ^managedVelocity)
+void Command::addParticles(int index, System::Collections::Generic::List<ManagedPosition^> ^managedPosition, System::Collections::Generic::List<ManagedPosition^> ^managedVelocity)
 {
 	std::vector<Geom::Vector3d> points = ParticleMarshaler::convertToNative(managedPosition);
 	std::vector<Geom::Vector3d> velocities = ParticleMarshaler::convertToNative(managedVelocity);
@@ -102,30 +106,30 @@ void ApplicationSettings::addParticles(int index, System::Collections::Generic::
 	factory->addParticles(index, points, velocities );
 }
 
-void ApplicationSettings::proceed()
+void Command::proceed()
 {
 	simulation->simulate( factory, *(simulationSetting) );
 	rendering();
 }
 
-int ApplicationSettings::getStep()
+int Command::getStep()
 {
 	return simulation->getStep();
 }
 
-List<ManagedPosition^>^ ApplicationSettings::getManagedPositions()
+List<ManagedPosition^>^ Command::getManagedPositions()
 {
 	const ParticleVector& nativeParticles = factory->getParticles();
 	return ParticleMarshaler::convertToManagedPositions( nativeParticles );
 }
 
-List<ManagedVector^>^ ApplicationSettings::getManagedNormals()
+List<ManagedVector^>^ Command::getManagedNormals()
 {
 	const ParticleVector& nativeParticles = factory->getParticles();
 	return ParticleMarshaler::convertToManagedNormals( nativeParticles );
 }
 
-void ApplicationSettings::displayBoundarySetting(System::Windows::Forms::DataGridView^ view)
+void Command::displayBoundarySetting(System::Windows::Forms::DataGridView^ view)
 {
 	view->Rows->Clear();
 
@@ -142,7 +146,7 @@ void ApplicationSettings::displayBoundarySetting(System::Windows::Forms::DataGri
 	view->Rows->Add( maxData );
 }
 
-void ApplicationSettings::saveBoundarySetting(System::Windows::Forms::DataGridView^ view)
+void Command::saveBoundarySetting(System::Windows::Forms::DataGridView^ view)
 {
 	const float minX = Convert::ToSingle( view->Rows[0]->Cells[0]->Value );
 	const float minY = Convert::ToSingle( view->Rows[0]->Cells[1]->Value );
@@ -155,49 +159,49 @@ void ApplicationSettings::saveBoundarySetting(System::Windows::Forms::DataGridVi
 	simulationSetting->boundaryBox = Box( Crystal::Geom::Vector3d( minX, minY, minZ), Crystal::Geom::Vector3d( maxX, maxY, maxZ) );
 }
 
-void ApplicationSettings::rendering()
+void Command::rendering()
 {
 	renderer->rendering( factory, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
 }
 
-void ApplicationSettings::rotateX(int angle)
+void Command::rotateX(int angle)
 {
 	graphicsSettings->angleX += angle;
 	rendering();
 }
 
-void ApplicationSettings::rotateY(int angle)
+void Command::rotateY(int angle)
 {
 	graphicsSettings->angleY += angle;
 	rendering();
 }
 
-void ApplicationSettings::rotateZ(int angle)
+void Command::rotateZ(int angle)
 {
 	graphicsSettings->angleZ += angle;
 	rendering();
 }
 
-void ApplicationSettings::zoom(float zoom)
+void Command::zoom(float zoom)
 {
 	graphicsSettings->zoom += zoom;
 	rendering();
 }
 
-void ApplicationSettings::move(float x, float y)
+void Command::move(float x, float y)
 {
 	graphicsSettings->cameraX += x;
 	graphicsSettings->cameraY += y;
 	rendering();
 }
 
-void ApplicationSettings::viewReset()
+void Command::viewReset()
 {
 	graphicsSettings->resetCameraAndAngle();
 	rendering();
 }
 
-void ApplicationSettings::displayProfile(System::Windows::Forms::ListBox^ listBox)
+void Command::displayProfile(System::Windows::Forms::ListBox^ listBox)
 {
 	listBox->Items->Clear();
 	listBox->Items->Add("Cryphous");
@@ -217,7 +221,7 @@ void ApplicationSettings::displayProfile(System::Windows::Forms::ListBox^ listBo
 	}
 }
 
-void ApplicationSettings::displayParticles(System::Windows::Forms::DataGridView^ view)
+void Command::displayParticles(System::Windows::Forms::DataGridView^ view)
 {
 	view->Rows->Clear();
 
@@ -237,4 +241,16 @@ void ApplicationSettings::displayParticles(System::Windows::Forms::DataGridView^
 			
 		view->Rows->Add( rowData );
 	}
+}
+
+void Command::setSimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength )
+{
+	(simulationSetting->timeStep) = float::Parse( textBoxTimeStep->Text );
+	(simulationSetting->particleDiameter) = float::Parse( textBoxEffectLength->Text );
+}
+
+void Command::displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength )
+{
+	textBoxTimeStep->Text = (simulationSetting->timeStep).ToString();
+	textBoxEffectLength->Text = (simulationSetting->particleDiameter).ToString();
 }
