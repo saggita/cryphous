@@ -4,7 +4,7 @@
 #include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Box.h"
 
-#include "../CrystalUtility/Uncopyable.h"
+#include "Uncopyable.h"
 
 namespace Crystal{
 	namespace Physics{

@@ -2,7 +2,7 @@
 #define __PARTICLE_FACTORY_H__
 
 #include <vector>
-#include "../CrystalUtility/Uncopyable.h"
+#include "Uncopyable.h"
 
 #include "Particle.h"
 #include "ParticleConditions.h"

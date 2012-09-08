@@ -187,12 +187,6 @@
     <ClCompile Include="CrystalPhysicsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrystalPhysics\CrystalPhysics.vcxproj">
-      <Project>{fe04c2f8-a5a5-4f34-a3ff-bfd09fb044b3}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\CrystalPhysics\BoundarySolver.h" />
     <ClInclude Include="..\CrystalPhysics\Fluid.h" />
     <ClInclude Include="..\CrystalPhysics\Kernels3D.h" />

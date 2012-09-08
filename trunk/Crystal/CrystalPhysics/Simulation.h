@@ -16,7 +16,7 @@
 #include <cassert>
 #include <cmath>
 
-#include "../CrystalUtility/Uncopyable.h"
+#include "Uncopyable.h"
 
 namespace Crystal{
 	namespace Physics {
