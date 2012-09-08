@@ -32,7 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.buttonViewReset = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -62,8 +62,7 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.objectSettingToolStripMenuItem,
-            this.graphicsSettingGToolStripMenuItem});
+            this.objectSettingToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
@@ -71,16 +70,9 @@
             // objectSettingToolStripMenuItem
             // 
             this.objectSettingToolStripMenuItem.Name = "objectSettingToolStripMenuItem";
-            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.objectSettingToolStripMenuItem.Text = "ObjectSetting(&O)";
             this.objectSettingToolStripMenuItem.Click += new System.EventHandler(this.objectSettingToolStripMenuItem_Click);
-            // 
-            // graphicsSettingGToolStripMenuItem
-            // 
-            this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
-            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
-            this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
             // 
             // listBoxInformation
             // 
@@ -199,6 +191,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -218,7 +211,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonViewReset;
-        private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
         private System.Windows.Forms.Button buttonParticleInfo;
     }
 }

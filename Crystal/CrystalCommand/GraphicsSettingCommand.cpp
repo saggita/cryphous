@@ -9,8 +9,9 @@ using namespace Crystal::Graphics;
 using namespace System;
 using namespace System::Windows::Forms;
 
-GraphicsSettingCommand::GraphicsSettingCommand() :
+GraphicsSettingCommand::GraphicsSettingCommand(ApplicationSettings^ settings) :
 DialogCommand(){
+	this->settings = settings;
 }
 
 GraphicsSettingCommand::~GraphicsSettingCommand(){
@@ -25,7 +26,7 @@ void GraphicsSettingCommand::setTrackBar(
 {
 	itemAndVariables.Clear();
 
-	GraphicsSettings* graphicsSettings = ApplicationSettings::get()->graphicsSettings;
+	GraphicsSettings* graphicsSettings = settings->graphicsSettings;
 
 	itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointSize), trackBarPointSize) );
 	itemAndVariables.Push( gcnew IntTrackBar( &(graphicsSettings->pointAlpha), trackBarAlphaPower ) );

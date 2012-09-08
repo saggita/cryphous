@@ -205,10 +205,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\CrystalCommand\DialogCommand.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\CrystalCommand\GraphicsSettingCommand.cpp"
 				>
 			</File>
@@ -217,27 +213,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\CrystalCommand\MainCommand.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\ObjectSettingCommand.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\ParticleInfoCommand.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\CrystalCommand\ParticleMarshaler.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\ProfileInfoCommand.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\SimulationCommand.cpp"
 				>
 			</File>
 			<File
@@ -271,31 +247,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\CrystalCommand\MainCommand.h"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\ObjectSettingCommand.h"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\ParticleInfoCommand.h"
-				>
-			</File>
-			<File
 				RelativePath="..\CrystalCommand\ParticleMarshaler.h"
 				>
 			</File>
 			<File
-				RelativePath="..\CrystalCommand\ProfileInfoCommand.h"
-				>
-			</File>
-			<File
 				RelativePath=".\resource.h"
-				>
-			</File>
-			<File
-				RelativePath="..\CrystalCommand\SimulationCommand.h"
 				>
 			</File>
 			<File

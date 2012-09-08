@@ -11,18 +11,13 @@ namespace Cryphous
 {
     public partial class MainForm : Form
     {
-        private BoundarySettingCommand boundarySettingCommand;
-        private ObjectSettingCommand objectSettingCommand;
-        private ProfileInfoCommand profileInfoCommand;
-        private ParticleInfoCommand particleInfoCommand;
         private SimulationSettingCommand simulationSettingCommand;
-        private MainCommand mainCommand;
+        private ApplicationSettings mainCommand;
         private Point previousPoint;
 	    private bool isLeftDown;
         private bool isRightDown;
 
         private PhysicsObjectSettingDialog osDialog;
-        private GraphicsSettingForm gsDialog;
 
         private bool isStandAlone;
         List<float[]> simulatedPositions;
@@ -47,17 +42,11 @@ namespace Cryphous
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ApplicationSettings.get();
-            boundarySettingCommand = new BoundarySettingCommand();
-            objectSettingCommand = new ObjectSettingCommand();
-            profileInfoCommand = new ProfileInfoCommand();
-            particleInfoCommand = new ParticleInfoCommand();
-            simulationSettingCommand = new SimulationSettingCommand();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            mainCommand = new MainCommand(pictureBox1, "Cryphous 1.35");
+            mainCommand = new ApplicationSettings( pictureBox1 );
+            simulationSettingCommand = new SimulationSettingCommand(mainCommand);
 
-            osDialog = new PhysicsObjectSettingDialog(objectSettingCommand, boundarySettingCommand, simulationSettingCommand, initialPositions);
-            gsDialog = new GraphicsSettingForm(mainCommand);
+            osDialog = new PhysicsObjectSettingDialog(mainCommand, simulationSettingCommand, initialPositions);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,7 +54,7 @@ namespace Cryphous
             osDialog.ShowDialog();
             if (!isStandAlone)
             {
-                simulatedPositions = mainCommand.getSimulationCommand().getManagedPositions();
+                simulatedPositions = mainCommand.getManagedPositions();
             }
         }
 
@@ -76,8 +65,7 @@ namespace Cryphous
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            mainCommand.refreshSimulation();
-            mainCommand.displayInformation(listBoxInformation);
+            mainCommand.refresh();
         }
 
         private void toolStripMenuItemClose_Click(object sender, EventArgs e)
@@ -97,7 +85,7 @@ namespace Cryphous
 
         public void proceed()
         {
-            if( timeStep++ % 5 == 0 )
+            /*if( timeStep++ % 5 == 0 )
             {
                 List<float[]> addPositions = new List<float[]>();
                 float[] position = new float[3];
@@ -120,13 +108,13 @@ namespace Cryphous
                 velocity[1] = 10.0f;
                 velocity[2] = 0.0f;
                 addVelocities.Add(velocity);
-                objectSettingCommand.addParticles(0, addPositions, addVelocities);
-            }
-            mainCommand.proceedSimulation();
-            mainCommand.displayInformation(listBoxInformation);
+                mainCommand.addParticles(0, addPositions, addVelocities);
+            }*/
+            mainCommand.proceed();
+            mainCommand.displayProfile( listBoxInformation);
             if (!isStandAlone)
             {
-                simulatedPositions = mainCommand.getSimulationCommand().getManagedPositions();
+                simulatedPositions = mainCommand.getManagedPositions();
             }
         }
 
@@ -197,14 +185,9 @@ namespace Cryphous
             pictureBox1.Focus();
         }
 
-        private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            gsDialog.Show();
-        }
-
         private void buttonParticleInfo_Click(object sender, EventArgs e)
         {
-            ParticleObserveDialog poDialog = new ParticleObserveDialog(particleInfoCommand);
+            ParticleObserveDialog poDialog = new ParticleObserveDialog(mainCommand);
             poDialog.ShowDialog();
         }
     }
