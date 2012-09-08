@@ -176,30 +176,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainCommand.cpp" />
     <ClCompile Include="ParticleMarshaler.cpp" />
-    <ClCompile Include="ProfileInfoCommand.cpp" />
-    <ClCompile Include="BoundarySettingCommand.cpp" />
-    <ClCompile Include="ObjectSettingCommand.cpp" />
     <ClCompile Include="SimulationSettingCommand.cpp" />
     <ClCompile Include="GraphicsSettingCommand.cpp" />
-    <ClCompile Include="SimulationCommand.cpp" />
     <ClCompile Include="ApplicationSettings.cpp" />
-    <ClCompile Include="ParticleInfoCommand.cpp" />
-    <ClCompile Include="DialogCommand.cpp" />
     <ClCompile Include="ItemAndVariable.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MainCommand.h" />
     <ClInclude Include="ParticleMarshaler.h" />
-    <ClInclude Include="ProfileInfoCommand.h" />
-    <ClInclude Include="BoundarySettingCommand.h" />
-    <ClInclude Include="ObjectSettingCommand.h" />
     <ClInclude Include="SimulationSettingCommand.h" />
     <ClInclude Include="GraphicsSettingCommand.h" />
-    <ClInclude Include="SimulationCommand.h" />
     <ClInclude Include="ApplicationSettings.h" />
-    <ClInclude Include="ParticleInfoCommand.h" />
     <ClInclude Include="DialogCommand.h" />
     <ClInclude Include="ItemAndVariable.h" />
   </ItemGroup>

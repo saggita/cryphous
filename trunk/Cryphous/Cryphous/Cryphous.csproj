@@ -114,12 +114,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicsSettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GraphicsSettingForm.Designer.cs">
-      <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +134,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GraphicsSettingForm.resx">
-      <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

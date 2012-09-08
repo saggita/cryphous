@@ -9,13 +9,14 @@ using namespace Crystal::Command;
 using namespace System;
 using namespace System::Windows::Forms;
 
-SimulationSettingCommand::SimulationSettingCommand(void)
+SimulationSettingCommand::SimulationSettingCommand( ApplicationSettings^ settings)
 {
+	this->settings = settings;
 }
 
 void SimulationSettingCommand::setTextBox(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength )
 {
-	SimulationSetting* setting = ApplicationSettings::get()->simulationSetting;
+	SimulationSetting* setting = settings->simulationSetting;
 
 	itemAndVariables.Clear();
 	itemAndVariables.Push( gcnew FloatTextBox( &(setting->timeStep), textBoxTimeStep ) );

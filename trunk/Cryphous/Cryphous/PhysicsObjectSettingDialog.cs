@@ -10,17 +10,15 @@ namespace Cryphous
 {
     public partial class PhysicsObjectSettingDialog : Form
     {
-        private ObjectSettingCommand command;
-        private BoundarySettingCommand bsCommand;
+        private ApplicationSettings command;
         private SimulationSettingCommand ssCommand;
         private Random rand = new Random();
         private List<float[]> initialPositions;
         
-        public PhysicsObjectSettingDialog(ObjectSettingCommand command, BoundarySettingCommand bsCommand, SimulationSettingCommand ssCommand, List<float[]> initialPositions)
+        public PhysicsObjectSettingDialog(ApplicationSettings command, SimulationSettingCommand ssCommand, List<float[]> initialPositions)
         {
             InitializeComponent();
             this.command = command;
-            this.bsCommand = bsCommand;
             this.ssCommand = ssCommand;
             this.initialPositions = initialPositions;
             dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
@@ -28,7 +26,7 @@ namespace Cryphous
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
         {
-            bsCommand.displayBoundarySetting(dataGridView1);
+            command.displayBoundarySetting(dataGridView1);
             ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
 
             textBoxEffectLength.Text = "0.5";
@@ -49,7 +47,7 @@ namespace Cryphous
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            bsCommand.saveBoundarySetting(dataGridView1);
+            command.saveBoundarySetting(dataGridView1);
             ssCommand.save();
             command.refresh();
 

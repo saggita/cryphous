@@ -4,11 +4,12 @@
 
 namespace Crystal{
 	namespace Command{
+		ref class ApplicationSettings;
 
 public ref class GraphicsSettingCommand : public DialogCommand
 {
 public:
-	GraphicsSettingCommand();
+	GraphicsSettingCommand(ApplicationSettings^ settings);
 
 	~GraphicsSettingCommand();
 
@@ -18,6 +19,9 @@ public:
 		System::Windows::Forms::CheckBox^ checkBoxBoundingBox,
 		System::Windows::Forms::CheckBox^ doDisplaySurface
 		);
+
+private:
+	ApplicationSettings^ settings;
 };
 
 	}

@@ -1,89 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="ApplicationSettings.cpp">
-      <Filter>設定</Filter>
-    </ClCompile>
-    <ClCompile Include="BoundarySettingCommand.cpp">
-      <Filter>設定</Filter>
-    </ClCompile>
-    <ClCompile Include="DialogCommand.cpp">
-      <Filter>コマンド</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsSettingCommand.cpp">
-      <Filter>設定</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleInfoCommand.cpp">
-      <Filter>表示</Filter>
-    </ClCompile>
-    <ClCompile Include="ProfileInfoCommand.cpp">
-      <Filter>表示</Filter>
-    </ClCompile>
-    <ClCompile Include="SimulationSettingCommand.cpp">
-      <Filter>設定</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectSettingCommand.cpp">
-      <Filter>設定</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemAndVariable.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleMarshaler.cpp" />
-    <ClCompile Include="SimulationCommand.cpp">
-      <Filter>コマンド</Filter>
-    </ClCompile>
-    <ClCompile Include="MainCommand.cpp">
-      <Filter>コマンド</Filter>
-    </ClCompile>
+    <ClCompile Include="ApplicationSettings.cpp" />
+    <ClCompile Include="GraphicsSettingCommand.cpp" />
+    <ClCompile Include="SimulationSettingCommand.cpp" />
+    <ClCompile Include="ItemAndVariable.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApplicationSettings.h">
-      <Filter>設定</Filter>
-    </ClInclude>
-    <ClInclude Include="BoundarySettingCommand.h">
-      <Filter>設定</Filter>
-    </ClInclude>
-    <ClInclude Include="DialogCommand.h">
-      <Filter>コマンド</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsSettingCommand.h">
-      <Filter>設定</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleInfoCommand.h">
-      <Filter>表示</Filter>
-    </ClInclude>
-    <ClInclude Include="ProfileInfoCommand.h">
-      <Filter>表示</Filter>
-    </ClInclude>
-    <ClInclude Include="SimulationSettingCommand.h">
-      <Filter>設定</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectSettingCommand.h">
-      <Filter>設定</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemAndVariable.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleMarshaler.h" />
-    <ClInclude Include="SimulationCommand.h">
-      <Filter>コマンド</Filter>
-    </ClInclude>
-    <ClInclude Include="MainCommand.h">
-      <Filter>コマンド</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="コマンド">
-      <UniqueIdentifier>{b7f2a42a-bf44-49cb-9028-0af3eeb4ecd5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="設定">
-      <UniqueIdentifier>{257e93b9-ccc5-4297-87b6-cc2a2019041c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="表示">
-      <UniqueIdentifier>{7451f109-8f94-4fcb-b7fa-00cb6a2dc135}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility">
-      <UniqueIdentifier>{1dd5df5a-427f-4b2f-b783-8e7a45dae7b6}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="ApplicationSettings.h" />
+    <ClInclude Include="GraphicsSettingCommand.h" />
+    <ClInclude Include="SimulationSettingCommand.h" />
+    <ClInclude Include="DialogCommand.h" />
+    <ClInclude Include="ItemAndVariable.h" />
   </ItemGroup>
 </Project>
