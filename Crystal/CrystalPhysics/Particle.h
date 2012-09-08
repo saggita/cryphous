@@ -1,7 +1,7 @@
 #ifndef __PARTICLE_H__
 #define __PARTICLE_H__
 
-#include "../CrystalUtility/Uncopyable.h"
+#include "Uncopyable.h"
 #include <list>
 #include <vector>
 

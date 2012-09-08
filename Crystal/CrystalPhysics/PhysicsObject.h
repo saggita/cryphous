@@ -1,7 +1,7 @@
 #ifndef __PHYSICS_OBJECT_H__
 #define __PHYSICS_OBJECT_H__
 
-#include "../CrystalUtility/Uncopyable.h"
+#include "Uncopyable.h"
 #include <vector>
 
 #include "Particle.h"

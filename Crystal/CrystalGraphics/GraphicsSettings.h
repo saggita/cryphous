@@ -1,7 +1,7 @@
 #ifndef __GRAPHICS_SETTINGS_H__
 #define __GRAPHICS_SETTINGS_H__
 
-#include "../CrystalUtility/Uncopyable.h"
+#include "../CrystalPhysics/Uncopyable.h"
 
 namespace Crystal{
 	namespace Graphics {

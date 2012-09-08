@@ -10,7 +10,7 @@
 
 #include "Renderer.h"
 
-#include "../CrystalUtility/Uncopyable.h"
+#include "../CrystalPhysics/Uncopyable.h"
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Profiler.h"
