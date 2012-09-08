@@ -10,8 +10,8 @@ namespace Cryphous
 {
     public partial class ParticleObserveDialog : Form
     {
-        private ApplicationSettings command;
-        public ParticleObserveDialog(ApplicationSettings command)
+        private Command command;
+        public ParticleObserveDialog(Command command)
         {
             InitializeComponent();
             this.command = command;

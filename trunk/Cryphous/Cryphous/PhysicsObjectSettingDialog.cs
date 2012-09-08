@@ -10,16 +10,14 @@ namespace Cryphous
 {
     public partial class PhysicsObjectSettingDialog : Form
     {
-        private ApplicationSettings command;
-        private SimulationSettingCommand ssCommand;
+        private Command command;
         private Random rand = new Random();
         private List<float[]> initialPositions;
         
-        public PhysicsObjectSettingDialog(ApplicationSettings command, SimulationSettingCommand ssCommand, List<float[]> initialPositions)
+        public PhysicsObjectSettingDialog(Command command, List<float[]> initialPositions)
         {
             InitializeComponent();
             this.command = command;
-            this.ssCommand = ssCommand;
             this.initialPositions = initialPositions;
             dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
         }
@@ -27,7 +25,7 @@ namespace Cryphous
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
         {
             command.displayBoundarySetting(dataGridView1);
-            ssCommand.setTextBox(textBoxTimeStep, textBoxEffectLength);
+            command.displaySimulationSetting(textBoxTimeStep, textBoxEffectLength);
 
             textBoxEffectLength.Text = "0.5";
             setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
@@ -48,8 +46,8 @@ namespace Cryphous
         private void buttonOK_Click(object sender, EventArgs e)
         {
             command.saveBoundarySetting(dataGridView1);
-            ssCommand.save();
-            command.refresh();
+            command.setSimulationSetting(textBoxTimeStep, textBoxEffectLength);
+            command.clearConditions();
 
             foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
             {
@@ -81,6 +79,8 @@ namespace Cryphous
             {
                 command.createPhysicsObject("Obstacle", 10000.0f, 2000000.0f, 1000.0f, initialPositions);
             }
+
+            command.refresh();
             
             Hide();
         }
