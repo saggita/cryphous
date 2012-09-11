@@ -13,13 +13,22 @@ namespace Cryphous
         private Command command;
         private Random rand = new Random();
         private List<float[]> initialPositions;
+        private List<Emitter> emitters;
+
+        public List<Emitter> Emitters
+        {
+            get { return emitters; }
+        }
         
         public PhysicsObjectSettingDialog(Command command, List<float[]> initialPositions)
         {
             InitializeComponent();
+            this.emitters = new List<Emitter>();
             this.command = command;
             this.initialPositions = initialPositions;
             dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
+
+            dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 5.0, 5.0, 5.0, 1.0, 1.0, 1.0);
         }
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
@@ -48,6 +57,7 @@ namespace Cryphous
             command.saveBoundarySetting(dataGridView1);
             command.setSimulationSetting(textBoxTimeStep, textBoxEffectLength);
             command.clearConditions();
+            command.refresh();
 
             foreach (DataGridViewRow row in dataGridViewObjectSetting.Rows)
             {
@@ -73,6 +83,21 @@ namespace Cryphous
                 }
 
                 command.createPhysicsObject(row.Cells[0].Value.ToString(), Convert.ToSingle(row.Cells[3].Value), Convert.ToSingle(row.Cells[1].Value), Convert.ToSingle(row.Cells[2].Value), positions);
+            }
+
+            emitters.Clear();
+            foreach (DataGridViewRow row in dataGridViewEmitterSetting.Rows)
+            {
+                uint id = command.createPhysicsObject("Fluid", Convert.ToSingle(row.Cells[2].Value), Convert.ToSingle(row.Cells[0].Value), Convert.ToSingle(row.Cells[1].Value), new List<float[]>());
+                Emitter emitter = new Emitter();
+                emitter.id = id;
+                emitter.center[0] = Convert.ToSingle(row.Cells[3].Value);
+                emitter.center[1] = Convert.ToSingle(row.Cells[4].Value);
+                emitter.center[2] = Convert.ToSingle(row.Cells[5].Value);
+                emitter.velocity[0] = Convert.ToSingle(row.Cells[6].Value);
+                emitter.velocity[1] = Convert.ToSingle(row.Cells[7].Value);
+                emitter.velocity[2] = Convert.ToSingle(row.Cells[8].Value);
+                emitters.Add(emitter);
             }
 
             if (initialPositions != null)
@@ -155,6 +180,7 @@ namespace Cryphous
         private void comboBoxExample_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridViewObjectSetting.Rows.Clear();
+            dataGridViewEmitterSetting.Rows.Clear();
             if (comboBoxExample.Text == "DamBreak1")
             {
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
@@ -171,10 +197,13 @@ namespace Cryphous
                 setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -5.0, 5.0, 20.0, 60.0, -5.0, 5.0, "Box");
             }
-            else if (comboBoxExample.Text == "SphereDrop")
+            else if (comboBoxExample.Text == "Spring")
             {
-                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -9.0, 9.0, 20.0, 38.0, -9.0, 9.0, "Sphere");
+                setBoundary(-11.0F, 11.0F, 0.0F, 100.0F, -11.0F, 11.0F);
+                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, 10.0, 1.0, 10.0, -10.0, 10.0, -10.0);
+                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, 10.0, 1.0, -10.0, -10.0, 10.0, 10.0);
+                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, 10.0, 10.0, 10.0, -10.0);
+                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, -10.0, 10.0, 10.0, 10.0);
             }
             else if (comboBoxExample.Text == "SphereBreak")
             {
