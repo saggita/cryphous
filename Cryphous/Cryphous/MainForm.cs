@@ -84,31 +84,17 @@ namespace Cryphous
 
         public void proceed()
         {
-            /*if( timeStep++ % 5 == 0 )
-            {
-                List<float[]> addPositions = new List<float[]>();
-                float[] position = new float[3];
-                position[0] = 0.0f;
-                position[1] = 10.0f;
-                position[2] = 0.0f;
-                addPositions.Add((float[])position.Clone());
-                position[0] = 5.0f;
-                position[1] = 10.0f;
-                position[2] = 0.0f;
-                addPositions.Add(position);
-
-                List<float[]> addVelocities = new List<float[]>();
-                float[] velocity = new float[3];
-                velocity[0] = 1.0f;
-                velocity[1] = 0.0f;
-                velocity[2] = 1.0f;
-                addVelocities.Add((float[])velocity.Clone());
-                velocity[0] = -5.0f;
-                velocity[1] = 10.0f;
-                velocity[2] = 0.0f;
-                addVelocities.Add(velocity);
-                mainCommand.addParticles(0, addPositions, addVelocities);
-            }*/
+            if( mainCommand.getStep() % 4 == 0 ) {
+                List<Emitter> emitters = osDialog.Emitters;
+                foreach (Emitter emitter in emitters)
+                {
+                    List<float[]> positions = new List<float[]>();
+                    positions.Add(emitter.center);
+                    List<float[]> velocities = new List<float[]>();
+                    velocities.Add(emitter.velocity);
+                    mainCommand.addParticles(emitter.id, positions, velocities);
+                }
+            }
             mainCommand.proceed();
             mainCommand.displayProfile( listBoxInformation);
             if (!isStandAlone)

@@ -67,11 +67,9 @@ void Command::setParticleDiameter(const float diameter)
 	simulationSetting->particleDiameter = diameter;
 }
 
-void Command::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
+unsigned int Command::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Geom::Vector3d> points = convertToNative(managedPositions);
-
-	const Box& box = simulationSetting->boundaryBox;
 
 	PhysicsObjectCondition::ObjectType objectType = PhysicsObjectCondition::Fluid;
 	if(  type == "Fluid") {
@@ -87,19 +85,16 @@ void Command::createPhysicsObject(String^ type, const float density, const float
 		Debug::Assert( false );
 	}
 
-	PhysicsObjectCondition* condition = new PhysicsObjectCondition(
-		points,
-		density,
-		pressureCoe,
-		viscosityCoe,
-		objectType
-		);
-	factory->createPhysicsObject( *condition,  *(simulationSetting) );
+	PhysicsObjectCondition* condition = new PhysicsObjectCondition( points, density, pressureCoe, viscosityCoe, objectType );
 	conditions->push_back( *condition );
+	return factory->createPhysicsObject( *condition,  *(simulationSetting) )->getID();
 }
 
-void Command::addParticles(int index, System::Collections::Generic::List<ManagedPosition^> ^managedPosition, System::Collections::Generic::List<ManagedPosition^> ^managedVelocity)
+void Command::addParticles(unsigned int index, System::Collections::Generic::List<ManagedPosition^> ^managedPosition, System::Collections::Generic::List<ManagedPosition^> ^managedVelocity)
 {
+	if( factory->getPhysicsObjects().size() <= index ) {
+		return;
+	}
 	std::vector<Geom::Vector3d> points = convertToNative(managedPosition);
 	std::vector<Geom::Vector3d> velocities = convertToNative(managedVelocity);
 
