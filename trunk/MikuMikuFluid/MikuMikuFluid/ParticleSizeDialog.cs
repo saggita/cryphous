@@ -12,20 +12,23 @@ namespace MikuMikuFluid__
     public partial class ParticleSizeDialog : Form
     {
         private Bitmap textureImage;
+        private float xSize;
+        private float ySize;
+        public bool updated = false;
 
         public ParticleSizeDialog()
         {
             InitializeComponent();
         }
 
-        public float X
+        public float XSize
         {
-            get { return (float)numericUpDownX.Value; }
+            get { return xSize; }
         }
 
-        public float Y
+        public float YSize
         {
-            get { return (float)numericUpDownY.Value; }
+            get { return ySize; }
         }
 
         public Bitmap TextureImage
@@ -37,7 +40,6 @@ namespace MikuMikuFluid__
         {
             numericUpDownX.DecimalPlaces = 1;
             numericUpDownY.DecimalPlaces = 1;
-            numericUpDownAlphaScale.DecimalPlaces = 1;
         }
 
         private void buttonTexture_Click(object sender, EventArgs e)
@@ -46,23 +48,32 @@ namespace MikuMikuFluid__
             dialog.Filter = "Image Files|*.bmp;*.png;*.jpg;*.gif|All Files|*.*";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                textureImage = new Bitmap(dialog.FileName);
-                for (int x = 0; x < textureImage.Width; ++x)
+                if (updated == false)
                 {
-                    for (int y = 0; y < textureImage.Height; ++y)
-                    {
-                        Color color = textureImage.GetPixel(x, y);
-                        textureImage.SetPixel(x, y, getColorWithAlpha(color));
-                    }
+                    Bitmap originalImage = new Bitmap(dialog.FileName);
+                    textureImage = new Bitmap(originalImage, new Size(16, 16));
+                    updated = true;
                 }
             }
         }
 
-        private Color getColorWithAlpha(Color color)
+        private void numericUpDownX_ValueChanged(object sender, EventArgs e)
         {
-            double alpha = 0.299 * color.R + 0.587 * color.G + 0.114 * color.B;
-            alpha *= (double)numericUpDownAlphaScale.Value;
-            return Color.FromArgb((int)alpha, color.R, color.G, color.B);
+            if (updated == false)
+            {
+                xSize = (float)numericUpDownX.Value;
+                updated = true;
+            }
         }
+
+        private void numericUpDownY_ValueChanged(object sender, EventArgs e)
+        {
+            if (updated == false)
+            {
+                ySize = (float)numericUpDownY.Value;
+                updated = true;
+            }
+        }
+
     }
 }

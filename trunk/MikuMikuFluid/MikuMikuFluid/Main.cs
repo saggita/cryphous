@@ -51,7 +51,7 @@ namespace MikuMikuFluid
         
         private MainForm mainForm;
 
-        //private MikuMikuFluid__.ParticleSizeDialog dialog;
+        private MikuMikuFluid__.ParticleSizeDialog dialog;
 
         private const int maxParticles = 30000;
 
@@ -75,12 +75,13 @@ namespace MikuMikuFluid
                 Scene.ScreenObjects.Add(screen3D);
                 screen3Ds.Add(screen3D);
             }
-            //dialog = new MikuMikuFluid__.ParticleSizeDialog();
-            //dialog.Show();
+            dialog = new MikuMikuFluid__.ParticleSizeDialog();
         }
 
         public void Enabled()
         {
+            dialog.Show();
+        
             List<float[]> bonePositions = new List<float[]>();
             foreach( Model model in Scene.Models ) {
                 foreach (Bone bone in model.Bones)
@@ -95,19 +96,29 @@ namespace MikuMikuFluid
             foreach (ScreenImage_3D screen in screen3Ds)
             {
                 screen.Position = new Vector3(10000.0f, 10000.0f, 10000.0f);
-                /*screen.Size = new Vector2(dialog.X, dialog.Y);
-                if (dialog.TextureImage != null)
-                {
-                    screen.Image.Dispose();
-                    screen.Image = dialog.TextureImage;
-                }*/
             }
             mainForm = new MainForm(false, bonePositions);
             mainForm.Show();
         }
 
         public void Update(float Frame, float ElapsedTime)
-        {   
+        {
+            if (dialog.updated)
+            {
+                float xSize = dialog.XSize;
+                float ySize = dialog.YSize;
+                foreach (ScreenImage_3D screen in screen3Ds)
+                {
+                    screen.Size = new Vector2(xSize, ySize);
+                    if (dialog.TextureImage != null)
+                    {
+                        screen.Image.Dispose();
+                        screen.Image = dialog.TextureImage;
+                    }
+                }
+                dialog.updated = false;
+            }
+            
             Vector3 angle = Scene.Cameras[0].CurrentMotion.Angle;
             Quaternion quaternion = Quaternion.RotationYawPitchRoll(-angle.Y, -angle.X, -angle.Z);
             
@@ -132,6 +143,7 @@ namespace MikuMikuFluid
 
         public void Disabled()
         {
+            dialog.Hide();
             mainForm.Close();
         }
 

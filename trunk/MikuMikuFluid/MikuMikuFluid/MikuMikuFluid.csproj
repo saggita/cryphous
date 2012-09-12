@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MikuMikuFluid__</RootNamespace>
-    <AssemblyName>MikuMikuFluid++</AssemblyName>
+    <AssemblyName>MikuMikuFluid</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -88,7 +88,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cp MikuMikuFluid++.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid++.dll
+    <PostBuildEvent>cp MikuMikuFluid.dll ..\..\..\..\MikuMikuMoving\Plugins\MikuMikuFluid.dll
 cp Cryphous.exe ..\..\..\..\MikuMikuMoving\System\Cryphous.exe
 cp CrystalCommand.dll ..\..\..\..\MikuMikuMoving\System\CrystalCommand.dll</PostBuildEvent>
   </PropertyGroup>

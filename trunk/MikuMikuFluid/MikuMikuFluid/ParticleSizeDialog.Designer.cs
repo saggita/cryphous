@@ -31,10 +31,8 @@
             this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
             this.buttonTexture = new System.Windows.Forms.Button();
-            this.numericUpDownAlphaScale = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlphaScale)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDownX
@@ -63,6 +61,7 @@
             0,
             0,
             0});
+            this.numericUpDownX.ValueChanged += new System.EventHandler(this.numericUpDownX_ValueChanged);
             // 
             // numericUpDownY
             // 
@@ -90,6 +89,7 @@
             0,
             0,
             0});
+            this.numericUpDownY.ValueChanged += new System.EventHandler(this.numericUpDownY_ValueChanged);
             // 
             // buttonTexture
             // 
@@ -101,39 +101,11 @@
             this.buttonTexture.UseVisualStyleBackColor = true;
             this.buttonTexture.Click += new System.EventHandler(this.buttonTexture_Click);
             // 
-            // numericUpDownAlphaScale
-            // 
-            this.numericUpDownAlphaScale.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAlphaScale.Location = new System.Drawing.Point(182, 48);
-            this.numericUpDownAlphaScale.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownAlphaScale.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAlphaScale.Name = "numericUpDownAlphaScale";
-            this.numericUpDownAlphaScale.Size = new System.Drawing.Size(63, 19);
-            this.numericUpDownAlphaScale.TabIndex = 3;
-            this.numericUpDownAlphaScale.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // ParticleSizeDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 83);
-            this.Controls.Add(this.numericUpDownAlphaScale);
             this.Controls.Add(this.buttonTexture);
             this.Controls.Add(this.numericUpDownY);
             this.Controls.Add(this.numericUpDownX);
@@ -142,7 +114,6 @@
             this.Load += new System.EventHandler(this.ParticleSizeDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlphaScale)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,6 +123,5 @@
         private System.Windows.Forms.NumericUpDown numericUpDownX;
         private System.Windows.Forms.NumericUpDown numericUpDownY;
         private System.Windows.Forms.Button buttonTexture;
-        private System.Windows.Forms.NumericUpDown numericUpDownAlphaScale;
     }
 }
