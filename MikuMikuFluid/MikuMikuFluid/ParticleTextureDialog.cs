@@ -9,37 +9,19 @@ using System.Windows.Forms;
 
 namespace MikuMikuFluid__
 {
-    public partial class ParticleSizeDialog : Form
+    public partial class ParticleTextureDialog : Form
     {
         private Bitmap textureImage;
-        private float xSize;
-        private float ySize;
         public bool updated = false;
 
-        public ParticleSizeDialog()
+        public ParticleTextureDialog()
         {
             InitializeComponent();
-        }
-
-        public float XSize
-        {
-            get { return xSize; }
-        }
-
-        public float YSize
-        {
-            get { return ySize; }
         }
 
         public Bitmap TextureImage
         {
             get { return textureImage; }
-        }
-
-        private void ParticleSizeDialog_Load(object sender, EventArgs e)
-        {
-            numericUpDownX.DecimalPlaces = 1;
-            numericUpDownY.DecimalPlaces = 1;
         }
 
         private void buttonTexture_Click(object sender, EventArgs e)
@@ -56,24 +38,5 @@ namespace MikuMikuFluid__
                 }
             }
         }
-
-        private void numericUpDownX_ValueChanged(object sender, EventArgs e)
-        {
-            if (updated == false)
-            {
-                xSize = (float)numericUpDownX.Value;
-                updated = true;
-            }
-        }
-
-        private void numericUpDownY_ValueChanged(object sender, EventArgs e)
-        {
-            if (updated == false)
-            {
-                ySize = (float)numericUpDownY.Value;
-                updated = true;
-            }
-        }
-
     }
 }

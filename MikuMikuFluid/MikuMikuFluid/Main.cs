@@ -51,7 +51,7 @@ namespace MikuMikuFluid
         
         private MainForm mainForm;
 
-        private MikuMikuFluid__.ParticleSizeDialog dialog;
+        private MikuMikuFluid__.ParticleTextureDialog dialog;
 
         private const int maxParticles = 30000;
 
@@ -75,7 +75,7 @@ namespace MikuMikuFluid
                 Scene.ScreenObjects.Add(screen3D);
                 screen3Ds.Add(screen3D);
             }
-            dialog = new MikuMikuFluid__.ParticleSizeDialog();
+            dialog = new MikuMikuFluid__.ParticleTextureDialog();
         }
 
         public void Enabled()
@@ -105,11 +105,8 @@ namespace MikuMikuFluid
         {
             if (dialog.updated)
             {
-                float xSize = dialog.XSize;
-                float ySize = dialog.YSize;
                 foreach (ScreenImage_3D screen in screen3Ds)
                 {
-                    screen.Size = new Vector2(xSize, ySize);
                     if (dialog.TextureImage != null)
                     {
                         screen.Image.Dispose();

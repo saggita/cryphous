@@ -61,6 +61,7 @@
             this.comboBoxExample = new System.Windows.Forms.ComboBox();
             this.buttonCopy = new System.Windows.Forms.Button();
             this.dataGridViewEmitterSetting = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,7 +71,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
+            this.ColumnMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmitterSetting)).BeginInit();
@@ -324,7 +325,6 @@
             this.comboBoxExample.Items.AddRange(new object[] {
             "DamBreak1",
             "DamBreak2",
-            "DamDrop",
             "SphereBreak",
             "Spring"});
             this.comboBoxExample.Location = new System.Drawing.Point(64, 209);
@@ -365,7 +365,8 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
+            this.dataGridViewTextBoxColumn9,
+            this.ColumnMax});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -379,6 +380,15 @@
             this.dataGridViewEmitterSetting.RowTemplate.Height = 21;
             this.dataGridViewEmitterSetting.Size = new System.Drawing.Size(583, 84);
             this.dataGridViewEmitterSetting.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 12);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Emitter";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -438,14 +448,10 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 40;
             // 
-            // label5
+            // ColumnMax
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 12);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Emitter";
+            this.ColumnMax.HeaderText = "MaxParticles";
+            this.ColumnMax.Name = "ColumnMax";
             // 
             // PhysicsObjectSettingDialog
             // 
@@ -513,6 +519,7 @@
         private System.Windows.Forms.ComboBox comboBoxExample;
         private System.Windows.Forms.Button buttonCopy;
         private System.Windows.Forms.DataGridView dataGridViewEmitterSetting;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -522,7 +529,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMax;
 
     }
 }

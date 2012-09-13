@@ -20,10 +20,7 @@ namespace Cryphous
 
         private bool isStandAlone;
         List<float[]> simulatedPositions;
-
         List<float[]> initialPositions;
-
-        private int timeStep;
 
         public List<float[]> SimulatedPositions
         {
@@ -63,6 +60,10 @@ namespace Cryphous
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
+            foreach (Emitter emitter in osDialog.Emitters)
+            {
+                emitter.emittedParticles = 0;
+            }
             mainCommand.refresh();
             mainCommand.rendering();
         }
@@ -88,8 +89,14 @@ namespace Cryphous
                 List<Emitter> emitters = osDialog.Emitters;
                 foreach (Emitter emitter in emitters)
                 {
+                    if (emitter.emittedParticles >= emitter.maxParticles)
+                    {
+                        continue;
+                    }
+                    emitter.emittedParticles++;
                     List<float[]> positions = new List<float[]>();
                     positions.Add(emitter.center);
+
                     List<float[]> velocities = new List<float[]>();
                     velocities.Add(emitter.velocity);
                     mainCommand.addParticles(emitter.id, positions, velocities);
