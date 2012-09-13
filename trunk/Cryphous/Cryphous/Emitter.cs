@@ -10,5 +10,7 @@ namespace Cryphous
         public uint id;
         public float[] center = new float[3];
         public float[] velocity = new float[3];
+        public uint emittedParticles = 0;
+        public int maxParticles;
     }
 }

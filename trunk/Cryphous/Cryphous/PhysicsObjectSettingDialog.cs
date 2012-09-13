@@ -26,29 +26,30 @@ namespace Cryphous
             this.emitters = new List<Emitter>();
             this.command = command;
             this.initialPositions = initialPositions;
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
-
-            dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 5.0, 5.0, 5.0, 1.0, 1.0, 1.0);
+            textBoxEffectLength.Text = "0.5";
         }
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
         {
             command.displayBoundarySetting(dataGridView1);
             command.displaySimulationSetting(textBoxTimeStep, textBoxEffectLength);
-
-            textBoxEffectLength.Text = "0.5";
-            setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 10.0, -10.0, 10.0, "Box");
+            dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, -10.0, 10.0, 10.0, 10.0, 5000);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in dataGridViewObjectSetting.SelectedRows ) {
+            foreach(DataGridViewRow row in dataGridViewObjectSetting.SelectedRows ) 
+            {
                 dataGridViewObjectSetting.Rows.Remove( row );
+            }
+            foreach (DataGridViewRow row in dataGridViewEmitterSetting.SelectedRows)
+            {
+                dataGridViewEmitterSetting.Rows.Remove(row);
             }
         }
 
@@ -97,6 +98,7 @@ namespace Cryphous
                 emitter.velocity[0] = Convert.ToSingle(row.Cells[6].Value);
                 emitter.velocity[1] = Convert.ToSingle(row.Cells[7].Value);
                 emitter.velocity[2] = Convert.ToSingle(row.Cells[8].Value);
+                emitter.maxParticles = Convert.ToInt32(row.Cells[9].Value);
                 emitters.Add(emitter);
             }
 
@@ -192,18 +194,14 @@ namespace Cryphous
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, "Box"); 
             }
-            else if (comboBoxExample.Text == "DamDrop")
-            {
-                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -5.0, 5.0, 20.0, 60.0, -5.0, 5.0, "Box");
-            }
             else if (comboBoxExample.Text == "Spring")
             {
                 setBoundary(-11.0F, 11.0F, 0.0F, 100.0F, -11.0F, 11.0F);
-                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, 10.0, 1.0, 10.0, -10.0, 10.0, -10.0);
-                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, 10.0, 1.0, -10.0, -10.0, 10.0, 10.0);
-                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, 10.0, 10.0, 10.0, -10.0);
-                dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, -10.0, 10.0, 10.0, 10.0);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 10.0, 5.0, 10.0, -10.0, 0.0, -10.0, 5000);
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 10.0, 5.0, -10.0, -10.0, 0.0, 10.0, 5000);
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, -10.0, 5.0, 10.0, 10.0, 0.0, -10.0, 5000);
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, -10.0, 5.0, -10.0, 10.0, 0.0, 10.0, 5000);
             }
             else if (comboBoxExample.Text == "SphereBreak")
             {
@@ -221,9 +219,22 @@ namespace Cryphous
         {
             foreach (DataGridViewRow row in dataGridViewObjectSetting.SelectedRows)
             {
-                dataGridViewObjectSetting.Rows.Add( row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value, row.Cells[4].Value,
-                    row.Cells[5].Value, row.Cells[6].Value, row.Cells[7].Value, row.Cells[8].Value, row.Cells[9].Value, row.Cells[10].Value);
+                dataGridViewObjectSetting.Rows.Add( CloneWithValues(row));
             }
+            foreach (DataGridViewRow row in dataGridViewEmitterSetting.SelectedRows)
+            {
+                dataGridViewEmitterSetting.Rows.Add( CloneWithValues(row));
+            }
+        }
+
+        private DataGridViewRow CloneWithValues(DataGridViewRow row)
+        {
+            DataGridViewRow clonedRow = (DataGridViewRow)row.Clone();
+            for (Int32 index = 0; index < row.Cells.Count; index++)
+            {
+                clonedRow.Cells[index].Value = row.Cells[index].Value;
+            }
+            return clonedRow;
         }
     }
 }
