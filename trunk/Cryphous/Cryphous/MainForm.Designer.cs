@@ -39,7 +39,6 @@
             this.buttonNextStep = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonParticleInfo = new System.Windows.Forms.Button();
             this.buttonViewReset = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -143,7 +142,6 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.buttonParticleInfo);
             this.splitContainer1.Panel2.Controls.Add(this.buttonViewReset);
             this.splitContainer1.Panel2.Controls.Add(this.listBoxInformation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRefresh);
@@ -152,16 +150,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(767, 480);
             this.splitContainer1.SplitterDistance = 640;
             this.splitContainer1.TabIndex = 7;
-            // 
-            // buttonParticleInfo
-            // 
-            this.buttonParticleInfo.Location = new System.Drawing.Point(3, 231);
-            this.buttonParticleInfo.Name = "buttonParticleInfo";
-            this.buttonParticleInfo.Size = new System.Drawing.Size(120, 25);
-            this.buttonParticleInfo.TabIndex = 7;
-            this.buttonParticleInfo.Text = "ParticleInfo";
-            this.buttonParticleInfo.UseVisualStyleBackColor = true;
-            this.buttonParticleInfo.Click += new System.EventHandler(this.buttonParticleInfo_Click);
             // 
             // buttonViewReset
             // 
@@ -211,6 +199,5 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonViewReset;
-        private System.Windows.Forms.Button buttonParticleInfo;
     }
 }

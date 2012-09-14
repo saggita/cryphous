@@ -176,11 +176,5 @@ namespace Cryphous
         {
             pictureBox1.Focus();
         }
-
-        private void buttonParticleInfo_Click(object sender, EventArgs e)
-        {
-            ParticleObserveDialog poDialog = new ParticleObserveDialog(mainCommand);
-            poDialog.ShowDialog();
-        }
     }
 }
