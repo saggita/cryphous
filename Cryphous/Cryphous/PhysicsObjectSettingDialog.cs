@@ -11,7 +11,6 @@ namespace Cryphous
     public partial class PhysicsObjectSettingDialog : Form
     {
         private Command command;
-        private Random rand = new Random();
         private List<float[]> initialPositions;
         private List<Emitter> emitters;
 
@@ -26,7 +25,6 @@ namespace Cryphous
             this.emitters = new List<Emitter>();
             this.command = command;
             this.initialPositions = initialPositions;
-            textBoxEffectLength.Text = "0.5";
         }
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
@@ -117,11 +115,6 @@ namespace Cryphous
             Hide();
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private List<float[]> createPositions(float minX, float maxX, float minY, float maxY, float minZ, float maxZ, bool isSphere)
         {
             List<float[]> positions = new List<float[]>();
@@ -196,12 +189,12 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Spring")
             {
-                setBoundary(-11.0F, 11.0F, 0.0F, 100.0F, -11.0F, 11.0F);
-                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
-                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 10.0, 5.0, 10.0, -10.0, 0.0, -10.0, 5000);
-                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 10.0, 5.0, -10.0, -10.0, 0.0, 10.0, 5000);
-                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, -10.0, 5.0, 10.0, 10.0, 0.0, -10.0, 5000);
-                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, -10.0, 5.0, -10.0, 10.0, 0.0, 10.0, 5000);
+                setBoundary(-10.0F, 10.0F, 0.0F, 100.0F, -10.0F, 10.0F);
+                dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 2.0, -10.0, 10.0, "Box");
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 9.0, 5.0, 9.0, -10.0, 5.0, -10.0, 5000);
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 9.0, 5.0, -9.0, -10.0, 5.0, 10.0, 5000);
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, -9.0, 5.0, 9.0, 10.0, 5.0, -10.0, 5000);
+                dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, -9.0, 5.0, -9.0, 10.0, 5.0, 10.0, 5000);
             }
             else if (comboBoxExample.Text == "SphereBreak")
             {

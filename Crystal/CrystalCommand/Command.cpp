@@ -199,11 +199,6 @@ void Command::viewReset()
 void Command::displayProfile(System::Windows::Forms::ListBox^ listBox)
 {
 	listBox->Items->Clear();
-	listBox->Items->Add("Cryphous");
-	listBox->Items->Add("Powered by");
-	listBox->Items->Add("Crystal 1.6");
-	listBox->Items->Add("(c) 2012 Kuroro");
-	listBox->Items->Add(" ");
 	listBox->Items->Add("Particles = " + factory->getParticles().size() );
 	listBox->Items->Add("Step = " + simulation->getStep() );
 	listBox->Items->Add("Time = " + simulation->getSimulationTime() );
