@@ -14,10 +14,4 @@ BOOST_AUTO_TEST_CASE( POINT_SPRITE_RENDERER_TEST )
 	PointSpriteRenderer renderer( buffer);
 	renderer.render( sprite, Point2d(10,10));
 	BOOST_CHECK( buffer.getColor(Point2d(10,10)) == Color4d(0.0, 0.0,1.0) );
-
-	Bitmap image( 256, 256 );
-	
-	image.dump("../ColorBuffer.bmp", buffer.getColorBuffer());
-	image.dump("../NormalBuffer.bmp", buffer.getNormalBuffer());
-	image.dump("../DepthBuffer.bmp", buffer.getDepthBuffer());
 }

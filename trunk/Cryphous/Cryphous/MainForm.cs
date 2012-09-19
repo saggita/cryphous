@@ -176,5 +176,11 @@ namespace Cryphous
         {
             pictureBox1.Focus();
         }
+
+        private void buttonRenderingTest_Click(object sender, EventArgs e)
+        {
+            RenderingForm form = new RenderingForm();
+            form.ShowDialog(this);
+        }
     }
 }
