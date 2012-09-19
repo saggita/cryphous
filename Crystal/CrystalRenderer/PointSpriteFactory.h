@@ -11,11 +11,11 @@ namespace Crystal{
 class PointSpriteFactory
 {
 public:
-	PointSpriteFactory(unsigned int howMany) :
+	PointSpriteFactory(unsigned int howMany, const Color4d& color) :
 	  sprites(howMany)
 	{
 		for( unsigned int i = 0; i < howMany; ++i ) {
-			sprites[i] = new PointSprite( i, Color4d() );
+			sprites[i] = new PointSprite( i, color );
 		}
 	}
 
