@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonViewReset = new System.Windows.Forms.Button();
+            this.buttonRenderingTest = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -142,6 +143,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonRenderingTest);
             this.splitContainer1.Panel2.Controls.Add(this.buttonViewReset);
             this.splitContainer1.Panel2.Controls.Add(this.listBoxInformation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRefresh);
@@ -160,6 +162,16 @@
             this.buttonViewReset.Text = "ViewReset";
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
+            // 
+            // buttonRenderingTest
+            // 
+            this.buttonRenderingTest.Location = new System.Drawing.Point(1, 228);
+            this.buttonRenderingTest.Name = "buttonRenderingTest";
+            this.buttonRenderingTest.Size = new System.Drawing.Size(120, 25);
+            this.buttonRenderingTest.TabIndex = 7;
+            this.buttonRenderingTest.Text = "RenderingTest";
+            this.buttonRenderingTest.UseVisualStyleBackColor = true;
+            this.buttonRenderingTest.Click += new System.EventHandler(this.buttonRenderingTest_Click);
             // 
             // MainForm
             // 
@@ -199,5 +211,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonViewReset;
+        private System.Windows.Forms.Button buttonRenderingTest;
     }
 }
