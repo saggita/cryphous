@@ -41,6 +41,11 @@ public:
 		return colors[point.x][point.y];
 	}
 
+	void addColor(const Point2d& point, const Color4d& color)
+	{
+		colors[point.x][point.y] += color;
+	}
+
 	void setColor(const Point2d& point, const Color4d& color)
 	{
 		colors[point.x][point.y] = color;

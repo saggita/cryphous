@@ -26,7 +26,7 @@ public:
 					const Color4d& spriteColor = sprite.getBuffer().getColor( spritePoint );
 					const float spriteDepth = sprite.getBuffer().getDepth( spritePoint );
 					const Geom::Vector3d& spriteNormal = sprite.getBuffer().getNormal( spritePoint );
-					buffer.setColor( bufferPoint, spriteColor );
+					buffer.addColor( bufferPoint, spriteColor );
 					buffer.setDepth( bufferPoint, spriteDepth );
 					buffer.setNormal( bufferPoint, spriteNormal );
 				}

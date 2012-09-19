@@ -32,6 +32,8 @@ public:
 
 	int getHeight() const { return colors.getHeight(); }
 
+	void addColor(const Point2d& point, const Color4d& color) { colors.addColor( point, color); }
+
 	void setColor(const Point2d& point, const Color4d& color) { colors.setColor(point, color); }
 
 	Color4d getColor(const Point2d& point) const { return colors.getColor( point); }
