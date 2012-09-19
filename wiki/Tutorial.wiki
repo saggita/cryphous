@@ -7,7 +7,8 @@
 エンジンはヘッダファイルのみの構成のため，
 ビルド不要です．
 
-肝心の最新版エンジンは近日中に公開します．
+Cryphous 1.7 Sources（Downloads より入手可能）に対応．
+CrystalGeom と CrystalPhysics フォルダを任意の場所にコピーすればインストール完了です。
 
 = Details =
 
