@@ -17,7 +17,7 @@ public:
 		for( int x = 0; x < xWidth; ++x ) {
 			depths[x].resize( yWidth );
 			for( int y = 0; y < yWidth; ++y ) {
-				depths[x][y] = 0.0f;
+				depths[x][y] = 1.0e+9f;
 			}
 		}
 	}

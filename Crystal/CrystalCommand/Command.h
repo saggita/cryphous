@@ -77,7 +77,7 @@ public:
 
 	void displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength );
 
-private:
+public:
 	Physics::PhysicsObjectFactory* factory;
 	Physics::SimulationSetting* simulationSetting;
 	Physics::Simulation* simulation;

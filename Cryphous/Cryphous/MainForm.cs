@@ -179,8 +179,8 @@ namespace Cryphous
 
         private void buttonRenderingTest_Click(object sender, EventArgs e)
         {
-            RenderingForm form = new RenderingForm();
-            form.ShowDialog(this);
+            RenderingForm form = new RenderingForm(mainCommand);
+            form.Show(this);
         }
     }
 }
