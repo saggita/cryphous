@@ -14,21 +14,44 @@ namespace Cryphous
 {
     public partial class RenderingForm : Form
     {
-        public RenderingForm()
+        private RenderingCommand command;
+
+        public RenderingForm(Command mainCommand)
         {
             InitializeComponent();
+            command = new RenderingCommand( mainCommand);
         }
 
         private void RenderingForm_Load(object sender, EventArgs e)
         {
-            RenderingCommand command = new RenderingCommand();
-            pictureBox1.Image = command.getImage(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1_SizeChanged(sender, e);
+            pictureBox1.Image = command.getThicknessImage();
+        }
+
+        private void buttonSurface_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = command.getSurfaceImage();
+        }
+
+        private void buttonThickness_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = command.getThicknessImage();
+        }
+
+        private void buttonNormal_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = command.getNormalImage();
+        }
+
+        private void buttonDepth_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = command.getDepthImage();
         }
 
         private void pictureBox1_SizeChanged(object sender, EventArgs e)
         {
-            RenderingCommand command = new RenderingCommand();
-            pictureBox1.Image = command.getImage(pictureBox1.Width, pictureBox1.Height);
+            command.setHeight(pictureBox1.Height);
+            command.setWidth(pictureBox1.Width);
         }
     }
 }

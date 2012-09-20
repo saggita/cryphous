@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	void render(const PointSprite& sprite, const Point2d& center)
+	void renderThickness(const PointSprite& sprite, const Point2d& center)
 	{
 		Point2d spritePoint( 0, 0);
 		const int radius = sprite.getRadius();
@@ -24,11 +24,28 @@ public:
 			for( bufferPoint.y = center.y - radius, spritePoint.y = 0; bufferPoint.y <= center.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
 				if( buffer.isValidPoint( bufferPoint) ) {
 					const Color4d& spriteColor = sprite.getBuffer().getColor( spritePoint );
-					const float spriteDepth = sprite.getBuffer().getDepth( spritePoint );
-					const Geom::Vector3d& spriteNormal = sprite.getBuffer().getNormal( spritePoint );
 					buffer.addColor( bufferPoint, spriteColor );
-					buffer.setDepth( bufferPoint, spriteDepth );
-					buffer.setNormal( bufferPoint, spriteNormal );
+				}
+			}
+		}
+	}
+
+	void renderSurface(const PointSprite& sprite, const Point2d& center)
+	{
+		Point2d spritePoint( 0, 0);
+		const int radius = sprite.getRadius();
+		Point2d bufferPoint;
+		for( bufferPoint.x = center.x - radius; bufferPoint.x <= center.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
+			for( bufferPoint.y = center.y - radius, spritePoint.y = 0; bufferPoint.y <= center.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
+				if( buffer.isValidPoint( bufferPoint) ) {
+					const Color4d& spriteColor = sprite.getBuffer().getColor( spritePoint );
+					const Geom::Vector3d& spriteNormal = sprite.getBuffer().getNormal( spritePoint);
+					const float spriteDepth = sprite.getBuffer().getDepth( spritePoint );
+					if( spriteDepth < buffer.getDepth( bufferPoint ) ) {
+						buffer.setColor( bufferPoint, spriteColor );
+						buffer.setDepth( bufferPoint, spriteDepth );
+						buffer.setNormal( bufferPoint, spriteNormal );
+					}
 				}
 			}
 		}
