@@ -17,6 +17,21 @@ public:
 	int x;
 	int y;
 };
+
+struct Point25d
+{
+public:
+	Point25d()
+	{
+	}
+	Point25d(const Point2d& point, float depth):
+		point( point)
+	{
+	}
+	Point2d point;
+	float depth;
+};
+
 	}
 }
 

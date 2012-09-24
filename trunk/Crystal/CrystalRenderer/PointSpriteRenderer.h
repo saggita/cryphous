@@ -15,13 +15,13 @@ public:
 	{
 	}
 
-	void renderThickness(const PointSprite& sprite, const Point2d& center)
+	void renderThickness(const PointSprite& sprite, const Point25d& center)
 	{
 		Point2d spritePoint( 0, 0);
 		const int radius = sprite.getRadius();
 		Point2d bufferPoint;
-		for( bufferPoint.x = center.x - radius; bufferPoint.x <= center.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
-			for( bufferPoint.y = center.y - radius, spritePoint.y = 0; bufferPoint.y <= center.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
+		for( bufferPoint.x = center.point.x - radius; bufferPoint.x <= center.point.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
+			for( bufferPoint.y = center.point.y - radius, spritePoint.y = 0; bufferPoint.y <= center.point.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
 				if( buffer.isValidPoint( bufferPoint) ) {
 					const Color4d& spriteColor = sprite.getBuffer().getColor( spritePoint );
 					buffer.addColor( bufferPoint, spriteColor );
@@ -30,17 +30,17 @@ public:
 		}
 	}
 
-	void renderSurface(const PointSprite& sprite, const Point2d& center)
+	void renderSurface(const PointSprite& sprite, const Point25d& center)
 	{
 		Point2d spritePoint( 0, 0);
 		const int radius = sprite.getRadius();
 		Point2d bufferPoint;
-		for( bufferPoint.x = center.x - radius; bufferPoint.x <= center.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
-			for( bufferPoint.y = center.y - radius, spritePoint.y = 0; bufferPoint.y <= center.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
+		for( bufferPoint.x = center.point.x - radius; bufferPoint.x <= center.point.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
+			for( bufferPoint.y = center.point.y - radius, spritePoint.y = 0; bufferPoint.y <= center.point.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
 				if( buffer.isValidPoint( bufferPoint) ) {
 					const Color4d& spriteColor = sprite.getBuffer().getColor( spritePoint );
 					const Geom::Vector3d& spriteNormal = sprite.getBuffer().getNormal( spritePoint);
-					const float spriteDepth = sprite.getBuffer().getDepth( spritePoint );
+					const float spriteDepth = sprite.getBuffer().getDepth( spritePoint ) + center.depth;
 					if( spriteDepth < buffer.getDepth( bufferPoint ) ) {
 						buffer.setColor( bufferPoint, spriteColor );
 						buffer.setDepth( bufferPoint, spriteDepth );

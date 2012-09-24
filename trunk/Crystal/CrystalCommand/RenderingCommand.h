@@ -7,7 +7,7 @@ using namespace System::Drawing;
 namespace Crystal{
 	namespace Renderer{
 		class PointSpriteFactory;
-		struct Point2d;
+		struct Point25d;
 	}
 	namespace Command{
 		ref class Command;
@@ -32,7 +32,7 @@ public:
 	void setHeight(int height) { this->height = height; }
 
 private:
-	std::vector<Renderer::Point2d> getPointsFromParticles();
+	std::vector<Renderer::Point25d> getPointsFromParticles();
 
 private:
 	Renderer::PointSpriteFactory* factory;
