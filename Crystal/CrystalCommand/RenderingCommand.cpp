@@ -26,12 +26,12 @@ RenderingCommand::~RenderingCommand()
 	delete factory;
 }
 
-std::vector<Point2d> RenderingCommand::getPointsFromParticles()
+std::vector<Point25d> RenderingCommand::getPointsFromParticles()
 {
-	std::vector<Point2d> points;
+	std::vector<Point25d> points;
 	const ParticleVector& particles = mainCommand->factory->getParticles();
 	for( unsigned int i = 0; i < particles.size(); ++i ) {
-		points.push_back( Point2d( particles[i]->center.getX() * 100, particles[i]->center.getY() * 10 ) );
+		points.push_back( Point25d( Point2d( static_cast<int>(particles[i]->center.getX() * 100), static_cast<int>(particles[i]->center.getY() * 100) ), particles[i]->center.getZ() ) );
 	}
 	return points;
 }
@@ -43,7 +43,7 @@ Bitmap^ RenderingCommand::getThicknessImage()
 	PointSpriteRenderer renderer( buffer);
 
 	//#pragma omp parallel for	
-	const std::vector<Point2d>& points = getPointsFromParticles();
+	const std::vector<Point25d>& points = getPointsFromParticles();
 	for( unsigned int i = 0; i < points.size(); ++i ) {
 		renderer.renderThickness( *sprites[10], points[i] );
 	}
@@ -55,7 +55,7 @@ Bitmap^ RenderingCommand::getThicknessImage()
 			const float red = std::min( color.red, 1.0f );
 			const float green = std::min( color.green, 1.0f );
 			const float blue = std::min( color.blue, 1.0f );
-			bitmap->SetPixel( x, y, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
+			bitmap->SetPixel( x, height - y-1, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
 		}
 	}
 	return bitmap;
@@ -68,7 +68,7 @@ Bitmap^ RenderingCommand::getSurfaceImage()
 	PointSpriteRenderer renderer( buffer);
 
 	//#pragma omp parallel for	
-	const std::vector<Point2d>& points = getPointsFromParticles();
+	const std::vector<Point25d>& points = getPointsFromParticles();
 	for( unsigned int i = 0; i < points.size(); ++i ) {
 		renderer.renderSurface( *sprites[10], points[i] );
 	}
@@ -80,7 +80,7 @@ Bitmap^ RenderingCommand::getSurfaceImage()
 			const float red = std::min( color.red, 1.0f );
 			const float green = std::min( color.green, 1.0f );
 			const float blue = std::min( color.blue, 1.0f );
-			bitmap->SetPixel( x, y, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
+			bitmap->SetPixel( x, height - y-1, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
 		}
 	}
 	return bitmap;
@@ -93,7 +93,7 @@ Bitmap^ RenderingCommand::getNormalImage()
 	PointSpriteRenderer renderer( buffer);
 
 	//#pragma omp parallel for	
-	const std::vector<Point2d>& points = getPointsFromParticles();
+	const std::vector<Point25d>& points = getPointsFromParticles();
 	for( unsigned int i = 0; i < points.size(); ++i ) {
 		renderer.renderSurface( *sprites[10], points[i] );
 	}
@@ -108,7 +108,7 @@ Bitmap^ RenderingCommand::getNormalImage()
 			const float red = std::min( ::fabs(normal.getX()), 1.0f );
 			const float green = std::min( ::fabs(normal.getY()), 1.0f );
 			const float blue = std::min( ::fabs(normal.getZ()), 1.0f );
-			bitmap->SetPixel( x, y, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
+			bitmap->SetPixel( x, height - y-1, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
 		}
 	}
 	return bitmap;
@@ -121,7 +121,7 @@ Bitmap^ RenderingCommand::getDepthImage()
 	PointSpriteRenderer renderer( buffer);
 
 	//#pragma omp parallel for	
-	const std::vector<Point2d>& points = getPointsFromParticles();
+	const std::vector<Point25d>& points = getPointsFromParticles();
 	for( unsigned int i = 0; i < points.size(); ++i ) {
 		renderer.renderSurface( *sprites[10], points[i] );
 	}
@@ -133,7 +133,7 @@ Bitmap^ RenderingCommand::getDepthImage()
 			const float red = std::min( depth, 1.0f );
 			const float green = std::min( depth, 1.0f );
 			const float blue = std::min( depth, 1.0f );
-			bitmap->SetPixel( x, y, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
+			bitmap->SetPixel( x, height - y-1, Color::FromArgb( int(red * 255), int(green * 255), int(blue * 255)) );
 		}
 	}
 	return bitmap;
