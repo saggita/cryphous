@@ -1,7 +1,6 @@
 #define BOOST_TEST_NO_LIB
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 
-#include "../CrystalGeom/Vector3d.h"
 #include "../CrystalGeom/Matrix3d.h"
 
 using namespace Crystal::Geom;
