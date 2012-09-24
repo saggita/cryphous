@@ -7,7 +7,6 @@
 
 namespace Crystal{
 	namespace Geom{
-		class Vector3d;
 
 class Matrix3d 
 {
