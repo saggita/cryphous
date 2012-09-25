@@ -83,6 +83,7 @@
     <ClCompile Include="CrystalRendererTest.cpp" />
     <ClCompile Include="DepthBufferTest.cpp" />
     <ClCompile Include="FrameBufferTest.cpp" />
+    <ClCompile Include="ModelViewProjectionMatrixTest.cpp" />
     <ClCompile Include="NormalBufferTest.cpp" />
     <ClCompile Include="Point2dTest.cpp" />
     <ClCompile Include="PointSpriteFactoryTest.cpp" />
@@ -99,7 +100,7 @@
     <ClInclude Include="..\CrystalRenderer\PointSprite.h" />
     <ClInclude Include="..\CrystalRenderer\PointSpriteFactory.h" />
     <ClInclude Include="..\CrystalRenderer\PointSpriteRenderer.h" />
-    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="ModelViewProjectionMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
