@@ -23,9 +23,9 @@ public:
 		}
 	}
 
-	int getWidth() const { return normals.size(); }
+	size_t getWidth() const { return normals.size(); }
 
-	int getHeight() const { return normals[0].size(); }
+	size_t getHeight() const { return normals[0].size(); }
 
 	void clear(const Geom::Vector3d& normal)
 	{

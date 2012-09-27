@@ -23,9 +23,9 @@ public:
 		}
 	}
 
-	int getWidth() const { return colors.size(); }
+	size_t getWidth() const { return colors.size(); }
 
-	int getHeight() const { return colors.empty() ? 0 : colors[0].size(); }
+	size_t getHeight() const { return colors.empty() ? 0 : colors[0].size(); }
 
 	void clear(const Color4d& color)
 	{

@@ -22,9 +22,9 @@ public:
 		}
 	}
 
-	int getWidth() const { return depths.size(); }
+	size_t getWidth() const { return depths.size(); }
 
-	int getHeight() const { return depths[0].size(); }
+	size_t getHeight() const { return depths[0].size(); }
 
 	void setDepth(const Point2d& point, const float depth)
 	{

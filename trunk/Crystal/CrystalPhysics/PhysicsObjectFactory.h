@@ -11,6 +11,7 @@
 #include "Fluid.h"
 #include "Rigid.h"
 #include "Obstacle.h"
+#include "Elastic.h"
 
 namespace Crystal{
 	namespace Physics{
@@ -23,6 +24,7 @@ struct PhysicsObjectCondition
 		Fluid,
 		Rigid,
 		Obstacle,
+		Elastic,
 	};
 
 	PhysicsObjectCondition( const std::vector<Geom::Vector3d>& points, const float density, const float pressureCoefficient, const float viscosityCoefficient, const ObjectType objectType) :
@@ -80,6 +82,9 @@ public:
 				break;
 			case PhysicsObjectCondition::Obstacle:
 				object = new Obstacle( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory );
+				break;
+			case PhysicsObjectCondition::Elastic:
+				object = new Elastic( nextID++, condition.density, condition.pressureCoefficient, condition.viscosityCoefficient, particleFactory );
 				break;
 			default:
 				assert( false );

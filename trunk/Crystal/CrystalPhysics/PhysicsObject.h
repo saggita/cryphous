@@ -27,6 +27,7 @@ public:
 		Fluid,
 		Rigid,
 		Obstacle,
+		Elastic,
 	};
 
 	virtual Type getType() = 0;

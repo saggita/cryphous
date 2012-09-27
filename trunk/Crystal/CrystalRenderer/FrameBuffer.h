@@ -28,9 +28,9 @@ public:
 	{
 	}
 
-	int getWidth() const { return colors.getWidth(); }
+	size_t getWidth() const { return colors.getWidth(); }
 
-	int getHeight() const { return colors.getHeight(); }
+	size_t getHeight() const { return colors.getHeight(); }
 
 	void addColor(const Point2d& point, const Color4d& color) { colors.addColor( point, color); }
 

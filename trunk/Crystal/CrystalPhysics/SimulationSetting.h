@@ -13,7 +13,7 @@ class SimulationSetting : private Uncopyable
 {
 public:
 	SimulationSetting(void) :
-	  timeStep( 0.0075f ),
+	  timeStep( 0.025f ),
 	  particleDiameter(0.5f),
 	  boundaryBox( Geom::Vector3d(-10.0f, 0.0f, -10.0f), Geom::Vector3d(10.0f, 100.0f, 10.0f) )
 	  {};

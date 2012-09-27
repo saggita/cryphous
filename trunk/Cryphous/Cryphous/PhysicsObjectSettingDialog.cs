@@ -33,21 +33,19 @@ namespace Cryphous
             command.displaySimulationSetting(textBoxTimeStep, textBoxEffectLength);
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 10.0, -10.0, 10.0, "Box");
-            dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, -10.0, 10.0, 10.0, 10.0, 5000);
-        }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             foreach(DataGridViewRow row in dataGridViewObjectSetting.SelectedRows ) 
             {
-                dataGridViewObjectSetting.Rows.Remove( row );
+                dataGridViewObjectSetting.Rows.Remove(row);
             }
             foreach (DataGridViewRow row in dataGridViewEmitterSetting.SelectedRows)
             {
                 dataGridViewEmitterSetting.Rows.Remove(row);
+            }
+            foreach (DataGridViewRow row in dataGridViewElasticSetting.SelectedRows)
+            {
+                dataGridViewElasticSetting.Rows.Remove(row);
             }
         }
 
@@ -98,6 +96,19 @@ namespace Cryphous
                 emitter.velocity[2] = Convert.ToSingle(row.Cells[8].Value);
                 emitter.maxParticles = Convert.ToInt32(row.Cells[9].Value);
                 emitters.Add(emitter);
+            }
+
+            foreach (DataGridViewRow row in dataGridViewElasticSetting.Rows)
+            {
+                float pressure = Convert.ToSingle( row.Cells[0].Value );
+                float viscosity = Convert.ToSingle( row.Cells[1].Value );
+                float density = Convert.ToSingle(row.Cells[2].Value);
+                float minX = Convert.ToSingle(row.Cells[3].Value);
+                float maxX = Convert.ToSingle(row.Cells[4].Value);
+                float startY = Convert.ToSingle(row.Cells[5].Value);
+                float startZ = Convert.ToSingle(row.Cells[6].Value);
+                List<float[]> positions = createPositions( minX, maxX, startY, startY + command.getParticleDiameter() * 2.0f, startZ, startZ + command.getParticleDiameter() * 2.0f, false );
+                command.createPhysicsObject("Elastic", density, pressure, viscosity, positions);
             }
 
             if (initialPositions != null)
@@ -218,6 +229,10 @@ namespace Cryphous
             {
                 dataGridViewEmitterSetting.Rows.Add( CloneWithValues(row));
             }
+            foreach (DataGridViewRow row in dataGridViewElasticSetting.SelectedRows)
+            {
+                dataGridViewElasticSetting.Rows.Add(CloneWithValues(row));
+            }
         }
 
         private DataGridViewRow CloneWithValues(DataGridViewRow row)
@@ -228,6 +243,21 @@ namespace Cryphous
                 clonedRow.Cells[index].Value = row.Cells[index].Value;
             }
             return clonedRow;
+        }
+
+        private void dataGridViewElasticSetting_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridViewElasticSetting.Rows.Add(20000.0, 200.0, 1000.0, 0.0, 1.01, 0.0, 0.0);
+        }
+
+        private void dataGridViewEmitterSetting_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridViewEmitterSetting.Rows.Add(20000.0, 200.0, 1000.0, -10.0, 1.0, -10.0, 10.0, 10.0, 10.0, 5000);
+        }
+
+        private void dataGridViewObjectSetting_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 10.0, -10.0, 10.0, "Box");
         }
     }
 }
