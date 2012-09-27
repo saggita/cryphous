@@ -70,7 +70,7 @@ void Command::setParticleDiameter(const float diameter)
 unsigned int Command::createPhysicsObject(String^ type, const float density, const float pressureCoe, const float viscosityCoe, System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
 {
 	std::vector<Geom::Vector3d> points = convertToNative(managedPositions);
-
+	
 	PhysicsObjectCondition::ObjectType objectType = PhysicsObjectCondition::Fluid;
 	if(  type == "Fluid") {
 		objectType = PhysicsObjectCondition::Fluid;
@@ -80,6 +80,9 @@ unsigned int Command::createPhysicsObject(String^ type, const float density, con
 	}
 	else if( type == "Rigid") {
 		objectType = PhysicsObjectCondition::Rigid;
+	}
+	else if( type == "Elastic") {
+		objectType = PhysicsObjectCondition::Elastic;
 	}
 	else{
 		Debug::Assert( false );

@@ -211,6 +211,7 @@
     <ClInclude Include="..\CrystalPhysics\SimulationSetting.h" />
     <ClInclude Include="..\CrystalPhysics\SPHPairSolver.h" />
     <ClInclude Include="..\CrystalPhysics\SPHSolver.h" />
+    <ClInclude Include="Elastic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -54,6 +54,21 @@ BOOST_AUTO_TEST_CASE(PHYSICS_OBJECT_FACTORY_TEST_CREATE_RIGID)
 	BOOST_CHECK( !rigid->getParticles().empty() );
 }
 
+BOOST_AUTO_TEST_CASE(PHYSICS_OBJECT_FACTORY_TEST_CREATE_ELASTIC)
+{
+	PhysicsObjectFactory factory;
+	SimulationSetting setting;
+	setting.particleDiameter = 1.0;
+	std::vector<Vector3d> points;
+	points.push_back( Vector3d(0.0, 0.0, 0.0 ) );
+	PhysicsObjectCondition condition( points, 1000.0f, 1.0f, 0.4f, PhysicsObjectCondition::Elastic );
+	PhysicsObject* elastic = factory.createPhysicsObject( condition, setting);
+	BOOST_CHECK( elastic != 0 );
+	BOOST_CHECK_EQUAL( elastic->getID(), 0 );
+	BOOST_CHECK_EQUAL( elastic->getType(), PhysicsObject::Elastic );
+	BOOST_CHECK( !elastic->getParticles().empty() );
+}
+
 BOOST_AUTO_TEST_CASE(PHYSICS_OBJECT_FACTORY_TEST_EMITTER)
 {
 	PhysicsObjectFactory factory;

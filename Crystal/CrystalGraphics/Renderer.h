@@ -89,22 +89,32 @@ public:
 			else if( object->getType() == Physics::PhysicsObject::Obstacle ) {
 				glColor4d( 0.0f, 0.0f, 0.0f, 1.0f );
 			}
-			else {
+			else{
 				const float densityRatio = object->getDensity() / 1000.0f;
 				const float alpha = densityRatio * settings.pointAlpha / 100.0f; 
 				glColor4f( 0.1f, 0.1f, 1.0f, alpha );
 			}
 			const Physics::ParticleVector& particles = object->getParticles();
 			for( size_t i = 0; i < particles.size(); ++i ) {
-				const Geom::Vector3d& normal = particles[i]->normal / object->getDensity(); 
-				if( normal.getLength() < 0.0005 && !particles[i]->isIsolated() && settings.doDisplaySurface ) {
-					continue;
-				}
 				const Geom::Vector3d& point = particles[i]->center;
 				glVertex3f( point.getX(), point.getY(), point.getZ() );
 			}
 		}
 		glEnd();
+
+
+		for( Physics::PhysicsObjectVector::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
+			Physics::PhysicsObject* object = (*iter);
+			if( object->getType() == Physics::PhysicsObject::Elastic ) {
+				glBegin(GL_LINE_STRIP);
+				const Physics::ParticleVector& particles = object->getParticles();
+				for( size_t i = 0; i < particles.size(); ++i ) {
+					const Geom::Vector3d& point = particles[i]->center;
+					glVertex3f( point.getX(), point.getY(), point.getZ() );
+				}
+				glEnd();
+			}
+		}
 	
 		assert( glGetError() == GL_NO_ERROR );
 

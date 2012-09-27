@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewObjectSetting = new System.Windows.Forms.DataGridView();
             this.headerType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,12 +58,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.comboBoxExample = new System.Windows.Forms.ComboBox();
             this.buttonCopy = new System.Windows.Forms.Button();
             this.dataGridViewEmitterSetting = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,9 +72,20 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dataGridViewElasticSetting = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmitterSetting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewElasticSetting)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewObjectSetting
@@ -114,6 +125,7 @@
             this.dataGridViewObjectSetting.RowTemplate.Height = 21;
             this.dataGridViewObjectSetting.Size = new System.Drawing.Size(583, 84);
             this.dataGridViewObjectSetting.TabIndex = 1;
+            this.dataGridViewObjectSetting.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewObjectSetting_ColumnHeaderMouseClick);
             // 
             // headerType
             // 
@@ -195,7 +207,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(698, 209);
+            this.buttonCancel.Location = new System.Drawing.Point(718, 333);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 15;
@@ -205,7 +217,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(607, 209);
+            this.buttonOK.Location = new System.Drawing.Point(620, 334);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 14;
@@ -298,19 +310,9 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Object";
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(311, 209);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 25;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(404, 209);
+            this.buttonDelete.Location = new System.Drawing.Point(398, 333);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 26;
@@ -326,7 +328,7 @@
             "DamBreak2",
             "SphereBreak",
             "Spring"});
-            this.comboBoxExample.Location = new System.Drawing.Point(64, 209);
+            this.comboBoxExample.Location = new System.Drawing.Point(71, 336);
             this.comboBoxExample.Name = "comboBoxExample";
             this.comboBoxExample.Size = new System.Drawing.Size(121, 20);
             this.comboBoxExample.TabIndex = 27;
@@ -335,7 +337,7 @@
             // 
             // buttonCopy
             // 
-            this.buttonCopy.Location = new System.Drawing.Point(221, 209);
+            this.buttonCopy.Location = new System.Drawing.Point(317, 333);
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Size = new System.Drawing.Size(75, 23);
             this.buttonCopy.TabIndex = 28;
@@ -374,20 +376,12 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewEmitterSetting.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewEmitterSetting.Location = new System.Drawing.Point(0, 123);
+            this.dataGridViewEmitterSetting.Location = new System.Drawing.Point(0, 126);
             this.dataGridViewEmitterSetting.Name = "dataGridViewEmitterSetting";
             this.dataGridViewEmitterSetting.RowTemplate.Height = 21;
-            this.dataGridViewEmitterSetting.Size = new System.Drawing.Size(583, 84);
+            this.dataGridViewEmitterSetting.Size = new System.Drawing.Size(536, 84);
             this.dataGridViewEmitterSetting.TabIndex = 29;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 12);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Emitter";
+            this.dataGridViewEmitterSetting.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmitterSetting_ColumnHeaderMouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -452,18 +446,118 @@
             this.ColumnMax.HeaderText = "MaxParticles";
             this.ColumnMax.Name = "ColumnMax";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 12);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Emitter";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 213);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 12);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Elastic";
+            // 
+            // dataGridViewElasticSetting
+            // 
+            this.dataGridViewElasticSetting.AllowUserToAddRows = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewElasticSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewElasticSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewElasticSetting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.Column1,
+            this.Column2});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewElasticSetting.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewElasticSetting.Location = new System.Drawing.Point(0, 228);
+            this.dataGridViewElasticSetting.Name = "dataGridViewElasticSetting";
+            this.dataGridViewElasticSetting.RowTemplate.Height = 21;
+            this.dataGridViewElasticSetting.Size = new System.Drawing.Size(375, 84);
+            this.dataGridViewElasticSetting.TabIndex = 32;
+            this.dataGridViewElasticSetting.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewElasticSetting_ColumnHeaderMouseClick);
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "pressureCoefficient";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Press";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ToolTipText = "圧力";
+            this.dataGridViewTextBoxColumn10.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Visc";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ToolTipText = "粘性";
+            this.dataGridViewTextBoxColumn11.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Density";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ToolTipText = "密度";
+            this.dataGridViewTextBoxColumn12.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "MinX";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "MaxX";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 40;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "StartY";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "StartZ";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 50;
+            // 
             // PhysicsObjectSettingDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(805, 252);
+            this.ClientSize = new System.Drawing.Size(805, 368);
+            this.Controls.Add(this.dataGridViewElasticSetting);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridViewEmitterSetting);
             this.Controls.Add(this.buttonCopy);
             this.Controls.Add(this.comboBoxExample);
             this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxEffectLength);
@@ -482,6 +576,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmitterSetting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewElasticSetting)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,7 +608,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MinZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxZ;
         private System.Windows.Forms.DataGridViewComboBoxColumn Shape;
-        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.ComboBox comboBoxExample;
         private System.Windows.Forms.Button buttonCopy;
@@ -529,6 +623,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMax;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridViewElasticSetting;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 
     }
 }
