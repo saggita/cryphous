@@ -47,6 +47,8 @@ public:
 			const float distance = distanceVector.getLength();
 			particleX->force -= getGasConstant() * 1.0f * ( distance - particleX->getDiameter()) * distanceVector / distance;
 			particleY->force += getGasConstant() * 1.0f * ( distance - particleY->getDiameter()) * distanceVector / distance;
+			particleX->force -= getViscosityCoefficient() * 1.0f * ( particleX->velocity - particleY->velocity );
+			particleY->force += getViscosityCoefficient() * 1.0f * ( particleX->velocity - particleY->velocity );
 		}
 	};
 };

@@ -38,7 +38,7 @@ public:
 
 	const FrameBuffer& getBuffer() const { return buffer; }
 
-	const int getRadius() const { return buffer.getWidth() / 2; }
+	const size_t getRadius() const { return buffer.getWidth() / 2; }
 
 private:
 	FrameBuffer buffer;

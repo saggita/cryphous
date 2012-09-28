@@ -60,7 +60,7 @@ public:
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		const float aspectRatio = static_cast<float>(width) / static_cast<float>(height);
-		gluPerspective( 40, aspectRatio, 0.01, 100.0);
+		gluPerspective( 40, aspectRatio, 0.01, 10000.0);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

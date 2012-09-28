@@ -18,7 +18,7 @@ public:
 	void renderThickness(const PointSprite& sprite, const Point25d& center)
 	{
 		Point2d spritePoint( 0, 0);
-		const int radius = sprite.getRadius();
+		const size_t radius = sprite.getRadius();
 		Point2d bufferPoint;
 		for( bufferPoint.x = center.point.x - radius; bufferPoint.x <= center.point.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
 			for( bufferPoint.y = center.point.y - radius, spritePoint.y = 0; bufferPoint.y <= center.point.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
@@ -33,7 +33,7 @@ public:
 	void renderSurface(const PointSprite& sprite, const Point25d& center)
 	{
 		Point2d spritePoint( 0, 0);
-		const int radius = sprite.getRadius();
+		const size_t radius = sprite.getRadius();
 		Point2d bufferPoint;
 		for( bufferPoint.x = center.point.x - radius; bufferPoint.x <= center.point.x + radius; ++bufferPoint.x, ++spritePoint.x ) {
 			for( bufferPoint.y = center.point.y - radius, spritePoint.y = 0; bufferPoint.y <= center.point.y + radius; ++bufferPoint.y, ++spritePoint.y ) {
