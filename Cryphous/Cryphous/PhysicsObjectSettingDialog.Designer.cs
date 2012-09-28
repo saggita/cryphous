@@ -327,7 +327,8 @@
             "DamBreak1",
             "DamBreak2",
             "SphereBreak",
-            "Spring"});
+            "Spring",
+            "Hair"});
             this.comboBoxExample.Location = new System.Drawing.Point(71, 336);
             this.comboBoxExample.Name = "comboBoxExample";
             this.comboBoxExample.Size = new System.Drawing.Size(121, 20);

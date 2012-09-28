@@ -213,6 +213,17 @@ namespace Cryphous
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -15.0, 0.0, 25.0, 40.0, -15.0, 0.0, "Sphere");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 15.0, 30.0, 45.0, 0.0, 15.0, "Sphere");
             }
+            else if (comboBoxExample.Text == "Hair")
+            {
+                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
+                for (float y = 50.0f; y < 70.0f; y += 0.5f)
+                {
+                    for (float z = -10.0f; z < 10.0f; z += 0.5f)
+                    {
+                        dataGridViewElasticSetting.Rows.Add(20000.0, 200.0, 1000.0, 0.0, 10.0, y, z);
+                    }
+                }
+            }
             else
             {
                 System.Diagnostics.Debug.Assert(false);
