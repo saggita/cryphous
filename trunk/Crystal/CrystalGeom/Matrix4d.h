@@ -48,6 +48,7 @@ public:
 	
 	bool isZero() const {
 		Matrix4d zeroMatrix;
+		zeroMatrix.setZero();
 		return this->equals( zeroMatrix );
 	}
 	
