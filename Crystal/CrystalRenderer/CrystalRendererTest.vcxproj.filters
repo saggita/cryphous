@@ -11,7 +11,7 @@
     <ClCompile Include="PointSpriteFactoryTest.cpp" />
     <ClCompile Include="PointSpriteTest.cpp" />
     <ClCompile Include="PointSpriteRendererTest.cpp" />
-    <ClCompile Include="ModelViewProjectionMatrixTest.cpp" />
+    <ClCompile Include="MVPMatrixSetterTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CrystalRenderer\ColorBuffer.h" />
@@ -23,6 +23,6 @@
     <ClInclude Include="..\CrystalRenderer\PointSprite.h" />
     <ClInclude Include="..\CrystalRenderer\PointSpriteFactory.h" />
     <ClInclude Include="..\CrystalRenderer\PointSpriteRenderer.h" />
-    <ClInclude Include="ModelViewProjectionMatrix.h" />
+    <ClInclude Include="MVPMatrixSetter.h" />
   </ItemGroup>
 </Project>

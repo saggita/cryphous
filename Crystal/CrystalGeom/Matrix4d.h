@@ -58,6 +58,57 @@ public:
 		return this->equals( identityMatrix );
 	}
 
+	void setTranslate(const float x, const float y, const float z) {
+		x03 = x;
+		x13 = y;
+		x23 = z;
+	}
+
+	void translate(const float x, const float y, const float z) {
+		Matrix4d matrix;
+		matrix.translate( x, y, z);
+		(*this) *= matrix;
+	}
+
+	void setRotateX(const float angle) {
+		x11 = ::cos( angle );
+		x21 = ::sin( angle );
+		x12 = -::sin( angle );
+		x22 = ::cos( angle );
+	}
+
+	void rotateX(const float angle) {
+		Matrix4d matrix;
+		matrix.setRotateX( angle );
+		(*this) *= matrix;
+	}
+
+	void setRotateY(const float angle) {
+		x00 = ::cos( angle );
+		x20 = -::sin( angle );
+		x02 = ::sin( angle );
+		x22 = ::cos( angle );
+	}
+
+	void rotateY(const float angle) {
+		Matrix4d matrix;
+		matrix.setRotateY( angle );
+		(*this) *= matrix;
+	}
+
+	void setRotateZ(const float angle) {
+		x00 = ::cos( angle );
+		x10 = ::sin( angle );
+		x01 = -::sin( angle );
+		x11 = ::cos( angle );
+	}
+
+	void rotateZ(const float angle) {
+		Matrix4d matrix;
+		matrix.setRotateZ( angle );
+		(*this) *= matrix;
+	}
+
 	bool equals(const Matrix4d& rhs) const {
 		return
 			Tolerances::isEqualAsDenominator( x00, rhs.x00 ) &&
@@ -94,10 +145,10 @@ public:
 				x20 * rhs.x01 + x21 * rhs.x11 + x22 * rhs.x21 + x23 * rhs.x31,
 				x20 * rhs.x02 + x21 * rhs.x12 + x22 * rhs.x22 + x23 * rhs.x32,
 				x20 * rhs.x03 + x21 * rhs.x13 + x22 * rhs.x23 + x23 * rhs.x33,
-				x30 * rhs.x00 + x31 * rhs.x10 + x32 * rhs.x30 + x33 * rhs.x30,
-				x30 * rhs.x01 + x31 * rhs.x11 + x32 * rhs.x31 + x33 * rhs.x31,
-				x30 * rhs.x02 + x31 * rhs.x12 + x32 * rhs.x32 + x33 * rhs.x32,
-				x30 * rhs.x03 + x31 * rhs.x13 + x32 * rhs.x33 + x33 * rhs.x33);
+				x30 * rhs.x00 + x31 * rhs.x10 + x32 * rhs.x20 + x33 * rhs.x30,
+				x30 * rhs.x01 + x31 * rhs.x11 + x32 * rhs.x21 + x33 * rhs.x31,
+				x30 * rhs.x02 + x31 * rhs.x12 + x32 * rhs.x22 + x33 * rhs.x32,
+				x30 * rhs.x03 + x31 * rhs.x13 + x32 * rhs.x23 + x33 * rhs.x33);
 	}
 
 	Matrix4d scale(const float factor) {
