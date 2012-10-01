@@ -9,9 +9,6 @@
 #include "BoundarySolver.h"
 #include "SearchParticleFactory.h"
 
-#ifdef _OPENMP
-#include <omp.h>
-#endif
 
 namespace Crystal{
 	namespace Physics{
@@ -33,86 +30,14 @@ public:
 		delete sphPairSolver;
 	}
 
-	void calculateInteraction()
-	{
-		PhysicsObjectVector& objects = factory->getPhysicsObjects();
-		ParticleVector particles = factory->getParticles();
-		if( particles.empty() ) {
-			return;
-		}
-
-		for( size_t i = 0; i < particles.size(); ++i ) {
-			particles[i]->resetDiffParameters();
-		}
-
-		particles = factory->getParticles();
-
-		if( particles.empty() ) {
-			return;
-		}
-
-		createPairs();
-		
-		SPHPairSolver solver( setting.getEffectLength() );
-
-		calculateDensity();
-
-		Profiler::get()->start(" Sim->force");
-		const std::vector<ParticlePair>& pairs = neighborSearcher->getPairs();
-		#pragma omp parallel for
-		for( int i = 0; i < static_cast<int>(pairs.size()); ++i ) {
-			sphPairSolver->calculatePressureForce( pairs[i]);
-			sphPairSolver->calculateViscosityForce( pairs[i]);
-			sphPairSolver->calculateNormal( pairs[i]);
-		}
-		Profiler::get()->end(" Sim->force");
-
-		calculateBoundaryForce();
-	}
+	void calculateInteraction();
 
 private:
-	void createPairs()
-	{
-		assert( neighborSearcher == 0 );
-		Profiler::get()->start(" Sim->sorting");
-		SearchParticleFactory spFactory( factory->getParticles(), setting.getEffectLength() );
-		const SearchParticleVector& sorted = spFactory.getSearchParticles();
-		Profiler::get()->end(" Sim->sorting");
+	void createPairs();
 
-		Profiler::get()->start(" Sim->search");
-		neighborSearcher = new NeighborSearcher( sorted, setting.getEffectLength() );
-		neighborSearcher->search();
-		Profiler::get()->end(" Sim->search");
-	}
+	void calculateDensity();
 
-	void calculateDensity()
-	{
-		Profiler::get()->start(" Sim->density");
-		const std::vector<ParticlePair>& pairs = neighborSearcher->getPairs();
-	
-		#pragma omp parallel for
-		for( int i = 0; i < (int)(pairs.size()); ++i ) {
-			sphPairSolver->calculateBoundaryDensity( pairs[i]);
-		}
-		const ParticleVector& particles = factory->getParticles();
-
-		for( int i = 0; i < (int)particles.size(); ++i ) {
-			sphPairSolver->calculateDensity( particles[i] );
-		}
-	
-		Profiler::get()->end(" Sim->density");
-	}
-
-	void calculateBoundaryForce()
-	{
-		Profiler::get()->start(" Sim->boundary");
-		const PhysicsObjectVector& objects = factory->getPhysicsObjects();
-		for( PhysicsObjectVector::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
-			BoundarySolver boundarySolver( (*iter), setting );
-			boundarySolver.calculateForce( setting.boundaryBox );
-		}
-		Profiler::get()->end(" Sim->boundary");
-	}
+	void calculateBoundaryForce();
 
 private:
 	PhysicsObjectFactory* factory;
