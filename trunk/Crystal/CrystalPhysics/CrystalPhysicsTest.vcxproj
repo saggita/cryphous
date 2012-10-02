@@ -180,8 +180,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="BoundarySolverTest.cpp" />
+    <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
+    <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
     <ClCompile Include="ParticleFactoryTest.cpp" />
     <ClCompile Include="PhysicsObjectFactoryTest.cpp" />

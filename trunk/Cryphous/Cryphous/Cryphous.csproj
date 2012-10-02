@@ -122,6 +122,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Emitter.cs" />
+    <Compile Include="ExternalForceSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalForceSettingForm.Designer.cs">
+      <DependentUpon>ExternalForceSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicsSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicsSettingForm.Designer.cs">
+      <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,12 @@
     <Compile Include="RenderingForm.Designer.cs">
       <DependentUpon>RenderingForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExternalForceSettingForm.resx">
+      <DependentUpon>ExternalForceSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicsSettingForm.resx">
+      <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

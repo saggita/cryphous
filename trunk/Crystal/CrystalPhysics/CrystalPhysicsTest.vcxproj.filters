@@ -10,6 +10,9 @@
     <ClCompile Include="BoundarySolverTest.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
+    <ClCompile Include="BoundarySolver.cpp" />
+    <ClCompile Include="NeighborSearcher.cpp" />
+    <ClCompile Include="SPHSolver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CrystalPhysics\BoundarySolver.h" />

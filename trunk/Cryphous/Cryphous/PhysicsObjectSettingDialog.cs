@@ -215,10 +215,10 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Hair")
             {
-                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
-                for (float y = 50.0f; y < 70.0f; y += 0.5f)
+                setBoundary(-50.0F, 50.0F, 0.0F, 100.0F, -50.0F, 50.0F);
+                for (float y = 10.0f; y < 30.0f; y += 0.5f)
                 {
-                    for (float z = -10.0f; z < 10.0f; z += 0.5f)
+                    for (float z = -15.0f; z < 15.0f; z += 0.5f)
                     {
                         dataGridViewElasticSetting.Rows.Add(20000.0, 200.0, 1000.0, 0.0, 10.0, y, z);
                     }
