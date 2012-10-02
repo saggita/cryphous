@@ -11,6 +11,8 @@ class GraphicsSettings : private Uncopyable
 public:
 	int pointSize;
 	int pointAlpha;
+	int lineSize;
+	int lineAlpha;
 	float zoom;
 	float cameraX;
 	float cameraY;
@@ -23,6 +25,8 @@ public:
 	GraphicsSettings::GraphicsSettings() :
 		pointSize( 10 ),
 		pointAlpha( 10),
+		lineSize( 10),
+		lineAlpha( 10),
 		zoom( 50.0),
 		cameraX( 0.0),
 		cameraY( 0.0),

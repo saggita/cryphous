@@ -157,6 +157,19 @@ void Command::saveBoundarySetting(System::Windows::Forms::DataGridView^ view)
 	simulationSetting->boundaryBox = Box( Crystal::Geom::Vector3d( minX, minY, minZ), Crystal::Geom::Vector3d( maxX, maxY, maxZ) );
 }
 
+void Command::setExternalForce(float x, float y, float z)
+{
+	simulationSetting->externalForce = Vector3d( x, y, z );
+}
+
+void Command::setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha)
+{
+	graphicsSettings->pointSize = pointSize;
+	graphicsSettings->pointAlpha = pointAlpha;
+	graphicsSettings->lineSize = lineSize;
+	graphicsSettings->lineAlpha = lineAlpha;
+}
+
 void Command::rendering()
 {
 	renderer->rendering( factory, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );

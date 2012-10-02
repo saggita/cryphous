@@ -55,6 +55,10 @@ public:
 
 	void saveBoundarySetting(System::Windows::Forms::DataGridView^ view);
 
+	void setExternalForce(float x, float y, float z);
+
+	void setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha);
+
 	void rendering();
 
 	void rotateX(int angle);

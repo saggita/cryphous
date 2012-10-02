@@ -103,10 +103,14 @@ public:
 		glEnd();
 
 
+		glLineWidth( static_cast<GLfloat>(settings.lineSize) );
 		for( Physics::PhysicsObjectVector::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
 			Physics::PhysicsObject* object = (*iter);
 			if( object->getType() == Physics::PhysicsObject::Elastic ) {
 				glBegin(GL_LINE_STRIP);
+				const float densityRatio = object->getDensity() / 1000.0f;
+				const float alpha = densityRatio * settings.lineAlpha / 100.0f; 
+				glColor4f( 0.0f, 0.0f, 0.0f, alpha );
 				const Physics::ParticleVector& particles = object->getParticles();
 				for( size_t i = 0; i < particles.size(); ++i ) {
 					const Geom::Vector3d& point = particles[i]->center;

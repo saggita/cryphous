@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.externalForceEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -39,8 +40,9 @@
             this.buttonNextStep = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonViewReset = new System.Windows.Forms.Button();
             this.buttonRenderingTest = new System.Windows.Forms.Button();
+            this.buttonViewReset = new System.Windows.Forms.Button();
+            this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -62,7 +64,9 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.objectSettingToolStripMenuItem});
+            this.objectSettingToolStripMenuItem,
+            this.externalForceEToolStripMenuItem,
+            this.graphicsSettingGToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
@@ -70,9 +74,16 @@
             // objectSettingToolStripMenuItem
             // 
             this.objectSettingToolStripMenuItem.Name = "objectSettingToolStripMenuItem";
-            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.objectSettingToolStripMenuItem.Text = "ObjectSetting(&O)";
             this.objectSettingToolStripMenuItem.Click += new System.EventHandler(this.objectSettingToolStripMenuItem_Click);
+            // 
+            // externalForceEToolStripMenuItem
+            // 
+            this.externalForceEToolStripMenuItem.Name = "externalForceEToolStripMenuItem";
+            this.externalForceEToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.externalForceEToolStripMenuItem.Text = "ExternalForce(&E)";
+            this.externalForceEToolStripMenuItem.Click += new System.EventHandler(this.externalForceEToolStripMenuItem_Click);
             // 
             // listBoxInformation
             // 
@@ -153,6 +164,16 @@
             this.splitContainer1.SplitterDistance = 640;
             this.splitContainer1.TabIndex = 7;
             // 
+            // buttonRenderingTest
+            // 
+            this.buttonRenderingTest.Location = new System.Drawing.Point(1, 228);
+            this.buttonRenderingTest.Name = "buttonRenderingTest";
+            this.buttonRenderingTest.Size = new System.Drawing.Size(120, 25);
+            this.buttonRenderingTest.TabIndex = 7;
+            this.buttonRenderingTest.Text = "RenderingTest";
+            this.buttonRenderingTest.UseVisualStyleBackColor = true;
+            this.buttonRenderingTest.Click += new System.EventHandler(this.buttonRenderingTest_Click);
+            // 
             // buttonViewReset
             // 
             this.buttonViewReset.Location = new System.Drawing.Point(3, 295);
@@ -163,15 +184,12 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
-            // buttonRenderingTest
+            // graphicsSettingGToolStripMenuItem
             // 
-            this.buttonRenderingTest.Location = new System.Drawing.Point(1, 228);
-            this.buttonRenderingTest.Name = "buttonRenderingTest";
-            this.buttonRenderingTest.Size = new System.Drawing.Size(120, 25);
-            this.buttonRenderingTest.TabIndex = 7;
-            this.buttonRenderingTest.Text = "RenderingTest";
-            this.buttonRenderingTest.UseVisualStyleBackColor = true;
-            this.buttonRenderingTest.Click += new System.EventHandler(this.buttonRenderingTest_Click);
+            this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
+            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
+            this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -212,5 +230,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonViewReset;
         private System.Windows.Forms.Button buttonRenderingTest;
+        private System.Windows.Forms.ToolStripMenuItem externalForceEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
     }
 }

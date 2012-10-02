@@ -44,7 +44,7 @@ public:
 
 		const ParticleVector& particles = factory->getParticles();
 		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
-			(*iter)->force += Geom::Vector3d( 0.0f, -9.8f * (*iter)->density, 0.0f );
+			(*iter)->force += setting.externalForce * (*iter)->density;
 		}
 
 		Profiler::get()->start(" Sim->enforce");

@@ -182,5 +182,17 @@ namespace Cryphous
             RenderingForm form = new RenderingForm(mainCommand);
             form.Show(this);
         }
+
+        private void externalForceEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExternalForceSettingForm form = new ExternalForceSettingForm(mainCommand);
+            form.Show(this);
+        }
+
+        private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
+            form.Show(this);
+        }
     }
 }
