@@ -137,12 +137,14 @@ protected:
 	void drawBoundaryBox(const Geom::Box& box)
 	{
 		if( !settings.drawBoundingBox ) {
-		return;
+			return;
 		}
 	
 		glPushMatrix();
 
 		glColor4d( 0.0, 0.0, 0.0, 1.0 );
+
+		glLineWidth(1.0f);
 
 		glBegin(GL_LINE_LOOP);
 			glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
