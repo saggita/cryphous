@@ -215,8 +215,9 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "Hair")
             {
+                textBoxTimeStep.Text = "0.05";
                 setBoundary(-50.0F, 50.0F, 0.0F, 100.0F, -50.0F, 50.0F);
-                for (float y = 10.0f; y < 30.0f; y += 0.5f)
+                for (float y = 10.0f; y < 20.0f; y += 0.5f)
                 {
                     for (float z = -15.0f; z < 15.0f; z += 0.5f)
                     {
