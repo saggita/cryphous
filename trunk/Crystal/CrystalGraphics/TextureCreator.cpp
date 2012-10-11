@@ -6,8 +6,6 @@
 #include <cmath>
 #include <vector>
 
-#include <boost/random.hpp>
-
 using namespace Crystal::Physics;
 using namespace Crystal::Graphics;
 
@@ -30,7 +28,7 @@ void TextureCreator::createTexture(const int size)
 	const int centerX = (int)(size * 0.5);
 	const int centerY = (int)(size * 0.5);
 
-	const double effectLength = size * 0.5;
+	const float effectLength = size * 0.5f;
 
 	Kernels3D kernels( effectLength );
 
@@ -40,8 +38,8 @@ void TextureCreator::createTexture(const int size)
 		bmpVec.push_back( std::vector< unsigned char >() );
 		for( int j = 0; j < size; ++j) {
 			const double distSquare = std::pow( i - centerX, 2.0 ) + std::pow( j - centerY, 2.0 );
-			double result = kernels.getPoly6Kernel( std::sqrt( distSquare ) ) / max * 0xff; 
-			if( result < 0.0 ) {
+			float result = kernels.getPoly6Kernel( std::sqrt( distSquare ) ) / max * 0xff; 
+			if( result < 0.0f ) {
 				result = 0.0;
 			}
 			bmpVec[i].push_back( (unsigned char)( result) );
@@ -54,22 +52,6 @@ void TextureCreator::createTexture(const int size)
 		for( int j = 0; j < size; ++j ) {
 			const int bitmapIndex = i * size +j;
 			bitmap[ bitmapIndex ] = bmpVec[i][j];
-		}
-	}
-}
-
-void TextureCreator::createNoiseTexture(const int size)
-{
-	destroyTexture();
-
-	boost::variate_generator< boost::mt19937, boost::uniform_int<> > random( boost::mt19937(), boost::uniform_int<> (0, 255) );
-	
-	bitmap = (unsigned char*)(malloc( sizeof(unsigned char) * size * size ) );
-
-	for( int i = 0; i < size; ++i ) {
-		for( int j = 0; j < size; ++j ) {
-			const int bitmapIndex = i * size +j;
-			bitmap[ bitmapIndex ] = random();
 		}
 	}
 }
