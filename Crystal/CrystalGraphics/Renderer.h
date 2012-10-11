@@ -22,6 +22,9 @@
 #include <cstdlib>
 
 namespace Crystal{
+	namespace Physics{
+		class LightSource;
+	}
 	namespace Graphics{
 
 class Renderer : private Uncopyable
@@ -43,7 +46,7 @@ public:
 
 	void init() { openGLWrapper.SetCurrentRenderingContext(); }
 
-	void rendering(Physics::PhysicsObjectFactory *factory, const int width, const int height, const Geom::Box& boundaryBox);
+	void rendering(Physics::PhysicsObjectFactory *factory, Physics::LightSource* lightSource, const int width, const int height, const Geom::Box& boundaryBox);
 
 protected:
 

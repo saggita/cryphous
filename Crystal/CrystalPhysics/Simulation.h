@@ -13,6 +13,8 @@
 #include "SimulationSetting.h"
 #include "Profiler.h"
 
+#include "LightSource.h"
+
 #include <cassert>
 #include <cmath>
 
@@ -33,7 +35,7 @@ public:
 		simulationTime = 0.0;
 	};
 
-	void simulate(PhysicsObjectFactory* factory, const SimulationSetting& setting)
+	void simulate(PhysicsObjectFactory* factory, LightSource* lightSource, const SimulationSetting& setting)
 	{
 		Profiler::get()->start("Simulation->");
 
@@ -58,6 +60,10 @@ public:
 			(*iter)->integrateTime( setting.timeStep );
 		}
 		Profiler::get()->end(" Sim->integrate");
+
+		Profiler::get()->start(" Sim->photon");
+		lightSource->integrateTime( setting.timeStep );
+		Profiler::get()->end(" Sim->photon");
 
 		++step;
 		simulationTime += setting.timeStep;
