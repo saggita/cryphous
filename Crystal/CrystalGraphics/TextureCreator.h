@@ -14,8 +14,6 @@ public:
 
 	void createTexture(const int size);
 
-	void createNoiseTexture(const int size);
-
 	bool destroyTexture();
 
 	unsigned char* getTexture() { return bitmap; }

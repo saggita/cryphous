@@ -1,4 +1,5 @@
-#include "../External/glee/GLee.h"
+#include <Windows.h>
+#include "GLee.h"
 
 #include "PointSprite.h"
 
@@ -35,18 +36,12 @@ PointSprite::~PointSprite(void)
 
 void PointSprite::apply()
 {
-	if( !GraphicsSettings::get()->bPointSprite ) {
-		return;
-	}
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_POINT_SPRITE);
 }
 
 void PointSprite::release()
 {
-	if( !GraphicsSettings::get()->bPointSprite ) {
-		return;
-	}
 	glDisable(GL_POINT_SPRITE);
 	glDisable(GL_TEXTURE_2D );
 }
