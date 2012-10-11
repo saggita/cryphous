@@ -32,13 +32,7 @@ public:
 
 	PhotonVector getPhotons() const { return photonFactory.getPhotons(); }
 
-	void integrateTime(const float proceedTime )
-	{
-		for( size_t i = 0; i < getPhotons().size(); ++i )
-		{
-			getPhotons()[i]->center += getPhotons()[i]->velocity * proceedTime;
-		}
-	}
+	void integrateTime(const float proceedTime );
 
 private:
 	const int id;

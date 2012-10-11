@@ -14,6 +14,7 @@ namespace Crystal {
 		class Simulation;
 		class Particle;
 		typedef std::vector<Particle*> ParticleVector;
+		class LightSource;
 	}
 	namespace Graphics {
 		class Renderer;
@@ -85,6 +86,7 @@ public:
 	Physics::PhysicsObjectFactory* factory;
 	Physics::SimulationSetting* simulationSetting;
 	Physics::Simulation* simulation;
+	Physics::LightSource* lightSource;
 	Graphics::Renderer* renderer;
 	Graphics::GraphicsSettings* graphicsSettings;
 	std::list<Physics::PhysicsObjectCondition>* conditions;

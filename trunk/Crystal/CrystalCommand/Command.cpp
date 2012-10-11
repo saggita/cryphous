@@ -6,6 +6,7 @@
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Simulation.h"
+#include "../CrystalPhysics/LightSource.h"
 #include "../CrystalGraphics/Renderer.h"
 
 using namespace Crystal::Geom;
@@ -25,6 +26,7 @@ Command::Command(System::Windows::Forms::PictureBox^ pictureBox)
 	factory = new PhysicsObjectFactory;
 	simulation = new Simulation;
 	simulationSetting = new SimulationSetting;
+	lightSource = new LightSource(0, Vector3d(0.0f, 0.0f, 0.0f));
 	graphicsSettings = new GraphicsSettings;
 	renderer = new Renderer(*graphicsSettings);
 	conditions = new std::list<PhysicsObjectCondition>;
@@ -33,6 +35,7 @@ Command::Command(System::Windows::Forms::PictureBox^ pictureBox)
 
 Command::~Command()
 {
+	delete lightSource;
 	delete graphicsSettings;
 	delete conditions;
 	delete renderer;
@@ -106,7 +109,7 @@ void Command::addParticles(unsigned int index, System::Collections::Generic::Lis
 
 void Command::proceed()
 {
-	simulation->simulate( factory, *(simulationSetting) );
+	simulation->simulate( factory, lightSource, *(simulationSetting) );
 	rendering();
 }
 
@@ -172,7 +175,7 @@ void Command::setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, in
 
 void Command::rendering()
 {
-	renderer->rendering( factory, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
+	renderer->rendering( factory, lightSource, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
 }
 
 void Command::rotateX(int angle)
@@ -216,6 +219,7 @@ void Command::displayProfile(System::Windows::Forms::ListBox^ listBox)
 {
 	listBox->Items->Clear();
 	listBox->Items->Add("Particles = " + factory->getParticles().size() );
+	listBox->Items->Add("Photons = " + lightSource->getPhotons().size() );
 	listBox->Items->Add("Step = " + simulation->getStep() );
 	listBox->Items->Add("Time = " + simulation->getSimulationTime() );
 	listBox->Items->Add(" ");

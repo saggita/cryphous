@@ -127,12 +127,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />
+    <ClInclude Include="LightSource.h" />
     <ClInclude Include="NeighborSearcher.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="SPHSolver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoundarySolver.cpp" />
+    <ClCompile Include="LightSource.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
   </ItemGroup>
