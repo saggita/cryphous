@@ -10,10 +10,11 @@
 
 namespace Crystal{
 	namespace Physics{
+		class LightSourceFactory;
 
 class LightSource : private Uncopyable
 {
-public:
+protected:
 	LightSource() :
 		id(-1),
 		center( Geom::Vector3d( 0.0f, 0.0f, 0.0f) )
@@ -44,9 +45,11 @@ private:
 	const int id;
 	const Geom::Vector3d center;
 	PhotonFactory photonFactory;
+
+	friend LightSourceFactory;
 };
 
-typedef std::vector<LightSource> LightSourceVector;
+typedef std::vector<LightSource*> LightSourceVector;
 
 	}
 }

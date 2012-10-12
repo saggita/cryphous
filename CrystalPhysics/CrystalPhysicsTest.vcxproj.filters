@@ -11,6 +11,6 @@
     <ClCompile Include="SPHPairSolverTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
     <ClCompile Include="PhotonFactoryTest.cpp" />
-    <ClCompile Include="LightSourceTest.cpp" />
+    <ClCompile Include="LightSourceFactoryTest.cpp" />
   </ItemGroup>
 </Project>

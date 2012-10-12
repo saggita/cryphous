@@ -11,7 +11,7 @@
 #include "../CrystalPhysics/ParticleFactory.h"
 #include "../CrystalPhysics/Particle.h"
 
-#include "../CrystalPhysics/LightSource.h"
+#include "../CrystalPhysics/LightSourceFactory.h"
 
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
@@ -26,8 +26,9 @@ BOOST_AUTO_TEST_CASE(SIMULATION_TEST)
 	PhysicsObjectFactory factory;
 	factory.createPhysicsObject( condition, setting );
 
-	LightSource lightSource;
+	LightSourceFactory lightFactory;
+	LightSource* lightSource = lightFactory.createLightSource( Vector3d( 0.0f, 0.0f, 0.0f) );
 
 	Simulation simulation;
-	simulation.simulate( &factory, &lightSource, setting);
+	simulation.simulate( &factory, lightSource, setting);
 }

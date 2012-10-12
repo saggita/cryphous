@@ -181,7 +181,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoundarySolverTest.cpp" />
-    <ClCompile Include="LightSourceTest.cpp" />
+    <ClCompile Include="LightSourceFactoryTest.cpp" />
     <ClCompile Include="PhotonFactoryTest.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />

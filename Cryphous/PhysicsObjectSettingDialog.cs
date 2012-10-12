@@ -11,7 +11,6 @@ namespace Cryphous
     public partial class PhysicsObjectSettingDialog : Form
     {
         private Command command;
-        private List<float[]> initialPositions;
         private List<Emitter> emitters;
 
         public List<Emitter> Emitters
@@ -19,12 +18,11 @@ namespace Cryphous
             get { return emitters; }
         }
         
-        public PhysicsObjectSettingDialog(Command command, List<float[]> initialPositions)
+        public PhysicsObjectSettingDialog(Command command)
         {
             InitializeComponent();
             this.emitters = new List<Emitter>();
             this.command = command;
-            this.initialPositions = initialPositions;
         }
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
@@ -109,11 +107,6 @@ namespace Cryphous
                 float startZ = Convert.ToSingle(row.Cells[6].Value);
                 List<float[]> positions = createPositions( minX, maxX, startY, startY + command.getParticleDiameter() * 2.0f, startZ, startZ + command.getParticleDiameter() * 2.0f, false );
                 command.createPhysicsObject("Elastic", density, pressure, viscosity, positions);
-            }
-
-            if (initialPositions != null)
-            {
-                command.createPhysicsObject("Obstacle", 10000.0f, 2000000.0f, 1000.0f, initialPositions);
             }
 
             command.refresh();

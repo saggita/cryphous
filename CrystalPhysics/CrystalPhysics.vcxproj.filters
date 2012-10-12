@@ -6,6 +6,7 @@
     <ClInclude Include="NeighborSearcher.h" />
     <ClInclude Include="BoundarySolver.h" />
     <ClInclude Include="LightSource.h" />
+    <ClInclude Include="LightSourceFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHSolver.cpp" />

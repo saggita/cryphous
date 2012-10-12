@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClInclude Include="BoundarySolver.h" />
     <ClInclude Include="LightSource.h" />
+    <ClInclude Include="LightSourceFactory.h" />
     <ClInclude Include="NeighborSearcher.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="SPHSolver.h" />
