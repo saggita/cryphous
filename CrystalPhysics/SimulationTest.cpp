@@ -26,9 +26,9 @@ BOOST_AUTO_TEST_CASE(SIMULATION_TEST)
 	PhysicsObjectFactory factory;
 	factory.createPhysicsObject( condition, setting );
 
-	LightSourceFactory lightFactory;
-	LightSource* lightSource = lightFactory.createLightSource( Vector3d( 0.0f, 0.0f, 0.0f) );
+	LightSourceFactory lightSourceFactory;
+	lightSourceFactory.createLightSource( Vector3d( 0.0f, 0.0f, 0.0f) );
 
 	Simulation simulation;
-	simulation.simulate( &factory, lightSource, setting);
+	simulation.simulate( &factory, lightSourceFactory, setting);
 }
