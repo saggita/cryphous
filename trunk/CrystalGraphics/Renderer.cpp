@@ -6,7 +6,7 @@
 #include "../CrystalPhysics/Profiler.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
 #include "../CrystalPhysics/PhysicsObject.h"
-#include "../CrystalPhysics/LightSource.h"
+#include "../CrystalPhysics/LightSourceFactory.h"
 #include "PointSprite.h"
 
 #include <cassert>
@@ -17,7 +17,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Physics;
 using namespace Crystal::Geom;
 
-void Renderer::rendering(PhysicsObjectFactory *factory, LightSource* lightSource, const int width, const int height, const Box& boundaryBox)
+void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* lightSourceFactory, const int width, const int height, const Box& boundaryBox)
 {
 		Physics::Profiler::get()->start("Rendering->");
 
@@ -76,7 +76,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSource* lightSource
 			}
 		}
 		glColor4d( 1.0f, 1.0f, 1.0f, 0.1f );
-		const PhotonVector& photons = lightSource->getPhotons();
+		const PhotonVector& photons = lightSourceFactory->getPhotons();
 		for( size_t i = 0; i < photons.size(); ++i ) {
 			const Geom::Vector3d& point = photons[i]->center;
 			glVertex3f( point.getX(), point.getY(), point.getZ() );

@@ -17,23 +17,11 @@ namespace Cryphous
         private bool isRightDown;
 
         private PhysicsObjectSettingDialog osDialog;
-
-        private bool isStandAlone;
-        List<float[]> simulatedPositions;
-        List<float[]> initialPositions;
-
-        public List<float[]> SimulatedPositions
-        {
-            get{ return simulatedPositions; }
-        }
-
         
-        public MainForm(bool isStandAlone, List<float[]> initialPositions = null)
+        public MainForm()
         {
             InitializeComponent();
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
-            this.isStandAlone = isStandAlone;
-            this.initialPositions = initialPositions;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -41,16 +29,12 @@ namespace Cryphous
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             mainCommand = new Command( pictureBox1 );
 
-            osDialog = new PhysicsObjectSettingDialog(mainCommand, initialPositions);
+            osDialog = new PhysicsObjectSettingDialog(mainCommand);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             osDialog.ShowDialog();
-            if (!isStandAlone)
-            {
-                simulatedPositions = mainCommand.getManagedPositions();
-            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -104,10 +88,6 @@ namespace Cryphous
             }
             mainCommand.proceed();
             mainCommand.displayProfile( listBoxInformation);
-            if (!isStandAlone)
-            {
-                simulatedPositions = mainCommand.getManagedPositions();
-            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

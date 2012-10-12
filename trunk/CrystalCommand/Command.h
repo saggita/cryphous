@@ -14,7 +14,7 @@ namespace Crystal {
 		class Simulation;
 		class Particle;
 		typedef std::vector<Particle*> ParticleVector;
-		class LightSource;
+		class LightSourceFactory;
 	}
 	namespace Graphics {
 		class Renderer;
@@ -47,10 +47,6 @@ public:
 	int getStep();
 
 	void clearConditions();
-
-	System::Collections::Generic::List<ManagedPosition^>^ getManagedPositions();
-
-	System::Collections::Generic::List<ManagedVector^>^ getManagedNormals();
 
 	void displayBoundarySetting(System::Windows::Forms::DataGridView^ view);
 
@@ -86,17 +82,13 @@ public:
 	Physics::PhysicsObjectFactory* factory;
 	Physics::SimulationSetting* simulationSetting;
 	Physics::Simulation* simulation;
-	Physics::LightSource* lightSource;
+	Physics::LightSourceFactory* lightSourceFactory;
 	Graphics::Renderer* renderer;
 	Graphics::GraphicsSettings* graphicsSettings;
 	std::list<Physics::PhysicsObjectCondition>* conditions;
 	System::Windows::Forms::PictureBox^ pictureBox;
 
 private:
-	System::Collections::Generic::List<ManagedPosition^>^ convertToManagedPositions(const Physics::ParticleVector& nativeParticles);
-
-	System::Collections::Generic::List<ManagedVector^>^ convertToManagedNormals(const Physics::ParticleVector& nativeParticles);
-
 	std::vector<Geom::Vector3d> convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions);
 };
 

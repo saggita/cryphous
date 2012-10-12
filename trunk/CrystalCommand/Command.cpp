@@ -4,6 +4,7 @@
 #include "../CrystalGeom/Box.h"
 #include "../CrystalGraphics/GraphicsSettings.h"
 #include "../CrystalPhysics/PhysicsObjectFactory.h"
+#include "../CrystalPhysics/LightSourceFactory.h"
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalPhysics/LightSource.h"
@@ -26,7 +27,7 @@ Command::Command(System::Windows::Forms::PictureBox^ pictureBox)
 	factory = new PhysicsObjectFactory;
 	simulation = new Simulation;
 	simulationSetting = new SimulationSetting;
-	lightSource = new LightSource(0, Vector3d(0.0f, 0.0f, 0.0f));
+	lightSourceFactory = new LightSourceFactory;
 	graphicsSettings = new GraphicsSettings;
 	renderer = new Renderer(*graphicsSettings);
 	conditions = new std::list<PhysicsObjectCondition>;
@@ -35,7 +36,7 @@ Command::Command(System::Windows::Forms::PictureBox^ pictureBox)
 
 Command::~Command()
 {
-	delete lightSource;
+	delete lightSourceFactory;
 	delete graphicsSettings;
 	delete conditions;
 	delete renderer;
@@ -109,25 +110,13 @@ void Command::addParticles(unsigned int index, System::Collections::Generic::Lis
 
 void Command::proceed()
 {
-	simulation->simulate( factory, lightSource, *(simulationSetting) );
+	simulation->simulate( factory, lightSourceFactory, *(simulationSetting) );
 	rendering();
 }
 
 int Command::getStep()
 {
 	return simulation->getStep();
-}
-
-List<ManagedPosition^>^ Command::getManagedPositions()
-{
-	const ParticleVector& nativeParticles = factory->getParticles();
-	return convertToManagedPositions( nativeParticles );
-}
-
-List<ManagedVector^>^ Command::getManagedNormals()
-{
-	const ParticleVector& nativeParticles = factory->getParticles();
-	return convertToManagedNormals( nativeParticles );
 }
 
 void Command::displayBoundarySetting(System::Windows::Forms::DataGridView^ view)
@@ -175,7 +164,7 @@ void Command::setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, in
 
 void Command::rendering()
 {
-	renderer->rendering( factory, lightSource, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
+	renderer->rendering( factory, lightSourceFactory, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
 }
 
 void Command::rotateX(int angle)
@@ -219,7 +208,7 @@ void Command::displayProfile(System::Windows::Forms::ListBox^ listBox)
 {
 	listBox->Items->Clear();
 	listBox->Items->Add("Particles = " + factory->getParticles().size() );
-	listBox->Items->Add("Photons = " + lightSource->getPhotons().size() );
+	listBox->Items->Add("Photons = " + lightSourceFactory->getPhotons().size() );
 	listBox->Items->Add("Step = " + simulation->getStep() );
 	listBox->Items->Add("Time = " + simulation->getSimulationTime() );
 	listBox->Items->Add(" ");
@@ -263,39 +252,6 @@ void Command::displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxT
 {
 	textBoxTimeStep->Text = (simulationSetting->timeStep).ToString();
 	textBoxEffectLength->Text = (simulationSetting->particleDiameter).ToString();
-}
-
-List<ManagedPosition^>^ Command::convertToManagedPositions(const ParticleVector& nativeParticles)
-{
-	List<ManagedPosition^>^ managedPositions = gcnew List<ManagedPosition^>();
-	for( size_t i = 0; i < nativeParticles.size(); ++i ) {
-		/*if( nativeParticles[i]->getParent()->getType() == PhysicsObject::Obstacle ) {
-			continue;
-		}*/
-		ManagedPosition^ newParticle = gcnew ManagedPosition(3);
-		newParticle[0] = nativeParticles[i]->center.getX();
-		newParticle[1] = nativeParticles[i]->center.getY();
-		newParticle[2] = nativeParticles[i]->center.getZ();
-		managedPositions->Add( newParticle );
-	}
-
-	assert( managedPositions->Count == nativeParticles.size() );
-	return managedPositions;
-}
-
-List<ManagedVector^>^ Command::convertToManagedNormals(const ParticleVector& nativeParticles)
-{
-	List<ManagedVector^>^ managedNormals = gcnew List<ManagedPosition^>();
-	for( size_t i = 0; i < nativeParticles.size(); ++i ) {
-		ManagedPosition^ normal = gcnew ManagedPosition(3);
-		normal[0] = nativeParticles[i]->normal.getX();
-		normal[1] = nativeParticles[i]->normal.getY();
-		normal[2] = nativeParticles[i]->normal.getZ();
-		managedNormals->Add( normal );
-	}
-
-	assert( managedNormals->Count == nativeParticles.size() );
-	return managedNormals;
 }
 
 std::vector<Vector3d> Command::convertToNative(System::Collections::Generic::List<ManagedPosition^>^ managedPositions)
