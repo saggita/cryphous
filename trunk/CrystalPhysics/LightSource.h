@@ -14,6 +14,12 @@ namespace Crystal{
 class LightSource : private Uncopyable
 {
 public:
+	LightSource() :
+		id(-1),
+		center( Geom::Vector3d( 0.0f, 0.0f, 0.0f) )
+	{
+	}
+
 	LightSource(const int id, const Geom::Vector3d& center) :
 		 id( id), center( center)
 		 {
@@ -36,7 +42,7 @@ public:
 
 private:
 	const int id;
-	const Geom::Vector3d& center;
+	const Geom::Vector3d center;
 	PhotonFactory photonFactory;
 };
 

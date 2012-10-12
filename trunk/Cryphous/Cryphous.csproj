@@ -150,12 +150,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RenderingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RenderingForm.Designer.cs">
-      <DependentUpon>RenderingForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ExternalForceSettingForm.resx">
       <DependentUpon>ExternalForceSettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,9 +175,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RenderingForm.resx">
-      <DependentUpon>RenderingForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

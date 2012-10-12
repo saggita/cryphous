@@ -177,12 +177,6 @@ namespace Cryphous
             pictureBox1.Focus();
         }
 
-        private void buttonRenderingTest_Click(object sender, EventArgs e)
-        {
-            RenderingForm form = new RenderingForm(mainCommand);
-            form.Show(this);
-        }
-
         private void externalForceEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExternalForceSettingForm form = new ExternalForceSettingForm(mainCommand);

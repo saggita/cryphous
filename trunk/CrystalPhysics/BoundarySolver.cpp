@@ -8,7 +8,7 @@ using namespace Crystal::Physics;
 #endif
 
 void BoundarySolver::calculateDensity(const Box& box)
-	{
+{
 		const float effectLength = setting.getEffectLength();
 	
 		const ParticleVector& particles = object->getParticles();
@@ -48,10 +48,10 @@ void BoundarySolver::calculateDensity(const Box& box)
 				calculateDensity( particle, boundaryPoint );
 			}
 		}
-	}
+}
 
 void BoundarySolver::calculateForce(const Box& box)
-	{
+{
 		if( object->getParticles().empty() ) {
 			return;
 		}
@@ -97,14 +97,13 @@ void BoundarySolver::calculateForce(const Box& box)
 				particle->force -= Geom::Vector3d( 0.0, 0.0, force );
 			}
 		}
-	}
+}
 
 void BoundarySolver::calculateDensity(Particle* particle, const Vector3d boundaryPoint)
-	{
-		virtualParticle->center = boundaryPoint;
-		//virtualParticle->setParent( particle->getParent() );
+{
+	virtualParticle->center = boundaryPoint;
 		
-		ParticlePair pair( particle, virtualParticle );
-		SPHPairSolver solver( setting.getEffectLength() );
-		solver.calculateDensity( pair);
-	}
+	ParticlePair pair( particle, virtualParticle );
+	SPHPairSolver solver( setting.getEffectLength() );
+	solver.calculateDensity( pair);
+}
