@@ -32,16 +32,14 @@ void TextureCreator::createTexture(const int size)
 
 	Kernels3D kernels( effectLength );
 
-	const double max = kernels.getPoly6Kernel( 0.0 );//getViscosityKernelLaplacian( 0.0 );
-	
+	const float max = kernels.getPoly6Kernel( 0.0 );
+
 	for( int i = 0; i < size; ++i ) {
 		bmpVec.push_back( std::vector< unsigned char >() );
 		for( int j = 0; j < size; ++j) {
-			const double distSquare = std::pow( i - centerX, 2.0 ) + std::pow( j - centerY, 2.0 );
+			const float distSquare = std::pow( i - centerX, 2.0 ) + std::pow( j - centerY, 2.0 );
 			float result = kernels.getPoly6Kernel( std::sqrt( distSquare ) ) / max * 0xff; 
-			if( result < 0.0f ) {
-				result = 0.0;
-			}
+			result = std::max( result, 0.0f );
 			bmpVec[i].push_back( (unsigned char)( result) );
 		}
 	}

@@ -10,36 +10,7 @@
     <ClCompile Include="BoundarySolverTest.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
-    <ClCompile Include="BoundarySolver.cpp" />
-    <ClCompile Include="NeighborSearcher.cpp" />
-    <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="PhotonFactoryTest.cpp" />
     <ClCompile Include="LightSourceTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\CrystalPhysics\BoundarySolver.h" />
-    <ClInclude Include="..\CrystalPhysics\Fluid.h" />
-    <ClInclude Include="..\CrystalPhysics\Kernels3D.h" />
-    <ClInclude Include="..\CrystalPhysics\NeighborSearcher.h" />
-    <ClInclude Include="..\CrystalPhysics\Obstacle.h" />
-    <ClInclude Include="..\CrystalPhysics\Particle.h" />
-    <ClInclude Include="..\CrystalPhysics\ParticleConditions.h" />
-    <ClInclude Include="..\CrystalPhysics\ParticleFactory.h" />
-    <ClInclude Include="..\CrystalPhysics\ParticlePair.h" />
-    <ClInclude Include="..\CrystalPhysics\PhysicsObject.h" />
-    <ClInclude Include="..\CrystalPhysics\PhysicsObjectFactory.h" />
-    <ClInclude Include="..\CrystalPhysics\Profiler.h" />
-    <ClInclude Include="..\CrystalPhysics\Rigid.h" />
-    <ClInclude Include="..\CrystalPhysics\RigidEnforcer.h" />
-    <ClInclude Include="..\CrystalPhysics\SearchParticle.h" />
-    <ClInclude Include="..\CrystalPhysics\SearchParticleFactory.h" />
-    <ClInclude Include="..\CrystalPhysics\Simulation.h" />
-    <ClInclude Include="..\CrystalPhysics\SimulationSetting.h" />
-    <ClInclude Include="..\CrystalPhysics\SPHPairSolver.h" />
-    <ClInclude Include="..\CrystalPhysics\SPHSolver.h" />
-    <ClInclude Include="Elastic.h" />
-    <ClInclude Include="Photon.h" />
-    <ClInclude Include="PhotonFactory.h" />
-    <ClInclude Include="LightSource.h" />
   </ItemGroup>
 </Project>

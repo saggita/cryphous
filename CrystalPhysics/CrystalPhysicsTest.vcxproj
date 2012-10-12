@@ -68,11 +68,11 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Configuration)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
@@ -125,7 +125,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kernel32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>CrystalPhysics.lib; kernel32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>../$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -168,7 +168,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kernel32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>CrystalPhysics.lib; kernel32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>../$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -180,13 +180,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="BoundarySolverTest.cpp" />
     <ClCompile Include="LightSourceTest.cpp" />
-    <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="PhotonFactoryTest.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
-    <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
     <ClCompile Include="ParticleFactoryTest.cpp" />
     <ClCompile Include="PhysicsObjectFactoryTest.cpp" />
@@ -194,32 +191,6 @@
     <ClCompile Include="SearchParticleFactoryTest.cpp" />
     <ClCompile Include="SimulationTest.cpp" />
     <ClCompile Include="CrystalPhysicsTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\CrystalPhysics\BoundarySolver.h" />
-    <ClInclude Include="..\CrystalPhysics\Fluid.h" />
-    <ClInclude Include="..\CrystalPhysics\Kernels3D.h" />
-    <ClInclude Include="..\CrystalPhysics\NeighborSearcher.h" />
-    <ClInclude Include="..\CrystalPhysics\Obstacle.h" />
-    <ClInclude Include="..\CrystalPhysics\Particle.h" />
-    <ClInclude Include="..\CrystalPhysics\ParticleConditions.h" />
-    <ClInclude Include="..\CrystalPhysics\ParticleFactory.h" />
-    <ClInclude Include="..\CrystalPhysics\ParticlePair.h" />
-    <ClInclude Include="..\CrystalPhysics\PhysicsObject.h" />
-    <ClInclude Include="..\CrystalPhysics\PhysicsObjectFactory.h" />
-    <ClInclude Include="..\CrystalPhysics\Profiler.h" />
-    <ClInclude Include="..\CrystalPhysics\Rigid.h" />
-    <ClInclude Include="..\CrystalPhysics\RigidEnforcer.h" />
-    <ClInclude Include="..\CrystalPhysics\SearchParticle.h" />
-    <ClInclude Include="..\CrystalPhysics\SearchParticleFactory.h" />
-    <ClInclude Include="..\CrystalPhysics\Simulation.h" />
-    <ClInclude Include="..\CrystalPhysics\SimulationSetting.h" />
-    <ClInclude Include="..\CrystalPhysics\SPHPairSolver.h" />
-    <ClInclude Include="..\CrystalPhysics\SPHSolver.h" />
-    <ClInclude Include="Elastic.h" />
-    <ClInclude Include="LightSource.h" />
-    <ClInclude Include="Photon.h" />
-    <ClInclude Include="PhotonFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
