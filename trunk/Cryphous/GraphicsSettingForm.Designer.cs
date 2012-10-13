@@ -45,6 +45,11 @@
             // numericUpDownPointSize
             // 
             this.numericUpDownPointSize.Location = new System.Drawing.Point(93, 26);
+            this.numericUpDownPointSize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownPointSize.Name = "numericUpDownPointSize";
             this.numericUpDownPointSize.Size = new System.Drawing.Size(41, 19);
             this.numericUpDownPointSize.TabIndex = 1;
