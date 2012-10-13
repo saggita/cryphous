@@ -21,7 +21,7 @@ void LightSource::integrateTime(const float proceedTime )
 		const PhotonVector& photons = getPhotons();
 		
 		#pragma omp parallel for
-		for( int i = 0; i < photons.size(); ++i )
+		for( int i = 0; i < static_cast<int>( photons.size() ); ++i )
 		{
 			photons[i]->center += photons[i]->velocity * proceedTime;
 		}

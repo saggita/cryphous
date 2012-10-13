@@ -30,5 +30,5 @@ BOOST_AUTO_TEST_CASE(SIMULATION_TEST)
 	lightSourceFactory.createLightSource( Vector3d( 0.0f, 0.0f, 0.0f) );
 
 	Simulation simulation;
-	simulation.simulate( &factory, lightSourceFactory, setting);
+	simulation.simulate( &factory, &lightSourceFactory, setting);
 }
