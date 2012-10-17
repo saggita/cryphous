@@ -14,6 +14,7 @@
 #include "Profiler.h"
 
 #include "LightSourceFactory.h"
+#include "BoundaryPhotonSolver.h"
 
 #include <cassert>
 #include <cmath>
@@ -63,6 +64,10 @@ public:
 
 		Profiler::get()->start(" Sim->photon");
 		const LightSourceVector& lightSources = lightSourceFactory->getLightSources();
+		for( size_t i = 0; i < lightSources.size(); ++i ) { 
+			BoundaryPhotonSolver bps( lightSources[i] );
+			bps.reflectPhoton( setting.boundaryBox );
+		}
 		for( size_t i = 0; i < lightSources.size(); ++i ) {
 			lightSources[i]->integrateTime( setting.timeStep );
 		}

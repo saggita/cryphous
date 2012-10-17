@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BoundaryPhotonSolver.h" />
     <ClInclude Include="BoundarySolver.h" />
     <ClInclude Include="LightSource.h" />
     <ClInclude Include="LightSourceFactory.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="SPHSolver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoundaryPhotonSolver.cpp" />
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="LightSource.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />

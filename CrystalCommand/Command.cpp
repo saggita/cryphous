@@ -56,6 +56,8 @@ void Command::refresh()
 	for( std::list<PhysicsObjectCondition>::iterator iter = conditions->begin(); iter != conditions->end(); ++iter ) {
 		factory->createPhysicsObject((*iter), *simulationSetting);
 	}
+	lightSourceFactory->init();
+
 	renderer->init();	
 	simulation->init();
 	Profiler::get()->init();

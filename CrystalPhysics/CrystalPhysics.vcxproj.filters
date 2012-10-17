@@ -7,11 +7,13 @@
     <ClInclude Include="BoundarySolver.h" />
     <ClInclude Include="LightSource.h" />
     <ClInclude Include="LightSourceFactory.h" />
+    <ClInclude Include="BoundaryPhotonSolver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHSolver.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="LightSource.cpp" />
+    <ClCompile Include="BoundaryPhotonSolver.cpp" />
   </ItemGroup>
 </Project>
