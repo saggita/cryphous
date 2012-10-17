@@ -265,3 +265,9 @@ std::vector<Vector3d> Command::convertToNative(System::Collections::Generic::Lis
 	assert( managedPositions->Count == nativePositions.size() );
 	return nativePositions;
 }
+
+void Command::setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ)
+{
+	const Vector3d center( posX, posY, posZ );
+	lightSourceFactory->createLightSource( center );
+}

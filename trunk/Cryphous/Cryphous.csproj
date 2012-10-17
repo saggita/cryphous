@@ -130,6 +130,12 @@
     <Compile Include="GraphicsSettingForm.Designer.cs">
       <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LightSourceSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LightSourceSettingForm.Designer.cs">
+      <DependentUpon>LightSourceSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphicsSettingForm.resx">
       <DependentUpon>GraphicsSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LightSourceSettingForm.resx">
+      <DependentUpon>LightSourceSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -13,7 +13,7 @@ void LightSource::integrateTime(const float proceedTime )
 			std::vector<Geom::Vector3d> velocities;
 			
 			for( int i = 0; i < 10; ++i ) {
-				points.push_back( Geom::Vector3d( 0.0f, 0.0f, 0.0f ) );
+				points.push_back( Geom::Vector3d( center.getX(), center.getY(), center.getZ() ) );
 				velocities.push_back( Geom::Vector3d( (rand() % 1000) / 1000.0f, (rand() % 1000) / 1000.0f, (rand() % 1000) / 1000.0f ) );
 			}
 			photonFactory.addPhotons( points, velocities );
