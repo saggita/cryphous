@@ -168,5 +168,11 @@ namespace Cryphous
             GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
             form.Show(this);
         }
+
+        private void lightSourceSettingLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LightSourceSettingForm form = new LightSourceSettingForm(mainCommand);
+            form.Show(this);
+        }
     }
 }

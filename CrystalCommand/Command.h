@@ -78,6 +78,8 @@ public:
 
 	void displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength );
 
+	void setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ);
+
 public:
 	Physics::PhysicsObjectFactory* factory;
 	Physics::SimulationSetting* simulationSetting;

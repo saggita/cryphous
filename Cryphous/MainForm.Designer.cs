@@ -42,6 +42,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonViewReset = new System.Windows.Forms.Button();
+            this.lightSourceSettingLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -65,7 +66,8 @@
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.objectSettingToolStripMenuItem,
             this.externalForceEToolStripMenuItem,
-            this.graphicsSettingGToolStripMenuItem});
+            this.graphicsSettingGToolStripMenuItem,
+            this.lightSourceSettingLToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
@@ -73,21 +75,21 @@
             // objectSettingToolStripMenuItem
             // 
             this.objectSettingToolStripMenuItem.Name = "objectSettingToolStripMenuItem";
-            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.objectSettingToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.objectSettingToolStripMenuItem.Text = "ObjectSetting(&O)";
             this.objectSettingToolStripMenuItem.Click += new System.EventHandler(this.objectSettingToolStripMenuItem_Click);
             // 
             // externalForceEToolStripMenuItem
             // 
             this.externalForceEToolStripMenuItem.Name = "externalForceEToolStripMenuItem";
-            this.externalForceEToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.externalForceEToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.externalForceEToolStripMenuItem.Text = "ExternalForce(&E)";
             this.externalForceEToolStripMenuItem.Click += new System.EventHandler(this.externalForceEToolStripMenuItem_Click);
             // 
             // graphicsSettingGToolStripMenuItem
             // 
             this.graphicsSettingGToolStripMenuItem.Name = "graphicsSettingGToolStripMenuItem";
-            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
             this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
             // 
@@ -179,6 +181,13 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
+            // lightSourceSettingLToolStripMenuItem
+            // 
+            this.lightSourceSettingLToolStripMenuItem.Name = "lightSourceSettingLToolStripMenuItem";
+            this.lightSourceSettingLToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.lightSourceSettingLToolStripMenuItem.Text = "LightSourceSetting(&L)";
+            this.lightSourceSettingLToolStripMenuItem.Click += new System.EventHandler(this.lightSourceSettingLToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -219,5 +228,6 @@
         private System.Windows.Forms.Button buttonViewReset;
         private System.Windows.Forms.ToolStripMenuItem externalForceEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lightSourceSettingLToolStripMenuItem;
     }
 }
