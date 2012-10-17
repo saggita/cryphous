@@ -15,25 +15,27 @@ void BoundaryPhotonSolver::reflectPhoton(const Box& box)
 	#pragma omp parallel for
 	for( int i = 0; i < static_cast<int>(photons.size()); ++i ) {
 		Photon* photon = photons[i];
+		int random = std::rand() % 10000;
+		bool doStop = random > 5000;
 		if( photon->center.getX() > box.getMaxX() ) {
-			photon->velocity.setX( -::fabs(photon->velocity.getX()) );
+			doStop ? photon->velocity.setZero() : photon->velocity.setX( -::fabs(photon->velocity.getX()) );
 		}
 		else if( photon->center.getX() < box.getMinX() ) {
-			photon->velocity.setX( ::fabs(photon->velocity.getX()) );
+			doStop ? photon->velocity.setZero() : photon->velocity.setX( ::fabs(photon->velocity.getX()) );
 		}
 
 		if( photon->center.getY() > box.getMaxY() ) {
-			photon->velocity.setY( -::fabs(photon->velocity.getY()) );
+			doStop ? photon->velocity.setZero() : photon->velocity.setY( -::fabs(photon->velocity.getY()) );
 		}
 		else if( photon->center.getY() < box.getMinY() ) {
-			photon->velocity.setY( ::fabs(photon->velocity.getY()) );
+			doStop ? photon->velocity.setZero() : photon->velocity.setY( ::fabs(photon->velocity.getY()) );
 		}
 
 		if( photon->center.getZ() > box.getMaxZ() ) {
-			photon->velocity.setZ( -::fabs(photon->velocity.getZ()) );
+			doStop ? photon->velocity.setZero() : photon->velocity.setZ( -::fabs(photon->velocity.getZ()) );
 		}
 		else if( photon->center.getZ() < box.getMinZ() ) {
-			photon->velocity.setZ( ::fabs(photon->velocity.getZ()) );
+			doStop ? photon->velocity.setZero() : photon->velocity.setZ( ::fabs(photon->velocity.getZ()) );
 		}
 	}
 }

@@ -36,6 +36,8 @@ public:
 
 	void setZ(const float z){ this->z = z; }
 
+	void setZero() { x = 0.0f; y = 0.0f; z = 0.0f; }
+
 	float getX() const { return x; }
 
 	float getY() const { return y; }
