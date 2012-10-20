@@ -246,8 +246,8 @@ std::vector<Vector3d> Command::convertToNative(System::Collections::Generic::Lis
 	return nativePositions;
 }
 
-void Command::setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ)
+void Command::setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ, const size_t photons)
 {
 	const Vector3d center( posX, posY, posZ );
-	lightSourceFactory->createLightSource( center );
+	lightSourceFactory->createLightSource( center, photons );
 }

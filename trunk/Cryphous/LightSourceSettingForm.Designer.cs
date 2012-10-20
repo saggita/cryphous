@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewLightSourceSetting = new System.Windows.Forms.DataGridView();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -39,20 +39,21 @@
             this.MaxY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MinZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaxZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLightSourceSetting)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewLightSourceSetting
             // 
             this.dataGridViewLightSourceSetting.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLightSourceSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewLightSourceSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewLightSourceSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewLightSourceSetting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PosX,
@@ -60,19 +61,20 @@
             this.PosZ,
             this.MaxY,
             this.MinZ,
-            this.MaxZ});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewLightSourceSetting.DefaultCellStyle = dataGridViewCellStyle6;
+            this.MaxZ,
+            this.Column1});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewLightSourceSetting.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewLightSourceSetting.Location = new System.Drawing.Point(3, 12);
             this.dataGridViewLightSourceSetting.Name = "dataGridViewLightSourceSetting";
             this.dataGridViewLightSourceSetting.RowTemplate.Height = 21;
-            this.dataGridViewLightSourceSetting.Size = new System.Drawing.Size(289, 128);
+            this.dataGridViewLightSourceSetting.Size = new System.Drawing.Size(333, 128);
             this.dataGridViewLightSourceSetting.TabIndex = 2;
             // 
             // buttonOK
@@ -131,11 +133,17 @@
             this.MaxZ.Name = "MaxZ";
             this.MaxZ.Width = 40;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Photons";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 50;
+            // 
             // LightSourceSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 194);
+            this.ClientSize = new System.Drawing.Size(348, 194);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.dataGridViewLightSourceSetting);
@@ -150,13 +158,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewLightSourceSetting;
+        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn PosX;
         private System.Windows.Forms.DataGridViewTextBoxColumn PosY;
         private System.Windows.Forms.DataGridViewTextBoxColumn PosZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxY;
         private System.Windows.Forms.DataGridViewTextBoxColumn MinZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxZ;
-        private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
