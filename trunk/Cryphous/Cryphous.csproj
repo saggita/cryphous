@@ -117,6 +117,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoundarySettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoundarySettingForm.Designer.cs">
+      <DependentUpon>BoundarySettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Emitter.cs" />
     <Compile Include="ExternalForceSettingForm.cs">
       <SubType>Form</SubType>
@@ -142,12 +148,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParticleObserveDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ParticleObserveDialog.Designer.cs">
-      <DependentUpon>ParticleObserveDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="PhysicsObjectSettingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +156,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BoundarySettingForm.resx">
+      <DependentUpon>BoundarySettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExternalForceSettingForm.resx">
       <DependentUpon>ExternalForceSettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,9 +170,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParticleObserveDialog.resx">
-      <DependentUpon>ParticleObserveDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhysicsObjectSettingDialog.resx">
       <DependentUpon>PhysicsObjectSettingDialog.cs</DependentUpon>

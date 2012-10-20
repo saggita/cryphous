@@ -222,28 +222,6 @@ void Command::displayProfile(System::Windows::Forms::ListBox^ listBox)
 	}
 }
 
-void Command::displayParticles(System::Windows::Forms::DataGridView^ view)
-{
-	view->Rows->Clear();
-
-	const ParticleVector& particles = factory->getParticles();
-	
-	for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
-		Particle* particle = *iter;
-
-		array<Object^>^ rowData = {
-					particle->getID(),
-					particle->getMass(),
-					particle->density,
-					particle->center.getX(),
-					particle->center.getY(),
-					particle->center.getZ()
-				};
-			
-		view->Rows->Add( rowData );
-	}
-}
-
 void Command::setSimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength )
 {
 	(simulationSetting->timeStep) = float::Parse( textBoxTimeStep->Text );
