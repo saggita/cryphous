@@ -19,23 +19,29 @@ void BoundaryPhotonSolver::reflectPhoton(const Box& box)
 		bool doStop = random > 5000;
 		if( photon->center.getX() > box.getMaxX() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setX( -::fabs(photon->velocity.getX()) );
+			photon->center.setX( box.getMaxX() );
 		}
 		else if( photon->center.getX() < box.getMinX() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setX( ::fabs(photon->velocity.getX()) );
+			photon->center.setX( box.getMinX() );
 		}
 
 		if( photon->center.getY() > box.getMaxY() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setY( -::fabs(photon->velocity.getY()) );
+			photon->center.setY( box.getMaxY() );
 		}
 		else if( photon->center.getY() < box.getMinY() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setY( ::fabs(photon->velocity.getY()) );
+			photon->center.setY( box.getMinY() );
 		}
 
 		if( photon->center.getZ() > box.getMaxZ() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setZ( -::fabs(photon->velocity.getZ()) );
+			photon->center.setZ( box.getMaxZ() );
 		}
 		else if( photon->center.getZ() < box.getMinZ() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setZ( ::fabs(photon->velocity.getZ()) );
+			photon->center.setZ( box.getMinZ() );
 		}
 	}
 }

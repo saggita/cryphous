@@ -31,9 +31,10 @@ public:
 	}
 
 
-	LightSource* createLightSource( const Geom::Vector3d& center )
+	LightSource* createLightSource( const Geom::Vector3d& center, const size_t howManyPhotons )
 	{
 		lightSources.push_back( new LightSource( nextID++, center ) );
+		lightSources.back()->addPhotons( howManyPhotons );
 		return lightSources.back();
 	}
 

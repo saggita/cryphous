@@ -21,6 +21,8 @@ protected:
 	{
 	}
 
+	void addPhotons(const size_t howMany);
+
 	LightSource(const int id, const Geom::Vector3d& center) :
 		 id( id), center( center)
 		 {
@@ -40,6 +42,7 @@ public:
 	PhotonVector getPhotons() const { return photonFactory.getPhotons(); }
 
 	void integrateTime(const float proceedTime );
+
 
 private:
 	const int id;

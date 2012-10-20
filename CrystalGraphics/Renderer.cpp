@@ -129,32 +129,36 @@ void Renderer::drawBoundaryBox(const Box& box)
 
 		glLineWidth(1.0f);
 
-		glBegin(GL_LINE_LOOP);
+		glColor4d( 1.0, 0.0, 0.0, 1.0 );
+		glBegin(GL_TRIANGLE_STRIP);
 			glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
 			glVertex3d( box.getMaxX(), box.getMinY(), box.getMinZ() );
-			glVertex3d( box.getMaxX(), box.getMaxY(), box.getMinZ() );
 			glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
+			glVertex3d( box.getMaxX(), box.getMaxY(), box.getMinZ() );
 		glEnd();
 
-		glBegin(GL_LINE_LOOP);
+		glColor4d( 0.0, 1.0, 0.0, 1.0 );
+		glBegin(GL_TRIANGLE_STRIP);
 			glVertex3d( box.getMinX(), box.getMinY(), box.getMaxZ() );
 			glVertex3d( box.getMaxX(), box.getMinY(), box.getMaxZ() );
+			glVertex3d( box.getMinX(), box.getMaxY(), box.getMaxZ() );
 			glVertex3d( box.getMaxX(), box.getMaxY(), box.getMaxZ() );
+		glEnd();
+
+		glColor4d( 0.0, 0.0, 1.0, 1.0 );
+		glBegin(GL_TRIANGLE_STRIP);
+			glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
+			glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
+			glVertex3d( box.getMinX(), box.getMinY(), box.getMaxZ() );
 			glVertex3d( box.getMinX(), box.getMaxY(), box.getMaxZ() );
 		glEnd();
 
-		glBegin(GL_LINE_LOOP);
-			glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
-			glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
-			glVertex3d( box.getMinX(), box.getMaxY(), box.getMaxZ() );
-			glVertex3d( box.getMinX(), box.getMinY(), box.getMaxZ() );
-		glEnd();
-
-		glBegin(GL_LINE_LOOP);
+		glColor4d( 0.0, 0.0, 0.0, 1.0 );
+		glBegin(GL_TRIANGLE_STRIP);
 			glVertex3d( box.getMaxX(), box.getMinY(), box.getMinZ() );
 			glVertex3d( box.getMaxX(), box.getMaxY(), box.getMinZ() );
-			glVertex3d( box.getMaxX(), box.getMaxY(), box.getMaxZ() );
 			glVertex3d( box.getMaxX(), box.getMinY(), box.getMaxZ() );
+			glVertex3d( box.getMaxX(), box.getMaxY(), box.getMaxZ() );
 		glEnd();
 
 		glPopMatrix();

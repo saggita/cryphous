@@ -22,7 +22,7 @@ namespace Cryphous
 
         private void LightSourceSettingForm_Load(object sender, EventArgs e)
         {
-            dataGridViewLightSourceSetting.Rows.Add(0, 5, 0, 0, -1, 0);
+            dataGridViewLightSourceSetting.Rows.Add(0, 5, 0, 0, -1, 0, 200000);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -35,7 +35,8 @@ namespace Cryphous
                 float dirX = Convert.ToSingle(row.Cells[3].Value);
                 float dirY = Convert.ToSingle(row.Cells[4].Value);
                 float dirZ = Convert.ToSingle(row.Cells[5].Value);
-                command.setLightSourceSetting(posX, posY, posZ, dirX, dirY, dirZ);
+                uint photons = Convert.ToUInt32(row.Cells[6].Value);
+                command.setLightSourceSetting(posX, posY, posZ, dirX, dirY, dirZ, photons);
             }
             Close();
         }

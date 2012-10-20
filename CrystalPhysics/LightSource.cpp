@@ -8,21 +8,25 @@ using namespace Crystal::Physics;
 #include <omp.h>
 #endif
 
-void LightSource::integrateTime(const float proceedTime)
+void LightSource::addPhotons(const size_t howMany)
 {
 	std::tr1::random_device rand;
-	if( getPhotons().size() < 500000 ) {
-		std::vector<Geom::Vector3d> points;
-		std::vector<Geom::Vector3d> velocities;
-		
-		for( int i = 0; i < 100; ++i ) {
-			points.push_back( center );
-			velocities.push_back( Geom::Vector3d( rand(), rand(), rand() ) );
-			velocities.back().normalize();
-			velocities.back() *= 10.0;
-		}
-		photonFactory.addPhotons( points, velocities );
+	
+	std::vector<Geom::Vector3d> points;
+	std::vector<Geom::Vector3d> velocities;
+
+	for( size_t j = 0; j < howMany; ++j ) {	
+		points.push_back( center );
+		velocities.push_back( Geom::Vector3d( rand(), -1.0 * rand(), rand() ) );
+		velocities.back().normalize();
+		velocities.back() *= 10.0;
 	}
+
+	photonFactory.addPhotons( points, velocities );
+}
+
+void LightSource::integrateTime(const float proceedTime)
+{
 	const PhotonVector& photons = getPhotons();
 	
 	#pragma omp parallel for
