@@ -34,6 +34,7 @@
             this.objectSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.externalForceEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsSettingGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightSourceSettingLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxInformation = new System.Windows.Forms.ListBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -42,7 +43,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonViewReset = new System.Windows.Forms.Button();
-            this.lightSourceSettingLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.boundarySettingBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -67,7 +68,8 @@
             this.objectSettingToolStripMenuItem,
             this.externalForceEToolStripMenuItem,
             this.graphicsSettingGToolStripMenuItem,
-            this.lightSourceSettingLToolStripMenuItem});
+            this.lightSourceSettingLToolStripMenuItem,
+            this.boundarySettingBToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.settingToolStripMenuItem.Text = "Settings(&S)";
@@ -92,6 +94,13 @@
             this.graphicsSettingGToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.graphicsSettingGToolStripMenuItem.Text = "GraphicsSetting(&G)";
             this.graphicsSettingGToolStripMenuItem.Click += new System.EventHandler(this.graphicsSettingGToolStripMenuItem_Click);
+            // 
+            // lightSourceSettingLToolStripMenuItem
+            // 
+            this.lightSourceSettingLToolStripMenuItem.Name = "lightSourceSettingLToolStripMenuItem";
+            this.lightSourceSettingLToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.lightSourceSettingLToolStripMenuItem.Text = "LightSourceSetting(&L)";
+            this.lightSourceSettingLToolStripMenuItem.Click += new System.EventHandler(this.lightSourceSettingLToolStripMenuItem_Click);
             // 
             // listBoxInformation
             // 
@@ -181,12 +190,12 @@
             this.buttonViewReset.UseVisualStyleBackColor = true;
             this.buttonViewReset.Click += new System.EventHandler(this.buttonViewReset_Click);
             // 
-            // lightSourceSettingLToolStripMenuItem
+            // boundarySettingBToolStripMenuItem
             // 
-            this.lightSourceSettingLToolStripMenuItem.Name = "lightSourceSettingLToolStripMenuItem";
-            this.lightSourceSettingLToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.lightSourceSettingLToolStripMenuItem.Text = "LightSourceSetting(&L)";
-            this.lightSourceSettingLToolStripMenuItem.Click += new System.EventHandler(this.lightSourceSettingLToolStripMenuItem_Click);
+            this.boundarySettingBToolStripMenuItem.Name = "boundarySettingBToolStripMenuItem";
+            this.boundarySettingBToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.boundarySettingBToolStripMenuItem.Text = "BoundarySetting(&B)";
+            this.boundarySettingBToolStripMenuItem.Click += new System.EventHandler(this.boundarySettingBToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -229,5 +238,6 @@
         private System.Windows.Forms.ToolStripMenuItem externalForceEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem graphicsSettingGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lightSourceSettingLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem boundarySettingBToolStripMenuItem;
     }
 }

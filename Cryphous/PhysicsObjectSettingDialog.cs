@@ -27,7 +27,6 @@ namespace Cryphous
 
         private void PhysicsObjectSettingDialog_Load(object sender, EventArgs e)
         {
-            command.displayBoundarySetting(dataGridView1);
             command.displaySimulationSetting(textBoxTimeStep, textBoxEffectLength);
         }
 
@@ -49,7 +48,6 @@ namespace Cryphous
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            command.saveBoundarySetting(dataGridView1);
             command.setSimulationSetting(textBoxTimeStep, textBoxEffectLength);
             command.clearConditions();
             command.refresh();
@@ -166,34 +164,21 @@ namespace Cryphous
             this.Hide();
         }
 
-        private void setBoundary(float minX, float maxX, float minY, float maxY, float minZ, float maxZ)
-        {
-            dataGridView1.Rows[0].Cells[0].Value = minX;
-            dataGridView1.Rows[0].Cells[1].Value = minY;
-            dataGridView1.Rows[0].Cells[2].Value = minZ;
-            dataGridView1.Rows[1].Cells[0].Value = maxX;
-            dataGridView1.Rows[1].Cells[1].Value = maxY;
-            dataGridView1.Rows[1].Cells[2].Value = maxZ;
-        }
-
         private void comboBoxExample_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridViewObjectSetting.Rows.Clear();
             dataGridViewEmitterSetting.Rows.Clear();
             if (comboBoxExample.Text == "DamBreak1")
             {
-                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, -2.0, 0.0, 10.0, -10.0, 10.0, "Box");
             }
             else if (comboBoxExample.Text == "DamBreak2")
             {
-                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 0.0, 0.0, 10.0, -10.0, 0.0, "Box");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 10.0, 0.0, 10.0, 0.0, 10.0, "Box"); 
             }
             else if (comboBoxExample.Text == "Spring")
             {
-                setBoundary(-10.0F, 10.0F, 0.0F, 100.0F, -10.0F, 10.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -10.0, 10.0, 0.0, 2.0, -10.0, 10.0, "Box");
                 dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 9.0, 5.0, 9.0, -10.0, 5.0, -10.0, 5000);
                 dataGridViewEmitterSetting.Rows.Add(200000.0, 100.0, 1000.0, 9.0, 5.0, -9.0, -10.0, 5.0, 10.0, 5000);
@@ -202,14 +187,12 @@ namespace Cryphous
             }
             else if (comboBoxExample.Text == "SphereBreak")
             {
-                setBoundary(-20.0F, 20.0F, 0.0F, 100.0F, -20.0F, 20.0F);
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, -15.0, 0.0, 25.0, 40.0, -15.0, 0.0, "Sphere");
                 dataGridViewObjectSetting.Rows.Add("Fluid", 200000.0, 100.0, 1000.0, 0.0, 15.0, 30.0, 45.0, 0.0, 15.0, "Sphere");
             }
             else if (comboBoxExample.Text == "Hair")
             {
                 textBoxTimeStep.Text = "0.05";
-                setBoundary(-50.0F, 50.0F, 0.0F, 100.0F, -50.0F, 50.0F);
                 for (float y = 10.0f; y < 20.0f; y += 0.5f)
                 {
                     for (float z = -15.0f; z < 15.0f; z += 0.5f)

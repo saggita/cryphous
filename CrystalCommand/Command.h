@@ -70,8 +70,6 @@ public:
 
 	void viewReset();
 
-	void displayParticles(System::Windows::Forms::DataGridView^ view);
-
 	void displayProfile(System::Windows::Forms::ListBox^ listBox);
 
 	void setSimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength );

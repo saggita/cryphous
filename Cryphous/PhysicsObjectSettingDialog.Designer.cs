@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewObjectSetting = new System.Windows.Forms.DataGridView();
             this.headerType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.headerPressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,15 +48,10 @@
             this.Shape = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxEffectLength = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxTimeStep = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.comboBoxExample = new System.Windows.Forms.ComboBox();
@@ -83,7 +78,6 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmitterSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewElasticSetting)).BeginInit();
             this.SuspendLayout();
@@ -91,14 +85,14 @@
             // dataGridViewObjectSetting
             // 
             this.dataGridViewObjectSetting.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewObjectSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewObjectSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewObjectSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewObjectSetting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.headerType,
@@ -112,14 +106,14 @@
             this.MinZ,
             this.MaxZ,
             this.Shape});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewObjectSetting.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewObjectSetting.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewObjectSetting.Location = new System.Drawing.Point(0, 24);
             this.dataGridViewObjectSetting.Name = "dataGridViewObjectSetting";
             this.dataGridViewObjectSetting.RowTemplate.Height = 21;
@@ -207,7 +201,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(718, 333);
+            this.buttonCancel.Location = new System.Drawing.Point(508, 333);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 15;
@@ -217,7 +211,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(620, 334);
+            this.buttonOK.Location = new System.Drawing.Point(417, 333);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 14;
@@ -225,42 +219,9 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnX,
-            this.ColumnY,
-            this.ColumnZ});
-            this.dataGridView1.Location = new System.Drawing.Point(598, 24);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(195, 68);
-            this.dataGridView1.TabIndex = 18;
-            // 
-            // ColumnX
-            // 
-            this.ColumnX.HeaderText = "X";
-            this.ColumnX.Name = "ColumnX";
-            this.ColumnX.Width = 50;
-            // 
-            // ColumnY
-            // 
-            this.ColumnY.HeaderText = "Y";
-            this.ColumnY.Name = "ColumnY";
-            this.ColumnY.Width = 50;
-            // 
-            // ColumnZ
-            // 
-            this.ColumnZ.HeaderText = "Z";
-            this.ColumnZ.Name = "ColumnZ";
-            this.ColumnZ.Width = 50;
-            // 
             // textBoxEffectLength
             // 
-            this.textBoxEffectLength.Location = new System.Drawing.Point(673, 158);
+            this.textBoxEffectLength.Location = new System.Drawing.Point(474, 272);
             this.textBoxEffectLength.Name = "textBoxEffectLength";
             this.textBoxEffectLength.Size = new System.Drawing.Size(100, 19);
             this.textBoxEffectLength.TabIndex = 22;
@@ -269,7 +230,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(589, 158);
+            this.label3.Location = new System.Drawing.Point(390, 272);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 21;
@@ -277,7 +238,7 @@
             // 
             // textBoxTimeStep
             // 
-            this.textBoxTimeStep.Location = new System.Drawing.Point(673, 123);
+            this.textBoxTimeStep.Location = new System.Drawing.Point(474, 237);
             this.textBoxTimeStep.Name = "textBoxTimeStep";
             this.textBoxTimeStep.Size = new System.Drawing.Size(100, 19);
             this.textBoxTimeStep.TabIndex = 20;
@@ -286,20 +247,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(589, 126);
+            this.label1.Location = new System.Drawing.Point(390, 240);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 19;
             this.label1.Text = "TimeStep";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(589, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Bounary";
             // 
             // label4
             // 
@@ -312,7 +264,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(398, 333);
+            this.buttonDelete.Location = new System.Drawing.Point(322, 333);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 26;
@@ -338,7 +290,7 @@
             // 
             // buttonCopy
             // 
-            this.buttonCopy.Location = new System.Drawing.Point(317, 333);
+            this.buttonCopy.Location = new System.Drawing.Point(241, 334);
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Size = new System.Drawing.Size(75, 23);
             this.buttonCopy.TabIndex = 28;
@@ -349,14 +301,14 @@
             // dataGridViewEmitterSetting
             // 
             this.dataGridViewEmitterSetting.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmitterSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmitterSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewEmitterSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmitterSetting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -369,14 +321,14 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.ColumnMax});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewEmitterSetting.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewEmitterSetting.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewEmitterSetting.Location = new System.Drawing.Point(0, 126);
             this.dataGridViewEmitterSetting.Name = "dataGridViewEmitterSetting";
             this.dataGridViewEmitterSetting.RowTemplate.Height = 21;
@@ -468,14 +420,14 @@
             // dataGridViewElasticSetting
             // 
             this.dataGridViewElasticSetting.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewElasticSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewElasticSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewElasticSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewElasticSetting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn10,
@@ -485,14 +437,14 @@
             this.dataGridViewTextBoxColumn14,
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewElasticSetting.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewElasticSetting.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewElasticSetting.Location = new System.Drawing.Point(0, 228);
             this.dataGridViewElasticSetting.Name = "dataGridViewElasticSetting";
             this.dataGridViewElasticSetting.RowTemplate.Height = 21;
@@ -551,7 +503,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(805, 368);
+            this.ClientSize = new System.Drawing.Size(634, 368);
             this.Controls.Add(this.dataGridViewElasticSetting);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -560,12 +512,10 @@
             this.Controls.Add(this.comboBoxExample);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxEffectLength);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxTimeStep);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.dataGridViewObjectSetting);
@@ -575,7 +525,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PhysicsObjectSettingDialog_FormClosing);
             this.Load += new System.EventHandler(this.PhysicsObjectSettingDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjectSetting)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmitterSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewElasticSetting)).EndInit();
             this.ResumeLayout(false);
@@ -588,15 +537,10 @@
         private System.Windows.Forms.DataGridView dataGridViewObjectSetting;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnZ;
         private System.Windows.Forms.TextBox textBoxEffectLength;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxTimeStep;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewComboBoxColumn headerType;
         private System.Windows.Forms.DataGridViewTextBoxColumn headerPressure;

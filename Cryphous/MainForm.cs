@@ -174,5 +174,11 @@ namespace Cryphous
             LightSourceSettingForm form = new LightSourceSettingForm(mainCommand);
             form.Show(this);
         }
+
+        private void boundarySettingBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BoundarySettingForm form = new BoundarySettingForm(mainCommand);
+            form.Show(this);
+        }
     }
 }
