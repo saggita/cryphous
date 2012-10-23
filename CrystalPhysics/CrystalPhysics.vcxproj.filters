@@ -8,9 +8,11 @@
     <ClInclude Include="LightSource.h" />
     <ClInclude Include="LightSourceFactory.h" />
     <ClInclude Include="BoundaryPhotonSolver.h" />
-    <ClInclude Include="AbsorbedPhoton.h" />
     <ClInclude Include="Photon.h" />
     <ClInclude Include="PhotonFactory.h" />
+    <ClInclude Include="SearchPhoton.h" />
+    <ClInclude Include="NeighborPhotonSearcher.h" />
+    <ClInclude Include="SearchPhotonFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHSolver.cpp" />
@@ -18,7 +20,7 @@
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="LightSource.cpp" />
     <ClCompile Include="BoundaryPhotonSolver.cpp" />
-    <ClCompile Include="AbsorbedPhoton.cpp" />
     <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="NeighborPhotonSearcher.cpp" />
   </ItemGroup>
 </Project>

@@ -134,22 +134,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AbsorbedPhoton.h" />
     <ClInclude Include="BoundaryPhotonSolver.h" />
     <ClInclude Include="BoundarySolver.h" />
     <ClInclude Include="LightSource.h" />
     <ClInclude Include="LightSourceFactory.h" />
+    <ClInclude Include="NeighborPhotonSearcher.h" />
     <ClInclude Include="NeighborSearcher.h" />
     <ClInclude Include="Photon.h" />
     <ClInclude Include="PhotonFactory.h" />
+    <ClInclude Include="SearchPhoton.h" />
+    <ClInclude Include="SearchPhotonFactory.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="SPHSolver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AbsorbedPhoton.cpp" />
     <ClCompile Include="BoundaryPhotonSolver.cpp" />
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="LightSource.cpp" />
+    <ClCompile Include="NeighborPhotonSearcher.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
