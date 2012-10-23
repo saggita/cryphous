@@ -16,7 +16,7 @@ void BoundaryPhotonSolver::reflectPhoton(const Box& box)
 	for( int i = 0; i < static_cast<int>(photons.size()); ++i ) {
 		Photon* photon = photons[i];
 		int random = std::rand() % 10000;
-		bool doStop = random > 5000;
+		bool doStop = random > 0;
 		if( photon->center.getX() > box.getMaxX() ) {
 			doStop ? photon->velocity.setZero() : photon->velocity.setX( -::fabs(photon->velocity.getX()) );
 			photon->center.setX( box.getMaxX() );

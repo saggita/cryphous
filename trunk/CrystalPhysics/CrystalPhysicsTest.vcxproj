@@ -182,7 +182,9 @@
   <ItemGroup>
     <ClCompile Include="BoundarySolverTest.cpp" />
     <ClCompile Include="LightSourceFactoryTest.cpp" />
+    <ClCompile Include="NeighborPhotonSearcherTest.cpp" />
     <ClCompile Include="PhotonFactoryTest.cpp" />
+    <ClCompile Include="SearchPhotonFactoryTest.cpp" />
     <ClCompile Include="SPHPairSolverTest.cpp" />
     <ClCompile Include="SPHSolverTest.cpp" />
     <ClCompile Include="ParticleFactoryTest.cpp" />

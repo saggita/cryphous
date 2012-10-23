@@ -11,6 +11,6 @@ using namespace Crystal::Physics;
 BOOST_AUTO_TEST_CASE(LIGHT_SOURCE_FACTORY_TEST)
 {
 	LightSourceFactory factory;
-	LightSource* light = factory.createLightSource( Vector3d(0.0f, 0.0f, 0.0f ) );
+	LightSource* light = factory.createLightSource( Vector3d(0.0f, 0.0f, 0.0f ), 100 );
 	light->integrateTime( 0.01f );
 }
