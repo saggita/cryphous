@@ -46,6 +46,7 @@ public:
 
 	void integrateTime(const float proceedTime );
 
+	void initAbsorbedPhotons();
 
 private:
 	const int id;

@@ -34,6 +34,11 @@ namespace Cryphous
             get { return (int)numericUpDownLineAlpha.Value; }
         }
 
+        public bool ShowAbsorbedPhotons
+        {
+            get { return checkBoxShowAbsorbedPhotons.Checked; }
+        }
+
         public GraphicsSettingForm(Command command)
         {
             this.command = command;
@@ -60,9 +65,14 @@ namespace Cryphous
             setSetting();
         }
 
+        private void checkBoxShowAbsorbedPhotons_CheckedChanged(object sender, EventArgs e)
+        {
+            setSetting();
+        }
+
         private void setSetting()
         {
-            command.setGraphicsSetting(PointSize, PointAlpha, LineSize, LineAlpha);
+            command.setGraphicsSetting(PointSize, PointAlpha, LineSize, LineAlpha, ShowAbsorbedPhotons);
         }
 
     }

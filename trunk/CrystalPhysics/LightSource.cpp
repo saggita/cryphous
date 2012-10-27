@@ -35,3 +35,18 @@ void LightSource::integrateTime(const float proceedTime)
 		photons[i]->center += photons[i]->velocity * proceedTime;
 	}
 }
+
+void LightSource::initAbsorbedPhotons()
+{
+	const PhotonVector& photons = getPhotons();
+	#pragma omp parallel for
+	for( int i = 0; i < static_cast<int>( photons.size() ); ++i ) {
+		if( photons[i]->absorbed ) {
+			photons[i]->center = this->getCenter();
+			photons[i]->velocity = Geom::Vector3d( rand(), -1.0f * rand(), rand() );
+			photons[i]->velocity.normalize();
+			photons[i]->velocity *= 10.0;
+			photons[i]->absorbed = false;
+		}
+	}
+}

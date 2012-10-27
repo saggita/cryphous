@@ -54,7 +54,7 @@ public:
 
 	void setExternalForce(float x, float y, float z);
 
-	void setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha);
+	void setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons);
 
 	void rendering();
 
