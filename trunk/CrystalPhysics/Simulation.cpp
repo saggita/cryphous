@@ -15,6 +15,8 @@
 #include "LightSourceFactory.h"
 #include "BoundaryPhotonSolver.h"
 
+#include "PhotonSolver.h"
+
 #include <omp.h>
 
 #include <cassert>
@@ -39,14 +41,11 @@ void Simulation::simulate(PhysicsObjectFactory* factory, LightSourceFactory* lig
 	for(PhysicsObject* object: physicsObjects ) { object->enforce( setting.timeStep ); }
 	
 	for(PhysicsObject* object: physicsObjects ) { object->integrateTime( setting.timeStep ); }
+
+	PhotonSolver photonSolver( lightSourceFactory, setting );
+	photonSolver.calculateBoundaryIntersection();
 	
 	const LightSourceVector& lightSources = lightSourceFactory->getLightSources();
-
-	for( LightSource* lightSource : lightSources ) {
-		BoundaryPhotonSolver solver( lightSource );
-		solver.reflectPhoton( setting.boundaryBox );
-	}
-
 	for( LightSource* lightSource : lightSources ) { lightSource->integrateTime( setting.timeStep ); }
 
 	++step;

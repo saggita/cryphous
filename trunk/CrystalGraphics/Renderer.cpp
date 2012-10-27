@@ -79,9 +79,9 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 		glColor4d( 1.0f, 1.0f, 1.0f, alpha );
 		const PhotonVector& photons = lightSourceFactory->getPhotons();
 		for( size_t i = 0; i < photons.size(); ++i ) {
-			if( !photons[i]->velocity.isZero() ) {
+			/*if( !photons[i]->absorbed ) {
 				continue;
-			}
+			}*/
 			const Geom::Vector3d& point = photons[i]->center;
 			glVertex3f( point.getX(), point.getY(), point.getZ() );
 		}

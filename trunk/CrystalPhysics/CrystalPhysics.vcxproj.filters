@@ -13,6 +13,9 @@
     <ClInclude Include="SearchPhoton.h" />
     <ClInclude Include="NeighborPhotonSearcher.h" />
     <ClInclude Include="SearchPhotonFactory.h" />
+    <ClInclude Include="PhotonSolver.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="PhysicsObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHSolver.cpp" />
@@ -22,5 +25,6 @@
     <ClCompile Include="BoundaryPhotonSolver.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="NeighborPhotonSearcher.cpp" />
+    <ClCompile Include="PhotonSolver.cpp" />
   </ItemGroup>
 </Project>
