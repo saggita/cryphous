@@ -16,31 +16,31 @@ void BoundaryPhotonSolver::reflectPhoton(const Box& box)
 	for( int i = 0; i < static_cast<int>(photons.size()); ++i ) {
 		Photon* photon = photons[i];
 		int random = std::rand() % 10000;
-		bool doStop = random > 0;
+		bool doStop = random > 5000;
 		if( photon->center.getX() > box.getMaxX() ) {
-			doStop ? photon->velocity.setZero() : photon->velocity.setX( -::fabs(photon->velocity.getX()) );
+			doStop ? photon->absorbed = true : photon->velocity.setX( -::fabs(photon->velocity.getX()) );
 			photon->center.setX( box.getMaxX() );
 		}
 		else if( photon->center.getX() < box.getMinX() ) {
-			doStop ? photon->velocity.setZero() : photon->velocity.setX( ::fabs(photon->velocity.getX()) );
+			doStop ? photon->absorbed = true : photon->velocity.setX( ::fabs(photon->velocity.getX()) );
 			photon->center.setX( box.getMinX() );
 		}
 
 		if( photon->center.getY() > box.getMaxY() ) {
-			doStop ? photon->velocity.setZero() : photon->velocity.setY( -::fabs(photon->velocity.getY()) );
+			doStop ? photon->absorbed = true : photon->velocity.setY( -::fabs(photon->velocity.getY()) );
 			photon->center.setY( box.getMaxY() );
 		}
 		else if( photon->center.getY() < box.getMinY() ) {
-			doStop ? photon->velocity.setZero() : photon->velocity.setY( ::fabs(photon->velocity.getY()) );
+			doStop ? photon->absorbed = true : photon->velocity.setY( ::fabs(photon->velocity.getY()) );
 			photon->center.setY( box.getMinY() );
 		}
 
 		if( photon->center.getZ() > box.getMaxZ() ) {
-			doStop ? photon->velocity.setZero() : photon->velocity.setZ( -::fabs(photon->velocity.getZ()) );
+			doStop ? photon->absorbed = true : photon->velocity.setZ( -::fabs(photon->velocity.getZ()) );
 			photon->center.setZ( box.getMaxZ() );
 		}
 		else if( photon->center.getZ() < box.getMinZ() ) {
-			doStop ? photon->velocity.setZero() : photon->velocity.setZ( ::fabs(photon->velocity.getZ()) );
+			doStop ? photon->absorbed = true : photon->velocity.setZ( ::fabs(photon->velocity.getZ()) );
 			photon->center.setZ( box.getMinZ() );
 		}
 	}

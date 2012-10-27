@@ -26,9 +26,9 @@ void LightSource::addPhotons(const size_t howMany)
 }
 
 void LightSource::integrateTime(const float proceedTime)
-{
+{	
 	const PhotonVector& photons = getPhotons();
-	
+
 	#pragma omp parallel for
 	for( int i = 0; i < static_cast<int>( photons.size() ); ++i )
 	{

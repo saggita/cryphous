@@ -30,6 +30,7 @@ protected:
 
 	virtual ~LightSource(void){};
 
+	
 public:
 	/*enum Type{
 		PointLight,
@@ -40,6 +41,8 @@ public:
 	int getID() const { return id; }
 
 	PhotonVector getPhotons() const { return photonFactory.getPhotons(); }
+
+	Geom::Vector3d getCenter() const { return center; }
 
 	void integrateTime(const float proceedTime );
 

@@ -23,14 +23,11 @@ protected:
 
 	~Photon(void){};
 
-	bool isAbsorbed() const { return absorbed; }
-
 public:
 	Geom::Vector3d center;
 	Geom::Vector3d velocity;
 	const int id;
 	bool absorbed;
-
 
 	friend class PhotonFactory;
 };
