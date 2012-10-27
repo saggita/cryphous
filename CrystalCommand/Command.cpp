@@ -156,12 +156,13 @@ void Command::setExternalForce(float x, float y, float z)
 	simulationSetting->externalForce = Vector3d( x, y, z );
 }
 
-void Command::setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha)
+void Command::setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons)
 {
 	graphicsSettings->pointSize = pointSize;
 	graphicsSettings->pointAlpha = pointAlpha;
 	graphicsSettings->lineSize = lineSize;
 	graphicsSettings->lineAlpha = lineAlpha;
+	graphicsSettings->showAbsorbedPhotons = showAbsorbedPhotons;
 }
 
 void Command::rendering()

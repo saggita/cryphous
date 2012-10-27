@@ -36,6 +36,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDownLineSize = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownLineAlpha = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxShowAbsorbedPhotons = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPointSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPointAlpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLineSize)).BeginInit();
@@ -135,11 +136,23 @@
             0});
             this.numericUpDownLineAlpha.ValueChanged += new System.EventHandler(this.numericUpDownLineAlpha_ValueChanged);
             // 
+            // checkBoxShowAbsorbedPhotons
+            // 
+            this.checkBoxShowAbsorbedPhotons.AutoSize = true;
+            this.checkBoxShowAbsorbedPhotons.Location = new System.Drawing.Point(29, 98);
+            this.checkBoxShowAbsorbedPhotons.Name = "checkBoxShowAbsorbedPhotons";
+            this.checkBoxShowAbsorbedPhotons.Size = new System.Drawing.Size(111, 16);
+            this.checkBoxShowAbsorbedPhotons.TabIndex = 9;
+            this.checkBoxShowAbsorbedPhotons.Text = "absorbedPhotons";
+            this.checkBoxShowAbsorbedPhotons.UseVisualStyleBackColor = true;
+            this.checkBoxShowAbsorbedPhotons.CheckedChanged += new System.EventHandler(this.checkBoxShowAbsorbedPhotons_CheckedChanged);
+            // 
             // GraphicsSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 96);
+            this.ClientSize = new System.Drawing.Size(284, 126);
+            this.Controls.Add(this.checkBoxShowAbsorbedPhotons);
             this.Controls.Add(this.numericUpDownLineAlpha);
             this.Controls.Add(this.numericUpDownLineSize);
             this.Controls.Add(this.label4);
@@ -169,5 +182,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDownLineSize;
         private System.Windows.Forms.NumericUpDown numericUpDownLineAlpha;
+        private System.Windows.Forms.CheckBox checkBoxShowAbsorbedPhotons;
     }
 }

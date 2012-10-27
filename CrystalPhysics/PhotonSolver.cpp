@@ -52,17 +52,7 @@ void PhotonSolver::calculateBoundaryIntersection()
 	std::tr1::random_device rand;
 	
 	for( LightSource* lightSource: lightSources ) {
-		const PhotonVector& photons = lightSource->getPhotons();
-		#pragma omp parallel for
-		for( int i = 0; i < static_cast<int>( photons.size() ); ++i ) {
-			if( photons[i]->absorbed ) {
-				photons[i]->center = lightSource->getCenter();
-				photons[i]->velocity = Geom::Vector3d( rand(), -1.0f * rand(), rand() );
-				photons[i]->velocity.normalize();
-				photons[i]->velocity *= 10.0;
-				photons[i]->absorbed = false;
-			}
-		}
+		lightSource->initAbsorbedPhotons();
 	}
 
 	Profiler::get()->start(" Sim->boundaryPhoton");

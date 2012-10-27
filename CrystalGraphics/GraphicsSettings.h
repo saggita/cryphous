@@ -21,6 +21,7 @@ public:
 	int angleZ;
 	bool drawBoundingBox;
 	bool doDisplaySurface;
+	bool showAbsorbedPhotons;
 
 	GraphicsSettings::GraphicsSettings() :
 		pointSize( 10 ),
@@ -34,7 +35,8 @@ public:
 		angleY( 0),
 		angleZ( 0),
 		drawBoundingBox( true),
-		doDisplaySurface( false)
+		doDisplaySurface( false),
+		showAbsorbedPhotons( false)
 		{
 		}
 
