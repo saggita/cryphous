@@ -16,11 +16,12 @@ namespace Crystal{
 class SPHSolver
 {
 public:
-	SPHSolver(PhysicsObjectFactory* factory, const SimulationSetting& setting) :
+	SPHSolver(PhysicsObjectFactory* factory, const SimulationSetting& setting, const SearchParticleVector& sortedParticles) :
 	  factory( factory),
 		  setting( setting),
 		  neighborSearcher( 0),
-		  sphPairSolver( new SPHPairSolver( setting.getEffectLength() ) )
+		  sphPairSolver( new SPHPairSolver( setting.getEffectLength() ) ),
+		  sortedParticles( sortedParticles)
 	  {
 	  }
 
@@ -44,6 +45,7 @@ private:
 	const SimulationSetting& setting;
 	NeighborSearcher* neighborSearcher;
 	SPHPairSolver* sphPairSolver;
+	const SearchParticleVector& sortedParticles;
 };
 
 	}

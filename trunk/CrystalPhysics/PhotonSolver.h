@@ -26,10 +26,11 @@ public:
 	~PhotonSolver(void);
 
 	void calculateInteraction(const SearchParticleVector& sortedParticles, const SearchPhotonVector& sortedPhotons);
-		
-	void calculateBoundaryIntersection();
 
 private:
+
+	void calculateBoundaryIntersection();
+
 	void createPairs(const SearchParticleVector& sortedParticles, const SearchPhotonVector& sortedPhotons);
 
 	void calculateParticlePhotonIntersection();

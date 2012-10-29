@@ -30,6 +30,9 @@ void NeighborPhotonSearcher::search(SearchPhotonVector::const_iterator startIter
 	for( SearchPhotonVector::const_iterator xIter = startIter; xIter != endIter; ++xIter ) {
 		const int gridID = xIter->getGridID();
 		const Geom::Vector3d& centerX = xIter->getCenter();
+		/*while( yIter != particles.end() && (yIter->getGridID() < gridID ){
+			++yIter;
+		}*/
 		while( yIter != particles.end() && (yIter->getGridID() <= gridID) ) {
 			const Geom::Vector3d& centerY = yIter->getCenter();
 			if( centerX.getDistanceSquared( centerY ) < effectLengthSquared ) {
