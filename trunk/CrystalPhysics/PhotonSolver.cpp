@@ -24,7 +24,7 @@ PhotonSolver::~PhotonSolver(void)
 
 void PhotonSolver::calculateInteraction(const SearchParticleVector& sortedParticles, const SearchPhotonVector& sortedPhotons)
 {
-	for( Photon* photon : factory->getPhotons() ) { photon->absorbed = false; }
+	//for( Photon* photon : factory->getPhotons() ) { photon->absorbed = false; }
 	//createPairs(sortedParticles, sortedPhotons);
 	calculateBoundaryIntersection();
 	
