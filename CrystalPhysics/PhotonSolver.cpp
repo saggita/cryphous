@@ -24,13 +24,17 @@ PhotonSolver::~PhotonSolver(void)
 
 void PhotonSolver::calculateInteraction(const SearchParticleVector& sortedParticles, const SearchPhotonVector& sortedPhotons)
 {
-	//for( Photon* photon : factory->getPhotons() ) { photon->absorbed = false; }
-	//createPairs(sortedParticles, sortedPhotons);
+	const LightSourceVector& lightSources = factory->getLightSources();
+	
+	for( LightSource* lightSource: lightSources ) {
+		lightSource->initAbsorbedPhotons();
+	}
+	createPairs(sortedParticles, sortedPhotons);
 	calculateBoundaryIntersection();
 	
 }
 
-/*void PhotonSolver::createPairs(const SearchParticleVector& sortedParticles, const SearchPhotonVector& sortedPhotons)
+void PhotonSolver::createPairs(const SearchParticleVector& sortedParticles, const SearchPhotonVector& sortedPhotons)
 {
 	assert( neighborSearcher == 0 );
 	
@@ -40,7 +44,7 @@ void PhotonSolver::calculateInteraction(const SearchParticleVector& sortedPartic
 	Profiler::get()->end(" Sim->searchPhoton");
 }
 
-void PhotonSolver::calculateParticlePhotonIntersection()
+/*void PhotonSolver::calculateParticlePhotonIntersection()
 {
 	Profiler::get()->start(" Sim->photonIntersection");
 	Profiler::get()->end(" Sim ->photonIntersection");
@@ -48,15 +52,8 @@ void PhotonSolver::calculateParticlePhotonIntersection()
 
 void PhotonSolver::calculateBoundaryIntersection()
 {
-	const LightSourceVector& lightSources = factory->getLightSources();
-	std::tr1::random_device rand;
-	
-	for( LightSource* lightSource: lightSources ) {
-		lightSource->initAbsorbedPhotons();
-	}
-
 	Profiler::get()->start(" Sim->boundaryPhoton");
-	
+	const LightSourceVector& lightSources = factory->getLightSources();	
 	for( LightSource* lightSource : lightSources ) {
 		BoundaryPhotonSolver solver( lightSource );
 		solver.reflectPhoton( setting.boundaryBox );

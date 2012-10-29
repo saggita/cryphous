@@ -41,14 +41,8 @@ void SPHSolver::calculateInteraction()
 
 void SPHSolver::createPairs()
 {
-	assert( neighborSearcher == 0 );
-	Profiler::get()->start(" Sim->sorting");	
-	SearchParticleFactory spFactory( factory->getParticles(), setting.getEffectLength() );
-	const SearchParticleVector& sorted = spFactory.getSearchParticles();
-	Profiler::get()->end(" Sim->sorting");
-
 	Profiler::get()->start(" Sim->search");
-	neighborSearcher = new NeighborSearcher( sorted, setting.getEffectLength() );
+	neighborSearcher = new NeighborSearcher( sortedParticles, setting.getEffectLength() );
 	neighborSearcher->search();
 	Profiler::get()->end(" Sim->search");
 }

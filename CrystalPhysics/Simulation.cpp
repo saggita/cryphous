@@ -16,6 +16,7 @@
 #include "BoundaryPhotonSolver.h"
 
 #include "PhotonSolver.h"
+#include "SearchPhotonFactory.h"
 
 #include <omp.h>
 
@@ -31,7 +32,17 @@ void Simulation::simulate(PhysicsObjectFactory* factory, LightSourceFactory* lig
 
 	PhysicsObjectVector& physicsObjects = factory->getPhysicsObjects();
 
-	SPHSolver solver( factory, setting);
+	Profiler::get()->start(" Sim->sorting");	
+	SearchParticleFactory spFactory( factory->getParticles(), setting.getEffectLength() );
+	const SearchParticleVector& sortedParticles = spFactory.getSearchParticles();
+	Profiler::get()->end(" Sim->sorting");
+
+	Profiler::get()->start(" Sim->sortingP");
+	SearchPhotonFactory photonFactory( lightSourceFactory->getPhotons(), setting.getEffectLength() );
+	const SearchPhotonVector& sortedPhotons = photonFactory.getSearchPhotons();
+	Profiler::get()->end(" Sim->sortingP");
+
+	SPHSolver solver( factory, setting, sortedParticles);
 	solver.calculateInteraction();
 
 	const ParticleVector& particles = factory->getParticles();
@@ -43,7 +54,7 @@ void Simulation::simulate(PhysicsObjectFactory* factory, LightSourceFactory* lig
 	for(PhysicsObject* object: physicsObjects ) { object->integrateTime( setting.timeStep ); }
 
 	PhotonSolver photonSolver( lightSourceFactory, setting );
-	photonSolver.calculateBoundaryIntersection();
+	photonSolver.calculateInteraction( sortedParticles, sortedPhotons);
 	
 	const LightSourceVector& lightSources = lightSourceFactory->getLightSources();
 	for( LightSource* lightSource : lightSources ) { lightSource->integrateTime( setting.timeStep ); }
