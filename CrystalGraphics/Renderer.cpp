@@ -81,7 +81,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 	const PhotonVector& photons = lightSourceFactory->getPhotons();
 	for( size_t i = 0; i < photons.size(); ++i ) {
 		if( settings.showAbsorbedPhotons ){ 
-			if( photons[i]->absorbed ) {
+			if( photons[i]->isAbsorbed() ) {
 				const Geom::Vector3d& point = photons[i]->center;
 				glVertex3f( point.getX(), point.getY(), point.getZ() );
 			}

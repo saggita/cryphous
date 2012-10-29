@@ -17,17 +17,20 @@ protected:
 		id( id), 
 		center( center),
 		velocity( velocity),
-		absorbed( false)
+		absorbedTime( 0)
 	{
 	}
 
 	~Photon(void){};
 
 public:
+	bool isAbsorbed() const { return absorbedTime > 0; }
+
+public:
 	Geom::Vector3d center;
 	Geom::Vector3d velocity;
 	const int id;
-	bool absorbed;
+	int absorbedTime;
 
 	friend class PhotonFactory;
 };
