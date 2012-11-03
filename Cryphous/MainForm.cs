@@ -17,6 +17,11 @@ namespace Cryphous
         private bool isRightDown;
 
         private PhysicsObjectSettingDialog osDialog;
+        private GraphicsSettingForm gsDialog;
+        private LightSourceSettingForm lsDialog;
+        private BoundarySettingForm bsDialog;
+        private ExternalForceSettingForm efDialog;
+            
         
         public MainForm()
         {
@@ -30,6 +35,10 @@ namespace Cryphous
             mainCommand = new Command( pictureBox1 );
 
             osDialog = new PhysicsObjectSettingDialog(mainCommand);
+            gsDialog = new GraphicsSettingForm(mainCommand);
+            lsDialog = new LightSourceSettingForm(mainCommand);
+            bsDialog = new BoundarySettingForm(mainCommand);
+            efDialog = new ExternalForceSettingForm(mainCommand);
         }
 
         private void objectSettingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,26 +168,22 @@ namespace Cryphous
 
         private void externalForceEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExternalForceSettingForm form = new ExternalForceSettingForm(mainCommand);
-            form.Show(this);
+            efDialog.Show();
         }
 
         private void graphicsSettingGToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GraphicsSettingForm form = new GraphicsSettingForm(mainCommand);
-            form.Show(this);
+            gsDialog.Show();
         }
 
         private void lightSourceSettingLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LightSourceSettingForm form = new LightSourceSettingForm(mainCommand);
-            form.Show(this);
+            lsDialog.Show();
         }
 
         private void boundarySettingBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BoundarySettingForm form = new BoundarySettingForm(mainCommand);
-            form.Show(this);
+            bsDialog.Show();
         }
     }
 }

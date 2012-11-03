@@ -15,8 +15,8 @@ void BoundaryPhotonSolver::reflectPhoton(const Box& box)
 	#pragma omp parallel for
 	for( int i = 0; i < static_cast<int>(photons.size()); ++i ) {
 		Photon* photon = photons[i];
-		int random = std::rand() % 10000;
-		bool doStop = random > 5000;
+		//int random = std::rand() % 10000;
+		bool doStop = false;//random > 5000;
 		if( photon->center.getX() > box.getMaxX() ) {
 			doStop ? ++photon->absorbedTime : photon->velocity.setX( -::fabs(photon->velocity.getX()) );
 			photon->center.setX( box.getMaxX() );

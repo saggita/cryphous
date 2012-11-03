@@ -31,8 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewLightSourceSetting = new System.Windows.Forms.DataGridView();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.PosX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PosY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PosZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +38,8 @@
             this.MinZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaxZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLightSourceSetting)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,26 +76,6 @@
             this.dataGridViewLightSourceSetting.RowTemplate.Height = 21;
             this.dataGridViewLightSourceSetting.Size = new System.Drawing.Size(333, 128);
             this.dataGridViewLightSourceSetting.TabIndex = 2;
-            // 
-            // buttonOK
-            // 
-            this.buttonOK.Location = new System.Drawing.Point(138, 159);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 3;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(217, 159);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 4;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // PosX
             // 
@@ -139,6 +119,26 @@
             this.Column1.Name = "Column1";
             this.Column1.Width = 50;
             // 
+            // buttonOK
+            // 
+            this.buttonOK.Location = new System.Drawing.Point(138, 159);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.TabIndex = 3;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(217, 159);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
             // LightSourceSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -149,6 +149,7 @@
             this.Controls.Add(this.dataGridViewLightSourceSetting);
             this.Name = "LightSourceSettingForm";
             this.Text = "LightSourceSettingForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LightSourceSettingForm_FormClosing);
             this.Load += new System.EventHandler(this.LightSourceSettingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLightSourceSetting)).EndInit();
             this.ResumeLayout(false);

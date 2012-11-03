@@ -100,6 +100,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "BoundarySettingForm";
             this.Text = "BoundarySettingForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BoundarySettingForm_FormClosing);
             this.Load += new System.EventHandler(this.BoundarySettingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

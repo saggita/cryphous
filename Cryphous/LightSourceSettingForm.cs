@@ -38,12 +38,18 @@ namespace Cryphous
                 uint photons = Convert.ToUInt32(row.Cells[6].Value);
                 command.setLightSourceSetting(posX, posY, posZ, dirX, dirY, dirZ, photons);
             }
-            Close();
+            Hide();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            Hide();
+        }
+
+        private void LightSourceSettingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

@@ -21,8 +21,8 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 {
 	Physics::Profiler::get()->start("Rendering->");
 
-	glClearColor( 0.4f, 0.4f, 0.5f, 1.0f );
-	//glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
+	//glClearColor( 0.4f, 0.4f, 0.5f, 1.0f );
+	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
 	openGLWrapper.BeginRendering();
 
 	glEnable(GL_DEPTH_TEST);
@@ -67,7 +67,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 		}
 		else{
 			const float densityRatio = object->getDensity() / 1000.0f;
-			const float alpha = densityRatio * settings.pointAlpha / 100.0f; 
+			const float alpha = densityRatio * settings.pointAlpha / 1000.0f; 
 			glColor4f( 0.1f, 0.1f, 1.0f, alpha );
 		}
 		const Physics::ParticleVector& particles = object->getParticles();
@@ -76,7 +76,12 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 			glVertex3f( point.getX(), point.getY(), point.getZ() );
 		}
 	}
-	const float alpha = settings.pointAlpha / 100.0f;
+	glEnd();
+	
+	glPointSize( static_cast<GLfloat>(settings.photonSize) );
+
+	glBegin(GL_POINTS);
+	const float alpha = settings.photonAlpha / 1000.0f;
 	glColor4d( 1.0f, 1.0f, 1.0f, alpha );
 	const PhotonVector& photons = lightSourceFactory->getPhotons();
 	for( size_t i = 0; i < photons.size(); ++i ) {
@@ -100,7 +105,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 		if( object->getType() == Physics::PhysicsObject::Elastic ) {
 			glBegin(GL_LINE_STRIP);
 			const float densityRatio = object->getDensity() / 1000.0f;
-			const float alpha = densityRatio * settings.lineAlpha / 100.0f; 
+			const float alpha = densityRatio * settings.lineAlpha / 1000.0f; 
 			glColor4f( 0.0f, 0.0f, 0.0f, alpha );
 			const Physics::ParticleVector& particles = object->getParticles();
 			for( size_t i = 0; i < particles.size(); ++i ) {
@@ -123,6 +128,7 @@ void Renderer::rendering(PhysicsObjectFactory *factory, LightSourceFactory* ligh
 	Physics::Profiler::get()->end("Rendering->");
 }
 
+
 void Renderer::drawBoundaryBox(const Box& box)
 {
 	if( !settings.drawBoundingBox ) {
@@ -131,38 +137,36 @@ void Renderer::drawBoundaryBox(const Box& box)
 	
 	glPushMatrix();
 
+	glColor4d( 0.0, 0.0, 0.0, 1.0 );
+
 	glLineWidth(1.0f);
 
-	glColor4d( 1.0, 0.0, 0.0, 1.0 );
-	glBegin(GL_TRIANGLE_STRIP);
+	glBegin(GL_LINE_LOOP);
 		glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
 		glVertex3d( box.getMaxX(), box.getMinY(), box.getMinZ() );
-		glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
 		glVertex3d( box.getMaxX(), box.getMaxY(), box.getMinZ() );
+		glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
 	glEnd();
 
-	glColor4d( 0.5, 0.25, 0.25, 1.0 );
-	glBegin(GL_TRIANGLE_STRIP);
+	glBegin(GL_LINE_LOOP);
 		glVertex3d( box.getMinX(), box.getMinY(), box.getMaxZ() );
 		glVertex3d( box.getMaxX(), box.getMinY(), box.getMaxZ() );
-		glVertex3d( box.getMinX(), box.getMaxY(), box.getMaxZ() );
 		glVertex3d( box.getMaxX(), box.getMaxY(), box.getMaxZ() );
-	glEnd();
-
-	glColor4d( 0.0, 0.0, 1.0, 1.0 );
-	glBegin(GL_TRIANGLE_STRIP);
-		glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
-		glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
-		glVertex3d( box.getMinX(), box.getMinY(), box.getMaxZ() );
 		glVertex3d( box.getMinX(), box.getMaxY(), box.getMaxZ() );
 	glEnd();
 
-	glColor4d( 0.0, 0.0, 0.0, 1.0 );
-	glBegin(GL_TRIANGLE_STRIP);
+	glBegin(GL_LINE_LOOP);
+		glVertex3d( box.getMinX(), box.getMinY(), box.getMinZ() );
+		glVertex3d( box.getMinX(), box.getMaxY(), box.getMinZ() );
+		glVertex3d( box.getMinX(), box.getMaxY(), box.getMaxZ() );
+		glVertex3d( box.getMinX(), box.getMinY(), box.getMaxZ() );
+	glEnd();
+
+	glBegin(GL_LINE_LOOP);
 		glVertex3d( box.getMaxX(), box.getMinY(), box.getMinZ() );
 		glVertex3d( box.getMaxX(), box.getMaxY(), box.getMinZ() );
-		glVertex3d( box.getMaxX(), box.getMinY(), box.getMaxZ() );
 		glVertex3d( box.getMaxX(), box.getMaxY(), box.getMaxZ() );
+		glVertex3d( box.getMaxX(), box.getMinY(), box.getMaxZ() );
 	glEnd();
 
 	glPopMatrix();
