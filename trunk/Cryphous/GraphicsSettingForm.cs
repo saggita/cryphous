@@ -24,6 +24,16 @@ namespace Cryphous
             get { return (int)numericUpDownPointAlpha.Value; }
         }
 
+        public int PhotonSize
+        {
+            get { return (int)numericUpDownPhotonSize.Value; }
+        }
+
+        public int PhotonAlpha
+        {
+            get { return (int)numericUpDownPhotonAlpha.Value; }
+        }
+
         public int LineSize
         {
             get { return (int)numericUpDownLineSize.Value; }
@@ -72,7 +82,23 @@ namespace Cryphous
 
         private void setSetting()
         {
-            command.setGraphicsSetting(PointSize, PointAlpha, LineSize, LineAlpha, ShowAbsorbedPhotons);
+            command.setGraphicsSetting(PointSize, PointAlpha, PhotonSize, PhotonAlpha, LineSize, LineAlpha, ShowAbsorbedPhotons);
+        }
+
+        private void GraphicsSettingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
+
+        private void numericUpDownPhotonSize_ValueChanged(object sender, EventArgs e)
+        {
+            setSetting();
+        }
+
+        private void numericUpDownPhotonAlpha_ValueChanged(object sender, EventArgs e)
+        {
+            setSetting();
         }
 
     }

@@ -11,6 +11,8 @@ class GraphicsSettings : private Uncopyable
 public:
 	int pointSize;
 	int pointAlpha;
+	int photonSize;
+	int photonAlpha;
 	int lineSize;
 	int lineAlpha;
 	float zoom;
@@ -24,8 +26,10 @@ public:
 	bool showAbsorbedPhotons;
 
 	GraphicsSettings::GraphicsSettings() :
-		pointSize( 10 ),
+		pointSize( 10),
 		pointAlpha( 10),
+		photonSize( 10),
+		photonAlpha( 10),
 		lineSize( 10),
 		lineAlpha( 10),
 		zoom( 50.0),

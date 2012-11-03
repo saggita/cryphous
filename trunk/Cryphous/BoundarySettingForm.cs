@@ -23,17 +23,23 @@ namespace Cryphous
         private void buttonOK_Click(object sender, EventArgs e)
         {
             command.saveBoundarySetting(dataGridView1);
-            Close();
+            Hide();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            Hide();
         }
 
         private void BoundarySettingForm_Load(object sender, EventArgs e)
         {
             command.displayBoundarySetting(dataGridView1);
+        }
+
+        private void BoundarySettingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
     }
 }

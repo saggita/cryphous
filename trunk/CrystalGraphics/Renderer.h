@@ -11,18 +11,17 @@
 #include "Renderer.h"
 
 #include "../CrystalPhysics/Uncopyable.h"
-#include "../CrystalPhysics/Particle.h"
-#include "../CrystalPhysics/SimulationSetting.h"
-#include "../CrystalPhysics/Profiler.h"
-#include "../CrystalPhysics/PhysicsObjectFactory.h"
-#include "../CrystalPhysics/PhysicsObject.h"
 
 #include <cassert>
 #include <cmath>
 #include <cstdlib>
 
 namespace Crystal{
+	namespace Geom{
+		class Box;
+	}
 	namespace Physics{
+		class PhysicsObjectFactory;
 		class LightSourceFactory;
 	}
 	namespace Graphics{

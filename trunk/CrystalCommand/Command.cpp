@@ -8,6 +8,7 @@
 #include "../CrystalPhysics/SimulationSetting.h"
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalPhysics/LightSource.h"
+#include "../CrystalPhysics/Profiler.h"
 #include "../CrystalGraphics/Renderer.h"
 
 using namespace Crystal::Geom;
@@ -50,13 +51,18 @@ void Command::clearConditions()
 	conditions->clear();
 }
 
+void Command::clearLights()
+{
+	lightSourceFactory->init();;
+}
+
 void Command::refresh()
 {
 	factory->init();
 	for( std::list<PhysicsObjectCondition>::iterator iter = conditions->begin(); iter != conditions->end(); ++iter ) {
 		factory->createPhysicsObject((*iter), *simulationSetting);
 	}
-	lightSourceFactory->init();
+	//lightSourceFactory->init();
 
 	renderer->init();	
 	simulation->init();
@@ -156,10 +162,12 @@ void Command::setExternalForce(float x, float y, float z)
 	simulationSetting->externalForce = Vector3d( x, y, z );
 }
 
-void Command::setGraphicsSetting(int pointSize, int pointAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons)
+void Command::setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, int photonAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons)
 {
 	graphicsSettings->pointSize = pointSize;
 	graphicsSettings->pointAlpha = pointAlpha;
+	graphicsSettings->photonSize = photonSize;
+	graphicsSettings->photonAlpha = photonAlpha;
 	graphicsSettings->lineSize = lineSize;
 	graphicsSettings->lineAlpha = lineAlpha;
 	graphicsSettings->showAbsorbedPhotons = showAbsorbedPhotons;
@@ -249,6 +257,7 @@ std::vector<Vector3d> Command::convertToNative(System::Collections::Generic::Lis
 
 void Command::setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ, const size_t photons)
 {
+	lightSourceFactory->init();
 	const Vector3d center( posX, posY, posZ );
 	lightSourceFactory->createLightSource( center, photons );
 }
