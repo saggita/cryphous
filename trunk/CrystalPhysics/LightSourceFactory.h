@@ -31,9 +31,9 @@ public:
 	}
 
 
-	LightSource* createLightSource( const Geom::Vector3d& center, const size_t howManyPhotons )
+	LightSource* createLightSource( const Geom::Vector3d& center, const size_t howManyPhotons, const float velocity )
 	{
-		lightSources.push_back( new LightSource( nextID++, center ) );
+		lightSources.push_back( new LightSource( nextID++, center, velocity ) );
 		lightSources.back()->addPhotons( howManyPhotons );
 		return lightSources.back();
 	}

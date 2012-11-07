@@ -17,14 +17,17 @@ class LightSource : private Uncopyable
 protected:
 	LightSource() :
 		id(-1),
-		center( Geom::Vector3d( 0.0f, 0.0f, 0.0f) )
+		center( Geom::Vector3d( 0.0f, 0.0f, 0.0f) ),
+		velocity( 1.0f )
 	{
 	}
 
 	void addPhotons(const size_t howMany);
 
-	LightSource(const int id, const Geom::Vector3d& center) :
-		 id( id), center( center)
+	LightSource(const int id, const Geom::Vector3d& center, const double velocity) :
+		 id( id),
+		 center( center),
+		 velocity( velocity)
 		 {
 		 }
 
@@ -51,6 +54,7 @@ public:
 private:
 	const int id;
 	const Geom::Vector3d center;
+	const double velocity;
 	PhotonFactory photonFactory;
 
 	friend LightSourceFactory;

@@ -41,6 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownPhotonSize = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxShowBoundaryBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPointSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPointAlpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLineSize)).BeginInit();
@@ -92,7 +93,7 @@
             this.numericUpDownPointAlpha.Size = new System.Drawing.Size(41, 19);
             this.numericUpDownPointAlpha.TabIndex = 4;
             this.numericUpDownPointAlpha.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             0});
@@ -136,7 +137,7 @@
             this.numericUpDownLineAlpha.Size = new System.Drawing.Size(41, 19);
             this.numericUpDownLineAlpha.TabIndex = 8;
             this.numericUpDownLineAlpha.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             0});
@@ -145,7 +146,7 @@
             // checkBoxShowAbsorbedPhotons
             // 
             this.checkBoxShowAbsorbedPhotons.AutoSize = true;
-            this.checkBoxShowAbsorbedPhotons.Location = new System.Drawing.Point(160, 119);
+            this.checkBoxShowAbsorbedPhotons.Location = new System.Drawing.Point(160, 97);
             this.checkBoxShowAbsorbedPhotons.Name = "checkBoxShowAbsorbedPhotons";
             this.checkBoxShowAbsorbedPhotons.Size = new System.Drawing.Size(111, 16);
             this.checkBoxShowAbsorbedPhotons.TabIndex = 9;
@@ -160,7 +161,7 @@
             this.numericUpDownPhotonAlpha.Size = new System.Drawing.Size(41, 19);
             this.numericUpDownPhotonAlpha.TabIndex = 13;
             this.numericUpDownPhotonAlpha.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             0});
@@ -202,11 +203,23 @@
             0});
             this.numericUpDownPhotonSize.ValueChanged += new System.EventHandler(this.numericUpDownPhotonSize_ValueChanged);
             // 
+            // checkBoxShowBoundaryBox
+            // 
+            this.checkBoxShowBoundaryBox.AutoSize = true;
+            this.checkBoxShowBoundaryBox.Location = new System.Drawing.Point(160, 127);
+            this.checkBoxShowBoundaryBox.Name = "checkBoxShowBoundaryBox";
+            this.checkBoxShowBoundaryBox.Size = new System.Drawing.Size(90, 16);
+            this.checkBoxShowBoundaryBox.TabIndex = 14;
+            this.checkBoxShowBoundaryBox.Text = "boundaryBox";
+            this.checkBoxShowBoundaryBox.UseVisualStyleBackColor = true;
+            this.checkBoxShowBoundaryBox.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundaryBox_CheckedChanged);
+            // 
             // GraphicsSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 155);
+            this.Controls.Add(this.checkBoxShowBoundaryBox);
             this.Controls.Add(this.numericUpDownPhotonAlpha);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
@@ -249,5 +262,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDownPhotonSize;
+        private System.Windows.Forms.CheckBox checkBoxShowBoundaryBox;
     }
 }

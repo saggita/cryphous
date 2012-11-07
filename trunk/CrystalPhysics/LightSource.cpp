@@ -10,8 +10,6 @@ using namespace Crystal::Physics;
 
 void LightSource::addPhotons(const size_t howMany)
 {
-	std::tr1::random_device rand;
-	
 	std::vector<Geom::Vector3d> points;
 	std::vector<Geom::Vector3d> velocities;
 
@@ -19,7 +17,7 @@ void LightSource::addPhotons(const size_t howMany)
 		points.push_back( center );
 		velocities.push_back( Geom::Vector3d( rand(), -1.0 * rand(), rand() ) );
 		velocities.back().normalize();
-		velocities.back() *= (rand() % 100) / 100.0 * 100.0;
+		velocities.back() *= (rand() % 100) / 100.0 * velocity;
 	}
 
 	photonFactory.addPhotons( points, velocities );
@@ -46,11 +44,11 @@ void LightSource::initAbsorbedPhotons()
 	const PhotonVector& photons = getPhotons();
 	#pragma omp parallel for
 	for( int i = 0; i < static_cast<int>( photons.size() ); ++i ) {
-		if( photons[i]->absorbedTime > 10 ) {
+		if( photons[i]->absorbedTime > 20 ) {
 			photons[i]->center = this->getCenter();
 			photons[i]->velocity = Geom::Vector3d( rand(), -1.0f * rand(), rand() );
 			photons[i]->velocity.normalize();
-			photons[i]->velocity *= (rand() % 100) / 100.0 * 100.0;
+			photons[i]->velocity *= (rand() % 100) / 100.0 * velocity;
 			photons[i]->absorbedTime = 0;
 		}
 	}

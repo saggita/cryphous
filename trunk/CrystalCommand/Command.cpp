@@ -162,7 +162,7 @@ void Command::setExternalForce(float x, float y, float z)
 	simulationSetting->externalForce = Vector3d( x, y, z );
 }
 
-void Command::setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, int photonAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons)
+void Command::setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, int photonAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons, bool showBoundaryBox)
 {
 	graphicsSettings->pointSize = pointSize;
 	graphicsSettings->pointAlpha = pointAlpha;
@@ -171,6 +171,7 @@ void Command::setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, 
 	graphicsSettings->lineSize = lineSize;
 	graphicsSettings->lineAlpha = lineAlpha;
 	graphicsSettings->showAbsorbedPhotons = showAbsorbedPhotons;
+	graphicsSettings->drawBoundingBox = showBoundaryBox;
 }
 
 void Command::rendering()
@@ -255,9 +256,9 @@ std::vector<Vector3d> Command::convertToNative(System::Collections::Generic::Lis
 	return nativePositions;
 }
 
-void Command::setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ, const size_t photons)
+void Command::setLightSourceSetting(const float posX, const float posY, const float posZ, const size_t photons, const float velocity)
 {
 	lightSourceFactory->init();
 	const Vector3d center( posX, posY, posZ );
-	lightSourceFactory->createLightSource( center, photons );
+	lightSourceFactory->createLightSource( center, photons, velocity );
 }
