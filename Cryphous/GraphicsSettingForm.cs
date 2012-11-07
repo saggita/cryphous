@@ -49,6 +49,11 @@ namespace Cryphous
             get { return checkBoxShowAbsorbedPhotons.Checked; }
         }
 
+        public bool ShowBoundaryBox
+        {
+            get { return checkBoxShowBoundaryBox.Checked; }
+        }
+
         public GraphicsSettingForm(Command command)
         {
             this.command = command;
@@ -82,7 +87,7 @@ namespace Cryphous
 
         private void setSetting()
         {
-            command.setGraphicsSetting(PointSize, PointAlpha, PhotonSize, PhotonAlpha, LineSize, LineAlpha, ShowAbsorbedPhotons);
+            command.setGraphicsSetting(PointSize, PointAlpha, PhotonSize, PhotonAlpha, LineSize, LineAlpha, ShowAbsorbedPhotons, ShowBoundaryBox);
         }
 
         private void GraphicsSettingForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -97,6 +102,11 @@ namespace Cryphous
         }
 
         private void numericUpDownPhotonAlpha_ValueChanged(object sender, EventArgs e)
+        {
+            setSetting();
+        }
+
+        private void checkBoxShowBoundaryBox_CheckedChanged(object sender, EventArgs e)
         {
             setSetting();
         }

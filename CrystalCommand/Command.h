@@ -56,7 +56,7 @@ public:
 
 	void setExternalForce(float x, float y, float z);
 
-	void setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, int photonAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons);
+	void setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, int photonAlpha, int lineSize, int lineAlpha, bool showAbsorbedPhotons, bool showBoundaryBox);
 
 	void rendering();
 
@@ -78,7 +78,7 @@ public:
 
 	void displaySimulationSetting(System::Windows::Forms::TextBox ^textBoxTimeStep, System::Windows::Forms::TextBox ^textBoxEffectLength );
 
-	void setLightSourceSetting(const float posX, const float posY, const float posZ, const float dirX, const float dirY, const float dirZ, size_t howManyPhotons);
+	void setLightSourceSetting(const float posX, const float posY, const float posZ, size_t howManyPhotons, const float velocity);
 
 public:
 	Physics::PhysicsObjectFactory* factory;
