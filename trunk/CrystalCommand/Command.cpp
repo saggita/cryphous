@@ -262,3 +262,17 @@ void Command::setLightSourceSetting(const float posX, const float posY, const fl
 	const Vector3d center( posX, posY, posZ );
 	lightSourceFactory->createLightSource( center, photons, velocity );
 }
+
+std::string MarshalString ( String ^ s) {
+	std::string os;
+	using namespace Runtime::InteropServices;
+	const char* chars =  (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+	os = chars;
+	Marshal::FreeHGlobal(IntPtr((void*)chars));
+	return os;
+}
+
+void Command::exportParticles(System::String^ fileName)
+{
+	factory->exportParticles( MarshalString(fileName) );
+}

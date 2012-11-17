@@ -24,7 +24,7 @@ protected:
 
 	void addPhotons(const size_t howMany);
 
-	LightSource(const int id, const Geom::Vector3d& center, const double velocity) :
+	LightSource(const int id, const Geom::Vector3d& center, const float velocity) :
 		 id( id),
 		 center( center),
 		 velocity( velocity)
@@ -54,7 +54,7 @@ public:
 private:
 	const int id;
 	const Geom::Vector3d center;
-	const double velocity;
+	const float velocity;
 	PhotonFactory photonFactory;
 
 	friend LightSourceFactory;

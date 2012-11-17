@@ -3,6 +3,7 @@
 
 #include "Uncopyable.h"
 #include <vector>
+#include <fstream>
 
 #include "SimulationSetting.h"
 #include "PhysicsObject.h"
@@ -110,6 +111,15 @@ public:
 			ordered.insert( ordered.end(), particles.begin(), particles.end() );
 		}
 		return ordered;
+	}
+
+	void exportParticles(const std::string& fileName) const
+	{
+		std::ofstream ofs(fileName);
+		const ParticleVector& particles = getParticles();
+		for( Particle* particle: particles ) {
+			ofs << particle->center.getX() << "," << particle->center.getY() << "," << particle->center.getZ() << "," << particle->density << "," << std::endl;
+		}
 	}
 
 private:

@@ -21,12 +21,14 @@ namespace Cryphous
         private LightSourceSettingForm lsDialog;
         private BoundarySettingForm bsDialog;
         private ExternalForceSettingForm efDialog;
-            
+
+        private String exportDirectory;
         
         public MainForm()
         {
             InitializeComponent();
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
+            exportDirectory = "";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -97,6 +99,12 @@ namespace Cryphous
             }
             mainCommand.proceed();
             mainCommand.displayProfile( listBoxInformation);
+            if (exportDirectory != "")
+            {
+                String stepStr = mainCommand.getStep().ToString("0000");
+                String fileName = "particle" + stepStr + ".txt";
+                mainCommand.exportParticles( exportDirectory +"\\" + fileName);
+            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -184,6 +192,17 @@ namespace Cryphous
         private void boundarySettingBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bsDialog.Show();
+        }
+
+        private void particleExportPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                exportDirectory = dialog.SelectedPath;
+                MessageBox.Show(exportDirectory);
+            }
         }
     }
 }

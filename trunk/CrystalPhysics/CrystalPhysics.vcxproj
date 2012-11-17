@@ -145,6 +145,7 @@
     <ClInclude Include="PhotonFactory.h" />
     <ClInclude Include="PhotonSolver.h" />
     <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="PhysicsObjectFactory.h" />
     <ClInclude Include="SearchPhoton.h" />
     <ClInclude Include="SearchPhotonFactory.h" />
     <ClInclude Include="Simulation.h" />

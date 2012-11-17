@@ -80,6 +80,8 @@ public:
 
 	void setLightSourceSetting(const float posX, const float posY, const float posZ, size_t howManyPhotons, const float velocity);
 
+	void exportParticles(System::String^ fileName);
+
 public:
 	Physics::PhysicsObjectFactory* factory;
 	Physics::SimulationSetting* simulationSetting;

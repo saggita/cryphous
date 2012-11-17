@@ -13,6 +13,8 @@
 #include "../CrystalPhysics/Particle.h"
 #include "../CrystalPhysics/ParticleFactory.h"
 
+#include "../CrystalPhysics/SearchParticleFactory.h"
+
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
@@ -27,7 +29,8 @@ BOOST_AUTO_TEST_CASE(SPH_SOLVER_TEST)
 	PhysicsObjectCondition condition( points, 1000.0f, 1.0f, 0.4f, PhysicsObjectCondition::Fluid );
 	PhysicsObject* fluid = factory.createPhysicsObject( condition, setting );
 	PhysicsObjectVector objects( 1, fluid);
-	SPHSolver solver( &factory, setting);
+	SearchParticleFactory spFactory( factory.getParticles(), setting.getEffectLength() );
+	SPHSolver solver( &factory, setting, spFactory.getSearchParticles());
 	solver.calculateInteraction();
 	
 	BOOST_CHECK( fluid->getParticles().front()->force != Vector3d( 0.0, 0.0, 0.0 ) );
