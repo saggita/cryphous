@@ -37,7 +37,7 @@ void BillboardRenderer::setVisualParticles(const VisualParticleList& visualParti
 		}
 		const Vector3d<>& center = vp.center;
 		const Vector3d<>& velocity = vp.velocity;
-		const ColorRGBA<>& color = ColorAdaptor::get()->getColorFromCash( vp.temperature );
+		const ColorRGBA<> color( 1.0f, 0.0f, 0.0f );
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
