@@ -83,8 +83,6 @@
     <ClCompile Include="BackGroundRenderer.cpp" />
     <ClCompile Include="BillboardRenderer.cpp" />
     <ClCompile Include="CompositeRenderer.cpp" />
-    <ClCompile Include="FlameRenderer.cpp" />
-    <ClCompile Include="FlameRendererBase.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="GeometryShader.cpp" />
@@ -94,7 +92,6 @@
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
-    <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="PolygonModel.cpp" />
     <ClCompile Include="PolygonRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
@@ -113,8 +110,6 @@
     <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeRenderer.h" />
-    <ClInclude Include="FlameRenderer.h" />
-    <ClInclude Include="FlameRendererBase.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="GeometryShader.h" />
@@ -124,8 +119,6 @@
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="OpenGLWrapper.h" />
-    <ClInclude Include="PBFRSetting.h" />
-    <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="PolygonModel.h" />
     <ClInclude Include="PolygonRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />

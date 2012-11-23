@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 
 #include "BackGroundRenderer.h"
-#include "PBFRSetting.h"
 
 #include <cassert>
 #include <boost/foreach.hpp>

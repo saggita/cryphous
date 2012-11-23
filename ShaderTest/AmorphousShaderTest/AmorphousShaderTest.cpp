@@ -7,10 +7,9 @@
 #include <memory>
 
 #include "PolygonRendererTest.h"
-#include "BillboardRendererTest.h"
 #include "DepthRendererTest.h"
 #include "BackGroundRendererTest.h"
-#include "PointSpriteRendererTest.h"
+#include "../AmorphousShader/OnScreenRendererBase.h"
 
 using namespace Amorphous::Shader;
 
@@ -98,11 +97,11 @@ void onSpecialFunc(int key, int x, int y)
 	}
 	else if( key == GLUT_KEY_RIGHT ) {
 		rendererBase.release();
-		rendererBase.reset( new PointSpriteRendererTest(width, height, solidModels));
+		rendererBase.reset( new DepthRendererTest(width, height));
 	}
 	else if( key == GLUT_KEY_UP ) {
 		rendererBase.release();
-		rendererBase.reset( new BillboardRendererTest(width, height, solidModels));
+		rendererBase.reset( new DepthRendererTest(width, height));
 	}
 	else if( key == GLUT_KEY_DOWN) {
 		rendererBase.release();
@@ -140,7 +139,7 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
-	rendererBase.reset( new PointSpriteRendererTest( width, height, solidModels ) );// new PolygonRendererTest(width, height));
+	rendererBase.reset( new PolygonRendererTest( width, height ) );
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);

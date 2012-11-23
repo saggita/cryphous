@@ -6,7 +6,7 @@ using namespace Amorphous::Shader;
 DepthRendererTest::DepthRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height)
 {
-	polygonRenderer = new PolygonRenderer( getWidth(), getHeight(), "../PolygonModels/quad.obj", setting);
+	polygonRenderer = new PolygonRenderer( getWidth(), getHeight(), "../PolygonModels/quad.obj");
 }
 
 DepthRendererTest::~DepthRendererTest(void)
