@@ -28,7 +28,7 @@ void PolygonRenderer::onInit()
 	shaderObject.createShader("lighting");
 	polygonModel.readFromObjFile(polygonFileName);
 	TextureCreator creator;
-	creator.createTexture(64, false);
+	creator.createTexture(64);
 	textureObject.reset( new TextureObject( 64, 64 ));
 	textureObject->initAlphaTexture( creator.getTexture(), 64, 64 );
 }

@@ -3,8 +3,6 @@
 
 #include "ColorRGBA.h"
 #include "VisualParticle.h"
-#include "ImprovedPerlinNoise.h"
-#include "SmokeTextureCreator.h"
 #include "Texture.h"
 #include "TextureCreator.h"
 

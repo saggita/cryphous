@@ -1,8 +1,6 @@
 #include "StdAfx.h"
 #include "TextureCreator.h"
 
-#include "ImprovedPerlinNoise.h"
-
 #include <cstdlib>
 #include <cmath>
 #include <vector>
@@ -19,7 +17,7 @@ TextureCreator::~TextureCreator(void)
 {
 }
 
-void TextureCreator::createTexture(const int size,const bool addNoise)
+void TextureCreator::createTexture(const int size)
 {
 	bitmap.clear();
 
@@ -47,15 +45,10 @@ void TextureCreator::createTexture(const int size,const bool addNoise)
 	}
 
 	bitmap.resize( size * size );
-	ImprovedPerlinNoise noise;
 	for( int i = 0; i < size; ++i ) {
 		for( int j = 0; j < size; ++j ) {
 			const int bitmapIndex = i * size +j;
 			bitmap[ bitmapIndex ] = bmpVec[i][j];
-			if( addNoise ) {
-				unsigned char noiseVal = static_cast<unsigned char>(noise.getNoise(i,j,0.0));
-				bitmap[bitmapIndex] *= noiseVal;
-			}
 		}
 	}
 }

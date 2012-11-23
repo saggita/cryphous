@@ -14,7 +14,7 @@ public:
 
 	~TextureCreator(void);
 
-	void createTexture(const int size, const bool addNoise = true);
+	void createTexture(const int size);
 
 	std::vector<unsigned char> getTexture() { return bitmap; }
 

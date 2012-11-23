@@ -7,9 +7,6 @@
     <ClCompile Include="TextureCreator.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
-    <ClCompile Include="ImprovedPerlinNoise.cpp">
-      <Filter>Texture</Filter>
-    </ClCompile>
     <ClCompile Include="VisualParticle.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
@@ -20,9 +17,6 @@
       <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="TextureCreator.h">
-      <Filter>Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="ImprovedPerlinNoise.h">
       <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="AmorphousColor.h" />
