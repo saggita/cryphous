@@ -4,9 +4,6 @@
     <Filter Include="PolygonRenderer">
       <UniqueIdentifier>{32231f8d-cdf3-49dd-9d64-8c3bbbbc94f5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BillboardRenderer">
-      <UniqueIdentifier>{00f4a824-0260-4631-b80b-5972faeb2072}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DepthRenderer">
       <UniqueIdentifier>{b5ee33c4-a9c5-41ef-bc8e-4155df85e1d4}</UniqueIdentifier>
     </Filter>
@@ -20,31 +17,23 @@
       <Filter>PolygonRenderer</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp" />
-    <ClCompile Include="BillboardRendererTest.cpp">
-      <Filter>BillboardRenderer</Filter>
-    </ClCompile>
     <ClCompile Include="DepthRendererTest.cpp">
       <Filter>DepthRenderer</Filter>
     </ClCompile>
     <ClCompile Include="BackGroundRendererTest.cpp">
       <Filter>BackGroundRendererTest</Filter>
     </ClCompile>
-    <ClCompile Include="PointSpriteRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PolygonRendererTest.h">
       <Filter>PolygonRenderer</Filter>
     </ClInclude>
     <ClInclude Include="StdAfx.h" />
-    <ClInclude Include="BillboardRendererTest.h">
-      <Filter>BillboardRenderer</Filter>
-    </ClInclude>
     <ClInclude Include="DepthRendererTest.h">
       <Filter>DepthRenderer</Filter>
     </ClInclude>
     <ClInclude Include="BackGroundRendererTest.h">
       <Filter>BackGroundRendererTest</Filter>
     </ClInclude>
-    <ClInclude Include="PointSpriteRendererTest.h" />
   </ItemGroup>
 </Project>

@@ -27,6 +27,5 @@ private:
 	void drawPolygon();
 
 	std::auto_ptr<Amorphous::Shader::FrameBufferObject> frameBufferObject;
-	Amorphous::Shader::PBFRSetting setting;
 	Amorphous::Shader::PolygonRenderer* polygonRenderer;
 };

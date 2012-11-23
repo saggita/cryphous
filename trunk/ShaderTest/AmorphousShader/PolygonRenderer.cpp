@@ -11,10 +11,9 @@ using namespace Amorphous::Geom;
 using namespace Amorphous::Color;
 using namespace Amorphous::Shader;
 
-PolygonRenderer::PolygonRenderer(const int width, const int height, const std::string& polygonFileName,const PBFRSetting& setting) :
+PolygonRenderer::PolygonRenderer(const int width, const int height, const std::string& polygonFileName) :
 OffScreenRendererBase( width, height),
-polygonFileName( polygonFileName),
-setting( setting)
+polygonFileName( polygonFileName)
 {
 }
 
@@ -45,7 +44,7 @@ void PolygonRenderer::onRender()
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
 	shaderObject.setUniformTexture("textureObject", *textureObject);
-	shaderObject.setUniform("intensityScale", setting.backGroundIntensity);
+	shaderObject.setUniform("intensityScale", 0.5f );// setting.backGroundIntensity);
 
 	std::vector<double>& points = polygonModel.getVertices();
 	//std::vector<double>& normals = polygonModel.getNormals();

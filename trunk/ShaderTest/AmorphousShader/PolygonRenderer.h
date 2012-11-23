@@ -4,7 +4,6 @@
 #include "OffScreenRendererBase.h"
 #include "PolygonModel.h"
 #include "TextureObject.h"
-#include "PBFRSetting.h"
 #include <memory>
 
 namespace Amorphous{
@@ -14,7 +13,7 @@ namespace Amorphous{
 class PolygonRenderer : public Amorphous::Shader::OffScreenRendererBase
 {
 public:
-	PolygonRenderer(const int width, const int height, const std::string& polygonFileName, const PBFRSetting& setting);
+	PolygonRenderer(const int width, const int height, const std::string& polygonFileName);
 
 	~PolygonRenderer(void);
 
@@ -27,7 +26,6 @@ private:
 	Amorphous::Shader::PolygonModel polygonModel;
 	std::auto_ptr<TextureObject> textureObject;
 	const std::string polygonFileName;
-	const PBFRSetting& setting;
 };
 
 	}

@@ -3,6 +3,7 @@
 
 #include "OffScreenRendererBase.h"
 #include "TextureObject.h"
+#include "VisualParticle.h"
 #include <memory>
 
 namespace Amorphous{
