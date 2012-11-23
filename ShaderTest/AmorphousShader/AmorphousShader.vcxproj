@@ -94,7 +94,6 @@
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
-    <ClCompile Include="PBFR.cpp" />
     <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="PolygonModel.cpp" />
     <ClCompile Include="PolygonRenderer.cpp" />
@@ -125,7 +124,6 @@
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="OpenGLWrapper.h" />
-    <ClInclude Include="PBFR.h" />
     <ClInclude Include="PBFRSetting.h" />
     <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="PolygonModel.h" />

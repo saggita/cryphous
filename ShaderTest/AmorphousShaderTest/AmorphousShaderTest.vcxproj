@@ -86,7 +86,6 @@
     <ClCompile Include="BackGroundRendererTest.cpp" />
     <ClCompile Include="BillboardRendererTest.cpp" />
     <ClCompile Include="DepthRendererTest.cpp" />
-    <ClCompile Include="PointRendererTest.cpp" />
     <ClCompile Include="PointSpriteRendererTest.cpp" />
     <ClCompile Include="PolygonRendererTest.cpp" />
     <ClCompile Include="StdAfx.cpp">
@@ -98,7 +97,6 @@
     <ClInclude Include="BackGroundRendererTest.h" />
     <ClInclude Include="BillboardRendererTest.h" />
     <ClInclude Include="DepthRendererTest.h" />
-    <ClInclude Include="PointRendererTest.h" />
     <ClInclude Include="PointSpriteRendererTest.h" />
     <ClInclude Include="PolygonRendererTest.h" />
     <ClInclude Include="StdAfx.h" />
