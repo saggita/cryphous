@@ -1,28 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="ColorLMS.cpp">
-      <Filter>Color</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorRGBA.cpp">
-      <Filter>Color</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorXYZ.cpp">
-      <Filter>Color</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackBodyRadiatorXYZ.cpp">
-      <Filter>BlackBody</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorAdaptor.cpp">
-      <Filter>BlackBody</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorMatchingXYZ.cpp">
-      <Filter>BlackBody</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="SmokeTextureCreator.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
     <ClCompile Include="TextureCreator.cpp">
@@ -31,37 +10,13 @@
     <ClCompile Include="ImprovedPerlinNoise.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
-    <ClCompile Include="ColorCreatorBase.cpp">
-      <Filter>BlackBody</Filter>
-    </ClCompile>
     <ClCompile Include="VisualParticle.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ColorLMS.h">
-      <Filter>Color</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorRGBA.h">
-      <Filter>Color</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorXYZ.h">
-      <Filter>Color</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackBodyRadiatorXYZ.h">
-      <Filter>BlackBody</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorAdaptor.h">
-      <Filter>BlackBody</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorMatchingXYZ.h">
-      <Filter>BlackBody</Filter>
-    </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="SmokeTextureCreator.h">
       <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="TextureCreator.h">
@@ -70,9 +25,6 @@
     <ClInclude Include="ImprovedPerlinNoise.h">
       <Filter>Texture</Filter>
     </ClInclude>
-    <ClInclude Include="ColorCreatorBase.h">
-      <Filter>BlackBody</Filter>
-    </ClInclude>
     <ClInclude Include="AmorphousColor.h" />
     <ClInclude Include="VisualParticle.h">
       <Filter>Particle</Filter>
@@ -80,12 +32,6 @@
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Color">
-      <UniqueIdentifier>{4b02e803-1770-4ff1-8335-d3fffe38c3e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BlackBody">
-      <UniqueIdentifier>{5de726cb-8ff8-4170-8ef1-113ad161657f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Texture">
       <UniqueIdentifier>{50cd5de0-80c2-4917-933e-b30a83767843}</UniqueIdentifier>
     </Filter>

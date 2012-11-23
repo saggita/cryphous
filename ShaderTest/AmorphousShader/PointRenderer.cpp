@@ -7,6 +7,8 @@
 #include <ctime>
 #include <boost/random.hpp>
 
+#include "../AmorphousColor/ColorRGBA.h"
+
 using namespace Amorphous::Geom;
 using namespace Amorphous::Shader;
 using namespace Amorphous::Color;
@@ -34,12 +36,12 @@ void PointRenderer::setVisualParticles(const VisualParticleList& visualParticles
 		}
 		const Vector3d<>& center = vp.center;
 		const Vector3d<>& velocity = vp.velocity;
-		const ColorRGBA<>& color = ColorAdaptor::get()->getColorFromCash( vp.temperature );
+		const ColorRGBA<> color( 1.0f, 0.0f, 0.0f);
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
-		colors.push_back( color.getRed());
-		colors.push_back( color.getGreen());
+		colors.push_back( 1.0f);
+		colors.push_back( 0.0f);
 		colors.push_back( color.getBlue());
 		colors.push_back( (vp.temperature - minTemperature) / ( maxTemperature - minTemperature ) * setting.pointAlpha );
 	}
