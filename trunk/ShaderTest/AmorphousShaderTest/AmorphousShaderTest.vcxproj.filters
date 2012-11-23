@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="PointRenderer">
-      <UniqueIdentifier>{f2286e15-d15f-4bfb-8b1d-e0ba4ee992f6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PolygonRenderer">
       <UniqueIdentifier>{32231f8d-cdf3-49dd-9d64-8c3bbbbc94f5}</UniqueIdentifier>
     </Filter>
@@ -18,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PointRendererTest.cpp">
-      <Filter>PointRenderer</Filter>
-    </ClCompile>
     <ClCompile Include="AmorphousShaderTest.cpp" />
     <ClCompile Include="PolygonRendererTest.cpp">
       <Filter>PolygonRenderer</Filter>
@@ -38,9 +32,6 @@
     <ClCompile Include="PointSpriteRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PointRendererTest.h">
-      <Filter>PointRenderer</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonRendererTest.h">
       <Filter>PolygonRenderer</Filter>
     </ClInclude>

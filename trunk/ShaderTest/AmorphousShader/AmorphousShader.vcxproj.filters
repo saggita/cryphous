@@ -76,9 +76,6 @@
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>GL</Filter>
     </ClCompile>
-    <ClCompile Include="PBFR.cpp">
-      <Filter>Renderer\OnScreen</Filter>
-    </ClCompile>
     <ClCompile Include="CompositeRenderer.cpp">
       <Filter>Renderer\OffScreen</Filter>
     </ClCompile>
@@ -148,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>GL</Filter>
-    </ClInclude>
-    <ClInclude Include="PBFR.h">
-      <Filter>Renderer\OnScreen</Filter>
     </ClInclude>
     <ClInclude Include="CompositeRenderer.h">
       <Filter>Renderer\OffScreen</Filter>

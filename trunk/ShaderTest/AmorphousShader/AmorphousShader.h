@@ -21,7 +21,6 @@
 #include "ScreenRendererBase.h"
 #include "OnScreenRendererBase.h"
 #include "OffScreenRendererBase.h"
-#include "PBFR.h"
 #include "PBFRSetting.h"
 #include "OpenGLWrapper.h"
 #include "BillboardRenderer.h"

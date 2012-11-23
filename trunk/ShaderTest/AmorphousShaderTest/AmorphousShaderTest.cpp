@@ -6,7 +6,6 @@
 #include <gl/glu.h>
 #include <memory>
 
-#include "PointRendererTest.h"
 #include "PolygonRendererTest.h"
 #include "BillboardRendererTest.h"
 #include "DepthRendererTest.h"
@@ -99,7 +98,7 @@ void onSpecialFunc(int key, int x, int y)
 	}
 	else if( key == GLUT_KEY_RIGHT ) {
 		rendererBase.release();
-		rendererBase.reset( new PointRendererTest(width, height, solidModels));
+		rendererBase.reset( new PointSpriteRendererTest(width, height, solidModels));
 	}
 	else if( key == GLUT_KEY_UP ) {
 		rendererBase.release();
