@@ -4,9 +4,9 @@
 #include "GLee.h"
 #include "../AmorphousGeom/AmorphousGeom.h"
 
-#include "../AmorphousColor/ColorRGBA.h"
-#include "../AmorphousColor/VisualParticle.h"
-#include "../AmorphousColor/Texture.h"
-#include "../AmorphousColor/TextureCreator.h"
+#include "../AmorphousShader/ColorRGBA.h"
+#include "../AmorphousShader/VisualParticle.h"
+#include "../AmorphousShader/Texture.h"
+#include "../AmorphousShader/TextureCreator.h"
 
 #endif

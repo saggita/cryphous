@@ -4,9 +4,8 @@
 #include "OffScreenRendererBase.h"
 #include "TextureObject.h"
 #include "GLSLMatrix.h"
-//#include "ShaderParticle.h"
 #include "PBFRSetting.h"
-#include "../AmorphousColor/VisualParticle.h"
+#include "VisualParticle.h"
 #include <memory>
 
 namespace Amorphous{
