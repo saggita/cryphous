@@ -7,7 +7,7 @@
 #include <ctime>
 #include <boost/random.hpp>
 
-#include "../AmorphousColor/ColorRGBA.h"
+#include "ColorRGBA.h"
 
 using namespace Amorphous::Geom;
 using namespace Amorphous::Shader;
