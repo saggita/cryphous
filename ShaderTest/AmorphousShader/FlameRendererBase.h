@@ -8,6 +8,7 @@
 
 #include "OpenGLWrapper.h"
 #include "../AmorphousColor/VisualParticle.h"
+#include "../AmorphousColor/Texture.h"
 #include "OnScreenRendererBase.h"
 #include "PBFRSetting.h"
 #include "BackGroundRenderer.h"

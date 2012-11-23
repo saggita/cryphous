@@ -24,7 +24,7 @@ public:
 		assert( width * height * 4 == pixels.size() );
 	}
 
-	~Texture(void);
+	~Texture(void){};
 
 	Pixels getPixels() const { return pixels; }
 

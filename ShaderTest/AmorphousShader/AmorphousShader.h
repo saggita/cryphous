@@ -17,7 +17,7 @@
 #include "ShaderObject.h"
 #include "VertexShader.h"
 #include "TextureObject.h"
-#include "ShaderParticle.h"
+//#include "ShaderParticle.h"
 #include "ScreenRendererBase.h"
 #include "OnScreenRendererBase.h"
 #include "OffScreenRendererBase.h"

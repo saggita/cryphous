@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 
-#include "../AmorphousShader/ShaderParticle.h"
+//#include "../AmorphousShader/ShaderParticle.h"
 
 class PointSpriteRendererTest : public Amorphous::Shader::OnScreenRendererBase
 {

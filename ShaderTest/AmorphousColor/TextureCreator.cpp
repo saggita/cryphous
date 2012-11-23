@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "../AmorphousGeom/AmorphousGeom.h"
 #include "TextureCreator.h"
 
 #include <cstdlib>
