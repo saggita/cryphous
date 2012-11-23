@@ -94,7 +94,7 @@ void BillboardRenderer::onInit()
 	shaderObject.createShader("Billboard");
 
 	TextureCreator creator;
-	creator.createTexture( 64, true );
+	creator.createTexture( 64 );
 	alphaTexture.reset( new TextureObject( 64, 64 ) );
 	alphaTexture->initAlphaTexture( creator.getTexture(), 64, 64 );
 }
