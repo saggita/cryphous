@@ -4,8 +4,9 @@
 #include "OffScreenRendererBase.h"
 #include "TextureObject.h"
 #include "GLSLMatrix.h"
-#include "ShaderParticle.h"
+//#include "ShaderParticle.h"
 #include "PBFRSetting.h"
+#include "../AmorphousColor/VisualParticle.h"
 #include <memory>
 
 namespace Amorphous{
@@ -22,7 +23,7 @@ public:
 
 	void setVisualParticles(const Color::VisualParticleList& visualParticles);
 
-	void setShaderParticles(const ShaderParticleList& shaderParticles);
+	//void setShaderParticles(const ShaderParticleList& shaderParticles);
 
 protected:
 	virtual void onRender();

@@ -3,6 +3,10 @@
 
 #include "GLee.h"
 #include "../AmorphousGeom/AmorphousGeom.h"
-#include "../AmorphousColor/AmorphousColor.h"
+
+#include "../AmorphousColor/ColorRGBA.h"
+#include "../AmorphousColor/VisualParticle.h"
+#include "../AmorphousColor/Texture.h"
+#include "../AmorphousColor/TextureCreator.h"
 
 #endif
