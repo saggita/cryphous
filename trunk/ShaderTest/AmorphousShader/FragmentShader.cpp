@@ -1,6 +1,7 @@
-#include "StdAfx.h"
-
 #include "FragmentShader.h"
+
+#include "GLee.h"
+
 
 #include "GLSLUtility.h"
 

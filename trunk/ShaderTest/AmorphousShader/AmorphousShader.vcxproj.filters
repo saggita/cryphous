@@ -63,7 +63,6 @@
     <ClCompile Include="ShaderObject.cpp">
       <Filter>ShaderObject</Filter>
     </ClCompile>
-    <ClCompile Include="StdAfx.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>GL</Filter>
     </ClCompile>
@@ -118,7 +117,6 @@
       <Filter>ShaderObject</Filter>
     </ClInclude>
     <ClInclude Include="AmorphousShader.h" />
-    <ClInclude Include="StdAfx.h" />
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>GL</Filter>
     </ClInclude>

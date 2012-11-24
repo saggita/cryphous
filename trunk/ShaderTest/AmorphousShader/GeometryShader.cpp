@@ -1,6 +1,6 @@
-#include "StdAfx.h"
-
 #include "GeometryShader.h"
+
+#include "GLee.h"
 
 #include "GLSLUtility.h"
 

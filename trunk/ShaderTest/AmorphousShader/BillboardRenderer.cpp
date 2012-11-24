@@ -1,7 +1,9 @@
-#include "StdAfx.h"
+#include "GLee.h"
 
+#include "ColorRGBA.h"
 #include "BillboardRenderer.h"
 #include "BackGroundRenderer.h"
+#include "TextureCreator.h"
 
 #include <cassert>
 #include <ctime>

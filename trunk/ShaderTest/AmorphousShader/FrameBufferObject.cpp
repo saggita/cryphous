@@ -1,6 +1,6 @@
-//#include "GLee.h"
-#include "StdAfx.h"
 #include "GLSLUtility.h"
+
+#include "GLee.h"
 
 #include "FrameBufferObject.h"
 #include "RenderBufferObject.h"

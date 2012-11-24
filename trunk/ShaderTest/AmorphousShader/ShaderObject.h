@@ -1,6 +1,8 @@
 #ifndef __SHADER_OBJECT_H__
 #define __SHADER_OBJECT_H__
 
+#include "GLee.h"
+
 #include "VertexShader.h"
 #include "GeometryShader.h"
 #include "FragmentShader.h"

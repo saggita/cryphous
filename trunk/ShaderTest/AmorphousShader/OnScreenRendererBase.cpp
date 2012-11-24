@@ -1,6 +1,6 @@
-#include "StdAfx.h"
-
 #include "OnScreenRendererBase.h"
+
+#include <cassert>
 
 using namespace Amorphous::Shader;
 

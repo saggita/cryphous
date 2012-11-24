@@ -1,7 +1,7 @@
 #ifndef __OPENGL_WRAPPER_H__
 #define __OPENGL_WRAPPER_H__
 
-#include "StdAfx.h"
+#include "GLee.h"
 
 namespace Amorphous{
 	namespace Shader {
