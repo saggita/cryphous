@@ -9,6 +9,7 @@
 #include "PolygonRendererTest.h"
 #include "DepthRendererTest.h"
 #include "BackGroundRendererTest.h"
+#include "BillboardRendererTest.h"
 #include "../AmorphousShader/OnScreenRendererBase.h"
 
 using namespace Amorphous::Shader;
@@ -101,7 +102,7 @@ void onSpecialFunc(int key, int x, int y)
 	}
 	else if( key == GLUT_KEY_UP ) {
 		rendererBase.release();
-		rendererBase.reset( new DepthRendererTest(width, height));
+		rendererBase.reset( new BillboardRendererTest(width, height));
 	}
 	else if( key == GLUT_KEY_DOWN) {
 		rendererBase.release();

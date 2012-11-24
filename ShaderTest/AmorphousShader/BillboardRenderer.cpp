@@ -29,13 +29,8 @@ void BillboardRenderer::setVisualParticles(const VisualParticleList& visualParti
 {
 	positions.clear();
 	colors.clear();
-	float maxTemperature = 3000.0f;
-	float minTemperature = 1000.0f;
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
-		if( vp.temperature < minTemperature ) {
-			continue;
-		}
 		const Vector3d<>& center = vp.center;
 		const Vector3d<>& velocity = vp.velocity;
 		const ColorRGBA<> color( 1.0f, 0.0f, 0.0f );
@@ -45,7 +40,7 @@ void BillboardRenderer::setVisualParticles(const VisualParticleList& visualParti
 		colors.push_back( color.getRed());
 		colors.push_back( color.getGreen());
 		colors.push_back( color.getBlue());
-		colors.push_back( (vp.temperature - minTemperature) / ( maxTemperature - minTemperature ) * alpha );
+		colors.push_back( alpha );
 	}
 }
 
