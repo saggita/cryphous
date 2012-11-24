@@ -41,15 +41,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\OpenSources\boost_1_43_0;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\OpenSources\boost_1_43_0;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -64,7 +64,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -144,15 +144,9 @@
     <None Include="..\Shaders\Compositor.vs">
       <FileType>Document</FileType>
     </None>
-    <None Include="..\Shaders\IntensityOffsetter.fs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.gs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.vs">
-      <FileType>Document</FileType>
-    </None>
+    <None Include="..\Shaders\IntensityOffsetter.fs" />
+    <None Include="..\Shaders\IntensityOffsetter.gs" />
+    <None Include="..\Shaders\IntensityOffsetter.vs" />
     <None Include="..\Shaders\lighting.fs">
       <FileType>Document</FileType>
     </None>
@@ -160,15 +154,6 @@
       <FileType>Document</FileType>
     </None>
     <None Include="..\Shaders\lighting.vs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\PointGenerator.fs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\PointGenerator.gs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\PointGenerator.vs">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

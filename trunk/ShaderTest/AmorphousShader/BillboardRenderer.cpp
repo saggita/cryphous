@@ -4,9 +4,7 @@
 #include "BackGroundRenderer.h"
 
 #include <cassert>
-#include <boost/foreach.hpp>
 #include <ctime>
-#include <boost/random.hpp>
 
 #include "GLSLUtility.h"
 
@@ -31,7 +29,8 @@ void BillboardRenderer::setVisualParticles(const VisualParticleList& visualParti
 	colors.clear();
 	float maxTemperature = 3000.0f;
 	float minTemperature = 1000.0f;
-	BOOST_FOREACH( const VisualParticle& vp, visualParticles ) {
+	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
+		const VisualParticle& vp = *iter;
 		if( vp.temperature < minTemperature ) {
 			continue;
 		}

@@ -4,8 +4,6 @@
 #include <fstream>
 #include <iostream>
 
-#include <boost/foreach.hpp>
-
 using namespace Amorphous::Shader;
 
 PolygonModel::PolygonModel(void)

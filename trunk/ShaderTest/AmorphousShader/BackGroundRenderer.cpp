@@ -3,7 +3,6 @@
 #include "BackGroundRenderer.h"
 
 #include <cassert>
-#include <boost/foreach.hpp>
 
 using namespace Amorphous::Geom;
 using namespace Amorphous::Color;
@@ -77,7 +76,8 @@ void BackGroundRenderer::drawSolid()
 	if( solidModels == 0 ) {
 		return;
 	}
-	BOOST_FOREACH( const PolygonModel& solidModel, *solidModels ) {
+	for( size_t i = 0; i < solidModels->size(); ++i ) {
+		const PolygonModel& solidModel = (*solidModels)[i];
 		std::vector<double>& points = solidModel.getVertices();
 		shaderObject.setVertex("position", points);
 		std::vector<double>& texCoord = solidModel.getTextureCoordinates();
