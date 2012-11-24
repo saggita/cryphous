@@ -97,10 +97,6 @@
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
-    <ClCompile Include="StdAfx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
@@ -124,7 +120,6 @@
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ShaderObject.h" />
-    <ClInclude Include="StdAfx.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="VertexShader.h" />
   </ItemGroup>

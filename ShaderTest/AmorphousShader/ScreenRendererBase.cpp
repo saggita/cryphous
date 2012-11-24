@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "GLee.h"
 
 #include "ScreenRendererBase.h"
 #include "Camera.h"

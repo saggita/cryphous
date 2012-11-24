@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "GLee.h"
 
 #include "VertexShader.h"
 

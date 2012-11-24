@@ -1,6 +1,8 @@
 #ifndef __GLSL_MATRIX_H__
 #define __GLSL_MATRIX_H__
 
+#include "../AmorphousGeom/Matrix3d.h"
+
 namespace Amorphous{
 	namespace Shader{
 

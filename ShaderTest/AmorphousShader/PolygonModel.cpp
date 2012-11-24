@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "PolygonModel.h"
 
 #include <fstream>

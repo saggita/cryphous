@@ -1,6 +1,7 @@
-#include "StdAfx.h"
-
 #include "PolygonRenderer.h"
+
+#include "TextureCreator.h"
+#include "GLee.h"
 
 #include "ShaderObject.h"
 #include "PolygonModel.h"

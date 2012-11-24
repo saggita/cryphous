@@ -1,7 +1,8 @@
-#include "StdAfx.h"
 #include "GLSLUtility.h"
 
+#include "GLee.h"
 #include <gl/glu.h>
+
 
 #include <cstdio>
 #include <cstdlib>

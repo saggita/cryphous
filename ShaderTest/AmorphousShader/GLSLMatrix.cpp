@@ -1,5 +1,3 @@
-#include "StdAfx.h"
-
 #include "GLSLMatrix.h"
 
 #include <cassert>
@@ -58,7 +56,7 @@ void GLSLMatrix::setPerspectiveMatrix(const float left, const float right, const
 	const float dz = farZ - nearZ;
 	x[ 0] =  2.0f / dx;
 	x[ 5] =  2.0f / dy;
-	x[10] = -1.0 / dz;
+	x[10] = -1.0f / dz;
 	x[11] = -1.0f;
 	x[12] = -(right + left) / dx;
 	x[13] = -(bottom + top) / dy;

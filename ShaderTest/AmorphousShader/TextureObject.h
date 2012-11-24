@@ -1,6 +1,7 @@
 #ifndef __TEXTURE_OBJECT_H__
 #define __TEXTURE_OBJECT_H__
 
+#include "GLee.h"
 #include <vector>
 
 namespace Amorphous{

@@ -1,4 +1,6 @@
-#include "StdAfx.h"
+#include "GLee.h"
+
+#include "ColorRGBA.h"
 
 #include "BackGroundRenderer.h"
 

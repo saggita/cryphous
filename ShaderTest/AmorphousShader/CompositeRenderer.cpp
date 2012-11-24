@@ -1,6 +1,6 @@
-#include "StdAfx.h"
 #include "CompositeRenderer.h"
 #include "TextureObject.h"
+
 #include <cassert>
 
 using namespace Amorphous::Shader;
