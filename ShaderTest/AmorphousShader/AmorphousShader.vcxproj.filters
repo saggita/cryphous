@@ -149,15 +149,6 @@
     <None Include="..\Shaders\Compositor.vs">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\Shaders\IntensityOffsetter.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.vs">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="..\Shaders\lighting.fs">
       <Filter>Shaders</Filter>
     </None>
@@ -165,15 +156,6 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\lighting.vs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\PointGenerator.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\PointGenerator.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\PointGenerator.vs">
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\Billboard.fs">
@@ -192,6 +174,15 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\BackGround.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\IntensityOffsetter.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
