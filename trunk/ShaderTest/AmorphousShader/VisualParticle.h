@@ -15,16 +15,14 @@ public:
 	VisualParticle() :
 		 center( Geom::Vector3d<>(0.0, 0.0, 0.0) ),
 		 temperature( 300.0 ),
-		 radius( 1.0),
-		 velocity( 0.0, 0.0, 0.0)
+		 radius( 1.0)
 		 {
 		 }
 
 	VisualParticle( const Geom::Vector3d<>& center, double temperature, double radius, const Geom::Vector3d<>& velocity) :
 		 center( center),
 		 temperature( temperature),
-		 radius( radius),
-		 velocity( velocity)
+		 radius( radius)
 		 {
 		 }
 
@@ -32,7 +30,6 @@ public:
 
 public:
 	Geom::Vector3d<> center;
-	Geom::Vector3d<> velocity;
 	double temperature;
 	double radius;
 };

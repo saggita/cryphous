@@ -86,6 +86,7 @@
     <ClCompile Include="BackGroundRendererTest.cpp" />
     <ClCompile Include="BillboardRendererTest.cpp" />
     <ClCompile Include="DepthRendererTest.cpp" />
+    <ClCompile Include="PointSpriteRendererTest.cpp" />
     <ClCompile Include="PolygonRendererTest.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -96,6 +97,7 @@
     <ClInclude Include="BackGroundRendererTest.h" />
     <ClInclude Include="BillboardRendererTest.h" />
     <ClInclude Include="DepthRendererTest.h" />
+    <ClInclude Include="PointSpriteRendererTest.h" />
     <ClInclude Include="PolygonRendererTest.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>

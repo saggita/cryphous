@@ -92,6 +92,7 @@
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
+    <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="PolygonModel.cpp" />
     <ClCompile Include="PolygonRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="OpenGLWrapper.h" />
+    <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="PolygonModel.h" />
     <ClInclude Include="PolygonRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
@@ -151,6 +153,9 @@
     <None Include="..\Shaders\lighting.vs">
       <FileType>Document</FileType>
     </None>
+    <None Include="..\Shaders\PointSprite.fs" />
+    <None Include="..\Shaders\PointSprite.gs" />
+    <None Include="..\Shaders\PointSprite.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
