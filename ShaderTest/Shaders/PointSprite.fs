@@ -1,6 +1,5 @@
 #version 330
 
-uniform sampler2D alphaTexture;
 in vec4 color;
 out vec4 fragColor;
 
@@ -12,5 +11,5 @@ void main(void)
 	if (distance > 1.0)
 		discard;
 	fragColor.rgb = color.rgb;
-	fragColor.a = color.a * texture(alphaTexture, gl_PointCoord.xy).a;
+	fragColor.a = 0.5;//color.a * texture(alphaTexture, gl_PointCoord.xy).a;
 }

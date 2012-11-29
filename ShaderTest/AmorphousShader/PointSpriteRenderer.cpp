@@ -1,9 +1,8 @@
 #include "GLee.h"
 
 #include "ColorRGBA.h"
-#include "BillboardRenderer.h"
-#include "BackGroundRenderer.h"
-#include "TextureCreator.h"
+#include "PointSpriteRenderer.h"
+//#include "BackGroundRenderer.h"
 
 #include <cassert>
 #include <ctime>
@@ -14,18 +13,18 @@ using namespace Amorphous::Geom;
 using namespace Amorphous::Shader;
 using namespace Amorphous::Color;
 
-BillboardRenderer::BillboardRenderer(const int width, const int height, const float& size, const float& alpha ) :
+PointSpriteRenderer::PointSpriteRenderer(const int width, const int height, const float& size, const float& alpha ) :
 OffScreenRendererBase( width, height),
 	size( size),
 	alpha( alpha)
 {
 }
 
-BillboardRenderer::~BillboardRenderer(void)
+PointSpriteRenderer::~PointSpriteRenderer(void)
 {
 }
 
-void BillboardRenderer::setVisualParticles(const VisualParticleList& visualParticles)
+void PointSpriteRenderer::setVisualParticles(const VisualParticleList& visualParticles)
 {
 	positions.clear();
 	colors.clear();
@@ -43,7 +42,7 @@ void BillboardRenderer::setVisualParticles(const VisualParticleList& visualParti
 	}
 }
 
-void BillboardRenderer::onRender()
+void PointSpriteRenderer::onRender()
 {
 	glClearColor( 0.0, 0.0, 0.0, 0.0 );
 	glClear( GL_COLOR_BUFFER_BIT );
@@ -52,7 +51,6 @@ void BillboardRenderer::onRender()
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-	alphaTexture->apply( 0 );
 
 	glClear( GL_DEPTH_BUFFER_BIT);	
 
@@ -61,7 +59,6 @@ void BillboardRenderer::onRender()
 		shaderObject.setUniform("pointSize", size);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
-		shaderObject.setUniformTexture("alphaTexture", *alphaTexture);
 		shaderObject.setVertex( "position", positions ); 
 		shaderObject.setVertexAttrib("color", colors, 4);
 		shaderObject.bindFrag("fragColor");
@@ -69,7 +66,6 @@ void BillboardRenderer::onRender()
 		shaderObject.release();
 	}
 
-	alphaTexture->release();
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
@@ -77,19 +73,11 @@ void BillboardRenderer::onRender()
 	glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
 }
 
-void BillboardRenderer::onInit()
+void PointSpriteRenderer::onInit()
 {
 	assert( GLSLUtility::hasNoError() );
 
-	//glClearColor( 0.0, 0.0, 0.0, 1.0 );
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
 	projectionMatrix.setPerspectiveMatrix(-0.5f, 0.5f, 0.0f, 1.0f, 0.01f, 100.0f );
 	
-	shaderObject.createShader("Billboard");
-
-	TextureCreator creator;
-	creator.createTexture( 64 );
-	alphaTexture.reset( new TextureObject( 64, 64 ) );
-	alphaTexture->initAlphaTexture( creator.getTexture(), 64, 64 );
+	shaderObject.createShader("PointSprite");
 }

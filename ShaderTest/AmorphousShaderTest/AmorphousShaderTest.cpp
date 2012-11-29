@@ -10,6 +10,7 @@
 #include "DepthRendererTest.h"
 #include "BackGroundRendererTest.h"
 #include "BillboardRendererTest.h"
+#include "PointSpriteRendererTest.h"
 #include "../AmorphousShader/OnScreenRendererBase.h"
 
 using namespace Amorphous::Shader;
@@ -94,7 +95,7 @@ void onSpecialFunc(int key, int x, int y)
 {
 	if( key == GLUT_KEY_LEFT ) {
 		rendererBase.release();
-		rendererBase.reset( new PolygonRendererTest(width, height));
+		rendererBase.reset( new PointSpriteRendererTest(width, height));
 	}
 	else if( key == GLUT_KEY_RIGHT ) {
 		rendererBase.release();
