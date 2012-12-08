@@ -1,24 +1,23 @@
-#include "StdAfx.h"
-#include "BackGroundRendererTest.h"
+#include "../AmorphousGeom/AmorphousGeom.h"
+#include "../AmorphousShader/AmorphousShader.h"
+#include "PolygonRendererTest.h"
 
-using namespace Amorphous::Color;
 using namespace Amorphous::Shader;
 
-BackGroundRendererTest::BackGroundRendererTest(const int width, const int height) :
-OnScreenRendererBase( width, height),
-intensity( 0.5f)
+PolygonRendererTest::PolygonRendererTest(const int width, const int height) :
+OnScreenRendererBase( width, height)
 {
-	backGroundRenderer = new BackGroundRenderer( getWidth(), getHeight(), intensity );
+	polygonRenderer = new PolygonRenderer( getWidth(), getHeight(), "../PolygonModels/quad.obj");
 }
 
-BackGroundRendererTest::~BackGroundRendererTest(void)
+PolygonRendererTest::~PolygonRendererTest(void)
 {
-	delete backGroundRenderer;
+	delete polygonRenderer;
 }
 
-void BackGroundRendererTest::onRender()
+void PolygonRendererTest::onRender()
 {
-	backGroundRenderer->render( *frameBufferObject );
+	polygonRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -50,11 +49,11 @@ void BackGroundRendererTest::onRender()
 	glDisable( GL_DEPTH_TEST );
 }
 
-void BackGroundRendererTest::onInit()
+void PolygonRendererTest::onInit()
 {
 	frameBufferObject.reset( new FrameBufferObject(getWidth(), getHeight(), false) );
 
-	backGroundRenderer->init();
+	polygonRenderer->init();
 
 	shaderObject.createShader("IntensityOffsetter");
 

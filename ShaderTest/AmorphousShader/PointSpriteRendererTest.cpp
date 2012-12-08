@@ -1,30 +1,31 @@
-#include "StdAfx.h"
-#include "../AmorphousShader/DepthRenderer.h"
-#include "DepthRendererTest.h"
+#include "../AmorphousGeom/AmorphousGeom.h"
+#include "../AmorphousShader/AmorphousShader.h"
+#include "../AmorphousShader/PointSpriteRenderer.h"
+#include "PointSpriteRendererTest.h"
 
 using namespace Amorphous::Geom;
 using namespace Amorphous::Color;
 using namespace Amorphous::Shader;
 
 const float size = 50.0f;
+const float alpha = 1.0f;
 
-DepthRendererTest::DepthRendererTest(const int width, const int height) :
+PointSpriteRendererTest::PointSpriteRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height)
 {
-	depthRenderer = new DepthRenderer( getWidth(), getHeight(), size);
+	pointSpriteRenderer = new PointSpriteRenderer( getWidth(), getHeight(), size, alpha);
 	visualParticles.push_back( VisualParticle() );
-	visualParticles.push_back( VisualParticle( Vector3d<>( 0.1, 0.0, -5 ), 1.0 ) );
-	depthRenderer->setVisualParticles( visualParticles );
+	pointSpriteRenderer->setVisualParticles( visualParticles );
 }
 
-DepthRendererTest::~DepthRendererTest(void)
+PointSpriteRendererTest::~PointSpriteRendererTest(void)
 {
-	delete depthRenderer;
+	delete pointSpriteRenderer;
 }
 
-void DepthRendererTest::onRender()
+void PointSpriteRendererTest::onRender()
 {
-	depthRenderer->render( *frameBufferObject );
+	pointSpriteRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -56,11 +57,11 @@ void DepthRendererTest::onRender()
 	glDisable( GL_DEPTH_TEST );
 }
 
-void DepthRendererTest::onInit()
+void PointSpriteRendererTest::onInit()
 {
 	frameBufferObject.reset( new FrameBufferObject(getWidth(), getHeight(), false) );
 
-	depthRenderer->init();
+	pointSpriteRenderer->init();
 
 	shaderObject.createShader("IntensityOffsetter");
 
