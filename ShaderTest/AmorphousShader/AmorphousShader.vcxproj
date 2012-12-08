@@ -83,6 +83,7 @@
     <ClCompile Include="BackGroundRenderer.cpp" />
     <ClCompile Include="BillboardRenderer.cpp" />
     <ClCompile Include="CompositeRenderer.cpp" />
+    <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="GeometryShader.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeRenderer.h" />
+    <ClInclude Include="DepthRenderer.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="GeometryShader.h" />
@@ -141,6 +143,9 @@
     <None Include="..\Shaders\Compositor.vs">
       <FileType>Document</FileType>
     </None>
+    <None Include="..\Shaders\Depth.fs" />
+    <None Include="..\Shaders\Depth.gs" />
+    <None Include="..\Shaders\Depth.vs" />
     <None Include="..\Shaders\IntensityOffsetter.fs" />
     <None Include="..\Shaders\IntensityOffsetter.gs" />
     <None Include="..\Shaders\IntensityOffsetter.vs" />

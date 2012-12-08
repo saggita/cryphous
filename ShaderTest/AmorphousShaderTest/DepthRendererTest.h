@@ -4,7 +4,7 @@
 
 namespace Amorphous{
 	namespace Shader{
-		class PolygonRenderer;
+		class DepthRenderer;
 	}
 }
 
@@ -27,5 +27,6 @@ private:
 	void drawPolygon();
 
 	std::auto_ptr<Amorphous::Shader::FrameBufferObject> frameBufferObject;
-	Amorphous::Shader::PolygonRenderer* polygonRenderer;
+	Amorphous::Shader::DepthRenderer* depthRenderer;
+	Amorphous::Color::VisualParticleList visualParticles;
 };

@@ -84,6 +84,9 @@
     <ClCompile Include="PointSpriteRenderer.cpp">
       <Filter>Renderer\OffScreen</Filter>
     </ClCompile>
+    <ClCompile Include="DepthRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrameBufferObject.h">
@@ -142,6 +145,9 @@
     <ClInclude Include="PointSpriteRenderer.h">
       <Filter>Renderer\OffScreen</Filter>
     </ClInclude>
+    <ClInclude Include="DepthRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Compositor.fs">
@@ -196,6 +202,15 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\PointSprite.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Depth.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Depth.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Depth.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
