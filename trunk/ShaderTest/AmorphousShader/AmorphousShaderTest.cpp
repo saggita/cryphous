@@ -1,4 +1,5 @@
-#include "StdAfx.h"
+#include "../AmorphousGeom/AmorphousGeom.h"
+#include "../AmorphousShader/AmorphousShader.h"
 #include <cassert>
 #include "../AmorphousShader/GLSLUtility.h"
 #include <glut.h>

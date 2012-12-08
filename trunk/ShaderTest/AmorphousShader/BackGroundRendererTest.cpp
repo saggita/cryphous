@@ -1,30 +1,25 @@
-#include "StdAfx.h"
-#include "../AmorphousShader/PointSpriteRenderer.h"
-#include "PointSpriteRendererTest.h"
+#include "../AmorphousGeom/AmorphousGeom.h"
+#include "../AmorphousShader/AmorphousShader.h"
+#include "BackGroundRendererTest.h"
 
-using namespace Amorphous::Geom;
 using namespace Amorphous::Color;
 using namespace Amorphous::Shader;
 
-const float size = 50.0f;
-const float alpha = 1.0f;
-
-PointSpriteRendererTest::PointSpriteRendererTest(const int width, const int height) :
-OnScreenRendererBase( width, height)
+BackGroundRendererTest::BackGroundRendererTest(const int width, const int height) :
+OnScreenRendererBase( width, height),
+intensity( 0.5f)
 {
-	pointSpriteRenderer = new PointSpriteRenderer( getWidth(), getHeight(), size, alpha);
-	visualParticles.push_back( VisualParticle() );
-	pointSpriteRenderer->setVisualParticles( visualParticles );
+	backGroundRenderer = new BackGroundRenderer( getWidth(), getHeight(), intensity );
 }
 
-PointSpriteRendererTest::~PointSpriteRendererTest(void)
+BackGroundRendererTest::~BackGroundRendererTest(void)
 {
-	delete pointSpriteRenderer;
+	delete backGroundRenderer;
 }
 
-void PointSpriteRendererTest::onRender()
+void BackGroundRendererTest::onRender()
 {
-	pointSpriteRenderer->render( *frameBufferObject );
+	backGroundRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -56,11 +51,11 @@ void PointSpriteRendererTest::onRender()
 	glDisable( GL_DEPTH_TEST );
 }
 
-void PointSpriteRendererTest::onInit()
+void BackGroundRendererTest::onInit()
 {
 	frameBufferObject.reset( new FrameBufferObject(getWidth(), getHeight(), false) );
 
-	pointSpriteRenderer->init();
+	backGroundRenderer->init();
 
 	shaderObject.createShader("IntensityOffsetter");
 
