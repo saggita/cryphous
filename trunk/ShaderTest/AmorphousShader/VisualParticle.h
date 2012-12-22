@@ -6,7 +6,7 @@
 #include "../AmorphousGeom/Vector3d.h"
 
 namespace Amorphous{
-	namespace Color{
+	namespace Shader{
 
 class VisualParticle
 {
