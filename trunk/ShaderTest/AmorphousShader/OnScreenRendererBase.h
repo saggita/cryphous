@@ -6,6 +6,7 @@
 namespace Amorphous{
 	namespace Shader{
 		class OffScreenRendererBase;
+		class FrameBufferObject;
 
 class OnScreenRendererBase : public ScreenRendererBase
 {
@@ -19,9 +20,14 @@ public:
 	void idle();
 
 protected:
-	virtual void onIdle() = 0;
+	virtual void onIdle(){};
+
+	virtual void onInit();
+
+	virtual void onRender();
 	
 	Amorphous::Shader::OffScreenRendererBase* offScreenRenderer;
+	Amorphous::Shader::FrameBufferObject* frameBufferObject;
 };
 
 	}
