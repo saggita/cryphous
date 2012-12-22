@@ -17,7 +17,6 @@
 #include "OnScreenRendererBase.h"
 #include "OffScreenRendererBase.h"
 #include "OpenGLWrapper.h"
-#include "BillboardRenderer.h"
 #include "Camera.h"
 
 #endif
