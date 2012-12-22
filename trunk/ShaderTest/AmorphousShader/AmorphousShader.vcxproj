@@ -81,7 +81,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BillboardRenderer.cpp" />
-    <ClCompile Include="CompositeRenderer.cpp" />
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
@@ -93,7 +92,6 @@
     <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PointSpriteRenderer.cpp" />
-    <ClCompile Include="PolygonModel.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
@@ -104,7 +102,6 @@
     <ClInclude Include="AmorphousShader.h" />
     <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CompositeRenderer.h" />
     <ClInclude Include="DepthRenderer.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="FrameBufferObject.h" />
@@ -116,7 +113,6 @@
     <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="PointSpriteRenderer.h" />
-    <ClInclude Include="PolygonModel.h" />
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ShaderObject.h" />
@@ -124,21 +120,9 @@
     <ClInclude Include="VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\BackGround.fs" />
-    <None Include="..\Shaders\BackGround.gs" />
-    <None Include="..\Shaders\BackGround.vs" />
     <None Include="..\Shaders\Billboard.fs" />
     <None Include="..\Shaders\Billboard.gs" />
     <None Include="..\Shaders\Billboard.vs" />
-    <None Include="..\Shaders\Compositor.fs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\Compositor.gs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\Compositor.vs">
-      <FileType>Document</FileType>
-    </None>
     <None Include="..\Shaders\Depth.fs" />
     <None Include="..\Shaders\Depth.gs" />
     <None Include="..\Shaders\Depth.vs" />

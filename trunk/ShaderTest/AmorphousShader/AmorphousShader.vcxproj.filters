@@ -13,9 +13,6 @@
     <Filter Include="Geometry">
       <UniqueIdentifier>{4d2dd8ef-a54d-425c-8717-d8f696ac3b23}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PolygonModel">
-      <UniqueIdentifier>{6fce2b2c-ea53-4f48-a053-c2dd02e8c70b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ShaderObject">
       <UniqueIdentifier>{71432b8c-d6ad-4916-b84d-dc3f993df68a}</UniqueIdentifier>
     </Filter>
@@ -48,9 +45,6 @@
     <ClCompile Include="GLSLMatrix.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonModel.cpp">
-      <Filter>PolygonModel</Filter>
-    </ClCompile>
     <ClCompile Include="FragmentShader.cpp">
       <Filter>ShaderObject</Filter>
     </ClCompile>
@@ -65,9 +59,6 @@
     </ClCompile>
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>GL</Filter>
-    </ClCompile>
-    <ClCompile Include="CompositeRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
     </ClCompile>
     <ClCompile Include="BillboardRenderer.cpp">
       <Filter>Renderer\OffScreen</Filter>
@@ -101,9 +92,6 @@
     <ClInclude Include="GLSLMatrix.h">
       <Filter>Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonModel.h">
-      <Filter>PolygonModel</Filter>
-    </ClInclude>
     <ClInclude Include="FragmentShader.h">
       <Filter>ShaderObject</Filter>
     </ClInclude>
@@ -120,9 +108,6 @@
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>GL</Filter>
     </ClInclude>
-    <ClInclude Include="CompositeRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="BillboardRenderer.h">
       <Filter>Renderer\OffScreen</Filter>
@@ -138,15 +123,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\Compositor.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\Compositor.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\Compositor.vs">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="..\Shaders\lighting.fs">
       <Filter>Shaders</Filter>
     </None>
@@ -163,15 +139,6 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\Billboard.vs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\BackGround.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\BackGround.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\BackGround.vs">
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\IntensityOffsetter.fs">
