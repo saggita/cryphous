@@ -2,11 +2,5 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="AmorphousShaderTest.cpp" />
-    <ClCompile Include="DepthRendererTest.cpp" />
-    <ClCompile Include="PointSpriteRendererTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DepthRendererTest.h" />
-    <ClInclude Include="PointSpriteRendererTest.h" />
   </ItemGroup>
 </Project>

@@ -19,7 +19,9 @@ public:
 
 	void idle();
 
-protected:
+	void setOffScreenRenderer(Amorphous::Shader::OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
+
+private:
 	virtual void onIdle(){};
 
 	virtual void onInit();
