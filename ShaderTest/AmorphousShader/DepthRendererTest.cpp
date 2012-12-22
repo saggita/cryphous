@@ -12,20 +12,22 @@ const float size = 50.0f;
 DepthRendererTest::DepthRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height)
 {
-	depthRenderer = new DepthRenderer( getWidth(), getHeight(), size);
+	DepthRenderer* depthRenderer = new DepthRenderer( getWidth(), getHeight(), size);
+	VisualParticleList visualParticles;
 	visualParticles.push_back( VisualParticle() );
 	visualParticles.push_back( VisualParticle( Vector3d<>( 0.1, 0.0, -5 ), 1.0 ) );
 	depthRenderer->setVisualParticles( visualParticles );
+	offScreenRenderer = depthRenderer;
 }
 
 DepthRendererTest::~DepthRendererTest(void)
 {
-	delete depthRenderer;
+	delete offScreenRenderer;
 }
 
 void DepthRendererTest::onRender()
 {
-	depthRenderer->render( *frameBufferObject );
+	offScreenRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -46,8 +48,6 @@ void DepthRendererTest::onRender()
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
 	shaderObject.setUniformTexture("offScreenTexture", textureObject);
-	shaderObject.setUniformVector("colorOffset", colorOffset);
-	shaderObject.setUniform("intensityScale", 1.0f);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
@@ -61,9 +61,9 @@ void DepthRendererTest::onInit()
 {
 	frameBufferObject.reset( new FrameBufferObject(getWidth(), getHeight(), false) );
 
-	depthRenderer->init();
+	offScreenRenderer->init();
 
-	shaderObject.createShader("IntensityOffsetter");
+	shaderObject.createShader("Quad");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
 }

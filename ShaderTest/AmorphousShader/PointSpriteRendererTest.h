@@ -27,6 +27,4 @@ private:
 	void drawPolygon();
 
 	std::auto_ptr<Amorphous::Shader::FrameBufferObject> frameBufferObject;
-	Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
-	Amorphous::Color::VisualParticleList visualParticles;
 };

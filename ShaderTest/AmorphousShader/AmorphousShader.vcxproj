@@ -126,21 +126,12 @@
     <None Include="..\Shaders\Depth.fs" />
     <None Include="..\Shaders\Depth.gs" />
     <None Include="..\Shaders\Depth.vs" />
-    <None Include="..\Shaders\IntensityOffsetter.fs" />
-    <None Include="..\Shaders\IntensityOffsetter.gs" />
-    <None Include="..\Shaders\IntensityOffsetter.vs" />
-    <None Include="..\Shaders\lighting.fs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\lighting.gs">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\Shaders\lighting.vs">
-      <FileType>Document</FileType>
-    </None>
     <None Include="..\Shaders\PointSprite.fs" />
     <None Include="..\Shaders\PointSprite.gs" />
     <None Include="..\Shaders\PointSprite.vs" />
+    <None Include="..\Shaders\Quad.fs" />
+    <None Include="..\Shaders\Quad.gs" />
+    <None Include="..\Shaders\Quad.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

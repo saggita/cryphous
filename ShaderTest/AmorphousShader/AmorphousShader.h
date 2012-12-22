@@ -6,7 +6,6 @@
 #include "RenderBufferObject.h"
 #include "GLSLMatrix.h"
 #include "GLSLUtility.h"
-#include "CompositeRenderer.h"
 #include "OffScreenRendererBase.h"
 #include "OnScreenRendererBase.h"
 #include "FragmentShader.h"

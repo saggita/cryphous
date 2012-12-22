@@ -12,19 +12,21 @@ const float alpha = 1.0f;
 BillboardRendererTest::BillboardRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height)
 {
-	billboardRenderer = new BillboardRenderer( getWidth(), getHeight(), size, alpha);
+	BillboardRenderer* billboardRenderer = new BillboardRenderer( getWidth(), getHeight(), size, alpha);
+	VisualParticleList visualParticles;
 	visualParticles.push_back( VisualParticle() );
 	billboardRenderer->setVisualParticles( visualParticles );
+	offScreenRenderer = billboardRenderer;
 }
 
 BillboardRendererTest::~BillboardRendererTest(void)
 {
-	delete billboardRenderer;
+	delete offScreenRenderer;
 }
 
 void BillboardRendererTest::onRender()
 {
-	billboardRenderer->render( *frameBufferObject );
+	offScreenRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -45,8 +47,6 @@ void BillboardRendererTest::onRender()
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
 	shaderObject.setUniformTexture("offScreenTexture", textureObject);
-	shaderObject.setUniformVector("colorOffset", colorOffset);
-	shaderObject.setUniform("intensityScale", 1.0f);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
@@ -60,9 +60,9 @@ void BillboardRendererTest::onInit()
 {
 	frameBufferObject.reset( new FrameBufferObject(getWidth(), getHeight(), false) );
 
-	billboardRenderer->init();
+	offScreenRenderer->init();
 
-	shaderObject.createShader("IntensityOffsetter");
+	shaderObject.createShader("Quad");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
 }
