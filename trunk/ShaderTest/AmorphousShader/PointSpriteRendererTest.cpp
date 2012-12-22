@@ -13,19 +13,21 @@ const float alpha = 1.0f;
 PointSpriteRendererTest::PointSpriteRendererTest(const int width, const int height) :
 OnScreenRendererBase( width, height)
 {
-	pointSpriteRenderer = new PointSpriteRenderer( getWidth(), getHeight(), size, alpha);
+	PointSpriteRenderer* pointSpriteRenderer = new PointSpriteRenderer( getWidth(), getHeight(), size, alpha);
+	VisualParticleList visualParticles;
 	visualParticles.push_back( VisualParticle() );
 	pointSpriteRenderer->setVisualParticles( visualParticles );
+	offScreenRenderer = pointSpriteRenderer;
 }
 
 PointSpriteRendererTest::~PointSpriteRendererTest(void)
 {
-	delete pointSpriteRenderer;
+	delete offScreenRenderer;
 }
 
 void PointSpriteRendererTest::onRender()
 {
-	pointSpriteRenderer->render( *frameBufferObject );
+	offScreenRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -46,8 +48,6 @@ void PointSpriteRendererTest::onRender()
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
 	shaderObject.setUniformTexture("offScreenTexture", textureObject);
-	shaderObject.setUniformVector("colorOffset", colorOffset);
-	shaderObject.setUniform("intensityScale", 1.0f);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
@@ -61,9 +61,9 @@ void PointSpriteRendererTest::onInit()
 {
 	frameBufferObject.reset( new FrameBufferObject(getWidth(), getHeight(), false) );
 
-	pointSpriteRenderer->init();
+	offScreenRenderer->init();
 
-	shaderObject.createShader("IntensityOffsetter");
+	shaderObject.createShader("Quad");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
 }

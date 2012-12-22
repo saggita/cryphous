@@ -123,15 +123,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\lighting.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\lighting.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\lighting.vs">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="..\Shaders\Billboard.fs">
       <Filter>Shaders</Filter>
     </None>
@@ -139,15 +130,6 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\Billboard.vs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.fs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.gs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\IntensityOffsetter.vs">
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\PointSprite.fs">
@@ -166,6 +148,15 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\Depth.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Quad.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Quad.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Quad.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

@@ -5,6 +5,7 @@
 
 namespace Amorphous{
 	namespace Shader{
+		class OffScreenRendererBase;
 
 class OnScreenRendererBase : public ScreenRendererBase
 {
@@ -19,6 +20,8 @@ public:
 
 protected:
 	virtual void onIdle() = 0;
+	
+	Amorphous::Shader::OffScreenRendererBase* offScreenRenderer;
 };
 
 	}

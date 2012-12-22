@@ -27,6 +27,6 @@ private:
 	void drawPolygon();
 
 	std::auto_ptr<Amorphous::Shader::FrameBufferObject> frameBufferObject;
-	Amorphous::Shader::DepthRenderer* depthRenderer;
-	Amorphous::Color::VisualParticleList visualParticles;
+	//Amorphous::Shader::DepthRenderer* depthRenderer;
+	//Amorphous::Color::VisualParticleList visualParticles;
 };
