@@ -80,7 +80,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BackGroundRenderer.cpp" />
     <ClCompile Include="BillboardRenderer.cpp" />
     <ClCompile Include="CompositeRenderer.cpp" />
     <ClCompile Include="DepthRenderer.cpp" />
@@ -95,7 +94,6 @@
     <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="PolygonModel.cpp" />
-    <ClCompile Include="PolygonRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
@@ -104,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmorphousShader.h" />
-    <ClInclude Include="BackGroundRenderer.h" />
     <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CompositeRenderer.h" />
@@ -120,7 +117,6 @@
     <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="PolygonModel.h" />
-    <ClInclude Include="PolygonRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ShaderObject.h" />

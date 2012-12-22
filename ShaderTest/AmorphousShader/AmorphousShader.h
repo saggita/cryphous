@@ -6,9 +6,7 @@
 #include "RenderBufferObject.h"
 #include "GLSLMatrix.h"
 #include "GLSLUtility.h"
-#include "PolygonModel.h"
 #include "CompositeRenderer.h"
-#include "PolygonRenderer.h"
 #include "OffScreenRendererBase.h"
 #include "OnScreenRendererBase.h"
 #include "FragmentShader.h"
@@ -21,7 +19,6 @@
 #include "OffScreenRendererBase.h"
 #include "OpenGLWrapper.h"
 #include "BillboardRenderer.h"
-#include "BackGroundRenderer.h"
 #include "Camera.h"
 
 #endif
