@@ -20,11 +20,6 @@ OnScreenRendererBase( width, height)
 	offScreenRenderer = depthRenderer;
 }
 
-DepthRendererTest::~DepthRendererTest(void)
-{
-	delete offScreenRenderer;
-}
-
 void DepthRendererTest::onRender()
 {
 	offScreenRenderer->render( *frameBufferObject );

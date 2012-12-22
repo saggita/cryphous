@@ -42,10 +42,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <OutDir>..\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <OutDir>..\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,7 +82,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BillboardRenderer.cpp" />
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
@@ -100,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AmorphousShader.h" />
-    <ClInclude Include="BillboardRenderer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DepthRenderer.h" />
     <ClInclude Include="FragmentShader.h" />

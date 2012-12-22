@@ -20,11 +20,6 @@ OnScreenRendererBase( width, height)
 	offScreenRenderer = pointSpriteRenderer;
 }
 
-PointSpriteRendererTest::~PointSpriteRendererTest(void)
-{
-	delete offScreenRenderer;
-}
-
 void PointSpriteRendererTest::onRender()
 {
 	offScreenRenderer->render( *frameBufferObject );

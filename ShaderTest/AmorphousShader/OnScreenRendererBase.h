@@ -12,7 +12,7 @@ class OnScreenRendererBase : public ScreenRendererBase
 public:
 	OnScreenRendererBase(const int width, const int height);
 
-	~OnScreenRendererBase(){};
+	virtual ~OnScreenRendererBase();
 
 	void render();
 

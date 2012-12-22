@@ -13,8 +13,6 @@ class DepthRendererTest : public Amorphous::Shader::OnScreenRendererBase
 public:
 	DepthRendererTest(const int width, const int height);
 
-	~DepthRendererTest(void);
-
 protected:
 
 	virtual void onRender();
@@ -27,6 +25,4 @@ private:
 	void drawPolygon();
 
 	std::auto_ptr<Amorphous::Shader::FrameBufferObject> frameBufferObject;
-	//Amorphous::Shader::DepthRenderer* depthRenderer;
-	//Amorphous::Color::VisualParticleList visualParticles;
 };

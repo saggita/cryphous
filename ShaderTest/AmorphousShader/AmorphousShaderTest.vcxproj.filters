@@ -3,12 +3,10 @@
   <ItemGroup>
     <ClCompile Include="AmorphousShaderTest.cpp" />
     <ClCompile Include="DepthRendererTest.cpp" />
-    <ClCompile Include="BillboardRendererTest.cpp" />
     <ClCompile Include="PointSpriteRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DepthRendererTest.h" />
-    <ClInclude Include="BillboardRendererTest.h" />
     <ClInclude Include="PointSpriteRendererTest.h" />
   </ItemGroup>
 </Project>
