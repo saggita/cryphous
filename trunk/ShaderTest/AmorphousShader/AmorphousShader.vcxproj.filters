@@ -60,9 +60,6 @@
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>GL</Filter>
     </ClCompile>
-    <ClCompile Include="BillboardRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClCompile>
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
@@ -109,9 +106,6 @@
       <Filter>GL</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="BillboardRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClInclude>
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="ScreenRendererBase.h" />

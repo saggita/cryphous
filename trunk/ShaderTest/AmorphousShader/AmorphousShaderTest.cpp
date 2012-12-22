@@ -8,7 +8,6 @@
 #include <memory>
 
 #include "DepthRendererTest.h"
-#include "BillboardRendererTest.h"
 #include "PointSpriteRendererTest.h"
 #include "../AmorphousShader/OnScreenRendererBase.h"
 
@@ -85,7 +84,7 @@ void onSpecialFunc(int key, int x, int y)
 	}
 	else if( key == GLUT_KEY_UP ) {
 		rendererBase.release();
-		rendererBase.reset( new BillboardRendererTest(width, height));
+		rendererBase.reset( new DepthRendererTest(width, height));
 	}
 	else if( key == GLUT_KEY_DOWN) {
 		rendererBase.release();

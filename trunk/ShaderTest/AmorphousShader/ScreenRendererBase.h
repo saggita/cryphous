@@ -14,7 +14,7 @@ class ScreenRendererBase
 public:
 	ScreenRendererBase(const int width, const int height);
 
-	~ScreenRendererBase(void);
+	virtual ~ScreenRendererBase(void);
 
 	void init();
 

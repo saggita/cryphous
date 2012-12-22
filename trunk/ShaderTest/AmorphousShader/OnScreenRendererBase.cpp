@@ -1,5 +1,7 @@
 #include "OnScreenRendererBase.h"
 
+#include "OffScreenRendererBase.h"
+
 #include <cassert>
 
 using namespace Amorphous::Shader;
@@ -7,6 +9,11 @@ using namespace Amorphous::Shader;
 OnScreenRendererBase::OnScreenRendererBase(const int width, const int height) :
 ScreenRendererBase(width, height)
 {
+}
+
+OnScreenRendererBase::~OnScreenRendererBase()
+{
+	delete offScreenRenderer;
 }
 
 void OnScreenRendererBase::render()

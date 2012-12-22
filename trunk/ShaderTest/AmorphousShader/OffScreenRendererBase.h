@@ -13,7 +13,7 @@ class OffScreenRendererBase : public ScreenRendererBase
 public:
 	OffScreenRendererBase(const int width, const int height);
 
-	~OffScreenRendererBase(void);
+	virtual ~OffScreenRendererBase(void);
 
 	void render(const FrameBufferObject& frameBufferObject);	
 };
