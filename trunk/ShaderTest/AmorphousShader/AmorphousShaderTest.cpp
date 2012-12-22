@@ -7,9 +7,7 @@
 #include <gl/glu.h>
 #include <memory>
 
-#include "PolygonRendererTest.h"
 #include "DepthRendererTest.h"
-#include "BackGroundRendererTest.h"
 #include "BillboardRendererTest.h"
 #include "PointSpriteRendererTest.h"
 #include "../AmorphousShader/OnScreenRendererBase.h"
@@ -17,7 +15,6 @@
 using namespace Amorphous::Shader;
 
 std::auto_ptr<OnScreenRendererBase> rendererBase;
-std::vector<PolygonModel> solidModels;
 
 bool isIdle = true;
 int mButton;
@@ -52,22 +49,6 @@ void onInit()
 	glutCreateWindow("AmorphousRendererTest");
 
 	Camera::get()->zoom = -0.1f;
-
-	std::vector<Vertex> vertices;
-	vertices.push_back( Vertex( 0.0, 0.0, 0.0) );
-	vertices.push_back( Vertex( 1.0, 0.0, 0.0) );
-	vertices.push_back( Vertex( 1.0, 1.0, 0.0) );
-
-	std::vector<Face> faces;
-	faces.push_back( Face( 0, 1, 2 ) );
-	
-	std::vector<TextureCoordinate> texCoords;
-	texCoords.push_back( TextureCoordinate( 0.0, 0.0) );
-	texCoords.push_back( TextureCoordinate( 1.0, 0.0) );
-	texCoords.push_back( TextureCoordinate( 1.0, 1.0) );
-	
-	solidModels.resize(1);
-	solidModels.front().set( vertices, faces, texCoords );
 
 	rendererBase->init();
 }
@@ -108,7 +89,7 @@ void onSpecialFunc(int key, int x, int y)
 	}
 	else if( key == GLUT_KEY_DOWN) {
 		rendererBase.release();
-		rendererBase.reset( new BackGroundRendererTest(width, height ));
+		rendererBase.reset( new PointSpriteRendererTest(width, height ));
 	}
 	rendererBase->init();
 	onDisplay();
@@ -142,7 +123,7 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
-	rendererBase.reset( new PolygonRendererTest( width, height ) );
+	rendererBase.reset( new PointSpriteRendererTest( width, height ) );
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);

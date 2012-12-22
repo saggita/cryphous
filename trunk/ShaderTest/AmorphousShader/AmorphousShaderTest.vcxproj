@@ -83,18 +83,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AmorphousShaderTest.cpp" />
-    <ClCompile Include="BackGroundRendererTest.cpp" />
     <ClCompile Include="BillboardRendererTest.cpp" />
     <ClCompile Include="DepthRendererTest.cpp" />
     <ClCompile Include="PointSpriteRendererTest.cpp" />
-    <ClCompile Include="PolygonRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackGroundRendererTest.h" />
     <ClInclude Include="BillboardRendererTest.h" />
     <ClInclude Include="DepthRendererTest.h" />
     <ClInclude Include="PointSpriteRendererTest.h" />
-    <ClInclude Include="PolygonRendererTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

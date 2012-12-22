@@ -69,12 +69,6 @@
     <ClCompile Include="CompositeRenderer.cpp">
       <Filter>Renderer\OffScreen</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGroundRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClCompile>
     <ClCompile Include="BillboardRenderer.cpp">
       <Filter>Renderer\OffScreen</Filter>
     </ClCompile>
@@ -129,13 +123,7 @@
     <ClInclude Include="CompositeRenderer.h">
       <Filter>Renderer\OffScreen</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="BackGroundRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
-    </ClInclude>
     <ClInclude Include="BillboardRenderer.h">
       <Filter>Renderer\OffScreen</Filter>
     </ClInclude>

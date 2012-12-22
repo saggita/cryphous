@@ -2,16 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="AmorphousShaderTest.cpp" />
-    <ClCompile Include="BackGroundRendererTest.cpp" />
     <ClCompile Include="DepthRendererTest.cpp" />
-    <ClCompile Include="PolygonRendererTest.cpp" />
     <ClCompile Include="BillboardRendererTest.cpp" />
     <ClCompile Include="PointSpriteRendererTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackGroundRendererTest.h" />
     <ClInclude Include="DepthRendererTest.h" />
-    <ClInclude Include="PolygonRendererTest.h" />
     <ClInclude Include="BillboardRendererTest.h" />
     <ClInclude Include="PointSpriteRendererTest.h" />
   </ItemGroup>
