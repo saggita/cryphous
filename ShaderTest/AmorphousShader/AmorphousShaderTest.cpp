@@ -10,6 +10,9 @@
 #include "DepthRendererTest.h"
 #include "PointSpriteRendererTest.h"
 #include "../AmorphousShader/OnScreenRendererBase.h"
+#include "PointSpriteRenderer.h"
+#include "VisualParticle.h"
+#include "DepthRenderer.h"
 
 using namespace Amorphous::Shader;
 
@@ -23,6 +26,13 @@ float distance = 0.0;
 
 const int width = 512;
 const int height = 512;
+
+const float size = 50.0f;
+const float alpha = 1.0f;
+
+Amorphous::Shader::VisualParticleList visualParticles;
+Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
+Amorphous::Shader::DepthRenderer* depthRenderer;
 
 void onDisplay()
 {
@@ -76,19 +86,19 @@ void onSpecialFunc(int key, int x, int y)
 {
 	if( key == GLUT_KEY_LEFT ) {
 		rendererBase.release();
-		rendererBase.reset( new PointSpriteRendererTest(width, height));
+		rendererBase.reset( new PointSpriteRendererTest(width, height, pointSpriteRenderer));
 	}
 	else if( key == GLUT_KEY_RIGHT ) {
 		rendererBase.release();
-		rendererBase.reset( new DepthRendererTest(width, height));
+		rendererBase.reset( new DepthRendererTest(width, height, depthRenderer));
 	}
 	else if( key == GLUT_KEY_UP ) {
 		rendererBase.release();
-		rendererBase.reset( new DepthRendererTest(width, height));
+		rendererBase.reset( new DepthRendererTest(width, height, depthRenderer));
 	}
 	else if( key == GLUT_KEY_DOWN) {
 		rendererBase.release();
-		rendererBase.reset( new PointSpriteRendererTest(width, height ));
+		rendererBase.reset( new PointSpriteRendererTest(width, height, pointSpriteRenderer ));
 	}
 	rendererBase->init();
 	onDisplay();
@@ -122,7 +132,16 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
-	rendererBase.reset( new PointSpriteRendererTest( width, height ) );
+	visualParticles.push_back( VisualParticle() );
+	visualParticles.push_back( VisualParticle( Amorphous::Geom::Vector3d<>( 0.1, 0.0, -5 ), 1.0 ) );
+
+	pointSpriteRenderer = new PointSpriteRenderer( width, height, size, alpha);
+	pointSpriteRenderer->setVisualParticles( visualParticles );
+
+	depthRenderer = new DepthRenderer( width, height, size);
+	depthRenderer->setVisualParticles( visualParticles );
+	
+	rendererBase.reset( new PointSpriteRendererTest( width, height, pointSpriteRenderer ) );
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);

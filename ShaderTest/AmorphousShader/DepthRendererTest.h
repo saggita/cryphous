@@ -11,5 +11,5 @@ namespace Amorphous{
 class DepthRendererTest : public Amorphous::Shader::OnScreenRendererBase
 {
 public:
-	DepthRendererTest(const int width, const int height);
+	DepthRendererTest(const int width, const int height, Amorphous::Shader::DepthRenderer* depthRenderer);
 };

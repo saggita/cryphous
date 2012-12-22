@@ -15,7 +15,7 @@ public:
 
 	~DepthRenderer(void);
 
-	void setVisualParticles(const Amorphous::Color::VisualParticleList& visualParticles);
+	void setVisualParticles(const VisualParticleList& visualParticles);
 
 protected:
 	virtual void onRender();

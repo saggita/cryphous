@@ -11,5 +11,5 @@ namespace Amorphous{
 class PointSpriteRendererTest : public Amorphous::Shader::OnScreenRendererBase
 {
 public:
-	PointSpriteRendererTest(const int width, const int height);
+	PointSpriteRendererTest(const int width, const int height, Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer);
 };
