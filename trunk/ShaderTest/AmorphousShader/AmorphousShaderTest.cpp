@@ -16,8 +16,6 @@
 
 using namespace Amorphous::Shader;
 
-std::auto_ptr<OnScreenRendererBase> rendererBase;
-
 bool isIdle = true;
 int mButton;
 int xBegin;
@@ -33,10 +31,11 @@ const float alpha = 1.0f;
 Amorphous::Shader::VisualParticleList visualParticles;
 Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Amorphous::Shader::DepthRenderer* depthRenderer;
+Amorphous::Shader::OnScreenRendererBase* onScreenRenderer;
 
 void onDisplay()
 {
-	rendererBase->render();
+	onScreenRenderer->render();
 
 	glutSwapBuffers();
 
@@ -45,7 +44,7 @@ void onDisplay()
 
 void onIdle()
 {
-	rendererBase->idle();
+	onScreenRenderer->idle();
 	glutPostRedisplay();
 }
 
@@ -59,7 +58,7 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
-	rendererBase->init();
+	onScreenRenderer->init();
 }
 
 void onResize(int width, int height)
@@ -85,22 +84,18 @@ void onKeyDown(unsigned char key, int x, int y )
 void onSpecialFunc(int key, int x, int y)
 {
 	if( key == GLUT_KEY_LEFT ) {
-		rendererBase.release();
-		rendererBase.reset( new PointSpriteRendererTest(width, height, pointSpriteRenderer));
+		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
 	}
 	else if( key == GLUT_KEY_RIGHT ) {
-		rendererBase.release();
-		rendererBase.reset( new DepthRendererTest(width, height, depthRenderer));
+		onScreenRenderer->setOffScreenRenderer( depthRenderer );
 	}
 	else if( key == GLUT_KEY_UP ) {
-		rendererBase.release();
-		rendererBase.reset( new DepthRendererTest(width, height, depthRenderer));
+		onScreenRenderer->setOffScreenRenderer( depthRenderer );
 	}
 	else if( key == GLUT_KEY_DOWN) {
-		rendererBase.release();
-		rendererBase.reset( new PointSpriteRendererTest(width, height, pointSpriteRenderer ));
+		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
 	}
-	rendererBase->init();
+	onScreenRenderer->init();
 	onDisplay();
 }
 
@@ -132,6 +127,8 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
+	onScreenRenderer = new OnScreenRendererBase(width, height);
+
 	visualParticles.push_back( VisualParticle() );
 	visualParticles.push_back( VisualParticle( Amorphous::Geom::Vector3d<>( 0.1, 0.0, -5 ), 1.0 ) );
 
@@ -141,7 +138,7 @@ void main(int argc, char** argv)
 	depthRenderer = new DepthRenderer( width, height, size);
 	depthRenderer->setVisualParticles( visualParticles );
 	
-	rendererBase.reset( new PointSpriteRendererTest( width, height, pointSpriteRenderer ) );
+	onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
