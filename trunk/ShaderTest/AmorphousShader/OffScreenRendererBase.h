@@ -15,7 +15,9 @@ public:
 
 	virtual ~OffScreenRendererBase(void);
 
-	void render(const FrameBufferObject& frameBufferObject);	
+	void render(const FrameBufferObject& frameBufferObject);
+
+	virtual void renderOffScreen(){};
 };
 
 	}

@@ -7,12 +7,11 @@
 #include <gl/glu.h>
 #include <memory>
 
-#include "DepthRendererTest.h"
-#include "PointSpriteRendererTest.h"
 #include "../AmorphousShader/OnScreenRendererBase.h"
 #include "PointSpriteRenderer.h"
 #include "VisualParticle.h"
 #include "DepthRenderer.h"
+#include "DepthSmoothingRenderer.h"
 
 using namespace Amorphous::Shader;
 
@@ -31,6 +30,7 @@ const float alpha = 1.0f;
 Amorphous::Shader::VisualParticleList visualParticles;
 Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Amorphous::Shader::DepthRenderer* depthRenderer;
+Amorphous::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Amorphous::Shader::OnScreenRendererBase* onScreenRenderer;
 
 void onDisplay()
@@ -90,7 +90,7 @@ void onSpecialFunc(int key, int x, int y)
 		onScreenRenderer->setOffScreenRenderer( depthRenderer );
 	}
 	else if( key == GLUT_KEY_UP ) {
-		onScreenRenderer->setOffScreenRenderer( depthRenderer );
+		onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
 	}
 	else if( key == GLUT_KEY_DOWN) {
 		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
@@ -137,8 +137,11 @@ void main(int argc, char** argv)
 
 	depthRenderer = new DepthRenderer( width, height, size);
 	depthRenderer->setVisualParticles( visualParticles );
+
+	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
+	depthSmoothingRenderer->setOffScreenRenderer( depthRenderer );
 	
-	onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
+	onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
