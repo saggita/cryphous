@@ -1,6 +1,5 @@
 #include "GLee.h"
 
-#include "ColorRGBA.h"
 #include "DepthRenderer.h"
 
 #include <cassert>
@@ -10,7 +9,6 @@
 
 using namespace Amorphous::Geom;
 using namespace Amorphous::Shader;
-using namespace Amorphous::Color;
 
 DepthRenderer::DepthRenderer(const int width, const int height, const float& size) :
 OffScreenRendererBase( width, height),
@@ -29,13 +27,12 @@ void DepthRenderer::setVisualParticles(const VisualParticleList& visualParticles
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
 		const Vector3d<>& center = vp.center;
-		const ColorRGBA<> color( 1.0f, 0.0f, 0.0f );
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
-		colors.push_back( color.getRed());
-		colors.push_back( color.getGreen());
-		colors.push_back( color.getBlue());
+		colors.push_back( 1.0f);
+		colors.push_back( 0.0f);
+		colors.push_back( 0.0f);
 	}
 }
 

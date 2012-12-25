@@ -83,6 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DepthRenderer.cpp" />
+    <ClCompile Include="DepthSmoothingRenderer.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="GeometryShader.cpp" />
@@ -103,6 +104,7 @@
     <ClInclude Include="AmorphousShader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DepthRenderer.h" />
+    <ClInclude Include="DepthSmoothingRenderer.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="GeometryShader.h" />
@@ -126,6 +128,9 @@
     <None Include="..\Shaders\Depth.fs" />
     <None Include="..\Shaders\Depth.gs" />
     <None Include="..\Shaders\Depth.vs" />
+    <None Include="..\Shaders\DepthSmoothing.fs" />
+    <None Include="..\Shaders\DepthSmoothing.gs" />
+    <None Include="..\Shaders\DepthSmoothing.vs" />
     <None Include="..\Shaders\PointSprite.fs" />
     <None Include="..\Shaders\PointSprite.gs" />
     <None Include="..\Shaders\PointSprite.vs" />

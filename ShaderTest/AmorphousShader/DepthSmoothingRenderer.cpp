@@ -1,6 +1,6 @@
-#include "OnScreenRendererBase.h"
+#include "DepthSmoothingRenderer.h"
 
-#include "OffScreenRendererBase.h"
+#include "DepthRenderer.h"
 #include "FrameBufferObject.h"
 #include "TextureObject.h"
 
@@ -8,48 +8,39 @@
 
 using namespace Amorphous::Shader;
 
-OnScreenRendererBase::OnScreenRendererBase(const int width, const int height) :
-ScreenRendererBase(width, height)
+DepthSmoothingRenderer::DepthSmoothingRenderer(const int width, const int height) :
+OffScreenRendererBase(width, height)
 {
 }
 
-OnScreenRendererBase::~OnScreenRendererBase()
+DepthSmoothingRenderer::~DepthSmoothingRenderer()
 {
 	delete offScreenRenderer;
 }
 
-void OnScreenRendererBase::render()
-{
-	assert( GL_NO_ERROR == glGetError() );
-	glViewport( 0, 0, getWidth() , getHeight() );
-	assert( GL_NO_ERROR == glGetError() );
-	onRender();
-}
-
-void OnScreenRendererBase::idle()
-{
-	onIdle();
-}
-
-void OnScreenRendererBase::onInit()
+void DepthSmoothingRenderer::onInit()
 {
 	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
 
 	offScreenRenderer->init();
 
-	shaderObject.createShader("Quad");
+	shaderObject.createShader("DepthSmoothing");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
 }
 
-void OnScreenRendererBase::onRender()
+void DepthSmoothingRenderer::renderOffScreen()
 {
-	offScreenRenderer->renderOffScreen();
 	offScreenRenderer->render( *frameBufferObject );
+}
 
-	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+void DepthSmoothingRenderer::onRender()
+{
+	glClear( GL_DEPTH_BUFFER_BIT);	
+
+	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-	glEnable( GL_DEPTH_TEST );
+	glDisable( GL_DEPTH_TEST );
 
 	TextureObject& textureObject = frameBufferObject->getTextureObject();
 	textureObject.apply( 0 );
@@ -63,12 +54,13 @@ void OnScreenRendererBase::onRender()
 	shaderObject.apply();
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
-	shaderObject.setUniformTexture("offScreenTexture", textureObject);
+	shaderObject.setUniformTexture("depthTexture", textureObject);
 	shaderObject.setVertex("position", points );
+	shaderObject.bindFrag("fragColor");
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
 
 	textureObject.release();
 
-	glDisable( GL_DEPTH_TEST );
+	glEnable( GL_DEPTH_TEST );
 }
