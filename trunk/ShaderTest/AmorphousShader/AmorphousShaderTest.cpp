@@ -12,6 +12,7 @@
 #include "VisualParticle.h"
 #include "DepthRenderer.h"
 #include "DepthSmoothingRenderer.h"
+#include "ScreenSpaceFluidRenderer.h"
 
 using namespace Amorphous::Shader;
 
@@ -31,6 +32,7 @@ Amorphous::Shader::VisualParticleList visualParticles;
 Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Amorphous::Shader::DepthRenderer* depthRenderer;
 Amorphous::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
+Amorphous::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Amorphous::Shader::OnScreenRendererBase* onScreenRenderer;
 
 void onDisplay()
@@ -140,8 +142,12 @@ void main(int argc, char** argv)
 
 	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
 	depthSmoothingRenderer->setOffScreenRenderer( depthRenderer );
-	
-	onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
+
+	screenSpaceFluidRenderer = new ScreenSpaceFluidRenderer( width, height );
+	screenSpaceFluidRenderer->setOffScreenRenderer( depthRenderer );
+
+	onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
+
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);

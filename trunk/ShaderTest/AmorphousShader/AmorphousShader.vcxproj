@@ -96,6 +96,7 @@
     <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
+    <ClCompile Include="ScreenSpaceFluidRenderer.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="VertexShader.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
+    <ClInclude Include="ScreenSpaceFluidRenderer.h" />
     <ClInclude Include="ShaderObject.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="VertexShader.h" />
@@ -137,6 +139,9 @@
     <None Include="..\Shaders\Quad.fs" />
     <None Include="..\Shaders\Quad.gs" />
     <None Include="..\Shaders\Quad.vs" />
+    <None Include="..\Shaders\ScreenSpaceFluid.fs" />
+    <None Include="..\Shaders\ScreenSpaceFluid.gs" />
+    <None Include="..\Shaders\ScreenSpaceFluid.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
