@@ -72,6 +72,9 @@
     <ClCompile Include="DepthSmoothingRenderer.cpp">
       <Filter>Renderer\OffScreen</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenSpaceFluidRenderer.cpp">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrameBufferObject.h">
@@ -121,6 +124,9 @@
     <ClInclude Include="DepthSmoothingRenderer.h">
       <Filter>Renderer\OffScreen</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenSpaceFluidRenderer.h">
+      <Filter>Renderer\OffScreen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Billboard.fs">
@@ -166,6 +172,15 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\DepthSmoothing.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\ScreenSpaceFluid.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\ScreenSpaceFluid.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\ScreenSpaceFluid.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
