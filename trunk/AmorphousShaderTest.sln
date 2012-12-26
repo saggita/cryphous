@@ -2,11 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmorphousShader", "AmorphousShader\AmorphousShader.vcxproj", "{3DB61408-BFAA-4587-A3E3-135662D2C7A1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FC36016D-B608-4558-93C3-5E756C5EC792} = {FC36016D-B608-4558-93C3-5E756C5EC792}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmorphousGeom", "AmorphousGeom\AmorphousGeom.vcxproj", "{FC36016D-B608-4558-93C3-5E756C5EC792}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmorphousShaderTest", "AmorphousShader\AmorphousShaderTest.vcxproj", "{C320C292-83A3-4FFB-8CC8-45DAC626042B}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,10 +18,6 @@ Global
 		{3DB61408-BFAA-4587-A3E3-135662D2C7A1}.Debug|Win32.Build.0 = Debug|Win32
 		{3DB61408-BFAA-4587-A3E3-135662D2C7A1}.Release|Win32.ActiveCfg = Release|Win32
 		{3DB61408-BFAA-4587-A3E3-135662D2C7A1}.Release|Win32.Build.0 = Release|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Debug|Win32.ActiveCfg = Debug|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Debug|Win32.Build.0 = Debug|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Release|Win32.ActiveCfg = Release|Win32
-		{FC36016D-B608-4558-93C3-5E756C5EC792}.Release|Win32.Build.0 = Release|Win32
 		{C320C292-83A3-4FFB-8CC8-45DAC626042B}.Debug|Win32.ActiveCfg = Debug|Win32
 		{C320C292-83A3-4FFB-8CC8-45DAC626042B}.Debug|Win32.Build.0 = Debug|Win32
 		{C320C292-83A3-4FFB-8CC8-45DAC626042B}.Release|Win32.ActiveCfg = Release|Win32

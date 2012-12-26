@@ -8,7 +8,7 @@
 
 #include "GLSLUtility.h"
 
-using namespace Amorphous::Geom;
+using namespace Crystal::Geom;
 using namespace Amorphous::Shader;
 
 PointSpriteRenderer::PointSpriteRenderer(const int width, const int height, const float& size, const float& alpha ) :
@@ -28,7 +28,7 @@ void PointSpriteRenderer::setVisualParticles(const VisualParticleList& visualPar
 	colors.clear();
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
-		const Vector3d<>& center = vp.center;
+		const Vector3d& center = vp.center;
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );

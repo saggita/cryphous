@@ -1,7 +1,7 @@
 #ifndef __GLSL_MATRIX_H__
 #define __GLSL_MATRIX_H__
 
-#include "../AmorphousGeom/Matrix3d.h"
+#include "../CrystalGeom/Matrix3d.h"
 
 namespace Amorphous{
 	namespace Shader{
@@ -11,7 +11,7 @@ class GLSLMatrix
 public:
 	GLSLMatrix(void);
 
-	GLSLMatrix(const Geom::Matrix3d<float>& matrix);
+	GLSLMatrix(const Crystal::Geom::Matrix3d& matrix);
 
 	~GLSLMatrix(void);
 
