@@ -7,7 +7,7 @@
 
 #include "GLSLUtility.h"
 
-using namespace Amorphous::Geom;
+using namespace Crystal::Geom;
 using namespace Amorphous::Shader;
 
 DepthRenderer::DepthRenderer(const int width, const int height, const float& size) :
@@ -26,7 +26,7 @@ void DepthRenderer::setVisualParticles(const VisualParticleList& visualParticles
 	colors.clear();
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
-		const Vector3d<>& center = vp.center;
+		const Vector3d& center = vp.center;
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );

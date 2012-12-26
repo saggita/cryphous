@@ -1,4 +1,3 @@
-#include "../AmorphousGeom/AmorphousGeom.h"
 #include "../AmorphousShader/AmorphousShader.h"
 #include <cassert>
 #include "../AmorphousShader/GLSLUtility.h"
@@ -6,6 +5,8 @@
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include <memory>
+
+#include "../CrystalGeom/Vector3d.h"
 
 #include "../AmorphousShader/OnScreenRendererBase.h"
 #include "PointSpriteRenderer.h"
@@ -132,7 +133,7 @@ void main(int argc, char** argv)
 	onScreenRenderer = new OnScreenRendererBase(width, height);
 
 	visualParticles.push_back( VisualParticle() );
-	visualParticles.push_back( VisualParticle( Amorphous::Geom::Vector3d<>( 0.1, 0.0, -5 ), 1.0 ) );
+	visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.1f, 0.0f, -5.0f ), 1.0 ) );
 
 	pointSpriteRenderer = new PointSpriteRenderer( width, height, size, alpha);
 	pointSpriteRenderer->setVisualParticles( visualParticles );

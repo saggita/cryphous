@@ -3,7 +3,7 @@
 #include <cassert>
 #include <cmath>
 
-using namespace Amorphous::Geom;
+using namespace Crystal::Geom;
 using namespace Amorphous::Shader;
 
 GLSLMatrix::GLSLMatrix(void)
@@ -11,7 +11,7 @@ GLSLMatrix::GLSLMatrix(void)
 	setIdentityMatrix();
 }
 
-GLSLMatrix::GLSLMatrix(const Matrix3d<float>& matrix)
+GLSLMatrix::GLSLMatrix(const Matrix3d& matrix)
 {
 	setIdentityMatrix();
 	x[0] = matrix.x00;

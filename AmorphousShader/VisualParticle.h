@@ -3,7 +3,7 @@
 
 #include <list>
 
-#include "../AmorphousGeom/Vector3d.h"
+#include "../CrystalGeom/Vector3d.h"
 
 namespace Amorphous{
 	namespace Shader{
@@ -13,12 +13,12 @@ class VisualParticle
 public:
 
 	VisualParticle() :
-		 center( Geom::Vector3d<>(0.0, 0.0, 0.0) ),
+		 center( Crystal::Geom::Vector3d(0.0f, 0.0f, 0.0f) ),
 		 radius( 1.0)
 		 {
 		 }
 
-	VisualParticle( const Geom::Vector3d<>& center, double radius) :
+	VisualParticle( const Crystal::Geom::Vector3d& center, double radius) :
 		 center( center),
 		 radius( radius)
 		 {
@@ -27,7 +27,7 @@ public:
 	~VisualParticle(void){ }
 
 public:
-	Geom::Vector3d<> center;
+	Crystal::Geom::Vector3d center;
 	double radius;
 };
 
