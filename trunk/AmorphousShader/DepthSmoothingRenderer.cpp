@@ -15,7 +15,6 @@ OffScreenRendererBase(width, height)
 
 DepthSmoothingRenderer::~DepthSmoothingRenderer()
 {
-	delete offScreenRenderer;
 }
 
 void DepthSmoothingRenderer::onInit()
@@ -27,11 +26,6 @@ void DepthSmoothingRenderer::onInit()
 	shaderObject.createShader("DepthSmoothing");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
-}
-
-void DepthSmoothingRenderer::renderOffScreen()
-{
-	offScreenRenderer->render( *frameBufferObject );
 }
 
 void DepthSmoothingRenderer::onRender()

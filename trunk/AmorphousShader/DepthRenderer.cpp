@@ -42,9 +42,10 @@ void DepthRenderer::onRender()
 	glClear( GL_COLOR_BUFFER_BIT );
 	glEnable(GL_POINT_SPRITE);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE); 
-	glDisable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+	glEnable(GL_DEPTH_TEST);
+	//glDisable(GL_DEPTH_TEST);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
 	glClear( GL_DEPTH_BUFFER_BIT);	
 
@@ -60,8 +61,9 @@ void DepthRenderer::onRender()
 	}
 
 
-	glDisable(GL_BLEND);
-	glEnable(GL_DEPTH_TEST);
+	//glDisable(GL_BLEND);
+	//glEnable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_POINT_SPRITE);
 	glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
 }
