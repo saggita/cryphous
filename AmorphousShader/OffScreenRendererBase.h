@@ -17,7 +17,19 @@ public:
 
 	void render(const FrameBufferObject& frameBufferObject);
 
-	virtual void renderOffScreen(){};
+	void renderOffScreen();
+
+	void setOffScreenRenderer(OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
+
+protected:
+	virtual void onRender() = 0;
+
+	virtual void onInit() = 0;
+
+	virtual void onIdle(){};
+	
+	Amorphous::Shader::OffScreenRendererBase* offScreenRenderer;
+	Amorphous::Shader::FrameBufferObject* frameBufferObject;
 };
 
 	}

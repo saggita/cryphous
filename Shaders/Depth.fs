@@ -15,7 +15,7 @@ void main(void)
 		discard;
 	}
 	normal.z = sqrt( 1.0 - distance );
-	
+
 	vec4 sphereEyePosition = vec4( eyePosition + normal * pointSize, 1.0 );
 
 	vec4 clipSpacePosition = projectionMatrix * sphereEyePosition;

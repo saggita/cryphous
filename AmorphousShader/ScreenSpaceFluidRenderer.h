@@ -15,10 +15,6 @@ public:
 
 	virtual ~ScreenSpaceFluidRenderer();
 
-	void setOffScreenRenderer(OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
-
-	virtual void renderOffScreen();
-
 protected:
 	virtual void onRender();
 
@@ -26,8 +22,6 @@ protected:
 
 	virtual void onIdle(){};
 	
-	Amorphous::Shader::OffScreenRendererBase* offScreenRenderer;
-	Amorphous::Shader::FrameBufferObject* frameBufferObject;
 };
 
 	}
