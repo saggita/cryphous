@@ -1,4 +1,4 @@
-#include "OnScreenRendererBase.h"
+#include "OnScreenRenderer.h"
 
 #include "OffScreenRendererBase.h"
 #include "FrameBufferObject.h"
@@ -8,17 +8,17 @@
 
 using namespace Amorphous::Shader;
 
-OnScreenRendererBase::OnScreenRendererBase(const int width, const int height) :
+OnScreenRenderer::OnScreenRenderer(const int width, const int height) :
 ScreenRendererBase(width, height)
 {
 }
 
-OnScreenRendererBase::~OnScreenRendererBase()
+OnScreenRenderer::~OnScreenRenderer()
 {
 	delete offScreenRenderer;
 }
 
-void OnScreenRendererBase::render()
+void OnScreenRenderer::render()
 {
 	assert( GL_NO_ERROR == glGetError() );
 	glViewport( 0, 0, getWidth() , getHeight() );
@@ -26,12 +26,12 @@ void OnScreenRendererBase::render()
 	onRender();
 }
 
-void OnScreenRendererBase::idle()
+void OnScreenRenderer::idle()
 {
 	onIdle();
 }
 
-void OnScreenRendererBase::onInit()
+void OnScreenRenderer::onInit()
 {
 	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
 
@@ -42,9 +42,8 @@ void OnScreenRendererBase::onInit()
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
 }
 
-void OnScreenRendererBase::onRender()
+void OnScreenRenderer::onRender()
 {
-	offScreenRenderer->renderOffScreen();
 	offScreenRenderer->render( *frameBufferObject );
 
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );

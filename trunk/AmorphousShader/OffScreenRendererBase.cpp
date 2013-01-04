@@ -20,6 +20,8 @@ OffScreenRendererBase::~OffScreenRendererBase(void)
 
 void OffScreenRendererBase::render(const FrameBufferObject& frameBufferObject)
 {
+	renderOffScreen();
+
 	assert( GL_NO_ERROR == glGetError() );
 	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, frameBufferObject.getID() );
 	glViewport( 0, 0, getWidth(), getHeight() );

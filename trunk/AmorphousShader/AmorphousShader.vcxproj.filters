@@ -22,9 +22,6 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{e71d61a6-ea57-4e80-80fe-4d1b53711541}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\OffScreen">
-      <UniqueIdentifier>{cd63a1da-8b7f-4dd3-8013-85499fd11eb0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FrameBufferObject.cpp">
@@ -60,20 +57,24 @@
     <ClCompile Include="OpenGLWrapper.cpp">
       <Filter>GL</Filter>
     </ClCompile>
-    <ClCompile Include="OffScreenRendererBase.cpp" />
-    <ClCompile Include="OnScreenRendererBase.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
-    <ClCompile Include="PointSpriteRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
+    <ClCompile Include="ScreenSpaceFluidRenderer.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="DepthRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
+    <ClCompile Include="PointSpriteRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="OnScreenRenderer.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="DepthSmoothingRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
+      <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenSpaceFluidRenderer.cpp">
-      <Filter>Renderer\OffScreen</Filter>
+    <ClCompile Include="DepthRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="OffScreenRendererBase.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,20 +113,24 @@
       <Filter>GL</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="OffScreenRendererBase.h" />
-    <ClInclude Include="OnScreenRendererBase.h" />
     <ClInclude Include="ScreenRendererBase.h" />
-    <ClInclude Include="PointSpriteRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
+    <ClInclude Include="ScreenSpaceFluidRenderer.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="DepthRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
+    <ClInclude Include="PointSpriteRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="OnScreenRenderer.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="DepthSmoothingRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
+      <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenSpaceFluidRenderer.h">
-      <Filter>Renderer\OffScreen</Filter>
+    <ClInclude Include="DepthRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="OffScreenRendererBase.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

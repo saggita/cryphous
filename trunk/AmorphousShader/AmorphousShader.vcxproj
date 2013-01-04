@@ -91,7 +91,7 @@
     <ClCompile Include="GLSLMatrix.cpp" />
     <ClCompile Include="GLSLUtility.cpp" />
     <ClCompile Include="OffScreenRendererBase.cpp" />
-    <ClCompile Include="OnScreenRendererBase.cpp" />
+    <ClCompile Include="OnScreenRenderer.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
@@ -113,7 +113,7 @@
     <ClInclude Include="GLSLMatrix.h" />
     <ClInclude Include="GLSLUtility.h" />
     <ClInclude Include="OffScreenRendererBase.h" />
-    <ClInclude Include="OnScreenRendererBase.h" />
+    <ClInclude Include="OnScreenRenderer.h" />
     <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
