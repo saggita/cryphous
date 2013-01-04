@@ -8,12 +8,12 @@ namespace Amorphous{
 		class OffScreenRendererBase;
 		class FrameBufferObject;
 
-class OnScreenRendererBase : public ScreenRendererBase
+class OnScreenRenderer : public ScreenRendererBase
 {
 public:
-	OnScreenRendererBase(const int width, const int height);
+	OnScreenRenderer(const int width, const int height);
 
-	virtual ~OnScreenRendererBase();
+	virtual ~OnScreenRenderer();
 
 	void render();
 

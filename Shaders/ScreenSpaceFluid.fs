@@ -6,6 +6,7 @@ uniform float far;
 uniform float near;
 
 const vec3 fluidColor = vec3( 0.0, 0.0, 1.0 );
+const vec3 specularColor = vec3( 1.0, 1.0, 1.0 );
 
 out vec4 fragColor;
 
@@ -22,7 +23,7 @@ void main(void)
 	ivec2 fragCoord = ivec2(gl_FragCoord.x, gl_FragCoord.y);
 	float depth = texelFetch( depthTexture, fragCoord, 0 ).a;
 
-	if( depth < 1.0e-9 ) {
+	if( depth < 1.0e-5 ) {
 		discard;
 		return;
 	}
@@ -52,23 +53,22 @@ void main(void)
 	vec3 normal = cross( ddx, ddy );
 	normal = normalize( normal );
 	
-	vec3 lightDirection = vec3(1.0, 1.0, 1.0);
+	/*vec3 lightDirection = vec3(1.0, 1.0, 1.0);
 	normalize( lightDirection );
 
 	float diffuse = max( 0.0, dot(lightDirection, normal));
 	fragColor.rgb = fluidColor.rgb * diffuse;
-	fragColor.a = 0.5;
+	fragColor.a = 0.5;*/
 
-	/*vec3 lightDirection = vec3( 1.0, 1.0, 1.0 );
+	vec3 lightDirection = vec3( 1.0, 1.0, 1.0 );
 	lightDirection = normalize( lightDirection );
 	
-	float diffuse = dot( normal, lightDirection ) * 0.5 + 0.5;*/
+	float diffuse = dot( normal, lightDirection ) * 0.5 + 0.5;
 	
-	/*float sihiness = 10.0;
 	vec3 half = normalize( lightDirection + normalize(-eyePosition) );
-	float specular = pow( max( 0.0, dot( normal, half)), shininess );*/
+	float specular = pow( max( 0.0, dot( normal, half)), 10.0 );
 	
-	/*fragColor.rgb = diffuse * fluidColor;
-	fragColor.a = 1.0;*/
+	fragColor.rgb = diffuse * fluidColor + specular * specularColor;
+	fragColor.a = 1.0;
 }
 	

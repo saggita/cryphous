@@ -8,7 +8,7 @@
 
 #include "../CrystalGeom/Vector3d.h"
 
-#include "../AmorphousShader/OnScreenRendererBase.h"
+#include "../AmorphousShader/OnScreenRenderer.h"
 #include "PointSpriteRenderer.h"
 #include "VisualParticle.h"
 #include "DepthRenderer.h"
@@ -34,7 +34,7 @@ Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Amorphous::Shader::DepthRenderer* depthRenderer;
 Amorphous::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Amorphous::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
-Amorphous::Shader::OnScreenRendererBase* onScreenRenderer;
+Amorphous::Shader::OnScreenRenderer* onScreenRenderer;
 
 void onDisplay()
 {
@@ -96,7 +96,7 @@ void onSpecialFunc(int key, int x, int y)
 		onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
 	}
 	else if( key == GLUT_KEY_DOWN) {
-		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
+		onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
 	}
 	onScreenRenderer->init();
 	onDisplay();
@@ -130,11 +130,15 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
-	onScreenRenderer = new OnScreenRendererBase(width, height);
+	onScreenRenderer = new OnScreenRenderer(width, height);
 
 	visualParticles.push_back( VisualParticle() );
 	visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.1f, 0.0f, -5.0f ), 1.0 ) );
 
+	for( size_t i = 0; i < 10; ++i ) {
+		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.01f * i, 0.0f, -1.0f ), 1.0 ) );
+	}
+	
 	pointSpriteRenderer = new PointSpriteRenderer( width, height, size, alpha);
 	pointSpriteRenderer->setVisualParticles( visualParticles );
 
@@ -145,7 +149,7 @@ void main(int argc, char** argv)
 	depthSmoothingRenderer->setOffScreenRenderer( depthRenderer );
 
 	screenSpaceFluidRenderer = new ScreenSpaceFluidRenderer( width, height );
-	screenSpaceFluidRenderer->setOffScreenRenderer( depthRenderer );
+	screenSpaceFluidRenderer->setOffScreenRenderer( depthSmoothingRenderer );
 
 	onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
 

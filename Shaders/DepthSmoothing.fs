@@ -11,6 +11,12 @@ void main(void)
 	ivec2 fragCoord = ivec2(gl_FragCoord.x, gl_FragCoord.y);
 	float depth = texelFetch( depthTexture, fragCoord, 0 ).a;
 	
+	if( depth < 1.0e-5 ) {
+		fragColor.rgb = vec3( depth, depth, depth );
+		fragColor.a = 0.5;
+		return;
+	}
+
 	int filterRadius = 10;
 	
 	float sum = 0.0;
