@@ -20,7 +20,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -93,6 +93,7 @@
     <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ScreenSpaceFluidRenderer.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ScreenSpaceFluidRenderer.h" />
     <ClInclude Include="ShaderObject.h" />
