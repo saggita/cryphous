@@ -4,7 +4,7 @@
 
 #include "TextureObject.h"
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 RenderBufferObject::RenderBufferObject(const int width, const int height, const bool appendDepth) :
 textureObject( new TextureObject( width, height) ),

@@ -15,7 +15,7 @@
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 bool isIdle = true;
 int mButton;
@@ -29,12 +29,12 @@ const int height = 512;
 const float size = 50.0f;
 const float alpha = 1.0f;
 
-Amorphous::Shader::VisualParticleList visualParticles;
-Amorphous::Shader::PointSpriteRenderer* pointSpriteRenderer;
-Amorphous::Shader::DepthRenderer* depthRenderer;
-Amorphous::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
-Amorphous::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
-Amorphous::Shader::OnScreenRenderer* onScreenRenderer;
+Crystal::Shader::VisualParticleList visualParticles;
+Crystal::Shader::PointSpriteRenderer* pointSpriteRenderer;
+Crystal::Shader::DepthRenderer* depthRenderer;
+Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
+Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
+Crystal::Shader::OnScreenRenderer* onScreenRenderer;
 
 void onDisplay()
 {
@@ -57,7 +57,7 @@ void onInit()
 	glutInitWindowSize(width, height);
 	glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH );
 
-	glutCreateWindow("AmorphousRendererTest");
+	glutCreateWindow("CrystalRendererTest");
 
 	Camera::get()->zoom = -0.1f;
 

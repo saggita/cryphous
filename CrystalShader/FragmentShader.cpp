@@ -10,7 +10,7 @@
 
 #include <string>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 FragmentShader::FragmentShader(void)
 {

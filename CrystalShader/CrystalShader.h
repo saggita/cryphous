@@ -1,5 +1,5 @@
-#ifndef __AMORPHOUS_SHADER_H__
-#define __AMORPHOUS_SHADER_H__
+#ifndef __CRYSTAL_SHADER_H__
+#define __CRYSTAL_SHADER_H__
 
 #include "GLee.h"
 #include "FrameBufferObject.h"

@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class GLSLUtility

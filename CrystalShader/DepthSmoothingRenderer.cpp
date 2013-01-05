@@ -6,7 +6,7 @@
 
 #include <cassert>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 DepthSmoothingRenderer::DepthSmoothingRenderer(const int width, const int height) :
 OffScreenRendererBase(width, height)

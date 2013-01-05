@@ -5,7 +5,7 @@
 
 #include "../CrystalGeom/Vector3d.h"
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class VisualParticle

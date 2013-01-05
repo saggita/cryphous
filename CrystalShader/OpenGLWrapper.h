@@ -3,7 +3,7 @@
 
 #include "GLee.h"
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader {
 
 class OpenGLWrapper

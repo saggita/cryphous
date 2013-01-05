@@ -4,7 +4,7 @@
 #include "GLee.h"
 #include <vector>
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class TextureObject

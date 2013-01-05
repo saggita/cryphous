@@ -1,7 +1,7 @@
 #ifndef __VERTEX_SHADER_H__
 #define __VERTEX_SHADER_H__
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class VertexShader

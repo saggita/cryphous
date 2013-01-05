@@ -3,7 +3,7 @@
 
 #include "OffScreenRendererBase.h"
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 		
 class DepthSmoothingRenderer : public OffScreenRendererBase

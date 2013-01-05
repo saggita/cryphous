@@ -5,7 +5,7 @@
 #include "VisualParticle.h"
 #include <memory>
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class PointSpriteRenderer : public OffScreenRendererBase

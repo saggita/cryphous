@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 GeometryShader::GeometryShader(void)
 {

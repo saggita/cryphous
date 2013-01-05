@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 		class GLSLMatrix;
 		class TextureObject;
