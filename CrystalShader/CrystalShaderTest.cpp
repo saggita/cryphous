@@ -1,14 +1,14 @@
-#include "../AmorphousShader/AmorphousShader.h"
+#include "CrystalShader.h"
 #include <cassert>
-#include "../AmorphousShader/GLSLUtility.h"
-#include <glut.h>
+#include "GLSLUtility.h"
+#include <gl/glut.h>
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include <memory>
 
 #include "../CrystalGeom/Vector3d.h"
 
-#include "../AmorphousShader/OnScreenRenderer.h"
+#include "OnScreenRenderer.h"
 #include "PointSpriteRenderer.h"
 #include "VisualParticle.h"
 #include "DepthRenderer.h"

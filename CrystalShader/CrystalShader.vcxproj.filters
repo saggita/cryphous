@@ -108,7 +108,6 @@
     <ClInclude Include="ShaderObject.h">
       <Filter>ShaderObject</Filter>
     </ClInclude>
-    <ClInclude Include="AmorphousShader.h" />
     <ClInclude Include="OpenGLWrapper.h">
       <Filter>GL</Filter>
     </ClInclude>
@@ -132,6 +131,7 @@
     <ClInclude Include="OffScreenRendererBase.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="CrystalShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Billboard.fs">
