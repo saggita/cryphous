@@ -1,7 +1,7 @@
 #ifndef __GEOMETRY_SHADER_H__
 #define __GEOMETRY_SHADER_H__
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class GeometryShader

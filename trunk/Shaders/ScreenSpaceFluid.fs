@@ -30,10 +30,8 @@ void main(void)
 	
 	vec3 eyePosition = uvToEye( fragCoord, depth );
 	
-	int texelSize = 1;
-
-	ivec2 texCoord1 = ivec2( fragCoord.x + texelSize, fragCoord.y );
-	ivec2 texCoord2 = ivec2( fragCoord.x - texelSize, fragCoord.y );
+	ivec2 texCoord1 = ivec2( fragCoord.x + 1, fragCoord.y );
+	ivec2 texCoord2 = ivec2( fragCoord.x - 1, fragCoord.y );
 	
 	vec3 ddx = uvToEye( texCoord1, texelFetch( depthTexture, texCoord1, 0).x ) - eyePosition;
 	vec3 ddx2 = eyePosition - uvToEye(texCoord2, texelFetch( depthTexture, texCoord2, 0).x);
@@ -41,8 +39,8 @@ void main(void)
 		ddx = ddx2;
 	}
 	
-	texCoord1 = ivec2( fragCoord.x, fragCoord.y + texelSize );
-	texCoord2 = ivec2( fragCoord.x, fragCoord.y - texelSize );
+	texCoord1 = ivec2( fragCoord.x, fragCoord.y + 1 );
+	texCoord2 = ivec2( fragCoord.x, fragCoord.y - 1 );
 	
 	vec3 ddy = uvToEye(texCoord1, texelFetch( depthTexture, texCoord1, 0).x ) - eyePosition;
 	vec3 ddy2 = eyePosition - uvToEye( texCoord2, texelFetch( depthTexture, texCoord2, 0).x);

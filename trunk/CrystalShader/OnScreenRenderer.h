@@ -3,7 +3,7 @@
 
 #include "ScreenRendererBase.h"
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 		class OffScreenRendererBase;
 		class FrameBufferObject;
@@ -19,7 +19,7 @@ public:
 
 	void idle();
 
-	void setOffScreenRenderer(Amorphous::Shader::OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
+	void setOffScreenRenderer(Crystal::Shader::OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
 
 private:
 	virtual void onIdle(){};
@@ -28,8 +28,8 @@ private:
 
 	virtual void onRender();
 	
-	Amorphous::Shader::OffScreenRendererBase* offScreenRenderer;
-	Amorphous::Shader::FrameBufferObject* frameBufferObject;
+	Crystal::Shader::OffScreenRendererBase* offScreenRenderer;
+	Crystal::Shader::FrameBufferObject* frameBufferObject;
 };
 
 	}

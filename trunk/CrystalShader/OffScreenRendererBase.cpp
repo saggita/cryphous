@@ -5,7 +5,7 @@
 
 #include <cassert>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 OffScreenRendererBase::OffScreenRendererBase(const int width, const int height) :
 ScreenRendererBase(width, height),

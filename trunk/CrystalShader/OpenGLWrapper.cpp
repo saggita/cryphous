@@ -1,7 +1,7 @@
 #include "GLee.h"
 #include "OpenGLWrapper.h"
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 OpenGLWrapper::OpenGLWrapper(HWND hWnd)
 {

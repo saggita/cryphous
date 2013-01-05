@@ -9,7 +9,7 @@
 
 #include <string>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 VertexShader::VertexShader(void)
 {

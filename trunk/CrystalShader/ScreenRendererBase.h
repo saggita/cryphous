@@ -4,7 +4,7 @@
 #include "GLSLMatrix.h"
 #include "ShaderObject.h"
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class FrameBufferObject;

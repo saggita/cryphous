@@ -6,7 +6,7 @@
 
 #include <cassert>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 ScreenSpaceFluidRenderer::ScreenSpaceFluidRenderer(const int width, const int height) :
 OffScreenRendererBase(width, height)

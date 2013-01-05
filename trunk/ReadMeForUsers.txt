@@ -1,14 +1,16 @@
-Cryphous 1.9
-2012/11/18
+Cryphous 2.0
+2013/1/1
 
-流体演算エンジン。
-A Fluid Simulation Engine.
+流体演算およびレンダリングエンジン。
+A Fluid Simulation and Rendering Engine.
 
 [必要環境 / Requirements]
 　  -Visual Studio 2012 の Visual C++ 再頒布可能パッケージ (x86)
 	http://www.microsoft.com/ja-jp/download/details.aspx?id=30679
     -Visual C++ Redistributable for Visual Studio 2012 (x86)
 	http://www.microsoft.com/en-us/download/details.aspx?id=30679
+    -OpenGL3.3 対応ビデオカード
+    -OpenGL3.3 compatible video card
 
 [ライセンス / License]
 　本ソフトウェアはMITライセンスで開発されています。

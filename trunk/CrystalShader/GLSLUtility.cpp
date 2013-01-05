@@ -13,7 +13,7 @@
 #include <fstream>
 #include <string>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 GLSLUtility::GLSLUtility(void)
 {

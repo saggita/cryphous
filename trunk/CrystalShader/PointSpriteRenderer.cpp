@@ -9,7 +9,7 @@
 #include "GLSLUtility.h"
 
 using namespace Crystal::Geom;
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 PointSpriteRenderer::PointSpriteRenderer(const int width, const int height, const float& size, const float& alpha ) :
 OffScreenRendererBase( width, height),

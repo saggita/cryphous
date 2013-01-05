@@ -4,7 +4,7 @@
 #include <cmath>
 
 using namespace Crystal::Geom;
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 GLSLMatrix::GLSLMatrix(void)
 {

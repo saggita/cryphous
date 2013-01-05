@@ -1,7 +1,7 @@
 #ifndef __RENDER_BUFFER_OBJECT_H__
 #define __RENDER_BUFFER_OBJECT_H__
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class TextureObject;

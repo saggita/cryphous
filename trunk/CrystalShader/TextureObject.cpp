@@ -1,7 +1,7 @@
 #include "GLee.h"
 #include "TextureObject.h"
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 TextureObject::TextureObject(const int width, const int height) :
 unitID(0)

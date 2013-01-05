@@ -8,7 +8,7 @@
 
 #include <cassert>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 FrameBufferObject::FrameBufferObject(const int width, const int height, const bool appendDepth) :
 renderBufferObject( new RenderBufferObject( width, height, appendDepth) ),

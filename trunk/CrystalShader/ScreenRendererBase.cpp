@@ -3,7 +3,7 @@
 #include "ScreenRendererBase.h"
 #include "Camera.h"
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 ScreenRendererBase::ScreenRendererBase(const int width, const int height) :
 width( width),

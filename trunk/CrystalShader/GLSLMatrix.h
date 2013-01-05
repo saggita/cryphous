@@ -3,7 +3,7 @@
 
 #include "../CrystalGeom/Matrix3d.h"
 
-namespace Amorphous{
+namespace Crystal{
 	namespace Shader{
 
 class GLSLMatrix

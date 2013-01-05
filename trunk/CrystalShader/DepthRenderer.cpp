@@ -8,7 +8,7 @@
 #include "GLSLUtility.h"
 
 using namespace Crystal::Geom;
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 DepthRenderer::DepthRenderer(const int width, const int height, const float& size) :
 OffScreenRendererBase( width, height),

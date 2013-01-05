@@ -12,7 +12,7 @@
 #include <string>
 #include <iostream>
 
-using namespace Amorphous::Shader;
+using namespace Crystal::Shader;
 
 ShaderObject::ShaderObject(void)
 {
