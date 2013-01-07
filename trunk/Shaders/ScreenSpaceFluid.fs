@@ -21,7 +21,7 @@ vec3 uvToEye(vec2 texCoord, float z)
 void main(void)
 {
 	ivec2 fragCoord = ivec2(gl_FragCoord.x, gl_FragCoord.y);
-	float depth = texelFetch( depthTexture, fragCoord, 0 ).a;
+	float depth = texelFetch( depthTexture, fragCoord, 0 ).r;
 
 	if( depth < 1.0e-5 ) {
 		discard;
