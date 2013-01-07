@@ -23,6 +23,11 @@ namespace Crystal{
 		class PhysicsObjectFactory;
 	}
 	namespace Shader{
+		class PointSpriteRenderer;
+		class OnScreenRenderer;
+		class DepthRenderer;
+		class DepthSmoothingRenderer;
+		class ScreenSpaceFluidRenderer;
 
 class Renderer : private Uncopyable
 {
@@ -40,12 +45,18 @@ public:
 		init();
 	}
 
-	void init() { openGLWrapper.SetCurrentRenderingContext(); }
+	void init();
 
 	void rendering(Physics::PhysicsObjectFactory *factory, const int width, const int height, const Geom::Box& boundaryBox);
 
 private:
 	OpenGLWrapper openGLWrapper;
+
+	PointSpriteRenderer* pointSpriteRenderer;
+	OnScreenRenderer* onScreenRenderer;
+	DepthRenderer* depthRenderer;
+	DepthSmoothingRenderer* depthSmoothingRenderer;
+	ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 };
 
 	}
