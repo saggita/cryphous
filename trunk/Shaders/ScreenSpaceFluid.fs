@@ -50,13 +50,6 @@ void main(void)
 	
 	vec3 normal = cross( ddx, ddy );
 	normal = normalize( normal );
-	
-	/*vec3 lightDirection = vec3(1.0, 1.0, 1.0);
-	normalize( lightDirection );
-
-	float diffuse = max( 0.0, dot(lightDirection, normal));
-	fragColor.rgb = fluidColor.rgb * diffuse;
-	fragColor.a = 0.5;*/
 
 	vec3 lightDirection = vec3( 1.0, 1.0, 1.0 );
 	lightDirection = normalize( lightDirection );

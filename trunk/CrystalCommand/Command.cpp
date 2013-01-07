@@ -9,7 +9,8 @@
 #include "../CrystalPhysics/Simulation.h"
 #include "../CrystalPhysics/LightSource.h"
 #include "../CrystalPhysics/Profiler.h"
-#include "../CrystalGraphics/Renderer.h"
+//#include "../CrystalGraphics/Renderer.h"
+#include "../CrystalShader/Renderer.h"
 
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
@@ -30,17 +31,20 @@ Command::Command(System::Windows::Forms::PictureBox^ pictureBox)
 	simulationSetting = new SimulationSetting;
 	lightSourceFactory = new LightSourceFactory;
 	graphicsSettings = new GraphicsSettings;
-	renderer = new Renderer(*graphicsSettings);
+	//renderer = new Graphics::Renderer(*graphicsSettings);
+	shader = new Crystal::Shader::Renderer;
+	shader->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
 	conditions = new std::list<PhysicsObjectCondition>;
-	renderer->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
+	//renderer->setPictureBox( (HWND)(pictureBox->Handle.ToInt32()) );
 }
 
 Command::~Command()
 {
+	delete shader;
 	delete lightSourceFactory;
 	delete graphicsSettings;
 	delete conditions;
-	delete renderer;
+	//delete renderer;
 	delete simulationSetting;
 	delete simulation;
 	delete factory;
@@ -53,7 +57,7 @@ void Command::clearConditions()
 
 void Command::clearLights()
 {
-	lightSourceFactory->init();;
+	lightSourceFactory->init();
 }
 
 void Command::refresh()
@@ -64,7 +68,8 @@ void Command::refresh()
 	}
 	//lightSourceFactory->init();
 
-	renderer->init();	
+	//renderer->init();	
+	shader->init();
 	simulation->init();
 	Profiler::get()->init();
 }
@@ -176,7 +181,8 @@ void Command::setGraphicsSetting(int pointSize, int pointAlpha, int photonSize, 
 
 void Command::rendering()
 {
-	renderer->rendering( factory, lightSourceFactory, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
+	shader->rendering( factory, 512, 512, simulationSetting->boundaryBox );
+	//renderer->rendering( factory, lightSourceFactory, pictureBox->Width, pictureBox->Height, simulationSetting->boundaryBox );
 }
 
 void Command::rotateX(int angle)

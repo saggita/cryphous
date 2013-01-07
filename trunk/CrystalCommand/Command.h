@@ -17,8 +17,11 @@ namespace Crystal {
 		class LightSourceFactory;
 	}
 	namespace Graphics {
-		class Renderer;
+		//class Renderer;
 		class GraphicsSettings;
+	}
+	namespace Shader {
+		class Renderer;
 	}
 
 	namespace Command {
@@ -87,8 +90,9 @@ public:
 	Physics::SimulationSetting* simulationSetting;
 	Physics::Simulation* simulation;
 	Physics::LightSourceFactory* lightSourceFactory;
-	Graphics::Renderer* renderer;
+	//Graphics::Renderer* renderer;
 	Graphics::GraphicsSettings* graphicsSettings;
+	Shader::Renderer* shader;
 	std::list<Physics::PhysicsObjectCondition>* conditions;
 	System::Windows::Forms::PictureBox^ pictureBox;
 

@@ -99,12 +99,6 @@ namespace Cryphous
             }
             mainCommand.proceed();
             mainCommand.displayProfile( listBoxInformation);
-            if (exportDirectory != "")
-            {
-                String stepStr = mainCommand.getStep().ToString("0000");
-                String fileName = "particle" + stepStr + ".txt";
-                mainCommand.exportParticles( exportDirectory +"\\" + fileName);
-            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
