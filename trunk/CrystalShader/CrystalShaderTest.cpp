@@ -168,9 +168,26 @@ void main(int argc, char** argv)
 	glutMotionFunc(onMotion);
 
 	GLUI *glui = GLUI_Master.create_glui( "GLUI" );
-	glui->add_checkbox("TestCheckBox");
-	GLUI_Spinner *spinner = glui->add_spinner( "TestSpinner" , GLUI_SPINNER_INT );
+	
+	GLUI_Panel *graphicsPannel = glui->add_panel("Graphics Setting");
+	glui->add_checkbox_to_panel( graphicsPannel, "DrawBoundary");
+	GLUI_Spinner *spinner = glui->add_spinner_to_panel( graphicsPannel, "PointSize" , GLUI_SPINNER_INT );
 	spinner->set_int_limits( 3, 60 );
+
+	float gravity = -9.8;
+	GLUI_Panel* simulationSettingPanel = glui->add_panel("SimulationSetting");
+	glui->add_spinner_to_panel( simulationSettingPanel, "gravity", GLUI_SPINNER_FLOAT, &gravity );
+
+	GLUI_Listbox* listBox = glui->add_listbox_to_panel( simulationSettingPanel, "Type" );
+	listBox->add_item(0, "Fluid");
+
+	GLUI_Panel *simulationPanel = glui->add_panel("Simulation");
+	glui->add_button_to_panel( simulationPanel, "ViewReset");
+	glui->add_button_to_panel( simulationPanel, "Start/Stop");
+	glui->add_button_to_panel( simulationPanel, "Proceed");
+
+	glui->add_rotation("Rotation");
+
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );
 
