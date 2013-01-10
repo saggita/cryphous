@@ -4,6 +4,8 @@
 #include <glut.h>
 #include <gl/gl.h>
 #include <gl/glu.h>
+#pragma warning (disable : 4996)
+#include <gl/glui.h>
 #include <memory>
 
 #include "../CrystalGeom/Vector3d.h"
@@ -36,6 +38,8 @@ Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Crystal::Shader::OnScreenRenderer* onScreenRenderer;
 
+int mainWindow;
+
 void onDisplay()
 {
 	onScreenRenderer->render();
@@ -57,7 +61,7 @@ void onInit()
 	glutInitWindowSize(width, height);
 	glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH );
 
-	glutCreateWindow("CrystalRendererTest");
+	mainWindow = glutCreateWindow("CrystalRendererTest");
 
 	Camera::get()->zoom = -0.1f;
 
@@ -156,11 +160,19 @@ void main(int argc, char** argv)
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
-	glutIdleFunc(onIdle);
+	//glutIdleFunc(onIdle);
 	glutKeyboardFunc(onKeyDown);
 	glutReshapeFunc(onResize);
 	glutSpecialFunc(onSpecialFunc);
 	glutMouseFunc(onMouse);
 	glutMotionFunc(onMotion);
+
+	GLUI *glui = GLUI_Master.create_glui( "GLUI" );
+	glui->add_checkbox("TestCheckBox");
+	GLUI_Spinner *spinner = glui->add_spinner( "TestSpinner" , GLUI_SPINNER_INT );
+	spinner->set_int_limits( 3, 60 );
+	glui->set_main_gfx_window( mainWindow );
+	GLUI_Master.set_glutIdleFunc( onIdle );
+
 	glutMainLoop();
 }
