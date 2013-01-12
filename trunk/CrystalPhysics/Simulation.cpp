@@ -12,12 +12,6 @@
 #include "SimulationSetting.h"
 #include "Profiler.h"
 
-#include "LightSourceFactory.h"
-#include "BoundaryPhotonSolver.h"
-
-#include "PhotonSolver.h"
-#include "SearchPhotonFactory.h"
-
 #include <omp.h>
 
 #include <cassert>
@@ -26,7 +20,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 
-void Simulation::simulate(PhysicsObjectFactory* factory, LightSourceFactory* lightSourceFactory, const SimulationSetting& setting)
+void Simulation::simulate(PhysicsObjectFactory* factory, const SimulationSetting& setting)
 {
 	Profiler::get()->start("Simulation->");
 
@@ -36,11 +30,6 @@ void Simulation::simulate(PhysicsObjectFactory* factory, LightSourceFactory* lig
 	SearchParticleFactory spFactory( factory->getParticles(), setting.getEffectLength() );
 	const SearchParticleVector& sortedParticles = spFactory.getSearchParticles();
 	Profiler::get()->end(" Sim->sorting");
-
-	Profiler::get()->start(" Sim->sortingP");
-	SearchPhotonFactory photonFactory( lightSourceFactory->getPhotons(), setting.getEffectLength() );
-	const SearchPhotonVector& sortedPhotons = photonFactory.getSearchPhotons();
-	Profiler::get()->end(" Sim->sortingP");
 
 	SPHSolver solver( factory, setting, sortedParticles);
 	solver.calculateInteraction();
@@ -52,12 +41,6 @@ void Simulation::simulate(PhysicsObjectFactory* factory, LightSourceFactory* lig
 	for(PhysicsObject* object: physicsObjects ) { object->enforce( setting.timeStep ); }
 	
 	for(PhysicsObject* object: physicsObjects ) { object->integrateTime( setting.timeStep ); }
-
-	PhotonSolver photonSolver( lightSourceFactory, setting );
-	photonSolver.calculateInteraction( sortedParticles, sortedPhotons);
-	
-	const LightSourceVector& lightSources = lightSourceFactory->getLightSources();
-	for( LightSource* lightSource : lightSources ) { lightSource->integrateTime( setting.timeStep ); }
 
 	++step;
 	simulationTime += setting.timeStep;

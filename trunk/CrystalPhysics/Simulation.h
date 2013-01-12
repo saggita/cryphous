@@ -6,7 +6,6 @@
 namespace Crystal{
 	namespace Physics {
 		class PhysicsObjectFactory;
-		class LightSourceFactory;
 		class SimulationSetting;
 		
 class Simulation : private Uncopyable
@@ -21,7 +20,7 @@ public:
 		simulationTime = 0.0;
 	};
 
-	void simulate(PhysicsObjectFactory* factory, LightSourceFactory* lightSourceFactory, const SimulationSetting& setting);
+	void simulate(PhysicsObjectFactory* factory, const SimulationSetting& setting);
 
 	int getStep() const { return step; }
 

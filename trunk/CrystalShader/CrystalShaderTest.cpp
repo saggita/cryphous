@@ -10,6 +10,10 @@
 
 #include "../CrystalGeom/Vector3d.h"
 
+#include "../CrystalPhysics/SimulationSetting.h"
+#include "../CrystalPhysics/PhysicsObjectFactory.h"
+#include "../CrystalPhysics/Simulation.h"
+
 #include "OnScreenRenderer.h"
 #include "PointSpriteRenderer.h"
 #include "VisualParticle.h"
@@ -31,6 +35,10 @@ const int height = 512;
 const float size = 50.0f;
 const float alpha = 1.0f;
 
+Crystal::Physics::SimulationSetting setting;
+Crystal::Physics::PhysicsObjectFactory factory;
+Crystal::Physics::Simulation simulation;
+
 Crystal::Shader::VisualParticleList visualParticles;
 Crystal::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Crystal::Shader::DepthRenderer* depthRenderer;
@@ -42,6 +50,7 @@ int mainWindow;
 
 void onDisplay()
 {
+	simulation.simulate( &factory, setting);
 	onScreenRenderer->render();
 
 	glutSwapBuffers();
@@ -169,24 +178,34 @@ void main(int argc, char** argv)
 
 	GLUI *glui = GLUI_Master.create_glui( "GLUI" );
 	
-	GLUI_Panel *graphicsPannel = glui->add_panel("Graphics Setting");
-	glui->add_checkbox_to_panel( graphicsPannel, "DrawBoundary");
-	GLUI_Spinner *spinner = glui->add_spinner_to_panel( graphicsPannel, "PointSize" , GLUI_SPINNER_INT );
+	GLUI_Rollout *graphicsRollout = glui->add_rollout("Graphics Setting");
+	glui->add_checkbox_to_panel( graphicsRollout, "DrawBoundary");
+	GLUI_Spinner *spinner = glui->add_spinner_to_panel( graphicsRollout, "PointSize" , GLUI_SPINNER_INT );
 	spinner->set_int_limits( 3, 60 );
 
-	float gravity = -9.8;
-	GLUI_Panel* simulationSettingPanel = glui->add_panel("SimulationSetting");
-	glui->add_spinner_to_panel( simulationSettingPanel, "gravity", GLUI_SPINNER_FLOAT, &gravity );
+	GLUI_Rollout* simulationSettingRollout = glui->add_rollout("SimulationSetting");
+	glui->add_spinner_to_panel( simulationSettingRollout, "X", GLUI_SPINNER_FLOAT, &setting.externalForce.x );
+	glui->add_spinner_to_panel( simulationSettingRollout, "Y", GLUI_SPINNER_FLOAT, &setting.externalForce.y );
+	glui->add_spinner_to_panel( simulationSettingRollout, "Z", GLUI_SPINNER_FLOAT, &setting.externalForce.z );
 
-	GLUI_Listbox* listBox = glui->add_listbox_to_panel( simulationSettingPanel, "Type" );
+	//factory.createPhysicsObject();
+	GLUI_Listbox* listBox = glui->add_listbox_to_panel( simulationSettingRollout, "Type" );
 	listBox->add_item(0, "Fluid");
+	listBox->add_item(1, "Rigid");
+	listBox->add_item(2, "Obstacle");
+
+	GLUI_Spinner *boundaryMinXSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinX", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minX );
+	GLUI_Spinner *boundaryMaxXSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxX", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxX );
+	GLUI_Spinner *boundaryMinYSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinY", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minY );
+	GLUI_Spinner *boundaryMaxYSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxY", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxY );
+	GLUI_Spinner *boundaryMinZSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinZ", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minZ );
+	GLUI_Spinner *boundaryMaxZSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxZ", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxZ );
 
 	GLUI_Panel *simulationPanel = glui->add_panel("Simulation");
 	glui->add_button_to_panel( simulationPanel, "ViewReset");
 	glui->add_button_to_panel( simulationPanel, "Start/Stop");
 	glui->add_button_to_panel( simulationPanel, "Proceed");
 
-	glui->add_rotation("Rotation");
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );

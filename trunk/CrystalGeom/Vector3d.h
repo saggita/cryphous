@@ -160,7 +160,7 @@ public:
 	
 	const Vector3d Vector3d::operator*(const Matrix3d& rhs) const { return getMult( rhs); }
 
-private:
+public:
 	float x;
 	float y;
 	float z;

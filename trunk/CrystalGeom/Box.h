@@ -86,7 +86,7 @@ public:
 		return getOuterOffset( -offsetLength );
 	}
 
-private:
+public:
 	float maxX;
 	float minX;
 	float maxY;
