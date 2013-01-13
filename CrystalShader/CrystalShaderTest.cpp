@@ -46,16 +46,51 @@ Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Crystal::Shader::OnScreenRenderer* onScreenRenderer;
 
+bool isUnderSimulation = false;
+
 int mainWindow;
+
+void refreshSimulation(int id)
+{
+	visualParticles.clear();
+	factory.init();
+	simulation.init();
+
+	std::vector<Crystal::Geom::Vector3d> points;
+	points.push_back( Crystal::Geom::Vector3d( 0.0, 0.5, 0.0 ) );
+	points.push_back( Crystal::Geom::Vector3d( 0.0, 1.0, 0.0 ) );
+	Crystal::Physics::PhysicsObjectCondition condition( points, 1000.0f, 10000.0f, 100.0f, Crystal::Physics::PhysicsObjectCondition::Fluid );
+	factory.createPhysicsObject( condition, setting );
+
+}
+
+void proceedSimulation(int id)
+{
+	simulation.simulate( &factory, setting);
+	visualParticles.clear();
+	for( Crystal::Physics::Particle* particle : factory.getParticles() ) {
+		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z), 1.0 ) );
+	}
+	depthRenderer->setVisualParticles ( visualParticles );
+	//onDisplay();
+}
+
 
 void onDisplay()
 {
-	simulation.simulate( &factory, setting);
+	if( isUnderSimulation ) {
+		proceedSimulation(0);
+	}
 	onScreenRenderer->render();
 
 	glutSwapBuffers();
 
 	assert( GLSLUtility::hasNoError() );
+}
+
+void startSimulation(int id)
+{
+	isUnderSimulation = true;
 }
 
 void onIdle()
@@ -143,13 +178,12 @@ void onMotion(int x, int y){
 
 void main(int argc, char** argv)
 {
+	refreshSimulation(0);
+
 	onScreenRenderer = new OnScreenRenderer(width, height);
 
-	visualParticles.push_back( VisualParticle() );
-	visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.1f, 0.0f, -5.0f ), 1.0 ) );
-
-	for( size_t i = 0; i < 10; ++i ) {
-		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.01f * i, 0.0f, -1.0f ), 1.0 ) );
+	for( Crystal::Physics::Particle* particle : factory.getParticles() ) {
+		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z), 1.0 ) );
 	}
 	
 	pointSpriteRenderer = new PointSpriteRenderer( width, height, size, alpha);
@@ -188,7 +222,6 @@ void main(int argc, char** argv)
 	glui->add_spinner_to_panel( simulationSettingRollout, "Y", GLUI_SPINNER_FLOAT, &setting.externalForce.y );
 	glui->add_spinner_to_panel( simulationSettingRollout, "Z", GLUI_SPINNER_FLOAT, &setting.externalForce.z );
 
-	//factory.createPhysicsObject();
 	GLUI_Listbox* listBox = glui->add_listbox_to_panel( simulationSettingRollout, "Type" );
 	listBox->add_item(0, "Fluid");
 	listBox->add_item(1, "Rigid");
@@ -201,10 +234,11 @@ void main(int argc, char** argv)
 	GLUI_Spinner *boundaryMinZSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinZ", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minZ );
 	GLUI_Spinner *boundaryMaxZSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxZ", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxZ );
 
-	GLUI_Panel *simulationPanel = glui->add_panel("Simulation");
-	glui->add_button_to_panel( simulationPanel, "ViewReset");
-	glui->add_button_to_panel( simulationPanel, "Start/Stop");
-	glui->add_button_to_panel( simulationPanel, "Proceed");
+	GLUI_Rollout *simulationRollout = glui->add_rollout("Simulation");
+	glui->add_button_to_panel( simulationRollout, "ViewReset");
+	glui->add_button_to_panel( simulationRollout, "Refresh", 2, refreshSimulation );
+	glui->add_button_to_panel( simulationRollout, "Start/Stop", 3, startSimulation );
+	glui->add_button_to_panel( simulationRollout, "Proceed", 1, proceedSimulation);
 
 
 	glui->set_main_gfx_window( mainWindow );
