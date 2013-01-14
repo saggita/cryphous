@@ -44,10 +44,10 @@ void Renderer::rendering(PhysicsObjectFactory *factory, const int width, const i
 
 	VisualParticleList visualParticles;
 	visualParticles.push_back( VisualParticle() );
-	visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.1f, 0.0f, -5.0f ), 1.0 ) );
+	visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.1f, 0.0f, -5.0f ) ) );
 
 	for( size_t i = 0; i < 10; ++i ) {
-		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.01f * i, 0.0f, -1.0f ), 1.0 ) );
+		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d( 0.01f * i, 0.0f, -1.0f ) ) );
 	}
 
 	pointSpriteRenderer->setVisualParticles( visualParticles );

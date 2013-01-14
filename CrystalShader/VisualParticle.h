@@ -13,14 +13,12 @@ class VisualParticle
 public:
 
 	VisualParticle() :
-		 center( Crystal::Geom::Vector3d(0.0f, 0.0f, 0.0f) ),
-		 radius( 1.0)
+		 center( Crystal::Geom::Vector3d(0.0f, 0.0f, 0.0f) )
 		 {
 		 }
 
-	VisualParticle( const Crystal::Geom::Vector3d& center, double radius) :
-		 center( center),
-		 radius( radius)
+	VisualParticle( const Crystal::Geom::Vector3d& center) :
+		 center( center)
 		 {
 		 }
 
@@ -28,7 +26,6 @@ public:
 
 public:
 	Crystal::Geom::Vector3d center;
-	double radius;
 };
 
 typedef std::list<VisualParticle> VisualParticleList;
