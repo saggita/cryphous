@@ -21,6 +21,8 @@
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
 
+using namespace Crystal::Geom;
+using namespace Crystal::Physics;
 using namespace Crystal::Shader;
 
 bool isIdle = true;
@@ -32,33 +34,36 @@ float distance = 0.0;
 const int width = 512;
 const int height = 512;
 
-const float size = 50.0f;
+float pointSize = 50.0f;
 const float alpha = 1.0f;
 
-Crystal::Physics::SimulationSetting setting;
-Crystal::Physics::PhysicsObjectFactory factory;
-Crystal::Physics::Simulation simulation;
+SimulationSetting setting;
+PhysicsObjectFactory factory;
+Simulation simulation;
 
-Crystal::Shader::VisualParticleList visualParticles;
 Crystal::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Crystal::Shader::DepthRenderer* depthRenderer;
 Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Crystal::Shader::OnScreenRenderer* onScreenRenderer;
 
-bool isUnderSimulation = false;
+GLUI_RadioGroup * renderingGroup;
 
 int mainWindow;
 
 void refreshSimulation(int id)
 {
-	visualParticles.clear();
 	factory.init();
 	simulation.init();
 
 	std::vector<Crystal::Geom::Vector3d> points;
-	points.push_back( Crystal::Geom::Vector3d( 0.0, 0.5, 0.0 ) );
-	points.push_back( Crystal::Geom::Vector3d( 0.0, 1.0, 0.0 ) );
+	for( float x = -10.0; x <= 10.0; x+=0.5 ) {
+		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
+			for( float z = -10.0; z <= 10.0; z+= 0.5 ) {
+				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
+			}
+		}
+	}
 	Crystal::Physics::PhysicsObjectCondition condition( points, 1000.0f, 10000.0f, 100.0f, Crystal::Physics::PhysicsObjectCondition::Fluid );
 	factory.createPhysicsObject( condition, setting );
 
@@ -67,20 +72,19 @@ void refreshSimulation(int id)
 void proceedSimulation(int id)
 {
 	simulation.simulate( &factory, setting);
-	visualParticles.clear();
+	VisualParticleList visualParticles;
 	for( Crystal::Physics::Particle* particle : factory.getParticles() ) {
-		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z), 1.0 ) );
+		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z) ) );
 	}
 	depthRenderer->setVisualParticles ( visualParticles );
+	pointSpriteRenderer->setVisualParticles( visualParticles );
 	//onDisplay();
 }
 
 
 void onDisplay()
 {
-	if( isUnderSimulation ) {
-		proceedSimulation(0);
-	}
+	proceedSimulation(0);
 	onScreenRenderer->render();
 
 	glutSwapBuffers();
@@ -90,7 +94,6 @@ void onDisplay()
 
 void startSimulation(int id)
 {
-	isUnderSimulation = true;
 }
 
 void onIdle()
@@ -150,6 +153,26 @@ void onSpecialFunc(int key, int x, int y)
 	onDisplay();
 }
 
+void changeRenderer(int id)
+{	
+	int selectedId = renderingGroup->get_int_val();
+
+	if( selectedId == 0 ) {
+		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
+	}
+	else if( selectedId == 1 ) {
+		onScreenRenderer->setOffScreenRenderer( depthRenderer );
+	}
+	else if( selectedId == 2 ) {
+		onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
+	}
+	else if( selectedId == 3) {
+		onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
+	}
+	onScreenRenderer->init();
+	onDisplay();
+}
+
 void onMouse(int button, int state, int x, int y)
 {
 	if( state == GLUT_DOWN ) {
@@ -181,16 +204,9 @@ void main(int argc, char** argv)
 	refreshSimulation(0);
 
 	onScreenRenderer = new OnScreenRenderer(width, height);
-
-	for( Crystal::Physics::Particle* particle : factory.getParticles() ) {
-		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z), 1.0 ) );
-	}
 	
-	pointSpriteRenderer = new PointSpriteRenderer( width, height, size, alpha);
-	pointSpriteRenderer->setVisualParticles( visualParticles );
-
-	depthRenderer = new DepthRenderer( width, height, size);
-	depthRenderer->setVisualParticles( visualParticles );
+	pointSpriteRenderer = new PointSpriteRenderer( width, height, pointSize, alpha);
+	depthRenderer = new DepthRenderer( width, height, pointSize);
 
 	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
 	depthSmoothingRenderer->setOffScreenRenderer( depthRenderer );
@@ -214,8 +230,8 @@ void main(int argc, char** argv)
 	
 	GLUI_Rollout *graphicsRollout = glui->add_rollout("Graphics Setting");
 	glui->add_checkbox_to_panel( graphicsRollout, "DrawBoundary");
-	GLUI_Spinner *spinner = glui->add_spinner_to_panel( graphicsRollout, "PointSize" , GLUI_SPINNER_INT );
-	spinner->set_int_limits( 3, 60 );
+	GLUI_Spinner *spinner = glui->add_spinner_to_panel( graphicsRollout, "PointSize" , GLUI_SPINNER_FLOAT, &pointSize );
+	spinner->set_int_limits( 1.0f, 1000.0f );
 
 	GLUI_Rollout* simulationSettingRollout = glui->add_rollout("SimulationSetting");
 	glui->add_spinner_to_panel( simulationSettingRollout, "X", GLUI_SPINNER_FLOAT, &setting.externalForce.x );
@@ -237,9 +253,13 @@ void main(int argc, char** argv)
 	GLUI_Rollout *simulationRollout = glui->add_rollout("Simulation");
 	glui->add_button_to_panel( simulationRollout, "ViewReset");
 	glui->add_button_to_panel( simulationRollout, "Refresh", 2, refreshSimulation );
-	glui->add_button_to_panel( simulationRollout, "Start/Stop", 3, startSimulation );
 	glui->add_button_to_panel( simulationRollout, "Proceed", 1, proceedSimulation);
 
+	renderingGroup = glui->add_radiogroup(0, -1, changeRenderer);
+	glui->add_radiobutton_to_group( renderingGroup, "PointSprite" );
+	glui->add_radiobutton_to_group( renderingGroup, "Depth" );
+	glui->add_radiobutton_to_group( renderingGroup, "DepthSmoothing");
+	glui->add_radiobutton_to_group( renderingGroup, "ScreenSpaceFluid");
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );
