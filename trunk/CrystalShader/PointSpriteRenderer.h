@@ -11,7 +11,7 @@ namespace Crystal{
 class PointSpriteRenderer : public OffScreenRendererBase
 {
 public:
-	PointSpriteRenderer(const int width, const int height, const float& size, const float& alpha);
+	PointSpriteRenderer(const int width, const int height, float& size, float& alpha);
 
 	~PointSpriteRenderer(void);
 
@@ -28,8 +28,8 @@ private:
 	std::vector<double> positions;
 	std::vector<double> colors;
 
-	const float& size;
-	const float& alpha;
+	float& size;
+	float& alpha;
 	
 	void initColorTransferTexture();
 };

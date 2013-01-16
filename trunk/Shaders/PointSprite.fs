@@ -2,7 +2,7 @@
 
 in vec4 color;
 out vec4 fragColor;
-
+uniform float pointSize;
 
 void main(void)
 {
@@ -13,10 +13,11 @@ void main(void)
 		discard;
 	}
 	normal.z = sqrt( 1.0 - distance );
-	vec3 lightDirection = vec3(1.0, 1.0, 1.0);
-	normalize( lightDirection );
+	//vec3 lightDirection = vec3(1.0, 1.0, 1.0);
+	//normalize( lightDirection );
 
-	float diffuse = max( 0.0, dot(lightDirection, normal));
-	fragColor.rgb = color.rgb * diffuse;
-	fragColor.a = 0.5;
+	//float diffuse = max( 0.0, dot(lightDirection, normal));
+	fragColor.rgb = color.rgb; //* diffuse;
+	float alpha = exp(-distance*2.0);
+	fragColor.a = color.a * normal.z * pointSize * alpha * 0.1;
 }

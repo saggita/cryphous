@@ -21,6 +21,8 @@ public:
 
 	void setOffScreenRenderer(Crystal::Shader::OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
 
+	void setPointSpriteRenderer(OffScreenRendererBase* pointSpriteRenderer) { this->pointSpriteRenderer = pointSpriteRenderer; }
+
 private:
 	virtual void onIdle(){};
 
@@ -30,6 +32,9 @@ private:
 	
 	Crystal::Shader::OffScreenRendererBase* offScreenRenderer;
 	Crystal::Shader::FrameBufferObject* frameBufferObject;
+
+	Crystal::Shader::OffScreenRendererBase* pointSpriteRenderer;
+	Crystal::Shader::FrameBufferObject* pointSpriteFrameBuffer;
 };
 
 	}

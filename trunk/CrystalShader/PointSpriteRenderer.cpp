@@ -11,7 +11,7 @@
 using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
-PointSpriteRenderer::PointSpriteRenderer(const int width, const int height, const float& size, const float& alpha ) :
+PointSpriteRenderer::PointSpriteRenderer(const int width, const int height, float& size, float& alpha ) :
 OffScreenRendererBase( width, height),
 	size( size),
 	alpha( alpha)
@@ -32,16 +32,16 @@ void PointSpriteRenderer::setVisualParticles(const VisualParticleList& visualPar
 		positions.push_back( center.getX() );
 		positions.push_back( center.getY() );
 		positions.push_back( center.getZ() );
-		colors.push_back( 1.0f);
-		colors.push_back( 0.0f);
-		colors.push_back( 0.0f);
-		colors.push_back( alpha );
+		colors.push_back( 0.5f);
+		colors.push_back( 0.5f);
+		colors.push_back( 0.9f);
+		colors.push_back( 0.1f );
 	}
 }
 
 void PointSpriteRenderer::onRender()
 {
-	glClearColor( 0.0, 0.0, 0.0, 0.0 );
+	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT );
 	glEnable(GL_POINT_SPRITE);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE); 

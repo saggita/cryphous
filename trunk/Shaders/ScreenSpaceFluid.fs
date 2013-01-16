@@ -4,8 +4,10 @@ uniform sampler2D depthTexture;
 //uniform sampler2D thicknessTexture;
 uniform float far;
 uniform float near;
+uniform mat4 projectionMatrix;
+uniform mat4 modelviewMatrix;
 
-const vec3 fluidColor = vec3( 0.0, 0.0, 1.0 );
+const vec3 fluidColor = vec3( 0.5, 0.5, 1.0 );
 const vec3 specularColor = vec3( 1.0, 1.0, 1.0 );
 
 out vec4 fragColor;
