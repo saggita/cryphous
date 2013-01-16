@@ -31,11 +31,14 @@ int xBegin;
 int yBegin;
 float distance = 0.0;
 
-const int width = 512;
-const int height = 512;
+const int width = 864;//512;
+const int height = 486;//512;
 
-float pointSize = 50.0f;
-const float alpha = 1.0f;
+float pointSize = 500.0f;
+float alpha = 0.2f;
+
+float pressure = 100000.0f;
+float viscosity = 200.0f;
 
 SimulationSetting setting;
 PhysicsObjectFactory factory;
@@ -57,14 +60,14 @@ void refreshSimulation(int id)
 	simulation.init();
 
 	std::vector<Crystal::Geom::Vector3d> points;
-	for( float x = -10.0; x <= 10.0; x+=0.5 ) {
+	for( float x = 0.0; x <= 19.0; x+=0.5 ) {
 		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
-			for( float z = -10.0; z <= 10.0; z+= 0.5 ) {
+			for( float z = -15.0; z <= 15.0; z+= 0.5 ) {
 				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
 			}
 		}
 	}
-	Crystal::Physics::PhysicsObjectCondition condition( points, 1000.0f, 10000.0f, 100.0f, Crystal::Physics::PhysicsObjectCondition::Fluid );
+	Crystal::Physics::PhysicsObjectCondition condition( points, 1000.0f, pressure, viscosity, Crystal::Physics::PhysicsObjectCondition::Fluid );
 	factory.createPhysicsObject( condition, setting );
 
 }
@@ -216,6 +219,8 @@ void main(int argc, char** argv)
 
 	onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
 
+	onScreenRenderer->setPointSpriteRenderer( pointSpriteRenderer );
+
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
@@ -232,11 +237,16 @@ void main(int argc, char** argv)
 	glui->add_checkbox_to_panel( graphicsRollout, "DrawBoundary");
 	GLUI_Spinner *spinner = glui->add_spinner_to_panel( graphicsRollout, "PointSize" , GLUI_SPINNER_FLOAT, &pointSize );
 	spinner->set_int_limits( 1.0f, 1000.0f );
+	GLUI_Spinner *alphaSpinner = glui->add_spinner_to_panel( graphicsRollout, "PointAlpha", GLUI_SPINNER_FLOAT, &alpha );
+	alphaSpinner->set_float_limits( 0.0f, 1.0f );
 
 	GLUI_Rollout* simulationSettingRollout = glui->add_rollout("SimulationSetting");
 	glui->add_spinner_to_panel( simulationSettingRollout, "X", GLUI_SPINNER_FLOAT, &setting.externalForce.x );
 	glui->add_spinner_to_panel( simulationSettingRollout, "Y", GLUI_SPINNER_FLOAT, &setting.externalForce.y );
 	glui->add_spinner_to_panel( simulationSettingRollout, "Z", GLUI_SPINNER_FLOAT, &setting.externalForce.z );
+	glui->add_spinner_to_panel( simulationSettingRollout, "Press", GLUI_SPINNER_FLOAT, &pressure );
+	glui->add_spinner_to_panel( simulationSettingRollout, "Visc", GLUI_SPINNER_FLOAT, &viscosity );
+
 
 	GLUI_Listbox* listBox = glui->add_listbox_to_panel( simulationSettingRollout, "Type" );
 	listBox->add_item(0, "Fluid");
