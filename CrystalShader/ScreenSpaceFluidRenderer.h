@@ -17,6 +17,8 @@ public:
 
 	void setDepthSmoothingTexture(TextureObject* depthSmoothingTexture) { this->depthSmoothingTexture = depthSmoothingTexture; }
 
+	void setThicknessTexture(TextureObject* thicknessTexture) { this->thicknessTexture = thicknessTexture; }
+
 protected:
 	virtual void onRender();
 
@@ -25,6 +27,7 @@ protected:
 	virtual void onIdle(){};
 	
 	TextureObject* depthSmoothingTexture;
+	TextureObject* thicknessTexture;
 };
 
 	}

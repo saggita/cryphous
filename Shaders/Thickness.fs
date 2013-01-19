@@ -12,7 +12,7 @@ void main(void)
 	}
 	normal.z = sqrt( 1.0 - distance );
 
-	float alpha = exp(-distance * 2.0);
+	float alpha = exp(-distance * 0.2);
 
-	fragColor.rgba = vec4(alpha);
+	fragColor.rgba = vec4(alpha * 0.5);
 }

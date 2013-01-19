@@ -19,7 +19,7 @@ public:
 
 	void idle();
 
-	void setPointSpriteTextureObject(TextureObject* psTexture) { this->psTexture = psTexture; }
+	void setTexture(TextureObject* texture) { this->texture = texture; }
 
 private:
 	virtual void onIdle(){};
@@ -28,7 +28,7 @@ private:
 
 	virtual void onRender();
 	
-	Crystal::Shader::TextureObject* psTexture;
+	Crystal::Shader::TextureObject* texture;
 };
 
 	}
