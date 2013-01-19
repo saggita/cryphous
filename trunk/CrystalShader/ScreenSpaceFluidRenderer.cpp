@@ -33,9 +33,11 @@ void ScreenSpaceFluidRenderer::onRender()
 	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glDisable( GL_DEPTH_TEST );
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-	TextureObject& textureObject = *depthSmoothingTexture;
-	textureObject.apply( 0 );
+	depthSmoothingTexture->apply(0);
+	thicknessTexture->apply(1);
 
 	std::vector<double> points(12);
 	points[0] = 0.0; points[1] = 1.0; points[2] = 0.0;
@@ -48,13 +50,16 @@ void ScreenSpaceFluidRenderer::onRender()
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
 	shaderObject.setUniform("near", 0.01f);
 	shaderObject.setUniform("far", 100.0f);
-	shaderObject.setUniformTexture("depthTexture", textureObject);
+	shaderObject.setUniformTexture("depthTexture", *depthSmoothingTexture);
+	shaderObject.setUniformTexture("thicknessTexture", *thicknessTexture);
 	shaderObject.setVertex("position", points );
 	shaderObject.bindFrag("fragColor");
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
 
-	textureObject.release();
+	thicknessTexture->release();
+	depthSmoothingTexture->release();
 
+	glDisable(GL_BLEND);
 	glEnable( GL_DEPTH_TEST );
 }

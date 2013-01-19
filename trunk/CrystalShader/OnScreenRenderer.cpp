@@ -39,11 +39,11 @@ void OnScreenRenderer::onInit()
 
 void OnScreenRenderer::onRender()
 {
-	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
+	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glEnable( GL_DEPTH_TEST );
 
-	TextureObject& textureObject = *psTexture;
+	TextureObject& textureObject = *texture;
 	textureObject.apply( 0 );
 
 	std::vector<double> points(12);

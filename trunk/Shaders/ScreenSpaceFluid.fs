@@ -1,7 +1,7 @@
 #version 330
 
 uniform sampler2D depthTexture;
-//uniform sampler2D thicknessTexture;
+uniform sampler2D thicknessTexture;
 uniform float far;
 uniform float near;
 uniform mat4 projectionMatrix;
@@ -60,8 +60,11 @@ void main(void)
 	
 	vec3 half = normalize( lightDirection + normalize(-eyePosition) );
 	float specular = pow( max( 0.0, dot( normal, half)), 10.0 );
+
+	float thickness = texelFetch( thicknessTexture, fragCoord, 0 ).r;
+	vec3 absorb = vec3( exp(-thickness*0.2) );
 	
-	fragColor.rgb = diffuse * fluidColor + specular * specularColor;
-	fragColor.a = 1.0;
+	fragColor.rgb = diffuse * specular * specularColor + absorb * fluidColor;
+	fragColor.a = thickness;
 }
 	

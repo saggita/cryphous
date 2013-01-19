@@ -37,7 +37,7 @@ float distance = 0.0;
 const int width = 864;//512;
 const int height = 486;//512;
 
-float pointSize = 500.0f;
+float pointSize = 1000.0f;
 float alpha = 0.2f;
 
 float pressure = 100000.0f;
@@ -53,6 +53,7 @@ Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Crystal::Shader::ThicknessRenderer* thicknessRenderer;
 Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Crystal::Shader::OnScreenRenderer* onScreenRenderer;
+Crystal::Shader::DepthSmoothingRenderer* thicknessSmoothingRenderer;
 
 TextureObject* selectedTexture;
 
@@ -67,7 +68,7 @@ void refreshSimulation(int id)
 	simulation.init();
 
 	std::vector<Crystal::Geom::Vector3d> points;
-	for( float x = -1.5; x <= 1.5; x+=0.5 ) {
+	for( float x = -10.5; x <= 10.5; x+=0.5 ) {
 		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
 			for( float z = 0.0; z <= 19.5; z+= 0.5 ) {
 				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
@@ -111,11 +112,17 @@ void onDisplay()
 	depthRenderer->render();
 	depthSmoothingRenderer->setDepthTexture( &(depthRenderer->getFrameBufferObject()->getTextureObject() ) );
 	depthSmoothingRenderer->render();
+	
 	thicknessRenderer->render();
+	thicknessSmoothingRenderer->setDepthTexture( &(thicknessRenderer->getFrameBufferObject()->getTextureObject() ) );
+	thicknessSmoothingRenderer->render();
+
+	screenSpaceFluidRenderer->setThicknessTexture( &(thicknessSmoothingRenderer->getFrameBufferObject()->getTextureObject() ) );
 	screenSpaceFluidRenderer->setDepthSmoothingTexture( &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() ) );
 	screenSpaceFluidRenderer->render();
 
-	onScreenRenderer->setPointSpriteTextureObject( selectedTexture );
+
+	onScreenRenderer->setTexture( selectedTexture );
 	onScreenRenderer->render();
 
 	glutSwapBuffers();
@@ -148,6 +155,7 @@ void onInit()
 	depthRenderer->init();
 	depthSmoothingRenderer->init();
 	thicknessRenderer->init();
+	thicknessSmoothingRenderer->init();
 	screenSpaceFluidRenderer->init();
 	onScreenRenderer->init();
 	selectedTexture = &(pointSpriteRenderer->getFrameBufferObject()->getTextureObject());
@@ -187,7 +195,7 @@ void changeRenderer(int id)
 		selectedTexture = &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 3) {
-		selectedTexture =&(thicknessRenderer->getFrameBufferObject()->getTextureObject() );
+		selectedTexture =&(thicknessSmoothingRenderer->getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 4 ) {
 		selectedTexture = &(screenSpaceFluidRenderer->getFrameBufferObject()->getTextureObject() );
@@ -233,6 +241,7 @@ void main(int argc, char** argv)
 	depthRenderer = new DepthRenderer( width, height, pointSize);
 	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
 	thicknessRenderer = new ThicknessRenderer( width, height, pointSize, alpha);
+	thicknessSmoothingRenderer = new DepthSmoothingRenderer( width, height);
 	screenSpaceFluidRenderer = new ScreenSpaceFluidRenderer( width, height );
 
 	glutInit(&argc, argv);
