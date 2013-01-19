@@ -37,7 +37,7 @@ float distance = 0.0;
 const int width = 864;//512;
 const int height = 486;//512;
 
-float pointSize = 1000.0f;
+float pointSize = 500.0f;
 float alpha = 0.2f;
 
 float pressure = 100000.0f;
@@ -70,7 +70,7 @@ void refreshSimulation(int id)
 	std::vector<Crystal::Geom::Vector3d> points;
 	for( float x = -10.5; x <= 10.5; x+=0.5 ) {
 		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
-			for( float z = 0.0; z <= 19.5; z+= 0.5 ) {
+			for( float z = -0.5; z <= 19.5; z+= 0.5 ) {
 				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
 			}
 		}
@@ -78,8 +78,8 @@ void refreshSimulation(int id)
 	Crystal::Physics::PhysicsObjectCondition condition1( points, 1000.0f, pressure, viscosity, Crystal::Physics::PhysicsObjectCondition::Fluid );
 	factory.createPhysicsObject( condition1, setting );
 
-	points.clear();
-	/*for( float x = -2.0; x <= -1.0; x+=0.5 ) {
+	/*points.clear();
+	for( float x = -11.5; x <= -11.5; x+=0.5 ) {
 		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
 			for( float z = -19.0; z <= 0.0; z+= 0.5 ) {
 				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
@@ -87,7 +87,7 @@ void refreshSimulation(int id)
 		}
 	}
 	Crystal::Physics::PhysicsObjectCondition condition2( points, 1000.0f, pressure, viscosity, Crystal::Physics::PhysicsObjectCondition::Rigid );
-	factory.createPhysicsObject( condition2, setting );*/
+	factory.createPhysicsObject( condition2, setting ); */
 	std::cout << "Particles = " << factory.getParticles().size() << std::endl;
 }
 
@@ -179,6 +179,11 @@ void onKeyDown(unsigned char key, int x, int y )
 	}
 
 	onDisplay();
+}
+
+void viewReset(int id)
+{
+	Camera::get()->init();
 }
 
 void changeRenderer(int id)
@@ -283,7 +288,7 @@ void main(int argc, char** argv)
 	GLUI_Spinner *boundaryMaxZSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxZ", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxZ );
 
 	GLUI_Rollout *simulationRollout = glui->add_rollout("Simulation");
-	glui->add_button_to_panel( simulationRollout, "ViewReset");
+	glui->add_button_to_panel( simulationRollout, "ViewReset", 3, viewReset);
 	glui->add_button_to_panel( simulationRollout, "Refresh", 2, refreshSimulation );
 	glui->add_button_to_panel( simulationRollout, "Proceed", 1, proceedSimulation);
 
