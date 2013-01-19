@@ -20,6 +20,7 @@
 #include "DepthRenderer.h"
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
+#include "ThicknessRenderer.h"
 
 #include <iostream>
 
@@ -49,6 +50,7 @@ Simulation simulation;
 Crystal::Shader::PointSpriteRenderer* pointSpriteRenderer;
 Crystal::Shader::DepthRenderer* depthRenderer;
 Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
+Crystal::Shader::ThicknessRenderer* thicknessRenderer;
 Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Crystal::Shader::OnScreenRenderer* onScreenRenderer;
 
@@ -65,7 +67,7 @@ void refreshSimulation(int id)
 	simulation.init();
 
 	std::vector<Crystal::Geom::Vector3d> points;
-	for( float x = -19.5; x <= 19.5; x+=0.5 ) {
+	for( float x = -1.5; x <= 1.5; x+=0.5 ) {
 		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
 			for( float z = 0.0; z <= 19.5; z+= 0.5 ) {
 				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
@@ -96,6 +98,7 @@ void proceedSimulation(int id)
 		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z) ) );
 	}
 	depthRenderer->setVisualParticles ( visualParticles );
+	thicknessRenderer->setVisualParticles( visualParticles );
 	pointSpriteRenderer->setVisualParticles( visualParticles );
 }
 
@@ -108,6 +111,7 @@ void onDisplay()
 	depthRenderer->render();
 	depthSmoothingRenderer->setDepthTexture( &(depthRenderer->getFrameBufferObject()->getTextureObject() ) );
 	depthSmoothingRenderer->render();
+	thicknessRenderer->render();
 	screenSpaceFluidRenderer->setDepthSmoothingTexture( &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() ) );
 	screenSpaceFluidRenderer->render();
 
@@ -143,6 +147,7 @@ void onInit()
 	pointSpriteRenderer->init();
 	depthRenderer->init();
 	depthSmoothingRenderer->init();
+	thicknessRenderer->init();
 	screenSpaceFluidRenderer->init();
 	onScreenRenderer->init();
 	selectedTexture = &(pointSpriteRenderer->getFrameBufferObject()->getTextureObject());
@@ -182,9 +187,14 @@ void changeRenderer(int id)
 		selectedTexture = &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 3) {
+		selectedTexture =&(thicknessRenderer->getFrameBufferObject()->getTextureObject() );
+	}
+	else if( selectedId == 4 ) {
 		selectedTexture = &(screenSpaceFluidRenderer->getFrameBufferObject()->getTextureObject() );
 	}
-	//onScreenRenderer->init();
+	else {
+		assert( false );
+	}
 	onDisplay();
 }
 
@@ -222,6 +232,7 @@ void main(int argc, char** argv)
 	pointSpriteRenderer = new PointSpriteRenderer( width, height, pointSize, alpha);	
 	depthRenderer = new DepthRenderer( width, height, pointSize);
 	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
+	thicknessRenderer = new ThicknessRenderer( width, height, pointSize, alpha);
 	screenSpaceFluidRenderer = new ScreenSpaceFluidRenderer( width, height );
 
 	glutInit(&argc, argv);
@@ -271,6 +282,7 @@ void main(int argc, char** argv)
 	glui->add_radiobutton_to_group( renderingGroup, "PointSprite" );
 	glui->add_radiobutton_to_group( renderingGroup, "Depth" );
 	glui->add_radiobutton_to_group( renderingGroup, "DepthSmoothing");
+	glui->add_radiobutton_to_group( renderingGroup, "Thickness" );
 	glui->add_radiobutton_to_group( renderingGroup, "ScreenSpaceFluid");
 
 	glui->set_main_gfx_window( mainWindow );

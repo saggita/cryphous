@@ -18,7 +18,6 @@ void main() {
 	gl_Position = projectionMatrix * modelviewMatrix * vec4( vertex[i].position, 1.0 );
 	float dist = length(gl_Position);
 	gl_PointSize = pointSize / dist;
-	eyePosition = (modelviewMatrix * vec4(vertex[i].position, 1.0)).xyz;
 	EmitVertex();
 	EndPrimitive();
   }

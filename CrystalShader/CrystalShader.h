@@ -15,7 +15,6 @@
 #include "TextureObject.h"
 #include "ScreenRendererBase.h"
 #include "OffScreenRendererBase.h"
-#include "OpenGLWrapper.h"
 #include "Camera.h"
 
 #endif

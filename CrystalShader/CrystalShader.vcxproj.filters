@@ -54,9 +54,6 @@
     <ClCompile Include="ShaderObject.cpp">
       <Filter>ShaderObject</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLWrapper.cpp">
-      <Filter>GL</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ScreenSpaceFluidRenderer.cpp">
       <Filter>Renderer</Filter>
@@ -74,6 +71,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="OffScreenRendererBase.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ThicknessRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,9 +108,6 @@
     <ClInclude Include="ShaderObject.h">
       <Filter>ShaderObject</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLWrapper.h">
-      <Filter>GL</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ScreenSpaceFluidRenderer.h">
@@ -132,6 +129,9 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="CrystalShader.h" />
+    <ClInclude Include="ThicknessRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Billboard.fs">
@@ -186,6 +186,15 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\ScreenSpaceFluid.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Thickness.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Thickness.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Thickness.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

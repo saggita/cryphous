@@ -90,13 +90,13 @@
     <ClCompile Include="GLSLUtility.cpp" />
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
-    <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ScreenSpaceFluidRenderer.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
     <ClCompile Include="TextureObject.cpp" />
+    <ClCompile Include="ThicknessRenderer.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -112,13 +112,13 @@
     <ClInclude Include="GLSLUtility.h" />
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRenderer.h" />
-    <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ScreenSpaceFluidRenderer.h" />
     <ClInclude Include="ShaderObject.h" />
     <ClInclude Include="TextureObject.h" />
+    <ClInclude Include="ThicknessRenderer.h" />
     <ClInclude Include="VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +140,9 @@
     <None Include="..\Shaders\ScreenSpaceFluid.fs" />
     <None Include="..\Shaders\ScreenSpaceFluid.gs" />
     <None Include="..\Shaders\ScreenSpaceFluid.vs" />
+    <None Include="..\Shaders\Thickness.fs" />
+    <None Include="..\Shaders\Thickness.gs" />
+    <None Include="..\Shaders\Thickness.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
