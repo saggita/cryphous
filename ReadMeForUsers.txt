@@ -1,5 +1,5 @@
 Cryphous 2.0
-2013/1/1
+2013/1/19
 
 流体演算およびレンダリングエンジン。
 A Fluid Simulation and Rendering Engine.
