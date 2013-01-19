@@ -7,6 +7,8 @@
 
 #include "GLSLUtility.h"
 
+#include "FrameBufferObject.h"
+
 using namespace Crystal::Geom;
 using namespace Crystal::Shader;
 
@@ -71,6 +73,8 @@ void DepthRenderer::onRender()
 void DepthRenderer::onInit()
 {
 	assert( GLSLUtility::hasNoError() );
+
+	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
 
 	projectionMatrix.setPerspectiveMatrix(-0.5f, 0.5f, 0.0f, 1.0f, 0.01f, 100.0f );
 	

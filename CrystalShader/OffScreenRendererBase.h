@@ -15,9 +15,9 @@ public:
 
 	virtual ~OffScreenRendererBase(void);
 
-	void render(const FrameBufferObject& frameBufferObject);
+	void render();
 
-	void setOffScreenRenderer(OffScreenRendererBase* offScreenRenderer) { this->offScreenRenderer = offScreenRenderer; }
+	FrameBufferObject* getFrameBufferObject() { return frameBufferObject; }
 
 protected:
 	virtual void onRender() = 0;
@@ -25,12 +25,8 @@ protected:
 	virtual void onInit() = 0;
 
 	virtual void onIdle(){};
-	
-	Crystal::Shader::OffScreenRendererBase* offScreenRenderer;
-	Crystal::Shader::FrameBufferObject* frameBufferObject;
 
-private:
-	void renderOffScreen();
+	FrameBufferObject* frameBufferObject;
 };
 
 	}

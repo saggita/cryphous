@@ -13,12 +13,16 @@ public:
 
 	virtual ~DepthSmoothingRenderer();
 
+	void setDepthTexture(TextureObject* depthTexture) { this->depthTexture = depthTexture; }
+
 protected:
 	virtual void onRender();
 
 	virtual void onInit();
 
 	virtual void onIdle(){};
+
+	TextureObject* depthTexture;
 };
 
 	}

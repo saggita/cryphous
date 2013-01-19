@@ -21,6 +21,8 @@
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
 
+#include <iostream>
+
 using namespace Crystal::Geom;
 using namespace Crystal::Physics;
 using namespace Crystal::Shader;
@@ -50,6 +52,9 @@ Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
 Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
 Crystal::Shader::OnScreenRenderer* onScreenRenderer;
 
+TextureObject* selectedTexture;
+
+
 GLUI_RadioGroup * renderingGroup;
 
 int mainWindow;
@@ -60,16 +65,27 @@ void refreshSimulation(int id)
 	simulation.init();
 
 	std::vector<Crystal::Geom::Vector3d> points;
-	for( float x = 0.0; x <= 19.0; x+=0.5 ) {
+	for( float x = -19.5; x <= 19.5; x+=0.5 ) {
 		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
-			for( float z = -15.0; z <= 15.0; z+= 0.5 ) {
+			for( float z = 0.0; z <= 19.5; z+= 0.5 ) {
 				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
 			}
 		}
 	}
-	Crystal::Physics::PhysicsObjectCondition condition( points, 1000.0f, pressure, viscosity, Crystal::Physics::PhysicsObjectCondition::Fluid );
-	factory.createPhysicsObject( condition, setting );
+	Crystal::Physics::PhysicsObjectCondition condition1( points, 1000.0f, pressure, viscosity, Crystal::Physics::PhysicsObjectCondition::Fluid );
+	factory.createPhysicsObject( condition1, setting );
 
+	points.clear();
+	/*for( float x = -2.0; x <= -1.0; x+=0.5 ) {
+		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
+			for( float z = -19.0; z <= 0.0; z+= 0.5 ) {
+				points.push_back( Crystal::Geom::Vector3d( x, y, z ) );
+			}
+		}
+	}
+	Crystal::Physics::PhysicsObjectCondition condition2( points, 1000.0f, pressure, viscosity, Crystal::Physics::PhysicsObjectCondition::Rigid );
+	factory.createPhysicsObject( condition2, setting );*/
+	std::cout << "Particles = " << factory.getParticles().size() << std::endl;
 }
 
 void proceedSimulation(int id)
@@ -81,13 +97,21 @@ void proceedSimulation(int id)
 	}
 	depthRenderer->setVisualParticles ( visualParticles );
 	pointSpriteRenderer->setVisualParticles( visualParticles );
-	//onDisplay();
 }
 
 
 void onDisplay()
 {
 	proceedSimulation(0);
+
+	pointSpriteRenderer->render();
+	depthRenderer->render();
+	depthSmoothingRenderer->setDepthTexture( &(depthRenderer->getFrameBufferObject()->getTextureObject() ) );
+	depthSmoothingRenderer->render();
+	screenSpaceFluidRenderer->setDepthSmoothingTexture( &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() ) );
+	screenSpaceFluidRenderer->render();
+
+	onScreenRenderer->setPointSpriteTextureObject( selectedTexture );
 	onScreenRenderer->render();
 
 	glutSwapBuffers();
@@ -101,6 +125,7 @@ void startSimulation(int id)
 
 void onIdle()
 {
+	glutSetWindow(mainWindow);
 	onScreenRenderer->idle();
 	glutPostRedisplay();
 }
@@ -115,7 +140,12 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
+	pointSpriteRenderer->init();
+	depthRenderer->init();
+	depthSmoothingRenderer->init();
+	screenSpaceFluidRenderer->init();
 	onScreenRenderer->init();
+	selectedTexture = &(pointSpriteRenderer->getFrameBufferObject()->getTextureObject());
 }
 
 void onResize(int width, int height)
@@ -138,41 +168,23 @@ void onKeyDown(unsigned char key, int x, int y )
 	onDisplay();
 }
 
-void onSpecialFunc(int key, int x, int y)
-{
-	if( key == GLUT_KEY_LEFT ) {
-		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
-	}
-	else if( key == GLUT_KEY_RIGHT ) {
-		onScreenRenderer->setOffScreenRenderer( depthRenderer );
-	}
-	else if( key == GLUT_KEY_UP ) {
-		onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
-	}
-	else if( key == GLUT_KEY_DOWN) {
-		onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
-	}
-	onScreenRenderer->init();
-	onDisplay();
-}
-
 void changeRenderer(int id)
 {	
 	int selectedId = renderingGroup->get_int_val();
 
 	if( selectedId == 0 ) {
-		onScreenRenderer->setOffScreenRenderer( pointSpriteRenderer );
+		selectedTexture = &(pointSpriteRenderer->getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 1 ) {
-		onScreenRenderer->setOffScreenRenderer( depthRenderer );
+		selectedTexture = &(depthRenderer->getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 2 ) {
-		onScreenRenderer->setOffScreenRenderer( depthSmoothingRenderer );
+		selectedTexture = &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 3) {
-		onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
+		selectedTexture = &(screenSpaceFluidRenderer->getFrameBufferObject()->getTextureObject() );
 	}
-	onScreenRenderer->init();
+	//onScreenRenderer->init();
 	onDisplay();
 }
 
@@ -206,20 +218,11 @@ void main(int argc, char** argv)
 {
 	refreshSimulation(0);
 
-	onScreenRenderer = new OnScreenRenderer(width, height);
-	
-	pointSpriteRenderer = new PointSpriteRenderer( width, height, pointSize, alpha);
+	onScreenRenderer = new OnScreenRenderer(width, height);	
+	pointSpriteRenderer = new PointSpriteRenderer( width, height, pointSize, alpha);	
 	depthRenderer = new DepthRenderer( width, height, pointSize);
-
 	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
-	depthSmoothingRenderer->setOffScreenRenderer( depthRenderer );
-
 	screenSpaceFluidRenderer = new ScreenSpaceFluidRenderer( width, height );
-	screenSpaceFluidRenderer->setOffScreenRenderer( depthSmoothingRenderer );
-
-	onScreenRenderer->setOffScreenRenderer( screenSpaceFluidRenderer );
-
-	onScreenRenderer->setPointSpriteRenderer( pointSpriteRenderer );
 
 	glutInit(&argc, argv);
 	onInit();
@@ -227,7 +230,6 @@ void main(int argc, char** argv)
 	//glutIdleFunc(onIdle);
 	glutKeyboardFunc(onKeyDown);
 	glutReshapeFunc(onResize);
-	glutSpecialFunc(onSpecialFunc);
 	glutMouseFunc(onMouse);
 	glutMotionFunc(onMotion);
 
