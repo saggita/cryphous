@@ -1,6 +1,7 @@
 #include "GLee.h"
 
 #include "PointSpriteRenderer.h"
+#include "FrameBufferObject.h"
 //#include "BackGroundRenderer.h"
 
 #include <cassert>
@@ -73,6 +74,8 @@ void PointSpriteRenderer::onRender()
 void PointSpriteRenderer::onInit()
 {
 	assert( GLSLUtility::hasNoError() );
+
+	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
 
 	projectionMatrix.setPerspectiveMatrix(-0.5f, 0.5f, 0.0f, 1.0f, 0.01f, 100.0f );
 	

@@ -15,14 +15,11 @@ OffScreenRendererBase(width, height)
 
 ScreenSpaceFluidRenderer::~ScreenSpaceFluidRenderer()
 {
-	delete offScreenRenderer;
 }
 
 void ScreenSpaceFluidRenderer::onInit()
 {
 	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
-
-	offScreenRenderer->init();
 
 	shaderObject.createShader("ScreenSpaceFluid");
 
@@ -37,7 +34,7 @@ void ScreenSpaceFluidRenderer::onRender()
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glDisable( GL_DEPTH_TEST );
 
-	TextureObject& textureObject = frameBufferObject->getTextureObject();
+	TextureObject& textureObject = *depthSmoothingTexture;
 	textureObject.apply( 0 );
 
 	std::vector<double> points(12);

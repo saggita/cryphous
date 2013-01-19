@@ -15,7 +15,6 @@ ScreenRendererBase(width, height)
 
 OnScreenRenderer::~OnScreenRenderer()
 {
-	delete offScreenRenderer;
 }
 
 void OnScreenRenderer::render()
@@ -33,14 +32,6 @@ void OnScreenRenderer::idle()
 
 void OnScreenRenderer::onInit()
 {
-	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
-
-	offScreenRenderer->init();
-
-	pointSpriteFrameBuffer = new FrameBufferObject(getWidth(), getHeight(), false);
-
-	pointSpriteRenderer->init();
-
 	shaderObject.createShader("Quad");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
@@ -48,19 +39,12 @@ void OnScreenRenderer::onInit()
 
 void OnScreenRenderer::onRender()
 {
-	offScreenRenderer->render( *frameBufferObject );
-
-	pointSpriteRenderer->render( *pointSpriteFrameBuffer );
-
 	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glEnable( GL_DEPTH_TEST );
 
-	TextureObject& textureObject = frameBufferObject->getTextureObject();
+	TextureObject& textureObject = *psTexture;
 	textureObject.apply( 0 );
-
-	TextureObject& psTextureObject = pointSpriteFrameBuffer->getTextureObject();
-	psTextureObject.apply( 1 );
 
 	std::vector<double> points(12);
 	points[0] = 0.0; points[1] = 1.0; points[2] = 0.0;
@@ -72,12 +56,10 @@ void OnScreenRenderer::onRender()
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
 	shaderObject.setUniformTexture("offScreenTexture", textureObject);
-	shaderObject.setUniformTexture("pointSpriteTexture", psTextureObject);
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
 
-	psTextureObject.release();
 	textureObject.release();
 
 	glDisable( GL_DEPTH_TEST );

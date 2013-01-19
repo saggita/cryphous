@@ -18,6 +18,6 @@ void main(void)
 
 	//float diffuse = max( 0.0, dot(lightDirection, normal));
 	fragColor.rgb = color.rgb; //* diffuse;
-	float alpha = exp(-distance*2.0);
-	fragColor.a = color.a * normal.z * pointSize * alpha * 0.1;
+	//float alpha = exp(-distance*2.0);
+	fragColor.a = 0.1;//color.a * normal.z * pointSize * alpha * 0.1;
 }

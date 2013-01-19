@@ -15,6 +15,8 @@ public:
 
 	virtual ~ScreenSpaceFluidRenderer();
 
+	void setDepthSmoothingTexture(TextureObject* depthSmoothingTexture) { this->depthSmoothingTexture = depthSmoothingTexture; }
+
 protected:
 	virtual void onRender();
 
@@ -22,6 +24,7 @@ protected:
 
 	virtual void onIdle(){};
 	
+	TextureObject* depthSmoothingTexture;
 };
 
 	}

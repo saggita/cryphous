@@ -21,8 +21,6 @@ void DepthSmoothingRenderer::onInit()
 {
 	frameBufferObject = new FrameBufferObject(getWidth(), getHeight(), false);
 
-	offScreenRenderer->init();
-
 	shaderObject.createShader("DepthSmoothing");
 
 	projectionMatrix.setOrthogonalMatrix( 0.0, 1.0, 0.0, 1.0, -1.0, 1.0 );
@@ -36,7 +34,7 @@ void DepthSmoothingRenderer::onRender()
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glDisable( GL_DEPTH_TEST );
 
-	TextureObject& textureObject = frameBufferObject->getTextureObject();
+	TextureObject& textureObject = *depthTexture;
 	textureObject.apply( 0 );
 
 	std::vector<double> points(12);
