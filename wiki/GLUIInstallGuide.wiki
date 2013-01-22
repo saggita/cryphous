@@ -1,0 +1,47 @@
+#GLUI 2.1 Install Guide
+
+GLUTをあらかじめインストールしておく。
+
+次のURLよりGLUI2.1をダウンロードする。
+http://www.cs.unc.edu/~rademach/glui/src/release/glui_v2_1_beta.zip
+
+Visual Studio 2012でglui.dswを変換する。
+
+作成された.vcxprojを開き、ビルドをする。
+
+ただしこのままではビルドエラーが発生するため、インクルードの順序を書き換える。
+
+{{{
+#include <GL/glut.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+}}}
+
+を
+
+{{{
+#include <stdlib.h>
+#include <stdio.h>
+#include <GL/glut.h>
+#include <string.h>
+}}}
+
+とする。
+
+作成したglui32.libファイルをライブラリパスの通っている場所、たとえば
+
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\lib
+
+に配置する。また、ヘッダファイルglui.hをヘッダファイルパスの通っている場所、たとえば
+
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\gl
+
+に配置する。
+
+exampleをビルドする場合もエラーが発生するため、
+#include <stdlib.h>
+を一番最初にインクルードする。
+
+参考URL
+http://chihara.naist.jp/opencv/?%B9%E2%C5%D9%A4%CAGUI
