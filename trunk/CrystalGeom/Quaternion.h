@@ -20,9 +20,9 @@ public:
 	{}
 	
 	Quaternion::Quaternion(const Vector3d& axis, const float angle) :
-	x( axis.getX() * sin(angle * 0.5f) ), 
-		y( axis.getY() * sin(angle * 0.5f) ), 
-		z( axis.getZ() * sin(angle * 0.5f) ), 
+	x( axis.x * sin(angle * 0.5f) ), 
+		y( axis.y * sin(angle * 0.5f) ), 
+		z( axis.z * sin(angle * 0.5f) ), 
 		w( cos(angle * 0.5f) )
 	{
 		assert( axis.isNormalized() );
@@ -48,9 +48,9 @@ public:
 	
 	Quaternion& operator+=( const Quaternion& rhs )
 	{
-		x += rhs.getX();
-		y += rhs.getY();
-		z += rhs.getZ();
+		x += rhs.x;
+		y += rhs.y;
+		z += rhs.z;
 		w += rhs.getW();
 		return *(this);
 	}

@@ -118,7 +118,7 @@ public:
 		std::ofstream ofs(fileName);
 		const ParticleVector& particles = getParticles();
 		for( Particle* particle: particles ) {
-			ofs << particle->center.getX() << "," << particle->center.getY() << "," << particle->center.getZ() << "," << particle->density << "," << std::endl;
+			ofs << particle->center.x << "," << particle->center.y << "," << particle->center.z << "," << particle->density << "," << std::endl;
 		}
 	}
 

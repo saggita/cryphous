@@ -18,12 +18,12 @@ public:
 	  {}
 
 	Box::Box(const Vector3d& pointX, const Vector3d& pointY) :
-	  maxX( (pointX.getX() > pointY.getX()) ? pointX.getX() : pointY.getX() ),
-	  minX( (pointX.getX() < pointY.getX()) ? pointX.getX() : pointY.getX() ),
-	  maxY( (pointX.getY() > pointY.getY()) ? pointX.getY() : pointY.getY() ),
-	  minY( (pointX.getY() < pointY.getY()) ? pointX.getY() : pointY.getY() ),
-	  maxZ( (pointX.getZ() > pointY.getZ()) ? pointX.getZ() : pointY.getZ() ),
-	  minZ( (pointX.getZ() < pointY.getZ()) ? pointX.getZ() : pointY.getZ() )
+	  maxX( (pointX.x > pointY.x) ? pointX.x : pointY.x ),
+	  minX( (pointX.x < pointY.x) ? pointX.x : pointY.x ),
+	  maxY( (pointX.y > pointY.y) ? pointX.y : pointY.y ),
+	  minY( (pointX.y < pointY.y) ? pointX.y : pointY.y ),
+	  maxZ( (pointX.z > pointY.z) ? pointX.z : pointY.z ),
+	  minZ( (pointX.z < pointY.z) ? pointX.z : pointY.z )
 	  {}
 
 	Vector3d getCenter() const {
@@ -55,9 +55,9 @@ public:
 	float getMinZ() const { return minZ; }
 
 	bool isInterior(const Vector3d &point) const {
-		const bool xIsInterior = ( minX < point.getX() && point.getX() < maxX );
-		const bool yIsInterior = ( minY < point.getY() && point.getY() < maxY );
-		const bool zIsInterior = ( minZ < point.getZ() && point.getZ() < maxZ );
+		const bool xIsInterior = ( minX < point.x && point.x < maxX );
+		const bool yIsInterior = ( minY < point.y && point.y < maxY );
+		const bool zIsInterior = ( minZ < point.z && point.z < maxZ );
 		return xIsInterior && yIsInterior && zIsInterior;
 	}
 	

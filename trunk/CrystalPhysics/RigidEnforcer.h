@@ -40,9 +40,9 @@ public:
 			Particle* particle = (*iter);
 			const Geom::Vector3d& center = particle->center;
 		
-			Geom::Vector3d particleMoment( pow( center.getY(), 2) + pow( center.getZ(), 2),
-				pow( center.getZ(), 2 ) + pow( center.getX(), 2),
-				pow( center.getX(), 2 ) + pow( center.getY(), 2) );
+			Geom::Vector3d particleMoment( pow( center.y, 2) + pow( center.z, 2),
+				pow( center.z, 2 ) + pow( center.x, 2),
+				pow( center.x, 2 ) + pow( center.y, 2) );
 			inertiaMoment += (particleMoment) * particle->getMass();
 
 			const Geom::Vector3d diffVector( Geom::Vector3d( 0.0, 0.0, 0.0), particle->center );
@@ -99,17 +99,17 @@ private:
 
 	float getAngleAccelerationX( float x1,float x2,float x3, const Geom::Vector3d& I, const Geom::Vector3d& N)
 	{
-		return (N.getX() + ( I.getY() - I.getZ()) * x2 * x3 ) / I.getX() - 10.0f * x1;
+		return (N.x + ( I.y - I.z) * x2 * x3 ) / I.x - 10.0f * x1;
 	}
 
 	float getAngleAccelerationY( float x1,float x2,float x3, const Geom::Vector3d& I, const Geom::Vector3d& N)
 	{
-		return (N.getY() + ( I.getZ() - I.getX()) * x3 * x1 ) / I.getY() - 10.0f * x2;
+		return (N.y + ( I.z - I.x) * x3 * x1 ) / I.y - 10.0f * x2;
 	}
 
 	float getAngleAccelerationZ( float x1, float x2, float x3, const Geom::Vector3d& I, const Geom::Vector3d& N)
 	{
-		return (N.getZ() + ( I.getX() - I.getY() ) * x1 * x2 ) / I.getZ() - 10.0f * x3;
+		return (N.z + ( I.x - I.y ) * x1 * x2 ) / I.z - 10.0f * x3;
 	}
 
 	void getAngleVelosity( const Geom::Vector3d& I, const Geom::Vector3d& N, const float proceedTime )
@@ -118,9 +118,9 @@ private:
 		const int innerSteps = 10;
 		float h = proceedTime / innerSteps;
 	
-		x1 = angleVelosity.getX();
-		x2 = angleVelosity.getY();
-		x3 = angleVelosity.getZ();
+		x1 = angleVelosity.x;
+		x2 = angleVelosity.y;
+		x3 = angleVelosity.z;
 
 		for( int i = 0; i < innerSteps; i++ ){
 			const float k11 = h * getAngleAccelerationX( x1,x2,x3,I,N);
@@ -145,9 +145,9 @@ private:
 			x3 += dx3;
 		}
 
-		angleVelosity.setX( x1 );
-		angleVelosity.setY( x2 );
-		angleVelosity.setZ( x3 );
+		angleVelosity.x = x1;
+		angleVelosity.y = x2;
+		angleVelosity.z = x3;
 	}
 };
 

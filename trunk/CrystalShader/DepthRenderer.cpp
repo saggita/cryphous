@@ -29,9 +29,9 @@ void DepthRenderer::setVisualParticles(const VisualParticleList& visualParticles
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
 		const Vector3d& center = vp.center;
-		positions.push_back( center.getX() );
-		positions.push_back( center.getY() );
-		positions.push_back( center.getZ() );
+		positions.push_back( center.x );
+		positions.push_back( center.y );
+		positions.push_back( center.z );
 		colors.push_back( 1.0f);
 		colors.push_back( 0.0f);
 		colors.push_back( 0.0f);

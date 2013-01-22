@@ -15,36 +15,36 @@ void BoundarySolver::calculateDensity(const Box& box)
 		#pragma omp parallel for
 		for( int i = 0; i < (int)particles.size(); ++i ) {
 			Particle* particle = particles[i];
-			if( particle->center.getX() > box.getMaxX() + particle->getRadius() - effectLength ) {
+			if( particle->center.x > box.getMaxX() + particle->getRadius() - effectLength ) {
 				Geom::Vector3d boundaryPoint = particle->center;
-				boundaryPoint.setX( box.getMaxX() + particle->getRadius() );
+				boundaryPoint.x = box.getMaxX() + particle->getRadius();
 				calculateDensity( particle, boundaryPoint ); 
 			}
-			else if( particle->center.getX() < box.getMinX() -particle->getRadius() + effectLength ) {
+			else if( particle->center.x < box.getMinX() -particle->getRadius() + effectLength ) {
 				Geom::Vector3d boundaryPoint = particle->center;
-				boundaryPoint.setX( box.getMinX() - particle->getRadius() );
+				boundaryPoint.x = box.getMinX() - particle->getRadius();
 				calculateDensity( particle, boundaryPoint );
 			}
 
-			if( particle->center.getY() > box.getMaxY() + particle->getRadius() - effectLength ) {
+			if( particle->center.y > box.getMaxY() + particle->getRadius() - effectLength ) {
 				Geom::Vector3d boundaryPoint = particle->center;
-				boundaryPoint.setY( box.getMaxY() + particle->getRadius() );
+				boundaryPoint.y = box.getMaxY() + particle->getRadius();
 				calculateDensity( particle, boundaryPoint );
 			}
-			else if( particle->center.getY() < box.getMinY() - particle->getRadius() + effectLength ) {
+			else if( particle->center.y < box.getMinY() - particle->getRadius() + effectLength ) {
 				Geom::Vector3d boundaryPoint = particle->center;
-				boundaryPoint.setY( box.getMinY() - particle->getRadius() );
+				boundaryPoint.y =  box.getMinY() - particle->getRadius();
 				calculateDensity( particle, boundaryPoint );
 			}
 
-			if( particle->center.getZ() > box.getMaxZ() + particle->getRadius() - effectLength ) {
+			if( particle->center.z > box.getMaxZ() + particle->getRadius() - effectLength ) {
 				Geom::Vector3d boundaryPoint = particle->center;
-				boundaryPoint.setZ( box.getMaxZ() + particle->getRadius() );
+				boundaryPoint.z = box.getMaxZ() + particle->getRadius();
 				calculateDensity( particle, boundaryPoint );
 			}
-			else if( particle->center.getZ() < box.getMinZ() -particle->getRadius() + effectLength ) {
+			else if( particle->center.z < box.getMinZ() -particle->getRadius() + effectLength ) {
 				Geom::Vector3d boundaryPoint = particle->center;
-				boundaryPoint.setZ( box.getMinZ() - particle->getRadius() );
+				boundaryPoint.z = box.getMinZ() - particle->getRadius();
 				calculateDensity( particle, boundaryPoint );
 			}
 		}
@@ -64,35 +64,35 @@ void BoundarySolver::calculateForce(const Box& box)
 		for( int i = 0; i < (int)particles.size(); ++i ) {
 			Particle* particle = particles[i];
 
-			if( particle->center.getX() > innerBox.getMaxX() ) {
-				const float over = particle->center.getX() - innerBox.getMaxX();
+			if( particle->center.x > innerBox.getMaxX() ) {
+				const float over = particle->center.x - innerBox.getMaxX();
 				const float force = over * particle->density / timeStep / timeStep; 
 				particle->force -= Geom::Vector3d( force, 0.0, 0.0 );
 			}
-			else if( particle->center.getX() < innerBox.getMinX() ) {
-				const float over = particle->center.getX() - innerBox.getMinX();
+			else if( particle->center.x < innerBox.getMinX() ) {
+				const float over = particle->center.x - innerBox.getMinX();
 				const float force = over * particle->density / timeStep / timeStep;
 				particle->force -= Geom::Vector3d( force, 0.0, 0.0 );
 			}
 
-			if( particle->center.getY() > innerBox.getMaxY() ) {
-				const float over = particle->center.getY() - innerBox.getMaxY();
+			if( particle->center.y > innerBox.getMaxY() ) {
+				const float over = particle->center.y - innerBox.getMaxY();
 				const float force = over * particle->density / timeStep / timeStep;
 				particle->force -= Geom::Vector3d( 0.0, force, 0.0 );
 			}
-			else if( particle->center.getY() < innerBox.getMinY() ) {
-				const float over = particle->center.getY() - innerBox.getMinY();
+			else if( particle->center.y < innerBox.getMinY() ) {
+				const float over = particle->center.y - innerBox.getMinY();
 				const float force = over * particle->density / timeStep / timeStep;
 				particle->force -= Geom::Vector3d( 0.0, force, 0.0 );
 			}
 
-			if( particle->center.getZ() > innerBox.getMaxZ() ) {
-				const float over = particle->center.getZ() - innerBox.getMaxZ();
+			if( particle->center.z > innerBox.getMaxZ() ) {
+				const float over = particle->center.z - innerBox.getMaxZ();
 				const float force = over * particle->density / timeStep / timeStep;
 				particle->force -= Geom::Vector3d( 0.0, 0.0, force );
 			}
-			else if( particle->center.getZ() < innerBox.getMinZ() ) {
-				const float over = particle->center.getZ() - innerBox.getMinZ();
+			else if( particle->center.z < innerBox.getMinZ() ) {
+				const float over = particle->center.z - innerBox.getMinZ();
 				const float force = over * particle->density / timeStep / timeStep;
 				particle->force -= Geom::Vector3d( 0.0, 0.0, force );
 			}
