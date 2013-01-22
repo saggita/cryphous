@@ -24,25 +24,13 @@ public:
 		}
 
 	Vector3d(const Vector3d& start, const Vector3d& end) :
-		x( end.getX() - start.getX() ),
-			y( end.getY() - start.getY() ),
-			z( end.getZ() - start.getZ() )
+		x( end.x - start.x ),
+			y( end.y - start.y ),
+			z( end.z - start.z )
 		{
 		}
 
-	void setX(const float x){ this->x = x; }
-
-	void setY(const float y){ this->y = y; }
-
-	void setZ(const float z){ this->z = z; }
-
 	void setZero() { x = 0.0f; y = 0.0f; z = 0.0f; }
-
-	float getX() const { return x; }
-
-	float getY() const { return y; }
-
-	float getZ() const { return z; }
 
 	float getLengthSquared() const {
 		return x*x + y*y + z*z;
@@ -95,16 +83,16 @@ public:
 	bool operator!=(const Vector3d& rhs) const { return !equals(rhs); }
 
 	Vector3d operator+=(const Vector3d& rhs) {
-		x += rhs.getX();
-		y += rhs.getY();
-		z += rhs.getZ();
+		x += rhs.x;
+		y += rhs.y;
+		z += rhs.z;
 		return *this;
 	}
 
 	Vector3d operator-=(const Vector3d& rhs) {
-		x -= rhs.getX();
-		y -= rhs.getY();
-		z -= rhs.getZ();
+		x -= rhs.x;
+		y -= rhs.y;
+		z -= rhs.z;
 		return *this;
 	}
 
@@ -119,13 +107,13 @@ public:
 	}
 
 	float getInnerProduct(const Vector3d& rhs) const {
-		return x * rhs.getX() + y * rhs.getY() + z * rhs.getZ();
+		return x * rhs.x + y * rhs.y + z * rhs.z;
 	}
 
 	Vector3d getOuterProduct(const Vector3d& rhs) const {
-		return Vector3d( y * rhs.getZ() - z * rhs.getY(),
-			-( x * rhs.getZ() - z * rhs.getX() ),
-			x * rhs.getY() - y * rhs.getX() );
+		return Vector3d( y * rhs.z - z * rhs.y,
+			-( x * rhs.z - z * rhs.x ),
+			x * rhs.y - y * rhs.x );
 	}
 	
 	Vector3d operator*=(const float factor) { return scale(factor); }
@@ -133,11 +121,11 @@ public:
 	Vector3d operator/=(const float factor) { return scale( 1.0f / factor); }
 
 	Vector3d operator+(const Vector3d& rhs) const {
-		return Vector3d( x + rhs.getX(), y + rhs.getY(), z + rhs.getZ() );
+		return Vector3d( x + rhs.x, y + rhs.y, z + rhs.z );
 	}
 
 	Vector3d operator-(const Vector3d& rhs) const {
-		return Vector3d( x - rhs.getX(), y - rhs.getY(), z - rhs.getZ() );
+		return Vector3d( x - rhs.x, y - rhs.y, z - rhs.z );
 	}
 
 	void rotate(const Matrix3d& matrix) {
