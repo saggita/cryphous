@@ -47,8 +47,6 @@ public:
 
 	ParticleConditions getCondition() const { return condition; }
 
-	//void setCondition(const ParticleConditions& condition) { this->condition = condition; }
-
 	int getID() const { return id; }
 
 	bool isIsolated() const { return normal == Geom::Vector3d(0.0f, 0.0f, 0.0f); }

@@ -52,7 +52,7 @@ public:
 
 		getAngleVelosity( inertiaMoment , torque, proceedTime );
 
-		if( Geom::Tolerances::isEqualAsDenominator( angleVelosity.getLength() ) ) {
+		if( Geom::Tolerances::isEqualStrictly( angleVelosity.getLength() ) ) {
 			for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
 				(*iter)->center += objectCenter;
 			}
