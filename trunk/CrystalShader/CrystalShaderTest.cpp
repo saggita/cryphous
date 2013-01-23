@@ -47,16 +47,15 @@ SimulationSetting setting;
 PhysicsObjectFactory factory;
 Simulation simulation;
 
-Crystal::Shader::PointSpriteRenderer* pointSpriteRenderer;
-Crystal::Shader::DepthRenderer* depthRenderer;
-Crystal::Shader::DepthSmoothingRenderer* depthSmoothingRenderer;
-Crystal::Shader::ThicknessRenderer* thicknessRenderer;
-Crystal::Shader::ScreenSpaceFluidRenderer* screenSpaceFluidRenderer;
-Crystal::Shader::OnScreenRenderer* onScreenRenderer;
-Crystal::Shader::DepthSmoothingRenderer* thicknessSmoothingRenderer;
+Crystal::Shader::PointSpriteRenderer pointSpriteRenderer(width, height, pointSize, alpha);
+Crystal::Shader::DepthRenderer depthRenderer( width, height, pointSize);	
+Crystal::Shader::DepthSmoothingRenderer depthSmoothingRenderer( width, height);
+Crystal::Shader::ThicknessRenderer thicknessRenderer( width, height, pointSize, alpha);
+Crystal::Shader::ScreenSpaceFluidRenderer screenSpaceFluidRenderer( width, height);
+Crystal::Shader::OnScreenRenderer onScreenRenderer(width, height);
+Crystal::Shader::DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
 
 TextureObject* selectedTexture;
-
 
 GLUI_RadioGroup * renderingGroup;
 
@@ -98,9 +97,9 @@ void proceedSimulation(int id)
 	for( Crystal::Physics::Particle* particle : factory.getParticles() ) {
 		visualParticles.push_back( VisualParticle( Crystal::Geom::Vector3d(particle->center.x, particle->center.y, particle->center.z) ) );
 	}
-	depthRenderer->setVisualParticles ( visualParticles );
-	thicknessRenderer->setVisualParticles( visualParticles );
-	pointSpriteRenderer->setVisualParticles( visualParticles );
+	depthRenderer.setVisualParticles( visualParticles );
+	thicknessRenderer.setVisualParticles( visualParticles );
+	pointSpriteRenderer.setVisualParticles( visualParticles );
 }
 
 
@@ -108,22 +107,22 @@ void onDisplay()
 {
 	proceedSimulation(0);
 
-	pointSpriteRenderer->render();
-	depthRenderer->render();
-	depthSmoothingRenderer->setDepthTexture( &(depthRenderer->getFrameBufferObject()->getTextureObject() ) );
-	depthSmoothingRenderer->render();
+	pointSpriteRenderer.render();
+	depthRenderer.render();
+	depthSmoothingRenderer.setDepthTexture( &(depthRenderer.getFrameBufferObject()->getTextureObject() ) );
+	depthSmoothingRenderer.render();
 	
-	thicknessRenderer->render();
-	thicknessSmoothingRenderer->setDepthTexture( &(thicknessRenderer->getFrameBufferObject()->getTextureObject() ) );
-	thicknessSmoothingRenderer->render();
+	thicknessRenderer.render();
+	thicknessSmoothingRenderer.setDepthTexture( &(thicknessRenderer.getFrameBufferObject()->getTextureObject() ) );
+	thicknessSmoothingRenderer.render();
 
-	screenSpaceFluidRenderer->setThicknessTexture( &(thicknessSmoothingRenderer->getFrameBufferObject()->getTextureObject() ) );
-	screenSpaceFluidRenderer->setDepthSmoothingTexture( &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() ) );
-	screenSpaceFluidRenderer->render();
+	screenSpaceFluidRenderer.setThicknessTexture( &(thicknessSmoothingRenderer.getFrameBufferObject()->getTextureObject() ) );
+	screenSpaceFluidRenderer.setDepthSmoothingTexture( &(depthSmoothingRenderer.getFrameBufferObject()->getTextureObject() ) );
+	screenSpaceFluidRenderer.render();
 
 
-	onScreenRenderer->setTexture( selectedTexture );
-	onScreenRenderer->render();
+	onScreenRenderer.setTexture( selectedTexture );
+	onScreenRenderer.render();
 
 	glutSwapBuffers();
 
@@ -137,7 +136,7 @@ void startSimulation(int id)
 void onIdle()
 {
 	glutSetWindow(mainWindow);
-	onScreenRenderer->idle();
+	onScreenRenderer.idle();
 	glutPostRedisplay();
 }
 
@@ -151,14 +150,14 @@ void onInit()
 
 	Camera::get()->zoom = -0.1f;
 
-	pointSpriteRenderer->init();
-	depthRenderer->init();
-	depthSmoothingRenderer->init();
-	thicknessRenderer->init();
-	thicknessSmoothingRenderer->init();
-	screenSpaceFluidRenderer->init();
-	onScreenRenderer->init();
-	selectedTexture = &(pointSpriteRenderer->getFrameBufferObject()->getTextureObject());
+	pointSpriteRenderer.init();
+	depthRenderer.init();
+	depthSmoothingRenderer.init();
+	thicknessRenderer.init();
+	thicknessSmoothingRenderer.init();
+	screenSpaceFluidRenderer.init();
+	onScreenRenderer.init();
+	selectedTexture = &(pointSpriteRenderer.getFrameBufferObject()->getTextureObject());
 }
 
 void onResize(int width, int height)
@@ -191,19 +190,19 @@ void changeRenderer(int id)
 	int selectedId = renderingGroup->get_int_val();
 
 	if( selectedId == 0 ) {
-		selectedTexture = &(pointSpriteRenderer->getFrameBufferObject()->getTextureObject() );
+		selectedTexture = &(pointSpriteRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 1 ) {
-		selectedTexture = &(depthRenderer->getFrameBufferObject()->getTextureObject() );
+		selectedTexture = &(depthRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 2 ) {
-		selectedTexture = &(depthSmoothingRenderer->getFrameBufferObject()->getTextureObject() );
+		selectedTexture = &(depthSmoothingRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 3) {
-		selectedTexture =&(thicknessSmoothingRenderer->getFrameBufferObject()->getTextureObject() );
+		selectedTexture =&(thicknessSmoothingRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else if( selectedId == 4 ) {
-		selectedTexture = &(screenSpaceFluidRenderer->getFrameBufferObject()->getTextureObject() );
+		selectedTexture = &(screenSpaceFluidRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else {
 		assert( false );
@@ -240,14 +239,6 @@ void onMotion(int x, int y){
 void main(int argc, char** argv)
 {
 	refreshSimulation(0);
-
-	onScreenRenderer = new OnScreenRenderer(width, height);	
-	pointSpriteRenderer = new PointSpriteRenderer( width, height, pointSize, alpha);	
-	depthRenderer = new DepthRenderer( width, height, pointSize);
-	depthSmoothingRenderer = new DepthSmoothingRenderer( width, height);
-	thicknessRenderer = new ThicknessRenderer( width, height, pointSize, alpha);
-	thicknessSmoothingRenderer = new DepthSmoothingRenderer( width, height);
-	screenSpaceFluidRenderer = new ScreenSpaceFluidRenderer( width, height );
 
 	glutInit(&argc, argv);
 	onInit();

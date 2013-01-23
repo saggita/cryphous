@@ -78,7 +78,7 @@ public:
 		return *this;
 	}
 
-	bool isNormalized() const { return Tolerances::isEqualAsDenominator( getNorm(), 1.0 ); }
+	bool isNormalized() const { return Tolerances::isEqualStrictly( getNorm(), 1.0 ); }
 
 private:
 	float x;

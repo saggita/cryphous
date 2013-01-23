@@ -72,11 +72,11 @@ public:
 		return vector.normalize();
 	}
 
-	bool isNormalized() const { return Tolerances::isEqualAsDistance( getLength(), 1.0 ); }
+	bool isNormalized() const { return Tolerances::isEqualLoosely( getLength(), 1.0 ); }
 
-	bool equals(const Vector3d &rhs) const { return Tolerances::isEqualAsDistance( getDistance( rhs ) ); }
+	bool equals(const Vector3d &rhs) const { return Tolerances::isEqualLoosely( getDistance( rhs ) ); }
 
-	bool isZero() const { return Tolerances::isEqualAsDistance( getLength() ); }
+	bool isZero() const { return Tolerances::isEqualLoosely( getLength() ); }
 
 	bool operator==(const Vector3d& rhs) const { return equals( rhs ); }
 

@@ -10,17 +10,17 @@ class Tolerances
 {
 public:
 
-	static float getDistanceTolerance() { return 1.0e-9f; }
+	static float getLooseTolerance() { return 1.0e-9f; }
 
-	static float getDenominatorTolerance() { return 1.0e-18f; }
+	static float getStrictTolerance() { return 1.0e-18f; }
 
-	static bool isEqualAsDistance(float x) { return ::fabs( x ) < getDistanceTolerance(); }
+	static bool isEqualLoosely(float x) { return ::fabs( x ) < getLooseTolerance(); }
 
-	static bool isEqualAsDistance(float x, float y) { return ::fabs( x - y ) < getDistanceTolerance(); }
+	static bool isEqualLoosely(float x, float y) { return ::fabs( x - y ) < getLooseTolerance(); }
 
-	static bool isEqualAsDenominator(float x) { return ::fabs( x ) < getDenominatorTolerance(); }
+	static bool isEqualStrictly(float x) { return ::fabs( x ) < getStrictTolerance(); }
 
-	static bool isEqualAsDenominator(float x, float y) { 	return ::fabs( x - y ) < getDenominatorTolerance(); }
+	static bool isEqualStrictly(float x, float y) { 	return ::fabs( x - y ) < getStrictTolerance(); }
 
 	static float getPI() { return 3.14159265359f; }
 };
