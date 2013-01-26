@@ -22,20 +22,13 @@ public:
 
 	~ParticleFactory(void)
 	{
-		for( ParticleVector::iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
-			delete (*iter);
-		}
-		if( virtualParticle != 0 ) {
-			delete virtualParticle;
-		}
+		for( Particle* particle: particles ) { delete particle; }
+		delete virtualParticle;
 	}
 
 	ParticleVector createParticles(const std::vector<Geometry::Vector3d>& points, const ParticleConditions& conditions)
 	{
-		for( std::vector<Geometry::Vector3d>::const_iterator iter = points.begin(); iter != points.end(); ++ iter ) {
-			particles.push_back( new Particle( nextID++, *(iter), conditions ) );
-			particles.back()->density = conditions.getDensity();
-		}
+		for( const Geometry::Vector3d& point: points ) { particles.push_back( new Particle( nextID++, point, conditions ) ); }
 		virtualParticle = new Particle( -1, Geometry::Vector3d(), conditions );
 		return particles;
 	}
@@ -46,7 +39,6 @@ public:
 		const ParticleConditions& condition = virtualParticle->condition;
 		for( size_t i = 0; i < points.size(); ++i ) {
 			particles.push_back( new Particle( nextID++, points[i], condition) );
-			particles.back()->density = condition.getDensity();
 			particles.back()->velocity = velocities[i];
 		}
 		return particles;
@@ -55,14 +47,6 @@ public:
 	ParticleVector getParticles() const { return particles; }
 
 	Particle* getVirtualParticle() { return virtualParticle; }
-
-private:
-	void destroyVirtualParticle()
-	{
-		assert( virtualParticle != 0 );
-		delete virtualParticle;
-		virtualParticle = 0;
-	}
 
 private:
 	int nextID;

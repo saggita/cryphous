@@ -12,13 +12,9 @@ void SPHSolver::calculateInteraction()
 {
 	PhysicsObjectVector& objects = factory->getPhysicsObjects();
 	ParticleVector particles = factory->getParticles();
-	if( particles.empty() ) {
-		return;
-	}
+	if( particles.empty() ) { return; }
 
-	for( size_t i = 0; i < particles.size(); ++i ) {
-		particles[i]->resetDiffParameters();
-	}
+	for( Particle* particle : particles ) { particle->resetDiffParameters(); }
 
 	createPairs();
 		
