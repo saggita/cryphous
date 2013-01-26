@@ -27,8 +27,8 @@ public:
 		if( !particles.empty() ) {
 			particles.front()->force = Geometry::Vector3d(0.0f, 0.0f, 0.0f);
 		}
-		for( ParticleVector::const_iterator iter = particles.begin(); iter != particles.end(); ++iter ) {
-			Particle* particle = *iter;
+
+		for( Particle* particle: particles ) {
 			Geometry::Vector3d accelaration = particle->force / particle->density;
 			particle->velocity += (accelaration * proceedTime);
 			particle->center += (particle->velocity * proceedTime);

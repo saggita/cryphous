@@ -61,15 +61,17 @@ GLUI_RadioGroup * renderingGroup;
 
 int mainWindow;
 
+Box fluidBoundary(Vector3d( -10.5, 0.5, 0.5), Vector3d( 10.0, 5.5, 19.5) );
+
 void refreshSimulation(int id)
 {
 	factory.init();
 	simulation.init();
 
 	std::vector<Vector3d> points;
-	for( float x = -10.5; x <= 10.5; x+=0.5 ) {
-		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
-			for( float z = -0.5; z <= 19.5; z+= 0.5 ) {
+	for( float x = fluidBoundary.minX; x <= fluidBoundary.maxX; x+=0.5 ) {
+		for( float y = fluidBoundary.minY; y <= fluidBoundary.maxY; y+= 0.5 ) {
+			for( float z = fluidBoundary.minZ; z <= fluidBoundary.maxZ; z+= 0.5 ) {
 				points.push_back( Vector3d( x, y, z ) );
 			}
 		}
@@ -77,16 +79,6 @@ void refreshSimulation(int id)
 	Cryphous::Physics::PhysicsObjectCondition condition1( points, 1000.0f, pressure, viscosity, Cryphous::Physics::PhysicsObjectCondition::Fluid );
 	factory.createPhysicsObject( condition1, setting );
 
-	/*points.clear();
-	for( float x = -11.5; x <= -11.5; x+=0.5 ) {
-		for( float y = 0.5; y <= 10.0; y+= 0.5 ) {
-			for( float z = -19.0; z <= 0.0; z+= 0.5 ) {
-				points.push_back( Cryphous::Geom::Vector3d( x, y, z ) );
-			}
-		}
-	}
-	Cryphous::Physics::PhysicsObjectCondition condition2( points, 1000.0f, pressure, viscosity, Cryphous::Physics::PhysicsObjectCondition::Rigid );
-	factory.createPhysicsObject( condition2, setting ); */
 	std::cout << "Particles = " << factory.getParticles().size() << std::endl;
 }
 
@@ -236,19 +228,8 @@ void onMotion(int x, int y){
 	onDisplay();
 }
 
-void main(int argc, char** argv)
+void createControl()
 {
-	refreshSimulation(0);
-
-	glutInit(&argc, argv);
-	onInit();
-	glutDisplayFunc(onDisplay);
-	//glutIdleFunc(onIdle);
-	glutKeyboardFunc(onKeyDown);
-	glutReshapeFunc(onResize);
-	glutMouseFunc(onMouse);
-	glutMotionFunc(onMotion);
-
 	GLUI *glui = GLUI_Master.create_glui( "GLUI" );
 	
 	GLUI_Rollout *graphicsRollout = glui->add_rollout("Graphics Setting");
@@ -271,6 +252,14 @@ void main(int argc, char** argv)
 	listBox->add_item(1, "Rigid");
 	listBox->add_item(2, "Obstacle");
 
+	GLUI_Rollout* objectBoundary = glui->add_rollout("ObjectBoundary");
+	glui->add_spinner_to_panel( objectBoundary, "MinX", GLUI_SPINNER_FLOAT, &fluidBoundary.minX );
+	glui->add_spinner_to_panel( objectBoundary, "MaxX", GLUI_SPINNER_FLOAT, &fluidBoundary.maxX );
+	glui->add_spinner_to_panel( objectBoundary, "MinY", GLUI_SPINNER_FLOAT, &fluidBoundary.minY );
+	glui->add_spinner_to_panel( objectBoundary, "MaxY", GLUI_SPINNER_FLOAT, &fluidBoundary.maxY );
+	glui->add_spinner_to_panel( objectBoundary, "MinZ", GLUI_SPINNER_FLOAT, &fluidBoundary.minZ );
+	glui->add_spinner_to_panel( objectBoundary, "MaxZ", GLUI_SPINNER_FLOAT, &fluidBoundary.maxZ );
+
 	GLUI_Spinner *boundaryMinXSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinX", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minX );
 	GLUI_Spinner *boundaryMaxXSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxX", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxX );
 	GLUI_Spinner *boundaryMinYSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinY", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minY );
@@ -292,6 +281,22 @@ void main(int argc, char** argv)
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );
+}
+
+void main(int argc, char** argv)
+{
+	refreshSimulation(0);
+
+	glutInit(&argc, argv);
+	onInit();
+	glutDisplayFunc(onDisplay);
+	//glutIdleFunc(onIdle);
+	glutKeyboardFunc(onKeyDown);
+	glutReshapeFunc(onResize);
+	glutMouseFunc(onMouse);
+	glutMotionFunc(onMotion);
+
+	createControl();
 
 	glutMainLoop();
 }

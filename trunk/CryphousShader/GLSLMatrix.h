@@ -11,8 +11,6 @@ class GLSLMatrix
 public:
 	GLSLMatrix(void);
 
-	//GLSLMatrix(const Cryphous::Geometry::Matrix3d& matrix);
-
 	~GLSLMatrix(void);
 
 	void setIdentityMatrix();

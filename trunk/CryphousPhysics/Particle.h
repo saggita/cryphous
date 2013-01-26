@@ -18,7 +18,8 @@ protected:
 	Particle(int id, const Geometry::Vector3d& center, const ParticleConditions& condition) :
 		id( id), 
 		center( center), 
-		condition( condition)
+		condition( condition),
+		density( condition.density)
 	{
 	}
 
@@ -48,8 +49,6 @@ public:
 	ParticleConditions getCondition() const { return condition; }
 
 	int getID() const { return id; }
-
-	bool isIsolated() const { return normal == Geometry::Vector3d(0.0f, 0.0f, 0.0f); }
 
 public:
 	Geometry::Vector3d center;

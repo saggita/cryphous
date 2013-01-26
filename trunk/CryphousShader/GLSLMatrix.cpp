@@ -11,20 +11,6 @@ GLSLMatrix::GLSLMatrix(void)
 	setIdentityMatrix();
 }
 
-/*GLSLMatrix::GLSLMatrix(const Matrix3d& matrix)
-{
-	setIdentityMatrix();
-	x[0] = matrix.x00;
-	x[1] = matrix.x10;
-	x[2] = matrix.x20;
-	x[4] = matrix.x10;
-	x[5] = matrix.x11;
-	x[6] = matrix.x12;
-	x[8] = matrix.x20;
-	x[9] = matrix.x21;
-	x[10] = matrix.x22;
-}*/
-
 GLSLMatrix::~GLSLMatrix(void)
 {
 }
