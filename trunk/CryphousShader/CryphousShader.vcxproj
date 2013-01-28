@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="DepthSmoothingRenderer.cpp" />
     <ClCompile Include="FragmentShader.cpp" />
@@ -102,8 +103,8 @@
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CrystalShader.h" />
     <ClInclude Include="DepthRenderer.h" />
     <ClInclude Include="DepthSmoothingRenderer.h" />
     <ClInclude Include="FragmentShader.h" />

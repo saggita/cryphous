@@ -76,6 +76,7 @@
     <ClCompile Include="ThicknessRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Bitmap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrameBufferObject.h">
@@ -128,10 +129,10 @@
     <ClInclude Include="OffScreenRendererBase.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="CrystalShader.h" />
     <ClInclude Include="ThicknessRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Bitmap.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Billboard.fs">
