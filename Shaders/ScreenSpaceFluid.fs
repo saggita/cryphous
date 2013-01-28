@@ -2,6 +2,7 @@
 
 uniform sampler2D depthTexture;
 uniform sampler2D thicknessTexture;
+uniform sampler2D backgroundTexture;
 uniform float far;
 uniform float near;
 uniform mat4 projectionMatrix;
@@ -23,10 +24,14 @@ vec3 uvToEye(vec2 texCoord, float z)
 void main(void)
 {
 	ivec2 fragCoord = ivec2(gl_FragCoord.x, gl_FragCoord.y);
+	vec3 backgroundColor = texelFetch( backgroundTexture, fragCoord, 0).rgb;
+
 	float depth = texelFetch( depthTexture, fragCoord, 0 ).r;
 
 	if( depth < 1.0e-5 ) {
-		discard;
+		//discard;
+		fragColor.rgb = backgroundColor;
+		fragColor.a = 0.5;
 		return;
 	}
 	
@@ -63,8 +68,13 @@ void main(void)
 
 	float thickness = texelFetch( thicknessTexture, fragCoord, 0 ).r;
 	vec3 absorb = vec3( exp(-thickness*0.2) );
+
+	float refraction = thickness * 10.0;//0.03;
+	ivec2 refractFrag = ivec2( normal.x * refraction, normal.y * refraction );
+	vec3 refractColor = texelFetch( backgroundTexture, fragCoord.xy + refractFrag, 0).rgb;
 	
-	fragColor.rgb = diffuse * specular * specularColor + absorb * fluidColor;
+	vec3 color = diffuse * specular * specularColor + absorb * fluidColor;
+	fragColor.rgb = mix( color, refractColor, thickness);
 	fragColor.a = thickness;
 }
 	

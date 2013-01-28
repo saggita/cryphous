@@ -14,6 +14,8 @@
 #include "../CryphousPhysics/PhysicsObjectFactory.h"
 #include "../CryphousPhysics/Simulation.h"
 
+#include "Bitmap.h"
+
 #include "OnScreenRenderer.h"
 #include "PointSpriteRenderer.h"
 #include "VisualParticle.h"
@@ -61,7 +63,9 @@ GLUI_RadioGroup * renderingGroup;
 
 int mainWindow;
 
-Box fluidBoundary(Vector3d( -10.5, 0.5, 0.5), Vector3d( 10.0, 5.5, 19.5) );
+Box fluidBoundary(Vector3d( -1.5, 0.5, 0.5), Vector3d( 10.0, 5.5, 1.5) );
+
+Bitmap bitmap("Test.bmp");
 
 void refreshSimulation(int id)
 {
@@ -108,8 +112,11 @@ void onDisplay()
 	thicknessSmoothingRenderer.setDepthTexture( &(thicknessRenderer.getFrameBufferObject()->getTextureObject() ) );
 	thicknessSmoothingRenderer.render();
 
+	TextureObject bmpTexture( bitmap.colors, bitmap.sizeX, bitmap.sizeY);
+
 	screenSpaceFluidRenderer.setThicknessTexture( &(thicknessSmoothingRenderer.getFrameBufferObject()->getTextureObject() ) );
 	screenSpaceFluidRenderer.setDepthSmoothingTexture( &(depthSmoothingRenderer.getFrameBufferObject()->getTextureObject() ) );
+	screenSpaceFluidRenderer.setBackgroundTexture( &bmpTexture );
 	screenSpaceFluidRenderer.render();
 
 

@@ -38,6 +38,7 @@ void ScreenSpaceFluidRenderer::onRender()
 
 	depthSmoothingTexture->apply(0);
 	thicknessTexture->apply(1);
+	backgroundTexture->apply(2);
 
 	std::vector<double> points(12);
 	points[0] = 0.0; points[1] = 1.0; points[2] = 0.0;
@@ -52,11 +53,13 @@ void ScreenSpaceFluidRenderer::onRender()
 	shaderObject.setUniform("far", 100.0f);
 	shaderObject.setUniformTexture("depthTexture", *depthSmoothingTexture);
 	shaderObject.setUniformTexture("thicknessTexture", *thicknessTexture);
+	shaderObject.setUniformTexture("backgroundTexture", *backgroundTexture);
 	shaderObject.setVertex("position", points );
 	shaderObject.bindFrag("fragColor");
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
 
+	backgroundTexture->release();
 	thicknessTexture->release();
 	depthSmoothingTexture->release();
 
