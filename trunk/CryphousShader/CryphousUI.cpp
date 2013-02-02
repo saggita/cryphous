@@ -131,31 +131,21 @@ void onDisplay()
 	screenSpaceFluidRenderer.setBackgroundTexture( &bmpTexture );
 	screenSpaceFluidRenderer.render();
 
-	pbvr.setRepeatLevel(1);
-	pbvr.render();
 
-	//TextureObject object(width, height);
+	for( size_t i = 0; i < 12; ++i ) {
+		pbvr.setMaxRepeat(12);
+		pbvr.setRepeatLevel(i);
+		pbvr.render();
 
-	accumBufferRenderer.setTextures( &(pbvr.getFrameBufferObject()->getTextureObject() ), &fbo->getTextureObject() );
-	accumBufferRenderer.render();
-	FrameBufferObject* rendered = accumBufferRenderer.getFrameBufferObject();
-	
-	std::swap( rendered, fbo );
-	accumBufferRenderer.setFrameBufferObject( rendered );
-
-	pbvr.setRepeatLevel(10);
-	pbvr.render();
-
-	accumBufferRenderer.setTextures( &(pbvr.getFrameBufferObject()->getTextureObject() ), &fbo->getTextureObject() );
-	accumBufferRenderer.render();
-
-	std::swap( rendered, fbo );
-	accumBufferRenderer.setFrameBufferObject( rendered );
+		accumBufferRenderer.setTextures( &(pbvr.getFrameBufferObject()->getTextureObject() ), &fbo->getTextureObject() );
+		accumBufferRenderer.render();
+		FrameBufferObject* rendered = accumBufferRenderer.getFrameBufferObject();	
+		std::swap( rendered, fbo );
+		accumBufferRenderer.setFrameBufferObject( rendered );
+	}
 
 	onScreenRenderer.setTexture( selectedTexture );
 	onScreenRenderer.render();
-
-	//std::swap( object, accumBufferRenderer.getFrameBufferObject->getTextureObject() );
 	
 	glutSwapBuffers();
 

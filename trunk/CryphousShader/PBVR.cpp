@@ -15,7 +15,8 @@ PBVR::PBVR(const int width, const int height, float& size, float& alpha ) :
 OffScreenRendererBase( width, height),
 	size( size),
 	alpha( alpha),
-	repeatLevel(1)
+	repeatLevel(1),
+	maxRepeat(1)
 {
 }
 
@@ -48,14 +49,15 @@ void PBVR::onRender()
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE); 
 	glEnable(GL_DEPTH_TEST);
 	//glDisable(GL_DEPTH_TEST);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
 	glClear( GL_DEPTH_BUFFER_BIT);	
 
 	if( !positions.empty() ) {
 		shaderObject.apply();
 		shaderObject.setUniform("pointSize", size);
+		//shaderObject.setUniform("maxRepeat", maxRepeat);
 		shaderObject.setUniform("repeatLevel", repeatLevel);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
@@ -67,7 +69,7 @@ void PBVR::onRender()
 	}
 
 
-	//glDisable(GL_BLEND);
+	glDisable(GL_BLEND);
 	//glEnable(GL_DEPTH_TEST);
 	glDisable(GL_POINT_SPRITE);
 	glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);

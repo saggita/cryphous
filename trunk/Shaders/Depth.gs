@@ -10,6 +10,7 @@ in Vertex
 } vertex[];
 
 out vec3 eyePosition;
+out float dist;
 
 uniform mat4 projectionMatrix;
 uniform mat4 modelviewMatrix;
@@ -18,7 +19,7 @@ uniform float pointSize;
 void main() {
   for( int i = 0; i < gl_in.length(); i++){
 	gl_Position = projectionMatrix * modelviewMatrix * vec4( vertex[i].position, 1.0 );
-	float dist = length(gl_Position);
+	dist = length(gl_Position);
 	gl_PointSize = pointSize / dist;
 	eyePosition = (modelviewMatrix * vec4(vertex[i].position, 1.0)).xyz;
 	EmitVertex();
