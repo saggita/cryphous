@@ -13,7 +13,7 @@ public:
 
 	virtual ~AccumBufferRenderer();
 
-	void setTexture(TextureObject* texture) { this->texture = texture; }
+	void setTextures(TextureObject* texture1, TextureObject* texture2) { this->texture1 = texture1; this->texture2 = texture2; }
 
 protected:
 	virtual void onRender();
@@ -22,7 +22,8 @@ protected:
 
 	virtual void onIdle(){};
 
-	TextureObject* texture;
+	TextureObject* texture1;
+	TextureObject* texture2;
 };
 
 	}

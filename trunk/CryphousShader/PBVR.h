@@ -17,6 +17,8 @@ public:
 
 	void setVisualParticles(const VisualParticleList& visualParticles);
 
+	void setRepeatLevel(const int repeatLevel) { this->repeatLevel = repeatLevel; }
+
 protected:
 	virtual void onRender();
 
@@ -30,6 +32,7 @@ private:
 
 	float& size;
 	float& alpha;
+	int repeatLevel;
 };
 
 	}
