@@ -14,7 +14,8 @@ using namespace Cryphous::Shader;
 PBVR::PBVR(const int width, const int height, float& size, float& alpha ) :
 OffScreenRendererBase( width, height),
 	size( size),
-	alpha( alpha)
+	alpha( alpha),
+	repeatLevel(1)
 {
 }
 
@@ -55,6 +56,7 @@ void PBVR::onRender()
 	if( !positions.empty() ) {
 		shaderObject.apply();
 		shaderObject.setUniform("pointSize", size);
+		shaderObject.setUniform("repeatLevel", repeatLevel);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
 		shaderObject.setVertex( "position", positions ); 

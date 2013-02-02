@@ -19,6 +19,8 @@ public:
 
 	FrameBufferObject* getFrameBufferObject() { return frameBufferObject; }
 
+	void setFrameBufferObject(FrameBufferObject* frameBufferObject) { this->frameBufferObject = frameBufferObject; }
+
 protected:
 	virtual void onRender() = 0;
 

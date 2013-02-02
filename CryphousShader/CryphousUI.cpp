@@ -44,22 +44,24 @@ const int height = 486;//512;
 float pointSize = 500.0f;
 float alpha = 0.2f;
 
-float pressure = 100000.0f;
+float pressure = 200000.0f;
 float viscosity = 200.0f;
 
 SimulationSetting setting;
 PhysicsObjectFactory factory;
 Simulation simulation;
 
-Cryphous::Shader::PointSpriteRenderer pointSpriteRenderer(width, height, pointSize, alpha);
-Cryphous::Shader::DepthRenderer depthRenderer( width, height, pointSize);	
-Cryphous::Shader::DepthSmoothingRenderer depthSmoothingRenderer( width, height);
-Cryphous::Shader::ThicknessRenderer thicknessRenderer( width, height, pointSize, alpha);
-Cryphous::Shader::ScreenSpaceFluidRenderer screenSpaceFluidRenderer( width, height);
-Cryphous::Shader::OnScreenRenderer onScreenRenderer(width, height);
-Cryphous::Shader::DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
+PointSpriteRenderer pointSpriteRenderer(width, height, pointSize, alpha);
+DepthRenderer depthRenderer( width, height, pointSize);	
+DepthSmoothingRenderer depthSmoothingRenderer( width, height);
+ThicknessRenderer thicknessRenderer( width, height, pointSize, alpha);
+ScreenSpaceFluidRenderer screenSpaceFluidRenderer( width, height);
+OnScreenRenderer onScreenRenderer(width, height);
+DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
 PBVR pbvr(width, height, pointSize, alpha);
 AccumBufferRenderer accumBufferRenderer( width, height);
+FrameBufferObject* fbo;
+
 
 TextureObject* selectedTexture;
 
@@ -70,6 +72,8 @@ int mainWindow;
 Box fluidBoundary(Vector3d( -1.5, 0.5, 0.5), Vector3d( 10.0, 5.5, 1.5) );
 
 Bitmap bitmap("Test.bmp");
+
+bool isRunning = true;
 
 void refreshSimulation(int id)
 {
@@ -92,6 +96,9 @@ void refreshSimulation(int id)
 
 void proceedSimulation(int id)
 {
+	if( !isRunning ) {
+		return;
+	}
 	simulation.simulate( &factory, setting);
 	VisualParticleList visualParticles;
 	for( Cryphous::Physics::Particle* particle : factory.getParticles() ) {
@@ -124,13 +131,31 @@ void onDisplay()
 	screenSpaceFluidRenderer.setBackgroundTexture( &bmpTexture );
 	screenSpaceFluidRenderer.render();
 
+	pbvr.setRepeatLevel(1);
 	pbvr.render();
-	onScreenRenderer.setTexture( selectedTexture );
-	onScreenRenderer.render();
+
+	//TextureObject object(width, height);
+
+	accumBufferRenderer.setTextures( &(pbvr.getFrameBufferObject()->getTextureObject() ), &fbo->getTextureObject() );
+	accumBufferRenderer.render();
+	FrameBufferObject* rendered = accumBufferRenderer.getFrameBufferObject();
 	
-	accumBufferRenderer.setTexture( &(depthRenderer.getFrameBufferObject()->getTextureObject() ) );
+	std::swap( rendered, fbo );
+	accumBufferRenderer.setFrameBufferObject( rendered );
+
+	pbvr.setRepeatLevel(10);
+	pbvr.render();
+
+	accumBufferRenderer.setTextures( &(pbvr.getFrameBufferObject()->getTextureObject() ), &fbo->getTextureObject() );
 	accumBufferRenderer.render();
 
+	std::swap( rendered, fbo );
+	accumBufferRenderer.setFrameBufferObject( rendered );
+
+	onScreenRenderer.setTexture( selectedTexture );
+	onScreenRenderer.render();
+
+	//std::swap( object, accumBufferRenderer.getFrameBufferObject->getTextureObject() );
 	
 	glutSwapBuffers();
 
@@ -157,6 +182,8 @@ void onInit()
 	mainWindow = glutCreateWindow("CryphousRendererTest");
 
 	Camera::get()->zoom = -0.1f;
+
+	fbo = new FrameBufferObject(width, height, false);
 
 	pointSpriteRenderer.init();
 	depthRenderer.init();
@@ -217,6 +244,9 @@ void changeRenderer(int id)
 	else if( selectedId == 5 ) {
 		selectedTexture = &(pbvr.getFrameBufferObject()->getTextureObject() );
 	}
+	else if( selectedId == 6 ) {
+		selectedTexture = &(accumBufferRenderer.getFrameBufferObject()->getTextureObject() );
+	}
 	else {
 		assert( false );
 	}
@@ -247,6 +277,11 @@ void onMotion(int x, int y){
 		Camera::get()->angleY += diffX * 0.001;
 	}
 	onDisplay();
+}
+
+void stopSimulation(int)
+{
+	isRunning = !isRunning;
 }
 
 void createControl()
@@ -292,6 +327,7 @@ void createControl()
 	glui->add_button_to_panel( simulationRollout, "ViewReset", 3, viewReset);
 	glui->add_button_to_panel( simulationRollout, "Refresh", 2, refreshSimulation );
 	glui->add_button_to_panel( simulationRollout, "Proceed", 1, proceedSimulation);
+	glui->add_button_to_panel( simulationRollout, "Stop", 4, stopSimulation );
 
 	renderingGroup = glui->add_radiogroup(0, -1, changeRenderer);
 	glui->add_radiobutton_to_group( renderingGroup, "PointSprite" );
@@ -300,6 +336,7 @@ void createControl()
 	glui->add_radiobutton_to_group( renderingGroup, "Thickness" );
 	glui->add_radiobutton_to_group( renderingGroup, "ScreenSpaceFluid");
 	glui->add_radiobutton_to_group( renderingGroup, "PBVR");
+	glui->add_radiobutton_to_group( renderingGroup, "Accumulation");
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );

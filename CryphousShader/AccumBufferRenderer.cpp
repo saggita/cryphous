@@ -33,7 +33,8 @@ void AccumBufferRenderer::onRender()
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glDisable( GL_DEPTH_TEST );
 
-	texture->apply( 0 );
+	texture1->apply( 0 );
+	texture2->apply( 1 );
 
 	std::vector<double> points(12);
 	points[0] = 0.0; points[1] = 1.0; points[2] = 0.0;
@@ -44,13 +45,15 @@ void AccumBufferRenderer::onRender()
 	shaderObject.apply();
 	shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 	shaderObject.setUniformMatrix("modelviewMatrix", GLSLMatrix());
-	shaderObject.setUniformTexture("depthTexture", *texture);
+	shaderObject.setUniformTexture("texture1", *texture1);
+	shaderObject.setUniformTexture("texture2", *texture2);
 	shaderObject.setVertex("position", points );
 	shaderObject.bindFrag("fragColor");
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
 
-	texture->release();
+	texture2->release();
+	texture1->release();
 
 	glEnable( GL_DEPTH_TEST );
 }
