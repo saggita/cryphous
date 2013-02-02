@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AccumBufferRenderer.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="DepthSmoothingRenderer.cpp" />
@@ -93,6 +94,7 @@
     <ClCompile Include="GLSLUtility.cpp" />
     <ClCompile Include="OffScreenRendererBase.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
+    <ClCompile Include="PBVR.cpp" />
     <ClCompile Include="PointSpriteRenderer.cpp" />
     <ClCompile Include="RenderBufferObject.cpp" />
     <ClCompile Include="ScreenRendererBase.cpp" />
@@ -103,6 +105,7 @@
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AccumBufferRenderer.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DepthRenderer.h" />
@@ -115,6 +118,7 @@
     <ClInclude Include="GLSLUtility.h" />
     <ClInclude Include="OffScreenRendererBase.h" />
     <ClInclude Include="OnScreenRenderer.h" />
+    <ClInclude Include="PBVR.h" />
     <ClInclude Include="PointSpriteRenderer.h" />
     <ClInclude Include="RenderBufferObject.h" />
     <ClInclude Include="ScreenRendererBase.h" />
@@ -125,6 +129,9 @@
     <ClInclude Include="VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Shaders\AccumBuffer.fs" />
+    <None Include="..\Shaders\AccumBuffer.gs" />
+    <None Include="..\Shaders\AccumBuffer.vs" />
     <None Include="..\Shaders\Billboard.fs" />
     <None Include="..\Shaders\Billboard.gs" />
     <None Include="..\Shaders\Billboard.vs" />
@@ -134,6 +141,9 @@
     <None Include="..\Shaders\DepthSmoothing.fs" />
     <None Include="..\Shaders\DepthSmoothing.gs" />
     <None Include="..\Shaders\DepthSmoothing.vs" />
+    <None Include="..\Shaders\PBVR.fs" />
+    <None Include="..\Shaders\PBVR.gs" />
+    <None Include="..\Shaders\PBVR.vs" />
     <None Include="..\Shaders\PointSprite.fs" />
     <None Include="..\Shaders\PointSprite.gs" />
     <None Include="..\Shaders\PointSprite.vs" />

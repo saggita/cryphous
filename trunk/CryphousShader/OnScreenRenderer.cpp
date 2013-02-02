@@ -40,7 +40,7 @@ void OnScreenRenderer::onInit()
 void OnScreenRenderer::onRender()
 {
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glEnable( GL_DEPTH_TEST );
 
 	TextureObject& textureObject = *texture;
@@ -59,6 +59,9 @@ void OnScreenRenderer::onRender()
 	shaderObject.setVertex("position", points );
 	shaderObject.drawQuads( 4);
 	shaderObject.release();
+
+	glAccum(GL_ACCUM, 1.0/3.0);
+
 
 	textureObject.release();
 
