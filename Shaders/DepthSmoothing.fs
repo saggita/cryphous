@@ -1,7 +1,7 @@
 #version 330
 
 uniform sampler2D depthTexture;
-const ivec2 smoothScale = ivec2(1, 1);
+const ivec2 smoothScale = ivec2(1, 0);
 const float fallOff = 2.0;
 
 out vec4 fragColor;
@@ -26,7 +26,7 @@ void main(void)
 		float sampleDepth = texelFetch( depthTexture, fragCoord + x * smoothScale, 0 ).x;
 		
 		// spatial domain.
-		float r = float(x) * float(smoothScale.x);
+		float r = float(x) * 0.1f;//float(smoothScale.x);
 		float w = exp(-r*r);
 		
 		// range domain.

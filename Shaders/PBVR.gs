@@ -22,9 +22,6 @@ void main() {
 	float dist = length(gl_Position);
 	gl_PointSize = pointSize / dist;
 	color = vertex[i].color;
-	if( repeatLevel == 10 ) {
-		color.r += 0.1 * repeatLevel;
-	}
 	EmitVertex();
 	EndPrimitive();
   }

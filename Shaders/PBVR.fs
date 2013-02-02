@@ -3,6 +3,7 @@
 in vec4 color;
 out vec4 fragColor;
 uniform float pointSize;
+//uniform float maxRepeat;
 
 //const vec3 specularColor = vec3( 1.0, 0.0, 0.0);
 
@@ -23,7 +24,7 @@ void main(void)
 
 	fragColor.rgb = color.rgb * diffuse;
 	//float alpha = exp(-distance*2.0);
-	fragColor.a = 1.0;
+	fragColor.a = 0.2;
 
 	
 	//vec3 half = normalize( lightDirection + normalize(-eyePosition) );

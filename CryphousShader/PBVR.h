@@ -17,6 +17,8 @@ public:
 
 	void setVisualParticles(const VisualParticleList& visualParticles);
 
+	void setMaxRepeat(const int maxRepeat) { this->maxRepeat = maxRepeat; }
+
 	void setRepeatLevel(const int repeatLevel) { this->repeatLevel = repeatLevel; }
 
 protected:
@@ -32,6 +34,7 @@ private:
 
 	float& size;
 	float& alpha;
+	int maxRepeat;
 	int repeatLevel;
 };
 

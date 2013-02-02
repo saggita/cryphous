@@ -5,6 +5,7 @@ uniform mat4 projectionMatrix;
 in vec3 eyePosition;
 out vec4 fragColor;
 uniform float pointSize;
+in float dist;
 
 void main(void)
 {
@@ -22,6 +23,6 @@ void main(void)
 
 	float normalDepth = (clipSpacePosition.z / clipSpacePosition.w) * 0.5 + 0.5;
 
-	fragColor.rgb = vec3(normalDepth);
+	fragColor.rgb = vec3( dist / 100.0f + normal.z / 100.0f);//normalDepth);
 	fragColor.a = 0.5;
 }
