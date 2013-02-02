@@ -77,6 +77,12 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="PBVR.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="AccumBufferRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrameBufferObject.h">
@@ -133,6 +139,12 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="PBVR.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="AccumBufferRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Billboard.fs">
@@ -196,6 +208,24 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\Thickness.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PBVR.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PBVR.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PBVR.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\AccumBuffer.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\AccumBuffer.gs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\AccumBuffer.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

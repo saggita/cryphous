@@ -23,6 +23,8 @@
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
 #include "ThicknessRenderer.h"
+#include "PBVR.h"
+#include "AccumBufferRenderer.h"
 
 #include <iostream>
 
@@ -56,6 +58,8 @@ Cryphous::Shader::ThicknessRenderer thicknessRenderer( width, height, pointSize,
 Cryphous::Shader::ScreenSpaceFluidRenderer screenSpaceFluidRenderer( width, height);
 Cryphous::Shader::OnScreenRenderer onScreenRenderer(width, height);
 Cryphous::Shader::DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
+PBVR pbvr(width, height, pointSize, alpha);
+AccumBufferRenderer accumBufferRenderer( width, height);
 
 TextureObject* selectedTexture;
 
@@ -96,6 +100,7 @@ void proceedSimulation(int id)
 	depthRenderer.setVisualParticles( visualParticles );
 	thicknessRenderer.setVisualParticles( visualParticles );
 	pointSpriteRenderer.setVisualParticles( visualParticles );
+	pbvr.setVisualParticles( visualParticles );
 }
 
 
@@ -119,10 +124,14 @@ void onDisplay()
 	screenSpaceFluidRenderer.setBackgroundTexture( &bmpTexture );
 	screenSpaceFluidRenderer.render();
 
-
+	pbvr.render();
 	onScreenRenderer.setTexture( selectedTexture );
 	onScreenRenderer.render();
+	
+	accumBufferRenderer.setTexture( &(depthRenderer.getFrameBufferObject()->getTextureObject() ) );
+	accumBufferRenderer.render();
 
+	
 	glutSwapBuffers();
 
 	assert( GLSLUtility::hasNoError() );
@@ -156,6 +165,8 @@ void onInit()
 	thicknessSmoothingRenderer.init();
 	screenSpaceFluidRenderer.init();
 	onScreenRenderer.init();
+	accumBufferRenderer.init();
+	pbvr.init();
 	selectedTexture = &(pointSpriteRenderer.getFrameBufferObject()->getTextureObject());
 }
 
@@ -202,6 +213,9 @@ void changeRenderer(int id)
 	}
 	else if( selectedId == 4 ) {
 		selectedTexture = &(screenSpaceFluidRenderer.getFrameBufferObject()->getTextureObject() );
+	}
+	else if( selectedId == 5 ) {
+		selectedTexture = &(pbvr.getFrameBufferObject()->getTextureObject() );
 	}
 	else {
 		assert( false );
@@ -285,6 +299,7 @@ void createControl()
 	glui->add_radiobutton_to_group( renderingGroup, "DepthSmoothing");
 	glui->add_radiobutton_to_group( renderingGroup, "Thickness" );
 	glui->add_radiobutton_to_group( renderingGroup, "ScreenSpaceFluid");
+	glui->add_radiobutton_to_group( renderingGroup, "PBVR");
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );
