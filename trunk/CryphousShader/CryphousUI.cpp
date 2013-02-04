@@ -23,8 +23,6 @@
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
 #include "ThicknessRenderer.h"
-#include "PBVR.h"
-#include "AccumBufferRenderer.h"
 
 #include <iostream>
 
@@ -58,8 +56,6 @@ ThicknessRenderer thicknessRenderer( width, height, pointSize, alpha);
 ScreenSpaceFluidRenderer screenSpaceFluidRenderer( width, height);
 OnScreenRenderer onScreenRenderer(width, height);
 DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
-PBVR pbvr(width, height, pointSize, alpha);
-AccumBufferRenderer accumBufferRenderer( width, height);
 FrameBufferObject* fbo;
 
 
@@ -69,9 +65,9 @@ GLUI_RadioGroup * renderingGroup;
 
 int mainWindow;
 
-Box fluidBoundary(Vector3d( -1.5, 0.5, 0.5), Vector3d( 10.0, 5.5, 1.5) );
+Box fluidBoundary(Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 19.5) );
 
-Bitmap bitmap("Test.bmp");
+Bitmap bitmap("s_cloud2.bmp");//("Test.bmp");
 
 bool isRunning = true;
 
@@ -107,7 +103,6 @@ void proceedSimulation(int id)
 	depthRenderer.setVisualParticles( visualParticles );
 	thicknessRenderer.setVisualParticles( visualParticles );
 	pointSpriteRenderer.setVisualParticles( visualParticles );
-	pbvr.setVisualParticles( visualParticles );
 }
 
 
@@ -131,18 +126,6 @@ void onDisplay()
 	screenSpaceFluidRenderer.setBackgroundTexture( &bmpTexture );
 	screenSpaceFluidRenderer.render();
 
-
-	for( size_t i = 0; i < 12; ++i ) {
-		pbvr.setMaxRepeat(12);
-		pbvr.setRepeatLevel(i);
-		pbvr.render();
-
-		accumBufferRenderer.setTextures( &(pbvr.getFrameBufferObject()->getTextureObject() ), &fbo->getTextureObject() );
-		accumBufferRenderer.render();
-		FrameBufferObject* rendered = accumBufferRenderer.getFrameBufferObject();	
-		std::swap( rendered, fbo );
-		accumBufferRenderer.setFrameBufferObject( rendered );
-	}
 
 	onScreenRenderer.setTexture( selectedTexture );
 	onScreenRenderer.render();
@@ -182,8 +165,6 @@ void onInit()
 	thicknessSmoothingRenderer.init();
 	screenSpaceFluidRenderer.init();
 	onScreenRenderer.init();
-	accumBufferRenderer.init();
-	pbvr.init();
 	selectedTexture = &(pointSpriteRenderer.getFrameBufferObject()->getTextureObject());
 }
 
@@ -230,12 +211,6 @@ void changeRenderer(int id)
 	}
 	else if( selectedId == 4 ) {
 		selectedTexture = &(screenSpaceFluidRenderer.getFrameBufferObject()->getTextureObject() );
-	}
-	else if( selectedId == 5 ) {
-		selectedTexture = &(pbvr.getFrameBufferObject()->getTextureObject() );
-	}
-	else if( selectedId == 6 ) {
-		selectedTexture = &(accumBufferRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else {
 		assert( false );
@@ -325,8 +300,6 @@ void createControl()
 	glui->add_radiobutton_to_group( renderingGroup, "DepthSmoothing");
 	glui->add_radiobutton_to_group( renderingGroup, "Thickness" );
 	glui->add_radiobutton_to_group( renderingGroup, "ScreenSpaceFluid");
-	glui->add_radiobutton_to_group( renderingGroup, "PBVR");
-	glui->add_radiobutton_to_group( renderingGroup, "Accumulation");
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );

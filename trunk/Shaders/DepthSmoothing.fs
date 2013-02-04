@@ -17,7 +17,7 @@ void main(void)
 		return;
 	}*/
 
-	int filterRadius = 10;
+	int filterRadius = 5;
 	
 	float sum = 0.0;
 	float wsum = 0.0;
