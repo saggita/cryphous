@@ -65,28 +65,46 @@ GLUI_RadioGroup * renderingGroup;
 
 int mainWindow;
 
-Box fluidBoundary(Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 19.5) );
+std::vector<Box> fluidBoundary(2);//Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 19.5) );
 
 Bitmap bitmap("s_cloud2.bmp");//("Test.bmp");
 
-bool isRunning = true;
+bool isRunning = false;
+std::vector<int> isSphere(2, 0);
+std::vector<float> radius(2, 5.0);
+
+std::vector<PhysicsObjectCondition> conditions;
 
 void refreshSimulation(int id)
 {
 	factory.init();
 	simulation.init();
+	conditions.clear();
 
-	std::vector<Vector3d> points;
-	for( float x = fluidBoundary.minX; x <= fluidBoundary.maxX; x+=0.5 ) {
-		for( float y = fluidBoundary.minY; y <= fluidBoundary.maxY; y+= 0.5 ) {
-			for( float z = fluidBoundary.minZ; z <= fluidBoundary.maxZ; z+= 0.5 ) {
-				points.push_back( Vector3d( x, y, z ) );
+	for( int i = 0; i < 2; ++i ) {
+		std::vector<Vector3d> points;
+		for( float x = fluidBoundary[i].minX; x <= fluidBoundary[i].maxX; x+=0.5 ) {
+			for( float y = fluidBoundary[i].minY; y <= fluidBoundary[i].maxY; y+= 0.5 ) {
+				for( float z = fluidBoundary[i].minZ; z <= fluidBoundary[i].maxZ; z+= 0.5 ) {
+					if( !isSphere[i] ) {
+						points.push_back( Vector3d( x, y, z ) );
+					}
+					else {
+						const Vector3d& center = fluidBoundary[i].getCenter();
+						if( center.getDistanceSquared(Vector3d( x, y, z ) ) < radius[i] * radius[i]){
+							points.push_back( Vector3d( x, y, z ) );
+						}
+					}
+				}
 			}
 		}
+		Cryphous::Physics::PhysicsObjectCondition condition1( points, 1000.0f, pressure, viscosity, Cryphous::Physics::PhysicsObjectCondition::Fluid );
+		conditions.push_back( condition1 );
 	}
-	Cryphous::Physics::PhysicsObjectCondition condition1( points, 1000.0f, pressure, viscosity, Cryphous::Physics::PhysicsObjectCondition::Fluid );
-	factory.createPhysicsObject( condition1, setting );
 
+	for( const PhysicsObjectCondition& condition: conditions ) {
+		factory.createPhysicsObject( condition, setting );
+	}
 	std::cout << "Particles = " << factory.getParticles().size() << std::endl;
 }
 
@@ -166,26 +184,13 @@ void onInit()
 	screenSpaceFluidRenderer.init();
 	onScreenRenderer.init();
 	selectedTexture = &(pointSpriteRenderer.getFrameBufferObject()->getTextureObject());
+
+	fluidBoundary[0] = Box(Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 0.5) );
+	fluidBoundary[1] = Box(Vector3d( -19.5, 0.5, 0.5), Vector3d( 0.0, 5.5, 19.5) );
 }
 
 void onResize(int width, int height)
 {
-}
-
-void onKeyDown(unsigned char key, int x, int y )
-{
-	if( key == 's' ) {
-		isIdle ? glutIdleFunc( NULL ) : glutIdleFunc( onIdle );
-		isIdle = !isIdle;
-	}
-	else if( key == 'd' ) {
-		distance += 1.0;
-	}
-	else if( key == 'D' ) {
-		distance -= 1.0;
-	}
-
-	onDisplay();
 }
 
 void viewReset(int id)
@@ -274,12 +279,16 @@ void createControl()
 	listBox->add_item(2, "Obstacle");
 
 	GLUI_Rollout* objectBoundary = glui->add_rollout("ObjectBoundary");
-	glui->add_spinner_to_panel( objectBoundary, "MinX", GLUI_SPINNER_FLOAT, &fluidBoundary.minX );
-	glui->add_spinner_to_panel( objectBoundary, "MaxX", GLUI_SPINNER_FLOAT, &fluidBoundary.maxX );
-	glui->add_spinner_to_panel( objectBoundary, "MinY", GLUI_SPINNER_FLOAT, &fluidBoundary.minY );
-	glui->add_spinner_to_panel( objectBoundary, "MaxY", GLUI_SPINNER_FLOAT, &fluidBoundary.maxY );
-	glui->add_spinner_to_panel( objectBoundary, "MinZ", GLUI_SPINNER_FLOAT, &fluidBoundary.minZ );
-	glui->add_spinner_to_panel( objectBoundary, "MaxZ", GLUI_SPINNER_FLOAT, &fluidBoundary.maxZ );
+	for( int i = 0; i < 2; ++i ) {
+		glui->add_spinner_to_panel( objectBoundary, "MinX", GLUI_SPINNER_FLOAT, &fluidBoundary[i].minX );
+		glui->add_spinner_to_panel( objectBoundary, "MaxX", GLUI_SPINNER_FLOAT, &fluidBoundary[i].maxX );
+		glui->add_spinner_to_panel( objectBoundary, "MinY", GLUI_SPINNER_FLOAT, &fluidBoundary[i].minY );
+		glui->add_spinner_to_panel( objectBoundary, "MaxY", GLUI_SPINNER_FLOAT, &fluidBoundary[i].maxY );
+		glui->add_spinner_to_panel( objectBoundary, "MinZ", GLUI_SPINNER_FLOAT, &fluidBoundary[i].minZ );
+		glui->add_spinner_to_panel( objectBoundary, "MaxZ", GLUI_SPINNER_FLOAT, &fluidBoundary[i].maxZ );
+		glui->add_checkbox_to_panel( objectBoundary, "Sphere", &isSphere[i] );
+		glui->add_spinner_to_panel( objectBoundary, "Radius", GLUI_SPINNER_FLOAT, &radius[i] );
+	}
 
 	GLUI_Spinner *boundaryMinXSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MinX", GLUI_SPINNER_FLOAT, &setting.boundaryBox.minX );
 	GLUI_Spinner *boundaryMaxXSpinner = glui->add_spinner_to_panel( simulationSettingRollout, "MaxX", GLUI_SPINNER_FLOAT, &setting.boundaryBox.maxX );
@@ -312,8 +321,6 @@ void main(int argc, char** argv)
 	glutInit(&argc, argv);
 	onInit();
 	glutDisplayFunc(onDisplay);
-	//glutIdleFunc(onIdle);
-	glutKeyboardFunc(onKeyDown);
 	glutReshapeFunc(onResize);
 	glutMouseFunc(onMouse);
 	glutMotionFunc(onMotion);
