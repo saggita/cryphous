@@ -67,7 +67,7 @@ int mainWindow;
 
 std::vector<Box> fluidBoundary(2);//Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 19.5) );
 
-Bitmap bitmap("s_cloud2.bmp");//("Test.bmp");
+Bitmap bitmap("caustic2.bmp");//("s_cloud2.bmp");//("Test.bmp");
 
 bool isRunning = true;
 std::vector<int> isSphere(2, 0);
@@ -81,7 +81,7 @@ void refreshSimulation(int id)
 	simulation.init();
 	conditions.clear();
 
-	for( int i = 0; i < 2; ++i ) {
+	for( int i = 0; i < 1; ++i ) {
 		std::vector<Vector3d> points;
 		for( float x = fluidBoundary[i].minX; x <= fluidBoundary[i].maxX; x+=0.5 ) {
 			for( float y = fluidBoundary[i].minY; y <= fluidBoundary[i].maxY; y+= 0.5 ) {
@@ -281,7 +281,7 @@ void createControl()
 	listBox->add_item(2, "Obstacle");
 
 	GLUI_Rollout* objectBoundary = glui->add_rollout("ObjectBoundary");
-	for( int i = 0; i < 2; ++i ) {
+	for( int i = 0; i < 1; ++i ) {
 		glui->add_spinner_to_panel( objectBoundary, "MinX", GLUI_SPINNER_FLOAT, &fluidBoundary[i].minX );
 		glui->add_spinner_to_panel( objectBoundary, "MaxX", GLUI_SPINNER_FLOAT, &fluidBoundary[i].maxX );
 		glui->add_spinner_to_panel( objectBoundary, "MinY", GLUI_SPINNER_FLOAT, &fluidBoundary[i].minY );

@@ -8,7 +8,7 @@ uniform float near;
 uniform mat4 projectionMatrix;
 uniform mat4 modelviewMatrix;
 
-const vec3 fluidColor = vec3( 0.5, 0.5, 1.0 ); //  vec3(0.25, 0.5, 0.25);// monster color; // vec3(0.5, 0.25, 0.25); bloody color;
+const vec3 fluidColor = vec3(0.25, 0.25, 0.5);
 const vec3 specularColor = vec3( 1.0, 1.0, 1.0 );
 
 out vec4 fragColor;
