@@ -25,17 +25,14 @@ ThicknessRenderer::~ThicknessRenderer(void)
 void ThicknessRenderer::setVisualParticles(const VisualParticleList& visualParticles)
 {
 	positions.clear();
-	colors.clear();
+	densities.clear();
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
 		const Vector3d& center = vp.center;
 		positions.push_back( center.x );
 		positions.push_back( center.y );
 		positions.push_back( center.z );
-		colors.push_back( 0.5f);
-		colors.push_back( 0.5f);
-		colors.push_back( 0.9f);
-		colors.push_back( 0.1f );
+		densities.push_back( vp.density);
 	}
 }
 
@@ -54,6 +51,7 @@ void ThicknessRenderer::onRender()
 	if( !positions.empty() ) {
 		shaderObject.apply();
 		shaderObject.setUniform("pointSize", size);
+		shaderObject.setVertexAttrib( "density", densities, 1 );
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
 		shaderObject.setVertex( "position", positions ); 

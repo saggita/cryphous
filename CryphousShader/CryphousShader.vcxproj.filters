@@ -133,6 +133,7 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="VisualParticle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\Billboard.fs">
