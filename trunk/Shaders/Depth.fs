@@ -12,7 +12,7 @@ void main(void)
 	vec3 normal;
 	normal.xy = gl_PointCoord.xy * vec2(2.0, -2.0) + vec2(-1.0, 1.0);
 	float distance = dot(normal.xy, normal.xy);
-	if (distance > 0.99) {
+	if (distance >= 1.0) {
 		discard;
 	}
 	normal.z = sqrt( 1.0 - distance );
@@ -23,6 +23,6 @@ void main(void)
 
 	float normalDepth = (clipSpacePosition.z / clipSpacePosition.w) * 0.5 + 0.5;
 
-	fragColor.rgb = vec3( dist / 100.0f + normal.z / 100.0f);//normalDepth);
+	fragColor.rgb = vec3( dist / 100.0f + normal.z / 100.0f);
 	fragColor.a = 0.5;
 }

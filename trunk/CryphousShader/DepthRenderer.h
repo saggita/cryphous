@@ -26,7 +26,7 @@ protected:
 
 private:
 	std::vector<double> positions;
-	std::vector<double> colors;
+	std::vector<double> densities;
 
 	const float& size;
 };

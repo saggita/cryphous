@@ -13,12 +13,20 @@ class VisualParticle
 public:
 
 	VisualParticle() :
-		 center( Cryphous::Geometry::Vector3d(0.0f, 0.0f, 0.0f) )
+		 center( Cryphous::Geometry::Vector3d(0.0f, 0.0f, 0.0f) ),
+		 density( 1000.0)
 		 {
 		 }
 
 	VisualParticle( const Cryphous::Geometry::Vector3d& center) :
-		 center( center)
+		 center( center),
+		 density( 1000.0)
+		 {
+		 }
+
+	VisualParticle( const Cryphous::Geometry::Vector3d& center, const float density) :
+		 center( center),
+		 density( density)
 		 {
 		 }
 
@@ -26,6 +34,7 @@ public:
 
 public:
 	Cryphous::Geometry::Vector3d center;
+	float density;
 };
 
 typedef std::list<VisualParticle> VisualParticleList;

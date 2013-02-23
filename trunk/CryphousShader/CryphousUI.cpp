@@ -69,7 +69,7 @@ std::vector<Box> fluidBoundary(2);//Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 
 
 Bitmap bitmap("s_cloud2.bmp");//("Test.bmp");
 
-bool isRunning = false;
+bool isRunning = true;
 std::vector<int> isSphere(2, 0);
 std::vector<float> radius(2, 5.0);
 
@@ -116,7 +116,7 @@ void proceedSimulation(int id)
 	simulation.simulate( &factory, setting);
 	VisualParticleList visualParticles;
 	for( Cryphous::Physics::Particle* particle : factory.getParticles() ) {
-		visualParticles.push_back( VisualParticle( Vector3d(particle->center.x, particle->center.y, particle->center.z) ) );
+		visualParticles.push_back( VisualParticle( Vector3d(particle->center.x, particle->center.y, particle->center.z), particle->density ) );
 	}
 	depthRenderer.setVisualParticles( visualParticles );
 	thicknessRenderer.setVisualParticles( visualParticles );
@@ -187,6 +187,8 @@ void onInit()
 
 	fluidBoundary[0] = Box(Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 0.5) );
 	fluidBoundary[1] = Box(Vector3d( -19.5, 0.5, 0.5), Vector3d( 0.0, 5.5, 19.5) );
+
+	refreshSimulation(0);
 }
 
 void onResize(int width, int height)

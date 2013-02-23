@@ -25,16 +25,14 @@ DepthRenderer::~DepthRenderer(void)
 void DepthRenderer::setVisualParticles(const VisualParticleList& visualParticles)
 {
 	positions.clear();
-	colors.clear();
+	densities.clear();
 	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
 		const VisualParticle& vp = *iter;
 		const Vector3d& center = vp.center;
 		positions.push_back( center.x );
 		positions.push_back( center.y );
 		positions.push_back( center.z );
-		colors.push_back( 1.0f);
-		colors.push_back( 0.0f);
-		colors.push_back( 0.0f);
+		densities.push_back( 1000.0 );//vp.density );
 	}
 }
 
@@ -53,7 +51,8 @@ void DepthRenderer::onRender()
 		shaderObject.setUniform("pointSize", size);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
-		shaderObject.setVertex( "position", positions ); 
+		shaderObject.setVertex( "position", positions );
+		shaderObject.setVertexAttrib( "density", densities, 1 );
 		shaderObject.bindFrag("fragColor");
 		shaderObject.drawPoints( positions.size() / 3 );
 		shaderObject.release();
