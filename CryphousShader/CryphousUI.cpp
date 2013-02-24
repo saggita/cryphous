@@ -67,7 +67,7 @@ int mainWindow;
 
 std::vector<Box> fluidBoundary(2);//Vector3d( 0.0, 0.5, -19.5), Vector3d( 19.5, 5.5, 19.5) );
 
-Bitmap bitmap("caustic2.bmp");//("s_cloud2.bmp");//("Test.bmp");
+Bitmap bitmap("../Shaders/caustic2.bmp");//("s_cloud2.bmp");//("Test.bmp");
 
 bool isRunning = true;
 std::vector<int> isSphere(2, 0);
