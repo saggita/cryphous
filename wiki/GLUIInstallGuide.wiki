@@ -1,4 +1,4 @@
-#GLUI 2.1 Install Guide
+#summary GLUI 2.1 Install Guide
 
 GLUTをあらかじめインストールしておく。
 
