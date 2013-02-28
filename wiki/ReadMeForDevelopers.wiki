@@ -1,3 +1,5 @@
+#summary Read Me for Developers
+
 ===必要環境 / Requirements===
 
 Any C++11 Compiler (Microsoft Visual Studio Express 2012 for Windows Desktop is recommended)
