@@ -1,18 +1,25 @@
-Cryphous 2.0
-2013/1/19
+Cryphous 2.1
+2013/2/24
 
 流体演算およびレンダリングエンジン。
+
 A Fluid Simulation and Rendering Engine.
 
-[必要環境 / Requirements]
-　  -Visual Studio 2012 の Visual C++ 再頒布可能パッケージ (x86)
-	http://www.microsoft.com/ja-jp/download/details.aspx?id=30679
-    -Visual C++ Redistributable for Visual Studio 2012 (x86)
-	http://www.microsoft.com/en-us/download/details.aspx?id=30679
-    -OpenGL3.3 対応ビデオカード
-    -OpenGL3.3 compatible video card
+===必要環境 / Requirements===
 
-[ライセンス / License]
+　  Visual Studio 2012 の Visual C++ 再頒布可能パッケージ (x86)
+
+	http://www.microsoft.com/ja-jp/download/details.aspx?id=30679
+
+    Visual C++ Redistributable for Visual Studio 2012 (x86)
+	
+        http://www.microsoft.com/en-us/download/details.aspx?id=30679
+
+    OpenGL3.3 対応ビデオカード
+
+    OpenGL3.3 compatible video card
+
+===ライセンス / License===
 　本ソフトウェアはMITライセンスで開発されています。
 
 　以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得するすべての人に対し、ソフトウェアを無制限に扱うことを無償で許可します。これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、頒布、サブライセンス、および/または販売する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。 
@@ -26,9 +33,9 @@ A Fluid Simulation and Rendering Engine.
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[バグ報告 / Bug Reports]
+===バグ報告 / Bug Reports===
 　http://code.google.com/p/cryphous/issues/list
 
-[連絡先 / Contact]
+===連絡先 / Contact===
 　cryphous@gmail.com
   https://twitter.com/CryphousCreator
