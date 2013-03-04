@@ -34,6 +34,7 @@ public:
 
 public:
 	Cryphous::Geometry::Vector3d center;
+	//std::vector<float> centers;
 	float density;
 };
 

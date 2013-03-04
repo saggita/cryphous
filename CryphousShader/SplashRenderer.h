@@ -1,19 +1,18 @@
-#ifndef __POINT_SPRITE_RENDERER_H__
-#define __POINT_SPRITE_RENDERER_H__
+#ifndef __SPLASH_RENDERER_H__
+#define __SPLASH_RENDERER_H__
 
 #include "OffScreenRendererBase.h"
 #include "VisualParticle.h"
-#include <memory>
 
 namespace Cryphous{
 	namespace Shader{
 
-class PointSpriteRenderer : public OffScreenRendererBase
+class SplashRenderer : public OffScreenRendererBase
 {
 public:
-	PointSpriteRenderer(const int width, const int height, float& size, float& alpha);
+	SplashRenderer(const int width, const int height, float& size, float& alpha);
 
-	~PointSpriteRenderer(void);
+	~SplashRenderer(void);
 
 	void setVisualParticles(const VisualParticleList& visualParticles);
 

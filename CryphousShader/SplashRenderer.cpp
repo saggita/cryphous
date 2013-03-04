@@ -1,46 +1,48 @@
 #include "GLee.h"
 
-#include "DepthRenderer.h"
+#include "SplashRenderer.h"
+#include "FrameBufferObject.h"
 
 #include <cassert>
 #include <ctime>
 
 #include "GLSLUtility.h"
 
-#include "FrameBufferObject.h"
-
 using namespace Cryphous::Geometry;
 using namespace Cryphous::Shader;
 
-DepthRenderer::DepthRenderer(const int width, const int height, const float& size) :
+SplashRenderer::SplashRenderer(const int width, const int height, float& size, float& alpha ) :
 OffScreenRendererBase( width, height),
-	size( size)
+	size( size),
+	alpha( alpha)
 {
 }
 
-DepthRenderer::~DepthRenderer(void)
+SplashRenderer::~SplashRenderer(void)
 {
 }
 
-void DepthRenderer::setVisualParticles(const VisualParticleList& visualParticles)
+void SplashRenderer::setVisualParticles(const VisualParticleList& visualParticles)
 {
 	positions.clear();
-	densities.clear();
-	for( VisualParticle vp: visualParticles ) {
-		positions.push_back( vp.center.x );
-		positions.push_back( vp.center.y );
-		positions.push_back( vp.center.z );
-		densities.push_back( vp.density );
+	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
+		const VisualParticle& vp = *iter;
+		const Vector3d& center = vp.center;
+		positions.push_back( center.x );
+		positions.push_back( center.y );
+		positions.push_back( center.z );
 	}
 }
 
-void DepthRenderer::onRender()
+void SplashRenderer::onRender()
 {
-	glClearColor( 0.0, 0.0, 0.0, 0.0 );
+	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT );
 	glEnable(GL_POINT_SPRITE);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE); 
-	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
 	glClear( GL_DEPTH_BUFFER_BIT);	
 
@@ -49,19 +51,20 @@ void DepthRenderer::onRender()
 		shaderObject.setUniform("pointSize", size);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
-		shaderObject.setVertex( "position", positions );
-		shaderObject.setVertexAttrib( "density", densities, 1 );
+		shaderObject.setVertex( "position", positions ); 
 		shaderObject.bindFrag("fragColor");
 		shaderObject.drawPoints( positions.size() / 3 );
 		shaderObject.release();
 	}
 
-	glDisable(GL_DEPTH_TEST);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_POINT_SPRITE);
 	glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
 }
 
-void DepthRenderer::onInit()
+void SplashRenderer::onInit()
 {
 	assert( GLSLUtility::hasNoError() );
 
@@ -69,5 +72,5 @@ void DepthRenderer::onInit()
 
 	projectionMatrix.setPerspectiveMatrix(-0.5f, 0.5f, 0.0f, 1.0f, 0.01f, 100.0f );
 	
-	shaderObject.createShader("Depth");
+	shaderObject.createShader("Splash");
 }

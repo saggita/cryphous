@@ -98,6 +98,7 @@
     <ClCompile Include="ScreenRendererBase.cpp" />
     <ClCompile Include="ScreenSpaceFluidRenderer.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="SplashRenderer.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="ThicknessRenderer.cpp" />
     <ClCompile Include="VertexShader.cpp" />
@@ -120,6 +121,7 @@
     <ClInclude Include="ScreenRendererBase.h" />
     <ClInclude Include="ScreenSpaceFluidRenderer.h" />
     <ClInclude Include="ShaderObject.h" />
+    <ClInclude Include="SplashRenderer.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="ThicknessRenderer.h" />
     <ClInclude Include="VertexShader.h" />
@@ -144,6 +146,9 @@
     <None Include="..\Shaders\ScreenSpaceFluid.fs" />
     <None Include="..\Shaders\ScreenSpaceFluid.gs" />
     <None Include="..\Shaders\ScreenSpaceFluid.vs" />
+    <None Include="..\Shaders\Splash.fs" />
+    <None Include="..\Shaders\Splash.gs" />
+    <None Include="..\Shaders\Splash.vs" />
     <None Include="..\Shaders\Thickness.fs" />
     <None Include="..\Shaders\Thickness.gs" />
     <None Include="..\Shaders\Thickness.vs" />

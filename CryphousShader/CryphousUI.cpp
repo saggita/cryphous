@@ -23,6 +23,7 @@
 #include "DepthSmoothingRenderer.h"
 #include "ScreenSpaceFluidRenderer.h"
 #include "ThicknessRenderer.h"
+#include "SplashRenderer.h"
 
 #include <iostream>
 
@@ -56,8 +57,9 @@ ThicknessRenderer thicknessRenderer( width, height, pointSize, alpha);
 ScreenSpaceFluidRenderer screenSpaceFluidRenderer( width, height);
 OnScreenRenderer onScreenRenderer(width, height);
 DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
-FrameBufferObject* fbo;
+SplashRenderer splashRenderer( width, height, pointSize, alpha);
 
+FrameBufferObject* fbo;
 
 TextureObject* selectedTexture;
 
@@ -121,6 +123,7 @@ void proceedSimulation(int id)
 	depthRenderer.setVisualParticles( visualParticles );
 	thicknessRenderer.setVisualParticles( visualParticles );
 	pointSpriteRenderer.setVisualParticles( visualParticles );
+	splashRenderer.setVisualParticles(visualParticles);
 }
 
 
@@ -144,6 +147,7 @@ void onDisplay()
 	screenSpaceFluidRenderer.setBackgroundTexture( &bmpTexture );
 	screenSpaceFluidRenderer.render();
 
+	splashRenderer.render();
 
 	onScreenRenderer.setTexture( selectedTexture );
 	onScreenRenderer.render();
@@ -182,6 +186,7 @@ void onInit()
 	thicknessRenderer.init();
 	thicknessSmoothingRenderer.init();
 	screenSpaceFluidRenderer.init();
+	splashRenderer.init();
 	onScreenRenderer.init();
 	selectedTexture = &(pointSpriteRenderer.getFrameBufferObject()->getTextureObject());
 
@@ -218,6 +223,9 @@ void changeRenderer(int id)
 	}
 	else if( selectedId == 4 ) {
 		selectedTexture = &(screenSpaceFluidRenderer.getFrameBufferObject()->getTextureObject() );
+	}
+	else if( selectedId == 5 ) {
+		selectedTexture = &(splashRenderer.getFrameBufferObject()->getTextureObject() );
 	}
 	else {
 		assert( false );
@@ -311,6 +319,7 @@ void createControl()
 	glui->add_radiobutton_to_group( renderingGroup, "DepthSmoothing");
 	glui->add_radiobutton_to_group( renderingGroup, "Thickness" );
 	glui->add_radiobutton_to_group( renderingGroup, "ScreenSpaceFluid");
+	glui->add_radiobutton_to_group( renderingGroup, "Splash");
 
 	glui->set_main_gfx_window( mainWindow );
 	GLUI_Master.set_glutIdleFunc( onIdle );
