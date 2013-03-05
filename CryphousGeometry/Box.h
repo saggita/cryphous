@@ -1,5 +1,5 @@
-#ifndef __BOX_H__
-#define __BOX_H__
+#ifndef __CRYPHOUS_BOX_H__
+#define __CRYPHOUS_BOX_H__
 
 #include "Vector3d.h"
 
@@ -41,18 +41,6 @@ public:
 	Vector3d Box::getMin() const {
 		return Vector3d( minX, minY, minZ );
 	}
-
-	float getMaxX() const { return maxX; }
-
-	float getMinX() const { return minX; }
-
-	float getMaxY() const { return maxY; }
-
-	float getMinY() const { return minY; }
-
-	float getMaxZ() const { return maxZ; }
-
-	float getMinZ() const { return minZ; }
 
 	bool isInterior(const Vector3d &point) const {
 		const bool xIsInterior = ( minX < point.x && point.x < maxX );

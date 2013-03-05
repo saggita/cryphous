@@ -1,5 +1,5 @@
-#ifndef __OFF_SCREEN_RENDERER_BASE_H__
-#define __OFF_SCREEN_RENDERER_BASE_H__
+#ifndef __CRYPHOUS_OFF_SCREEN_RENDERER_BASE_H__
+#define __CRYPHOUS_OFF_SCREEN_RENDERER_BASE_H__
 
 #include "ScreenRendererBase.h"
 

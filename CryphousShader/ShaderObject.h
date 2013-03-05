@@ -1,5 +1,5 @@
-#ifndef __SHADER_OBJECT_H__
-#define __SHADER_OBJECT_H__
+#ifndef __CRYPHOUS_SHADER_OBJECT_H__
+#define __CRYPHOUS_SHADER_OBJECT_H__
 
 #include "GLee.h"
 

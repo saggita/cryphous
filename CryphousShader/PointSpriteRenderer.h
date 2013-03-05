@@ -1,5 +1,5 @@
-#ifndef __POINT_SPRITE_RENDERER_H__
-#define __POINT_SPRITE_RENDERER_H__
+#ifndef __CRYPHOUS_POINT_SPRITE_RENDERER_H__
+#define __CRYPHOUS_POINT_SPRITE_RENDERER_H__
 
 #include "OffScreenRendererBase.h"
 #include "VisualParticle.h"

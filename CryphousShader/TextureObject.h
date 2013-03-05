@@ -1,5 +1,5 @@
-#ifndef __TEXTURE_OBJECT_H__
-#define __TEXTURE_OBJECT_H__
+#ifndef __CRYPHOUS_TEXTURE_OBJECT_H__
+#define __CRYPHOUS_TEXTURE_OBJECT_H__
 
 #include "GLee.h"
 #include <vector>

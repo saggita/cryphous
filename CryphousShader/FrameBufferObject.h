@@ -1,5 +1,5 @@
-#ifndef __FRAME_BUFFER_OBJECT_H__
-#define __FRAME_BUFFER_OBJECT_H__
+#ifndef __CRYPHOUS_FRAME_BUFFER_OBJECT_H__
+#define __CRYPHOUS_FRAME_BUFFER_OBJECT_H__
 
 namespace Cryphous{
 	namespace Shader{

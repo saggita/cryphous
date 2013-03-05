@@ -1,5 +1,5 @@
-#ifndef __SPLASH_RENDERER_H__
-#define __SPLASH_RENDERER_H__
+#ifndef __CRYPHOUS_SPLASH_RENDERER_H__
+#define __CRYPHOUS_SPLASH_RENDERER_H__
 
 #include "OffScreenRendererBase.h"
 #include "VisualParticle.h"
