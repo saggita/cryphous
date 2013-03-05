@@ -1,5 +1,5 @@
-#ifndef __SPH_SOLVER_H__
-#define __SPH_SOLVER_H__
+#ifndef __CRYPHOUS_SPH_SOLVER_H__
+#define __CRYPHOUS_SPH_SOLVER_H__
 
 #include "NeighborSearcher.h"
 #include "SPHPairSolver.h"

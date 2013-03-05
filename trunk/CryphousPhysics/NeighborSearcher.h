@@ -1,5 +1,5 @@
-#ifndef __NEIGHBOR_SEARCHER_H__
-#define __NEIGHBOR_SEARCHER_H__
+#ifndef __CRYPHOUS_NEIGHBOR_SEARCHER_H__
+#define __CRYPHOUS_NEIGHBOR_SEARCHER_H__
 
 #include "ParticlePair.h"
 #include "SearchParticle.h"

@@ -1,5 +1,5 @@
-#ifndef __SPH_PAIR_SOLVER_H__
-#define __SPH_PAIR_SOLVER_H__
+#ifndef __CRYPHOUS_SPH_PAIR_SOLVER_H__
+#define __CRYPHOUS_SPH_PAIR_SOLVER_H__
 
 #include "../CryphousGeometry/Vector3d.h"
 #include "Kernels3D.h"

@@ -1,5 +1,5 @@
-#ifndef __PARTICLE_FACTORY_H__
-#define __PARTICLE_FACTORY_H__
+#ifndef __CRYPHOUS_PARTICLE_FACTORY_H__
+#define __CRYPHOUS_PARTICLE_FACTORY_H__
 
 #include <vector>
 #include "Uncopyable.h"

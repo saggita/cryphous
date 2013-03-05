@@ -1,5 +1,5 @@
-#ifndef __SEARCH_PARTICLE_FACTORY_H__
-#define __SEARCH_PARTICLE_FACTORY_H__
+#ifndef __CRYPHOUS_SEARCH_PARTICLE_FACTORY_H__
+#define __CRYPHOUS_SEARCH_PARTICLE_FACTORY_H__
 
 #include <vector>
 #include <algorithm>

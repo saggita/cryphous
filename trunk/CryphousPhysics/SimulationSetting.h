@@ -1,5 +1,5 @@
-#ifndef __SIMULATION_SETTING_H__
-#define __SIMULATION_SETTING_H__
+#ifndef __CRYPHOUS_SIMULATION_SETTING_H__
+#define __CRYPHOUS_SIMULATION_SETTING_H__
 
 #include "../CryphousGeometry/Vector3d.h"
 #include "../CryphousGeometry/Box.h"

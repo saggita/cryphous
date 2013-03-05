@@ -1,5 +1,5 @@
-#ifndef __KERNELS_3D_H__
-#define __KERNELS_3D_H__
+#ifndef __CRYPHOUS_KERNELS_3D_H__
+#define __CRYPHOUS_KERNELS_3D_H__
 
 #include "../CryphousGeometry/Vector3d.h"
 #include "../CryphousGeometry/Tolerances.h"

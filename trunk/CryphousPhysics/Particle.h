@@ -1,5 +1,5 @@
-#ifndef __PARTICLE_H__
-#define __PARTICLE_H__
+#ifndef __CRYPHOUS_PARTICLE_H__
+#define __CRYPHOUS_PARTICLE_H__
 
 #include "Uncopyable.h"
 #include <list>

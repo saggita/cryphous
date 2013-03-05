@@ -1,5 +1,5 @@
-#ifndef __OBSTACLE_H__
-#define __OBSTACLE_H__
+#ifndef __CRYPHOUS_OBSTACLE_H__
+#define __CRYPHOUS_OBSTACLE_H__
 
 #include "PhysicsObject.h"
 #include <list>

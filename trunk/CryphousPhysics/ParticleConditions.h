@@ -1,5 +1,5 @@
-#ifndef __PARTICLE_CONDITIONS_H__
-#define __PARTICLE_CONDITIONS_H__
+#ifndef __CRYPHOUS_PARTICLE_CONDITIONS_H__
+#define __CRYPHOUS_PARTICLE_CONDITIONS_H__
 
 #include <vector>
 

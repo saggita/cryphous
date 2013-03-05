@@ -1,5 +1,5 @@
-#ifndef __PHYSICS_OBJECT_FACTORY_H__
-#define __PHYSICS_OBJECT_FACTORY_H__
+#ifndef __CRYPHOUS_PHYSICS_OBJECT_FACTORY_H__
+#define __CRYPHOUS_PHYSICS_OBJECT_FACTORY_H__
 
 #include "Uncopyable.h"
 #include <vector>
