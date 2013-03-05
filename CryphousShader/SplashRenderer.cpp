@@ -25,12 +25,12 @@ SplashRenderer::~SplashRenderer(void)
 void SplashRenderer::setVisualParticles(const VisualParticleList& visualParticles)
 {
 	positions.clear();
-	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
-		const VisualParticle& vp = *iter;
-		const Vector3d& center = vp.center;
-		positions.push_back( center.x );
-		positions.push_back( center.y );
-		positions.push_back( center.z );
+	densities.clear();
+	for( const VisualParticle& vp: visualParticles ) { 
+		positions.push_back( vp.center.x );
+		positions.push_back( vp.center.y );
+		positions.push_back( vp.center.z );
+		densities.push_back( vp.density );
 	}
 }
 
@@ -51,12 +51,12 @@ void SplashRenderer::onRender()
 		shaderObject.setUniform("pointSize", size);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
-		shaderObject.setVertex( "position", positions ); 
+		shaderObject.setVertex( "position", positions );
+		shaderObject.setVertexAttrib("density", densities, 1 );
 		shaderObject.bindFrag("fragColor");
 		shaderObject.drawPoints( positions.size() / 3 );
 		shaderObject.release();
 	}
-
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

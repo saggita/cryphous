@@ -27,5 +27,6 @@
     <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="Elastic.cpp" />
   </ItemGroup>
 </Project>
