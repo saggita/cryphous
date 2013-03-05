@@ -1,5 +1,5 @@
-#ifndef __PARTICLE_PAIR_H__
-#define __PARTICLE_PAIR_H__
+#ifndef __CRYPHOUS_PARTICLE_PAIR_H__
+#define __CRYPHOUS_PARTICLE_PAIR_H__
 
 #include <vector>
 

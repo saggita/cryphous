@@ -1,5 +1,5 @@
-#ifndef __RIGID_ENFORCER_H__
-#define __RIGID_ENFORCER_H__
+#ifndef __CRYPHOUS_RIGID_ENFORCER_H__
+#define __CRYPHOUS_RIGID_ENFORCER_H__
 
 #include "../CryphousGeometry/Tolerances.h"
 #include "../CryphousGeometry/Vector3d.h"

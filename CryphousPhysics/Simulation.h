@@ -1,5 +1,5 @@
-#ifndef __SIMULATION_H__
-#define __SIMULATION_H__
+#ifndef __CRYPHOUS_SIMULATION_H__
+#define __CRYPHOUS_SIMULATION_H__
 
 #include "Uncopyable.h"
 

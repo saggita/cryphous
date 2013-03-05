@@ -1,5 +1,5 @@
-#ifndef __PROFILER_H__
-#define __PROFILER_H__
+#ifndef __CRYPHOUS_PROFILER_H__
+#define __CRYPHOUS_PROFILER_H__
 
 #include <ctime>
 

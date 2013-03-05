@@ -1,5 +1,5 @@
-#ifndef __ELASTIC_H__
-#define __ELASTIC_H__
+#ifndef __CRYPHOUS_ELASTIC_H__
+#define __CRYPHOUS_ELASTIC_H__
 
 #include "../CryphousGeometry/Vector3d.h"
 

@@ -1,5 +1,5 @@
-#ifndef __SEARCH_PARTICLE_H__
-#define __SEARCH_PARTICLE_H__
+#ifndef __CRYPHOUS_SEARCH_PARTICLE_H__
+#define __CRYPHOUS_SEARCH_PARTICLE_H__
 
 #include "../CryphousGeometry/Vector3d.h"
 

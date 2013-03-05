@@ -1,5 +1,5 @@
-#ifndef __BOUNDARY_SOLVER_H__
-#define __BOUNDARY_SOLVER_H__
+#ifndef __CRYPHOUS_BOUNDARY_SOLVER_H__
+#define __CRYPHOUS_BOUNDARY_SOLVER_H__
 
 #include "../CryphousGeometry/Vector3d.h"
 #include "../CryphousGeometry/Box.h"
