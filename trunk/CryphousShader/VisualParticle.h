@@ -1,5 +1,5 @@
-#ifndef __VISUAL_PARTICLE_H__
-#define __VISUAL_PARTICLE_H__
+#ifndef __CRYPHOUS_VISUAL_PARTICLE_H__
+#define __CRYPHOUS_VISUAL_PARTICLE_H__
 
 #include <list>
 

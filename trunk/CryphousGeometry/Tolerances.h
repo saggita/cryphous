@@ -1,5 +1,5 @@
-#ifndef __TOLERANCES_H__
-#define __TOLERANCES_H__
+#ifndef __CRYPHOUS_TOLERANCES_H__
+#define __CRYPHOUS_TOLERANCES_H__
 
 #include <cmath>
 

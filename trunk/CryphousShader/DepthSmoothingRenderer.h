@@ -1,5 +1,5 @@
-#ifndef __DEPTH_SMOOTHING_RENDERER_H__
-#define __DEPTH_SMOOTHING_RENDERER_H__
+#ifndef __CRYPHOUS_DEPTH_SMOOTHING_RENDERER_H__
+#define __CRYPHOUS_DEPTH_SMOOTHING_RENDERER_H__
 
 #include "OffScreenRendererBase.h"
 

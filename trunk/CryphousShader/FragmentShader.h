@@ -1,5 +1,5 @@
-#ifndef __FRAGMENT_SHADER_H__
-#define __FRAGMENT_SHADER_H__
+#ifndef __CRYPHOUS_FRAGMENT_SHADER_H__
+#define __CRYPHOUS_FRAGMENT_SHADER_H__
 
 namespace Cryphous{
 	namespace Shader{

@@ -1,5 +1,5 @@
-#ifndef __QUATERNION_H__
-#define __QUATERNION_H__
+#ifndef __CRYPHOUS_QUATERNION_H__
+#define __CRYPHOUS_QUATERNION_H__
 
 #include "Vector3d.h"
 

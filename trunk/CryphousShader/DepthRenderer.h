@@ -1,5 +1,5 @@
-#ifndef __DEPTH_SPRITE_RENDERER_H__
-#define __DEPTH_SPRITE_RENDERER_H__
+#ifndef __CRYPHOUS_DEPTH_SPRITE_RENDERER_H__
+#define __CRYPHOUS_DEPTH_SPRITE_RENDERER_H__
 
 #include "OffScreenRendererBase.h"
 #include "VisualParticle.h"

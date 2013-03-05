@@ -1,10 +1,10 @@
-#ifndef __TRANSFORM_3D_H__
-#define __TRANSFORM_3D_H__
+#ifndef __CRYPHOUS_TRANSFORM_3D_H__
+#define __CRYPHOUS_TRANSFORM_3D_H__
 
 #include "Vector3d.h"
 #include "Matrix3d.h"
 
-namespace Crystal{
+namespace Cryphous{
 	namespace Geom{
 
 static Vector3d operator*(const Matrix3d lhs, const Vector3d &rhs)

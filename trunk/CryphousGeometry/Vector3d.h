@@ -1,5 +1,5 @@
-#ifndef __VECTOR_3D_H__
-#define __VECTOR_3D_H__
+#ifndef __CRYPHOUS_VECTOR_3D_H__
+#define __CRYPHOUS_VECTOR_3D_H__
 
 #include <cassert>
 #include <cmath>

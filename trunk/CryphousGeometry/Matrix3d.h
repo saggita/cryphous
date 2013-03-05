@@ -1,5 +1,5 @@
-#ifndef __MATRIX_3D_H__
-#define __MATRIX_3D_H__
+#ifndef __CRYPHOUS_MATRIX_3D_H__
+#define __CRYPHOUS_MATRIX_3D_H__
 
 #include <cassert>
 

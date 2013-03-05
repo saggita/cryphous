@@ -1,5 +1,5 @@
-#ifndef __GEOMETRY_SHADER_H__
-#define __GEOMETRY_SHADER_H__
+#ifndef __CRYPHOUS_GEOMETRY_SHADER_H__
+#define __CRYPHOUS_GEOMETRY_SHADER_H__
 
 namespace Cryphous{
 	namespace Shader{

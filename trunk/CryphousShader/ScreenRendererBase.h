@@ -1,5 +1,5 @@
-#ifndef __SCREEN_RENDERER_BASE_H__
-#define __SCREEN_RENDERER_BASE_H__
+#ifndef __CRYPHOUS_SCREEN_RENDERER_BASE_H__
+#define __CRYPHOUS_SCREEN_RENDERER_BASE_H__
 
 #include "GLSLMatrix.h"
 #include "ShaderObject.h"

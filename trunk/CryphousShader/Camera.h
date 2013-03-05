@@ -1,5 +1,5 @@
-#ifndef __CAMERA_H__
-#define __CAMERA_H__
+#ifndef __CRYPHOUS_CAMERA_H__
+#define __CRYPHOUS_CAMERA_H__
 
 namespace Cryphous{
 	namespace Shader{

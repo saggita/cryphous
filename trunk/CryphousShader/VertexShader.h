@@ -1,5 +1,5 @@
-#ifndef __VERTEX_SHADER_H__
-#define __VERTEX_SHADER_H__
+#ifndef __CRYPHOUS_VERTEX_SHADER_H__
+#define __CRYPHOUS_VERTEX_SHADER_H__
 
 namespace Cryphous{
 	namespace Shader{

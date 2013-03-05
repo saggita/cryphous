@@ -1,5 +1,5 @@
-#ifndef __RENDER_BUFFER_OBJECT_H__
-#define __RENDER_BUFFER_OBJECT_H__
+#ifndef __CRYPHOUS_RENDER_BUFFER_OBJECT_H__
+#define __CRYPHOUS_RENDER_BUFFER_OBJECT_H__
 
 namespace Cryphous
 {

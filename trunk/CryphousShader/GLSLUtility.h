@@ -1,5 +1,5 @@
-#ifndef __GLSL_UTILITY_H__
-#define __GLSL_UTILITY_H__
+#ifndef __CRYPHOUS_GLSL_UTILITY_H__
+#define __CRYPHOUS_GLSL_UTILITY_H__
 
 #include <string>
 #include <vector>

@@ -1,5 +1,5 @@
-#ifndef __GLSL_MATRIX_H__
-#define __GLSL_MATRIX_H__
+#ifndef __CRYPHOUS_GLSL_MATRIX_H__
+#define __CRYPHOUS_GLSL_MATRIX_H__
 
 #include "../CryphousGeometry/Matrix3d.h"
 
