@@ -7,6 +7,7 @@ layout(points, max_vertices = 1) out;
 in Vertex
 {
 	vec3 position;
+	float density;
 } vertex[];
 
 uniform mat4 projectionMatrix;
@@ -15,6 +16,9 @@ uniform float pointSize;
  
 void main() {
   for( int i = 0; i < gl_in.length(); i++){
+	if( vertex[i].density > 1000.0 ) {
+		return;
+	}
 	gl_Position = projectionMatrix * modelviewMatrix * vec4( vertex[i].position, 1.0 );
 	float dist = length(gl_Position);
 	gl_PointSize = pointSize / dist;

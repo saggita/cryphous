@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoundarySolver.cpp" />
+    <ClCompile Include="Elastic.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
