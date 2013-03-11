@@ -21,6 +21,7 @@
     <ClInclude Include="SearchParticleFactory.h" />
     <ClInclude Include="Profiler.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="SphereBoundarySolver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHSolver.cpp" />
@@ -28,5 +29,6 @@
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Elastic.cpp" />
+    <ClCompile Include="SphereBoundarySolver.cpp" />
   </ItemGroup>
 </Project>

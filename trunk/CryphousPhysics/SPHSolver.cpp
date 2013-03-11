@@ -1,5 +1,7 @@
 #include "SPHSolver.h"
 
+#include "SphereBoundarySolver.h"
+
 using namespace Cryphous::Geometry;
 using namespace Cryphous::Physics;
 
@@ -66,8 +68,11 @@ void SPHSolver::calculateBoundaryForce()
 	Profiler::get()->start(" Sim->boundary");
 	const PhysicsObjectVector& objects = factory->getPhysicsObjects();
 	for( PhysicsObjectVector::const_iterator iter = objects.begin(); iter != objects.end(); ++iter ) {
-		BoundarySolver boundarySolver( (*iter), setting );
-		boundarySolver.calculateForce( setting.boundaryBox );
+		//BoundarySolver boundarySolver( (*iter), setting );
+		//boundarySolver.calculateForce( setting.boundaryBox );
+		SphereBoundarySolver bs( *iter, setting );
+		Sphere sphere( Vector3d( 0.0, 0.0, 0.0), 30.0f );
+		bs.calculateForce( sphere );
 	}
 	Profiler::get()->end(" Sim->boundary");
 }
