@@ -34,12 +34,39 @@ public:
 
 public:
 	Cryphous::Geometry::Vector3d center;
-	//std::vector<float> centers;
 	float density;
 };
 
 typedef std::list<VisualParticle> VisualParticleList;
 
+class VisualParticleCollection
+{
+public:
+
+	VisualParticleCollection(){};
+
+	VisualParticleCollection(const VisualParticleList& vpl)
+	{
+		set( vpl );
+	}
+
+	void set(const VisualParticleList& vpl)
+	{
+		centers.clear();
+		densities.clear();
+		for( const VisualParticle& vp: vpl ) {
+			centers.push_back( vp.center.x );
+			centers.push_back( vp.center.y );
+			centers.push_back( vp.center.z );
+			densities.push_back( vp.density );
+		}
+	}
+
+public:
+	std::vector<double> centers;
+	std::vector<double> densities;
+};
+
 	}
 }
-#endif __VISUAL_PARTICLE_H__
+#endif
