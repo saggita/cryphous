@@ -22,7 +22,7 @@ public:
 	  {}
 	
 	float getVolume() const {
-		return (radius * radius * radius * Tolerances::getPI() * 4.0) / 3.0;	}
+		return (radius * radius * radius * Tolerances::getPI() * 4.0f) / 3.0f;	}
 
 	bool isInterior(const Vector3d &point) const {
 		return point.getDistanceSquared( center ) < (radius * radius);

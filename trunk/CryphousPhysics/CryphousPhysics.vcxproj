@@ -152,7 +152,6 @@
     <ClInclude Include="SearchParticleFactory.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="SimulationSetting.h" />
-    <ClInclude Include="SphereBoundarySolver.h" />
     <ClInclude Include="SPHPairSolver.h" />
     <ClInclude Include="SPHSolver.h" />
   </ItemGroup>
@@ -160,8 +159,8 @@
     <ClCompile Include="BoundarySolver.cpp" />
     <ClCompile Include="Elastic.cpp" />
     <ClCompile Include="NeighborSearcher.cpp" />
+    <ClCompile Include="PhysicsObjectFactory.cpp" />
     <ClCompile Include="Simulation.cpp" />
-    <ClCompile Include="SphereBoundarySolver.cpp" />
     <ClCompile Include="SPHSolver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
