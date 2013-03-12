@@ -7,49 +7,6 @@ using namespace Cryphous::Physics;
 #include <omp.h>
 #endif
 
-void BoundarySolver::calculateDensity(const Box& box)
-{
-	const float effectLength = setting.getEffectLength();
-	
-	const ParticleVector& particles = object->getParticles();
-	#pragma omp parallel for
-	for( int i = 0; i < (int)particles.size(); ++i ) {
-		Particle* particle = particles[i];
-		if( particle->center.x > box.maxX + particle->getRadius() - effectLength ) {
-			Geometry::Vector3d boundaryPoint = particle->center;
-			boundaryPoint.x = box.maxX + particle->getRadius();
-			calculateDensity( particle, boundaryPoint ); 
-		}
-		else if( particle->center.x < box.minX -particle->getRadius() + effectLength ) {
-			Geometry::Vector3d boundaryPoint = particle->center;
-			boundaryPoint.x = box.minX - particle->getRadius();
-			calculateDensity( particle, boundaryPoint );
-		}
-
-		if( particle->center.y > box.maxY + particle->getRadius() - effectLength ) {
-			Geometry::Vector3d boundaryPoint = particle->center;
-			boundaryPoint.y = box.maxY + particle->getRadius();
-			calculateDensity( particle, boundaryPoint );
-		}
-		else if( particle->center.y < box.minY - particle->getRadius() + effectLength ) {
-			Geometry::Vector3d boundaryPoint = particle->center;
-			boundaryPoint.y =  box.minY - particle->getRadius();
-			calculateDensity( particle, boundaryPoint );
-		}
-
-		if( particle->center.z > box.maxZ + particle->getRadius() - effectLength ) {
-			Geometry::Vector3d boundaryPoint = particle->center;
-			boundaryPoint.z = box.maxZ + particle->getRadius();
-			calculateDensity( particle, boundaryPoint );
-		}
-		else if( particle->center.z < box.minZ -particle->getRadius() + effectLength ) {
-			Geometry::Vector3d boundaryPoint = particle->center;
-			boundaryPoint.z = box.minZ - particle->getRadius();
-			calculateDensity( particle, boundaryPoint );
-		}
-	}
-}
-
 void BoundarySolver::calculateForce(const Box& box)
 {
 	if( object->getParticles().empty() ) {
@@ -97,13 +54,4 @@ void BoundarySolver::calculateForce(const Box& box)
 			particle->force -= Geometry::Vector3d( 0.0, 0.0, force );
 		}
 	}
-}
-
-void BoundarySolver::calculateDensity(Particle* particle, const Vector3d boundaryPoint)
-{
-	virtualParticle->center = boundaryPoint;
-		
-	ParticlePair pair( particle, virtualParticle );
-	SPHPairSolver solver( setting.getEffectLength() );
-	solver.calculateDensity( pair);
 }

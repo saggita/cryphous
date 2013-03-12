@@ -95,11 +95,11 @@ public:
 		return object;
 	}
 
-	PhysicsObject* addParticles( const int index, const std::vector<Geometry::Vector3d>& points, const std::vector<Geometry::Vector3d>& velocities )
+	/*PhysicsObject* addParticles( const int index, const std::vector<Geometry::Vector3d>& points, const std::vector<Geometry::Vector3d>& velocities )
 	{
 		physicsObjects[index]->getParticleFactory()->addParticles( points, velocities );
 		return physicsObjects[index];
-	}
+	}*/
 
 	PhysicsObjectVector getPhysicsObjects() const { return physicsObjects; }
 

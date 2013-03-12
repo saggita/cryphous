@@ -21,23 +21,15 @@ public:
 
 	BoundarySolver(PhysicsObject* object, const SimulationSetting& setting)
 		: object( object),
-		virtualParticle( object->getParticleFactory()->getVirtualParticle()),
 		setting( setting)
 	{}
 
 	~BoundarySolver(void){};
 
-	void calculateDensity(const Geometry::Box& box);
-
 	void calculateForce(const Geometry::Box& box);
 
 private:
-
-	void calculateDensity(Particle* particle, const Geometry::Vector3d boundaryPoint);
-
-private:
 	PhysicsObject* object;
-	Particle* virtualParticle;
 	const SimulationSetting& setting;
 };
 
