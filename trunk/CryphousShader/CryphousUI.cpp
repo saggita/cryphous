@@ -59,6 +59,9 @@ OnScreenRenderer onScreenRenderer(width, height);
 DepthSmoothingRenderer thicknessSmoothingRenderer(width, height);
 SplashRenderer splashRenderer( width, height, pointSize, alpha);
 
+VisualParticleCollection collection;
+
+
 FrameBufferObject* fbo;
 
 TextureObject* selectedTexture;
@@ -120,7 +123,8 @@ void proceedSimulation(int id)
 	for( Cryphous::Physics::Particle* particle : factory.getParticles() ) {
 		visualParticles.push_back( VisualParticle( Vector3d(particle->center.x, particle->center.y, particle->center.z), particle->density ) );
 	}
-	depthRenderer.setVisualParticles( visualParticles );
+	collection.set( visualParticles );
+	depthRenderer.setVisualParticles( &collection );
 	thicknessRenderer.setVisualParticles( visualParticles );
 	pointSpriteRenderer.setVisualParticles( visualParticles );
 	splashRenderer.setVisualParticles(visualParticles);
