@@ -1,5 +1,14 @@
 #include "BoundarySolver.h"
 
+#include "../CryphousGeometry/Vector3d.h"
+#include "../CryphousGeometry/Box.h"
+#include "PhysicsObject.h"
+#include "ParticlePair.h"
+#include "SPHPairSolver.h"
+#include "SimulationSetting.h"
+
+#include "../CryphousGeometry/Sphere.h"
+
 using namespace Cryphous::Geometry;
 using namespace Cryphous::Physics;
 
@@ -52,6 +61,28 @@ void BoundarySolver::calculateForce(const Box& box)
 			const float over = particle->center.z - innerBox.minZ;
 			const float force = over * particle->density / timeStep / timeStep;
 			particle->force -= Geometry::Vector3d( 0.0, 0.0, force );
+		}
+	}
+}
+
+void BoundarySolver::calculateForce(const Sphere& sphere)
+{
+	if( object->getParticles().empty() ) {
+		return;
+	}
+
+	const float timeStep = setting.timeStep;
+	const Sphere& innerSphere = sphere.getInnerOffset( object->getParticles().front()->getRadius() );
+
+	const ParticleVector& particles = object->getParticles();
+	#pragma omp parallel for
+	for( int i = 0; i < (int)particles.size(); ++i ) {
+		Particle* particle = particles[i];
+		if( innerSphere.isExterior( particle->center ) ) {
+			const Vector3d distVector = particle->center - innerSphere.center;
+			const float over = innerSphere.center.getDistance( particle->center ) - innerSphere.radius;
+			const float force = over * particle->density / timeStep / timeStep * 0.1f;
+			particle->force -= distVector * force;
 		}
 	}
 }
