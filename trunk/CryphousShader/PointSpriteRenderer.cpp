@@ -22,23 +22,6 @@ PointSpriteRenderer::~PointSpriteRenderer(void)
 {
 }
 
-void PointSpriteRenderer::setVisualParticles(const VisualParticleList& visualParticles)
-{
-	positions.clear();
-	colors.clear();
-	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
-		const VisualParticle& vp = *iter;
-		const Vector3d& center = vp.center;
-		positions.push_back( center.x );
-		positions.push_back( center.y );
-		positions.push_back( center.z );
-		colors.push_back( 0.5f);
-		colors.push_back( 0.5f);
-		colors.push_back( 0.9f);
-		colors.push_back( 0.1f );
-	}
-}
-
 void PointSpriteRenderer::onRender()
 {
 	glClearColor( 0.8f, 0.8f, 0.9f, 1.0f );
@@ -51,15 +34,14 @@ void PointSpriteRenderer::onRender()
 
 	glClear( GL_DEPTH_BUFFER_BIT);	
 
-	if( !positions.empty() ) {
+	if( !collection->centers.empty() ) {
 		shaderObject.apply();
 		shaderObject.setUniform("pointSize", size);
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
-		shaderObject.setVertex( "position", positions ); 
-		shaderObject.setVertexAttrib("color", colors, 4);
+		shaderObject.setVertex( "position", collection->centers ); 
 		shaderObject.bindFrag("fragColor");
-		shaderObject.drawPoints( positions.size() / 3 );
+		shaderObject.drawPoints( collection->centers.size() / 3 );
 		shaderObject.release();
 	}
 

@@ -7,7 +7,6 @@ layout(points, max_vertices = 1) out;
 in Vertex
 {
 	vec3 position;
-	vec4 color;
 } vertex[];
 
 uniform mat4 projectionMatrix;
@@ -20,7 +19,6 @@ void main() {
 	gl_Position = projectionMatrix * modelviewMatrix * vec4( vertex[i].position, 1.0 );
 	float dist = length(gl_Position);
 	gl_PointSize = pointSize / dist;
-	color = vertex[i].color;
 	EmitVertex();
 	EndPrimitive();
   }

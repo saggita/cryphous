@@ -22,20 +22,6 @@ ThicknessRenderer::~ThicknessRenderer(void)
 {
 }
 
-void ThicknessRenderer::setVisualParticles(const VisualParticleList& visualParticles)
-{
-	positions.clear();
-	densities.clear();
-	for( VisualParticleList::const_iterator iter = visualParticles.begin(); iter != visualParticles.end(); ++iter ) {
-		const VisualParticle& vp = *iter;
-		const Vector3d& center = vp.center;
-		positions.push_back( center.x );
-		positions.push_back( center.y );
-		positions.push_back( center.z );
-		densities.push_back( vp.density);
-	}
-}
-
 void ThicknessRenderer::onRender()
 {
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
@@ -48,15 +34,15 @@ void ThicknessRenderer::onRender()
 
 	glClear( GL_DEPTH_BUFFER_BIT);	
 
-	if( !positions.empty() ) {
+	if( !collection->centers.empty() ) {
 		shaderObject.apply();
 		shaderObject.setUniform("pointSize", size);
-		shaderObject.setVertexAttrib( "density", densities, 1 );
+		shaderObject.setVertexAttrib( "density", collection->densities, 1 );
 		shaderObject.setUniformMatrix("projectionMatrix", projectionMatrix);
 		shaderObject.setUniformMatrix("modelviewMatrix", getModelviewMatrix());
-		shaderObject.setVertex( "position", positions ); 
+		shaderObject.setVertex( "position", collection->centers ); 
 		shaderObject.bindFrag("fragColor");
-		shaderObject.drawPoints( positions.size() / 3 );
+		shaderObject.drawPoints( collection->centers.size() / 3 );
 		shaderObject.release();
 	}
 

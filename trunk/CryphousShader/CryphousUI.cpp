@@ -125,9 +125,9 @@ void proceedSimulation(int id)
 	}
 	collection.set( visualParticles );
 	depthRenderer.setVisualParticles( &collection );
-	thicknessRenderer.setVisualParticles( visualParticles );
-	pointSpriteRenderer.setVisualParticles( visualParticles );
-	splashRenderer.setVisualParticles(visualParticles);
+	thicknessRenderer.setVisualParticles( &collection );
+	pointSpriteRenderer.setVisualParticles( &collection );
+	splashRenderer.setVisualParticles( &collection );
 }
 
 

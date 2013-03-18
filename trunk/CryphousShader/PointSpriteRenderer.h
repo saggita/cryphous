@@ -15,7 +15,7 @@ public:
 
 	~PointSpriteRenderer(void);
 
-	void setVisualParticles(const VisualParticleList& visualParticles);
+	void setVisualParticles(VisualParticleCollection* visualParticles) { this->collection = visualParticles; }
 
 protected:
 	virtual void onRender();
@@ -25,8 +25,7 @@ protected:
 	virtual void onIdle(){};
 
 private:
-	std::vector<double> positions;
-	std::vector<double> colors;
+	VisualParticleCollection* collection;
 
 	float& size;
 	float& alpha;

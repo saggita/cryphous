@@ -1,6 +1,5 @@
 #version 330
 
-in vec4 color;
 out vec4 fragColor;
 uniform float pointSize;
 
@@ -14,6 +13,6 @@ void main(void)
 	}
 	normal.z = sqrt( 1.0 - distance );
 	
-	fragColor.rgb = color.rgb;
+	fragColor.rgb = vec3( 0.5, 0.5, 1.0 );
 	fragColor.a = 0.1;
 }
