@@ -14,7 +14,7 @@ public:
 
 	~SplashRenderer(void);
 
-	void setVisualParticles(const VisualParticleList& visualParticles);
+	void setVisualParticles(VisualParticleCollection* visualParticles) { this->collection = visualParticles; }
 
 protected:
 	virtual void onRender();
@@ -24,8 +24,7 @@ protected:
 	virtual void onIdle(){};
 
 private:
-	std::vector<double> positions;
-	std::vector<double> densities;
+	VisualParticleCollection* collection;
 
 	float& size;
 	float& alpha;
