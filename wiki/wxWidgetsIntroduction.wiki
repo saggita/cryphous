@@ -62,3 +62,13 @@ https://sites.google.com/site/cryphous/home/image/OpenGL.png
 本格的なCGソフトウェアやCAD ソフトウェアを開発するのであれば、この
 コードをベースにリファクタリングをして、DAT ファイルリーダ、DXF ファイル
 リーダなどに分離してしまうのが良いでしょう。
+
+=主要クラス=
+
+==wxGLCanvas==
+OpenGLの描画を行う場合には派生させる．
+
+===wxTextDropTarget==
+ドラッグ&ドロップの対象とする場合に派生させる。
+
+===
