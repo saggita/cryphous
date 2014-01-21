@@ -1,4 +1,4 @@
-# wxWidgets入門
+#wxWidgets Introduction
 
 = このページについて =
 
