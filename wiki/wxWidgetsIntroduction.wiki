@@ -1,8 +1,8 @@
-#wxWidgets Introduction
+#summary wxWidgets Intrudction
 
 = このページについて =
 
-このページはwxWidgets3.0のユーザーズガイドです。
+このページはwxWidgets3.0の入門ガイドです。
 ただしwxWidgetsプロジェクトの公式なものではありません。
 ご了承下さい。
 
