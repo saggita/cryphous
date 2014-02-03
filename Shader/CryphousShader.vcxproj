@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3DB61408-BFAA-4587-A3E3-135662D2C7A1}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OpenGLTest</RootNamespace>
+    <ProjectName>Shader</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../$(Configuration);</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="DepthRenderer.cpp" />
+    <ClCompile Include="FragmentShader.cpp" />
+    <ClCompile Include="FrameBufferObject.cpp" />
+    <ClCompile Include="GeometryShader.cpp" />
+    <ClCompile Include="GLee.cpp" />
+    <ClCompile Include="GLSLMatrix.cpp" />
+    <ClCompile Include="GLSLUtility.cpp" />
+    <ClCompile Include="OffScreenRendererBase.cpp" />
+    <ClCompile Include="OnScreenRenderer.cpp" />
+    <ClCompile Include="PBVRRenderer.cpp" />
+    <ClCompile Include="PointSpriteRenderer.cpp" />
+    <ClCompile Include="RenderBufferObject.cpp" />
+    <ClCompile Include="Renderers.cpp" />
+    <ClCompile Include="RenderingCommand.cpp" />
+    <ClCompile Include="ScreenRendererBase.cpp" />
+    <ClCompile Include="ScreenSpaceFluidRenderer.cpp" />
+    <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="ShaderParser.cpp" />
+    <ClCompile Include="SmoothingRenderer.cpp" />
+    <ClCompile Include="TextureObject.cpp" />
+    <ClCompile Include="ThicknessRenderer.cpp" />
+    <ClCompile Include="VertexShader.cpp" />
+    <ClCompile Include="VisualParticleConverter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="ColorMap.h" />
+    <ClInclude Include="DepthRenderer.h" />
+    <ClInclude Include="FragmentShader.h" />
+    <ClInclude Include="FrameBufferObject.h" />
+    <ClInclude Include="GeometryShader.h" />
+    <ClInclude Include="GLee.h" />
+    <ClInclude Include="GLSLMatrix.h" />
+    <ClInclude Include="GLSLUtility.h" />
+    <ClInclude Include="OffScreenRendererBase.h" />
+    <ClInclude Include="OnScreenRenderer.h" />
+    <ClInclude Include="Renderers.h" />
+    <ClInclude Include="RenderingCommand.h" />
+    <ClInclude Include="PBVRRenderer.h" />
+    <ClInclude Include="PointSpriteRenderer.h" />
+    <ClInclude Include="RenderBufferObject.h" />
+    <ClInclude Include="ScreenRendererBase.h" />
+    <ClInclude Include="ScreenSpaceFluidRenderer.h" />
+    <ClInclude Include="ShaderCommand.h" />
+    <ClInclude Include="ShaderObject.h" />
+    <ClInclude Include="ShaderParser.h" />
+    <ClInclude Include="SmoothingRenderer.h" />
+    <ClInclude Include="TextureObject.h" />
+    <ClInclude Include="TextureObjectStack.h" />
+    <ClInclude Include="ThicknessRenderer.h" />
+    <ClInclude Include="VertexShader.h" />
+    <ClInclude Include="VisualParticle.h" />
+    <ClInclude Include="VisualParticleConverter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\Billboard.fs" />
+    <None Include="..\Shaders\Billboard.gs" />
+    <None Include="..\Shaders\Billboard.vs" />
+    <None Include="..\Shaders\Depth.fs" />
+    <None Include="..\Shaders\Depth.gs" />
+    <None Include="..\Shaders\Depth.vs" />
+    <None Include="..\Shaders\DepthSmoothing.fs" />
+    <None Include="..\Shaders\DepthSmoothing.gs" />
+    <None Include="..\Shaders\DepthSmoothing.vs" />
+    <None Include="..\Shaders\PointSprite.fs" />
+    <None Include="..\Shaders\PointSprite.gs" />
+    <None Include="..\Shaders\PointSprite.vs" />
+    <None Include="..\Shaders\Quad.fs" />
+    <None Include="..\Shaders\Quad.gs" />
+    <None Include="..\Shaders\Quad.vs" />
+    <None Include="..\Shaders\ScreenSpaceFluid.fs" />
+    <None Include="..\Shaders\ScreenSpaceFluid.gs" />
+    <None Include="..\Shaders\ScreenSpaceFluid.vs" />
+    <None Include="..\Shaders\Thickness.fs" />
+    <None Include="..\Shaders\Thickness.gs" />
+    <None Include="..\Shaders\Thickness.vs" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
