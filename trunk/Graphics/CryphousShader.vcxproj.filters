@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{e71d61a6-ea57-4e80-80fe-4d1b53711541}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="RenderingCommand.cpp" />
+    <ClCompile Include="GLSLMatrix.cpp" />
+    <ClCompile Include="FrameBufferObject.cpp" />
+    <ClCompile Include="RenderBufferObject.cpp" />
+    <ClCompile Include="GLee.cpp" />
+    <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="TextureObject.cpp" />
+    <ClCompile Include="RenderingUnit.cpp" />
+    <ClCompile Include="RenderingPipeline.cpp" />
+    <ClCompile Include="Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="RenderingCommand.h" />
+    <ClInclude Include="ShaderCommand.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="TextureObjectStack.h" />
+    <ClInclude Include="GLSLMatrix.h" />
+    <ClInclude Include="FrameBufferObject.h" />
+    <ClInclude Include="RenderBufferObject.h" />
+    <ClInclude Include="GLee.h" />
+    <ClInclude Include="ShaderObject.h" />
+    <ClInclude Include="TextureObject.h" />
+    <ClInclude Include="RenderingUnit.h" />
+    <ClInclude Include="RenderingPipeline.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\PointSprite.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\PointSprite.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Depth.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Depth.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Quad.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Quad.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\ScreenSpaceFluid.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\ScreenSpaceFluid.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Thickness.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Thickness.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Normal.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Normal.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Smoothing.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Smoothing.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Scene.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\Scene.vs">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
